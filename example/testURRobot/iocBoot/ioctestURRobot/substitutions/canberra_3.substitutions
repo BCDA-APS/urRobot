@@ -1,0 +1,41 @@
+file "$(MCA)/mcaApp/Db/simple_mca.db"
+{
+pattern
+{P           M       DTYP           INP              PREC  CHANS}
+{testURRobot:med:   mca1  "asynMCA"       "@asyn(AIM1/1 0)"  3     2048}
+{testURRobot:med:   mca2  "asynMCA"       "@asyn(AIM1/2 0)"  3     2048}
+{testURRobot:med:   mca3  "asynMCA"       "@asyn(AIM2/1 0)"  3     2048}
+{testURRobot:med:   mca0  "Soft Channel"  ""                 3     2048}
+}
+
+#file "$(MCA)/mcaApp/Db/icb_amp.db"
+#{
+#pattern
+#{P			AMP		PORT}
+#{testURRobot:med:	amp1	icbAmp1}
+#}
+
+file "$(MCA)/mcaApp/Db/icb_adc.db"
+{
+pattern
+{P			ADC		PORT}
+{testURRobot:med:	adc1	"icbAdc1"}
+{testURRobot:med:	adc2	"icbAdc2"}
+{testURRobot:med:	adc3	"icbAdc3"}
+}
+
+#file "$(MCA)/mcaApp/Db/icb_hvps.db"
+#{
+#pattern
+#{P			HVPS	LIMIT	PORT}
+#{testURRobot:med:	hvps1	1000	"icbHvps1"}
+#}
+
+file "$(MCA)/mcaApp/Db/icb_tca.db"
+{
+pattern
+{P,          TCA,	PORT,		MCA}
+{testURRobot:med:,  tca1,	"icbTca1",	mca1}
+{testURRobot:med:,  tca2,	"icbTca2",	mca2}
+{testURRobot:med:,  tca3,	"icbTca3",	mca3}
+}

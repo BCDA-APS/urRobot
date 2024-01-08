@@ -1,0 +1,35 @@
+# Linux startup script
+
+< envPaths
+
+# Increase size of buffer for error logging from default 1256
+errlogInit(20000)
+
+################################################################################
+# Tell EPICS all about the record types, device-support modules, drivers,
+# etc. in the software we just loaded (testURRobot.munch)
+dbLoadDatabase("../../dbd/ioctestURRobotLinux.dbd")
+ioctestURRobotLinux_registerRecordDeviceDriver(pdbbase)
+
+< settings.iocsh
+< common.iocsh
+
+#- devIocStats
+dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")
+#- PV aliases change :: into :
+dbLoadRecords("$(TOP)/testURRobotApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
+
+URRobotConfig("ur_asyn_port", "ur_robot_port")
+
+###############################################################################
+iocInit
+###############################################################################
+
+# write all the PV names to a local file
+dbl > dbl-all.txt
+
+# Diagnostic: CA links in all records
+dbcar(0,1)
+
+# print the time our boot was finished
+date

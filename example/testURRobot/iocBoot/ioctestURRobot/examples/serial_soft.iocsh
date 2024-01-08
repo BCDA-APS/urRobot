@@ -1,0 +1,12 @@
+
+# BEGIN serial.cmd ------------------------------------------------------------
+
+# Set up 2 local serial ports
+iocshLoad("$(IP)/iocsh/loadSerialPort.iocsh", "PORT=serial1, DEVICE=/dev/ttyS0, INSTANCE=asyn_1")
+iocshLoad("$(IP)/iocsh/loadSerialPort.iocsh", "PORT=serial2, DEVICE=/dev/ttyS1, INSTANCE=asyn_2")
+
+# Set up 2 MOXA Nport serial ports
+iocshLoad("$(IP)/iocsh/loadIPPort.iocsh", "PORT=serial3, IP=164.54.100.50:4001, INSTANCE=asyn_3")
+iocshLoad("$(IP)/iocsh/loadIPPort.iocsh", "PORT=serial4, IP=164.54.100.50:4002, INSTANCE=asyn_4")
+
+# END serial.cmd --------------------------------------------------------------
