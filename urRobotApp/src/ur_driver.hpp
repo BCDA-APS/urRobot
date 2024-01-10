@@ -1,4 +1,5 @@
 #include <asynPortDriver.h>
+#include "ur_rtde/rtde_receive_interface.h"
 
 static const char *driver_name = "urRobot";
 
@@ -13,8 +14,10 @@ class URRobot: public asynPortDriver {
 	virtual void main_loop(void);
 
     private:
-	int count;
 	double poll_time;
+	int count;
+	ur_rtde::RTDEReceiveInterface rtde_receive_;
+	std::vector<double> pose_;
 
     protected:
 	asynUser* pasynUserURRobot_;
