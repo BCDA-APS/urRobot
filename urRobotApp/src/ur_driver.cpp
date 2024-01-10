@@ -4,6 +4,7 @@
 #include <epicsThread.h>
 #include <asynOctetSyncIO.h>
 #include "ur_driver.hpp"
+#include "ur_rtde/rtde_receive_interface.h"
 
 static void main_loop_thread_C(void *pPvt) {
     URRobot *pURRobot = (URRobot*)pPvt;
@@ -30,6 +31,10 @@ URRobot::URRobot(const char *asyn_port_name, const char* robot_port_name) : asyn
 
     asynPrint(this->pasynUserSelf, ASYN_TRACE_ERROR, "Starting UR robot driver\n");
     asynPrint(this->pasynUserSelf, ASYN_TRACE_ERROR, "Poll time = %lf\n", poll_time);
+
+    asynPrint(this->pasynUserSelf, ASYN_TRACE_ERROR, "Attempting to connect to the robot\n");
+    ur_rtde::RTDEReceiveInterface rtde_receive("127.0.0.1");
+    asynPrint(this->pasynUserSelf, ASYN_TRACE_ERROR, "Tried but failed obviously\n");
 
 }
 

@@ -2,6 +2,7 @@ TOP=../..
 
 include $(TOP)/configure/CONFIG
 
+# include ur_rtde library headers
 INC += ur_rtde/dashboard_client.h
 INC += ur_rtde/dashboard_enums.h
 INC += ur_rtde/robot_state.h
@@ -22,6 +23,7 @@ INC += urcl/tcp_socket.h
 INC += urcl/tcp_server.h
 INC += urcl/script_sender.h
 
+# paths relative to where they get installed (./O.rhel9-x86_64)
 LIB_INSTALLS += ../os/rhel9/librtde.a
 BIN_INSTALLS += ../os/rhel9/librtde.so
 BIN_INSTALLS += ../os/rhel9/librtde.so.1.5
@@ -42,6 +44,9 @@ urRobot_SRCS += ur_driver.cpp
 urRobot_LIBS += asyn
 urRobot_LIBS += rtde
 urRobot_LIBS += $(EPICS_BASE_IOC_LIBS)
+
+urRobot_SYS_LIBS += boost_system
+urRobot_SYS_LIBS += boost_thread
 
 include $(TOP)/configure/RULES
 #----------------------------------------
