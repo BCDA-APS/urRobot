@@ -1,7 +1,7 @@
 #include <asynPortDriver.h>
 #include "ur_rtde/rtde_receive_interface.h"
 
-static const char *driver_name = "urRobot";
+static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
 
 constexpr int MAX_CONTROLLERS = 1;
 constexpr double DEFAULT_POLL_TIME = 0.20; // 5Hz?
@@ -14,11 +14,13 @@ class URRobot: public asynPortDriver {
 	virtual void main_loop(void);
 
     private:
-	double poll_time;
-	int count;
 	ur_rtde::RTDEReceiveInterface rtde_receive_;
 	std::vector<double> pose_;
+	double poll_time_;
+	int count_;
+	int connected_;
 
     protected:
 	asynUser* pasynUserURRobot_;
+        int isConnectedIndex_;
 };

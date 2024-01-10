@@ -1,0 +1,10 @@
+record(bo, "$(P)isConnected")
+{
+    field(DESC, "Connection status")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CONNECTED")
+    field(VAL,  0)
+    field(DISP, "TRUE")
+    field(PINI, "YES")
+}
+

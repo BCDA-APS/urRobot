@@ -1,11 +1,10 @@
+#include <iostream>
 #include <iocsh.h>
 #include <epicsExport.h>
 #include <epicsString.h>
 #include <epicsThread.h>
 #include <asynOctetSyncIO.h>
-#include <iostream>
 #include "ur_driver.hpp"
-#include "ur_rtde/rtde_receive_interface.h"
 
 
 static void main_loop_thread_C(void *pPvt) {
@@ -28,17 +27,25 @@ URRobot::URRobot(const char *asyn_port_name, const char* robot_ip) : asynPortDri
 		asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask,
 		asynInt32Mask | asynFloat64Mask | asynOctetMask,
 		ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
-		0, 0), poll_time(DEFAULT_POLL_TIME), count(0), rtde_receive_(ur_rtde::RTDEReceiveInterface(robot_ip))
+		0, 0),
+    poll_time_(DEFAULT_POLL_TIME), count_(0), rtde_receive_(ur_rtde::RTDEReceiveInterface(robot_ip)), connected_(0)
 {
-    // TODO: is this safe
+   
+    // create asyn parameters
+    createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
+
+    // TODO: better way to do this?
     if (rtde_receive_.isConnected()) {
 	std::cout << "Robot connected successfully" << std::endl;
+	setIntegerParam(isConnectedIndex_, 1);
     }
     else {
 	std::cout << "Failed to connect to robot host " << robot_ip << std::endl;
+	setIntegerParam(isConnectedIndex_, 0);
 	// TODO: runtime error?
     }
-
+    
+    // print the current pose
     pose_ = rtde_receive_.getActualTCPPose();
     print_vector(pose_, "Pose: ");
     
@@ -60,15 +67,15 @@ void URRobot::main_loop() {
 	lock();
 
 	// get the current pose and print it for testing
-	std::cout << "count = " << count << std::endl;	
-	count += 1;
+	std::cout << "count = " << count_ << std::endl;	
+	count_ += 1;
 	pose_ = rtde_receive_.getActualTCPPose();
 	print_vector(pose_, "Pose: ");
 
 	callParamCallbacks();
 
 	unlock();
-	epicsThreadSleep(poll_time);
+	epicsThreadSleep(poll_time_);
     }
 }
 
