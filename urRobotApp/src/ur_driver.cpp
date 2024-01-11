@@ -1,6 +1,7 @@
 #include "ur_driver.hpp"
 
 #include <asynOctetSyncIO.h>
+#include <bitset>
 #include <epicsExport.h>
 #include <epicsString.h>
 #include <epicsThread.h>
@@ -37,9 +38,11 @@ URRobot::URRobot(const char *asyn_port_name, const char *robot_ip)
                      1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
                      0, 0),
       rtde_receive_(std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip)),
-      poll_time_(DEFAULT_POLL_TIME), count_(0), connected_(0) {
+      poll_time_(DEFAULT_POLL_TIME) {
     // create asyn parameters
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
+    createParam(CONTROLLER_TIMESTAMP_STRING, asynParamFloat64,
+                &controllerTimestampIndex_);
 
     // Check that robot is connected
     if (rtde_receive_->isConnected()) {
@@ -65,16 +68,22 @@ void URRobot::main_loop() {
     while (true) {
         lock();
 
-        std::cout << "count = " << count_ << std::endl;
-        count_ += 1;
+        // print controller timestamp for debugging
+        std::cout << "Controller timestamp: " << rtde_receive_->getTimestamp()
+                  << std::endl;
 
-        if (rtde_receive_) {
-            pose_ = rtde_receive_->getActualTCPPose();
-            print_vector(pose_, "Pose: ");
-        }
+        // set asyn parameters
+        setDoubleParam(controllerTimestampIndex_,
+                       rtde_receive_->getTimestamp());
+        setIntegerParam(isConnectedIndex_,
+                        (rtde_receive_->isConnected()) ? 1 : 0);
+
+        // get safety status
+        uint32_t safety_status_bits = rtde_receive_->getSafetyStatusBits();
+        std::bitset<32> bits(safety_status_bits);
+        std::cout << "Safety status bits: " << bits << std::endl;
 
         callParamCallbacks();
-
         unlock();
         epicsThreadSleep(poll_time_);
     }

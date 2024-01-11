@@ -1,0 +1,15 @@
+record(bi, "$(P)isConnected")
+{
+    field(DESC, "Connection status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CONNECTED")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)ControllerTimestamp")
+{
+    field(DESC, "Time since controller started")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CONTROLLER_TIMESTAMP")
+    field(SCAN, "I/O Intr")
+}

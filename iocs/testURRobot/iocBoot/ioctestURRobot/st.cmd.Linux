@@ -19,8 +19,7 @@ dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")
 #- PV aliases change :: into :
 dbLoadRecords("$(TOP)/testURRobotApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
 
-
-dbLoadRecords("$(TOP)/../../db/urRobot.db", "P=$(PREFIX), PORT=ur_asyn_port, ADDR=0")
+dbLoadRecords("$(TOP)/../../db/rtde_receive.db", "P=$(PREFIX), PORT=ur_asyn_port, ADDR=0")
 URRobotConfig("ur_asyn_port", "164.54.104.148")
 
 ###############################################################################
