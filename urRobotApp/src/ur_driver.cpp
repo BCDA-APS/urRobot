@@ -32,15 +32,20 @@ void print_vector(const std::vector<T> &vec, const std::string_view pref = "",
 URRobot::URRobot(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask |
-                         asynOctetMask,
-                     asynInt32Mask | asynFloat64Mask | asynOctetMask,
+                         asynOctetMask | asynInt32ArrayMask,
+                     asynInt32Mask | asynFloat64Mask | asynOctetMask |
+                         asynInt32ArrayMask,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
                      0, 0),
       rtde_receive_(std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip)),
       poll_time_(DEFAULT_POLL_TIME) {
+
     // create asyn parameters
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
+    createParam(RUNTIME_STATE_STRING, asynParamInt32, &runtimeStateIndex_);
+    createParam(ROBOT_MODE_STRING, asynParamInt32, &robotModeIndex_);
+    createParam(SAFETY_STATUS_STRING, asynParamInt32, &safetyStatusIndex_);
     createParam(CONTROLLER_TIMESTAMP_STRING, asynParamFloat64,
                 &controllerTimestampIndex_);
 
@@ -55,9 +60,6 @@ URRobot::URRobot(const char *asyn_port_name, const char *robot_ip)
         throw std::runtime_error("Could not connect to robot");
     }
 
-    pose_ = rtde_receive_->getActualTCPPose();
-    print_vector(pose_, "Pose: ");
-
     std::cout << "starting main loop..." << std::endl;
     epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
                       epicsThreadGetStackSize(epicsThreadStackMedium),
@@ -68,20 +70,35 @@ void URRobot::main_loop() {
     while (true) {
         lock();
 
-        // print controller timestamp for debugging
-        std::cout << "Controller timestamp: " << rtde_receive_->getTimestamp()
-                  << std::endl;
+        if (rtde_receive_->isConnected()) {
+            setIntegerParam(isConnectedIndex_, 1);
 
-        // set asyn parameters
-        setDoubleParam(controllerTimestampIndex_,
-                       rtde_receive_->getTimestamp());
-        setIntegerParam(isConnectedIndex_,
-                        (rtde_receive_->isConnected()) ? 1 : 0);
+            // print controller timestamp for debugging
+            std::cout << "Controller timestamp: "
+                      << rtde_receive_->getTimestamp() << std::endl;
 
-        // get safety status
-        uint32_t safety_status_bits = rtde_receive_->getSafetyStatusBits();
-        std::bitset<32> bits(safety_status_bits);
-        std::cout << "Safety status bits: " << bits << std::endl;
+            // set asyn parameters
+            setDoubleParam(controllerTimestampIndex_,
+                           rtde_receive_->getTimestamp());
+
+            // get safety status (TODO: extract individual bits in EPICS)
+            uint32_t safety_status_int = rtde_receive_->getSafetyStatusBits();
+            std::bitset<32> bits(safety_status_int);
+            setIntegerParam(safetyStatusIndex_, safety_status_int);
+
+            // get runtime state
+            uint32_t runtime_state = rtde_receive_->getRuntimeState();
+            std::cout << "Runtime state: " << runtime_state << std::endl;
+            setIntegerParam(runtimeStateIndex_, runtime_state);
+
+            // get robot mode
+            int32_t robot_mode = rtde_receive_->getRobotMode();
+            std::cout << "Robot mode: " << robot_mode << std::endl;
+            setIntegerParam(robotModeIndex_, robot_mode);
+
+        } else {
+            setIntegerParam(isConnectedIndex_, 0);
+        }
 
         callParamCallbacks();
         unlock();

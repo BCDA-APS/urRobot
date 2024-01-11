@@ -13,3 +13,27 @@ record(ai, "$(P)ControllerTimestamp")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CONTROLLER_TIMESTAMP")
     field(SCAN, "I/O Intr")
 }
+
+record(ai, "$(P)SafetyStatus")
+{
+    field(DESC, "Safety status bits")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SAFETY_STATUS")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)RuntimeState")
+{
+    field(DESC, "Runtime state")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RUNTIME_STATE")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)RobotMode")
+{
+    field(DESC, "Robot mode")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ROBOT_MODE")
+    field(SCAN, "I/O Intr")
+}
