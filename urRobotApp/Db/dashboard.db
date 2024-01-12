@@ -6,3 +6,22 @@ record(bi, "$(P)Dashboard:Connected")
     field(VAL, 0)
     field(SCAN, "I/O Intr")
 }
+
+# caput $(P)Dashboard:ClosePopup.PROC 1 to close popup
+record(bo, "$(P)Dashboard:ClosePopup")
+{
+    field(DESC, "Close popup")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE_POPUP")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+# record(stringout, "$(P)Dashboard:Popup")
+# {
+    # field(DESC, "Popup message")
+    # field(DTYP, "asynOctetWrite")
+    # field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POPUP")
+    # field(VAL, "hello world")
+    # field(SCAN, "Passive")
+# }

@@ -3,6 +3,8 @@
 
 // Dashboard interface
 static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
+static constexpr char CLOSE_POPUP_STRING[] = "CLOSE_POPUP";
+static constexpr char POPUP_STRING[] = "POPUP";
 
 constexpr int MAX_CONTROLLERS = 1;
 constexpr double DEFAULT_POLL_TIME = 0.20;
@@ -20,4 +22,6 @@ class URRobotDashboard : public asynPortDriver {
   protected:
     asynUser *pasynUserURRobot_;
     int isConnectedIndex_;
+    int closePopupIndex_;
+    int popupIndex_;
 };

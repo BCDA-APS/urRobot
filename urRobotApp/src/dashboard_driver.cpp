@@ -6,9 +6,7 @@
 #include <epicsString.h>
 #include <epicsThread.h>
 #include <iocsh.h>
-
 #include <iostream>
-#include <stdexcept>
 
 static void main_loop_thread_C(void *pPvt) {
     URRobotDashboard *pURRobotDashboard = (URRobotDashboard *)pPvt;
@@ -30,6 +28,8 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name,
 
     // create asyn parameters
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
+    createParam(CLOSE_POPUP_STRING, asynParamInt32, &closePopupIndex_);
+    createParam(POPUP_STRING, asynParamOctet, &popupIndex_);
 
     ur_dashboard_->connect();
     if (ur_dashboard_->isConnected()) {
@@ -52,8 +52,20 @@ void URRobotDashboard::main_loop() {
 
         if (ur_dashboard_->isConnected()) {
             setIntegerParam(isConnectedIndex_, 1);
-            std::string mode = ur_dashboard_->robotmode();
-            std::cout << mode << std::endl;
+            
+            int close_popup_flag = 0;
+            getIntegerParam(closePopupIndex_, &close_popup_flag);
+            if (close_popup_flag != 0) {
+                std::cout << "Closing popup" << std::endl;
+                setIntegerParam(closePopupIndex_, 0);
+                ur_dashboard_->closePopup();
+            }
+            
+            // char buff[40];
+            // getStringParam(popupIndex_, 40, buff);
+            // std::string s(buff);
+            // std::cout << "Popup text = " << s << std::endl;
+
         } else {
             setIntegerParam(isConnectedIndex_, 0);
         }
