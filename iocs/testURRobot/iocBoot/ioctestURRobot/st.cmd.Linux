@@ -14,13 +14,12 @@ ioctestURRobotLinux_registerRecordDeviceDriver(pdbbase)
 < settings.iocsh
 < common.iocsh
 
+< urRobot.cmd
+
 #- devIocStats
 dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")
 #- PV aliases change :: into :
 dbLoadRecords("$(TOP)/testURRobotApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
-
-dbLoadRecords("$(TOP)/../../db/rtde_receive.db", "P=$(PREFIX), PORT=ur_asyn_port, ADDR=0")
-URRobotConfig("ur_asyn_port", "164.54.104.148")
 
 ###############################################################################
 iocInit

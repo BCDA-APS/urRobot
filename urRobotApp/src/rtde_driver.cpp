@@ -1,4 +1,4 @@
-#include "ur_driver.hpp"
+#include "rtde_driver.hpp"
 
 #include <asynOctetSyncIO.h>
 #include <bitset>
@@ -14,8 +14,8 @@
 #include "ur_rtde/rtde_receive_interface.h"
 
 static void main_loop_thread_C(void *pPvt) {
-    URRobot *pURRobot = (URRobot *)pPvt;
-    pURRobot->main_loop();
+    URRobotRTDE *pURRobotRTDE = (URRobotRTDE *)pPvt;
+    pURRobotRTDE->main_loop();
 }
 
 // debugging function for development
@@ -29,7 +29,7 @@ void print_vector(const std::vector<T> &vec, const std::string_view pref = "",
     std::cout << std::endl;
 }
 
-URRobot::URRobot(const char *asyn_port_name, const char *robot_ip)
+URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask |
                          asynOctetMask | asynInt32ArrayMask,
@@ -66,7 +66,7 @@ URRobot::URRobot(const char *asyn_port_name, const char *robot_ip)
                       (EPICSTHREADFUNC)main_loop_thread_C, this);
 }
 
-void URRobot::main_loop() {
+void URRobotRTDE::main_loop() {
     while (true) {
         lock();
 
@@ -107,23 +107,23 @@ void URRobot::main_loop() {
 }
 
 // register function for iocsh
-extern "C" int URRobotConfig(const char *asyn_port_name, const char *robot_ip) {
-    URRobot *pURRobot = new URRobot(asyn_port_name, robot_ip);
-    pURRobot = NULL;
+extern "C" int URRobotRTDEConfig(const char *asyn_port_name, const char *robot_ip) {
+    URRobotRTDE *pURRobotRTDE = new URRobotRTDE(asyn_port_name, robot_ip);
+    pURRobotRTDE = NULL;
     return (asynSuccess);
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
 static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
-static const iocshFuncDef urRobotFuncDef = {"URRobotConfig", 2, urRobotArgs};
+static const iocshFuncDef urRobotFuncDef = {"URRobotRTDEConfig", 2, urRobotArgs};
 
 static void urRobotCallFunc(const iocshArgBuf *args) {
-    URRobotConfig(args[0].sval, args[1].sval);
+    URRobotRTDEConfig(args[0].sval, args[1].sval);
 }
 
-void URRobotRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
+void URRobotRTDERegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 
 extern "C" {
-epicsExportRegistrar(URRobotRegister);
+epicsExportRegistrar(URRobotRTDERegister);
 }

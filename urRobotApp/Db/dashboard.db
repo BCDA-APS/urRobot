@@ -1,0 +1,8 @@
+record(bi, "$(P)Dashboard:Connected")
+{
+    field(DESC, "Connection status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CONNECTED")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}

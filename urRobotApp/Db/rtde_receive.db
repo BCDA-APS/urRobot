@@ -1,12 +1,12 @@
-record(bi, "$(P)isConnected")
+record(bi, "$(P)RTDE:Connected")
 {
-    field(DESC, "Connection status")
+    field(DESC, "RTDE Connection status")
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CONNECTED")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)ControllerTimestamp")
+record(ai, "$(P)RTDE:ControllerTimestamp")
 {
     field(DESC, "Time since controller started")
     field(DTYP, "asynFloat64")
@@ -14,7 +14,7 @@ record(ai, "$(P)ControllerTimestamp")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)SafetyStatus")
+record(ai, "$(P)RTDE:SafetyStatus")
 {
     field(DESC, "Safety status bits")
     field(DTYP, "asynInt32")
@@ -22,7 +22,7 @@ record(ai, "$(P)SafetyStatus")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RuntimeState")
+record(ai, "$(P)RTDE:RuntimeState")
 {
     field(DESC, "Runtime state")
     field(DTYP, "asynInt32")
@@ -30,7 +30,7 @@ record(ai, "$(P)RuntimeState")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RobotMode")
+record(ai, "$(P)RTDE:RobotMode")
 {
     field(DESC, "Robot mode")
     field(DTYP, "asynInt32")

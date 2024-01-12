@@ -1,1 +1,2 @@
-registrar(URRobotRegister)
+registrar(URRobotRTDERegister)
+registrar(URRobotDashboardRegister)
