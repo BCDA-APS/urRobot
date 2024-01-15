@@ -17,11 +17,10 @@ record(bo, "$(P)Dashboard:ClosePopup")
     field(SCAN, "Passive")
 }
 
-# record(stringout, "$(P)Dashboard:Popup")
-# {
-    # field(DESC, "Popup message")
-    # field(DTYP, "asynOctetWrite")
-    # field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POPUP")
-    # field(VAL, "hello world")
-    # field(SCAN, "Passive")
-# }
+record(stringout, "$(P)Dashboard:Popup")
+{
+    field(DESC, "Popup message")
+    field(DTYP, "asynOctetWrite")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POPUP")
+    field(SCAN, "I/O Intr")
+}

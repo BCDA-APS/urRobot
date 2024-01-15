@@ -61,10 +61,10 @@ void URRobotDashboard::main_loop() {
                 ur_dashboard_->closePopup();
             }
             
-            // char buff[40];
-            // getStringParam(popupIndex_, 40, buff);
-            // std::string s(buff);
-            // std::cout << "Popup text = " << s << std::endl;
+            char buff[40];
+            getStringParam(popupIndex_, 40, buff);
+            std::string s(buff);
+            std::cout << "Popup text = " << s << std::endl;
 
         } else {
             setIntegerParam(isConnectedIndex_, 0);
