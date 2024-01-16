@@ -16,6 +16,8 @@ static void main_loop_thread_C(void *pPvt) {
     pURRobotDashboard->main_loop();
 }
 
+// TODO: use better logging than std::cout <<
+
 URRobotDashboard::URRobotDashboard(const char *asyn_port_name,
                                    const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
@@ -94,7 +96,7 @@ void URRobotDashboard::main_loop() {
             } else {
                 setIntegerParam(isRunningIndex_, 0);
             }
-            
+
             setStringParam(programStateIndex_, ur_dashboard_->programState());
             setStringParam(robotModeIndex_, ur_dashboard_->robotmode());
             setStringParam(loadedProgramIndex_, ur_dashboard_->getLoadedProgram());
@@ -103,14 +105,19 @@ void URRobotDashboard::main_loop() {
             setIntegerParam(isInRemoteControlIndex_, ur_dashboard_->isInRemoteControl());
 
             // -----------------------------------------
-
+            // FIX: try/catch all the ur_dashboard_ method calls
+            
             // Load program
             getStringParam(loadURPIndex_, BUFF_SIZE, buffer);
             if (strlen(buffer) > 0) {
-                std::cout << "loading program " << buffer << ".urp"
-                          << std::endl;
+                std::cout << "Loading program " << buffer << std::endl;
                 setStringParam(loadURPIndex_, "");
-                ur_dashboard_->loadURP(buffer);
+                try {
+                    ur_dashboard_->loadURP(buffer);
+                }
+                catch(const std::exception &e) {
+                    std::cout << "Caught exception: " << e.what() << std::endl;
+                }
             }
             memset(buffer, '\0', sizeof(buffer));
 
@@ -141,8 +148,7 @@ void URRobotDashboard::main_loop() {
             // Quit
             getIntegerParam(quitIndex_, &trigger);
             if (trigger != 0) {
-                std::cout << "Closing connection to dashboard server"
-                          << std::endl;
+                std::cout << "Closing connection to dashboard server" << std::endl;
                 setIntegerParam(quitIndex_, 0);
                 ur_dashboard_->quit();
             }
@@ -158,7 +164,7 @@ void URRobotDashboard::main_loop() {
             // Popup message
             getStringParam(popupIndex_, BUFF_SIZE, buffer);
             if (strlen(buffer) > 0) {
-                std::cout << "Popup text = " << buffer << std::endl;
+                std::cout << "Popup text: " << buffer << std::endl;
                 setStringParam(popupIndex_, "");
                 ur_dashboard_->popup(buffer);
             }
@@ -175,7 +181,7 @@ void URRobotDashboard::main_loop() {
             // Close safety popup
             getIntegerParam(closeSafetyPopupIndex_, &trigger);
             if (trigger != 0) {
-                std::cout << "Closings safety popup" << std::endl;
+                std::cout << "Closing safety popup" << std::endl;
                 setIntegerParam(closeSafetyPopupIndex_, 0);
                 ur_dashboard_->closeSafetyPopup();
             }

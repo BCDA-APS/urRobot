@@ -125,7 +125,7 @@ record(bo, "$(P)Dashboard:BrakeRelease")
 
 record(bo, "$(P)Dashboard:UnlockProtectiveStop")
 {
-    field(DESC, "Powers off the robot")
+    field(DESC, "Unlocks protective stop")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))UNLOCK_PROTECTIVE_STOP")
     field(VAL, 1)
