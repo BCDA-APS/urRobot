@@ -5,6 +5,13 @@
 static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
 static constexpr char CLOSE_POPUP_STRING[] = "CLOSE_POPUP";
 static constexpr char POPUP_STRING[] = "POPUP";
+static constexpr char LOAD_URP_STRING[] = "LOAD_URP";
+static constexpr char PLAY_STRING[] = "PLAY";
+static constexpr char STOP_STRING[] = "STOP";
+static constexpr char PAUSE_STRING[] = "PAUSE";
+static constexpr char QUIT_STRING[] = "QUIT";
+static constexpr char SHUTDOWN_STRING[] = "SHUTDOWN";
+static constexpr char IS_RUNNING_STRING[] = "IS_RUNNING";
 
 constexpr int MAX_CONTROLLERS = 1;
 constexpr double DEFAULT_POLL_TIME = 0.20;
@@ -24,4 +31,11 @@ class URRobotDashboard : public asynPortDriver {
     int isConnectedIndex_;
     int closePopupIndex_;
     int popupIndex_;
+    int loadURPIndex_;
+    int playIndex_;
+    int stopIndex_;
+    int pauseIndex_;
+    int quitIndex_;
+    int shutdownIndex_;
+    int isRunningIndex_;
 };

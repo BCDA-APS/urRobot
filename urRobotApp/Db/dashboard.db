@@ -7,14 +7,66 @@ record(bi, "$(P)Dashboard:Connected")
     field(SCAN, "I/O Intr")
 }
 
-# caput $(P)Dashboard:ClosePopup.PROC 1 to close popup
-record(bo, "$(P)Dashboard:ClosePopup")
+record(stringout, "$(P)Dashboard:LoadURP")
 {
-    field(DESC, "Close popup")
+    field(DESC, "Loads a URP program")
+    field(DTYP, "asynOctetWrite")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LOAD_URP")
+    field(SCAN, "I/O Intr")
+}
+
+record(bo, "$(P)Dashboard:Play")
+{
+    field(DESC, "Play program")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE_POPUP")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PLAY")
     field(VAL, 1)
     field(SCAN, "Passive")
+}
+
+record(bo, "$(P)Dashboard:Stop")
+{
+    field(DESC, "Stop program")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOP")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+record(bo, "$(P)Dashboard:Pause")
+{
+    field(DESC, "Pause program")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PAUSE")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+record(bo, "$(P)Dashboard:Quit")
+{
+    field(DESC, "Closes connection")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))QUIT")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+record(bo, "$(P)Dashboard:Shutdown")
+{
+    field(DESC, "Shuts down robot and controller")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SHUTDOWN")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+record(bi, "$(P)Dashboard:Running")
+{
+    field(DESC, "Program runnning status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_RUNNING")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
 }
 
 record(stringout, "$(P)Dashboard:Popup")
@@ -23,4 +75,14 @@ record(stringout, "$(P)Dashboard:Popup")
     field(DTYP, "asynOctetWrite")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POPUP")
     field(SCAN, "I/O Intr")
+}
+
+
+record(bo, "$(P)Dashboard:ClosePopup")
+{
+    field(DESC, "Close popup")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE_POPUP")
+    field(VAL, 1)
+    field(SCAN, "Passive")
 }
