@@ -110,7 +110,7 @@ void URRobotDashboard::main_loop() {
                 std::cout << "loading program " << buffer << ".urp"
                           << std::endl;
                 setStringParam(loadURPIndex_, "");
-                // ur_dashboard_->loadURP(buffer);
+                ur_dashboard_->loadURP(buffer);
             }
             memset(buffer, '\0', sizeof(buffer));
 
@@ -119,7 +119,7 @@ void URRobotDashboard::main_loop() {
             if (trigger != 0) {
                 std::cout << "Playing loaded program" << std::endl;
                 setIntegerParam(playIndex_, 0);
-                // ur_dashboard_->play();
+                ur_dashboard_->play();
             }
 
             // Stop program
@@ -127,7 +127,7 @@ void URRobotDashboard::main_loop() {
             if (trigger != 0) {
                 std::cout << "Stopping program" << std::endl;
                 setIntegerParam(stopIndex_, 0);
-                // ur_dashboard_->stop();
+                ur_dashboard_->stop();
             }
 
             // Pause program
@@ -135,7 +135,7 @@ void URRobotDashboard::main_loop() {
             if (trigger != 0) {
                 std::cout << "Pausing program" << std::endl;
                 setIntegerParam(pauseIndex_, 0);
-                // ur_dashboard_->pause();
+                ur_dashboard_->pause();
             }
 
             // Quit
@@ -144,7 +144,7 @@ void URRobotDashboard::main_loop() {
                 std::cout << "Closing connection to dashboard server"
                           << std::endl;
                 setIntegerParam(quitIndex_, 0);
-                // ur_dashboard_->quit();
+                ur_dashboard_->quit();
             }
 
             // Shutdown
@@ -152,7 +152,7 @@ void URRobotDashboard::main_loop() {
             if (trigger != 0) {
                 std::cout << "Shutting down robot and controller" << std::endl;
                 setIntegerParam(shutdownIndex_, 0);
-                // ur_dashboard_->shutdown();
+                ur_dashboard_->shutdown();
             }
 
             // Popup message
@@ -177,7 +177,7 @@ void URRobotDashboard::main_loop() {
             if (trigger != 0) {
                 std::cout << "Closings safety popup" << std::endl;
                 setIntegerParam(closeSafetyPopupIndex_, 0);
-                // ur_dashboard_->closeSafetyPopup();
+                ur_dashboard_->closeSafetyPopup();
             }
 
             // Power on
@@ -185,7 +185,7 @@ void URRobotDashboard::main_loop() {
             if (trigger != 0) {
                 std::cout << "Powering robot on" << std::endl;
                 setIntegerParam(powerOnIndex_, 0);
-                // ur_dashboard_->powerOn();
+                ur_dashboard_->powerOn();
             }
 
             // Power off
@@ -193,7 +193,7 @@ void URRobotDashboard::main_loop() {
             if (trigger != 0) {
                 std::cout << "Powering robot off" << std::endl;
                 setIntegerParam(powerOffIndex_, 0);
-                // ur_dashboard_->powerOff();
+                ur_dashboard_->powerOff();
             }
 
             // Brake release
@@ -201,7 +201,7 @@ void URRobotDashboard::main_loop() {
             if (trigger != 0) {
                 std::cout << "Releasing brakes" << std::endl;
                 setIntegerParam(brakeReleaseIndex_, 0);
-                // ur_dashboard_->brakeRelease();
+                ur_dashboard_->brakeRelease();
             }
 
             // Unlock protective stop
@@ -209,7 +209,7 @@ void URRobotDashboard::main_loop() {
             if (trigger != 0) {
                 std::cout << "Unlocking protective stop" << std::endl;
                 setIntegerParam(unlockProtectiveStopIndex_, 0);
-                // ur_dashboard_->unlockProtectiveStop();
+                ur_dashboard_->unlockProtectiveStop();
             }
 
             // Restart safety
@@ -217,7 +217,7 @@ void URRobotDashboard::main_loop() {
             if (trigger != 0) {
                 std::cout << "Restarting safety" << std::endl;
                 setIntegerParam(restartSafetyIndex_, 0);
-                // ur_dashboard_->restartSafety();
+                ur_dashboard_->restartSafety();
             }
 
         } else {
