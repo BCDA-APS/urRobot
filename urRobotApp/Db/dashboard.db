@@ -86,3 +86,73 @@ record(bo, "$(P)Dashboard:ClosePopup")
     field(VAL, 1)
     field(SCAN, "Passive")
 }
+
+record(bo, "$(P)Dashboard:CloseSafetyPopup")
+{
+    field(DESC, "Close safety popup")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE_SAFETY_POPUP")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+record(bo, "$(P)Dashboard:PowerOn")
+{
+    field(DESC, "Powers on the robot")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POWER_ON")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+record(bo, "$(P)Dashboard:PowerOff")
+{
+    field(DESC, "Powers off the robot")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POWER_OFF")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+record(bo, "$(P)Dashboard:BrakeRelease")
+{
+    field(DESC, "Release breaks")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))BRAKE_RELEASE")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+record(bo, "$(P)Dashboard:UnlockProtectiveStop")
+{
+    field(DESC, "Powers off the robot")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))UNLOCK_PROTECTIVE_STOP")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+record(bo, "$(P)Dashboard:RestartSafety")
+{
+    field(DESC, "Restarts safety, power off robot")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RESTART_SAFETY")
+    field(VAL, 1)
+    field(SCAN, "Passive")
+}
+
+record(stringin, "$(P)Dashboard:PolyscopeVersion")
+{
+    field(DESC, "Polyscope version")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POLYSCOPE_VERSION")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(P)Dashboard:SerialNumber")
+{
+    field(DESC, "Serial number")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SERIAL_NUMBER")
+    field(SCAN, "I/O Intr")
+}

@@ -2,6 +2,7 @@
 #include "ur_rtde/dashboard_client.h"
 
 #include <asynOctetSyncIO.h>
+#include <cstring>
 #include <epicsExport.h>
 #include <epicsString.h>
 #include <epicsThread.h>
@@ -39,6 +40,14 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name,
     createParam(IS_RUNNING_STRING, asynParamInt32, &isRunningIndex_);
     createParam(CLOSE_POPUP_STRING, asynParamInt32, &closePopupIndex_);
     createParam(POPUP_STRING, asynParamOctet, &popupIndex_);
+    createParam(CLOSE_SAFETY_POPUP_STRING, asynParamInt32, &closeSafetyPopupIndex_);
+    createParam(POWER_ON_STRING, asynParamInt32, &powerOnIndex_);
+    createParam(POWER_OFF_STRING, asynParamInt32, &powerOffIndex_);
+    createParam(BRAKE_RELEASE_STRING, asynParamInt32, &brakeReleaseIndex_);
+    createParam(UNLOCK_PROTECTIVE_STOP_STRING, asynParamInt32, &unlockProtectiveStopIndex_);
+    createParam(RESTART_SAFETY_STRING, asynParamInt32, &restartSafetyIndex_);
+    createParam(POLYSCOPE_VERSION_STRING, asynParamOctet, &polyscopeVersionIndex_);
+    createParam(GET_SERIAL_NUMBER_STRING, asynParamOctet, &serialNumberIndex_);
 
     // connect to the UR dashboard server
     ur_dashboard_->connect();
@@ -47,8 +56,13 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name,
         setIntegerParam(isConnectedIndex_, 1);
     } else {
         setIntegerParam(isConnectedIndex_, 0);
+        // TODO: maybe shouldn't throw here
         throw std::runtime_error("Failed to connect to UR dashboard server");
     }
+
+    // set parameters that are constant
+    setStringParam(polyscopeVersionIndex_, ur_dashboard_->polyscopeVersion());
+    setStringParam(serialNumberIndex_, ur_dashboard_->getSerialNumber());
 
     std::cout << "starting main loop..." << std::endl;
     epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
@@ -57,22 +71,21 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name,
 }
 
 void URRobotDashboard::main_loop() {
-    char buffer[BUFF_SIZE];
     int trigger = 0;
+    char buffer[BUFF_SIZE] = {};
     while (true) {
         lock();
 
+        // TODO: should only need to getParam until non-zero or strlen > 0.
         if (ur_dashboard_->isConnected()) {
             setIntegerParam(isConnectedIndex_, 1);
-            
+
             // check if program is running
             if (ur_dashboard_->running()) {
                 setIntegerParam(isRunningIndex_, 1);
-            }
-            else {
+            } else {
                 setIntegerParam(isRunningIndex_, 0);
             }
-
 
             // Load program
             getStringParam(loadURPIndex_, BUFF_SIZE, buffer);
@@ -82,6 +95,7 @@ void URRobotDashboard::main_loop() {
                 setStringParam(loadURPIndex_, "");
                 // ur_dashboard_->loadURP(buffer);
             }
+            memset(buffer, '\0', sizeof(buffer));
 
             // Play loaded program
             getIntegerParam(playIndex_, &trigger);
@@ -98,7 +112,7 @@ void URRobotDashboard::main_loop() {
                 setIntegerParam(stopIndex_, 0);
                 // ur_dashboard_->stop();
             }
-            
+
             // Pause program
             getIntegerParam(pauseIndex_, &trigger);
             if (trigger != 0) {
@@ -106,29 +120,22 @@ void URRobotDashboard::main_loop() {
                 setIntegerParam(pauseIndex_, 0);
                 // ur_dashboard_->pause();
             }
-            
+
             // Quit
             getIntegerParam(quitIndex_, &trigger);
             if (trigger != 0) {
-                std::cout << "Closing connection to dashboard server" << std::endl;
+                std::cout << "Closing connection to dashboard server"
+                          << std::endl;
                 setIntegerParam(quitIndex_, 0);
                 // ur_dashboard_->quit();
             }
-            
+
             // Shutdown
             getIntegerParam(shutdownIndex_, &trigger);
             if (trigger != 0) {
                 std::cout << "Shutting down robot and controller" << std::endl;
                 setIntegerParam(shutdownIndex_, 0);
                 // ur_dashboard_->shutdown();
-            }
-
-            // Close popup
-            getIntegerParam(closePopupIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Closing popup" << std::endl;
-                setIntegerParam(closePopupIndex_, 0);
-                ur_dashboard_->closePopup();
             }
 
             // Popup message
@@ -138,7 +145,63 @@ void URRobotDashboard::main_loop() {
                 setStringParam(popupIndex_, "");
                 ur_dashboard_->popup(buffer);
             }
+            memset(buffer, '\0', sizeof(buffer));
 
+            // Close popup
+            getIntegerParam(closePopupIndex_, &trigger);
+            if (trigger != 0) {
+                std::cout << "Closing popup" << std::endl;
+                setIntegerParam(closePopupIndex_, 0);
+                ur_dashboard_->closePopup();
+            }
+
+            // Close safety popup
+            getIntegerParam(closeSafetyPopupIndex_, &trigger);
+            if (trigger != 0) {
+                std::cout << "Closings safety popup" << std::endl;
+                setIntegerParam(closeSafetyPopupIndex_, 0);
+                // ur_dashboard_->closeSafetyPopup();
+            }
+
+            // Power on
+            getIntegerParam(powerOnIndex_, &trigger);
+            if (trigger != 0) {
+                std::cout << "Powering robot on" << std::endl;
+                setIntegerParam(powerOnIndex_, 0);
+                // ur_dashboard_->powerOn();
+            }
+
+            // Power off
+            getIntegerParam(powerOffIndex_, &trigger);
+            if (trigger != 0) {
+                std::cout << "Powering robot off" << std::endl;
+                setIntegerParam(powerOffIndex_, 0);
+                // ur_dashboard_->powerOff();
+            }
+
+            // Brake release
+            getIntegerParam(brakeReleaseIndex_, &trigger);
+            if (trigger != 0) {
+                std::cout << "Releasing brakes" << std::endl;
+                setIntegerParam(brakeReleaseIndex_, 0);
+                // ur_dashboard_->brakeRelease();
+            }
+
+            // Unlock protective stop
+            getIntegerParam(unlockProtectiveStopIndex_, &trigger);
+            if (trigger != 0) {
+                std::cout << "Unlocking protective stop" << std::endl;
+                setIntegerParam(unlockProtectiveStopIndex_, 0);
+                // ur_dashboard_->unlockProtectiveStop();
+            }
+
+            // Restart safety
+            getIntegerParam(restartSafetyIndex_, &trigger);
+            if (trigger != 0) {
+                std::cout << "Restarting safety" << std::endl;
+                setIntegerParam(restartSafetyIndex_, 0);
+                // ur_dashboard_->restartSafety();
+            }
 
         } else {
             setIntegerParam(isConnectedIndex_, 0);
