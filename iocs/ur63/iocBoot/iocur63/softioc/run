@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# ensure that multiple, simultaneous IOCs are not started by this user ID
+
+MY_UID=`id -u`
+IOC_PID="`/usr/bin/pgrep ur63\$ -u ${MY_UID}`"
+
+if [ "" != "${IOC_PID}" ] ; then
+  echo "ur63 IOC is already running, won't start a new one, PID=${IOC_PID}"
+  exit 1
+fi
+
+# start the IOC
+cd ..
+../../bin/${EPICS_HOST_ARCH}/ur63 st.cmd.Linux

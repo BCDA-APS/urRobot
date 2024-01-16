@@ -1,0 +1,39 @@
+#- INSTANCE  - Used for Camera Port Name and detector pv name
+#- ID        - Camera IP
+#- XSIZE     - Image Width
+#- YSIZE     - Image Height
+#- TYPE      - Image Datatype, default: Int8
+
+
+epicsEnvSet("EPICS_DB_INCLUDE_PATH", "$(EPICS_DB_INCLUDE_PATH):$(ADCORE)/db:$(ADFASTCCD)/db")
+
+# FastCCDConfig(const char *portName, int maxBuffers, size_t maxMemory, 
+#               int priority, int stackSize, int packetBuffer, int imageBuffer,
+#				const char *baseIP, const char *fabricIP, const char *fabricMAC))
+
+FastCCDConfig("$(INSTANCE)", 0, 0, 0, 100000, 2000, 200, "", "$(ID)", "")
+
+dbLoadRecords("$(ADFASTCCD)/db/FastCCD.template","P=$(PREFIX),R=$(INSTANCE):,PORT=$(INSTANCE),ADDR=0,TIMEOUT=1")
+
+#Create a standard arrays plugin, set it to get data from first simDetector driver.
+NDStdArraysConfigure("$(INSTANCE)Image", 3, 0, "$(INSTANCE)", 0, 2000000)
+
+# Need to determine certain values from input parameters
+iocshRun('epicsEnvSet("__FTVL", "$($(TYPE=Int8)_VAL)")', "Int8_VAL=UCHAR, UInt8_VAL=UCHAR, Int16_VAL=SHORT, UInt16_VAL=SHORT, Int32_VAL=LONG, UInt32_VAL=LONG, Float32_VAL=DOUBLE, Float64_VAL=DOUBLE")
+iocshRun('epicsEnvSet("__TYPE", "$($(TYPE=Int8)_VAL)")', "Int8_VAL=Int8, UInt8_VAL=Int8, Int16_VAL=Int16, UInt16_VAL=Int16, Int32_VAL=Int32, UInt32_VAL=Int32, Float32_VAL=Float32, Float64_VAL=Float64")
+luaCmd("epicsEnvSet('__SIZE', tostring((XSIZE*YSIZE)|0))", "XSIZE=$(XSIZE), YSIZE=$(YSIZE)")
+
+dbLoadRecords("$(ADCORE)/ADApp/Db/NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=$(INSTANCE)Image,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(INSTANCE),TYPE=$(__TYPE),FTVL=$(__FTVL),NELEMENTS=$(__SIZE)")
+
+epicsEnvUnset("__FTVL")
+epicsEnvUnset("__TYPE")
+epicsEnvUnset("__SIZE")
+
+
+iocshLoad("$(ADCORE)/iocBoot/commonPlugins.cmd", "PREFIX=$(PREFIX), PORT=$(INSTANCE), QSIZE=20, XSIZE=$(XSIZE), YSIZE=$(YSIZE), NCHANS=1024, CBUFFS=20, MAX_THREADS=5")
+
+# Load the FastCCD Plugin
+NDFastCCDConfigure("FastCCD1", 20, 0, "PROC1", 0, 0, 0, 0, 0, 5)
+dbLoadRecords("$(ADFASTCCD)/db/NDFastCCD.template", "P=$(PREFIX),R=FastCCD1:, PORT=FastCCD1, NDARRAY_PORT=FASTCCD, ADDR=0, TIMEOUT=1")
+
+set_requestfile_path("$(ADFASTCCD)/db")
