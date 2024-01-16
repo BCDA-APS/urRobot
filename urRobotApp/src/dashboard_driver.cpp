@@ -6,6 +6,7 @@
 #include <epicsExport.h>
 #include <epicsString.h>
 #include <epicsThread.h>
+#include <exception>
 #include <iocsh.h>
 #include <iostream>
 
@@ -59,25 +60,30 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name,
     createParam(IS_IN_REMOTE_CONTROL, asynParamInt32, &isInRemoteControlIndex_);
 
     // connect to the UR dashboard server
-    ur_dashboard_->connect();
-    if (ur_dashboard_->isConnected()) {
-        std::cout << "Connected to dashboard server" << std::endl;
-        setIntegerParam(isConnectedIndex_, 1);
-    } else {
-        setIntegerParam(isConnectedIndex_, 0);
-        // TODO: maybe shouldn't throw here
-        throw std::runtime_error("Failed to connect to UR dashboard server");
+    bool connected = false;
+    try {
+        ur_dashboard_->connect();
+        if (ur_dashboard_->isConnected()) {
+            std::cout << "Connected to dashboard server" << std::endl;
+            setIntegerParam(isConnectedIndex_, 1);
+        } else {
+            setIntegerParam(isConnectedIndex_, 0);
+        }
+        connected = true;
+    } catch (const std::exception &e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
     }
 
-    // set parameters that are constant
-    setStringParam(polyscopeVersionIndex_, ur_dashboard_->polyscopeVersion());
-    setStringParam(serialNumberIndex_, ur_dashboard_->getSerialNumber());
-    setStringParam(robotModelIndex_, ur_dashboard_->getRobotModel());
+    if (connected) {
+        // set parameters that are constant
+        setStringParam(polyscopeVersionIndex_, ur_dashboard_->polyscopeVersion());
+        setStringParam(serialNumberIndex_, ur_dashboard_->getSerialNumber());
+        setStringParam(robotModelIndex_, ur_dashboard_->getRobotModel());
 
-    std::cout << "starting main loop..." << std::endl;
-    epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
-                      epicsThreadGetStackSize(epicsThreadStackMedium),
-                      (EPICSTHREADFUNC)main_loop_thread_C, this);
+        epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
+                          epicsThreadGetStackSize(epicsThreadStackMedium),
+                          (EPICSTHREADFUNC)main_loop_thread_C, this);
+    }
 }
 
 void URRobotDashboard::main_loop() {
@@ -105,8 +111,8 @@ void URRobotDashboard::main_loop() {
             setIntegerParam(isInRemoteControlIndex_, ur_dashboard_->isInRemoteControl());
 
             // -----------------------------------------
-            // FIX: try/catch all the ur_dashboard_ method calls
-            
+            // FIX: Make sure none of these can throw and if so catch the error
+
             // Load program
             getStringParam(loadURPIndex_, BUFF_SIZE, buffer);
             if (strlen(buffer) > 0) {
@@ -114,8 +120,7 @@ void URRobotDashboard::main_loop() {
                 setStringParam(loadURPIndex_, "");
                 try {
                     ur_dashboard_->loadURP(buffer);
-                }
-                catch(const std::exception &e) {
+                } catch (const std::exception &e) {
                     std::cout << "Caught exception: " << e.what() << std::endl;
                 }
             }
