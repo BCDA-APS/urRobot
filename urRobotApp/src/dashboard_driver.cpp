@@ -47,7 +47,14 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name,
     createParam(UNLOCK_PROTECTIVE_STOP_STRING, asynParamInt32, &unlockProtectiveStopIndex_);
     createParam(RESTART_SAFETY_STRING, asynParamInt32, &restartSafetyIndex_);
     createParam(POLYSCOPE_VERSION_STRING, asynParamOctet, &polyscopeVersionIndex_);
-    createParam(GET_SERIAL_NUMBER_STRING, asynParamOctet, &serialNumberIndex_);
+    createParam(SERIAL_NUMBER_STRING, asynParamOctet, &serialNumberIndex_);
+    createParam(ROBOT_MODE_STRING, asynParamOctet, &robotModeIndex_);
+    createParam(PROGRAM_STATE_STRING, asynParamOctet, &programStateIndex_);
+    createParam(ROBOT_MODEL_STRING, asynParamOctet, &robotModelIndex_);
+    createParam(LOADED_PROGRAM_STRING, asynParamOctet, &loadedProgramIndex_);
+    createParam(SAFETY_STATUS, asynParamOctet, &safetyStatusIndex_);
+    createParam(IS_PROGRAM_SAVED, asynParamInt32, &isProgramSavedIndex_);
+    createParam(IS_IN_REMOTE_CONTROL, asynParamInt32, &isInRemoteControlIndex_);
 
     // connect to the UR dashboard server
     ur_dashboard_->connect();
@@ -63,6 +70,7 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name,
     // set parameters that are constant
     setStringParam(polyscopeVersionIndex_, ur_dashboard_->polyscopeVersion());
     setStringParam(serialNumberIndex_, ur_dashboard_->getSerialNumber());
+    setStringParam(robotModelIndex_, ur_dashboard_->getRobotModel());
 
     std::cout << "starting main loop..." << std::endl;
     epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
@@ -86,6 +94,15 @@ void URRobotDashboard::main_loop() {
             } else {
                 setIntegerParam(isRunningIndex_, 0);
             }
+            
+            setStringParam(programStateIndex_, ur_dashboard_->programState());
+            setStringParam(robotModeIndex_, ur_dashboard_->robotmode());
+            setStringParam(loadedProgramIndex_, ur_dashboard_->getLoadedProgram());
+            setStringParam(safetyStatusIndex_, ur_dashboard_->safetystatus());
+            setIntegerParam(isProgramSavedIndex_, ur_dashboard_->isProgramSaved());
+            setIntegerParam(isInRemoteControlIndex_, ur_dashboard_->isInRemoteControl());
+
+            // -----------------------------------------
 
             // Load program
             getStringParam(loadURPIndex_, BUFF_SIZE, buffer);

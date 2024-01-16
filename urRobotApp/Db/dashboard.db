@@ -156,3 +156,59 @@ record(stringin, "$(P)Dashboard:SerialNumber")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SERIAL_NUMBER")
     field(SCAN, "I/O Intr")
 }
+
+record(stringin, "$(P)Dashboard:ProgramState")
+{
+    field(DESC, "Program state")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PROGRAM_STATE")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(P)Dashboard:RobotMode")
+{
+    field(DESC, "Robot mode")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ROBOT_MODE")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(P)Dashboard:RobotModel")
+{
+    field(DESC, "Robot model")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ROBOT_MODEL")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(P)Dashboard:LoadedProgram")
+{
+    field(DESC, "Loaded program")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LOADED_PROGRAM")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(P)Dashboard:SafetyStatus")
+{
+    field(DESC, "Safety status")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SAFETY_STATUS")
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P)Dashboard:IsProgramSaved")
+{
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_PROGRAM_SAVED")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P)Dashboard:IsInRemoteControl")
+{
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_IN_REMOTE_CONTROL")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}

@@ -19,7 +19,14 @@ static constexpr char BRAKE_RELEASE_STRING[] = "BRAKE_RELEASE";
 static constexpr char UNLOCK_PROTECTIVE_STOP_STRING[] = "UNLOCK_PROTECTIVE_STOP";
 static constexpr char RESTART_SAFETY_STRING[] = "RESTART_SAFETY";
 static constexpr char POLYSCOPE_VERSION_STRING[] = "POLYSCOPE_VERSION";
-static constexpr char GET_SERIAL_NUMBER_STRING[] = "SERIAL_NUMBER";
+static constexpr char SERIAL_NUMBER_STRING[] = "SERIAL_NUMBER";
+static constexpr char ROBOT_MODE_STRING[] = "ROBOT_MODE";
+static constexpr char PROGRAM_STATE_STRING[] = "PROGRAM_STATE";
+static constexpr char ROBOT_MODEL_STRING[] = "ROBOT_MODEL";
+static constexpr char LOADED_PROGRAM_STRING[] = "LOADED_PROGRAM";
+static constexpr char SAFETY_STATUS[] = "SAFETY_STATUS";
+static constexpr char IS_PROGRAM_SAVED[] = "IS_PROGRAM_SAVED";
+static constexpr char IS_IN_REMOTE_CONTROL[] = "IS_IN_REMOTE_CONTROL";
 
 constexpr int MAX_CONTROLLERS = 1;
 constexpr double DEFAULT_POLL_TIME = 0.20;
@@ -54,4 +61,14 @@ class URRobotDashboard : public asynPortDriver {
     int restartSafetyIndex_;
     int polyscopeVersionIndex_;
     int serialNumberIndex_;
+    int robotModeIndex_;
+    int programStateIndex_;
+    int robotModelIndex_;
+    int loadedProgramIndex_;
+    int safetyStatusIndex_;
+    int isProgramSavedIndex_;
+    int isInRemoteControlIndex_;
 };
+
+
+
