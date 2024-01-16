@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-01-16 16:16:23 by nmarks-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>600</width>
+  <height>700</height>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>UR Dashboard</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Program</name>
+    <x>10</x>
+    <y>320</y>
+    <width>510</width>
+    <height>160</height>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:Play.PROC</pv_name>
+          <value>1</value>
+          <description>Play</description>
+        </action>
+      </actions>
+      <text>󰐊</text>
+      <x>202</x>
+      <y>81</y>
+      <width>50</width>
+      <height>39</height>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_2</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:Pause.PROC</pv_name>
+          <value>1</value>
+          <description>Pause</description>
+        </action>
+      </actions>
+      <text>󰏤</text>
+      <x>262</x>
+      <y>81</y>
+      <width>50</width>
+      <height>39</height>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_3</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:Stop.PROC</pv_name>
+          <value>1</value>
+          <description>Stop</description>
+        </action>
+      </actions>
+      <text>󰓛</text>
+      <x>322</x>
+      <y>81</y>
+      <width>50</width>
+      <height>39</height>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Entry</name>
+      <pv_name>$(P):Dashboard:LoadURP</pv_name>
+      <x>12</x>
+      <y>81</y>
+      <width>180</width>
+      <height>39</height>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_2</name>
+      <pv_name>$(P):Dashboard:LoadedProgram</pv_name>
+      <x>12</x>
+      <y>12</y>
+      <width>420</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_2</name>
+      <pv_name>$(P):Dashboard:IsProgramSaved.RVAL</pv_name>
+      <x>452</x>
+      <y>12</y>
+      <off_color>
+        <color name="STOP" red="255" green="0" blue="0">
+        </color>
+      </off_color>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_6</name>
+      <pv_name>$(P):Dashboard:ProgramState</pv_name>
+      <x>12</x>
+      <y>42</y>
+      <width>420</width>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Status</name>
+    <x>10</x>
+    <y>500</y>
+    <width>510</width>
+    <height>180</height>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_1</name>
+      <pv_name>$(P):Dashboard:RobotMode</pv_name>
+      <x>12</x>
+      <y>82</y>
+      <width>450</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update</name>
+      <pv_name>$(P):Dashboard:SafetyStatus</pv_name>
+      <x>12</x>
+      <y>112</y>
+      <width>450</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED</name>
+      <pv_name>$(P):Dashboard:Connected.RVAL</pv_name>
+      <x>122</x>
+      <y>12</y>
+      <off_color>
+        <color name="STOP" red="255" green="0" blue="0">
+        </color>
+      </off_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_1</name>
+      <text>Connection:</text>
+      <x>12</x>
+      <y>12</y>
+      <width>80</width>
+      <height>30</height>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_1</name>
+      <pv_name>$(P):Dashboard:IsInRemoteControl.RVAL</pv_name>
+      <x>122</x>
+      <y>42</y>
+      <off_color>
+        <color name="STOP" red="255" green="0" blue="0">
+        </color>
+      </off_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_2</name>
+      <text>Remote Control:</text>
+      <x>12</x>
+      <y>42</y>
+      <width>120</width>
+      <height>30</height>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Control</name>
+    <x>10</x>
+    <y>50</y>
+    <width>190</width>
+    <height>250</height>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_4</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:BrakeRelease.PROC</pv_name>
+          <value>1</value>
+          <description>Quit</description>
+        </action>
+      </actions>
+      <text>Release Brakes</text>
+      <x>2</x>
+      <y>12</y>
+      <width>150</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_8</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:UnlockProtectiveStop.PROC</pv_name>
+          <value>1</value>
+          <description>UnlockProtectiveStop</description>
+        </action>
+      </actions>
+      <text>Unlock Protective Stop</text>
+      <x>2</x>
+      <y>52</y>
+      <width>150</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_10</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:CloseSafetyPopup.PROC</pv_name>
+          <value>1</value>
+          <description>CloseSafetyPopup</description>
+        </action>
+      </actions>
+      <text>Close Safety Popup</text>
+      <x>2</x>
+      <y>92</y>
+      <width>150</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_9</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:ClosePopup.PROC</pv_name>
+          <value>1</value>
+          <description>ClosePopup</description>
+        </action>
+      </actions>
+      <text>Close Popup</text>
+      <x>2</x>
+      <y>132</y>
+      <width>150</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_7</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:RestartSafety.PROC</pv_name>
+          <value>1</value>
+          <description>RestartSafety</description>
+        </action>
+      </actions>
+      <text>Restart Safety</text>
+      <x>2</x>
+      <y>172</y>
+      <width>150</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Power</name>
+    <x>220</x>
+    <y>50</y>
+    <width>190</width>
+    <height>170</height>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_5</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:PowerOn.PROC</pv_name>
+          <value>1</value>
+          <description>PowerOn</description>
+        </action>
+      </actions>
+      <text>On</text>
+      <x>2</x>
+      <y>22</y>
+      <width>70</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_6</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:PowerOff.PROC</pv_name>
+          <value>1</value>
+          <description>PowerOff</description>
+        </action>
+      </actions>
+      <text>Off</text>
+      <x>82</x>
+      <y>22</y>
+      <width>70</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_1</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:Quit.PROC</pv_name>
+          <value>1</value>
+          <description>Quit</description>
+        </action>
+      </actions>
+      <text>Disconnect</text>
+      <x>2</x>
+      <y>62</y>
+      <width>150</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_16</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P):Dashboard:Shutdown.PROC</pv_name>
+          <value>1</value>
+          <description>Shutdown</description>
+        </action>
+      </actions>
+      <text>Shutdown</text>
+      <x>2</x>
+      <y>102</y>
+      <width>150</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+</display>
