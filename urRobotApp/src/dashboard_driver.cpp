@@ -66,10 +66,10 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name,
         if (ur_dashboard_->isConnected()) {
             std::cout << "Connected to dashboard server" << std::endl;
             setIntegerParam(isConnectedIndex_, 1);
+            connected = true;
         } else {
             setIntegerParam(isConnectedIndex_, 0);
         }
-        connected = true;
     } catch (const std::exception &e) {
         std::cout << "Caught exception: " << e.what() << std::endl;
     }
