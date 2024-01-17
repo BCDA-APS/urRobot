@@ -36,6 +36,9 @@ class URRobotDashboard : public asynPortDriver {
   public:
     URRobotDashboard(const char *asyn_port_name, const char *robot_port_name);
     virtual void main_loop(void);
+    virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
+    virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars,
+                                  size_t *nActual);
 
   private:
     std::unique_ptr<ur_rtde::DashboardClient> ur_dashboard_;
@@ -69,6 +72,3 @@ class URRobotDashboard : public asynPortDriver {
     int isProgramSavedIndex_;
     int isInRemoteControlIndex_;
 };
-
-
-

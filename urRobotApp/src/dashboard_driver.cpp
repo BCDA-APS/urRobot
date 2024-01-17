@@ -9,8 +9,8 @@
 #include <exception>
 #include <iocsh.h>
 #include <iostream>
+#include <unistd.h>
 
-static constexpr int BUFF_SIZE = 100;
 
 static void main_loop_thread_C(void *pPvt) {
     URRobotDashboard *pURRobotDashboard = (URRobotDashboard *)pPvt;
@@ -85,13 +85,9 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
 }
 
 void URRobotDashboard::main_loop() {
-    int trigger = 0;
-    char buffer[BUFF_SIZE] = {};
     while (true) {
         lock();
 
-        // TODO: should only need to getParam until non-zero or strlen > 0.
-        // overriding read/write functions should do the trick
         if (ur_dashboard_->isConnected()) {
             setIntegerParam(isConnectedIndex_, 1);
 
@@ -109,128 +105,6 @@ void URRobotDashboard::main_loop() {
             setIntegerParam(isProgramSavedIndex_, ur_dashboard_->isProgramSaved());
             setIntegerParam(isInRemoteControlIndex_, ur_dashboard_->isInRemoteControl());
 
-            // -----------------------------------------
-            // FIX: Make sure none of these can throw and if so catch the error
-
-            // Load program
-            getStringParam(loadURPIndex_, BUFF_SIZE, buffer);
-            if (strlen(buffer) > 0) {
-                std::cout << "Loading program " << buffer << std::endl;
-                setStringParam(loadURPIndex_, "");
-                try {
-                    ur_dashboard_->loadURP(buffer);
-                } catch (const std::exception &e) {
-                    std::cout << "Caught exception: " << e.what() << std::endl;
-                }
-            }
-            memset(buffer, '\0', sizeof(buffer));
-
-            // Play loaded program
-            getIntegerParam(playIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Playing loaded program" << std::endl;
-                setIntegerParam(playIndex_, 0);
-                ur_dashboard_->play();
-            }
-
-            // Stop program
-            getIntegerParam(stopIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Stopping program" << std::endl;
-                setIntegerParam(stopIndex_, 0);
-                ur_dashboard_->stop();
-            }
-
-            // Pause program
-            getIntegerParam(pauseIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Pausing program" << std::endl;
-                setIntegerParam(pauseIndex_, 0);
-                ur_dashboard_->pause();
-            }
-
-            // Quit
-            // FIX: do this gracefully, right now this will throw boost system_error
-            getIntegerParam(quitIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Closing connection to dashboard server" << std::endl;
-                setIntegerParam(quitIndex_, 0);
-                ur_dashboard_->quit();
-            }
-
-            // Shutdown
-            getIntegerParam(shutdownIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Shutting down robot and controller" << std::endl;
-                setIntegerParam(shutdownIndex_, 0);
-                ur_dashboard_->shutdown();
-            }
-
-            // Popup message
-            getStringParam(popupIndex_, BUFF_SIZE, buffer);
-            if (strlen(buffer) > 0) {
-                std::cout << "Popup text: " << buffer << std::endl;
-                setStringParam(popupIndex_, "");
-                ur_dashboard_->popup(buffer);
-            }
-            memset(buffer, '\0', sizeof(buffer));
-
-            // Close popup
-            getIntegerParam(closePopupIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Closing popup" << std::endl;
-                setIntegerParam(closePopupIndex_, 0);
-                ur_dashboard_->closePopup();
-            }
-
-            // Close safety popup
-            getIntegerParam(closeSafetyPopupIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Closing safety popup" << std::endl;
-                setIntegerParam(closeSafetyPopupIndex_, 0);
-                ur_dashboard_->closeSafetyPopup();
-            }
-
-            // Power on
-            getIntegerParam(powerOnIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Powering robot on" << std::endl;
-                setIntegerParam(powerOnIndex_, 0);
-                ur_dashboard_->powerOn();
-            }
-
-            // Power off
-            getIntegerParam(powerOffIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Powering robot off" << std::endl;
-                setIntegerParam(powerOffIndex_, 0);
-                ur_dashboard_->powerOff();
-            }
-
-            // Brake release
-            getIntegerParam(brakeReleaseIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Releasing brakes" << std::endl;
-                setIntegerParam(brakeReleaseIndex_, 0);
-                ur_dashboard_->brakeRelease();
-            }
-
-            // Unlock protective stop
-            getIntegerParam(unlockProtectiveStopIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Unlocking protective stop" << std::endl;
-                setIntegerParam(unlockProtectiveStopIndex_, 0);
-                ur_dashboard_->unlockProtectiveStop();
-            }
-
-            // Restart safety
-            getIntegerParam(restartSafetyIndex_, &trigger);
-            if (trigger != 0) {
-                std::cout << "Restarting safety" << std::endl;
-                setIntegerParam(restartSafetyIndex_, 0);
-                ur_dashboard_->restartSafety();
-            }
-
         } else {
             setIntegerParam(isConnectedIndex_, 0);
         }
@@ -239,6 +113,74 @@ void URRobotDashboard::main_loop() {
         unlock();
         epicsThreadSleep(poll_time_);
     }
+}
+
+asynStatus URRobotDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
+
+    int function = pasynUser->reason;
+
+    if (function == playIndex_) {
+        std::cout << "Playing loaded program" << std::endl;
+        ur_dashboard_->play();
+    } else if (function == stopIndex_) {
+        std::cout << "Stopping current program" << std::endl;
+        ur_dashboard_->stop();
+    } else if (function == pauseIndex_) {
+        std::cout << "Pausing current program" << std::endl;
+        ur_dashboard_->pause();
+    } else if (function == quitIndex_) {
+        std::cout << "Disconnecting from dashboard server" << std::endl;
+        ur_dashboard_->quit();
+    } else if (function == shutdownIndex_) {
+        std::cout << "Shutting down robot and controller" << std::endl;
+        ur_dashboard_->shutdown();
+    } else if (function == closePopupIndex_) {
+        std::cout << "Closing popup" << std::endl;
+        ur_dashboard_->closePopup();
+    } else if (function == closeSafetyPopupIndex_) {
+        std::cout << "Closing safety popup" << std::endl;
+        ur_dashboard_->closeSafetyPopup();
+    } else if (function == powerOnIndex_) {
+        std::cout << "Powering on robot" << std::endl;
+        ur_dashboard_->powerOn();
+    } else if (function == powerOffIndex_) {
+        std::cout << "Powering off robot" << std::endl;
+        ur_dashboard_->powerOff();
+    } else if (function == brakeReleaseIndex_) {
+        std::cout << "Releasing brakes" << std::endl;
+        ur_dashboard_->brakeRelease();
+    } else if (function == unlockProtectiveStopIndex_) {
+        std::cout << "Unlocking protective stop" << std::endl;
+        ur_dashboard_->unlockProtectiveStop();
+    } else if (function == restartSafetyIndex_) {
+        std::cout << "Restarting safety configuration" << std::endl;
+        ur_dashboard_->restartSafety();
+    }
+
+    callParamCallbacks();
+    return asynSuccess;
+}
+
+asynStatus URRobotDashboard::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars,
+                                        size_t *nActual) {
+    // TODO: Check this. Seems to work but gives weird warning
+    int function = pasynUser->reason;
+    asynStatus status = asynSuccess;
+    if (function == popupIndex_) {
+        std::cout << "Popup text: " << value << std::endl;
+        ur_dashboard_->popup(value);
+    } else if (function == loadURPIndex_) {
+        std::cout << "Loading program " << value << std::endl;
+        try {
+            ur_dashboard_->loadURP(value);
+        } catch (const std::exception &e) {
+            std::cout << "Caught exception: " << e.what() << std::endl;
+            status = asynError;
+        }
+    }
+
+    callParamCallbacks();
+    return status;
 }
 
 // register function for iocsh
