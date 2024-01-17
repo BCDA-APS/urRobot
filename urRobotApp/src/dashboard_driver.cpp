@@ -14,7 +14,7 @@
 
 static void main_loop_thread_C(void *pPvt) {
     URRobotDashboard *pURRobotDashboard = (URRobotDashboard *)pPvt;
-    pURRobotDashboard->main_loop();
+    pURRobotDashboard->poll();
 }
 
 // TODO: use better logging than std::cout <<
@@ -84,7 +84,7 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
     }
 }
 
-void URRobotDashboard::main_loop() {
+void URRobotDashboard::poll() {
     while (true) {
         lock();
 

@@ -26,7 +26,7 @@ constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 class URRobotRTDE : public asynPortDriver {
   public:
     URRobotRTDE(const char *asyn_port_name, const char *robot_port_name);
-    virtual void main_loop(void);
+    virtual void poll(void);
 
   private:
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;

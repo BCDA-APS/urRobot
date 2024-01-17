@@ -12,7 +12,7 @@
 
 static void main_loop_thread_C(void *pPvt) {
     URRobotRTDE *pURRobotRTDE = (URRobotRTDE *)pPvt;
-    pURRobotRTDE->main_loop();
+    pURRobotRTDE->poll();
 }
 
 // debugging function for development
@@ -66,7 +66,7 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
                       (EPICSTHREADFUNC)main_loop_thread_C, this);
 }
 
-void URRobotRTDE::main_loop() {
+void URRobotRTDE::poll() {
     while (true) {
         lock();
 

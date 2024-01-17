@@ -35,7 +35,7 @@ constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 class URRobotDashboard : public asynPortDriver {
   public:
     URRobotDashboard(const char *asyn_port_name, const char *robot_port_name);
-    virtual void main_loop(void);
+    virtual void poll(void);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars,
                                   size_t *nActual);
