@@ -151,6 +151,7 @@ void URRobotDashboard::main_loop() {
             }
 
             // Quit
+            // FIX: do this gracefully, right now this will throw boost system_error
             getIntegerParam(quitIndex_, &trigger);
             if (trigger != 0) {
                 std::cout << "Closing connection to dashboard server" << std::endl;

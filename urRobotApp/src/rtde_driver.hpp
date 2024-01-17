@@ -9,6 +9,11 @@ static constexpr char CONTROLLER_TIMESTAMP_STRING[] = "CONTROLLER_TIMESTAMP";
 static constexpr char SAFETY_STATUS_STRING[] = "SAFETY_STATUS";
 static constexpr char RUNTIME_STATE_STRING[] = "RUNTIME_STATE";
 static constexpr char ROBOT_MODE_STRING[] = "ROBOT_MODE";
+static constexpr char STD_ANALOG_INPUT0_STRING[] = "STD_ANALOG_INPUT0";
+static constexpr char STD_ANALOG_INPUT1_STRING[] = "STD_ANALOG_INPUT1";
+static constexpr char STD_ANALOG_OUTPUT0_STRING[] = "STD_ANALOG_OUTPUT0";
+static constexpr char STD_ANALOG_OUTPUT1_STRING[] = "STD_ANALOG_OUTPUT1";
+static constexpr char ACTUAL_JOINT_POS_STRING[] = "ACTUAL_JOINT_POSITIONS";
 
 // TODO: RTDE Control Interface
 // TODO: RTDE IO Interface
@@ -38,6 +43,11 @@ class URRobotRTDE : public asynPortDriver {
     int runtimeStateIndex_;
     int robotModeIndex_;
     int controllerTimestampIndex_;
+    int stdAnalogInput0Index_;
+    int stdAnalogInput1Index_;
+    int stdAnalogOutput0Index_;
+    int stdAnalogOutput1Index_;
+    int actualJointPosIndex_;
 
     // TODO: rtde_control
     // TODO: rtde_io

@@ -37,3 +37,45 @@ record(ai, "$(P)RTDE:RobotMode")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ROBOT_MODE")
     field(SCAN, "I/O Intr")
 }
+
+record(ai, "$(P)RTDE:AnalogInput0")
+{
+    field(DESC, "Standard A0 input")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STD_ANALOG_INPUT0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)RTDE:AnalogInput1")
+{
+    field(DESC, "Standard A1 input")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STD_ANALOG_INPUT1")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)RTDE:AnalogOutput0")
+{
+    field(DESC, "Standard A0 output")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STD_ANALOG_OUTPUT0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)RTDE:AnalogOutput1")
+{
+    field(DESC, "Standard A1 output")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STD_ANALOG_OUTPUT1")
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)RTDE:JointPositions")
+{
+    field(DESC, "Actual joint positions")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_JOINT_POSITIONS")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
