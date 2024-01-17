@@ -19,13 +19,11 @@ static void main_loop_thread_C(void *pPvt) {
 
 // TODO: use better logging than std::cout <<
 
-URRobotDashboard::URRobotDashboard(const char *asyn_port_name,
-                                   const char *robot_ip)
+URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
-                     asynInt32Mask | asynFloat64Mask | asynDrvUserMask |
-                         asynOctetMask | asynInt32ArrayMask,
-                     asynInt32Mask | asynFloat64Mask | asynOctetMask |
+                     asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
                          asynInt32ArrayMask,
+                     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynInt32ArrayMask,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
                      0, 0),
@@ -93,6 +91,7 @@ void URRobotDashboard::main_loop() {
         lock();
 
         // TODO: should only need to getParam until non-zero or strlen > 0.
+        // overriding read/write functions should do the trick
         if (ur_dashboard_->isConnected()) {
             setIntegerParam(isConnectedIndex_, 1);
 
@@ -243,10 +242,8 @@ void URRobotDashboard::main_loop() {
 }
 
 // register function for iocsh
-extern "C" int URRobotDashboardConfig(const char *asyn_port_name,
-                                      const char *robot_ip) {
-    URRobotDashboard *pURRobotDashboard =
-        new URRobotDashboard(asyn_port_name, robot_ip);
+extern "C" int URRobotDashboardConfig(const char *asyn_port_name, const char *robot_ip) {
+    URRobotDashboard *pURRobotDashboard = new URRobotDashboard(asyn_port_name, robot_ip);
     pURRobotDashboard = NULL;
     return (asynSuccess);
 }
@@ -254,16 +251,13 @@ extern "C" int URRobotDashboardConfig(const char *asyn_port_name,
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
 static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
-static const iocshFuncDef urRobotFuncDef = {"URRobotDashboardConfig", 2,
-                                            urRobotArgs};
+static const iocshFuncDef urRobotFuncDef = {"URRobotDashboardConfig", 2, urRobotArgs};
 
 static void urRobotCallFunc(const iocshArgBuf *args) {
     URRobotDashboardConfig(args[0].sval, args[1].sval);
 }
 
-void URRobotDashboardRegister(void) {
-    iocshRegister(&urRobotFuncDef, urRobotCallFunc);
-}
+void URRobotDashboardRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 
 extern "C" {
 epicsExportRegistrar(URRobotDashboardRegister);

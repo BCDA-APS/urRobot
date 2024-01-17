@@ -28,12 +28,12 @@ void print_vector(const std::vector<T> &vec, const std::string_view pref = "",
 
 static constexpr int NUM_JOINTS = 6;
 
+// FIX: constructor throws if IP is wrong and can't connect to rtde
 URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
-                     asynInt32Mask | asynFloat64Mask | asynDrvUserMask |
-                         asynOctetMask | asynFloat64ArrayMask,
-                     asynInt32Mask | asynFloat64Mask | asynOctetMask |
+                     asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
                          asynFloat64ArrayMask,
+                     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
                      0, 0),
@@ -64,7 +64,6 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
                       epicsThreadGetStackSize(epicsThreadStackMedium),
                       (EPICSTHREADFUNC)main_loop_thread_C, this);
-
 }
 
 void URRobotRTDE::main_loop() {
@@ -75,26 +74,23 @@ void URRobotRTDE::main_loop() {
             setIntegerParam(isConnectedIndex_, 1);
 
             // TODO: extract individual bits in EPICS?
-            uint32_t safety_status_int = rtde_receive_->getSafetyStatusBits();
-            std::bitset<32> bits(safety_status_int);
+            const uint32_t safety_status_int = rtde_receive_->getSafetyStatusBits();
+            const std::bitset<32> bits(safety_status_int);
 
             setDoubleParam(controllerTimestampIndex_, rtde_receive_->getTimestamp());
             setIntegerParam(safetyStatusIndex_, safety_status_int);
             setIntegerParam(runtimeStateIndex_, rtde_receive_->getRuntimeState());
             setIntegerParam(robotModeIndex_, rtde_receive_->getRobotMode());
 
-            setDoubleParam(stdAnalogInput0Index_,rtde_receive_->getStandardAnalogInput0());
-            setDoubleParam(stdAnalogInput1Index_,rtde_receive_->getStandardAnalogInput1());
+            setDoubleParam(stdAnalogInput0Index_, rtde_receive_->getStandardAnalogInput0());
+            setDoubleParam(stdAnalogInput1Index_, rtde_receive_->getStandardAnalogInput1());
             setDoubleParam(stdAnalogOutput0Index_, rtde_receive_->getStandardAnalogOutput0());
             setDoubleParam(stdAnalogOutput1Index_, rtde_receive_->getStandardAnalogOutput1());
-            
-            std::vector<double> Qvec = rtde_receive_->getActualQ();
-            epicsFloat64 Q[NUM_JOINTS];
-            for (int i = 0; i < NUM_JOINTS; i++) {
-                Q[i] = Qvec.at(i);
-            }
-            doCallbacksFloat64Array(Q, NUM_JOINTS, actualJointPosIndex_, 0);
 
+            const std::vector<double> Qvec = rtde_receive_->getActualQ();
+            epicsFloat64 Q[NUM_JOINTS];
+            std::copy(Qvec.begin(), Qvec.end(), Q);
+            doCallbacksFloat64Array(Q, NUM_JOINTS, actualJointPosIndex_, 0);
 
         } else {
             setIntegerParam(isConnectedIndex_, 0);
