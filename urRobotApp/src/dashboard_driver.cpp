@@ -90,21 +90,13 @@ void URRobotDashboard::poll() {
 
         if (ur_dashboard_->isConnected()) {
             setIntegerParam(isConnectedIndex_, 1);
-
-            // check if program is running
-            if (ur_dashboard_->running()) {
-                setIntegerParam(isRunningIndex_, 1);
-            } else {
-                setIntegerParam(isRunningIndex_, 0);
-            }
-
+            setIntegerParam(isRunningIndex_, ur_dashboard_->running());
             setStringParam(programStateIndex_, ur_dashboard_->programState());
             setStringParam(robotModeIndex_, ur_dashboard_->robotmode());
             setStringParam(loadedProgramIndex_, ur_dashboard_->getLoadedProgram());
             setStringParam(safetyStatusIndex_, ur_dashboard_->safetystatus());
             setIntegerParam(isProgramSavedIndex_, ur_dashboard_->isProgramSaved());
             setIntegerParam(isInRemoteControlIndex_, ur_dashboard_->isInRemoteControl());
-
         } else {
             setIntegerParam(isConnectedIndex_, 0);
         }
