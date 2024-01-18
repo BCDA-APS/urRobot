@@ -1,6 +1,7 @@
 #include "rtde_driver.hpp"
 #include <asynOctetSyncIO.h>
 #include <bitset>
+#include <cstdint>
 #include <epicsExport.h>
 #include <epicsString.h>
 #include <epicsThread.h>
@@ -15,25 +16,15 @@ static void main_loop_thread_C(void *pPvt) {
     pURRobotRTDE->poll();
 }
 
-// debugging function for development
-template <typename T>
-void print_vector(const std::vector<T> &vec, const std::string_view pref = "",
-                  const std::string_view sep = ",") {
-    std::cout << pref;
-    for (const auto &element : vec) {
-        std::cout << element << sep;
-    }
-    std::cout << std::endl;
-}
-
 static constexpr int NUM_JOINTS = 6;
 
 // FIX: constructor throws if IP is wrong and can't connect to rtde
 URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
-                         asynFloat64ArrayMask,
-                     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask,
+                         asynFloat64ArrayMask | asynInt32ArrayMask,
+                     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask |
+                         asynInt32ArrayMask,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
                      0, 0),
@@ -55,6 +46,13 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(DIGITAL_OUTPUT_BITS_STRING, asynParamInt32, &digitalOutputBitsIndex_);
     createParam(ACTUAL_JOINT_VEL_STRING, asynParamFloat64Array, &actualJointVelIndex_);
     createParam(ACTUAL_JOINT_CURRENTS_STRING, asynParamFloat64Array, &actualJointCurrentsIndex_);
+    createParam(JOINT_CONTROL_CURRENTS_STRING, asynParamFloat64Array, &jointControlCurrentsIndex_);
+    createParam(ACTUAL_TCP_POSE_STRING, asynParamFloat64Array, &actualTCPPoseIndex_);
+    createParam(ACTUAL_TCP_SPEED_STRING, asynParamFloat64Array, &actualTCPSpeedIndex_);
+    createParam(ACTUAL_TCP_FORCE_STRING, asynParamFloat64Array, &actualTCPForceIndex_);
+    createParam(SAFETY_MODE_STRING, asynParamInt32, &safetyModeIndex_);
+    createParam(JOINT_MODES_STRING, asynParamInt32Array, &jointModesIndex_);
+    createParam(ACTUAL_TOOL_ACCEL_STRING, asynParamFloat64Array, &actualToolAccelIndex_);
 
     // Check that robot is connected
     if (rtde_receive_->isConnected()) {
@@ -84,6 +82,7 @@ void URRobotRTDE::poll() {
             setIntegerParam(safetyStatusBitsIndex_, safety_status_bits);
             setIntegerParam(runtimeStateIndex_, rtde_receive_->getRuntimeState());
             setIntegerParam(robotModeIndex_, rtde_receive_->getRobotMode());
+            setIntegerParam(safetyModeIndex_, rtde_receive_->getSafetyMode());
             setIntegerParam(digitalInputBitsIndex_, rtde_receive_->getActualDigitalInputBits());
             setIntegerParam(digitalOutputBitsIndex_, rtde_receive_->getActualDigitalOutputBits());
 
@@ -91,6 +90,11 @@ void URRobotRTDE::poll() {
             setDoubleParam(stdAnalogInput1Index_, rtde_receive_->getStandardAnalogInput1());
             setDoubleParam(stdAnalogOutput0Index_, rtde_receive_->getStandardAnalogOutput0());
             setDoubleParam(stdAnalogOutput1Index_, rtde_receive_->getStandardAnalogOutput1());
+
+            const std::vector<int32_t> joint_modes_vec = rtde_receive_->getJointMode();
+            epicsInt32 joint_modes[NUM_JOINTS];
+            std::copy(joint_modes_vec.begin(), joint_modes_vec.end(), joint_modes);
+            doCallbacksInt32Array(joint_modes, NUM_JOINTS, jointModesIndex_, 0);
 
             const std::vector<double> Qvec = rtde_receive_->getActualQ();
             epicsFloat64 Q[NUM_JOINTS];
@@ -106,6 +110,31 @@ void URRobotRTDE::poll() {
             epicsFloat64 actual_current[NUM_JOINTS];
             std::copy(actual_current_vec.begin(), actual_current_vec.end(), actual_current);
             doCallbacksFloat64Array(actual_current, NUM_JOINTS, actualJointCurrentsIndex_, 0);
+
+            const std::vector<double> control_currents_vec = rtde_receive_->getJointControlOutput();
+            epicsFloat64 control_currents[NUM_JOINTS];
+            std::copy(control_currents_vec.begin(), control_currents_vec.end(), control_currents);
+            doCallbacksFloat64Array(control_currents, NUM_JOINTS, jointControlCurrentsIndex_, 0);
+
+            const std::vector<double> actual_pose_vec = rtde_receive_->getActualTCPPose();
+            epicsFloat64 actual_pose[NUM_JOINTS];
+            std::copy(actual_pose_vec.begin(), actual_pose_vec.end(), actual_pose);
+            doCallbacksFloat64Array(actual_pose, NUM_JOINTS, actualTCPPoseIndex_, 0);
+
+            const std::vector<double> actual_speed_vec = rtde_receive_->getActualTCPSpeed();
+            epicsFloat64 actual_speed[NUM_JOINTS];
+            std::copy(actual_speed_vec.begin(), actual_speed_vec.end(), actual_speed);
+            doCallbacksFloat64Array(actual_speed, NUM_JOINTS, actualTCPSpeedIndex_, 0);
+
+            const std::vector<double> actual_force_vec = rtde_receive_->getActualTCPForce();
+            epicsFloat64 actual_force[NUM_JOINTS];
+            std::copy(actual_force_vec.begin(), actual_force_vec.end(), actual_force);
+            doCallbacksFloat64Array(actual_force, NUM_JOINTS, actualTCPForceIndex_, 0);
+
+            const std::vector<double> tool_accel_vec = rtde_receive_->getActualToolAccelerometer();
+            epicsFloat64 tool_accel[3];
+            std::copy(tool_accel_vec.begin(), tool_accel_vec.end(), tool_accel);
+            doCallbacksFloat64Array(tool_accel, 3, actualToolAccelIndex_, 0);
 
         } else {
             setIntegerParam(isConnectedIndex_, 0);

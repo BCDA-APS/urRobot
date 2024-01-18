@@ -54,6 +54,14 @@ record(ai, "$(P)RTDE:RobotMode")
     field(SCAN, "I/O Intr")
 }
 
+record(ai, "$(P)RTDE:SafetyMode")
+{
+    field(DESC, "Safety mode")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SAFETY_MODE")
+    field(SCAN, "I/O Intr")
+}
+
 record(ai, "$(P)RTDE:AnalogInput0")
 {
     field(DESC, "Standard A0 input")
@@ -115,3 +123,64 @@ record(waveform, "$(P)RTDE:ActualJointCurrents")
     field(NELM, 6)
     field(SCAN, "I/O Intr")
 }
+
+record(waveform, "$(P)RTDE:JointControlCurrents")
+{
+    field(DESC, "Joint control currents")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_CONTROL_CURRENTS")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)RTDE:ActualTCPPose")
+{
+    field(DESC, "Actual TCP pose (x,y,z,r,p,y)")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_TCP_POSE")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)RTDE:ActualTCPSpeed")
+{
+    field(DESC, "Actual TCP speed")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_TCP_SPEED")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)RTDE:ActualTCPForce")
+{
+    field(DESC, "Actual TCP force")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_TCP_FORCE")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)RTDE:JointModes")
+{
+    field(DESC, "Joint control modes")
+    field(DTYP, "asynInt32ArrayIn")
+    field(FTVL, "LONG")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_MODES")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)RTDE:ActualToolAccelerometer")
+{
+    field(DESC, "Tool accelerometer (X,Y,Z)")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_TOOL_ACCEL")
+    field(NELM, 3)
+    field(SCAN, "I/O Intr")
+}
+
