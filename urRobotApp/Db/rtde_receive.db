@@ -14,11 +14,27 @@ record(ai, "$(P)RTDE:ControllerTimestamp")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:SafetyStatus")
+record(ai, "$(P)RTDE:SafetyStatusBits")
 {
     field(DESC, "Safety status bits")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SAFETY_STATUS")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SAFETY_STATUS_BITS")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)RTDE:DigitalInputBits")
+{
+    field(DESC, "Digital input bits")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DIGITAL_INPUT_BITS")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)RTDE:DigitalOutputBits")
+{
+    field(DESC, "Digital output bits")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DIGITAL_OUTPUT_BITS")
     field(SCAN, "I/O Intr")
 }
 
@@ -70,12 +86,32 @@ record(ai, "$(P)RTDE:AnalogOutput1")
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)RTDE:JointPositions")
+record(waveform, "$(P)RTDE:ActualJointPositions")
 {
     field(DESC, "Actual joint positions")
     field(DTYP, "asynFloat64ArrayIn")
     field(FTVL, "DOUBLE")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_JOINT_POSITIONS")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)RTDE:ActualJointVelocities")
+{
+    field(DESC, "Actual joint velocities")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_JOINT_VELOCITIES")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)RTDE:ActualJointCurrents")
+{
+    field(DESC, "Actual joint currents")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_JOINT_CURRENTS")
     field(NELM, 6)
     field(SCAN, "I/O Intr")
 }
