@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-01-18 11:55:40 by nmarks-->
+<display version="2.0.0">
+  <name>Display</name>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>UR RTDE Monitor</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update</name>
+    <pv_name>$(P):RTDE:JointPositions</pv_name>
+    <x>110</x>
+    <y>50</y>
+    <width>250</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>Joint positions:</text>
+    <y>50</y>
+    <width>180</width>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Digital I/O</name>
+    <x>430</x>
+    <y>50</y>
+    <width>360</width>
+    <widget type="tabs" version="2.0.0">
+      <name>Tabs_1</name>
+      <tabs>
+        <tab>
+          <name>Input</name>
+          <children>
+            <widget type="byte_monitor" version="2.0.0">
+              <name>Byte Monitor_3</name>
+              <pv_name>$(P):RTDE:DigitalInputBits</pv_name>
+              <x>108</x>
+              <y>15</y>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_6</name>
+              <text>Standard:</text>
+              <x>38</x>
+              <y>15</y>
+              <width>70</width>
+            </widget>
+            <widget type="byte_monitor" version="2.0.0">
+              <name>Byte Monitor_4</name>
+              <pv_name>$(P):RTDE:DigitalInputBits</pv_name>
+              <x>108</x>
+              <y>45</y>
+              <startBit>8</startBit>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_7</name>
+              <text>Configurable:</text>
+              <x>18</x>
+              <y>45</y>
+              <width>90</width>
+            </widget>
+            <widget type="byte_monitor" version="2.0.0">
+              <name>Byte Monitor_5</name>
+              <pv_name>$(P):RTDE:DigitalInputBits</pv_name>
+              <x>108</x>
+              <y>75</y>
+              <width>40</width>
+              <startBit>16</startBit>
+              <numBits>2</numBits>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_8</name>
+              <text>Tool:</text>
+              <x>68</x>
+              <y>75</y>
+              <width>40</width>
+            </widget>
+          </children>
+        </tab>
+        <tab>
+          <name>Output</name>
+          <children>
+            <widget type="byte_monitor" version="2.0.0">
+              <name>Byte Monitor_6</name>
+              <pv_name>$(P):RTDE:DigitalOutputBits</pv_name>
+              <x>108</x>
+              <y>15</y>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_9</name>
+              <text>Standard:</text>
+              <x>38</x>
+              <y>15</y>
+              <width>70</width>
+            </widget>
+            <widget type="byte_monitor" version="2.0.0">
+              <name>Byte Monitor_7</name>
+              <pv_name>$(P):RTDE:DigitalOutputBits</pv_name>
+              <x>108</x>
+              <y>45</y>
+              <startBit>8</startBit>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_10</name>
+              <text>Configurable:</text>
+              <x>18</x>
+              <y>45</y>
+              <width>90</width>
+            </widget>
+            <widget type="byte_monitor" version="2.0.0">
+              <name>Byte Monitor_8</name>
+              <pv_name>$(P):RTDE:DigitalOutputBits</pv_name>
+              <x>108</x>
+              <y>75</y>
+              <width>40</width>
+              <startBit>16</startBit>
+              <numBits>2</numBits>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Label_11</name>
+              <text>Tool:</text>
+              <x>68</x>
+              <y>75</y>
+              <width>40</width>
+            </widget>
+          </children>
+        </tab>
+      </tabs>
+      <x>22</x>
+      <y>12</y>
+      <width>290</width>
+      <height>140</height>
+    </widget>
+  </widget>
+  <widget type="text-symbol" version="2.0.0">
+    <name>Text Symbol</name>
+    <pv_name>$(P):RTDE:RuntimeState</pv_name>
+    <symbols>
+      <symbol>STOPPING</symbol>
+      <symbol>STOPPED</symbol>
+      <symbol>PLAYING</symbol>
+      <symbol>PAUSING</symbol>
+      <symbol>PAUSED</symbol>
+      <symbol>RESUMING</symbol>
+    </symbols>
+    <x>210</x>
+    <y>310</y>
+    <width>90</width>
+    <height>40</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_15</name>
+    <text>Runtime state:</text>
+    <x>90</x>
+    <y>320</y>
+    <height>30</height>
+  </widget>
+</display>
