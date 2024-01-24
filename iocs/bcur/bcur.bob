@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-01-24 16:49:32 by nmarks-->
+<display version="2.0.0">
+  <name>Display</name>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>Exists</text>
+    <x>20</x>
+    <y>80</y>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED</name>
+    <pv_name>bcur:Sample1:Exists</pv_name>
+    <x>160</x>
+    <y>80</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <text>In sample stage</text>
+    <x>20</x>
+    <y>140</y>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_1</name>
+    <pv_name>bcur:Sample1:InSampleStage</pv_name>
+    <x>160</x>
+    <y>140</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_3</name>
+    <text>In reservoir</text>
+    <x>20</x>
+    <y>200</y>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_2</name>
+    <pv_name>bcur:Sample1:InReservoir</pv_name>
+    <x>160</x>
+    <y>200</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>In gripper</text>
+    <x>20</x>
+    <y>260</y>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_3</name>
+    <pv_name>bcur:Sample1:InGripper</pv_name>
+    <x>160</x>
+    <y>260</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <text>Measured</text>
+    <x>20</x>
+    <y>320</y>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_4</name>
+    <pv_name>bcur:Sample1:Measured</pv_name>
+    <x>160</x>
+    <y>320</y>
+  </widget>
+</display>

@@ -1,0 +1,47 @@
+record(stringout, "$(P)$(R)Sample$(BlockID):Comment")
+{
+    field(DESC, "Comment about the sample")
+    field(VAL, "$(COMMENT)")
+}
+
+record(bo, "$(P)$(R)Sample$(BlockID):Exists")
+{
+    field(DESC, "Sample exists")
+    field(VAL, 1)
+}
+
+record(bo, "$(P)$(R)Sample$(BlockID):InSampleStage")
+{
+    field(DESC, "Sample is in sample stage")
+    field(VAL, 0)
+    field(FLNK, "$(P)$(R)Sample$(BlockID):InSampleStageSeq.PROC")
+}
+
+record(bo, "$(P)$(R)Sample$(BlockID):InReservoir")
+{
+    field(DESC, "Sample is in reservoir")
+    field(VAL, 1)
+}
+
+record(bo, "$(P)$(R)Sample$(BlockID):InGripper")
+{
+    field(DESC, "Sample is in robot gripper")
+    field(VAL, 0)
+}
+
+record(bo, "$(P)$(R)Sample$(BlockID):Measured")
+{
+    field(DESC, "Sample has been measured")
+    field(VAL, 0)
+}
+
+record(seq, "$(P)$(R)Sample$(BlockID):InSampleStageSeq")
+{
+    field(DO0, 0)
+    field(DO1, 0)
+    field(DO2, 0)
+    field(LNK0, "$(P)$(R)Sample$(BlockID):InReservoir.VAL")
+    field(LNK1, "$(P)$(R)Sample$(BlockID):InGripper.VAL")
+    field(LNK2, "$(P)$(R)Sample$(BlockID):Measured.VAL")
+    field(SCAN, "Passive")
+}

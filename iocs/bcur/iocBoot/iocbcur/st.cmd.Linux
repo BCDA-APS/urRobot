@@ -14,7 +14,10 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 < settings.iocsh
 < common.iocsh
 
-< urRobot.cmd
+# < urRobot.cmd
+
+# load the sample database
+dbLoadTemplate("gixs_sample.substitutions", "P=$(PREFIX), R=")
 
 #- devIocStats
 dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")
