@@ -1,4 +1,4 @@
-record(bi, "$(P)RTDE:Connected")
+record(bi, "$(P)$(R)RTDE:Connected")
 {
     field(DESC, "RTDE Connection status")
     field(DTYP, "asynInt32")
@@ -6,7 +6,7 @@ record(bi, "$(P)RTDE:Connected")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:ControllerTimestamp")
+record(ai, "$(P)$(R)RTDE:ControllerTimestamp")
 {
     field(DESC, "Time since controller started")
     field(DTYP, "asynFloat64")
@@ -14,7 +14,7 @@ record(ai, "$(P)RTDE:ControllerTimestamp")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:SafetyStatusBits")
+record(ai, "$(P)$(R)RTDE:SafetyStatusBits")
 {
     field(DESC, "Safety status bits")
     field(DTYP, "asynInt32")
@@ -22,7 +22,7 @@ record(ai, "$(P)RTDE:SafetyStatusBits")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:DigitalInputBits")
+record(ai, "$(P)$(R)RTDE:DigitalInputBits")
 {
     field(DESC, "Digital input bits")
     field(DTYP, "asynInt32")
@@ -30,7 +30,7 @@ record(ai, "$(P)RTDE:DigitalInputBits")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:DigitalOutputBits")
+record(ai, "$(P)$(R)RTDE:DigitalOutputBits")
 {
     field(DESC, "Digital output bits")
     field(DTYP, "asynInt32")
@@ -38,7 +38,7 @@ record(ai, "$(P)RTDE:DigitalOutputBits")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:RuntimeState")
+record(ai, "$(P)$(R)RTDE:RuntimeState")
 {
     field(DESC, "Runtime state")
     field(DTYP, "asynInt32")
@@ -46,7 +46,7 @@ record(ai, "$(P)RTDE:RuntimeState")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:RobotMode")
+record(ai, "$(P)$(R)RTDE:RobotMode")
 {
     field(DESC, "Robot mode")
     field(DTYP, "asynInt32")
@@ -54,7 +54,7 @@ record(ai, "$(P)RTDE:RobotMode")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:SafetyMode")
+record(ai, "$(P)$(R)RTDE:SafetyMode")
 {
     field(DESC, "Safety mode")
     field(DTYP, "asynInt32")
@@ -62,7 +62,7 @@ record(ai, "$(P)RTDE:SafetyMode")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:AnalogInput0")
+record(ai, "$(P)$(R)RTDE:AnalogInput0")
 {
     field(DESC, "Standard A0 input")
     field(DTYP, "asynFloat64")
@@ -70,7 +70,7 @@ record(ai, "$(P)RTDE:AnalogInput0")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:AnalogInput1")
+record(ai, "$(P)$(R)RTDE:AnalogInput1")
 {
     field(DESC, "Standard A1 input")
     field(DTYP, "asynFloat64")
@@ -78,7 +78,7 @@ record(ai, "$(P)RTDE:AnalogInput1")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:AnalogOutput0")
+record(ai, "$(P)$(R)RTDE:AnalogOutput0")
 {
     field(DESC, "Standard A0 output")
     field(DTYP, "asynFloat64")
@@ -86,7 +86,7 @@ record(ai, "$(P)RTDE:AnalogOutput0")
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)RTDE:AnalogOutput1")
+record(ai, "$(P)$(R)RTDE:AnalogOutput1")
 {
     field(DESC, "Standard A1 output")
     field(DTYP, "asynFloat64")
@@ -94,7 +94,7 @@ record(ai, "$(P)RTDE:AnalogOutput1")
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)RTDE:ActualJointPositions")
+record(waveform, "$(P)$(R)RTDE:ActualJointPositions")
 {
     field(DESC, "Actual joint positions")
     field(DTYP, "asynFloat64ArrayIn")
@@ -104,7 +104,7 @@ record(waveform, "$(P)RTDE:ActualJointPositions")
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)RTDE:ActualJointVelocities")
+record(waveform, "$(P)$(R)RTDE:ActualJointVelocities")
 {
     field(DESC, "Actual joint velocities")
     field(DTYP, "asynFloat64ArrayIn")
@@ -114,7 +114,7 @@ record(waveform, "$(P)RTDE:ActualJointVelocities")
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)RTDE:ActualJointCurrents")
+record(waveform, "$(P)$(R)RTDE:ActualJointCurrents")
 {
     field(DESC, "Actual joint currents")
     field(DTYP, "asynFloat64ArrayIn")
@@ -124,7 +124,7 @@ record(waveform, "$(P)RTDE:ActualJointCurrents")
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)RTDE:JointControlCurrents")
+record(waveform, "$(P)$(R)RTDE:JointControlCurrents")
 {
     field(DESC, "Joint control currents")
     field(DTYP, "asynFloat64ArrayIn")
@@ -134,7 +134,7 @@ record(waveform, "$(P)RTDE:JointControlCurrents")
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)RTDE:ActualTCPPose")
+record(waveform, "$(P)$(R)RTDE:ActualTCPPose")
 {
     field(DESC, "Actual TCP pose (x,y,z,r,p,y)")
     field(DTYP, "asynFloat64ArrayIn")
@@ -144,7 +144,7 @@ record(waveform, "$(P)RTDE:ActualTCPPose")
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)RTDE:ActualTCPSpeed")
+record(waveform, "$(P)$(R)RTDE:ActualTCPSpeed")
 {
     field(DESC, "Actual TCP speed")
     field(DTYP, "asynFloat64ArrayIn")
@@ -154,7 +154,7 @@ record(waveform, "$(P)RTDE:ActualTCPSpeed")
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)RTDE:ActualTCPForce")
+record(waveform, "$(P)$(R)RTDE:ActualTCPForce")
 {
     field(DESC, "Actual TCP force")
     field(DTYP, "asynFloat64ArrayIn")
@@ -164,7 +164,7 @@ record(waveform, "$(P)RTDE:ActualTCPForce")
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)RTDE:JointModes")
+record(waveform, "$(P)$(R)RTDE:JointModes")
 {
     field(DESC, "Joint control modes")
     field(DTYP, "asynInt32ArrayIn")
@@ -174,7 +174,7 @@ record(waveform, "$(P)RTDE:JointModes")
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)RTDE:ActualToolAccelerometer")
+record(waveform, "$(P)$(R)RTDE:ActualToolAccelerometer")
 {
     field(DESC, "Tool accelerometer (X,Y,Z)")
     field(DTYP, "asynFloat64ArrayIn")
