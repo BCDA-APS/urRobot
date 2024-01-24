@@ -32,11 +32,7 @@ SUPPORT=/APSshare/epics/synApps_6_2_1/support
 -include $(SUPPORT)/configure/RELEASE
 
 # Include any non-standard support
-URROBOT=/home/beams/NMARKS/devel/epics_ur_driver/support/urRobot
-#TDS3000 = $(SUPPORT)/../nonSynAppsSupport/tds3000-2.4
-#FLY = $(SUPPORT)/../nonSynAppsSupport/fly-0-0
-
-#MOTOR_ACSMOTION=$(SUPPORT)/motorAcsMotion-R2-0
+URROBOT = $(TOP)/../..
 
 # For a local, custom configuration; copy $(SUPPORT)/configure/RELEASE
 # to this directory as the file MASTER_RELEASE, edit the file, comment out
