@@ -1,3 +1,13 @@
+# GIXS Automation Sample Database
+#
+# A sample can either be in the sample reservoir,
+# the sample stage, or in the robot's gripper.
+# bo records are used to keep track of the sample's location.
+# If for example the InReservoir record's value is set to 1 meaning the
+# sample is in the reservoir, InGripper and InSampleStage will 
+# automatically be set to 0.
+#
+
 record(stringout, "$(P)$(R)Sample$(BlockID):Comment")
 {
     field(DESC, "Comment about the sample")
@@ -14,19 +24,21 @@ record(bo, "$(P)$(R)Sample$(BlockID):InSampleStage")
 {
     field(DESC, "Sample is in sample stage")
     field(VAL, 0)
-    field(FLNK, "$(P)$(R)Sample$(BlockID):InSampleStageSeq.PROC")
+    field(FLNK, "$(P)$(R)Sample$(BlockID):InSampleStageCalc.PROC")
 }
 
 record(bo, "$(P)$(R)Sample$(BlockID):InReservoir")
 {
     field(DESC, "Sample is in reservoir")
-    field(VAL, 1)
+    field(VAL, 0)
+    field(FLNK, "$(P)$(R)Sample$(BlockID):InReservoirCalc.PROC")
 }
 
 record(bo, "$(P)$(R)Sample$(BlockID):InGripper")
 {
     field(DESC, "Sample is in robot gripper")
     field(VAL, 0)
+    field(FLNK, "$(P)$(R)Sample$(BlockID):InGripperCalc.PROC")
 }
 
 record(bo, "$(P)$(R)Sample$(BlockID):Measured")
@@ -35,13 +47,52 @@ record(bo, "$(P)$(R)Sample$(BlockID):Measured")
     field(VAL, 0)
 }
 
+# -------------------------------------------------------------
+
+record(calcout, "$(P)$(R)Sample$(BlockID):InSampleStageCalc")
+{
+    field(INPA, "$(P)$(R)Sample$(BlockID):InSampleStage")
+    field(CALC, "A")
+    field(OOPT, "When Non-zero")
+    field(OUT, "$(P)$(R)Sample$(BlockID):InSampleStageSeq.PROC")
+}
+
 record(seq, "$(P)$(R)Sample$(BlockID):InSampleStageSeq")
 {
+    field(LNK0, "$(P)$(R)Sample$(BlockID):InReservoir CA")
+    field(LNK1, "$(P)$(R)Sample$(BlockID):InGripper CA")
     field(DO0, 0)
     field(DO1, 0)
-    field(DO2, 0)
-    field(LNK0, "$(P)$(R)Sample$(BlockID):InReservoir.VAL")
-    field(LNK1, "$(P)$(R)Sample$(BlockID):InGripper.VAL")
-    field(LNK2, "$(P)$(R)Sample$(BlockID):Measured.VAL")
-    field(SCAN, "Passive")
+}
+
+record(calcout, "$(P)$(R)Sample$(BlockID):InReservoirCalc")
+{
+    field(INPA, "$(P)$(R)Sample$(BlockID):InReservoir")
+    field(CALC, "A")
+    field(OOPT, "When Non-zero")
+    field(OUT, "$(P)$(R)Sample$(BlockID):InReservoirSeq.PROC")
+}
+
+record(seq, "$(P)$(R)Sample$(BlockID):InReservoirSeq")
+{
+    field(LNK0, "$(P)$(R)Sample$(BlockID):InSampleStage CA")
+    field(LNK1, "$(P)$(R)Sample$(BlockID):InGripper CA")
+    field(DO0, 0)
+    field(DO1, 0)
+}
+
+record(calcout, "$(P)$(R)Sample$(BlockID):InGripperCalc")
+{
+    field(INPA, "$(P)$(R)Sample$(BlockID):InGripper")
+    field(CALC, "A")
+    field(OOPT, "When Non-zero")
+    field(OUT, "$(P)$(R)Sample$(BlockID):InGripperSeq.PROC")
+}
+
+record(seq, "$(P)$(R)Sample$(BlockID):InGripperSeq")
+{
+    field(LNK0, "$(P)$(R)Sample$(BlockID):InSampleStage CA")
+    field(LNK1, "$(P)$(R)Sample$(BlockID):InReservoir CA")
+    field(DO0, 0)
+    field(DO1, 0)
 }
