@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-01-25 12:56:19 by nmarks-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>120</width>
+  <height>40</height>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol</name>
+    <pv_name>eq://!(bcur:Sample$(BlockID):Measured)</pv_name>
+    <symbols>
+      <symbol>../../../../../../../beams/NMARKS/devel/epics_ur_robot/epics-urRobot/iocs/bcur/icons/checkmark.svg</symbol>
+    </symbols>
+    <x>70</x>
+    <width>30</width>
+    <height>30</height>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <fallback_symbol>../../../../../../../beams/NMARKS/devel/epics_ur_robot/epics-urRobot/iocs/bcur/icons/empty.svg</fallback_symbol>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>$(BlockID)</text>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="28.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_3</name>
+    <pv_name>eq://!(bcur:Sample$(BlockID):InGripper)</pv_name>
+    <symbols>
+      <symbol>../../../../../../../beams/NMARKS/devel/epics_ur_robot/epics-urRobot/iocs/bcur/icons/robot-arm.svg</symbol>
+    </symbols>
+    <x>40</x>
+    <width>30</width>
+    <height>30</height>
+    <fallback_symbol>../../../../../../../beams/NMARKS/devel/epics_ur_robot/epics-urRobot/iocs/bcur/icons/empty.svg</fallback_symbol>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_4</name>
+    <pv_name>bcur:Sample$(BlockID):Exists</pv_name>
+    <symbols>
+      <symbol>../../../../../../../beams/NMARKS/devel/epics_ur_robot/epics-urRobot/iocs/bcur/icons/x.svg</symbol>
+    </symbols>
+    <x>40</x>
+    <width>30</width>
+    <height>30</height>
+    <fallback_symbol>../../../../../../../beams/NMARKS/devel/epics_ur_robot/epics-urRobot/iocs/bcur/icons/empty.svg</fallback_symbol>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_5</name>
+    <pv_name>eq://!(bcur:Sample$(BlockID):InSampleStage)</pv_name>
+    <symbols>
+      <symbol>../../../../../../../beams/NMARKS/devel/epics_ur_robot/epics-urRobot/iocs/bcur/icons/yellow-square.svg</symbol>
+    </symbols>
+    <x>40</x>
+    <width>30</width>
+    <height>30</height>
+    <fallback_symbol>../../../../../../../beams/NMARKS/devel/epics_ur_robot/epics-urRobot/iocs/bcur/icons/empty.svg</fallback_symbol>
+  </widget>
+  <widget type="symbol" version="2.0.0">
+    <name>Symbol_6</name>
+    <pv_name>eq://!(bcur:Sample$(BlockID):InReservoir)</pv_name>
+    <symbols>
+      <symbol>icons/blue-diamong.svg</symbol>
+    </symbols>
+    <x>40</x>
+    <width>30</width>
+    <height>30</height>
+    <fallback_symbol>../../../../../../../beams/NMARKS/devel/epics_ur_robot/epics-urRobot/iocs/bcur/icons/empty.svg</fallback_symbol>
+  </widget>
+</display>
