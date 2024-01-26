@@ -8,16 +8,22 @@
 #include <epicsThread.h>
 #include <exception>
 #include <iocsh.h>
-#include <iostream>
+#include <sstream>
+#include <string>
 #include <unistd.h>
 
+#include "easy_log.hpp"
 
-static void main_loop_thread_C(void *pPvt) {
+using easy_log::log_error;
+using easy_log::log_info;
+using easy_log::log_success;
+
+static void poll_thread_C(void *pPvt) {
     URRobotDashboard *pURRobotDashboard = (URRobotDashboard *)pPvt;
     pURRobotDashboard->poll();
 }
 
-// TODO: use better logging than std::cout <<
+// TODO: use an acutal logging library like spdlog or plog?
 
 URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
@@ -62,14 +68,16 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
     try {
         ur_dashboard_->connect();
         if (ur_dashboard_->isConnected()) {
-            std::cout << "Connected to dashboard server" << std::endl;
+            log_success("Connected to dashboard server");
             setIntegerParam(isConnectedIndex_, 1);
             connected = true;
         } else {
             setIntegerParam(isConnectedIndex_, 0);
         }
     } catch (const std::exception &e) {
-        std::cout << "Caught exception: " << e.what() << std::endl;
+        std::stringstream ss;
+        ss << "Caught exception: " << e.what();
+        log_error(ss.str());
     }
 
     if (connected) {
@@ -80,7 +88,7 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
 
         epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
                           epicsThreadGetStackSize(epicsThreadStackMedium),
-                          (EPICSTHREADFUNC)main_loop_thread_C, this);
+                          (EPICSTHREADFUNC)poll_thread_C, this);
     }
 }
 
@@ -112,40 +120,40 @@ asynStatus URRobotDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     int function = pasynUser->reason;
 
     if (function == playIndex_) {
-        std::cout << "Playing loaded program" << std::endl;
+        log_info("Playing loaded program");
         ur_dashboard_->play();
     } else if (function == stopIndex_) {
-        std::cout << "Stopping current program" << std::endl;
+        log_info("Stopping current program");
         ur_dashboard_->stop();
     } else if (function == pauseIndex_) {
-        std::cout << "Pausing current program" << std::endl;
+        log_info("Pausing current program");
         ur_dashboard_->pause();
     } else if (function == quitIndex_) {
-        std::cout << "Disconnecting from dashboard server" << std::endl;
+        log_info("Disconnecting from dashboard server");
         ur_dashboard_->quit();
     } else if (function == shutdownIndex_) {
-        std::cout << "Shutting down robot and controller" << std::endl;
+        log_info("Shutting down robot and controller");
         ur_dashboard_->shutdown();
     } else if (function == closePopupIndex_) {
-        std::cout << "Closing popup" << std::endl;
+        log_info("Closing popup");
         ur_dashboard_->closePopup();
     } else if (function == closeSafetyPopupIndex_) {
-        std::cout << "Closing safety popup" << std::endl;
+        log_info("Closing safety popup");
         ur_dashboard_->closeSafetyPopup();
     } else if (function == powerOnIndex_) {
-        std::cout << "Powering on robot" << std::endl;
+        log_info("Powering on robot");
         ur_dashboard_->powerOn();
     } else if (function == powerOffIndex_) {
-        std::cout << "Powering off robot" << std::endl;
+        log_info("Powering off robot");
         ur_dashboard_->powerOff();
     } else if (function == brakeReleaseIndex_) {
-        std::cout << "Releasing brakes" << std::endl;
+        log_info("Releasing brakes");
         ur_dashboard_->brakeRelease();
     } else if (function == unlockProtectiveStopIndex_) {
-        std::cout << "Unlocking protective stop" << std::endl;
+        log_info("Unlocking protective stop");
         ur_dashboard_->unlockProtectiveStop();
     } else if (function == restartSafetyIndex_) {
-        std::cout << "Restarting safety configuration" << std::endl;
+        log_info("Restarting safety configuration");
         ur_dashboard_->restartSafety();
     }
 
@@ -159,10 +167,14 @@ asynStatus URRobotDashboard::writeOctet(asynUser *pasynUser, const char *value, 
     int function = pasynUser->reason;
     asynStatus status = asynSuccess;
     if (function == popupIndex_) {
-        std::cout << "Popup text: " << value << std::endl;
+        std::stringstream ss;
+        ss << "Popup text: " << value;
+        log_info(ss.str());
         ur_dashboard_->popup(value);
     } else if (function == loadURPIndex_) {
-        std::cout << "Loading program " << value << std::endl;
+        std::stringstream ss;
+        ss << "Loading program " << value;
+        log_info(ss.str());
         try {
             ur_dashboard_->loadURP(value);
         } catch (const std::exception &e) {
@@ -174,7 +186,6 @@ asynStatus URRobotDashboard::writeOctet(asynUser *pasynUser, const char *value, 
     callParamCallbacks();
     return status;
 }
-
 // register function for iocsh
 extern "C" int URRobotDashboardConfig(const char *asyn_port_name, const char *robot_ip) {
     URRobotDashboard *pURRobotDashboard = new URRobotDashboard(asyn_port_name, robot_ip);

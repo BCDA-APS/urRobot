@@ -11,7 +11,7 @@
 
 #include "ur_rtde/rtde_receive_interface.h"
 
-static void main_loop_thread_C(void *pPvt) {
+static void poll_thread_C(void *pPvt) {
     URRobotRTDE *pURRobotRTDE = (URRobotRTDE *)pPvt;
     pURRobotRTDE->poll();
 }
@@ -65,7 +65,7 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
 
     epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
                       epicsThreadGetStackSize(epicsThreadStackMedium),
-                      (EPICSTHREADFUNC)main_loop_thread_C, this);
+                      (EPICSTHREADFUNC)poll_thread_C, this);
 }
 
 void URRobotRTDE::poll() {
