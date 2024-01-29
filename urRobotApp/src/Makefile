@@ -1,12 +1,14 @@
+# NOTE: paths relative to where they get installed (e.g. ./O.rhel9-x86_64)
+
 TOP=../..
 
 include $(TOP)/configure/CONFIG
 
 # include ur_rtde library headers
-USR_INCLUDES += -Iur_rtde
-USR_INCLUDES += -Iurcl
+USR_INCLUDES += -I../ur_rtde
+USR_INCLUDES += -I../urcl
+USR_INCLUDES += -I../spdlog
 
-# paths relative to where they get installed (./O.rhel9-x86_64)
 LIB_INSTALLS += ../os/rhel9/librtde.a
 BIN_INSTALLS += ../os/rhel9/librtde.so
 BIN_INSTALLS += ../os/rhel9/librtde.so.1.5

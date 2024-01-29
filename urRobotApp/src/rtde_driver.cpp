@@ -5,11 +5,11 @@
 #include <epicsString.h>
 #include <epicsThread.h>
 #include <iocsh.h>
-#include <iostream>
 #include <memory>
 
 #include "rtde_driver.hpp"
 #include "ur_rtde/rtde_receive_interface.h"
+#include "spdlog/spdlog.h"
 
 static void poll_thread_C(void *pPvt) {
     URRobotRTDE *pURRobotRTDE = (URRobotRTDE *)pPvt;
@@ -59,16 +59,15 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
 
         // Check that RTDE interface is connected
         if (rtde_receive_->isConnected()) {
-            std::cout << "Connected to RTDE Receive interface" << std::endl;
+            spdlog::info("Connected to RTDE Receive interface");
             setIntegerParam(isConnectedIndex_, 1);
             connected = true;
         } else {
-            std::cout << "Failed to connect to RTDE Receive interface with IP " << robot_ip
-                      << std::endl;
+            spdlog::error("Failed to connect to RTDE Receive interface");
             setIntegerParam(isConnectedIndex_, 0);
         }
     } catch (const std::exception &e) {
-        std::cout << "Caught exception " << e.what() << std::endl;
+        spdlog::error("{}", e.what());
     }
 
     if (connected) {
