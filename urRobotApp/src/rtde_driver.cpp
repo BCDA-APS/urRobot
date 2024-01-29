@@ -1,4 +1,3 @@
-#include "rtde_driver.hpp"
 #include <asynOctetSyncIO.h>
 #include <bitset>
 #include <cstdint>
@@ -9,6 +8,7 @@
 #include <iostream>
 #include <memory>
 
+#include "rtde_driver.hpp"
 #include "ur_rtde/rtde_receive_interface.h"
 
 static void poll_thread_C(void *pPvt) {
@@ -18,7 +18,6 @@ static void poll_thread_C(void *pPvt) {
 
 static constexpr int NUM_JOINTS = 6;
 
-// FIX: constructor throws if IP is wrong and can't connect to rtde
 URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
@@ -28,8 +27,7 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
                      0, 0),
-      rtde_receive_(std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip)),
-      poll_time_(DEFAULT_POLL_TIME) {
+      rtde_receive_(nullptr), poll_time_(DEFAULT_POLL_TIME) {
 
     // create asyn parameters
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
@@ -54,18 +52,30 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(JOINT_MODES_STRING, asynParamInt32Array, &jointModesIndex_);
     createParam(ACTUAL_TOOL_ACCEL_STRING, asynParamFloat64Array, &actualToolAccelIndex_);
 
-    // Check that robot is connected
-    if (rtde_receive_->isConnected()) {
-        std::cout << "Robot connected successfully" << std::endl;
-        setIntegerParam(isConnectedIndex_, 1);
-    } else {
-        std::cout << "Failed to connect to robot host " << robot_ip << std::endl;
-        setIntegerParam(isConnectedIndex_, 0);
+    bool connected = false;
+    try {
+        // construction of the RTDE objects automatically tries connecting
+        rtde_receive_ = std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip);
+
+        // Check that RTDE interface is connected
+        if (rtde_receive_->isConnected()) {
+            std::cout << "Connected to RTDE Receive interface" << std::endl;
+            setIntegerParam(isConnectedIndex_, 1);
+            connected = true;
+        } else {
+            std::cout << "Failed to connect to RTDE Receive interface with IP " << robot_ip
+                      << std::endl;
+            setIntegerParam(isConnectedIndex_, 0);
+        }
+    } catch (const std::exception &e) {
+        std::cout << "Caught exception " << e.what() << std::endl;
     }
 
-    epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
-                      epicsThreadGetStackSize(epicsThreadStackMedium),
-                      (EPICSTHREADFUNC)poll_thread_C, this);
+    if (connected) {
+        epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
+                          epicsThreadGetStackSize(epicsThreadStackMedium),
+                          (EPICSTHREADFUNC)poll_thread_C, this);
+    }
 }
 
 void URRobotRTDE::poll() {

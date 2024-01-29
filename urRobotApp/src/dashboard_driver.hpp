@@ -1,3 +1,6 @@
+#ifndef _DASHBOARD_DRIVER_HPP_
+#define _DASHBOARD_DRIVER_HPP_
+
 #include "ur_rtde/dashboard_client.h"
 #include <asynPortDriver.h>
 
@@ -72,3 +75,5 @@ class URRobotDashboard : public asynPortDriver {
     int isProgramSavedIndex_;
     int isInRemoteControlIndex_;
 };
+
+#endif

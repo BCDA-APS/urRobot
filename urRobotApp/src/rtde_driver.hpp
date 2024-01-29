@@ -1,3 +1,6 @@
+#ifndef _RTDE_DRIVER_HPP_
+#define _RTDE_DRIVER_HPP_
+
 #include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/rtde_io_interface.h"
 #include "ur_rtde/rtde_receive_interface.h"
@@ -75,3 +78,5 @@ class URRobotRTDE : public asynPortDriver {
     // TODO: rtde_control
     // TODO: rtde_io
 };
+
+#endif

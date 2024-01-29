@@ -1,3 +1,6 @@
+#ifndef _EASY_LOG_HPP_
+#define _EASY_LOG_HPP_
+
 #include <iostream>
 #include <map>
 #include <sstream>
@@ -40,3 +43,5 @@ void log_warn(std::string s) {
 }
 
 } // namespace easy_log
+
+#endif
