@@ -16,10 +16,6 @@ iocur621Linux_registerRecordDeviceDriver(pdbbase)
 
 < urRobot.cmd
 
-# load the sample database and other records needed
-# dbLoadTemplate("gixs_sample.substitutions", "P=$(PREFIX), R=")
-# dbLoadRecords("gixs_params.db","P=$(PREFIX),R=")
-
 #- devIocStats
 dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")
 #- PV aliases change :: into :
