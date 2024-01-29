@@ -160,15 +160,21 @@ void URRobotRTDE::poll() {
 
 asynStatus URRobotRTDE::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
 
+    asynStatus status = asynSuccess;
+
     int function = pasynUser->reason;
 
     if (function == speedSliderIndex_) {
         spdlog::info("Setting speed slider to {}%", value * 100.0);
-        // rtde_io_->setSpeedSlider(value);
+        bool result = rtde_io_->setSpeedSlider(value);
+        if (not result) {
+            status = asynError;
+            spdlog::warn("Call to setSpeedSlider failed");
+        }
     }
 
     callParamCallbacks();
-    return asynSuccess;
+    return status;
 }
 
 // register function for iocsh
