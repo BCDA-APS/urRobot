@@ -8,8 +8,8 @@
 #include <memory>
 
 #include "rtde_driver.hpp"
-#include "ur_rtde/rtde_receive_interface.h"
 #include "spdlog/spdlog.h"
+#include "ur_rtde/rtde_receive_interface.h"
 
 static void poll_thread_C(void *pPvt) {
     URRobotRTDE *pURRobotRTDE = (URRobotRTDE *)pPvt;
@@ -27,7 +27,7 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
                      0, 0),
-      rtde_receive_(nullptr), poll_time_(DEFAULT_POLL_TIME) {
+      rtde_receive_(nullptr), rtde_io_(nullptr) {
 
     // create asyn parameters
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
@@ -51,13 +51,15 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(SAFETY_MODE_STRING, asynParamInt32, &safetyModeIndex_);
     createParam(JOINT_MODES_STRING, asynParamInt32Array, &jointModesIndex_);
     createParam(ACTUAL_TOOL_ACCEL_STRING, asynParamFloat64Array, &actualToolAccelIndex_);
+    createParam(SPEED_SLIDER_STRING, asynParamFloat64, &speedSliderIndex_);
 
     bool connected = false;
     try {
         // construction of the RTDE objects automatically tries connecting
         rtde_receive_ = std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip);
+        rtde_io_ = std::make_unique<ur_rtde::RTDEIOInterface>(robot_ip);
 
-        // Check that RTDE interface is connected
+        // Check that RTDE receive interface is connected
         if (rtde_receive_->isConnected()) {
             spdlog::info("Connected to RTDE Receive interface");
             setIntegerParam(isConnectedIndex_, 1);
@@ -66,6 +68,7 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
             spdlog::error("Failed to connect to RTDE Receive interface");
             setIntegerParam(isConnectedIndex_, 0);
         }
+
     } catch (const std::exception &e) {
         spdlog::error(e.what());
     }
@@ -151,8 +154,21 @@ void URRobotRTDE::poll() {
 
         callParamCallbacks();
         unlock();
-        epicsThreadSleep(poll_time_);
+        epicsThreadSleep(POLL_PERIOD);
     }
+}
+
+asynStatus URRobotRTDE::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
+
+    int function = pasynUser->reason;
+
+    if (function == speedSliderIndex_) {
+        spdlog::info("Setting speed slider to {}%", value * 100.0);
+        // rtde_io_->setSpeedSlider(value);
+    }
+
+    callParamCallbacks();
+    return asynSuccess;
 }
 
 // register function for iocsh

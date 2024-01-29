@@ -31,23 +31,25 @@ static constexpr char ACTUAL_TCP_SPEED_STRING[] = "ACTUAL_TCP_SPEED";
 static constexpr char ACTUAL_TCP_FORCE_STRING[] = "ACTUAL_TCP_FORCE";
 static constexpr char ACTUAL_TOOL_ACCEL_STRING[] = "ACTUAL_TOOL_ACCEL";
 
+// RTDE IO Interface
+static constexpr char SPEED_SLIDER_STRING[] = "SPEED_SLIDER";
+
 // TODO: RTDE Control Interface
-// TODO: RTDE IO Interface
 
 constexpr int MAX_CONTROLLERS = 1;
-constexpr double DEFAULT_POLL_TIME = 0.20;
+constexpr double POLL_PERIOD = 0.10; // seconds
 constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class URRobotRTDE : public asynPortDriver {
   public:
     URRobotRTDE(const char *asyn_port_name, const char *robot_port_name);
     virtual void poll(void);
+    virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
 
   private:
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     std::unique_ptr<ur_rtde::RTDEIOInterface> rtde_io_;
-    double poll_time_;
 
   protected:
     asynUser *pasynUserURRobot_;
@@ -75,8 +77,10 @@ class URRobotRTDE : public asynPortDriver {
     int jointModesIndex_;
     int actualToolAccelIndex_;
 
+    // rtde_io
+    int speedSliderIndex_;
+
     // TODO: rtde_control
-    // TODO: rtde_io
 };
 
 #endif

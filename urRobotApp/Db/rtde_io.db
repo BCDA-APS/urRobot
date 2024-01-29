@@ -1,0 +1,9 @@
+record(ao, "$(P)$(R)RTDE:SpeedSlider")
+{
+    field(DESC, "Time since controller started")
+    field(DTYP, "asynFloat64")
+    field(DRVH, "1.0")
+    field(DRVL, "0.0")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SPEED_SLIDER")
+    # field(SCAN, "I/O Intr")
+}
