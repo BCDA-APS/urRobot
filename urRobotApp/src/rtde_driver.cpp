@@ -67,7 +67,7 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
             setIntegerParam(isConnectedIndex_, 0);
         }
     } catch (const std::exception &e) {
-        spdlog::error("{}", e.what());
+        spdlog::error(e.what());
     }
 
     if (connected) {

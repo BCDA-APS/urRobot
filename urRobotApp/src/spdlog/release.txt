@@ -1,2 +1,2 @@
-v1.x @696db97
- 
+branch: v1.x
+commit: 696db97

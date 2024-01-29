@@ -72,9 +72,7 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
             setIntegerParam(isConnectedIndex_, 0);
         }
     } catch (const std::exception &e) {
-        std::stringstream ss;
-        ss << "Caught exception: " << e.what();
-        spdlog::error(ss.str());
+        spdlog::error(e.what());
     }
 
     if (connected) {
@@ -117,40 +115,40 @@ asynStatus URRobotDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     int function = pasynUser->reason;
 
     if (function == playIndex_) {
-        spdlog::debug("Playing loaded program");
+        spdlog::info("Playing loaded program");
         // ur_dashboard_->play();
     } else if (function == stopIndex_) {
-        spdlog::debug("Stopping current program");
+        spdlog::info("Stopping current program");
         // ur_dashboard_->stop();
     } else if (function == pauseIndex_) {
-        spdlog::debug("Pausing current program");
+        spdlog::info("Pausing current program");
         // ur_dashboard_->pause();
     } else if (function == quitIndex_) {
-        spdlog::debug("Disconnecting from dashboard server");
+        spdlog::info("Disconnecting from dashboard server");
         // ur_dashboard_->quit();
     } else if (function == shutdownIndex_) {
-        spdlog::debug("Shutting down robot and controller");
+        spdlog::info("Shutting down robot and controller");
         // ur_dashboard_->shutdown();
     } else if (function == closePopupIndex_) {
-        spdlog::debug("Closing popup");
+        spdlog::info("Closing popup");
         // ur_dashboard_->closePopup();
     } else if (function == closeSafetyPopupIndex_) {
-        spdlog::debug("Closing safety popup");
+        spdlog::info("Closing safety popup");
         // ur_dashboard_->closeSafetyPopup();
     } else if (function == powerOnIndex_) {
-        spdlog::debug("Powering on robot");
+        spdlog::info("Powering on robot");
         // ur_dashboard_->powerOn();
     } else if (function == powerOffIndex_) {
-        spdlog::debug("Powering off robot");
+        spdlog::info("Powering off robot");
         // ur_dashboard_->powerOff();
     } else if (function == brakeReleaseIndex_) {
-        spdlog::debug("Releasing brakes");
+        spdlog::info("Releasing brakes");
         // ur_dashboard_->brakeRelease();
     } else if (function == unlockProtectiveStopIndex_) {
-        spdlog::debug("Unlocking protective stop");
+        spdlog::info("Unlocking protective stop");
         // ur_dashboard_->unlockProtectiveStop();
     } else if (function == restartSafetyIndex_) {
-        spdlog::debug("Restarting safety configuration");
+        spdlog::info("Restarting safety configuration");
         // ur_dashboard_->restartSafety();
     }
 
@@ -165,11 +163,11 @@ asynStatus URRobotDashboard::writeOctet(asynUser *pasynUser, const char *value, 
     asynStatus status = asynSuccess;
     if (function == popupIndex_) {
         std::stringstream ss;
-        spdlog::debug("Popup text: {}", value);
+        spdlog::info("Popup text: {}", value);
         // ur_dashboard_->popup(value);
     } else if (function == loadURPIndex_) {
         std::stringstream ss;
-        spdlog::debug("Loading program ", value);
+        spdlog::info("Loading program ", value);
         // try {
         // ur_dashboard_->loadURP(value);
         // } catch (const std::exception &e) {
