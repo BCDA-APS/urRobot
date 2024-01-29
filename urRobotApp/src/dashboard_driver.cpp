@@ -65,7 +65,7 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
     try {
         ur_dashboard_->connect();
         if (ur_dashboard_->isConnected()) {
-            spdlog::info("Connected to dashboard server");
+            spdlog::info("Connected to UR dashboard server");
             setIntegerParam(isConnectedIndex_, 1);
             connected = true;
         } else {

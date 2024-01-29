@@ -61,11 +61,11 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
 
         // Check that RTDE receive interface is connected
         if (rtde_receive_->isConnected()) {
-            spdlog::info("Connected to RTDE Receive interface");
+            spdlog::info("Connected to UR RTDE interface");
             setIntegerParam(isConnectedIndex_, 1);
             connected = true;
         } else {
-            spdlog::error("Failed to connect to RTDE Receive interface");
+            spdlog::error("Failed to connect to UR RTDE interface");
             setIntegerParam(isConnectedIndex_, 0);
         }
 
