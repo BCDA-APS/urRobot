@@ -52,6 +52,7 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(JOINT_MODES_STRING, asynParamInt32Array, &jointModesIndex_);
     createParam(ACTUAL_TOOL_ACCEL_STRING, asynParamFloat64Array, &actualToolAccelIndex_);
     createParam(SPEED_SLIDER_STRING, asynParamFloat64, &speedSliderIndex_);
+    createParam(SET_STANDARD_DOUT0_STRING, asynParamInt32, &setStandardDOUT0Index_);
 
     bool connected = false;
     try {
@@ -169,12 +170,30 @@ asynStatus URRobotRTDE::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         bool result = rtde_io_->setSpeedSlider(value);
         if (not result) {
             status = asynError;
-            spdlog::warn("Call to setSpeedSlider failed");
+            spdlog::error("Call to setSpeedSlider failed");
         }
     }
 
     callParamCallbacks();
     return status;
+}
+
+asynStatus URRobotRTDE::writeInt32(asynUser *pasynUser, epicsInt32 value) {
+
+    asynStatus status = asynSuccess;
+
+    int function = pasynUser->reason;
+
+    if (function == setStandardDOUT0Index_) {
+        spdlog::info("Setting standard digital output 0 {}", value == 1 ? "high" : "low");
+        bool result = rtde_io_->setStandardDigitalOut(0, static_cast<bool>(value));
+        if (not result) {
+            status = asynError;
+            spdlog::error("Call to setStandardDigitalOut failed");
+        }
+    }
+
+    return asynSuccess;
 }
 
 // register function for iocsh

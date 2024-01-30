@@ -33,6 +33,7 @@ static constexpr char ACTUAL_TOOL_ACCEL_STRING[] = "ACTUAL_TOOL_ACCEL";
 
 // RTDE IO Interface
 static constexpr char SPEED_SLIDER_STRING[] = "SPEED_SLIDER";
+static constexpr char SET_STANDARD_DOUT0_STRING[] = "SET_STANDARD_DIGITAL_OUT0";
 
 // TODO: RTDE Control Interface
 
@@ -45,6 +46,7 @@ class URRobotRTDE : public asynPortDriver {
     URRobotRTDE(const char *asyn_port_name, const char *robot_port_name);
     virtual void poll(void);
     virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
+    virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
 
   private:
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
@@ -79,6 +81,7 @@ class URRobotRTDE : public asynPortDriver {
 
     // rtde_io
     int speedSliderIndex_;
+    int setStandardDOUT0Index_;
 
     // TODO: rtde_control
 };
