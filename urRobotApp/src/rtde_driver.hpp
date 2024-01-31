@@ -51,6 +51,8 @@ static constexpr char SET_TOOL_DOUT0_STRING[] = "SET_TOOL_DIGITAL_OUT0";
 static constexpr char SET_TOOL_DOUT1_STRING[] = "SET_TOOL_DIGITAL_OUT1";
 static constexpr char SET_VOLTAGE_AOUT0_STRING[] = "SET_VOLTAGE_ANALOG_OUT0";
 static constexpr char SET_VOLTAGE_AOUT1_STRING[] = "SET_VOLTAGE_ANALOG_OUT1";
+static constexpr char SET_CURRENT_AOUT0_STRING[] = "SET_CURRENT_ANALOG_OUT0";
+static constexpr char SET_CURRENT_AOUT1_STRING[] = "SET_CURRENT_ANALOG_OUT1";
 
 // TODO: RTDE Control Interface
 
@@ -118,6 +120,9 @@ class URRobotRTDE : public asynPortDriver {
     int setToolDOUT1Index_;
     int setVoltageAOUT0Index_;
     int setVoltageAOUT1Index_;
+    int setCurrentAOUT0Index_;
+    int setCurrentAOUT1Index_;
+    
 
     // TODO: rtde_control
 };

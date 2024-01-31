@@ -71,6 +71,8 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(SET_TOOL_DOUT1_STRING, asynParamInt32, &setToolDOUT1Index_);
     createParam(SET_VOLTAGE_AOUT0_STRING, asynParamFloat64, &setVoltageAOUT0Index_);
     createParam(SET_VOLTAGE_AOUT1_STRING, asynParamFloat64, &setVoltageAOUT1Index_);
+    createParam(SET_CURRENT_AOUT0_STRING, asynParamFloat64, &setCurrentAOUT0Index_);
+    createParam(SET_CURRENT_AOUT1_STRING, asynParamFloat64, &setCurrentAOUT1Index_);
 
     bool connected = false;
     try {
@@ -188,6 +190,10 @@ asynStatus URRobotRTDE::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         rtde_io_ok = rtde_io_->setAnalogOutputVoltage(0, value);
     } else if (function == setVoltageAOUT1Index_) {
         rtde_io_ok = rtde_io_->setAnalogOutputVoltage(1, value);
+    } else if (function == setCurrentAOUT0Index_) {
+        rtde_io_ok = rtde_io_->setAnalogOutputCurrent(0, value);
+    } else if (function == setCurrentAOUT1Index_) {
+        rtde_io_ok = rtde_io_->setAnalogOutputCurrent(1, value);
     }
 
     callParamCallbacks();

@@ -25,6 +25,24 @@ record(ao, "$(P)$(R)RTDE:SetVoltageAnalogOut1")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT1")
 }
 
+record(ao, "$(P)$(R)RTDE:SetCurrentAnalogOut0")
+{
+    field(DESC, "Analog output current 0")
+    field(DTYP, "asynFloat64")
+    field(DRVH, "1.0")
+    field(DRVL, "0.0")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CURRENT_ANALOG_OUT0")
+}
+
+record(ao, "$(P)$(R)RTDE:SetCurrentAnalogOut1")
+{
+    field(DESC, "Analog output current 1")
+    field(DTYP, "asynFloat64")
+    field(DRVH, "1.0")
+    field(DRVL, "0.0")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CURRENT_ANALOG_OUT1")
+}
+
 record(bo, "$(P)$(R)RTDE:SetStandardDigitalOut0")
 {
     field(DESC, "Standard digital output 0")
