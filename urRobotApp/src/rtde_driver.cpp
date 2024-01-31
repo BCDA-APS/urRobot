@@ -7,8 +7,8 @@
 #include <iocsh.h>
 #include <memory>
 
-#include "spdlog/spdlog.h"
 #include "rtde_driver.hpp"
+#include "spdlog/spdlog.h"
 #include "ur_rtde/rtde_receive_interface.h"
 
 static void poll_thread_C(void *pPvt) {
@@ -29,7 +29,6 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
                      0, 0),
       rtde_receive_(nullptr), rtde_io_(nullptr) {
 
-    // create asyn parameters
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
     createParam(RUNTIME_STATE_STRING, asynParamInt32, &runtimeStateIndex_);
     createParam(ROBOT_MODE_STRING, asynParamInt32, &robotModeIndex_);
@@ -70,6 +69,8 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(SET_CONFIG_DOUT7_STRING, asynParamInt32, &setConfigDOUT7Index_);
     createParam(SET_TOOL_DOUT0_STRING, asynParamInt32, &setToolDOUT0Index_);
     createParam(SET_TOOL_DOUT1_STRING, asynParamInt32, &setToolDOUT1Index_);
+    createParam(SET_VOLTAGE_AOUT0_STRING, asynParamFloat64, &setVoltageAOUT0Index_);
+    createParam(SET_VOLTAGE_AOUT1_STRING, asynParamFloat64, &setVoltageAOUT1Index_);
 
     bool connected = false;
     try {
@@ -178,104 +179,93 @@ void URRobotRTDE::poll() {
 
 asynStatus URRobotRTDE::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
 
-    asynStatus status = asynSuccess;
-
     int function = pasynUser->reason;
 
+    bool rtde_io_ok = true;
     if (function == speedSliderIndex_) {
-        spdlog::info("Setting speed slider to {}%", value * 100.0);
-        bool result = rtde_io_->setSpeedSlider(value);
-        if (not result) {
-            status = asynError;
-            spdlog::error("Call to setSpeedSlider failed");
-        }
+        rtde_io_ok = rtde_io_->setSpeedSlider(value);
+    } else if (function == setVoltageAOUT0Index_) {
+        rtde_io_ok = rtde_io_->setAnalogOutputVoltage(0, value);
+    } else if (function == setVoltageAOUT1Index_) {
+        rtde_io_ok = rtde_io_->setAnalogOutputVoltage(1, value);
     }
 
     callParamCallbacks();
-    return status;
+    if (not rtde_io_ok) {
+        spdlog::error("Call to setSpeedSlider failed");
+        return asynError;
+    } else {
+        return asynSuccess;
+    }
 }
 
 asynStatus URRobotRTDE::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
 
-    bool rtde_io_result = true;
+    bool rtde_io_ok = true;
     if (function == setStandardDOUT0Index_) {
         spdlog::info("Setting standard digital output 0 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setStandardDigitalOut(0, static_cast<bool>(value));
-    }
-    if (function == setStandardDOUT1Index_) {
+        rtde_io_ok = rtde_io_->setStandardDigitalOut(0, static_cast<bool>(value));
+    } else if (function == setStandardDOUT1Index_) {
         spdlog::info("Setting standard digital output 1 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setStandardDigitalOut(1, static_cast<bool>(value));
-    }
-    if (function == setStandardDOUT2Index_) {
+        rtde_io_ok = rtde_io_->setStandardDigitalOut(1, static_cast<bool>(value));
+    } else if (function == setStandardDOUT2Index_) {
         spdlog::info("Setting standard digital output 2 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setStandardDigitalOut(2, static_cast<bool>(value));
-    }
-    if (function == setStandardDOUT3Index_) {
+        rtde_io_ok = rtde_io_->setStandardDigitalOut(2, static_cast<bool>(value));
+    } else if (function == setStandardDOUT3Index_) {
         spdlog::info("Setting standard digital output 3 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setStandardDigitalOut(3, static_cast<bool>(value));
-    }
-    if (function == setStandardDOUT4Index_) {
+        rtde_io_ok = rtde_io_->setStandardDigitalOut(3, static_cast<bool>(value));
+    } else if (function == setStandardDOUT4Index_) {
         spdlog::info("Setting standard digital output 4 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setStandardDigitalOut(4, static_cast<bool>(value));
-    }
-    if (function == setStandardDOUT5Index_) {
+        rtde_io_ok = rtde_io_->setStandardDigitalOut(4, static_cast<bool>(value));
+    } else if (function == setStandardDOUT5Index_) {
         spdlog::info("Setting standard digital output 5 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setStandardDigitalOut(5, static_cast<bool>(value));
-    }
-    if (function == setStandardDOUT6Index_) {
+        rtde_io_ok = rtde_io_->setStandardDigitalOut(5, static_cast<bool>(value));
+    } else if (function == setStandardDOUT6Index_) {
         spdlog::info("Setting standard digital output 6 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setStandardDigitalOut(6, static_cast<bool>(value));
-    }
-    if (function == setStandardDOUT7Index_) {
+        rtde_io_ok = rtde_io_->setStandardDigitalOut(6, static_cast<bool>(value));
+    } else if (function == setStandardDOUT7Index_) {
         spdlog::info("Setting standard digital output 7 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setStandardDigitalOut(7, static_cast<bool>(value));
+        rtde_io_ok = rtde_io_->setStandardDigitalOut(7, static_cast<bool>(value));
     }
 
-    if (function == setConfigDOUT0Index_) {
+    else if (function == setConfigDOUT0Index_) {
         spdlog::info("Setting configurable digital output 0 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setConfigurableDigitalOut(0, static_cast<bool>(value));
-    }
-    if (function == setConfigDOUT1Index_) {
+        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(0, static_cast<bool>(value));
+    } else if (function == setConfigDOUT1Index_) {
         spdlog::info("Setting configurable digital output 1 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setConfigurableDigitalOut(1, static_cast<bool>(value));
-    }
-    if (function == setConfigDOUT2Index_) {
+        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(1, static_cast<bool>(value));
+    } else if (function == setConfigDOUT2Index_) {
         spdlog::info("Setting configurable digital output 2 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setConfigurableDigitalOut(2, static_cast<bool>(value));
-    }
-    if (function == setConfigDOUT3Index_) {
+        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(2, static_cast<bool>(value));
+    } else if (function == setConfigDOUT3Index_) {
         spdlog::info("Setting configurable digital output 3 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setConfigurableDigitalOut(3, static_cast<bool>(value));
-    }
-    if (function == setConfigDOUT4Index_) {
+        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(3, static_cast<bool>(value));
+    } else if (function == setConfigDOUT4Index_) {
         spdlog::info("Setting configurable digital output 4 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setConfigurableDigitalOut(4, static_cast<bool>(value));
-    }
-    if (function == setConfigDOUT5Index_) {
+        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(4, static_cast<bool>(value));
+    } else if (function == setConfigDOUT5Index_) {
         spdlog::info("Setting configurable digital output 5 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setConfigurableDigitalOut(5, static_cast<bool>(value));
-    }
-    if (function == setConfigDOUT6Index_) {
+        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(5, static_cast<bool>(value));
+    } else if (function == setConfigDOUT6Index_) {
         spdlog::info("Setting configurable digital output 6 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setConfigurableDigitalOut(6, static_cast<bool>(value));
-    }
-    if (function == setConfigDOUT7Index_) {
+        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(6, static_cast<bool>(value));
+    } else if (function == setConfigDOUT7Index_) {
         spdlog::info("Setting configurable digital output 7 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setConfigurableDigitalOut(7, static_cast<bool>(value));
+        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(7, static_cast<bool>(value));
     }
 
-    if (function == setToolDOUT0Index_) {
+    else if (function == setToolDOUT0Index_) {
         spdlog::info("Setting tool digital output 0 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setToolDigitalOut(0, static_cast<bool>(value));
-    }
-    if (function == setToolDOUT1Index_) {
+        rtde_io_ok = rtde_io_->setToolDigitalOut(0, static_cast<bool>(value));
+    } else if (function == setToolDOUT1Index_) {
         spdlog::info("Setting tool digital output 1 {}", value == 1 ? "high" : "low");
-        rtde_io_result = rtde_io_->setToolDigitalOut(1, static_cast<bool>(value));
+        rtde_io_ok = rtde_io_->setToolDigitalOut(1, static_cast<bool>(value));
     }
 
-    if (not rtde_io_result) {
+    callParamCallbacks();
+    if (not rtde_io_ok) {
         spdlog::error("Call to setStandardDigitalOut failed");
         return asynError;
     } else {

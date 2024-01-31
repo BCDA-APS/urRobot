@@ -7,6 +7,24 @@ record(ao, "$(P)$(R)RTDE:SpeedSlider")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SPEED_SLIDER")
 }
 
+record(ao, "$(P)$(R)RTDE:SetVoltageAnalogOut0")
+{
+    field(DESC, "Analog output voltage 0")
+    field(DTYP, "asynFloat64")
+    field(DRVH, "1.0")
+    field(DRVL, "0.0")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT0")
+}
+
+record(ao, "$(P)$(R)RTDE:SetVoltageAnalogOut1")
+{
+    field(DESC, "Analog output voltage 1")
+    field(DTYP, "asynFloat64")
+    field(DRVH, "1.0")
+    field(DRVL, "0.0")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT1")
+}
+
 record(bo, "$(P)$(R)RTDE:SetStandardDigitalOut0")
 {
     field(DESC, "Standard digital output 0")
