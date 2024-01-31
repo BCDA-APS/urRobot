@@ -34,8 +34,16 @@ static constexpr char ACTUAL_TOOL_ACCEL_STRING[] = "ACTUAL_TOOL_ACCEL";
 // RTDE IO Interface
 static constexpr char SPEED_SLIDER_STRING[] = "SPEED_SLIDER";
 static constexpr char SET_STANDARD_DOUT0_STRING[] = "SET_STANDARD_DIGITAL_OUT0";
+static constexpr char SET_STANDARD_DOUT1_STRING[] = "SET_STANDARD_DIGITAL_OUT1";
+static constexpr char SET_STANDARD_DOUT2_STRING[] = "SET_STANDARD_DIGITAL_OUT2";
+static constexpr char SET_STANDARD_DOUT3_STRING[] = "SET_STANDARD_DIGITAL_OUT3";
+static constexpr char SET_STANDARD_DOUT4_STRING[] = "SET_STANDARD_DIGITAL_OUT4";
+static constexpr char SET_STANDARD_DOUT5_STRING[] = "SET_STANDARD_DIGITAL_OUT5";
+static constexpr char SET_STANDARD_DOUT6_STRING[] = "SET_STANDARD_DIGITAL_OUT6";
+static constexpr char SET_STANDARD_DOUT7_STRING[] = "SET_STANDARD_DIGITAL_OUT7";
 
 // TODO: RTDE Control Interface
+
 
 constexpr int MAX_CONTROLLERS = 1;
 constexpr double POLL_PERIOD = 0.10; // seconds
@@ -82,6 +90,13 @@ class URRobotRTDE : public asynPortDriver {
     // rtde_io
     int speedSliderIndex_;
     int setStandardDOUT0Index_;
+    int setStandardDOUT1Index_;
+    int setStandardDOUT2Index_;
+    int setStandardDOUT3Index_;
+    int setStandardDOUT4Index_;
+    int setStandardDOUT5Index_;
+    int setStandardDOUT6Index_;
+    int setStandardDOUT7Index_;
 
     // TODO: rtde_control
 };

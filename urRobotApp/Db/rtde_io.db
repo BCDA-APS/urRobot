@@ -14,21 +14,51 @@ record(bo, "$(P)$(R)RTDE:SetStandardDOUT0")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT0")
 }
 
-# record(bo, "$(P)$(R)RTDE:SetStandardDOUT1")
-# {
-    # field(DESC, "Standard digital output 1")
-    # field(DTYP, "asynInt32")
-    # field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT1")
-# }
-# record(bo, "$(P)$(R)RTDE:SetStandardDOUT2")
-# {
-    # field(DESC, "Standard digital output 2")
-    # field(DTYP, "asynInt32")
-    # field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT2")
-# }
-# record(bo, "$(P)$(R)RTDE:SetStandardDOUT3")
-# {
-    # field(DESC, "Standard digital output 3")
-    # field(DTYP, "asynInt32")
-    # field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT3")
-# }
+record(bo, "$(P)$(R)RTDE:SetStandardDOUT1")
+{
+    field(DESC, "Standard digital output 1")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT1")
+}
+
+record(bo, "$(P)$(R)RTDE:SetStandardDOUT2")
+{
+    field(DESC, "Standard digital output 2")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT2")
+}
+
+record(bo, "$(P)$(R)RTDE:SetStandardDOUT3")
+{
+    field(DESC, "Standard digital output 3")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT3")
+}
+
+record(bo, "$(P)$(R)RTDE:SetStandardDOUT4")
+{
+    field(DESC, "Standard digital output 4")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT4")
+}
+
+record(bo, "$(P)$(R)RTDE:SetStandardDOUT5")
+{
+    field(DESC, "Standard digital output 5")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT5")
+}
+
+record(bo, "$(P)$(R)RTDE:SetStandardDOUT6")
+{
+    field(DESC, "Standard digital output 6")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT6")
+}
+
+record(bo, "$(P)$(R)RTDE:SetStandardDOUT7")
+{
+    field(DESC, "Standard digital output 7")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT7")
+}

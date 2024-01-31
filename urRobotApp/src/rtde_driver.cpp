@@ -7,8 +7,8 @@
 #include <iocsh.h>
 #include <memory>
 
-#include "rtde_driver.hpp"
 #include "spdlog/spdlog.h"
+#include "rtde_driver.hpp"
 #include "ur_rtde/rtde_receive_interface.h"
 
 static void poll_thread_C(void *pPvt) {
@@ -53,6 +53,13 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(ACTUAL_TOOL_ACCEL_STRING, asynParamFloat64Array, &actualToolAccelIndex_);
     createParam(SPEED_SLIDER_STRING, asynParamFloat64, &speedSliderIndex_);
     createParam(SET_STANDARD_DOUT0_STRING, asynParamInt32, &setStandardDOUT0Index_);
+    createParam(SET_STANDARD_DOUT1_STRING, asynParamInt32, &setStandardDOUT1Index_);
+    createParam(SET_STANDARD_DOUT2_STRING, asynParamInt32, &setStandardDOUT2Index_);
+    createParam(SET_STANDARD_DOUT3_STRING, asynParamInt32, &setStandardDOUT3Index_);
+    createParam(SET_STANDARD_DOUT4_STRING, asynParamInt32, &setStandardDOUT4Index_);
+    createParam(SET_STANDARD_DOUT5_STRING, asynParamInt32, &setStandardDOUT5Index_);
+    createParam(SET_STANDARD_DOUT6_STRING, asynParamInt32, &setStandardDOUT6Index_);
+    createParam(SET_STANDARD_DOUT7_STRING, asynParamInt32, &setStandardDOUT7Index_);
 
     bool connected = false;
     try {
@@ -180,20 +187,48 @@ asynStatus URRobotRTDE::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
 
 asynStatus URRobotRTDE::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
-    asynStatus status = asynSuccess;
-
     int function = pasynUser->reason;
 
+    bool rtde_io_result = true;
     if (function == setStandardDOUT0Index_) {
         spdlog::info("Setting standard digital output 0 {}", value == 1 ? "high" : "low");
-        bool result = rtde_io_->setStandardDigitalOut(0, static_cast<bool>(value));
-        if (not result) {
-            status = asynError;
-            spdlog::error("Call to setStandardDigitalOut failed");
-        }
+        rtde_io_result = rtde_io_->setStandardDigitalOut(0, static_cast<bool>(value));
+    }
+    if (function == setStandardDOUT1Index_) {
+        spdlog::info("Setting standard digital output 1 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setStandardDigitalOut(1, static_cast<bool>(value));
+    }
+    if (function == setStandardDOUT2Index_) {
+        spdlog::info("Setting standard digital output 2 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setStandardDigitalOut(2, static_cast<bool>(value));
+    }
+    if (function == setStandardDOUT3Index_) {
+        spdlog::info("Setting standard digital output 3 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setStandardDigitalOut(3, static_cast<bool>(value));
+    }
+    if (function == setStandardDOUT4Index_) {
+        spdlog::info("Setting standard digital output 4 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setStandardDigitalOut(4, static_cast<bool>(value));
+    }
+    if (function == setStandardDOUT5Index_) {
+        spdlog::info("Setting standard digital output 5 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setStandardDigitalOut(5, static_cast<bool>(value));
+    }
+    if (function == setStandardDOUT6Index_) {
+        spdlog::info("Setting standard digital output 6 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setStandardDigitalOut(6, static_cast<bool>(value));
+    }
+    if (function == setStandardDOUT7Index_) {
+        spdlog::info("Setting standard digital output 7 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setStandardDigitalOut(7, static_cast<bool>(value));
     }
 
-    return asynSuccess;
+    if (not rtde_io_result) {
+        spdlog::error("Call to setStandardDigitalOut failed");
+        return asynError;
+    } else {
+        return asynSuccess;
+    }
 }
 
 // register function for iocsh

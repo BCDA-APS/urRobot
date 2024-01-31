@@ -32,7 +32,7 @@
       <name>Action Button</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:Play.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:Play.PROC</pv_name>
           <value>1</value>
           <description>Play</description>
         </action>
@@ -48,7 +48,7 @@
       <name>Action Button_2</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:Pause.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:Pause.PROC</pv_name>
           <value>1</value>
           <description>Pause</description>
         </action>
@@ -64,7 +64,7 @@
       <name>Action Button_3</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:Stop.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:Stop.PROC</pv_name>
           <value>1</value>
           <description>Stop</description>
         </action>
@@ -78,7 +78,7 @@
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Text Entry</name>
-      <pv_name>$(P):$(R):Dashboard:LoadURP</pv_name>
+      <pv_name>$(P)$(R)Dashboard:LoadURP</pv_name>
       <x>12</x>
       <y>81</y>
       <width>180</width>
@@ -86,14 +86,14 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_2</name>
-      <pv_name>$(P):$(R):Dashboard:LoadedProgram</pv_name>
+      <pv_name>$(P)$(R)Dashboard:LoadedProgram</pv_name>
       <x>12</x>
       <y>12</y>
       <width>420</width>
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_2</name>
-      <pv_name>$(P):$(R):Dashboard:IsProgramSaved.RVAL</pv_name>
+      <pv_name>$(P)$(R)Dashboard:IsProgramSaved.RVAL</pv_name>
       <x>452</x>
       <y>12</y>
       <off_color>
@@ -103,7 +103,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_6</name>
-      <pv_name>$(P):$(R):Dashboard:ProgramState</pv_name>
+      <pv_name>$(P)$(R)Dashboard:ProgramState</pv_name>
       <x>12</x>
       <y>42</y>
       <width>420</width>
@@ -117,21 +117,21 @@
     <height>180</height>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_1</name>
-      <pv_name>$(P):$(R):Dashboard:RobotMode</pv_name>
+      <pv_name>$(P)$(R)Dashboard:RobotMode</pv_name>
       <x>12</x>
       <y>82</y>
       <width>450</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update</name>
-      <pv_name>$(P):$(R):Dashboard:SafetyStatus</pv_name>
+      <pv_name>$(P)$(R)Dashboard:SafetyStatus</pv_name>
       <x>12</x>
       <y>112</y>
       <width>450</width>
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED</name>
-      <pv_name>$(P):$(R):Dashboard:Connected.RVAL</pv_name>
+      <pv_name>$(P)$(R)Dashboard:Connected.RVAL</pv_name>
       <x>122</x>
       <y>12</y>
       <off_color>
@@ -149,7 +149,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_1</name>
-      <pv_name>$(P):$(R):Dashboard:IsInRemoteControl.RVAL</pv_name>
+      <pv_name>$(P)$(R)Dashboard:IsInRemoteControl.RVAL</pv_name>
       <x>122</x>
       <y>42</y>
       <off_color>
@@ -176,7 +176,7 @@
       <name>Action Button_4</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:BrakeRelease.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:BrakeRelease.PROC</pv_name>
           <value>1</value>
           <description>Release brakes</description>
         </action>
@@ -191,7 +191,7 @@
       <name>Action Button_8</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:UnlockProtectiveStop.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:UnlockProtectiveStop.PROC</pv_name>
           <value>1</value>
           <description>UnlockProtectiveStop</description>
         </action>
@@ -206,7 +206,7 @@
       <name>Action Button_10</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:CloseSafetyPopup.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:CloseSafetyPopup.PROC</pv_name>
           <value>1</value>
           <description>CloseSafetyPopup</description>
         </action>
@@ -221,7 +221,7 @@
       <name>Action Button_9</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:ClosePopup.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:ClosePopup.PROC</pv_name>
           <value>1</value>
           <description>ClosePopup</description>
         </action>
@@ -236,7 +236,7 @@
       <name>Action Button_7</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:RestartSafety.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:RestartSafety.PROC</pv_name>
           <value>1</value>
           <description>RestartSafety</description>
         </action>
@@ -258,7 +258,7 @@
       <name>Action Button_5</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:PowerOn.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:PowerOn.PROC</pv_name>
           <value>1</value>
           <description>PowerOn</description>
         </action>
@@ -273,7 +273,7 @@
       <name>Action Button_6</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:PowerOff.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:PowerOff.PROC</pv_name>
           <value>1</value>
           <description>PowerOff</description>
         </action>
@@ -288,7 +288,7 @@
       <name>Action Button_1</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:Quit.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:Quit.PROC</pv_name>
           <value>1</value>
           <description>Quit</description>
         </action>
@@ -303,7 +303,7 @@
       <name>Action Button_16</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P):$(R):Dashboard:Shutdown.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:Shutdown.PROC</pv_name>
           <value>1</value>
           <description>Shutdown</description>
         </action>
