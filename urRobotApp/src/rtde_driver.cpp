@@ -68,6 +68,8 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(SET_CONFIG_DOUT5_STRING, asynParamInt32, &setConfigDOUT5Index_);
     createParam(SET_CONFIG_DOUT6_STRING, asynParamInt32, &setConfigDOUT6Index_);
     createParam(SET_CONFIG_DOUT7_STRING, asynParamInt32, &setConfigDOUT7Index_);
+    createParam(SET_TOOL_DOUT0_STRING, asynParamInt32, &setToolDOUT0Index_);
+    createParam(SET_TOOL_DOUT1_STRING, asynParamInt32, &setToolDOUT1Index_);
 
     bool connected = false;
     try {
@@ -262,6 +264,15 @@ asynStatus URRobotRTDE::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     if (function == setConfigDOUT7Index_) {
         spdlog::info("Setting configurable digital output 7 {}", value == 1 ? "high" : "low");
         rtde_io_result = rtde_io_->setConfigurableDigitalOut(7, static_cast<bool>(value));
+    }
+
+    if (function == setToolDOUT0Index_) {
+        spdlog::info("Setting tool digital output 0 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setToolDigitalOut(0, static_cast<bool>(value));
+    }
+    if (function == setToolDOUT1Index_) {
+        spdlog::info("Setting tool digital output 1 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setToolDigitalOut(1, static_cast<bool>(value));
     }
 
     if (not rtde_io_result) {

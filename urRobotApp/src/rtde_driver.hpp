@@ -47,6 +47,8 @@ static constexpr char SET_CONFIG_DOUT4_STRING[] = "SET_CONFIG_DIGITAL_OUT4";
 static constexpr char SET_CONFIG_DOUT5_STRING[] = "SET_CONFIG_DIGITAL_OUT5";
 static constexpr char SET_CONFIG_DOUT6_STRING[] = "SET_CONFIG_DIGITAL_OUT6";
 static constexpr char SET_CONFIG_DOUT7_STRING[] = "SET_CONFIG_DIGITAL_OUT7";
+static constexpr char SET_TOOL_DOUT0_STRING[] = "SET_TOOL_DIGITAL_OUT0";
+static constexpr char SET_TOOL_DOUT1_STRING[] = "SET_TOOL_DIGITAL_OUT1";
 
 // TODO: RTDE Control Interface
 
@@ -110,6 +112,8 @@ class URRobotRTDE : public asynPortDriver {
     int setConfigDOUT5Index_;
     int setConfigDOUT6Index_;
     int setConfigDOUT7Index_;
+    int setToolDOUT0Index_;
+    int setToolDOUT1Index_;
 
     // TODO: rtde_control
 };
