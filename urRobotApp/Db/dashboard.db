@@ -12,7 +12,6 @@ record(stringout, "$(P)$(R)Dashboard:LoadURP")
     field(DESC, "Loads a URP program")
     field(DTYP, "asynOctetWrite")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LOAD_URP")
-    field(SCAN, "I/O Intr")
 }
 
 record(bo, "$(P)$(R)Dashboard:Play")
@@ -64,7 +63,6 @@ record(stringout, "$(P)$(R)Dashboard:Popup")
     field(DESC, "Popup message")
     field(DTYP, "asynOctetWrite")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POPUP")
-    field(SCAN, "I/O Intr")
 }
 
 

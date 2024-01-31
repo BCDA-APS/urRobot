@@ -167,7 +167,7 @@ asynStatus URRobotDashboard::writeOctet(asynUser *pasynUser, const char *value, 
         // ur_dashboard_->popup(value);
     } else if (function == loadURPIndex_) {
         std::stringstream ss;
-        spdlog::info("Loading program ", value);
+        spdlog::info("Loading program {}", value);
         // try {
         // ur_dashboard_->loadURP(value);
         // } catch (const std::exception &e) {
