@@ -1,10 +1,14 @@
 #!/bin/bash
-# FIX: macros are not working, maybe need R value, compare with bcur
+
+URROBOT_PATH="/home/beams/NMARKS/devel/epics_ur_robot/epics-urRobot/"
+P="ur621:"
+R=""
+
 export EPICS_APP=$(cd "$(dirname "$BASH_SOURCE")"; cd -P "$(dirname "$(readlink "$BASH_SOURCE" || echo .)")"; pwd)
-export EPICS_APP_UI_DIR=/home/beams/NMARKS/devel/epics_ur_robot/epics-urRobot/urRobotApp/op/bob
+export EPICS_APP_UI_DIR=${URROBOT_PATH}/urRobotApp/op/bob
 export UI_FILE1=${1:-${DEFAULT_UI_FILE:-ur_dashboard.bob}}
 export UI_FILE2=${1:-${DEFAULT_UI_FILE:-ur_rtde_status.bob}}
-export UI_FILE_MACROS=${2:-"P=ur621:&R="}
+export UI_FILE_MACROS=${2:-"P=${P}&R=${R}"}
 
 # #######################################
 # # optional: support for PVs with large data sizes, such as areaDetector
