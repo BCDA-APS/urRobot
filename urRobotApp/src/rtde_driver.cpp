@@ -60,6 +60,14 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(SET_STANDARD_DOUT5_STRING, asynParamInt32, &setStandardDOUT5Index_);
     createParam(SET_STANDARD_DOUT6_STRING, asynParamInt32, &setStandardDOUT6Index_);
     createParam(SET_STANDARD_DOUT7_STRING, asynParamInt32, &setStandardDOUT7Index_);
+    createParam(SET_CONFIG_DOUT0_STRING, asynParamInt32, &setConfigDOUT0Index_);
+    createParam(SET_CONFIG_DOUT1_STRING, asynParamInt32, &setConfigDOUT1Index_);
+    createParam(SET_CONFIG_DOUT2_STRING, asynParamInt32, &setConfigDOUT2Index_);
+    createParam(SET_CONFIG_DOUT3_STRING, asynParamInt32, &setConfigDOUT3Index_);
+    createParam(SET_CONFIG_DOUT4_STRING, asynParamInt32, &setConfigDOUT4Index_);
+    createParam(SET_CONFIG_DOUT5_STRING, asynParamInt32, &setConfigDOUT5Index_);
+    createParam(SET_CONFIG_DOUT6_STRING, asynParamInt32, &setConfigDOUT6Index_);
+    createParam(SET_CONFIG_DOUT7_STRING, asynParamInt32, &setConfigDOUT7Index_);
 
     bool connected = false;
     try {
@@ -221,6 +229,39 @@ asynStatus URRobotRTDE::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     if (function == setStandardDOUT7Index_) {
         spdlog::info("Setting standard digital output 7 {}", value == 1 ? "high" : "low");
         rtde_io_result = rtde_io_->setStandardDigitalOut(7, static_cast<bool>(value));
+    }
+
+    if (function == setConfigDOUT0Index_) {
+        spdlog::info("Setting configurable digital output 0 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setConfigurableDigitalOut(0, static_cast<bool>(value));
+    }
+    if (function == setConfigDOUT1Index_) {
+        spdlog::info("Setting configurable digital output 1 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setConfigurableDigitalOut(1, static_cast<bool>(value));
+    }
+    if (function == setConfigDOUT2Index_) {
+        spdlog::info("Setting configurable digital output 2 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setConfigurableDigitalOut(2, static_cast<bool>(value));
+    }
+    if (function == setConfigDOUT3Index_) {
+        spdlog::info("Setting configurable digital output 3 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setConfigurableDigitalOut(3, static_cast<bool>(value));
+    }
+    if (function == setConfigDOUT4Index_) {
+        spdlog::info("Setting configurable digital output 4 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setConfigurableDigitalOut(4, static_cast<bool>(value));
+    }
+    if (function == setConfigDOUT5Index_) {
+        spdlog::info("Setting configurable digital output 5 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setConfigurableDigitalOut(5, static_cast<bool>(value));
+    }
+    if (function == setConfigDOUT6Index_) {
+        spdlog::info("Setting configurable digital output 6 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setConfigurableDigitalOut(6, static_cast<bool>(value));
+    }
+    if (function == setConfigDOUT7Index_) {
+        spdlog::info("Setting configurable digital output 7 {}", value == 1 ? "high" : "low");
+        rtde_io_result = rtde_io_->setConfigurableDigitalOut(7, static_cast<bool>(value));
     }
 
     if (not rtde_io_result) {

@@ -18,10 +18,8 @@ static constexpr char STD_ANALOG_INPUT0_STRING[] = "STD_ANALOG_INPUT0";
 static constexpr char STD_ANALOG_INPUT1_STRING[] = "STD_ANALOG_INPUT1";
 static constexpr char STD_ANALOG_OUTPUT0_STRING[] = "STD_ANALOG_OUTPUT0";
 static constexpr char STD_ANALOG_OUTPUT1_STRING[] = "STD_ANALOG_OUTPUT1";
-
 static constexpr char DIGITAL_INPUT_BITS_STRING[] = "DIGITAL_INPUT_BITS";
 static constexpr char DIGITAL_OUTPUT_BITS_STRING[] = "DIGITAL_OUTPUT_BITS";
-
 static constexpr char ACTUAL_JOINT_POS_STRING[] = "ACTUAL_JOINT_POSITIONS";
 static constexpr char ACTUAL_JOINT_VEL_STRING[] = "ACTUAL_JOINT_VELOCITIES";
 static constexpr char ACTUAL_JOINT_CURRENTS_STRING[] = "ACTUAL_JOINT_CURRENTS";
@@ -41,9 +39,16 @@ static constexpr char SET_STANDARD_DOUT4_STRING[] = "SET_STANDARD_DIGITAL_OUT4";
 static constexpr char SET_STANDARD_DOUT5_STRING[] = "SET_STANDARD_DIGITAL_OUT5";
 static constexpr char SET_STANDARD_DOUT6_STRING[] = "SET_STANDARD_DIGITAL_OUT6";
 static constexpr char SET_STANDARD_DOUT7_STRING[] = "SET_STANDARD_DIGITAL_OUT7";
+static constexpr char SET_CONFIG_DOUT0_STRING[] = "SET_CONFIG_DIGITAL_OUT0";
+static constexpr char SET_CONFIG_DOUT1_STRING[] = "SET_CONFIG_DIGITAL_OUT1";
+static constexpr char SET_CONFIG_DOUT2_STRING[] = "SET_CONFIG_DIGITAL_OUT2";
+static constexpr char SET_CONFIG_DOUT3_STRING[] = "SET_CONFIG_DIGITAL_OUT3";
+static constexpr char SET_CONFIG_DOUT4_STRING[] = "SET_CONFIG_DIGITAL_OUT4";
+static constexpr char SET_CONFIG_DOUT5_STRING[] = "SET_CONFIG_DIGITAL_OUT5";
+static constexpr char SET_CONFIG_DOUT6_STRING[] = "SET_CONFIG_DIGITAL_OUT6";
+static constexpr char SET_CONFIG_DOUT7_STRING[] = "SET_CONFIG_DIGITAL_OUT7";
 
 // TODO: RTDE Control Interface
-
 
 constexpr int MAX_CONTROLLERS = 1;
 constexpr double POLL_PERIOD = 0.10; // seconds
@@ -97,6 +102,14 @@ class URRobotRTDE : public asynPortDriver {
     int setStandardDOUT5Index_;
     int setStandardDOUT6Index_;
     int setStandardDOUT7Index_;
+    int setConfigDOUT0Index_;
+    int setConfigDOUT1Index_;
+    int setConfigDOUT2Index_;
+    int setConfigDOUT3Index_;
+    int setConfigDOUT4Index_;
+    int setConfigDOUT5Index_;
+    int setConfigDOUT6Index_;
+    int setConfigDOUT7Index_;
 
     // TODO: rtde_control
 };
