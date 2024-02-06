@@ -12,7 +12,6 @@
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
 
-
 static void poll_thread_C(void *pPvt) {
     URRobotDashboard *pURRobotDashboard = (URRobotDashboard *)pPvt;
     pURRobotDashboard->poll();
@@ -28,7 +27,6 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
                      0, 0),
       ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)),
       poll_time_(DEFAULT_POLL_TIME) {
-
 
     // create asyn parameters
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
@@ -56,10 +54,10 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
     createParam(SAFETY_STATUS, asynParamOctet, &safetyStatusIndex_);
     createParam(IS_PROGRAM_SAVED, asynParamInt32, &isProgramSavedIndex_);
     createParam(IS_IN_REMOTE_CONTROL, asynParamInt32, &isInRemoteControlIndex_);
-    
+
     // TODO: make log level an arg to the constructor
     spdlog::set_level(spdlog::level::debug); // Set global log level to debug
-    
+
     // connect to the UR dashboard server
     bool connected = false;
     try {
@@ -116,40 +114,40 @@ asynStatus URRobotDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     if (function == playIndex_) {
         spdlog::info("Playing loaded program");
-        // ur_dashboard_->play();
+        ur_dashboard_->play();
     } else if (function == stopIndex_) {
         spdlog::info("Stopping current program");
-        // ur_dashboard_->stop();
+        ur_dashboard_->stop();
     } else if (function == pauseIndex_) {
         spdlog::info("Pausing current program");
-        // ur_dashboard_->pause();
+        ur_dashboard_->pause();
     } else if (function == quitIndex_) {
         spdlog::info("Disconnecting from dashboard server");
-        // ur_dashboard_->quit();
+        ur_dashboard_->quit();
     } else if (function == shutdownIndex_) {
         spdlog::info("Shutting down robot and controller");
-        // ur_dashboard_->shutdown();
+        ur_dashboard_->shutdown();
     } else if (function == closePopupIndex_) {
         spdlog::info("Closing popup");
-        // ur_dashboard_->closePopup();
+        ur_dashboard_->closePopup();
     } else if (function == closeSafetyPopupIndex_) {
         spdlog::info("Closing safety popup");
-        // ur_dashboard_->closeSafetyPopup();
+        ur_dashboard_->closeSafetyPopup();
     } else if (function == powerOnIndex_) {
         spdlog::info("Powering on robot");
-        // ur_dashboard_->powerOn();
+        ur_dashboard_->powerOn();
     } else if (function == powerOffIndex_) {
         spdlog::info("Powering off robot");
-        // ur_dashboard_->powerOff();
+        ur_dashboard_->powerOff();
     } else if (function == brakeReleaseIndex_) {
         spdlog::info("Releasing brakes");
-        // ur_dashboard_->brakeRelease();
+        ur_dashboard_->brakeRelease();
     } else if (function == unlockProtectiveStopIndex_) {
         spdlog::info("Unlocking protective stop");
-        // ur_dashboard_->unlockProtectiveStop();
+        ur_dashboard_->unlockProtectiveStop();
     } else if (function == restartSafetyIndex_) {
         spdlog::info("Restarting safety configuration");
-        // ur_dashboard_->restartSafety();
+        ur_dashboard_->restartSafety();
     }
 
     callParamCallbacks();
@@ -164,16 +162,16 @@ asynStatus URRobotDashboard::writeOctet(asynUser *pasynUser, const char *value, 
     if (function == popupIndex_) {
         std::stringstream ss;
         spdlog::info("Popup text: {}", value);
-        // ur_dashboard_->popup(value);
+        ur_dashboard_->popup(value);
     } else if (function == loadURPIndex_) {
         std::stringstream ss;
         spdlog::info("Loading program {}", value);
-        // try {
-        // ur_dashboard_->loadURP(value);
-        // } catch (const std::exception &e) {
-        // std::cout << "Caught exception: " << e.what() << std::endl;
-        // status = asynError;
-        // }
+        try {
+            ur_dashboard_->loadURP(value);
+        } catch (const std::exception &e) {
+            std::cout << "Caught exception: " << e.what() << std::endl;
+            status = asynError;
+        }
     }
 
     callParamCallbacks();
