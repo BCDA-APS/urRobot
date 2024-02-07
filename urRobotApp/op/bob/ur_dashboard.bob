@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-01-26 09:21:51 by nmarks-->
+<!--Saved on 2024-02-07 09:10:39 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
   <width>600</width>
@@ -169,24 +169,8 @@
   <widget type="group" version="2.0.0">
     <name>Control</name>
     <x>10</x>
-    <y>50</y>
+    <y>100</y>
     <width>190</width>
-    <height>250</height>
-    <widget type="action_button" version="3.0.0">
-      <name>Action Button_4</name>
-      <actions>
-        <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:BrakeRelease.PROC</pv_name>
-          <value>1</value>
-          <description>Release brakes</description>
-        </action>
-      </actions>
-      <text>Release Brakes</text>
-      <x>2</x>
-      <y>12</y>
-      <width>150</width>
-      <tooltip>$(actions)</tooltip>
-    </widget>
     <widget type="action_button" version="3.0.0">
       <name>Action Button_8</name>
       <actions>
@@ -198,7 +182,7 @@
       </actions>
       <text>Unlock Protective Stop</text>
       <x>2</x>
-      <y>52</y>
+      <y>92</y>
       <width>150</width>
       <tooltip>$(actions)</tooltip>
     </widget>
@@ -213,7 +197,7 @@
       </actions>
       <text>Close Safety Popup</text>
       <x>2</x>
-      <y>92</y>
+      <y>52</y>
       <width>150</width>
       <tooltip>$(actions)</tooltip>
     </widget>
@@ -228,22 +212,22 @@
       </actions>
       <text>Close Popup</text>
       <x>2</x>
-      <y>132</y>
+      <y>12</y>
       <width>150</width>
       <tooltip>$(actions)</tooltip>
     </widget>
     <widget type="action_button" version="3.0.0">
-      <name>Action Button_7</name>
+      <name>Action Button_4</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:RestartSafety.PROC</pv_name>
+          <pv_name>$(P)$(R)Dashboard:BrakeRelease.PROC</pv_name>
           <value>1</value>
-          <description>RestartSafety</description>
+          <description>Release brakes</description>
         </action>
       </actions>
-      <text>Restart Safety</text>
+      <text>Release Brakes</text>
       <x>2</x>
-      <y>172</y>
+      <y>132</y>
       <width>150</width>
       <tooltip>$(actions)</tooltip>
     </widget>
@@ -251,7 +235,7 @@
   <widget type="group" version="2.0.0">
     <name>Power</name>
     <x>220</x>
-    <y>50</y>
+    <y>100</y>
     <width>190</width>
     <height>170</height>
     <widget type="action_button" version="3.0.0">
