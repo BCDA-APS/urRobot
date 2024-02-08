@@ -1,6 +1,6 @@
 # urRobot EPICS Support Module
 This support module provides an interace between function calls in the
-[ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) library to EPICS PVs through asyn parameters.
+[ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) library and EPICS PVs through asyn parameters.
 
 ## Build Instructions
 
