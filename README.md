@@ -5,11 +5,13 @@ This support module provides an interace between function calls in the
 ## Build Instructions
 
 **Supported Operating Systems**
+
 64-bit Linux is the only supported operating system. It was developed on Red Hat Enterprise Linux (RHEL) 9,
 however it has been testing on Ubuntu 22.04 and should work on most 64-bit Linux systems regardless of
 distribution. If you believe it should work on your OS or distribution and it does not, open a GitHub issue.
 
 **Dependencies**
+
 - EPICS Base 7.0.8
 - asyn R4-42
 - [ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) (included)
