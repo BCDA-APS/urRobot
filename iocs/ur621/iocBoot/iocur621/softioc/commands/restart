@@ -1,6 +1,0 @@
-register "restart" restart
-
-restart() {
-    ioc_cmd stop
-    ioc_cmd start
-}

@@ -1,8 +1,16 @@
 #!/bin/bash
 
+# path the CSS phoebus executable
+PHOEBUS="/APSshare/bin/phoebus"
+
+# path to urRobot support module
 URROBOT_PATH="/home/beams/NMARKS/devel/epics_ur_robot/epics-urRobot/"
+
+# ioc prefixes
 P="ur621:"
 R=""
+
+#######################################
 
 export EPICS_APP=$(cd "$(dirname "$BASH_SOURCE")"; cd -P "$(dirname "$(readlink "$BASH_SOURCE" || echo .)")"; pwd)
 export EPICS_APP_UI_DIR=${URROBOT_PATH}/urRobotApp/op/bob
@@ -27,5 +35,5 @@ export EDITOR=nedit
 #######################################
 # start CSS-phoebus
 
-/APSshare/bin/phoebus -layout $EPICS_APP/phoebus.layout -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE1}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE2}?${UI_FILE_MACROS}&target=window"
+${PHOEBUS} -layout $EPICS_APP/phoebus.layout -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE1}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE2}?${UI_FILE_MACROS}&target=window"
 
