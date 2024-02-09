@@ -124,9 +124,6 @@ void URRobotRTDE::poll() {
         if (rtde_receive_->isConnected()) {
             setIntegerParam(isConnectedIndex_, 1);
 
-            // const uint32_t safety_status_bits = rtde_receive_->getSafetyStatusBits();
-            // const std::bitset<32> bits(safety_status_bits);
-
             setDoubleParam(controllerTimestampIndex_, rtde_receive_->getTimestamp());
             setIntegerParam(safetyStatusBitsIndex_, rtde_receive_->getSafetyStatusBits());
             setIntegerParam(runtimeStateIndex_, rtde_receive_->getRuntimeState());
@@ -139,6 +136,13 @@ void URRobotRTDE::poll() {
             setDoubleParam(stdAnalogInput1Index_, rtde_receive_->getStandardAnalogInput1());
             setDoubleParam(stdAnalogOutput0Index_, rtde_receive_->getStandardAnalogOutput0());
             setDoubleParam(stdAnalogOutput1Index_, rtde_receive_->getStandardAnalogOutput1());
+
+            setDoubleParam(speedScalingIndex_, rtde_receive_->getSpeedScaling());
+            setDoubleParam(targetSpeedFractionIndex_, rtde_receive_->getTargetSpeedFraction());
+            setDoubleParam(actualMomentumIndex_, rtde_receive_->getActualMomentum());
+            setDoubleParam(actualMainVoltageIndex_, rtde_receive_->getActualMainVoltage());
+            setDoubleParam(actualRobotVoltageIndex_, rtde_receive_->getActualRobotVoltage());
+            setDoubleParam(actualRobotCurrentIndex_, rtde_receive_->getActualRobotCurrent());
 
             const std::vector<int32_t> joint_modes_vec = rtde_receive_->getJointMode();
             epicsInt32 joint_modes[NUM_JOINTS];
@@ -184,13 +188,13 @@ void URRobotRTDE::poll() {
             epicsFloat64 tool_accel[3];
             std::copy(tool_accel_vec.begin(), tool_accel_vec.end(), tool_accel);
             doCallbacksFloat64Array(tool_accel, 3, actualToolAccelIndex_, 0);
-            
+
             // ------------------------------------------------------------------------
             const std::vector<double> target_Q_vec = rtde_receive_->getTargetQ();
             epicsFloat64 target_Q[NUM_JOINTS];
             std::copy(target_Q_vec.begin(), target_Q_vec.end(), target_Q);
             doCallbacksFloat64Array(target_Q, NUM_JOINTS, targetJointPosIndex_, 0);
-            
+
             const std::vector<double> target_Qd_vec = rtde_receive_->getTargetQd();
             epicsFloat64 target_Qd[NUM_JOINTS];
             std::copy(target_Qd_vec.begin(), target_Qd_vec.end(), target_Qd);
@@ -200,7 +204,7 @@ void URRobotRTDE::poll() {
             epicsFloat64 target_Qdd[NUM_JOINTS];
             std::copy(target_Qdd_vec.begin(), target_Qdd_vec.end(), target_Qdd);
             doCallbacksFloat64Array(target_Qdd, NUM_JOINTS, targetJointAccelIndex_, 0);
-            
+
             const std::vector<double> target_currents_vec = rtde_receive_->getTargetCurrent();
             epicsFloat64 target_currents[NUM_JOINTS];
             std::copy(target_currents_vec.begin(), target_currents_vec.end(), target_currents);
@@ -225,13 +229,7 @@ void URRobotRTDE::poll() {
             epicsFloat64 joint_temps[NUM_JOINTS];
             std::copy(joint_temps_vec.begin(), joint_temps_vec.end(), joint_temps);
             doCallbacksFloat64Array(joint_temps, NUM_JOINTS, jointTemperaturesIndex_, 0);
-            // ------------------------------------------------------------------------
-            setDoubleParam(speedScalingIndex_, rtde_receive_->getSpeedScaling());
-            setDoubleParam(targetSpeedFractionIndex_, rtde_receive_->getTargetSpeedFraction());
-            setDoubleParam(actualMomentumIndex_, rtde_receive_->getActualMomentum());
-            setDoubleParam(actualMainVoltageIndex_, rtde_receive_->getActualMainVoltage());
-            setDoubleParam(actualRobotVoltageIndex_, rtde_receive_->getActualRobotVoltage());
-            setDoubleParam(actualRobotCurrentIndex_, rtde_receive_->getActualRobotCurrent());
+
             const std::vector<double> joint_voltages_vec = rtde_receive_->getActualJointVoltage();
             epicsFloat64 joint_voltages[NUM_JOINTS];
             std::copy(joint_voltages_vec.begin(), joint_voltages_vec.end(), joint_voltages);
