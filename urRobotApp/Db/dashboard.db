@@ -35,11 +35,18 @@ record(bo, "$(P)$(R)Dashboard:Pause")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PAUSE")
 }
 
-record(bo, "$(P)$(R)Dashboard:Quit")
+record(bo, "$(P)$(R)Dashboard:Connect")
+{
+    field(DESC, "Connects to dashboard server")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CONNECT")
+}
+
+record(bo, "$(P)$(R)Dashboard:Disconnect")
 {
     field(DESC, "Closes connection")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))QUIT")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DISCONNECT")
 }
 
 record(bo, "$(P)$(R)Dashboard:Shutdown")

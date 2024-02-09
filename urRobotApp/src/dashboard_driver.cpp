@@ -34,7 +34,8 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
     createParam(PLAY_STRING, asynParamInt32, &playIndex_);
     createParam(STOP_STRING, asynParamInt32, &stopIndex_);
     createParam(PAUSE_STRING, asynParamInt32, &pauseIndex_);
-    createParam(QUIT_STRING, asynParamInt32, &quitIndex_);
+    createParam(CONNECT_STRING, asynParamInt32, &connectIndex_);
+    createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
     createParam(SHUTDOWN_STRING, asynParamInt32, &shutdownIndex_);
     createParam(IS_RUNNING_STRING, asynParamInt32, &isRunningIndex_);
     createParam(CLOSE_POPUP_STRING, asynParamInt32, &closePopupIndex_);
@@ -121,9 +122,12 @@ asynStatus URRobotDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     } else if (function == pauseIndex_) {
         spdlog::info("Pausing current program");
         ur_dashboard_->pause();
-    } else if (function == quitIndex_) {
+    } else if (function == connectIndex_) {
+        spdlog::info("Connecting to dashboard server");
+        ur_dashboard_->connect();
+    } else if (function == disconnectIndex_) {
         spdlog::info("Disconnecting from dashboard server");
-        ur_dashboard_->quit();
+        ur_dashboard_->disconnect();
     } else if (function == shutdownIndex_) {
         spdlog::info("Shutting down robot and controller");
         ur_dashboard_->shutdown();
