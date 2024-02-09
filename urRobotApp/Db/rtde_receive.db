@@ -184,3 +184,130 @@ record(waveform, "$(P)$(R)RTDE:ActualToolAccelerometer")
     field(SCAN, "I/O Intr")
 }
 
+record(waveform, "$(P)$(R)RTDE:TargetJointPositions")
+{
+    field(DESC, "Target joint positions")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))TARGET_JOINT_POSITIONS")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)$(R)RTDE:TargetJointSpeeds")
+{
+    field(DESC, "Target joint speeds")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))TARGET_JOINT_SPEEDS")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)$(R)RTDE:TargetJointAccelerations")
+{
+    field(DESC, "Target joint accelerations")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))TARGET_JOINT_ACCELERATIONS")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)$(R)RTDE:TargetJointCurrents")
+{
+    field(DESC, "Target joint currents")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))TARGET_JOINT_CURRENTS")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)$(R)RTDE:TargetJointMoments")
+{
+    field(DESC, "Target joint currents")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))TARGET_JOINT_CURRENTS")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)$(R)RTDE:TargetTCPPose")
+{
+    field(DESC, "Target TCP pose (x,y,z,r,p,y)")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))TARGET_TCP_POSE")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)$(R)RTDE:TargetTCPSpeed")
+{
+    field(DESC, "Target TCP speed")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))TARGET_TCP_SPEED")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)RTDE:SpeedScaling")
+{
+    field(DESC, "Speed scaling")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SPEED_SCALING")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)RTDE:TargetSpeedFraction")
+{
+    field(DESC, "Target speed fraction")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))TARGET_SPEED_FRACTION")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)RTDE:ActualMomentum")
+{
+    field(DESC, "Norm of Cartesian linear momentum")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_MOMENTUM")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)RTDE:ActualMainVoltage")
+{
+    field(DESC, "Safety control board main voltage")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_MAIN_VOLTAGE")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)RTDE:ActualRobotVoltage")
+{
+    field(DESC, "Safety control board robot voltage")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_ROBOT_VOLTAGE")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)RTDE:ActualRobotCurrent")
+{
+    field(DESC, "Safety control board robot current")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_ROBOT_CURRENT")
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)$(R)RTDE:ActualJointVoltages")
+{
+    field(DESC, "Actual joint voltages")
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_JOINT_VOLTAGES")
+    field(NELM, 6)
+    field(SCAN, "I/O Intr")
+}

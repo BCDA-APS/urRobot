@@ -5,8 +5,8 @@ TOP=../..
 include $(TOP)/configure/CONFIG
 
 # include ur_rtde library headers
-USR_INCLUDES += -I../ur_rtde/ur_rtde
-USR_INCLUDES += -I../ur_rtde/urcl
+USR_INCLUDES += -I../ur_rtde
+USR_INCLUDES += -I../urcl
 USR_INCLUDES += -I../spdlog
 
 LIB_INSTALLS += ../os/rhel9/librtde.a

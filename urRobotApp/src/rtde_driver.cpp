@@ -1,5 +1,4 @@
 #include <asynOctetSyncIO.h>
-#include <bitset>
 #include <cstdint>
 #include <epicsExport.h>
 #include <epicsString.h>
@@ -9,7 +8,7 @@
 
 #include "rtde_driver.hpp"
 #include "spdlog/spdlog.h"
-#include "ur_rtde/rtde_receive_interface.h"
+// #include "ur_rtde/rtde_receive_interface.h"
 
 static void poll_thread_C(void *pPvt) {
     URRobotRTDE *pURRobotRTDE = (URRobotRTDE *)pPvt;
@@ -74,6 +73,23 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(SET_CURRENT_AOUT0_STRING, asynParamFloat64, &setCurrentAOUT0Index_);
     createParam(SET_CURRENT_AOUT1_STRING, asynParamFloat64, &setCurrentAOUT1Index_);
 
+    // TODO: use these parameters in polling loop
+    createParam(TARGET_JOINT_POS_STRING, asynParamFloat64Array, &targetJointPosIndex_);
+    createParam(TARGET_JOINT_VEL_STRING, asynParamFloat64Array, &targetJointVelIndex_);
+    createParam(TARGET_JOINT_ACCEL_STRING, asynParamFloat64Array, &targetJointAccelIndex_);
+    createParam(TARGET_JOINT_CURRENTS_STRING, asynParamFloat64Array, &targetJointCurrentsIndex_);
+    createParam(TARGET_JOINT_MOMENTS_STRING, asynParamFloat64Array, &targetJointMomentsIndex_);
+    createParam(TARGET_TCP_POSE_STRING, asynParamFloat64Array, &targetTCPPoseIndex_);
+    createParam(TARGET_TCP_SPEED_STRING, asynParamFloat64Array, &targetTCPSpeedIndex_);
+    createParam(JOINT_TEMPERATURES_STRING, asynParamFloat64Array, &jointTemperaturesIndex_);
+    createParam(SPEED_SCALING_STRING, asynParamFloat64, &speedScalingIndex_);
+    createParam(TARGET_SPEED_FRACTION_STRING, asynParamFloat64, &targetSpeedFractionIndex_);
+    createParam(ACTUAL_MOMENTUM_STRING, asynParamFloat64, &actualMomentumIndex_);
+    createParam(ACTUAL_MAIN_VOLTAGE_STRING, asynParamFloat64, &actualMainVoltageIndex_);
+    createParam(ACTUAL_ROBOT_VOLTAGE_STRING, asynParamFloat64, &actualRobotVoltageIndex_);
+    createParam(ACTUAL_ROBOT_CURRENT_STRING, asynParamFloat64, &actualRobotCurrentIndex_);
+    createParam(ACTUAL_JOINT_VOLTAGES_STRING, asynParamFloat64Array, &actualJointVoltagesIndex_);
+
     bool connected = false;
     try {
         // construction of the RTDE objects automatically tries connecting
@@ -108,11 +124,11 @@ void URRobotRTDE::poll() {
         if (rtde_receive_->isConnected()) {
             setIntegerParam(isConnectedIndex_, 1);
 
-            const uint32_t safety_status_bits = rtde_receive_->getSafetyStatusBits();
-            const std::bitset<32> bits(safety_status_bits);
+            // const uint32_t safety_status_bits = rtde_receive_->getSafetyStatusBits();
+            // const std::bitset<32> bits(safety_status_bits);
 
             setDoubleParam(controllerTimestampIndex_, rtde_receive_->getTimestamp());
-            setIntegerParam(safetyStatusBitsIndex_, safety_status_bits);
+            setIntegerParam(safetyStatusBitsIndex_, rtde_receive_->getSafetyStatusBits());
             setIntegerParam(runtimeStateIndex_, rtde_receive_->getRuntimeState());
             setIntegerParam(robotModeIndex_, rtde_receive_->getRobotMode());
             setIntegerParam(safetyModeIndex_, rtde_receive_->getSafetyMode());
@@ -168,6 +184,58 @@ void URRobotRTDE::poll() {
             epicsFloat64 tool_accel[3];
             std::copy(tool_accel_vec.begin(), tool_accel_vec.end(), tool_accel);
             doCallbacksFloat64Array(tool_accel, 3, actualToolAccelIndex_, 0);
+            
+            // ------------------------------------------------------------------------
+            const std::vector<double> target_Q_vec = rtde_receive_->getTargetQ();
+            epicsFloat64 target_Q[NUM_JOINTS];
+            std::copy(target_Q_vec.begin(), target_Q_vec.end(), target_Q);
+            doCallbacksFloat64Array(target_Q, NUM_JOINTS, targetJointPosIndex_, 0);
+            
+            const std::vector<double> target_Qd_vec = rtde_receive_->getTargetQd();
+            epicsFloat64 target_Qd[NUM_JOINTS];
+            std::copy(target_Qd_vec.begin(), target_Qd_vec.end(), target_Qd);
+            doCallbacksFloat64Array(target_Qd, NUM_JOINTS, targetJointVelIndex_, 0);
+
+            const std::vector<double> target_Qdd_vec = rtde_receive_->getTargetQdd();
+            epicsFloat64 target_Qdd[NUM_JOINTS];
+            std::copy(target_Qdd_vec.begin(), target_Qdd_vec.end(), target_Qdd);
+            doCallbacksFloat64Array(target_Qdd, NUM_JOINTS, targetJointAccelIndex_, 0);
+            
+            const std::vector<double> target_currents_vec = rtde_receive_->getTargetCurrent();
+            epicsFloat64 target_currents[NUM_JOINTS];
+            std::copy(target_currents_vec.begin(), target_currents_vec.end(), target_currents);
+            doCallbacksFloat64Array(target_currents, NUM_JOINTS, targetJointCurrentsIndex_, 0);
+
+            const std::vector<double> target_moments_vec = rtde_receive_->getTargetMoment();
+            epicsFloat64 target_moments[NUM_JOINTS];
+            std::copy(target_moments_vec.begin(), target_moments_vec.end(), target_moments);
+            doCallbacksFloat64Array(target_moments, NUM_JOINTS, targetJointMomentsIndex_, 0);
+            // ------------------------------------------------------------------------
+            const std::vector<double> target_pose_vec = rtde_receive_->getTargetTCPPose();
+            epicsFloat64 target_pose[NUM_JOINTS];
+            std::copy(target_pose_vec.begin(), target_pose_vec.end(), target_pose);
+            doCallbacksFloat64Array(target_pose, NUM_JOINTS, targetTCPPoseIndex_, 0);
+
+            const std::vector<double> target_speeds_vec = rtde_receive_->getTargetTCPSpeed();
+            epicsFloat64 target_speeds[NUM_JOINTS];
+            std::copy(target_speeds_vec.begin(), target_speeds_vec.end(), target_speeds);
+            doCallbacksFloat64Array(target_speeds, NUM_JOINTS, targetTCPSpeedIndex_, 0);
+
+            const std::vector<double> joint_temps_vec = rtde_receive_->getJointTemperatures();
+            epicsFloat64 joint_temps[NUM_JOINTS];
+            std::copy(joint_temps_vec.begin(), joint_temps_vec.end(), joint_temps);
+            doCallbacksFloat64Array(joint_temps, NUM_JOINTS, jointTemperaturesIndex_, 0);
+            // ------------------------------------------------------------------------
+            setDoubleParam(speedScalingIndex_, rtde_receive_->getSpeedScaling());
+            setDoubleParam(targetSpeedFractionIndex_, rtde_receive_->getTargetSpeedFraction());
+            setDoubleParam(actualMomentumIndex_, rtde_receive_->getActualMomentum());
+            setDoubleParam(actualMainVoltageIndex_, rtde_receive_->getActualMainVoltage());
+            setDoubleParam(actualRobotVoltageIndex_, rtde_receive_->getActualRobotVoltage());
+            setDoubleParam(actualRobotCurrentIndex_, rtde_receive_->getActualRobotCurrent());
+            const std::vector<double> joint_voltages_vec = rtde_receive_->getActualJointVoltage();
+            epicsFloat64 joint_voltages[NUM_JOINTS];
+            std::copy(joint_voltages_vec.begin(), joint_voltages_vec.end(), joint_voltages);
+            doCallbacksFloat64Array(joint_voltages, NUM_JOINTS, actualJointVoltagesIndex_, 0);
 
         } else {
             setIntegerParam(isConnectedIndex_, 0);
