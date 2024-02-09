@@ -9,13 +9,11 @@
 // RTDE Receive Interface
 static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
 static constexpr char CONTROLLER_TIMESTAMP_STRING[] = "CONTROLLER_TIMESTAMP";
-
 static constexpr char TARGET_JOINT_POS_STRING[] = "TARGET_JOINT_POSITIONS";
 static constexpr char TARGET_JOINT_VEL_STRING[] = "TARGET_JOINT_VELOCITIES";
 static constexpr char TARGET_JOINT_ACCEL_STRING[] = "TARGET_JOINT_ACCELERATIONS";
 static constexpr char TARGET_JOINT_CURRENTS_STRING[] = "TARGET_JOINT_CURRENTS";
 static constexpr char TARGET_JOINT_MOMENTS_STRING[] = "TARGET_JOINT_MOMENTS";
-
 static constexpr char ACTUAL_JOINT_POS_STRING[] = "ACTUAL_JOINT_POSITIONS";
 static constexpr char ACTUAL_JOINT_VEL_STRING[] = "ACTUAL_JOINT_VELOCITIES";
 static constexpr char ACTUAL_JOINT_CURRENTS_STRING[] = "ACTUAL_JOINT_CURRENTS";
@@ -114,17 +112,14 @@ class URRobotRTDE : public asynPortDriver {
     int safetyModeIndex_;
     int jointModesIndex_;
     int actualToolAccelIndex_;
-
     int targetJointPosIndex_;
     int targetJointVelIndex_;
     int targetJointAccelIndex_;
     int targetJointCurrentsIndex_;
     int targetJointMomentsIndex_;
-
     int targetTCPPoseIndex_;
     int targetTCPSpeedIndex_;
     int jointTemperaturesIndex_;
-  
     int speedScalingIndex_;
     int targetSpeedFractionIndex_;
     int actualMomentumIndex_;
@@ -132,7 +127,6 @@ class URRobotRTDE : public asynPortDriver {
     int actualRobotVoltageIndex_;
     int actualRobotCurrentIndex_;
     int actualJointVoltagesIndex_;
-
 
     // rtde_io
     int speedSliderIndex_;
@@ -158,7 +152,6 @@ class URRobotRTDE : public asynPortDriver {
     int setVoltageAOUT1Index_;
     int setCurrentAOUT0Index_;
     int setCurrentAOUT1Index_;
-    
 
     // TODO: rtde_control
 };
