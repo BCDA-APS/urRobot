@@ -33,7 +33,7 @@ static constexpr char IS_PROGRAM_SAVED[] = "IS_PROGRAM_SAVED";
 static constexpr char IS_IN_REMOTE_CONTROL[] = "IS_IN_REMOTE_CONTROL";
 
 constexpr int MAX_CONTROLLERS = 1;
-constexpr double DEFAULT_POLL_TIME = 0.20;
+constexpr double DEFAULT_POLL_TIME = 0.10; // seconds
 constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class URRobotDashboard : public asynPortDriver {
