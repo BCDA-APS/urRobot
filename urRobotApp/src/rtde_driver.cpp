@@ -122,11 +122,7 @@ void URRobotRTDE::poll() {
 
         if (rtde_receive_->isConnected()) {
 
-            // Get the current time before executing the code
-            auto start_time = std::chrono::high_resolution_clock::now();
-
             setIntegerParam(isConnectedIndex_, 1);
-
             setDoubleParam(controllerTimestampIndex_, rtde_receive_->getTimestamp());
             setIntegerParam(safetyStatusBitsIndex_, rtde_receive_->getSafetyStatusBits());
             setIntegerParam(runtimeStateIndex_, rtde_receive_->getRuntimeState());

@@ -4,15 +4,19 @@
 
 ##############################################################################
 
-# TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
-
 SUPPORT=/APSshare/epics/synApps_6_2_1/support
 
-# -include $(SUPPORT)/asyn-R4-42/configure/RELEASE
+# Specify the asyn and EPICS base version
+# matching the synApps version you are using
+#
+## synApps 6-2-1 ## 
 ASYN = $(SUPPORT)/asyn-R4-42
-# ASYN=$(SUPPORT)/asyn-R4-44-2
-
 EPICS_BASE=/APSshare/epics/base-7.0.4.1/
+
+## synApps 6-3 ##
+# ASYN=$(SUPPORT)/asyn-R4-44-2
+# EPICS_BASE=/APSshare/epics/base-7.0.8
+
 
 # These lines allow developers to override these RELEASE settings
 # without having to modify this file directly.
