@@ -6,7 +6,8 @@ epicsEnvSet("PREFIX", "ur621:")
 dbLoadDatabase("../../dbd/iocur621Linux.dbd")
 iocur621Linux_registerRecordDeviceDriver(pdbbase)
 
-< urRobot.cmd
+# load the urRobot iocsh example
+iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
 
 ###############################################################################
 iocInit

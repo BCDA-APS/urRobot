@@ -3,8 +3,9 @@ O.*
 *.swp
 *BAK.adl
 bin/
-db/
+/db/
 dbd/
+/iocsh/
 html/
 include/
 lib/
@@ -20,3 +21,4 @@ dbl-all.txt
 scan1Menu.sav
 compile_commands.json
 .cache/
+*.local
