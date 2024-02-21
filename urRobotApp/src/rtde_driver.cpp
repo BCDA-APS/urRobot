@@ -246,11 +246,12 @@ asynStatus URRobotRTDE::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     }
 
     callParamCallbacks();
-    if (not rtde_io_ok) {
-        spdlog::error("Call to setSpeedSlider failed");
-        return asynError;
-    } else {
+    // TODO: check this
+    if (rtde_io_ok) {
         return asynSuccess;
+    } else {
+        spdlog::error("RTDE IO error in URRobotRTDE::writeFloat64");
+        return asynError;
     }
 }
 
@@ -320,11 +321,12 @@ asynStatus URRobotRTDE::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     }
 
     callParamCallbacks();
-    if (not rtde_io_ok) {
-        spdlog::error("Call to setStandardDigitalOut failed");
-        return asynError;
-    } else {
+    // TODO: check this
+    if (rtde_io_ok) {
         return asynSuccess;
+    } else {
+        spdlog::error("RTDE IO error in hURRobotRTDE::writeInt32");
+        return asynError;
     }
 }
 
