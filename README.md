@@ -28,7 +28,7 @@ this support module as well.
 - Next, open configure/RELEASE in a text editor and correct the paths to `SUPPORT` and `ASYN` if necessary
 - Run `make` in the top level directory of the project
 
-## Adding urRobot support to an existing IOC
+## Adding urRobot support to an IOC
 
 - Add the path to the urRobot support in configure/RELEASE
 
@@ -46,9 +46,8 @@ ifdef URROBOT
 endif
 ```
 
-- Copy the provided example, urRobot.cmd, to iocBoot/iocxxx/ and add it to your st.cmd script. Make sure
-to change the IP address in urRobot.cmd to match the IP of your robot.
+- Load the example script to connect to the dashboard and RTDE interface,
+Making sure to fill in the correct IP address for your robot.
 ```
-# file: st.cmd.Linux
-< urRobot.cmd
+iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.116.127")
 ```
