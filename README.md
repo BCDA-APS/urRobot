@@ -49,6 +49,6 @@ endif
 - In your startup script, load the example script to connect to the dashboard and RTDE interface,
 making sure to fill in the correct IP address for your robot.
 ```
-# file: xxxApp/iocBoot/iocxxx/st.cmd.Linux
+# file: iocBoot/iocxxx/st.cmd.Linux
 iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.116.127")
 ```
