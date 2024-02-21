@@ -46,8 +46,9 @@ ifdef URROBOT
 endif
 ```
 
-- Load the example script to connect to the dashboard and RTDE interface,
-Making sure to fill in the correct IP address for your robot.
+- In your startup script, load the example script to connect to the dashboard and RTDE interface,
+making sure to fill in the correct IP address for your robot.
 ```
+# file: xxxApp/iocBoot/iocxxx/st.cmd.Linux
 iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.116.127")
 ```
