@@ -7,6 +7,8 @@
 #include <asynPortDriver.h>
 
 // RTDE Receive Interface
+static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
+static constexpr char RECONNECT_STRING[] = "RECONNECT";
 static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
 static constexpr char CONTROLLER_TIMESTAMP_STRING[] = "CONTROLLER_TIMESTAMP";
 static constexpr char TARGET_JOINT_POS_STRING[] = "TARGET_JOINT_POSITIONS";
@@ -86,6 +88,8 @@ class URRobotRTDE : public asynPortDriver {
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     std::unique_ptr<ur_rtde::RTDEIOInterface> rtde_io_;
+    bool connected;
+    bool try_construction(const char *robot_ip);
 
   protected:
     asynUser *pasynUserURRobot_;
@@ -127,6 +131,8 @@ class URRobotRTDE : public asynPortDriver {
     int actualRobotVoltageIndex_;
     int actualRobotCurrentIndex_;
     int actualJointVoltagesIndex_;
+    int disconnectIndex_;
+    int reconnectIndex_;
 
     // rtde_io
     int speedSliderIndex_;

@@ -1,3 +1,17 @@
+record(bo, "$(P)$(R)RTDE:Disconnect")
+{
+    field(DESC, "Disconnects from the RTDE interface")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DISCONNECT")
+}
+
+record(bo, "$(P)$(R)RTDE:Reconnect")
+{
+    field(DESC, "Tries reconnecting to the RTDE interface")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RECONNECT")
+}
+
 record(bi, "$(P)$(R)RTDE:Connected")
 {
     field(DESC, "RTDE Connection status")

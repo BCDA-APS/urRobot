@@ -9,11 +9,32 @@
 #include "rtde_driver.hpp"
 #include "spdlog/spdlog.h"
 #include "ur_rtde/rtde_receive_interface.h"
-// #include "ur_rtde/rtde_receive_interface.h"
 
 static void poll_thread_C(void *pPvt) {
     URRobotRTDE *pURRobotRTDE = (URRobotRTDE *)pPvt;
     pURRobotRTDE->poll();
+}
+
+// Wraps class construction/connection to fail gracefully.
+// Unlike the DashboardClient class, construction of the object tries
+// connecting automatically. If connection fails (IP is wrong) the RTDE
+// constructor throws and error, so subsequent calls like
+// rtde_receive_->isConnected() will segfault since the rtde_recieve_ object
+// does not point to anything. This is why we have the `this->connected` variable
+bool URRobotRTDE::try_construction(const char *robot_ip) {
+    bool connected = false;
+    try {
+        // construction of the RTDE objects automatically tries connecting
+        rtde_receive_ = std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip);
+        rtde_io_ = std::make_unique<ur_rtde::RTDEIOInterface>(robot_ip);
+        if (rtde_receive_->isConnected()) {
+            spdlog::info("Connected to UR RTDE interface");
+            connected = true;
+        }
+    } catch (const std::exception &e) {
+        spdlog::error(e.what());
+    }
+    return connected;
 }
 
 static constexpr int NUM_JOINTS = 6;
@@ -29,6 +50,9 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
                      0, 0),
       rtde_receive_(nullptr), rtde_io_(nullptr) {
 
+    createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
+    createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
+    createParam(SET_CONFIG_DOUT7_STRING, asynParamInt32, &setConfigDOUT7Index_);
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
     createParam(RUNTIME_STATE_STRING, asynParamInt32, &runtimeStateIndex_);
     createParam(ROBOT_MODE_STRING, asynParamInt32, &robotModeIndex_);
@@ -89,40 +113,29 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
     createParam(ACTUAL_ROBOT_CURRENT_STRING, asynParamFloat64, &actualRobotCurrentIndex_);
     createParam(ACTUAL_JOINT_VOLTAGES_STRING, asynParamFloat64Array, &actualJointVoltagesIndex_);
 
-    bool connected = false;
-    try {
-        // construction of the RTDE objects automatically tries connecting
-        rtde_receive_ = std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip);
-        rtde_io_ = std::make_unique<ur_rtde::RTDEIOInterface>(robot_ip);
+    // TODO: make log level an arg to the constructor?
+    spdlog::set_level(spdlog::level::debug); // Set global log level to debug
 
-        // Check that RTDE receive interface is connected
-        if (rtde_receive_->isConnected()) {
-            spdlog::info("Connected to UR RTDE interface");
-            setIntegerParam(isConnectedIndex_, 1);
-            connected = true;
-        } else {
-            spdlog::error("Failed to connect to UR RTDE interface");
-            setIntegerParam(isConnectedIndex_, 0);
-        }
+    this->connected = this->try_construction(robot_ip);
 
-    } catch (const std::exception &e) {
-        spdlog::error(e.what());
-    }
-
-    if (connected) {
-        epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
-                          epicsThreadGetStackSize(epicsThreadStackMedium),
-                          (EPICSTHREADFUNC)poll_thread_C, this);
-    }
+    epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
+                      epicsThreadGetStackSize(epicsThreadStackMedium),
+                      (EPICSTHREADFUNC)poll_thread_C, this);
 }
 
 void URRobotRTDE::poll() {
     while (true) {
         lock();
 
-        if (rtde_receive_->isConnected()) {
-
-            setIntegerParam(isConnectedIndex_, 1);
+        if (this->connected) {
+            if (rtde_receive_->isConnected()) {
+                this->connected = true;
+                setIntegerParam(isConnectedIndex_, 1);
+            } else {
+                setIntegerParam(isConnectedIndex_, 0);
+                this->connected = false;
+                spdlog::warn("UR RTDE interface disconnected");
+            }
             setDoubleParam(controllerTimestampIndex_, rtde_receive_->getTimestamp());
             setIntegerParam(safetyStatusBitsIndex_, rtde_receive_->getSafetyStatusBits());
             setIntegerParam(runtimeStateIndex_, rtde_receive_->getRuntimeState());
@@ -141,7 +154,7 @@ void URRobotRTDE::poll() {
             setDoubleParam(actualRobotVoltageIndex_, rtde_receive_->getActualRobotVoltage());
             setDoubleParam(actualRobotCurrentIndex_, rtde_receive_->getActualRobotCurrent());
 
-            // all the rtde functions that return vector<double> use these
+            // all the rtde functions that return vector<double> use this array and vector
             epicsFloat64 arr_f64[NUM_JOINTS];
             std::vector<double> vec_f64(NUM_JOINTS);
 
@@ -152,7 +165,7 @@ void URRobotRTDE::poll() {
 
             vec_f64 = rtde_receive_->getActualQ();
             std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, actualJointPosIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualQd();
             std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
@@ -217,9 +230,6 @@ void URRobotRTDE::poll() {
             vec_f64 = rtde_receive_->getActualJointVoltage();
             std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
             doCallbacksFloat64Array(arr_f64, NUM_JOINTS, actualJointVoltagesIndex_, 0);
-
-        } else {
-            setIntegerParam(isConnectedIndex_, 0);
         }
 
         callParamCallbacks();
@@ -232,25 +242,24 @@ asynStatus URRobotRTDE::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
 
     int function = pasynUser->reason;
 
-    bool rtde_io_ok = true;
+    bool rtde_ok = true;
     if (function == speedSliderIndex_) {
-        rtde_io_ok = rtde_io_->setSpeedSlider(value);
+        rtde_ok = rtde_io_->setSpeedSlider(value);
     } else if (function == setVoltageAOUT0Index_) {
-        rtde_io_ok = rtde_io_->setAnalogOutputVoltage(0, value);
+        rtde_ok = rtde_io_->setAnalogOutputVoltage(0, value);
     } else if (function == setVoltageAOUT1Index_) {
-        rtde_io_ok = rtde_io_->setAnalogOutputVoltage(1, value);
+        rtde_ok = rtde_io_->setAnalogOutputVoltage(1, value);
     } else if (function == setCurrentAOUT0Index_) {
-        rtde_io_ok = rtde_io_->setAnalogOutputCurrent(0, value);
+        rtde_ok = rtde_io_->setAnalogOutputCurrent(0, value);
     } else if (function == setCurrentAOUT1Index_) {
-        rtde_io_ok = rtde_io_->setAnalogOutputCurrent(1, value);
+        rtde_ok = rtde_io_->setAnalogOutputCurrent(1, value);
     }
 
     callParamCallbacks();
-    // TODO: check this
-    if (rtde_io_ok) {
+    if (rtde_ok) {
         return asynSuccess;
     } else {
-        spdlog::error("RTDE IO error in URRobotRTDE::writeFloat64");
+        spdlog::error("RTDE communication error in URRobotRTDE::writeFloat64");
         return asynError;
     }
 }
@@ -259,73 +268,85 @@ asynStatus URRobotRTDE::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
 
-    bool rtde_io_ok = true;
+    bool rtde_ok = true;
     if (function == setStandardDOUT0Index_) {
         spdlog::info("Setting standard digital output 0 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setStandardDigitalOut(0, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setStandardDigitalOut(0, static_cast<bool>(value));
     } else if (function == setStandardDOUT1Index_) {
         spdlog::info("Setting standard digital output 1 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setStandardDigitalOut(1, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setStandardDigitalOut(1, static_cast<bool>(value));
     } else if (function == setStandardDOUT2Index_) {
         spdlog::info("Setting standard digital output 2 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setStandardDigitalOut(2, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setStandardDigitalOut(2, static_cast<bool>(value));
     } else if (function == setStandardDOUT3Index_) {
         spdlog::info("Setting standard digital output 3 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setStandardDigitalOut(3, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setStandardDigitalOut(3, static_cast<bool>(value));
     } else if (function == setStandardDOUT4Index_) {
         spdlog::info("Setting standard digital output 4 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setStandardDigitalOut(4, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setStandardDigitalOut(4, static_cast<bool>(value));
     } else if (function == setStandardDOUT5Index_) {
         spdlog::info("Setting standard digital output 5 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setStandardDigitalOut(5, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setStandardDigitalOut(5, static_cast<bool>(value));
     } else if (function == setStandardDOUT6Index_) {
         spdlog::info("Setting standard digital output 6 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setStandardDigitalOut(6, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setStandardDigitalOut(6, static_cast<bool>(value));
     } else if (function == setStandardDOUT7Index_) {
         spdlog::info("Setting standard digital output 7 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setStandardDigitalOut(7, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setStandardDigitalOut(7, static_cast<bool>(value));
     }
 
     else if (function == setConfigDOUT0Index_) {
         spdlog::info("Setting configurable digital output 0 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(0, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setConfigurableDigitalOut(0, static_cast<bool>(value));
     } else if (function == setConfigDOUT1Index_) {
         spdlog::info("Setting configurable digital output 1 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(1, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setConfigurableDigitalOut(1, static_cast<bool>(value));
     } else if (function == setConfigDOUT2Index_) {
         spdlog::info("Setting configurable digital output 2 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(2, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setConfigurableDigitalOut(2, static_cast<bool>(value));
     } else if (function == setConfigDOUT3Index_) {
         spdlog::info("Setting configurable digital output 3 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(3, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setConfigurableDigitalOut(3, static_cast<bool>(value));
     } else if (function == setConfigDOUT4Index_) {
         spdlog::info("Setting configurable digital output 4 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(4, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setConfigurableDigitalOut(4, static_cast<bool>(value));
     } else if (function == setConfigDOUT5Index_) {
         spdlog::info("Setting configurable digital output 5 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(5, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setConfigurableDigitalOut(5, static_cast<bool>(value));
     } else if (function == setConfigDOUT6Index_) {
         spdlog::info("Setting configurable digital output 6 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(6, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setConfigurableDigitalOut(6, static_cast<bool>(value));
     } else if (function == setConfigDOUT7Index_) {
         spdlog::info("Setting configurable digital output 7 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setConfigurableDigitalOut(7, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setConfigurableDigitalOut(7, static_cast<bool>(value));
     }
 
     else if (function == setToolDOUT0Index_) {
         spdlog::info("Setting tool digital output 0 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setToolDigitalOut(0, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setToolDigitalOut(0, static_cast<bool>(value));
     } else if (function == setToolDOUT1Index_) {
         spdlog::info("Setting tool digital output 1 {}", value == 1 ? "high" : "low");
-        rtde_io_ok = rtde_io_->setToolDigitalOut(1, static_cast<bool>(value));
+        rtde_ok = rtde_io_->setToolDigitalOut(1, static_cast<bool>(value));
+    }
+
+    else if (function == disconnectIndex_) {
+        spdlog::info("Disconnecting from RTDE interface");
+        rtde_receive_->disconnect();
+    } else if (function == reconnectIndex_) {
+        try {
+            rtde_ok = rtde_receive_->reconnect();
+            this->connected = rtde_ok;
+            spdlog::info("Reconnected to RTDE interface");
+        } catch (const std::exception &e) {
+            spdlog::error(e.what());
+        }
     }
 
     callParamCallbacks();
-    // TODO: check this
-    if (rtde_io_ok) {
+    if (rtde_ok) {
         return asynSuccess;
     } else {
-        spdlog::error("RTDE IO error in hURRobotRTDE::writeInt32");
+        spdlog::error("RTDE communincation error in URRobotRTDE::writeInt32");
         return asynError;
     }
 }

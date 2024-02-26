@@ -103,8 +103,6 @@ void URRobotDashboard::poll() {
             setIntegerParam(isProgramSavedIndex_, ur_dashboard_->isProgramSaved());
             setIntegerParam(isInRemoteControlIndex_, ur_dashboard_->isInRemoteControl());
         } else {
-            epicsThreadSleep(poll_time_ * 10.0);
-            spdlog::warn("UR Dashboard is not connected");
             setIntegerParam(isConnectedIndex_, 0);
         }
 
