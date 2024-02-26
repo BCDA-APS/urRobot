@@ -22,3 +22,4 @@ scan1Menu.sav
 compile_commands.json
 .cache/
 *.local
+.loglogin

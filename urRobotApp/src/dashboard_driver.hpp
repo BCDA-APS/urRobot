@@ -47,6 +47,7 @@ class URRobotDashboard : public asynPortDriver {
   private:
     std::unique_ptr<ur_rtde::DashboardClient> ur_dashboard_;
     double poll_time_;
+    bool try_connect();
 
   protected:
     asynUser *pasynUserURRobot_;

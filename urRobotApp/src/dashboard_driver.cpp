@@ -17,6 +17,24 @@ static void poll_thread_C(void *pPvt) {
     pURRobotDashboard->poll();
 }
 
+// wraps the ur_dashboard_->connect() function to fail gracefully
+bool URRobotDashboard::try_connect() {
+    bool connected = false;
+    try {
+        ur_dashboard_->connect();
+        if (ur_dashboard_->isConnected()) {
+            spdlog::info("Connected to UR dashboard server");
+            setIntegerParam(isConnectedIndex_, 1);
+            connected = true;
+        } else {
+            setIntegerParam(isConnectedIndex_, 0);
+        }
+    } catch (const std::exception &e) {
+        spdlog::error(e.what());
+    }
+    return connected;
+}
+
 URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
@@ -56,34 +74,21 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
     createParam(IS_PROGRAM_SAVED, asynParamInt32, &isProgramSavedIndex_);
     createParam(IS_IN_REMOTE_CONTROL, asynParamInt32, &isInRemoteControlIndex_);
 
-    // TODO: make log level an arg to the constructor
+    // TODO: make log level an arg to the constructor?
     spdlog::set_level(spdlog::level::debug); // Set global log level to debug
+    
+    // Attempt to connect to UR dashboard server
+    try_connect();
 
-    // connect to the UR dashboard server
-    bool connected = false;
-    try {
-        ur_dashboard_->connect();
-        if (ur_dashboard_->isConnected()) {
-            spdlog::info("Connected to UR dashboard server");
-            setIntegerParam(isConnectedIndex_, 1);
-            connected = true;
-        } else {
-            setIntegerParam(isConnectedIndex_, 0);
-        }
-    } catch (const std::exception &e) {
-        spdlog::error(e.what());
-    }
+    // set parameters that are constant
+    setStringParam(polyscopeVersionIndex_, ur_dashboard_->polyscopeVersion());
+    setStringParam(serialNumberIndex_, ur_dashboard_->getSerialNumber());
+    setStringParam(robotModelIndex_, ur_dashboard_->getRobotModel());
 
-    if (connected) {
-        // set parameters that are constant
-        setStringParam(polyscopeVersionIndex_, ur_dashboard_->polyscopeVersion());
-        setStringParam(serialNumberIndex_, ur_dashboard_->getSerialNumber());
-        setStringParam(robotModelIndex_, ur_dashboard_->getRobotModel());
-
-        epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
-                          epicsThreadGetStackSize(epicsThreadStackMedium),
-                          (EPICSTHREADFUNC)poll_thread_C, this);
-    }
+    // create polling thread
+    epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
+                      epicsThreadGetStackSize(epicsThreadStackMedium),
+                      (EPICSTHREADFUNC)poll_thread_C, this);
 }
 
 void URRobotDashboard::poll() {
@@ -124,7 +129,8 @@ asynStatus URRobotDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         ur_dashboard_->pause();
     } else if (function == connectIndex_) {
         spdlog::info("Connecting to dashboard server");
-        ur_dashboard_->connect();
+        // ur_dashboard_->connect();
+        this->try_connect();
     } else if (function == disconnectIndex_) {
         spdlog::info("Disconnecting from dashboard server");
         ur_dashboard_->disconnect();
