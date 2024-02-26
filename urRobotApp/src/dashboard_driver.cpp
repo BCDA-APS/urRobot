@@ -1,12 +1,6 @@
-#include <asynOctetSyncIO.h>
-#include <cstring>
 #include <epicsExport.h>
-#include <epicsString.h>
 #include <epicsThread.h>
-#include <exception>
 #include <iocsh.h>
-#include <sstream>
-#include <unistd.h>
 
 #include "dashboard_driver.hpp"
 #include "spdlog/spdlog.h"
