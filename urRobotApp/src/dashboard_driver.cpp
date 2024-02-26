@@ -23,11 +23,8 @@ bool URRobotDashboard::try_connect() {
     try {
         ur_dashboard_->connect();
         if (ur_dashboard_->isConnected()) {
-            spdlog::info("Connected to UR dashboard server");
-            setIntegerParam(isConnectedIndex_, 1);
+            spdlog::info("Connected to UR Dashboard server");
             connected = true;
-        } else {
-            setIntegerParam(isConnectedIndex_, 0);
         }
     } catch (const std::exception &e) {
         spdlog::error(e.what());
@@ -76,16 +73,17 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
 
     // TODO: make log level an arg to the constructor?
     spdlog::set_level(spdlog::level::debug); // Set global log level to debug
-    
-    // Attempt to connect to UR dashboard server
-    try_connect();
 
-    // set parameters that are constant
-    setStringParam(polyscopeVersionIndex_, ur_dashboard_->polyscopeVersion());
-    setStringParam(serialNumberIndex_, ur_dashboard_->getSerialNumber());
-    setStringParam(robotModelIndex_, ur_dashboard_->getRobotModel());
+    bool connected = this->try_connect();
+    if (connected) {
+        setIntegerParam(isConnectedIndex_, 1);
+        setStringParam(polyscopeVersionIndex_, ur_dashboard_->polyscopeVersion());
+        setStringParam(serialNumberIndex_, ur_dashboard_->getSerialNumber());
+        setStringParam(robotModelIndex_, ur_dashboard_->getRobotModel());
+    } else {
+        setIntegerParam(isConnectedIndex_, 0);
+    }
 
-    // create polling thread
     epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
                       epicsThreadGetStackSize(epicsThreadStackMedium),
                       (EPICSTHREADFUNC)poll_thread_C, this);
@@ -105,6 +103,8 @@ void URRobotDashboard::poll() {
             setIntegerParam(isProgramSavedIndex_, ur_dashboard_->isProgramSaved());
             setIntegerParam(isInRemoteControlIndex_, ur_dashboard_->isInRemoteControl());
         } else {
+            epicsThreadSleep(poll_time_ * 10.0);
+            spdlog::warn("UR Dashboard is not connected");
             setIntegerParam(isConnectedIndex_, 0);
         }
 
@@ -129,7 +129,6 @@ asynStatus URRobotDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         ur_dashboard_->pause();
     } else if (function == connectIndex_) {
         spdlog::info("Connecting to dashboard server");
-        // ur_dashboard_->connect();
         this->try_connect();
     } else if (function == disconnectIndex_) {
         spdlog::info("Disconnecting from dashboard server");
