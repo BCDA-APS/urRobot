@@ -48,7 +48,6 @@ URRobotRTDE::URRobotRTDE(const char *asyn_port_name, const char *robot_ip)
 
     createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
     createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
-    createParam(SET_CONFIG_DOUT7_STRING, asynParamInt32, &setConfigDOUT7Index_);
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
     createParam(RUNTIME_STATE_STRING, asynParamInt32, &runtimeStateIndex_);
     createParam(ROBOT_MODE_STRING, asynParamInt32, &robotModeIndex_);
