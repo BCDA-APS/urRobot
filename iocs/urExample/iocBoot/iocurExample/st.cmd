@@ -1,10 +1,10 @@
-# ../../bin/${EPICS_HOST_ARCH}/ur621 st.cmd
+# ../../bin/${EPICS_HOST_ARCH}/urExample st.cmd
 < envPaths
 
-epicsEnvSet("PREFIX", "ur621:")
+epicsEnvSet("PREFIX", "urExample:")
 
-dbLoadDatabase("../../dbd/iocur621Linux.dbd")
-iocur621Linux_registerRecordDeviceDriver(pdbbase)
+dbLoadDatabase("../../dbd/iocurExampleLinux.dbd")
+iocurExampleLinux_registerRecordDeviceDriver(pdbbase)
 
 # load the urRobot iocsh example
 iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")

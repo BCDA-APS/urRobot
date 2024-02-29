@@ -4,10 +4,10 @@
 PHOEBUS="/APSshare/bin/phoebus"
 
 # path to urRobot support module
-URROBOT_PATH="/home/beams/NMARKS/devel/epics_ur_robot/epics-urRobot/"
+URROBOT_PATH="/home/beams/NMARKS/devel/ur-dev/urRobot"
 
 # ioc prefixes
-P="ur621:"
+P="urExample:"
 R=""
 
 #######################################

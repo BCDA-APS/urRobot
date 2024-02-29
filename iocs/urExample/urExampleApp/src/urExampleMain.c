@@ -1,4 +1,4 @@
-/* ur621Main.c */
+/* urExampleMain.c */
 /* Author:  Ron Sluiter */
 
 #include <stddef.h>
