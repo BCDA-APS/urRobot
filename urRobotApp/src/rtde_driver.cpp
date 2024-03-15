@@ -149,82 +149,62 @@ void URRobotRTDE::poll() {
             setDoubleParam(actualRobotVoltageIndex_, rtde_receive_->getActualRobotVoltage());
             setDoubleParam(actualRobotCurrentIndex_, rtde_receive_->getActualRobotCurrent());
 
-            // all the rtde functions that return vector<double> use this array and vector
-            epicsFloat64 arr_f64[NUM_JOINTS];
+            // all the rtde functions that return vector<double> use this
             std::vector<double> vec_f64(NUM_JOINTS);
 
-            const std::vector<int32_t> joint_modes_vec = rtde_receive_->getJointMode();
-            epicsInt32 joint_modes[NUM_JOINTS];
-            std::copy(joint_modes_vec.begin(), joint_modes_vec.end(), joint_modes);
-            doCallbacksInt32Array(joint_modes, NUM_JOINTS, jointModesIndex_, 0);
+            std::vector<int> joint_modes_vec = rtde_receive_->getJointMode();
+            doCallbacksInt32Array(joint_modes_vec.data(), NUM_JOINTS, jointModesIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualQ();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
             doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualQd();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, actualJointVelIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVelIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualCurrent();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, actualJointCurrentsIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointCurrentsIndex_, 0);
 
             vec_f64 = rtde_receive_->getJointControlOutput();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, jointControlCurrentsIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointControlCurrentsIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualTCPPose();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, actualTCPPoseIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualTCPSpeed();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, actualTCPSpeedIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPSpeedIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualTCPForce();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, actualTCPForceIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPForceIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualToolAccelerometer();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, 3, actualToolAccelIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), 3, actualToolAccelIndex_, 0);
 
             vec_f64 = rtde_receive_->getTargetQ();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, targetJointPosIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointPosIndex_, 0);
 
             vec_f64 = rtde_receive_->getTargetQd();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, targetJointVelIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointVelIndex_, 0);
 
             vec_f64 = rtde_receive_->getTargetQdd();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, targetJointAccelIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointAccelIndex_, 0);
 
             vec_f64 = rtde_receive_->getTargetCurrent();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, targetJointCurrentsIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointCurrentsIndex_, 0);
 
             vec_f64 = rtde_receive_->getTargetMoment();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, targetJointMomentsIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointMomentsIndex_, 0);
 
             vec_f64 = rtde_receive_->getTargetTCPPose();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, targetTCPPoseIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetTCPPoseIndex_, 0);
 
             vec_f64 = rtde_receive_->getTargetTCPSpeed();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, targetTCPSpeedIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetTCPSpeedIndex_, 0);
 
             vec_f64 = rtde_receive_->getJointTemperatures();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, jointTemperaturesIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointTemperaturesIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualJointVoltage();
-            std::copy(vec_f64.begin(), vec_f64.end(), arr_f64);
-            doCallbacksFloat64Array(arr_f64, NUM_JOINTS, actualJointVoltagesIndex_, 0);
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVoltagesIndex_, 0);
         }
 
         callParamCallbacks();
