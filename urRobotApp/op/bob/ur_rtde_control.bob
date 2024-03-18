@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-03-18 12:44:55 by nmarks-->
+<!--Saved on 2024-03-18 17:12:05 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
   <widget type="label" version="2.0.0">
@@ -31,46 +31,164 @@
     <x>90</x>
     <y>50</y>
   </widget>
-  <widget type="checkbox" version="2.0.0">
-    <name>Check Box</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut1</pv_name>
-    <label>1</label>
-    <x>20</x>
-    <y>180</y>
-  </widget>
-  <widget type="checkbox" version="2.0.0">
-    <name>Check Box_1</name>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button</name>
     <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut0</pv_name>
-    <label>0</label>
-    <x>20</x>
-    <y>140</y>
+    <x>10</x>
+    <y>110</y>
+    <width>40</width>
+    <off_label>0</off_label>
+    <on_label>0</on_label>
   </widget>
-  <widget type="checkbox" version="2.0.0">
-    <name>Check Box_2</name>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_1</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut1</pv_name>
+    <x>10</x>
+    <y>150</y>
+    <width>40</width>
+    <off_label>1</off_label>
+    <on_label>1</on_label>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_2</name>
     <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut2</pv_name>
-    <label>2</label>
-    <x>20</x>
-    <y>220</y>
+    <x>10</x>
+    <y>190</y>
+    <width>40</width>
+    <off_label>2</off_label>
+    <on_label>2</on_label>
   </widget>
-  <widget type="checkbox" version="2.0.0">
-    <name>Check Box_3</name>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_3</name>
     <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut3</pv_name>
-    <label>3</label>
-    <x>20</x>
-    <y>260</y>
+    <x>10</x>
+    <y>230</y>
+    <width>40</width>
+    <off_label>3</off_label>
+    <on_label>3</on_label>
   </widget>
-  <widget type="checkbox" version="2.0.0">
-    <name>Check Box_4</name>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_8</name>
     <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut4</pv_name>
-    <label>4</label>
-    <x>20</x>
-    <y>300</y>
+    <x>10</x>
+    <y>270</y>
+    <width>40</width>
+    <off_label>4</off_label>
+    <on_label>4</on_label>
   </widget>
-  <widget type="checkbox" version="2.0.0">
-    <name>Check Box_5</name>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_9</name>
     <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut5</pv_name>
-    <label>5</label>
-    <x>20</x>
-    <y>340</y>
+    <x>10</x>
+    <y>310</y>
+    <width>40</width>
+    <off_label>5</off_label>
+    <on_label>5</on_label>
+  </widget>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_10</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut6</pv_name>
+    <x>10</x>
+    <y>350</y>
+    <width>40</width>
+    <off_label>6</off_label>
+    <on_label>6</on_label>
+  </widget>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_11</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut7</pv_name>
+    <x>10</x>
+    <y>390</y>
+    <width>40</width>
+    <off_label>7</off_label>
+    <on_label>7</on_label>
+  </widget>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_12</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut0</pv_name>
+    <x>100</x>
+    <y>110</y>
+    <width>40</width>
+    <off_label>0</off_label>
+    <on_label>0</on_label>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_13</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut1</pv_name>
+    <x>100</x>
+    <y>150</y>
+    <width>40</width>
+    <off_label>0</off_label>
+    <on_label>0</on_label>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_14</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut2</pv_name>
+    <x>100</x>
+    <y>190</y>
+    <width>40</width>
+    <off_label>0</off_label>
+    <on_label>0</on_label>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_15</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut3</pv_name>
+    <x>100</x>
+    <y>230</y>
+    <width>40</width>
+    <off_label>0</off_label>
+    <on_label>0</on_label>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_16</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut4</pv_name>
+    <x>100</x>
+    <y>270</y>
+    <width>40</width>
+    <off_label>0</off_label>
+    <on_label>0</on_label>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_17</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut5</pv_name>
+    <x>100</x>
+    <y>310</y>
+    <width>40</width>
+    <off_label>0</off_label>
+    <on_label>0</on_label>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_18</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut6</pv_name>
+    <x>100</x>
+    <y>350</y>
+    <width>40</width>
+    <off_label>0</off_label>
+    <on_label>0</on_label>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_19</name>
+    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut7</pv_name>
+    <x>100</x>
+    <y>390</y>
+    <width>40</width>
+    <off_label>0</off_label>
+    <on_label>0</on_label>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
 </display>

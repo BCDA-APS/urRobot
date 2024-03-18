@@ -27,6 +27,7 @@ bool RTDEControl::try_construction(const char *robot_ip) {
             connected = true;
         }
     } catch (const std::exception &e) {
+        spdlog::error("Failed to connected to UR RTDE Control/IO interface");
         spdlog::error(e.what());
     }
     return connected;

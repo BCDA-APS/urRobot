@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-02-09 11:22:47 by nmarks-->
+<!--Saved on 2024-03-18 17:22:40 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
   <width>600</width>
@@ -83,6 +83,7 @@
       <y>81</y>
       <width>180</width>
       <height>39</height>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_2</name>
