@@ -36,9 +36,9 @@ constexpr int MAX_CONTROLLERS = 1;
 constexpr double DEFAULT_POLL_TIME = 0.10; // seconds
 constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
-class URRobotDashboard : public asynPortDriver {
+class URDashboard : public asynPortDriver {
   public:
-    URRobotDashboard(const char *asyn_port_name, const char *robot_port_name);
+    URDashboard(const char *asyn_port_name, const char *robot_port_name);
     virtual void poll(void);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars,

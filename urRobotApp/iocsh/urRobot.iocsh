@@ -1,25 +1,31 @@
 # ### urRobot.iocsh ###
 
 #- ###################################################
-#- PREFIX	    - IOC Prefix
+#- PREFIX	    	- IOC Prefix
 #-
-#- IP       	    - IP address of the robot
+#- IP       	    	- IP address of the robot
 #-
-#- ROBOT_NAME       - Optional: Name for the robot with ":" (R prefix)
-#-		      Default: ""
+#- ROBOT_NAME       	- Optional: Name for the robot with ":" (R prefix)
+#-		      	  Default: ""
 #-
-#- DASH_INSTANCE    - Optional: Name of asyn port to create for the UR Dashboard server
-#-	      	      Default: asyn_dash
+#- DASH_INSTANCE    	- Optional: Name of asyn port to create for the UR Dashboard server
+#-	      	      	  Default: asyn_dash
 #-
-#- RTDE_INSTANCE    - Optional: Name of asyn port to create for the UR RTDE server
-#-		      Default: asyn_rtde
+#- RTDE_RECV_INSTANCE   - Optional: Name of asyn port to create for the UR RTDE receive interface
+#-		      	  Default: asyn_rtde_recv
+#-
+#- RTDE_CTRL_INSTANCE   - Optional: Name of asyn port to create for the UR RTDE control interface
+#-		      	  Default: asyn_rtde_ctrl
 #- ###################################################
 
 # Set up UR dashboard server
 dbLoadRecords("$(URROBOT)/db/dashboard.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(DASH_INSTANCE=asyn_dash), ADDR=0")
-URRobotDashboardConfig("$(DASH_INSTANCE=asyn_dash)", "$(IP)")
+URDashboardConfig("$(DASH_INSTANCE=asyn_dash)", "$(IP)")
 
-# Set up UR RTDE interface
-dbLoadRecords("$(URROBOT)/db/rtde_receive.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(RTDE_INSTANCE=asyn_rtde), ADDR=0")
-dbLoadRecords("$(URROBOT)/db/rtde_io.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(RTDE_INSTANCE=asyn_rtde), ADDR=0")
-URRobotRTDEConfig("$(RTDE_INSTANCE=asyn_rtde)", "$(IP)")
+# Set up UR RTDE receive interface
+dbLoadRecords("$(URROBOT)/db/rtde_receive.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(RTDE_RECV_INSTANCE=asyn_rtde_recv), ADDR=0")
+RTDEReceiveConfig("$(RTDE_RECV_INSTANCE=asyn_rtde_recv)", "$(IP)")
+
+# Set up UR RTDE Control/IO interfaces
+dbLoadRecords("$(URROBOT)/db/rtde_control.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(RTDE_CTRL_INSTANCE=asyn_rtde_ctrl), ADDR=0")
+RTDEControlConfig("$(RTDE_CTRL_INSTANCE=asyn_rtde_ctrl)", "$(IP)")

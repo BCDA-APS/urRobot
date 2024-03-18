@@ -7,12 +7,12 @@
 #include "ur_rtde/dashboard_client.h"
 
 static void poll_thread_C(void *pPvt) {
-    URRobotDashboard *pURRobotDashboard = (URRobotDashboard *)pPvt;
-    pURRobotDashboard->poll();
+    URDashboard *pURDashboard = (URDashboard *)pPvt;
+    pURDashboard->poll();
 }
 
 // wraps the ur_dashboard_->connect() function to fail gracefully
-bool URRobotDashboard::try_connect() {
+bool URDashboard::try_connect() {
     bool connected = false;
     try {
         ur_dashboard_->connect();
@@ -26,7 +26,7 @@ bool URRobotDashboard::try_connect() {
     return connected;
 }
 
-URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot_ip)
+URDashboard::URDashboard(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
                          asynInt32ArrayMask,
@@ -78,12 +78,12 @@ URRobotDashboard::URRobotDashboard(const char *asyn_port_name, const char *robot
         setIntegerParam(isConnectedIndex_, 0);
     }
 
-    epicsThreadCreate("UrRobotMainLoop", epicsThreadPriorityLow,
+    epicsThreadCreate("URDashboardPoller", epicsThreadPriorityLow,
                       epicsThreadGetStackSize(epicsThreadStackMedium),
                       (EPICSTHREADFUNC)poll_thread_C, this);
 }
 
-void URRobotDashboard::poll() {
+void URDashboard::poll() {
     while (true) {
         lock();
 
@@ -106,7 +106,7 @@ void URRobotDashboard::poll() {
     }
 }
 
-asynStatus URRobotDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
+asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
 
@@ -155,7 +155,7 @@ asynStatus URRobotDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     return asynSuccess;
 }
 
-asynStatus URRobotDashboard::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars,
+asynStatus URDashboard::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars,
                                         size_t *nActual) {
     // TODO: Check this. Seems to work but gives weird warning
     int function = pasynUser->reason;
@@ -179,23 +179,23 @@ asynStatus URRobotDashboard::writeOctet(asynUser *pasynUser, const char *value, 
     return status;
 }
 // register function for iocsh
-extern "C" int URRobotDashboardConfig(const char *asyn_port_name, const char *robot_ip) {
-    URRobotDashboard *pURRobotDashboard = new URRobotDashboard(asyn_port_name, robot_ip);
-    pURRobotDashboard = NULL;
+extern "C" int URDashboardConfig(const char *asyn_port_name, const char *robot_ip) {
+    URDashboard *pURDashboard = new URDashboard(asyn_port_name, robot_ip);
+    pURDashboard = NULL;
     return (asynSuccess);
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
 static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
-static const iocshFuncDef urRobotFuncDef = {"URRobotDashboardConfig", 2, urRobotArgs};
+static const iocshFuncDef urRobotFuncDef = {"URDashboardConfig", 2, urRobotArgs};
 
 static void urRobotCallFunc(const iocshArgBuf *args) {
-    URRobotDashboardConfig(args[0].sval, args[1].sval);
+    URDashboardConfig(args[0].sval, args[1].sval);
 }
 
-void URRobotDashboardRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
+void URDashboardRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 
 extern "C" {
-epicsExportRegistrar(URRobotDashboardRegister);
+epicsExportRegistrar(URDashboardRegister);
 }

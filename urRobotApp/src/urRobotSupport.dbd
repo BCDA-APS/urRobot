@@ -1,2 +1,3 @@
-registrar(URRobotRTDERegister)
-registrar(URRobotDashboardRegister)
+registrar(RTDEReceiveRegister)
+registrar(RTDEControlRegister)
+registrar(URDashboardRegister)

@@ -22,7 +22,7 @@ DBD += urRobotSupport.dbd
 urRobotSupport_DBD += urRobot.dbd
 
 # specify all source files to be compiled and added to the library
-urRobot_SRCS += rtde_driver.cpp dashboard_driver.cpp
+urRobot_SRCS += rtde_receive_driver.cpp dashboard_driver.cpp rtde_control_driver.cpp
 
 urRobot_LIBS += asyn
 urRobot_LIBS += rtde
