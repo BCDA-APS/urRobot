@@ -49,8 +49,11 @@ class RTDEControl : public asynPortDriver {
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     std::unique_ptr<ur_rtde::RTDEIOInterface> rtde_io_;
-    bool connected;
-    bool try_construction(const char *robot_ip);
+    const char *robot_ip_;
+    // bool io_connected;
+    // bool control_connected;
+    bool try_connect_io();
+    bool try_connect_control();
 
   protected:
     asynUser *pasynUserURRobot_;

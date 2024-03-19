@@ -16,19 +16,44 @@ static void poll_thread_C(void *pPvt) {
 // constructor throws and error, so subsequent calls like
 // rtde_control_->isConnected() will segfault since the rtde_recieve_ object
 // does not point to anything. This is why we have the `this->connected` variable
-bool RTDEControl::try_construction(const char *robot_ip) {
+
+bool RTDEControl::try_connect_io() {
+    // We assume if there is no error, IO interface is connected
+    // because the RTDEIOInterface class has no isConnected() method
     bool connected = false;
-    try {
-        // construction of the RTDE objects automatically tries connecting
-        rtde_control_ = std::make_unique<ur_rtde::RTDEControlInterface>(robot_ip);
-        rtde_io_ = std::make_unique<ur_rtde::RTDEIOInterface>(robot_ip);
-        if (rtde_control_->isConnected()) {
-            spdlog::info("Connected to UR RTDE Control/IO interface");
+    if (rtde_io_ == nullptr) {
+        try {
+            rtde_io_ = std::make_unique<ur_rtde::RTDEIOInterface>(robot_ip_);
+            spdlog::info("Connected to UR RTDE IO interface");
             connected = true;
+        } catch (const std::exception &e) {
+            spdlog::error("Failed to connected to UR RTDE I/O interface\n{}", e.what());
         }
-    } catch (const std::exception &e) {
-        spdlog::error("Failed to connected to UR RTDE Control/IO interface");
-        spdlog::error(e.what());
+    } else {
+        rtde_io_->reconnect();
+        spdlog::info("Reconnecting to UR RTDE I/O interface");
+    }
+    return connected;
+}
+
+bool RTDEControl::try_connect_control() {
+    bool connected = false;
+
+    if (rtde_control_ == nullptr) {
+        try {
+            rtde_control_ = std::make_unique<ur_rtde::RTDEControlInterface>(robot_ip_);
+            if (rtde_control_->isConnected()) {
+                spdlog::info("Connected to UR RTDE Control interface");
+                connected = true;
+            }
+        } catch (const std::exception &e) {
+            spdlog::error("Failed to connected to UR RTDE Control interface\n{}", e.what());
+        }
+    } else {
+        if (not rtde_control_->isConnected()) {
+            rtde_control_->reconnect();
+            spdlog::info("Reconnecting to UR RTDE Control interface");
+        }
     }
     return connected;
 }
@@ -44,7 +69,7 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
                      0, 0),
-      rtde_control_(nullptr), rtde_io_(nullptr) {
+      rtde_control_(nullptr), rtde_io_(nullptr), robot_ip_(robot_ip) {
 
     // RTDE Control
     createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
@@ -79,7 +104,8 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     // TODO: make log level an arg to the constructor?
     spdlog::set_level(spdlog::level::debug); // Set global log level to debug
 
-    this->connected = this->try_construction(robot_ip);
+    try_connect_io();
+    try_connect_control();
 
     epicsThreadCreate("RTDEControlPoller", epicsThreadPriorityLow,
                       epicsThreadGetStackSize(epicsThreadStackMedium),
@@ -89,14 +115,12 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
 void RTDEControl::poll() {
     while (true) {
         lock();
-        if (this->connected) {
+
+        if (rtde_control_ != nullptr) {
             if (rtde_control_->isConnected()) {
-                this->connected = true;
                 setIntegerParam(isConnectedIndex_, 1);
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
-                this->connected = false;
-                spdlog::warn("UR RTDE interface disconnected");
             }
         }
 
@@ -107,6 +131,11 @@ void RTDEControl::poll() {
 }
 
 asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
+
+    if (rtde_io_ == nullptr) {
+        spdlog::error("RTDE IO interface not initialized");
+        return asynError;
+    }
 
     int function = pasynUser->reason;
 
@@ -135,8 +164,32 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
 asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
-
     bool rtde_ok = true;
+
+    if (function == reconnectIndex_) {
+        bool res = false;
+        res = try_connect_control();
+        res = try_connect_io();
+        if (not res) {
+            return asynError;
+        }
+    } else if (function == disconnectIndex_) {
+        rtde_control_->disconnect();
+        rtde_io_->disconnect();
+    }
+    
+    // only checking io since rtde_control_ not used later in this func
+    if (rtde_io_ == nullptr) {
+        spdlog::error("RTDE IO interface not initialized");
+        return asynError;
+    }
+    
+    // if control is not connected, neither is I/O
+    if (not rtde_control_->isConnected()) {
+        spdlog::warn("RTDE Control + I/O interfaces not connected");
+        return asynError;
+    }
+
     if (function == setStandardDOUT0Index_) {
         spdlog::info("Setting standard digital output 0 {}", value == 1 ? "high" : "low");
         rtde_ok = rtde_io_->setStandardDigitalOut(0, static_cast<bool>(value));
@@ -195,20 +248,6 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     } else if (function == setToolDOUT1Index_) {
         spdlog::info("Setting tool digital output 1 {}", value == 1 ? "high" : "low");
         rtde_ok = rtde_io_->setToolDigitalOut(1, static_cast<bool>(value));
-    }
-
-    else if (function == disconnectIndex_) {
-        spdlog::info("Disconnecting from UR RTDE Control/IO interface");
-        rtde_control_->disconnect();
-    } else if (function == reconnectIndex_) {
-        try {
-            spdlog::info("Reconnecting to UR RTDE Control/IO interface");
-            rtde_ok = rtde_control_->reconnect();
-            this->connected = rtde_ok;
-            spdlog::info("Connected to UR RTDE Control/IO interface");
-        } catch (const std::exception &e) {
-            spdlog::error(e.what());
-        }
     }
 
     callParamCallbacks();
