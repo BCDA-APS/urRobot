@@ -40,7 +40,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_3</name>
-      <pv_name>$(P)$(R)RTDERecv:DigitalInputBits</pv_name>
+      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
       <x>102</x>
       <y>52</y>
       <bitReverse>true</bitReverse>
@@ -54,7 +54,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_4</name>
-      <pv_name>$(P)$(R)RTDERecv:DigitalInputBits</pv_name>
+      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
       <x>102</x>
       <y>82</y>
       <startBit>8</startBit>
@@ -69,7 +69,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_5</name>
-      <pv_name>$(P)$(R)RTDERecv:DigitalInputBits</pv_name>
+      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
       <x>102</x>
       <y>112</y>
       <width>40</width>
@@ -106,7 +106,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_6</name>
-      <pv_name>$(P)$(R)RTDERecv:DigitalOutputBits</pv_name>
+      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
       <x>102</x>
       <y>192</y>
       <bitReverse>true</bitReverse>
@@ -127,7 +127,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_7</name>
-      <pv_name>$(P)$(R)RTDERecv:DigitalOutputBits</pv_name>
+      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
       <x>102</x>
       <y>222</y>
       <startBit>8</startBit>
@@ -135,7 +135,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_8</name>
-      <pv_name>$(P)$(R)RTDERecv:DigitalOutputBits</pv_name>
+      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
       <x>102</x>
       <y>252</y>
       <width>40</width>
@@ -166,7 +166,7 @@
     </font>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_12</name>
-      <pv_name>$(P)$(R)RTDERecv:AnalogInput0</pv_name>
+      <pv_name>$(P)$(R)Receive:AnalogInput0</pv_name>
       <x>72</x>
       <y>22</y>
       <width>20</width>
@@ -197,7 +197,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_16</name>
-      <pv_name>$(P)$(R)RTDERecv:AnalogInput1</pv_name>
+      <pv_name>$(P)$(R)Receive:AnalogInput1</pv_name>
       <x>92</x>
       <y>22</y>
       <width>20</width>
@@ -206,7 +206,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_17</name>
-      <pv_name>$(P)$(R)RTDERecv:AnalogOutput1</pv_name>
+      <pv_name>$(P)$(R)Receive:AnalogOutput1</pv_name>
       <x>92</x>
       <y>62</y>
       <width>20</width>
@@ -215,7 +215,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_18</name>
-      <pv_name>$(P)$(R)RTDERecv:AnalogOutput0</pv_name>
+      <pv_name>$(P)$(R)Receive:AnalogOutput0</pv_name>
       <x>72</x>
       <y>62</y>
       <width>20</width>
@@ -235,7 +235,7 @@
     </font>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_9</name>
-      <pv_name>$(P)$(R)RTDERecv:SafetyStatusBits</pv_name>
+      <pv_name>$(P)$(R)Receive:SafetyStatusBits</pv_name>
       <x>2</x>
       <y>12</y>
       <width>20</width>
@@ -356,7 +356,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_4</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualTCPPose</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualTCPPose</pv_name>
       <x>142</x>
       <y>12</y>
       <width>250</width>
@@ -371,7 +371,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_5</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualTCPSpeed</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualTCPSpeed</pv_name>
       <x>142</x>
       <y>42</y>
       <width>250</width>
@@ -386,28 +386,28 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_6</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualTCPForce</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualTCPForce</pv_name>
       <x>142</x>
       <y>72</y>
       <width>250</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualJointVelocities</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualJointVelocities</pv_name>
       <x>562</x>
       <y>42</y>
       <width>250</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_2</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualJointPositions</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualJointPositions</pv_name>
       <x>562</x>
       <y>12</y>
       <width>250</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_3</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualJointCurrents</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualJointCurrents</pv_name>
       <x>562</x>
       <y>72</y>
       <width>250</width>
@@ -454,7 +454,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_7</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualToolAccelerometer</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualToolAccelerometer</pv_name>
       <x>142</x>
       <y>102</y>
       <width>250</width>
@@ -477,7 +477,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_18</name>
-      <pv_name>$(P)$(R)RTDERecv:JointTemperatures</pv_name>
+      <pv_name>$(P)$(R)Receive:JointTemperatures</pv_name>
       <x>562</x>
       <y>102</y>
       <width>250</width>
@@ -492,7 +492,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_19</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualMomentum</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualMomentum</pv_name>
       <x>142</x>
       <y>132</y>
       <width>250</width>
@@ -507,7 +507,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_20</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualMainVoltage</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualMainVoltage</pv_name>
       <x>142</x>
       <y>162</y>
       <width>250</width>
@@ -522,7 +522,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_21</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualRobotVoltage</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualRobotVoltage</pv_name>
       <x>142</x>
       <y>192</y>
       <width>250</width>
@@ -537,7 +537,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_22</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualRobotCurrent</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualRobotCurrent</pv_name>
       <x>142</x>
       <y>222</y>
       <width>250</width>
@@ -552,7 +552,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_23</name>
-      <pv_name>$(P)$(R)RTDERecv:ActualJointVoltages</pv_name>
+      <pv_name>$(P)$(R)Receive:ActualJointVoltages</pv_name>
       <x>562</x>
       <y>132</y>
       <width>250</width>
@@ -566,14 +566,14 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_9</name>
-    <pv_name>$(P)$(R)RTDERecv:ControllerTimestamp</pv_name>
+    <pv_name>$(P)$(R)Receive:ControllerTimestamp</pv_name>
     <x>130</x>
     <y>50</y>
     <width>110</width>
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(P)$(R)RTDERecv:Connected</pv_name>
+    <pv_name>$(P)$(R)Receive:Connected</pv_name>
     <x>90</x>
     <y>80</y>
     <width>30</width>
@@ -581,7 +581,7 @@
   </widget>
   <widget type="multi_state_led" version="2.0.0">
     <name>LED (Multi State)</name>
-    <pv_name>$(P)$(R)RTDERecv:RuntimeState</pv_name>
+    <pv_name>$(P)$(R)Receive:RuntimeState</pv_name>
     <x>100</x>
     <y>130</y>
     <width>100</width>
@@ -666,7 +666,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_8</name>
-      <pv_name>$(P)$(R)RTDERecv:TargetTCPPose</pv_name>
+      <pv_name>$(P)$(R)Receive:TargetTCPPose</pv_name>
       <x>144</x>
       <y>12</y>
       <width>250</width>
@@ -681,28 +681,28 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_10</name>
-      <pv_name>$(P)$(R)RTDERecv:TargetTCPSpeed</pv_name>
+      <pv_name>$(P)$(R)Receive:TargetTCPSpeed</pv_name>
       <x>144</x>
       <y>42</y>
       <width>250</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_12</name>
-      <pv_name>$(P)$(R)RTDERecv:TargetJointVelocities</pv_name>
+      <pv_name>$(P)$(R)Receive:TargetJointVelocities</pv_name>
       <x>572</x>
       <y>42</y>
       <width>250</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_13</name>
-      <pv_name>$(P)$(R)RTDERecv:TargetJointPositions</pv_name>
+      <pv_name>$(P)$(R)Receive:TargetJointPositions</pv_name>
       <x>572</x>
       <y>12</y>
       <width>250</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_14</name>
-      <pv_name>$(P)$(R)RTDERecv:TargetJointCurrents</pv_name>
+      <pv_name>$(P)$(R)Receive:TargetJointCurrents</pv_name>
       <x>572</x>
       <y>102</y>
       <width>250</width>
@@ -757,7 +757,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_16</name>
-      <pv_name>$(P)$(R)RTDERecv:TargetJointAccelerations</pv_name>
+      <pv_name>$(P)$(R)Receive:TargetJointAccelerations</pv_name>
       <x>572</x>
       <y>72</y>
       <width>250</width>
@@ -772,7 +772,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_17</name>
-      <pv_name>$(P)$(R)RTDERecv:TargetJointMoments</pv_name>
+      <pv_name>$(P)$(R)Receive:TargetJointMoments</pv_name>
       <x>572</x>
       <y>132</y>
       <width>250</width>

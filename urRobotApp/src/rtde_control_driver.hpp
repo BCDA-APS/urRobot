@@ -2,42 +2,17 @@
 #define _RTDE_CONTROL_DRIVER_HPP_
 
 #include "ur_rtde/rtde_control_interface.h"
-#include "ur_rtde/rtde_io_interface.h"
 #include <asynPortDriver.h>
-
-// RTDE IO Interface
-static constexpr char SPEED_SLIDER_STRING[] = "SPEED_SLIDER";
-static constexpr char SET_STANDARD_DOUT0_STRING[] = "SET_STANDARD_DIGITAL_OUT0";
-static constexpr char SET_STANDARD_DOUT1_STRING[] = "SET_STANDARD_DIGITAL_OUT1";
-static constexpr char SET_STANDARD_DOUT2_STRING[] = "SET_STANDARD_DIGITAL_OUT2";
-static constexpr char SET_STANDARD_DOUT3_STRING[] = "SET_STANDARD_DIGITAL_OUT3";
-static constexpr char SET_STANDARD_DOUT4_STRING[] = "SET_STANDARD_DIGITAL_OUT4";
-static constexpr char SET_STANDARD_DOUT5_STRING[] = "SET_STANDARD_DIGITAL_OUT5";
-static constexpr char SET_STANDARD_DOUT6_STRING[] = "SET_STANDARD_DIGITAL_OUT6";
-static constexpr char SET_STANDARD_DOUT7_STRING[] = "SET_STANDARD_DIGITAL_OUT7";
-static constexpr char SET_CONFIG_DOUT0_STRING[] = "SET_CONFIG_DIGITAL_OUT0";
-static constexpr char SET_CONFIG_DOUT1_STRING[] = "SET_CONFIG_DIGITAL_OUT1";
-static constexpr char SET_CONFIG_DOUT2_STRING[] = "SET_CONFIG_DIGITAL_OUT2";
-static constexpr char SET_CONFIG_DOUT3_STRING[] = "SET_CONFIG_DIGITAL_OUT3";
-static constexpr char SET_CONFIG_DOUT4_STRING[] = "SET_CONFIG_DIGITAL_OUT4";
-static constexpr char SET_CONFIG_DOUT5_STRING[] = "SET_CONFIG_DIGITAL_OUT5";
-static constexpr char SET_CONFIG_DOUT6_STRING[] = "SET_CONFIG_DIGITAL_OUT6";
-static constexpr char SET_CONFIG_DOUT7_STRING[] = "SET_CONFIG_DIGITAL_OUT7";
-static constexpr char SET_TOOL_DOUT0_STRING[] = "SET_TOOL_DIGITAL_OUT0";
-static constexpr char SET_TOOL_DOUT1_STRING[] = "SET_TOOL_DIGITAL_OUT1";
-static constexpr char SET_VOLTAGE_AOUT0_STRING[] = "SET_VOLTAGE_ANALOG_OUT0";
-static constexpr char SET_VOLTAGE_AOUT1_STRING[] = "SET_VOLTAGE_ANALOG_OUT1";
-static constexpr char SET_CURRENT_AOUT0_STRING[] = "SET_CURRENT_ANALOG_OUT0";
-static constexpr char SET_CURRENT_AOUT1_STRING[] = "SET_CURRENT_ANALOG_OUT1";
 
 // RTDE Control Interface
 static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
 static constexpr char RECONNECT_STRING[] = "RECONNECT";
 static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
 
-constexpr int MAX_CONTROLLERS = 1;
-constexpr double POLL_PERIOD = 0.10; // seconds
-constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
+static constexpr int NUM_JOINTS = 6;
+static constexpr int MAX_CONTROLLERS = 1;
+static constexpr double POLL_PERIOD = 0.10; // seconds
+static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class RTDEControl : public asynPortDriver {
   public:
@@ -48,12 +23,8 @@ class RTDEControl : public asynPortDriver {
 
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
-    std::unique_ptr<ur_rtde::RTDEIOInterface> rtde_io_;
     const char *robot_ip_;
-    // bool io_connected;
-    // bool control_connected;
-    bool try_connect_io();
-    bool try_connect_control();
+    bool try_connect();
 
   protected:
     asynUser *pasynUserURRobot_;

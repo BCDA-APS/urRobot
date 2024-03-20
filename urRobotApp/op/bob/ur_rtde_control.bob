@@ -27,13 +27,13 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(P)$(R)RTDECtrl:Connected</pv_name>
+    <pv_name>$(P)$(R)Control:Connected</pv_name>
     <x>90</x>
     <y>50</y>
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut0</pv_name>
+    <pv_name>$(P)$(R)IO:SetStandardDigitalOut0</pv_name>
     <x>10</x>
     <y>110</y>
     <width>40</width>
@@ -42,7 +42,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_1</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut1</pv_name>
+    <pv_name>$(P)$(R)IO:SetStandardDigitalOut1</pv_name>
     <x>10</x>
     <y>150</y>
     <width>40</width>
@@ -52,7 +52,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_2</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut2</pv_name>
+    <pv_name>$(P)$(R)IO:SetStandardDigitalOut2</pv_name>
     <x>10</x>
     <y>190</y>
     <width>40</width>
@@ -61,7 +61,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_3</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut3</pv_name>
+    <pv_name>$(P)$(R)IO:SetStandardDigitalOut3</pv_name>
     <x>10</x>
     <y>230</y>
     <width>40</width>
@@ -70,7 +70,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_8</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut4</pv_name>
+    <pv_name>$(P)$(R)IO:SetStandardDigitalOut4</pv_name>
     <x>10</x>
     <y>270</y>
     <width>40</width>
@@ -79,7 +79,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_9</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut5</pv_name>
+    <pv_name>$(P)$(R)IO:SetStandardDigitalOut5</pv_name>
     <x>10</x>
     <y>310</y>
     <width>40</width>
@@ -88,7 +88,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_10</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut6</pv_name>
+    <pv_name>$(P)$(R)IO:SetStandardDigitalOut6</pv_name>
     <x>10</x>
     <y>350</y>
     <width>40</width>
@@ -97,7 +97,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_11</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetStandardDigitalOut7</pv_name>
+    <pv_name>$(P)$(R)IO:SetStandardDigitalOut7</pv_name>
     <x>10</x>
     <y>390</y>
     <width>40</width>
@@ -106,7 +106,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_12</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut0</pv_name>
+    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut0</pv_name>
     <x>100</x>
     <y>110</y>
     <width>40</width>
@@ -117,7 +117,7 @@
 
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_13</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut1</pv_name>
+    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut1</pv_name>
     <x>100</x>
     <y>150</y>
     <width>40</width>
@@ -128,7 +128,7 @@
 
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_14</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut2</pv_name>
+    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut2</pv_name>
     <x>100</x>
     <y>190</y>
     <width>40</width>
@@ -139,7 +139,7 @@
 
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_15</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut3</pv_name>
+    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut3</pv_name>
     <x>100</x>
     <y>230</y>
     <width>40</width>
@@ -150,7 +150,7 @@
 
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_16</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut4</pv_name>
+    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut4</pv_name>
     <x>100</x>
     <y>270</y>
     <width>40</width>
@@ -161,7 +161,7 @@
 
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_17</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut5</pv_name>
+    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut5</pv_name>
     <x>100</x>
     <y>310</y>
     <width>40</width>
@@ -172,7 +172,7 @@
 
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_18</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut6</pv_name>
+    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut6</pv_name>
     <x>100</x>
     <y>350</y>
     <width>40</width>
@@ -183,7 +183,7 @@
 
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_19</name>
-    <pv_name>$(P)$(R)RTDECtrl:SetConfigurableDigitalOut7</pv_name>
+    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut7</pv_name>
     <x>100</x>
     <y>390</y>
     <width>40</width>
