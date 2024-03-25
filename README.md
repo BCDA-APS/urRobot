@@ -1,7 +1,7 @@
 # urRobot EPICS Support Module
-This support modulues provides an EPICS interface to control a Universal
-Robots e-series robot arm. It works by creating a mapping between function calls in the
-[ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) library and EPICS PVs through asyn parameters.
+This support module provides an EPICS interface to control a Universal
+Robots e-series robot arm. It works by mapping function calls in the
+[ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) library to EPICS PVs through asyn parameters.
 
 ## Build Instructions
 
