@@ -38,6 +38,7 @@ bool RTDEControl::try_connect() {
             }
         } catch (const std::exception &e) {
             spdlog::error("Failed to connected to UR RTDE Control interface\n{}", e.what());
+            connected = false;
         }
     } else {
         if (not rtde_control_->isConnected()) {
@@ -50,28 +51,27 @@ bool RTDEControl::try_connect() {
 }
 
 RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
-    : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
-                     asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
-                         asynFloat64ArrayMask | asynInt32ArrayMask,
-                     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask |
-                         asynInt32ArrayMask,
-                     ASYN_MULTIDEVICE | ASYN_CANBLOCK,
-                     1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
-                     0, 0),
+    : asynPortDriver(
+          asyn_port_name, MAX_CONTROLLERS,
+          asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask | asynFloat64ArrayMask |
+              asynInt32ArrayMask,
+          asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynInt32ArrayMask,
+          ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
+          0, 0),
       rtde_control_(nullptr), robot_ip_(robot_ip) {
 
     // RTDE Control
     createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
     createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
-
-    spdlog::set_level(spdlog::level::debug); // Set global log level to debug
+    
+    // TODO: can be set with shell environment variable
+    spdlog::set_level(spdlog::level::debug);
 
     try_connect();
 
     epicsThreadCreate("RTDEControlPoller", epicsThreadPriorityLow,
-                      epicsThreadGetStackSize(epicsThreadStackMedium),
-                      (EPICSTHREADFUNC)poll_thread_C, this);
+                      epicsThreadGetStackSize(epicsThreadStackMedium), (EPICSTHREADFUNC)poll_thread_C, this);
 }
 
 void RTDEControl::poll() {
@@ -81,10 +81,9 @@ void RTDEControl::poll() {
         if (rtde_control_ != nullptr) {
             if (rtde_control_->isConnected()) {
                 setIntegerParam(isConnectedIndex_, 1);
+                // aditional method calls from rtde_control go here
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
-                // FIX: probably should continue here but
-                // continue caused CONNECTED asyn param not to be set
             }
         } else {
             setIntegerParam(isConnectedIndex_, 0);
@@ -130,7 +129,6 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     int function = pasynUser->reason;
     bool comm_ok = true;
 
-    // Handle connection/disconnection
     if (function == reconnectIndex_) {
         comm_ok = try_connect();
         goto skip;
@@ -160,7 +158,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     }
 
     // RTDE Control interface function calls go here
-    
+
 skip:
     callParamCallbacks();
     if (comm_ok) {
@@ -183,9 +181,7 @@ static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
 static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
 static const iocshFuncDef urRobotFuncDef = {"RTDEControlConfig", 2, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) {
-    RTDEControlConfig(args[0].sval, args[1].sval);
-}
+static void urRobotCallFunc(const iocshArgBuf *args) { RTDEControlConfig(args[0].sval, args[1].sval); }
 
 void RTDEControlRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 

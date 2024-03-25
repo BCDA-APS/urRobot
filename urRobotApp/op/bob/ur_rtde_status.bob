@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-02-12 17:18:54 by nmarks-->
+<!--Saved on 2024-03-25 12:05:44 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
   <width>1000</width>
@@ -7,7 +7,7 @@
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>UR RTDE Monitor</text>
+    <text>UR RTDE Status</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>550</width>
@@ -156,8 +156,8 @@
   </widget>
   <widget type="group" version="2.0.0">
     <name>Analog I/O</name>
-    <x>330</x>
-    <y>1110</y>
+    <x>320</x>
+    <y>1120</y>
     <width>170</width>
     <height>130</height>
     <font>
@@ -225,7 +225,7 @@
   </widget>
   <widget type="group" version="2.0.0">
     <name>Safey Mode</name>
-    <x>310</x>
+    <x>300</x>
     <y>50</y>
     <width>270</width>
     <height>270</height>
@@ -777,5 +777,33 @@
       <y>132</y>
       <width>250</width>
     </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Receive:Disconnect.PROC</pv_name>
+        <value>1</value>
+        <description>Disconnect</description>
+      </action>
+    </actions>
+    <text>Disconnect</text>
+    <y>260</y>
+    <width>150</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_11</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Receive:Reconnect.PROC</pv_name>
+        <value>1</value>
+        <description>Reconnect</description>
+      </action>
+    </actions>
+    <text>Reconnect</text>
+    <y>220</y>
+    <width>150</width>
+    <tooltip>$(actions)</tooltip>
   </widget>
 </display>

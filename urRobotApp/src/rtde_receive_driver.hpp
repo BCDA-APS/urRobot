@@ -51,17 +51,17 @@ constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 class RTDEReceive : public asynPortDriver {
   public:
     RTDEReceive(const char *asyn_port_name, const char *robot_port_name);
+    virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     virtual void poll(void);
 
   private:
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
-    bool connected;
-    bool try_construction(const char *robot_ip);
+    const char *robot_ip_;
+    bool try_connect();
 
   protected:
     asynUser *pasynUserURRobot_;
 
-    // rtde_receive
     int isConnectedIndex_;
     int safetyStatusBitsIndex_;
     int runtimeStateIndex_;
@@ -101,30 +101,6 @@ class RTDEReceive : public asynPortDriver {
     int disconnectIndex_;
     int reconnectIndex_;
 
-    // rtde_io
-    // int speedSliderIndex_;
-    // int setStandardDOUT0Index_;
-    // int setStandardDOUT1Index_;
-    // int setStandardDOUT2Index_;
-    // int setStandardDOUT3Index_;
-    // int setStandardDOUT4Index_;
-    // int setStandardDOUT5Index_;
-    // int setStandardDOUT6Index_;
-    // int setStandardDOUT7Index_;
-    // int setConfigDOUT0Index_;
-    // int setConfigDOUT1Index_;
-    // int setConfigDOUT2Index_;
-    // int setConfigDOUT3Index_;
-    // int setConfigDOUT4Index_;
-    // int setConfigDOUT5Index_;
-    // int setConfigDOUT6Index_;
-    // int setConfigDOUT7Index_;
-    // int setToolDOUT0Index_;
-    // int setToolDOUT1Index_;
-    // int setVoltageAOUT0Index_;
-    // int setVoltageAOUT1Index_;
-    // int setCurrentAOUT0Index_;
-    // int setCurrentAOUT1Index_;
 };
 
 #endif
