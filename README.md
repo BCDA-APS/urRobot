@@ -1,5 +1,6 @@
 # urRobot EPICS Support Module
-This support module provides an interace between function calls in the
+This support modulues provides an EPICS interface to control a Universal
+Robots e-series robot arm. It works by creating a mapping between function calls in the
 [ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) library and EPICS PVs through asyn parameters.
 
 ## Build Instructions
@@ -28,7 +29,7 @@ this support module as well.
 - Next, open configure/RELEASE in a text editor and correct the paths to `SUPPORT` and `ASYN` if necessary
 - Run `make` in the top level directory of the project
 
-## Adding urRobot support to an IOC
+## Quickstart
 
 - Add the path to the urRobot support in configure/RELEASE
 
@@ -46,9 +47,8 @@ ifdef URROBOT
 endif
 ```
 
-- In your startup script, load the example script to connect to the dashboard and RTDE interface,
-making sure to fill in the correct IP address for your robot.
+- In your startup script, load the example script making sure to fill in the correct IP address for your robot.
 ```
 # file: iocBoot/iocxxx/st.cmd.Linux
-iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.116.127")
+iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=127.0.0.1")
 ```
