@@ -11,23 +11,21 @@ static void poll_thread_C(void *pPvt) {
     pRTDEControl->poll();
 }
 
-// Wraps class construction/connection to fail gracefully.
-// Unlike the DashboardClient class, construction of the object tries
-// connecting automatically. If connection fails (IP is wrong) the RTDE
-// constructor throws and error, so subsequent calls like
-// rtde_control_->isConnected() will segfault since the rtde_recieve_ object
-// does not point to anything. This is why we have the `this->connected` variable
 bool RTDEControl::try_connect() {
+    // RTDE class construction automatically tries connecting.
+    // If this function hasn't been called of if connecting fails,
+    // the rtde_control_ object will be a nullptr
     bool connected = false;
 
     if (rtde_control_ == nullptr) {
         try {
+            // Can only connect to control interface when "Robotmode: RUNNING"
             auto dash = std::make_unique<ur_rtde::DashboardClient>(robot_ip_);
             dash->connect();
             if (dash->robotmode() == "Robotmode: RUNNING") {
                 rtde_control_ = std::make_unique<ur_rtde::RTDEControlInterface>(robot_ip_);
             } else {
-                spdlog::error("Unable to connect to UR RTDE Control Interface\nEnsure robot is on "
+                spdlog::error("Unable to connect to UR RTDE Control Interface:\nEnsure robot is on "
                               "and brakes released");
                 connected = false;
                 dash->disconnect();
@@ -43,8 +41,9 @@ bool RTDEControl::try_connect() {
         }
     } else {
         if (not rtde_control_->isConnected()) {
-            rtde_control_->reconnect();
             spdlog::info("Reconnecting to UR RTDE Control interface");
+            rtde_control_->reconnect();
+            connected = true;
         }
     }
     return connected;
@@ -66,7 +65,6 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
 
-    // TODO: make log level an arg to the constructor?
     spdlog::set_level(spdlog::level::debug); // Set global log level to debug
 
     try_connect();
@@ -85,7 +83,11 @@ void RTDEControl::poll() {
                 setIntegerParam(isConnectedIndex_, 1);
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
+                // FIX: probably should continue here but
+                // continue caused CONNECTED asyn param not to be set
             }
+        } else {
+            setIntegerParam(isConnectedIndex_, 0);
         }
 
         callParamCallbacks();
@@ -97,9 +99,30 @@ void RTDEControl::poll() {
 asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
 
     int function = pasynUser->reason;
+    bool comm_ok = true;
 
+    if (rtde_control_ == nullptr) {
+        spdlog::error("RTDE Control interface not initialized");
+        comm_ok = false;
+        goto skip;
+    }
+
+    if (not rtde_control_->isConnected()) {
+        spdlog::warn("RTDE Control interface not connected");
+        comm_ok = false;
+        goto skip;
+    }
+
+    // RTDE Control interface function calls go here
+
+skip:
     callParamCallbacks();
-    return asynSuccess;
+    if (comm_ok) {
+        return asynSuccess;
+    } else {
+        spdlog::error("RTDE communincation error in RTDEControl::writeFloat64");
+        return asynError;
+    }
 }
 
 asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
@@ -107,26 +130,38 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     int function = pasynUser->reason;
     bool comm_ok = true;
 
+    // Handle connection/disconnection
     if (function == reconnectIndex_) {
         comm_ok = try_connect();
-        if (not comm_ok) {
-            return asynError;
-        }
-    } else if (function == disconnectIndex_) {
-        rtde_control_->disconnect();
+        goto skip;
     }
 
     if (rtde_control_ == nullptr) {
         spdlog::error("RTDE Control interface not initialized");
-        return asynError;
+        comm_ok = false;
+        goto skip;
+    }
+    if (function == disconnectIndex_) {
+        spdlog::info("Disconnecting from RTDE control interface");
+        rtde_control_->disconnect();
+        if (not rtde_control_->isConnected()) {
+            comm_ok = true;
+        } else {
+            comm_ok = false;
+        }
+        goto skip;
     }
 
-    // if control is not connected, return
+    // Check that it's connected before conntinuing
     if (not rtde_control_->isConnected()) {
-        spdlog::warn("RTDE Control + I/O interfaces not connected");
-        return asynError;
+        spdlog::warn("RTDE Control interface not connected");
+        comm_ok = false;
+        goto skip;
     }
 
+    // RTDE Control interface function calls go here
+    
+skip:
     callParamCallbacks();
     if (comm_ok) {
         return asynSuccess;

@@ -30,7 +30,7 @@ RTDEReceiveConfig("$(RTDE_RECV_INSTANCE=asyn_rtde_recv)", "$(IP)")
 dbLoadRecords("$(URROBOT)/db/rtde_receive.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(RTDE_RECV_INSTANCE=asyn_rtde_recv), ADDR=0")
 
 # Set up UR RTDE I/O interface
-RTDEInOutConfig("$(RTDE_IO_INSTANCE=asyn_rtde_IO)", "$(IP)")
+RTDEInOutConfig("$(RTDE_IO_INSTANCE=asyn_rtde_io)", "$(IP)")
 dbLoadRecords("$(URROBOT)/db/rtde_io.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(RTDE_IO_INSTANCE=asyn_rtde_io), ADDR=0")
 
 # Set up UR RTDE Control interface
