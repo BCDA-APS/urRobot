@@ -17,7 +17,7 @@ distribution. If you believe it should work on your OS or distribution and it do
 - EPICS Base 7.0.8
 - asyn R4-42
 - [ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) (included)
-- spdlog (included)
+- [spdlog](https://github.com/gabime/spdlog) (included)
 
 Of these dependencies, you will only need to worry about EPICS base and asyn. Although the above versions are
 recommended, epics-urRobot may build with other versions. The ur_rtde library comes pre-built for the supported
