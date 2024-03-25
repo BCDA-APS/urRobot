@@ -2,13 +2,13 @@
 < envPaths
 
 epicsEnvSet("PREFIX", "urExample:")
+epicsEnvSet("IOCSH_PS1", "$(IOC)>")
 
 dbLoadDatabase("../../dbd/iocurExampleLinux.dbd")
 iocurExampleLinux_registerRecordDeviceDriver(pdbbase)
 
-# load the urRobot iocsh example
-# iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
-iocshLoad("./urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
+# Load urRobot iocsh script with the IP address for your robot
+iocshLoad("./urRobot.iocsh", "PREFIX=$(PREFIX), IP=192.168.1.1")
 
 ###############################################################################
 iocInit
