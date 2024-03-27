@@ -19,3 +19,64 @@ record(bi, "$(P)$(R)Control:Connected")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CONNECTED")
     field(SCAN, "I/O Intr")
 }
+
+record(bo, "$(P)$(R)Control:moveJ")
+{
+    field(DESC, "Moves joints to commanded values")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEJ")
+}
+
+record(ao, "$(P)$(R)Control:J1Cmd")
+{
+    field(DESC, "Commanded angle(deg) for joint 1")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J1CMD")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+
+record(ao, "$(P)$(R)Control:J2Cmd")
+{
+    field(DESC, "Commanded angle(deg) for joint 2")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J2CMD")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+
+record(ao, "$(P)$(R)Control:J3Cmd")
+{
+    field(DESC, "Commanded angle(deg) for joint 3")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J3CMD")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+
+record(ao, "$(P)$(R)Control:J4Cmd")
+{
+    field(DESC, "Commanded angle(deg) for joint 4")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J4CMD")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+
+record(ao, "$(P)$(R)Control:J5Cmd")
+{
+    field(DESC, "Commanded angle(deg) for joint 5")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J5CMD")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+
+record(ao, "$(P)$(R)Control:J6Cmd")
+{
+    field(DESC, "Commanded angle(deg) for joint 6")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J6CMD")
+    field(PINI, 1)
+    field(PREC, 4)
+}

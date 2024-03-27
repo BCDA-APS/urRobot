@@ -1,6 +1,9 @@
+#include <cstddef>
 #include <epicsExport.h>
 #include <epicsThread.h>
+#include <exception>
 #include <iocsh.h>
+#include <stdexcept>
 
 #include "rtde_control_driver.hpp"
 #include "spdlog/spdlog.h"
@@ -34,6 +37,15 @@ bool RTDEControl::try_connect() {
                 if (rtde_control_->isConnected()) {
                     spdlog::info("Connected to UR RTDE Control interface");
                     connected = true;
+
+                    // connect to RTDE Receive to get current joint states,
+                    // only if we successfully connect to RTDE Control
+                    rtde_receive_ = std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip_);
+                    if (rtde_receive_ == nullptr) {
+                        // HACK: should never get here
+                        throw std::runtime_error(
+                            "Failed connecting to receive interface from RTDEControl class");
+                    }
                 }
             }
         } catch (const std::exception &e) {
@@ -44,6 +56,7 @@ bool RTDEControl::try_connect() {
         if (not rtde_control_->isConnected()) {
             spdlog::info("Reconnecting to UR RTDE Control interface");
             rtde_control_->reconnect();
+            rtde_receive_->reconnect();
             connected = true;
         }
     }
@@ -56,15 +69,22 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
           asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask | asynFloat64ArrayMask |
               asynInt32ArrayMask,
           asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynInt32ArrayMask,
-          ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
+          ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, // ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1
           0, 0),
-      rtde_control_(nullptr), robot_ip_(robot_ip) {
+      rtde_control_(nullptr), rtde_receive_(nullptr), robot_ip_(robot_ip) {
 
     // RTDE Control
     createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
     createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
-    
+    createParam(J1CMD_STRING, asynParamFloat64, &J1CmdIndex_);
+    createParam(J2CMD_STRING, asynParamFloat64, &J2CmdIndex_);
+    createParam(J3CMD_STRING, asynParamFloat64, &J3CmdIndex_);
+    createParam(J4CMD_STRING, asynParamFloat64, &J4CmdIndex_);
+    createParam(J5CMD_STRING, asynParamFloat64, &J5CmdIndex_);
+    createParam(J6CMD_STRING, asynParamFloat64, &J6CmdIndex_);
+    createParam(MOVEJ_STRING, asynParamInt32, &moveJIndex_);
+
     // TODO: can be set with shell environment variable
     spdlog::set_level(spdlog::level::debug);
 
@@ -81,7 +101,7 @@ void RTDEControl::poll() {
         if (rtde_control_ != nullptr) {
             if (rtde_control_->isConnected()) {
                 setIntegerParam(isConnectedIndex_, 1);
-                // aditional method calls from rtde_control go here
+                // any additional rtde calls go here
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
             }
@@ -112,7 +132,28 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         goto skip;
     }
 
-    // RTDE Control interface function calls go here
+    // Whenever commanded joint angles change, we update the values
+    // TODO: maybe only need to set joint_cmds and not asyn param?
+    // also maybe try function map here
+    if (function == J1CmdIndex_) {
+        setDoubleParam(J1CmdIndex_, value);
+        this->joint_cmds.J1 = value;
+    } else if (function == J2CmdIndex_) {
+        setDoubleParam(J2CmdIndex_, value);
+        this->joint_cmds.J2 = value;
+    } else if (function == J3CmdIndex_) {
+        setDoubleParam(J3CmdIndex_, value);
+        this->joint_cmds.J3 = value;
+    } else if (function == J4CmdIndex_) {
+        setDoubleParam(J4CmdIndex_, value);
+        this->joint_cmds.J4 = value;
+    } else if (function == J5CmdIndex_) {
+        setDoubleParam(J5CmdIndex_, value);
+        this->joint_cmds.J5 = value;
+    } else if (function == J6CmdIndex_) {
+        setDoubleParam(J6CmdIndex_, value);
+        this->joint_cmds.J6 = value;
+    }
 
 skip:
     callParamCallbacks();
@@ -142,11 +183,13 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     if (function == disconnectIndex_) {
         spdlog::info("Disconnecting from RTDE control interface");
         rtde_control_->disconnect();
-        if (not rtde_control_->isConnected()) {
-            comm_ok = true;
-        } else {
-            comm_ok = false;
-        }
+        rtde_receive_->disconnect();
+        comm_ok = (not rtde_control_->isConnected() && not rtde_receive_->isConnected());
+        // if (not rtde_control_->isConnected()) {
+        // comm_ok = true;
+        // } else {
+        // comm_ok = false;
+        // }
         goto skip;
     }
 
@@ -158,6 +201,10 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     }
 
     // RTDE Control interface function calls go here
+    if (function == moveJIndex_) {
+        spdlog::info("moveJ({}, {}, {}, {}, {}, {})", joint_cmds.J1, joint_cmds.J2, joint_cmds.J3, joint_cmds.J4,
+                     joint_cmds.J5, joint_cmds.J6);
+    }
 
 skip:
     callParamCallbacks();
