@@ -23,24 +23,6 @@ static constexpr int MAX_CONTROLLERS = 1;
 static constexpr double POLL_PERIOD = 0.02; // seconds
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
-struct JointStates {
-    double J1 = 0.0;
-    double J2 = 0.0;
-    double J3 = 0.0;
-    double J4 = 0.0;
-    double J5 = 0.0;
-    double J6 = 0.0;
-};
-
-struct Pose {
-    double x = 0.0;
-    double y = 0.0;
-    double z = 0.0;
-    double roll = 0.0;
-    double pitch = 0.0;
-    double yaw = 0.0;
-};
-
 class RTDEControl : public asynPortDriver {
   public:
     RTDEControl(const char *asyn_port_name, const char *robot_port_name);
@@ -53,7 +35,12 @@ class RTDEControl : public asynPortDriver {
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
     const char *robot_ip_;
     bool try_connect();
-    JointStates joint_cmds;
+
+    // Commanded joint angles
+    std::array<double, NUM_JOINTS> cmd_joints = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+
+    // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
+    std::array<double, 6> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
   protected:
     asynUser *pasynUserURRobot_;

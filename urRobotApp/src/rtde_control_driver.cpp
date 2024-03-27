@@ -120,6 +120,9 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     int function = pasynUser->reason;
     bool comm_ok = true;
 
+    static std::map<int, int> JxCmd_map = {{J1CmdIndex_, 0}, {J2CmdIndex_, 1}, {J3CmdIndex_, 2},
+                                           {J4CmdIndex_, 3}, {J5CmdIndex_, 4}, {J6CmdIndex_, 5}};
+
     if (rtde_control_ == nullptr) {
         spdlog::error("RTDE Control interface not initialized");
         comm_ok = false;
@@ -133,26 +136,8 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     }
 
     // Whenever commanded joint angles change, we update the values
-    // TODO: maybe only need to set joint_cmds and not asyn param?
-    // also maybe try function map here
-    if (function == J1CmdIndex_) {
-        setDoubleParam(J1CmdIndex_, value);
-        this->joint_cmds.J1 = value;
-    } else if (function == J2CmdIndex_) {
-        setDoubleParam(J2CmdIndex_, value);
-        this->joint_cmds.J2 = value;
-    } else if (function == J3CmdIndex_) {
-        setDoubleParam(J3CmdIndex_, value);
-        this->joint_cmds.J3 = value;
-    } else if (function == J4CmdIndex_) {
-        setDoubleParam(J4CmdIndex_, value);
-        this->joint_cmds.J4 = value;
-    } else if (function == J5CmdIndex_) {
-        setDoubleParam(J5CmdIndex_, value);
-        this->joint_cmds.J5 = value;
-    } else if (function == J6CmdIndex_) {
-        setDoubleParam(J6CmdIndex_, value);
-        this->joint_cmds.J6 = value;
+    if (JxCmd_map.count(function) > 0) {
+        cmd_joints.at(JxCmd_map[function]) = value;
     }
 
 skip:
@@ -184,12 +169,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         spdlog::info("Disconnecting from RTDE control interface");
         rtde_control_->disconnect();
         rtde_receive_->disconnect();
-        comm_ok = (not rtde_control_->isConnected() && not rtde_receive_->isConnected());
-        // if (not rtde_control_->isConnected()) {
-        // comm_ok = true;
-        // } else {
-        // comm_ok = false;
-        // }
+        comm_ok = not rtde_control_->isConnected() and not rtde_receive_->isConnected();
         goto skip;
     }
 
@@ -202,8 +182,8 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     // RTDE Control interface function calls go here
     if (function == moveJIndex_) {
-        spdlog::info("moveJ({}, {}, {}, {}, {}, {})", joint_cmds.J1, joint_cmds.J2, joint_cmds.J3, joint_cmds.J4,
-                     joint_cmds.J5, joint_cmds.J6);
+        spdlog::info("moveJ({}, {}, {}, {}, {}, {})", cmd_joints.at(0), cmd_joints.at(1), cmd_joints.at(2),
+                     cmd_joints.at(3), cmd_joints.at(4), cmd_joints.at(5));
     }
 
 skip:
