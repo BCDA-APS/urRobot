@@ -16,7 +16,7 @@ static void poll_thread_C(void *pPvt) {
 
 bool RTDEControl::try_connect() {
     // RTDE class construction automatically tries connecting.
-    // If this function hasn't been called of if connecting fails,
+    // If this function hasn't been called or if connecting fails,
     // the rtde_control_ object will be a nullptr
     bool connected = false;
 
@@ -73,7 +73,6 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
           0, 0),
       rtde_control_(nullptr), rtde_receive_(nullptr), robot_ip_(robot_ip) {
 
-    // RTDE Control
     createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
     createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
@@ -84,6 +83,7 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(J5CMD_STRING, asynParamFloat64, &J5CmdIndex_);
     createParam(J6CMD_STRING, asynParamFloat64, &J6CmdIndex_);
     createParam(MOVEJ_STRING, asynParamInt32, &moveJIndex_);
+    createParam(ACTUAL_Q_STRING, asynParamFloat64Array, &actualQIndex_);
 
     // TODO: can be set with shell environment variable
     spdlog::set_level(spdlog::level::debug);
@@ -102,6 +102,8 @@ void RTDEControl::poll() {
             if (rtde_control_->isConnected()) {
                 setIntegerParam(isConnectedIndex_, 1);
                 // any additional rtde calls go here
+                std::vector<double> jvec = rtde_receive_->getActualQ();
+                doCallbacksFloat64Array(jvec.data(), NUM_JOINTS, actualQIndex_, 0);
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
             }
@@ -120,8 +122,14 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     int function = pasynUser->reason;
     bool comm_ok = true;
 
-    static std::map<int, int> JxCmd_map = {{J1CmdIndex_, 0}, {J2CmdIndex_, 1}, {J3CmdIndex_, 2},
-                                           {J4CmdIndex_, 3}, {J5CmdIndex_, 4}, {J6CmdIndex_, 5}};
+    static std::map<int, int> JxCmd_map = {
+        {J1CmdIndex_, 0},
+        {J2CmdIndex_, 1},
+        {J3CmdIndex_, 2},
+        {J4CmdIndex_, 3},
+        {J5CmdIndex_, 4},
+        {J6CmdIndex_, 5}
+    };
 
     if (rtde_control_ == nullptr) {
         spdlog::error("RTDE Control interface not initialized");

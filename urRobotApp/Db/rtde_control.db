@@ -27,6 +27,101 @@ record(bo, "$(P)$(R)Control:moveJ")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEJ")
 }
 
+# current joint positions for use interally with this database
+record(waveform, "$(P)$(R)Control:ActualQ")
+{
+    field(DESC, "Actual joint positions")     
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_Q")
+    field(NELM, 6)
+    field(FLNK, "$(P)$(R)Q_index_fanout.PROC")
+    field(SCAN, "I/O Intr")
+}
+
+record(fanout, "$(P)$(R)Q_index_fanout")
+{
+    field(LNK0, "$(P)$(R)Control:ActualQ_index0")
+    field(LNK1, "$(P)$(R)Control:ActualQ_index1")
+    field(LNK2, "$(P)$(R)Control:ActualQ_index2")
+    field(LNK3, "$(P)$(R)Control:ActualQ_index3")
+    field(LNK4, "$(P)$(R)Control:ActualQ_index4")
+    field(LNK5, "$(P)$(R)Control:ActualQ_index5")
+}
+
+# subArray to extract each element of ActualQ waveform
+record(subArray, "$(P)$(R)Control:ActualQ_index0")
+{
+    field(INP, "$(P)$(R)Control:ActualQ.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "0")
+}
+record(subArray, "$(P)$(R)Control:ActualQ_index1")
+{
+    field(INP, "$(P)$(R)Control:ActualQ.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "1")
+}
+record(subArray, "$(P)$(R)Control:ActualQ_index2")
+{
+    field(INP, "$(P)$(R)Control:ActualQ.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "2")
+}
+record(subArray, "$(P)$(R)Control:ActualQ_index3")
+{
+    field(INP, "$(P)$(R)Control:ActualQ.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "3")
+}
+record(subArray, "$(P)$(R)Control:ActualQ_index4")
+{
+    field(INP, "$(P)$(R)Control:ActualQ.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "4")
+}
+record(subArray, "$(P)$(R)Control:ActualQ_index5")
+{
+    field(INP, "$(P)$(R)Control:ActualQ.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "5")
+}
+
+# stores DOLx.VAL in LNKx.VAL
+# resets commanded joint angles to the current measured angles
+record(seq, "$(P)Control:ResetJCmd")
+{
+    field(DOL0, "$(P)$(R)Control:ActualQ_index0")
+    field(LNK0, "$(P)$(R)Control:J1Cmd PP")
+
+    field(DOL1, "$(P)$(R)Control:ActualQ_index1")
+    field(LNK1, "$(P)$(R)Control:J2Cmd PP")
+
+    field(DOL2, "$(P)$(R)Control:ActualQ_index2")
+    field(LNK2, "$(P)$(R)Control:J3Cmd PP")
+
+    field(DOL3, "$(P)$(R)Control:ActualQ_index3")
+    field(LNK3, "$(P)$(R)Control:J4Cmd PP")
+    
+    field(DOL4, "$(P)$(R)Control:ActualQ_index4")
+    field(LNK4, "$(P)$(R)Control:J5Cmd PP")
+
+    field(DOL5, "$(P)$(R)Control:ActualQ_index5")
+    field(LNK5, "$(P)$(R)Control:J6Cmd PP")
+}
+
 record(ao, "$(P)$(R)Control:J1Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 1")
@@ -80,3 +175,4 @@ record(ao, "$(P)$(R)Control:J6Cmd")
     field(PINI, 1)
     field(PREC, 4)
 }
+

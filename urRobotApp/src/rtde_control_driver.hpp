@@ -9,14 +9,14 @@ static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
 static constexpr char RECONNECT_STRING[] = "RECONNECT";
 static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
 
+static constexpr char ACTUAL_Q_STRING[] = "ACTUAL_Q";
+static constexpr char MOVEJ_STRING[] = "MOVEJ";
 static constexpr char J1CMD_STRING[] = "J1CMD";
 static constexpr char J2CMD_STRING[] = "J2CMD";
 static constexpr char J3CMD_STRING[] = "J3CMD";
 static constexpr char J4CMD_STRING[] = "J4CMD";
 static constexpr char J5CMD_STRING[] = "J5CMD";
 static constexpr char J6CMD_STRING[] = "J6CMD";
-
-static constexpr char MOVEJ_STRING[] = "MOVEJ";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
@@ -55,6 +55,7 @@ class RTDEControl : public asynPortDriver {
     int J5CmdIndex_;
     int J6CmdIndex_;
     int moveJIndex_;
+    int actualQIndex_;
 };
 
 #endif
