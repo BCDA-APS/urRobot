@@ -6,6 +6,7 @@
 #include <stdexcept>
 
 #include "rtde_control_driver.hpp"
+#include "rtde_control_interface.h"
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
 
@@ -28,7 +29,7 @@ bool RTDEControl::try_connect() {
             if (dash->robotmode() == "Robotmode: RUNNING") {
                 rtde_control_ = std::make_unique<ur_rtde::RTDEControlInterface>(robot_ip_);
             } else {
-                spdlog::error("Unable to connect to UR RTDE Control Interface:\nEnsure robot is on "
+                spdlog::error("Unable to connect to UR RTDE Control Interface: Ensure robot is on "
                               "and brakes released");
                 connected = false;
                 dash->disconnect();
@@ -54,7 +55,7 @@ bool RTDEControl::try_connect() {
         }
     } else {
         if (not rtde_control_->isConnected()) {
-            spdlog::info("Reconnecting to UR RTDE Control interface");
+            spdlog::debug("Reconnecting to UR RTDE Control interface");
             rtde_control_->reconnect();
             rtde_receive_->reconnect();
             connected = true;
@@ -101,8 +102,12 @@ void RTDEControl::poll() {
         if (rtde_control_ != nullptr) {
             if (rtde_control_->isConnected()) {
                 setIntegerParam(isConnectedIndex_, 1);
-                // any additional rtde calls go here
+
+                // get joint angles and convert to degrees
                 std::vector<double> jvec = rtde_receive_->getActualQ();
+                for (double &j : jvec) {
+                    j = j * 180.0 / M_PI;
+                }
                 doCallbacksFloat64Array(jvec.data(), NUM_JOINTS, actualQIndex_, 0);
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
@@ -122,14 +127,8 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     int function = pasynUser->reason;
     bool comm_ok = true;
 
-    static std::map<int, int> JxCmd_map = {
-        {J1CmdIndex_, 0},
-        {J2CmdIndex_, 1},
-        {J3CmdIndex_, 2},
-        {J4CmdIndex_, 3},
-        {J5CmdIndex_, 4},
-        {J6CmdIndex_, 5}
-    };
+    static std::map<int, int> JxCmd_map = {{J1CmdIndex_, 0}, {J2CmdIndex_, 1}, {J3CmdIndex_, 2},
+                                           {J4CmdIndex_, 3}, {J5CmdIndex_, 4}, {J6CmdIndex_, 5}};
 
     if (rtde_control_ == nullptr) {
         spdlog::error("RTDE Control interface not initialized");
@@ -138,14 +137,16 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     }
 
     if (not rtde_control_->isConnected()) {
-        spdlog::warn("RTDE Control interface not connected");
+        spdlog::error("RTDE Control interface not connected");
         comm_ok = false;
         goto skip;
     }
 
     // Whenever commanded joint angles change, we update the values
     if (JxCmd_map.count(function) > 0) {
-        cmd_joints.at(JxCmd_map[function]) = value;
+        // input value is in degrees, we need to convert to radians
+        const double val_rad = value * M_PI / 180.0;
+        cmd_joints.at(JxCmd_map[function]) = val_rad;
     }
 
 skip:
@@ -153,7 +154,7 @@ skip:
     if (comm_ok) {
         return asynSuccess;
     } else {
-        spdlog::error("RTDE communincation error in RTDEControl::writeFloat64");
+        spdlog::debug("RTDE communincation error in RTDEControl::writeFloat64");
         return asynError;
     }
 }
@@ -174,7 +175,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         goto skip;
     }
     if (function == disconnectIndex_) {
-        spdlog::info("Disconnecting from RTDE control interface");
+        spdlog::debug("Disconnecting from RTDE control interface");
         rtde_control_->disconnect();
         rtde_receive_->disconnect();
         comm_ok = not rtde_control_->isConnected() and not rtde_receive_->isConnected();
@@ -183,15 +184,17 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     // Check that it's connected before conntinuing
     if (not rtde_control_->isConnected()) {
-        spdlog::warn("RTDE Control interface not connected");
+        spdlog::error("RTDE Control interface not connected");
         comm_ok = false;
         goto skip;
     }
 
     // RTDE Control interface function calls go here
     if (function == moveJIndex_) {
-        spdlog::info("moveJ({}, {}, {}, {}, {}, {})", cmd_joints.at(0), cmd_joints.at(1), cmd_joints.at(2),
-                     cmd_joints.at(3), cmd_joints.at(4), cmd_joints.at(5));
+        spdlog::info("moveJ({:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}) radians", cmd_joints.at(0),
+                     cmd_joints.at(1), cmd_joints.at(2), cmd_joints.at(3), cmd_joints.at(4),
+                     cmd_joints.at(5));
+        rtde_control_->moveJ(cmd_joints);
     }
 
 skip:
@@ -199,7 +202,7 @@ skip:
     if (comm_ok) {
         return asynSuccess;
     } else {
-        spdlog::error("RTDE communincation error in RTDEControl::writeInt32");
+        spdlog::debug("RTDE communincation error in RTDEControl::writeInt32");
         return asynError;
     }
 }

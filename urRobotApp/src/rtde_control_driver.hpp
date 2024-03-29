@@ -37,10 +37,10 @@ class RTDEControl : public asynPortDriver {
     bool try_connect();
 
     // Commanded joint angles
-    std::array<double, NUM_JOINTS> cmd_joints = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+    std::vector<double> cmd_joints = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
     // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
-    std::array<double, 6> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+    std::vector<double> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
   protected:
     asynUser *pasynUserURRobot_;
