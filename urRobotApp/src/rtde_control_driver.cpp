@@ -194,7 +194,8 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         spdlog::info("moveJ({:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}) radians", cmd_joints.at(0),
                      cmd_joints.at(1), cmd_joints.at(2), cmd_joints.at(3), cmd_joints.at(4),
                      cmd_joints.at(5));
-        rtde_control_->moveJ(cmd_joints);
+        spdlog::warn("not actually moving");
+        // rtde_control_->moveJ(cmd_joints);
     }
 
 skip:

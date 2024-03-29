@@ -122,57 +122,276 @@ record(seq, "$(P)Control:ResetJCmd")
     field(LNK5, "$(P)$(R)Control:J6Cmd PP")
 }
 
+# -----------------------------------------------------------
+
 record(ao, "$(P)$(R)Control:J1Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 1")
     field(DTYP, "asynFloat64")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J1CMD")
+    field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
 }
+
+record(ao, "$(P)$(R)Control:J1TweakVal")
+{
+    field(DESC, "Joint 1 tweak step size")
+    field(EGU, "degrees")
+}
+
+record(bo, "$(P)$(R)Control:J1TweakFwd")
+{
+    field(DESC, "Tweak joint 1 forward")
+    field(FLNK, "$(P)$(R)Control:J1TweakCalcFwd.PROC")
+}
+
+record(bo, "$(P)$(R)Control:J1TweakRev")
+{
+    field(DESC, "Tweak joint 1 backward")
+    field(FLNK, "$(P)$(R)Control:J1TweakCalcRev.PROC")
+}
+
+record(calcout, "$(P)$(R)Control:J1TweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:J1Cmd")
+    field(INPB, "$(P)$(R)Control:J1TweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:J1Cmd PP")
+}
+
+record(calcout, "$(P)$(R)Control:J1TweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:J1Cmd")
+    field(INPB, "$(P)$(R)Control:J1TweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:J1Cmd PP")
+}
+
+# -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:J2Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 2")
     field(DTYP, "asynFloat64")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J2CMD")
+    field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
 }
+
+record(ao, "$(P)$(R)Control:J2TweakVal")
+{
+    field(DESC, "Joint 2 tweak step size")
+    field(EGU, "degrees")
+}
+
+record(bo, "$(P)$(R)Control:J2TweakFwd")
+{
+    field(DESC, "Tweak joint 2 forward")
+    field(FLNK, "$(P)$(R)Control:J2TweakCalcFwd.PROC")
+}
+
+record(bo, "$(P)$(R)Control:J2TweakRev")
+{
+    field(DESC, "Tweak joint 2 backward")
+    field(FLNK, "$(P)$(R)Control:J2TweakCalcRev.PROC")
+}
+
+record(calcout, "$(P)$(R)Control:J2TweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:J2Cmd")
+    field(INPB, "$(P)$(R)Control:J2TweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:J2Cmd PP")
+}
+
+record(calcout, "$(P)$(R)Control:J2TweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:J2Cmd")
+    field(INPB, "$(P)$(R)Control:J2TweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:J2Cmd PP")
+}
+
+# -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:J3Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 3")
     field(DTYP, "asynFloat64")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J3CMD")
+    field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
 }
+
+record(ao, "$(P)$(R)Control:J3TweakVal")
+{
+    field(DESC, "Joint 3 tweak step size")
+    field(EGU, "degrees")
+}
+
+record(bo, "$(P)$(R)Control:J3TweakFwd")
+{
+    field(DESC, "Tweak joint 3 forward")
+    field(FLNK, "$(P)$(R)Control:J3TweakCalcFwd.PROC")
+}
+
+record(bo, "$(P)$(R)Control:J3TweakRev")
+{
+    field(DESC, "Tweak joint 3 backward")
+    field(FLNK, "$(P)$(R)Control:J3TweakCalcRev.PROC")
+}
+
+record(calcout, "$(P)$(R)Control:J3TweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:J3Cmd")
+    field(INPB, "$(P)$(R)Control:J3TweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:J3Cmd PP")
+}
+
+record(calcout, "$(P)$(R)Control:J3TweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:J3Cmd")
+    field(INPB, "$(P)$(R)Control:J3TweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:J3Cmd PP")
+}
+
+# -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:J4Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 4")
     field(DTYP, "asynFloat64")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J4CMD")
+    field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
 }
+
+record(ao, "$(P)$(R)Control:J4TweakVal")
+{
+    field(DESC, "Joint 4 tweak step size")
+    field(EGU, "degrees")
+}
+
+record(bo, "$(P)$(R)Control:J4TweakFwd")
+{
+    field(DESC, "Tweak joint 4 forward")
+    field(FLNK, "$(P)$(R)Control:J4TweakCalcFwd.PROC")
+}
+
+record(bo, "$(P)$(R)Control:J4TweakRev")
+{
+    field(DESC, "Tweak joint 4 backward")
+    field(FLNK, "$(P)$(R)Control:J4TweakCalcRev.PROC")
+}
+
+record(calcout, "$(P)$(R)Control:J4TweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:J4Cmd")
+    field(INPB, "$(P)$(R)Control:J4TweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:J4Cmd PP")
+}
+
+record(calcout, "$(P)$(R)Control:J4TweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:J4Cmd")
+    field(INPB, "$(P)$(R)Control:J4TweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:J4Cmd PP")
+}
+# -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:J5Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 5")
     field(DTYP, "asynFloat64")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J5CMD")
+    field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
 }
+
+record(ao, "$(P)$(R)Control:J5TweakVal")
+{
+    field(DESC, "Joint 5 tweak step size")
+    field(EGU, "degrees")
+}
+
+record(bo, "$(P)$(R)Control:J5TweakFwd")
+{
+    field(DESC, "Tweak joint 5 forward")
+    field(FLNK, "$(P)$(R)Control:J5TweakCalcFwd.PROC")
+}
+
+record(bo, "$(P)$(R)Control:J5TweakRev")
+{
+    field(DESC, "Tweak joint 5 backward")
+    field(FLNK, "$(P)$(R)Control:J5TweakCalcRev.PROC")
+}
+
+record(calcout, "$(P)$(R)Control:J5TweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:J5Cmd")
+    field(INPB, "$(P)$(R)Control:J5TweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:J5Cmd PP")
+}
+
+record(calcout, "$(P)$(R)Control:J5TweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:J5Cmd")
+    field(INPB, "$(P)$(R)Control:J5TweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:J5Cmd PP")
+}
+# -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:J6Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 6")
     field(DTYP, "asynFloat64")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J6CMD")
+    field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
 }
 
+record(ao, "$(P)$(R)Control:J6TweakVal")
+{
+    field(DESC, "Joint 6 tweak step size")
+    field(EGU, "degrees")
+}
+
+record(bo, "$(P)$(R)Control:J6TweakFwd")
+{
+    field(DESC, "Tweak joint 6 forward")
+    field(FLNK, "$(P)$(R)Control:J6TweakCalcFwd.PROC")
+}
+
+record(bo, "$(P)$(R)Control:J6TweakRev")
+{
+    field(DESC, "Tweak joint 6 backward")
+    field(FLNK, "$(P)$(R)Control:J6TweakCalcRev.PROC")
+}
+
+record(calcout, "$(P)$(R)Control:J6TweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:J6Cmd")
+    field(INPB, "$(P)$(R)Control:J6TweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:J6Cmd PP")
+}
+
+record(calcout, "$(P)$(R)Control:J6TweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:J6Cmd")
+    field(INPB, "$(P)$(R)Control:J6TweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:J6Cmd PP")
+}

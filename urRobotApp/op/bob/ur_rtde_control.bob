@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-03-28 11:50:55 by nmarks-->
+<!--Saved on 2024-03-29 17:23:52 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
-  <width>1000</width>
+  <width>1200</width>
   <height>1000</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
@@ -45,7 +45,6 @@
     <text>Disconnect</text>
     <x>140</x>
     <y>31</y>
-    <width>150</width>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -60,50 +59,7 @@
     <text>Reconnect</text>
     <x>140</x>
     <y>71</y>
-    <width>150</width>
     <tooltip>$(actions)</tooltip>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Entry</name>
-    <pv_name>$(P)$(R)Control:J1Cmd</pv_name>
-    <x>60</x>
-    <y>190</y>
-    <height>30</height>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Entry_1</name>
-    <pv_name>$(P)$(R)Control:J2Cmd</pv_name>
-    <x>170</x>
-    <y>190</y>
-    <height>30</height>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Entry_2</name>
-    <pv_name>$(P)$(R)Control:J3Cmd</pv_name>
-    <x>280</x>
-    <y>190</y>
-    <height>30</height>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Entry_3</name>
-    <pv_name>$(P)$(R)Control:J4Cmd</pv_name>
-    <x>390</x>
-    <y>190</y>
-    <height>30</height>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Entry_4</name>
-    <pv_name>$(P)$(R)Control:J5Cmd</pv_name>
-    <x>500</x>
-    <y>190</y>
-    <height>30</height>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Entry_5</name>
-    <pv_name>$(P)$(R)Control:J6Cmd</pv_name>
-    <x>610</x>
-    <y>190</y>
-    <height>30</height>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button</name>
@@ -114,18 +70,11 @@
         <description>ResetJCmd</description>
       </action>
     </actions>
-    <text>RST</text>
-    <x>10</x>
-    <y>190</y>
-    <width>40</width>
+    <text>Reset</text>
+    <x>22</x>
+    <y>180</y>
+    <width>80</width>
     <tooltip>$(actions)</tooltip>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update</name>
-    <pv_name>$(P)$(R)Control:ActualQ</pv_name>
-    <x>20</x>
-    <y>150</y>
-    <width>320</width>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button_2</name>
@@ -136,10 +85,479 @@
         <description>Execute moveJ</description>
       </action>
     </actions>
-    <text>moveJ</text>
-    <x>730</x>
-    <y>190</y>
-    <width>110</width>
+    <text>Execute</text>
+    <x>120</x>
+    <y>180</y>
+    <width>80</width>
     <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_3</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J1TweakFwd.PROC</pv_name>
+        <value>1</value>
+        <description>J1TweakFwd</description>
+      </action>
+    </actions>
+    <text>&gt;</text>
+    <x>132</x>
+    <y>301</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_4</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J1TweakRev.PROC</pv_name>
+        <value>1</value>
+        <description>J1TweakRev</description>
+      </action>
+    </actions>
+    <text>&lt;</text>
+    <x>22</x>
+    <y>301</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_6</name>
+    <pv_name>$(P)$(R)Control:J1TweakVal</pv_name>
+    <x>52</x>
+    <y>301</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_7</name>
+    <pv_name>$(P)$(R)Control:J1Cmd</pv_name>
+    <x>52</x>
+    <y>271</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_5</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J2TweakFwd.PROC</pv_name>
+        <value>1</value>
+        <description>J2TweakFwd</description>
+      </action>
+    </actions>
+    <text>&gt;</text>
+    <x>284</x>
+    <y>300</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_6</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J2TweakRev.PROC</pv_name>
+        <value>1</value>
+        <description>J2TweakRev</description>
+      </action>
+    </actions>
+    <text>&lt;</text>
+    <x>174</x>
+    <y>300</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_8</name>
+    <pv_name>$(P)$(R)Control:J2TweakVal</pv_name>
+    <x>204</x>
+    <y>300</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_9</name>
+    <pv_name>$(P)$(R)Control:J2Cmd</pv_name>
+    <x>204</x>
+    <y>270</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_7</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J3TweakFwd.PROC</pv_name>
+        <value>1</value>
+        <description>J3TweakFwd</description>
+      </action>
+    </actions>
+    <text>&gt;</text>
+    <x>440</x>
+    <y>300</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_8</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J3TweakRev.PROC</pv_name>
+        <value>1</value>
+        <description>J3TweakRev</description>
+      </action>
+    </actions>
+    <text>&lt;</text>
+    <x>330</x>
+    <y>300</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_10</name>
+    <pv_name>$(P)$(R)Control:J3TweakVal</pv_name>
+    <x>360</x>
+    <y>300</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_11</name>
+    <pv_name>$(P)$(R)Control:J3Cmd</pv_name>
+    <x>360</x>
+    <y>270</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_9</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J4TweakFwd.PROC</pv_name>
+        <value>1</value>
+        <description>J4TweakFwd</description>
+      </action>
+    </actions>
+    <text>&gt;</text>
+    <x>590</x>
+    <y>300</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_10</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J4TweakRev.PROC</pv_name>
+        <value>1</value>
+        <description>J4TweakRev</description>
+      </action>
+    </actions>
+    <text>&lt;</text>
+    <x>480</x>
+    <y>300</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_12</name>
+    <pv_name>$(P)$(R)Control:J4TweakVal</pv_name>
+    <x>510</x>
+    <y>300</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_13</name>
+    <pv_name>$(P)$(R)Control:J4Cmd</pv_name>
+    <x>510</x>
+    <y>270</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_12</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <value>1</value>
+        <description>J5TweakFwd</description>
+      </action>
+    </actions>
+    <text>&gt;</text>
+    <x>740</x>
+    <y>300</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_13</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J5TweakRev.PROC</pv_name>
+        <value>1</value>
+        <description>J5TweakRev</description>
+      </action>
+    </actions>
+    <text>&lt;</text>
+    <x>630</x>
+    <y>300</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_14</name>
+    <pv_name>$(P)$(R)Control:J5TweakVal</pv_name>
+    <x>660</x>
+    <y>300</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <value>1</value>
+        <description>J5TweakFwd</description>
+      </action>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_15</name>
+    <pv_name>$(P)$(R)Control:J5Cmd</pv_name>
+    <x>660</x>
+    <y>270</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <value>1</value>
+        <description>J5TweakFwd</description>
+      </action>
+    </actions>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_14</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J6TweakFwd.PROC</pv_name>
+        <value>1</value>
+        <description>J6TweakFwd</description>
+      </action>
+    </actions>
+    <text>&gt;</text>
+    <x>890</x>
+    <y>300</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_15</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J6TweakRev.PROC</pv_name>
+        <value>1</value>
+        <description>J6TweakRev</description>
+      </action>
+    </actions>
+    <text>&lt;</text>
+    <x>780</x>
+    <y>300</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_16</name>
+    <pv_name>$(P)$(R)Control:J6TweakVal</pv_name>
+    <x>810</x>
+    <y>300</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <value>1</value>
+        <description>J5TweakFwd</description>
+      </action>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_17</name>
+    <pv_name>$(P)$(R)Control:J6Cmd</pv_name>
+    <x>810</x>
+    <y>270</y>
+    <width>80</width>
+    <height>30</height>
+    <show_units>false</show_units>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <value>1</value>
+        <description>J5TweakFwd</description>
+      </action>
+    </actions>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_1</name>
+    <x>630</x>
+    <y>230</y>
+    <width>140</width>
+    <height>100</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_3</name>
+    <x>330</x>
+    <y>230</y>
+    <width>140</width>
+    <height>100</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_4</name>
+    <x>480</x>
+    <y>230</y>
+    <width>140</width>
+    <height>100</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_5</name>
+    <x>174</x>
+    <y>230</y>
+    <width>140</width>
+    <height>100</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_6</name>
+    <x>22</x>
+    <y>230</y>
+    <width>140</width>
+    <height>101</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_7</name>
+    <x>780</x>
+    <y>230</y>
+    <width>140</width>
+    <height>100</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_1</name>
+    <pv_name>$(P)$(R)Control:ActualQ_index0.VAL</pv_name>
+    <x>52</x>
+    <y>240</y>
+    <width>80</width>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_2</name>
+    <pv_name>$(P)$(R)Control:ActualQ_index1</pv_name>
+    <x>194</x>
+    <y>240</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_3</name>
+    <pv_name>$(P)$(R)Control:ActualQ_index2</pv_name>
+    <x>350</x>
+    <y>240</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_4</name>
+    <pv_name>$(P)$(R)Control:ActualQ_index3</pv_name>
+    <x>500</x>
+    <y>240</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_5</name>
+    <pv_name>$(P)$(R)Control:ActualQ_index4</pv_name>
+    <x>650</x>
+    <y>240</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_6</name>
+    <pv_name>$(P)$(R)Control:ActualQ_index5</pv_name>
+    <x>800</x>
+    <y>240</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_3</name>
+    <text>Joint Move</text>
+    <x>22</x>
+    <y>140</y>
+    <width>110</width>
+    <height>40</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD_ITALIC" size="20.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_8</name>
+    <x>10</x>
+    <y>140</y>
+    <width>930</width>
+    <height>210</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
   </widget>
 </display>
