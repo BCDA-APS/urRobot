@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-04-01 14:44:23 by nick-->
+<!--Saved on 2024-04-01 14:54:05 by nick-->
 <display version="2.0.0">
   <name>Display</name>
   <width>950</width>
@@ -140,9 +140,9 @@
     <name>Action Button_44</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:ResetJCmd.PROC</pv_name>
+        <pv_name>$(P)$(R)Control:ResetPoseCmd.PROC</pv_name>
         <value>1</value>
-        <description>ResetJCmd</description>
+        <description>ResetPoseCmd</description>
       </action>
     </actions>
     <text>Reset</text>
@@ -496,38 +496,38 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_19</name>
-    <pv_name>$(P)$(R)Control:ActualTCPPose_index0.VAL</pv_name>
+    <pv_name>$(P)$(R)Control:pose_index0.VAL</pv_name>
     <x>50</x>
     <y>260</y>
     <width>80</width>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_20</name>
-    <pv_name>$(P)$(R)Control:ActualTCPPose_index1</pv_name>
+    <pv_name>$(P)$(R)Control:pose_index1</pv_name>
     <x>190</x>
     <y>260</y>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_21</name>
-    <pv_name>$(P)$(R)Control:ActualTCPPose_index2</pv_name>
+    <pv_name>$(P)$(R)Control:pose_index2</pv_name>
     <x>340</x>
     <y>260</y>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_22</name>
-    <pv_name>$(P)$(R)Control:ActualTCPPose_index3</pv_name>
+    <pv_name>$(P)$(R)Control:pose_index3</pv_name>
     <x>490</x>
     <y>260</y>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_23</name>
-    <pv_name>$(P)$(R)Control:ActualTCPPose_index4</pv_name>
+    <pv_name>$(P)$(R)Control:pose_index4</pv_name>
     <x>640</x>
     <y>260</y>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_24</name>
-    <pv_name>$(P)$(R)Control:ActualTCPPose_index5</pv_name>
+    <pv_name>$(P)$(R)Control:pose_index5</pv_name>
     <x>790</x>
     <y>260</y>
   </widget>
@@ -543,84 +543,6 @@
       </font>
     </font>
     <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle_27</name>
-    <x>320</x>
-    <y>230</y>
-    <width>140</width>
-    <height>120</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color name="Text" red="0" green="0" blue="0">
-      </color>
-    </line_color>
-    <transparent>true</transparent>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle_28</name>
-    <x>470</x>
-    <y>230</y>
-    <width>140</width>
-    <height>120</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color name="Text" red="0" green="0" blue="0">
-      </color>
-    </line_color>
-    <transparent>true</transparent>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle_29</name>
-    <x>620</x>
-    <y>230</y>
-    <width>140</width>
-    <height>120</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color name="Text" red="0" green="0" blue="0">
-      </color>
-    </line_color>
-    <transparent>true</transparent>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle_30</name>
-    <x>770</x>
-    <y>230</y>
-    <width>140</width>
-    <height>120</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color name="Text" red="0" green="0" blue="0">
-      </color>
-    </line_color>
-    <transparent>true</transparent>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle_25</name>
-    <x>20</x>
-    <y>230</y>
-    <width>140</width>
-    <height>120</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color name="Text" red="0" green="0" blue="0">
-      </color>
-    </line_color>
-    <transparent>true</transparent>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle_26</name>
-    <x>170</x>
-    <y>230</y>
-    <width>140</width>
-    <height>120</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color name="Text" red="0" green="0" blue="0">
-      </color>
-    </line_color>
-    <transparent>true</transparent>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_7</name>
@@ -640,20 +562,6 @@
     <name>Label_8</name>
     <text>Y</text>
     <x>200</x>
-    <y>230</y>
-    <width>80</width>
-    <height>30</height>
-    <font>
-      <font family="Liberation Sans" style="BOLD" size="18.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_9</name>
-    <text>Z</text>
-    <x>350</x>
     <y>230</y>
     <width>80</width>
     <height>30</height>
@@ -1262,5 +1170,97 @@
     <y>430</y>
     <width>60</width>
     <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_25</name>
+    <x>20</x>
+    <y>230</y>
+    <width>140</width>
+    <height>120</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_9</name>
+    <text>Z</text>
+    <x>350</x>
+    <y>230</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_26</name>
+    <x>170</x>
+    <y>230</y>
+    <width>140</width>
+    <height>120</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_27</name>
+    <x>320</x>
+    <y>230</y>
+    <width>140</width>
+    <height>120</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_28</name>
+    <x>470</x>
+    <y>230</y>
+    <width>140</width>
+    <height>120</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_29</name>
+    <x>620</x>
+    <y>230</y>
+    <width>140</width>
+    <height>120</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_30</name>
+    <x>770</x>
+    <y>230</y>
+    <width>140</width>
+    <height>120</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
   </widget>
 </display>
