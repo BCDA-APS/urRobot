@@ -20,12 +20,25 @@ record(bi, "$(P)$(R)Control:Connected")
     field(SCAN, "I/O Intr")
 }
 
+record(bi, "$(P)$(R)Control:Steady")
+{
+    field(DESC, "Is robot fully at rest")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_STEADY")
+    field(SCAN, "I/O Intr")
+}
+
 record(bo, "$(P)$(R)Control:moveJ")
 {
     field(DESC, "Moves joints to commanded values")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEJ")
 }
+
+
+#======================
+# Joint control
+#======================
 
 # current joint positions for use interally with this database
 record(waveform, "$(P)$(R)Control:ActualQ")
@@ -394,4 +407,169 @@ record(calcout, "$(P)$(R)Control:J6TweakCalcRev")
     field(INPB, "$(P)$(R)Control:J6TweakVal")
     field(CALC, "A - B")
     field(OUT, "$(P)$(R)Control:J6Cmd PP")
+}
+
+#======================
+# TCP pose control
+#======================
+
+record(bo, "$(P)$(R)Control:moveL")
+{
+    field(DESC, "Move to TCP pose linearly")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEL")
+}
+
+record(waveform, "$(P)$(R)Control:ActualTCPPose")
+{
+    field(DESC, "Actual TCP Pose")     
+    field(DTYP, "asynFloat64ArrayIn")
+    field(FTVL, "DOUBLE")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_TCP_POSE")
+    field(NELM, 6)
+    field(FLNK, "$(P)$(R)pose_index_fanout.PROC")
+    field(SCAN, "I/O Intr")
+}
+
+record(fanout, "$(P)$(R)pose_index_fanout")
+{
+    field(LNK0, "$(P)$(R)Control:pose_index0")
+    field(LNK1, "$(P)$(R)Control:pose_index1")
+    field(LNK2, "$(P)$(R)Control:pose_index2")
+    field(LNK3, "$(P)$(R)Control:pose_index3")
+    field(LNK4, "$(P)$(R)Control:pose_index4")
+    field(LNK5, "$(P)$(R)Control:pose_index5")
+}
+
+# subArray to extract each element of ActualTCPPose waveform
+record(subArray, "$(P)$(R)Control:pose_index0")
+{
+    field(INP, "$(P)$(R)Control:ActualTCPPose.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "0")
+}
+record(subArray, "$(P)$(R)Control:pose_index1")
+{
+    field(INP, "$(P)$(R)Control:ActualTCPPose.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "1")
+}
+record(subArray, "$(P)$(R)Control:pose_index2")
+{
+    field(INP, "$(P)$(R)Control:ActualTCPPose.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "2")
+}
+record(subArray, "$(P)$(R)Control:pose_index3")
+{
+    field(INP, "$(P)$(R)Control:ActualTCPPose.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "3")
+}
+record(subArray, "$(P)$(R)Control:pose_index4")
+{
+    field(INP, "$(P)$(R)Control:ActualTCPPose.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "4")
+}
+record(subArray, "$(P)$(R)Control:pose_index5")
+{
+    field(INP, "$(P)$(R)Control:ActualTCPPose.VAL")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "5")
+}
+
+# stores DOLx.VAL in LNKx.VAL
+# resets commanded TCP pose to the current measured pose
+record(seq, "$(P)Control:ResetPoseCmd")
+{
+    field(DOL0, "$(P)$(R)Control:pose_index0")
+    field(LNK0, "$(P)$(R)Control:PoseXCmd PP")
+
+    field(DOL1, "$(P)$(R)Control:pose_index1")
+    field(LNK1, "$(P)$(R)Control:PoseYCmd PP")
+
+    field(DOL2, "$(P)$(R)Control:pose_index2")
+    field(LNK2, "$(P)$(R)Control:PoseZCmd PP")
+
+    field(DOL3, "$(P)$(R)Control:pose_index3")
+    field(LNK3, "$(P)$(R)Control:PoseRollCmd PP")
+    
+    field(DOL4, "$(P)$(R)Control:pose_index4")
+    field(LNK4, "$(P)$(R)Control:PosePitchCmd PP")
+
+    field(DOL5, "$(P)$(R)Control:pose_index5")
+    field(LNK5, "$(P)$(R)Control:PoseYawCmd PP")
+}
+
+record(ao, "$(P)$(R)Control:PoseXCmd")
+{
+    field(DESC, "Commanded TCP X")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_X_CMD")
+    field(EGU, "mm")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+
+record(ao, "$(P)$(R)Control:PoseYCmd")
+{
+    field(DESC, "Commanded TCP Y")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_Y_CMD")
+    field(EGU, "mm")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+
+record(ao, "$(P)$(R)Control:PoseZCmd")
+{
+    field(DESC, "Commanded TCP Z")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_Z_CMD")
+    field(EGU, "mm")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+
+record(ao, "$(P)$(R)Control:PoseRollCmd")
+{
+    field(DESC, "Commanded TCP roll")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_ROLL_CMD")
+    field(EGU, "degrees")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+
+record(ao, "$(P)$(R)Control:PosePitchCmd")
+{
+    field(DESC, "Commanded TCP pitch")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_PITCH_CMD")
+    field(EGU, "degrees")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+
+record(ao, "$(P)$(R)Control:PoseYawCmd")
+{
+    field(DESC, "Commanded TCP yaw")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_YAW_CMD")
+    field(EGU, "degrees")
+    field(PINI, 1)
+    field(PREC, 4)
 }

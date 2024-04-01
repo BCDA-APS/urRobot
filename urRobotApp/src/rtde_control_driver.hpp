@@ -8,6 +8,7 @@
 static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
 static constexpr char RECONNECT_STRING[] = "RECONNECT";
 static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
+static constexpr char IS_STEADY_STRING[] = "IS_STEADY";
 
 static constexpr char ACTUAL_Q_STRING[] = "ACTUAL_Q";
 static constexpr char MOVEJ_STRING[] = "MOVEJ";
@@ -18,9 +19,18 @@ static constexpr char J4CMD_STRING[] = "J4CMD";
 static constexpr char J5CMD_STRING[] = "J5CMD";
 static constexpr char J6CMD_STRING[] = "J6CMD";
 
+static constexpr char ACTUAL_TCP_POSE_STRING[] = "ACTUAL_TCP_POSE";
+static constexpr char MOVEL_STRING[] = "MOVEL";
+static constexpr char POSE_X_CMD_STRING[] = "POSE_X_CMD";
+static constexpr char POSE_Y_CMD_STRING[] = "POSE_Y_CMD";
+static constexpr char POSE_Z_CMD_STRING[] = "POSE_Z_CMD";
+static constexpr char POSE_ROLL_CMD_STRING[] = "POSE_ROLL_CMD";
+static constexpr char POSE_PITCH_CMD_STRING[] = "POSE_PITCH_CMD";
+static constexpr char POSE_YAW_CMD_STRING[] = "POSE_YAW_CMD";
+
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
-static constexpr double POLL_PERIOD = 0.02; // seconds
+static constexpr double POLL_PERIOD = 0.02; // 50Hz
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class RTDEControl : public asynPortDriver {
@@ -48,14 +58,24 @@ class RTDEControl : public asynPortDriver {
     int disconnectIndex_;
     int reconnectIndex_;
     int isConnectedIndex_;
-    int J1CmdIndex_;
-    int J2CmdIndex_;
-    int J3CmdIndex_;
-    int J4CmdIndex_;
-    int J5CmdIndex_;
-    int J6CmdIndex_;
+    int isSteadyIndex_;
+    int j1CmdIndex_;
+    int j2CmdIndex_;
+    int j3CmdIndex_;
+    int j4CmdIndex_;
+    int j5CmdIndex_;
+    int j6CmdIndex_;
     int moveJIndex_;
     int actualQIndex_;
+
+    int moveLIndex_;
+    int actualTCPPoseIndex_;
+    int poseXCmdIndex_;
+    int poseYCmdIndex_;
+    int poseZCmdIndex_;
+    int poseRollCmdIndex_;
+    int posePitchCmdIndex_;
+    int poseYawCmdIndex_;
 };
 
 #endif
