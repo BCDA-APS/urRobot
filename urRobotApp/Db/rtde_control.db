@@ -1,3 +1,7 @@
+
+#======================
+# Status inputs
+#======================
 record(bo, "$(P)$(R)Control:Disconnect")
 {
     field(DESC, "Disconnects from the RTDE interface")
@@ -27,6 +31,7 @@ record(bi, "$(P)$(R)Control:Steady")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_STEADY")
     field(SCAN, "I/O Intr")
 }
+
 
 #======================
 # Joint control
@@ -153,25 +158,21 @@ record(ao, "$(P)$(R)Control:J1Cmd")
     field(PINI, 1)
     field(PREC, 4)
 }
-
 record(ao, "$(P)$(R)Control:J1TweakVal")
 {
     field(DESC, "Joint 1 tweak step size")
     field(EGU, "degrees")
 }
-
 record(bo, "$(P)$(R)Control:J1TweakFwd")
 {
     field(DESC, "Tweak joint 1 forward")
     field(FLNK, "$(P)$(R)Control:J1TweakCalcFwd.PROC")
 }
-
 record(bo, "$(P)$(R)Control:J1TweakRev")
 {
     field(DESC, "Tweak joint 1 backward")
     field(FLNK, "$(P)$(R)Control:J1TweakCalcRev.PROC")
 }
-
 record(calcout, "$(P)$(R)Control:J1TweakCalcFwd")
 {
     field(INPA, "$(P)$(R)Control:J1Cmd")
@@ -179,7 +180,6 @@ record(calcout, "$(P)$(R)Control:J1TweakCalcFwd")
     field(CALC, "A + B")
     field(OUT, "$(P)$(R)Control:J1Cmd PP")
 }
-
 record(calcout, "$(P)$(R)Control:J1TweakCalcRev")
 {
     field(INPA, "$(P)$(R)Control:J1Cmd")
@@ -199,25 +199,21 @@ record(ao, "$(P)$(R)Control:J2Cmd")
     field(PINI, 1)
     field(PREC, 4)
 }
-
 record(ao, "$(P)$(R)Control:J2TweakVal")
 {
     field(DESC, "Joint 2 tweak step size")
     field(EGU, "degrees")
 }
-
 record(bo, "$(P)$(R)Control:J2TweakFwd")
 {
     field(DESC, "Tweak joint 2 forward")
     field(FLNK, "$(P)$(R)Control:J2TweakCalcFwd.PROC")
 }
-
 record(bo, "$(P)$(R)Control:J2TweakRev")
 {
     field(DESC, "Tweak joint 2 backward")
     field(FLNK, "$(P)$(R)Control:J2TweakCalcRev.PROC")
 }
-
 record(calcout, "$(P)$(R)Control:J2TweakCalcFwd")
 {
     field(INPA, "$(P)$(R)Control:J2Cmd")
@@ -225,7 +221,6 @@ record(calcout, "$(P)$(R)Control:J2TweakCalcFwd")
     field(CALC, "A + B")
     field(OUT, "$(P)$(R)Control:J2Cmd PP")
 }
-
 record(calcout, "$(P)$(R)Control:J2TweakCalcRev")
 {
     field(INPA, "$(P)$(R)Control:J2Cmd")
@@ -245,25 +240,21 @@ record(ao, "$(P)$(R)Control:J3Cmd")
     field(PINI, 1)
     field(PREC, 4)
 }
-
 record(ao, "$(P)$(R)Control:J3TweakVal")
 {
     field(DESC, "Joint 3 tweak step size")
     field(EGU, "degrees")
 }
-
 record(bo, "$(P)$(R)Control:J3TweakFwd")
 {
     field(DESC, "Tweak joint 3 forward")
     field(FLNK, "$(P)$(R)Control:J3TweakCalcFwd.PROC")
 }
-
 record(bo, "$(P)$(R)Control:J3TweakRev")
 {
     field(DESC, "Tweak joint 3 backward")
     field(FLNK, "$(P)$(R)Control:J3TweakCalcRev.PROC")
 }
-
 record(calcout, "$(P)$(R)Control:J3TweakCalcFwd")
 {
     field(INPA, "$(P)$(R)Control:J3Cmd")
@@ -271,7 +262,6 @@ record(calcout, "$(P)$(R)Control:J3TweakCalcFwd")
     field(CALC, "A + B")
     field(OUT, "$(P)$(R)Control:J3Cmd PP")
 }
-
 record(calcout, "$(P)$(R)Control:J3TweakCalcRev")
 {
     field(INPA, "$(P)$(R)Control:J3Cmd")
@@ -291,25 +281,21 @@ record(ao, "$(P)$(R)Control:J4Cmd")
     field(PINI, 1)
     field(PREC, 4)
 }
-
 record(ao, "$(P)$(R)Control:J4TweakVal")
 {
     field(DESC, "Joint 4 tweak step size")
     field(EGU, "degrees")
 }
-
 record(bo, "$(P)$(R)Control:J4TweakFwd")
 {
     field(DESC, "Tweak joint 4 forward")
     field(FLNK, "$(P)$(R)Control:J4TweakCalcFwd.PROC")
 }
-
 record(bo, "$(P)$(R)Control:J4TweakRev")
 {
     field(DESC, "Tweak joint 4 backward")
     field(FLNK, "$(P)$(R)Control:J4TweakCalcRev.PROC")
 }
-
 record(calcout, "$(P)$(R)Control:J4TweakCalcFwd")
 {
     field(INPA, "$(P)$(R)Control:J4Cmd")
@@ -317,7 +303,6 @@ record(calcout, "$(P)$(R)Control:J4TweakCalcFwd")
     field(CALC, "A + B")
     field(OUT, "$(P)$(R)Control:J4Cmd PP")
 }
-
 record(calcout, "$(P)$(R)Control:J4TweakCalcRev")
 {
     field(INPA, "$(P)$(R)Control:J4Cmd")
@@ -325,6 +310,7 @@ record(calcout, "$(P)$(R)Control:J4TweakCalcRev")
     field(CALC, "A - B")
     field(OUT, "$(P)$(R)Control:J4Cmd PP")
 }
+
 # -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:J5Cmd")
@@ -336,25 +322,21 @@ record(ao, "$(P)$(R)Control:J5Cmd")
     field(PINI, 1)
     field(PREC, 4)
 }
-
 record(ao, "$(P)$(R)Control:J5TweakVal")
 {
     field(DESC, "Joint 5 tweak step size")
     field(EGU, "degrees")
 }
-
 record(bo, "$(P)$(R)Control:J5TweakFwd")
 {
     field(DESC, "Tweak joint 5 forward")
     field(FLNK, "$(P)$(R)Control:J5TweakCalcFwd.PROC")
 }
-
 record(bo, "$(P)$(R)Control:J5TweakRev")
 {
     field(DESC, "Tweak joint 5 backward")
     field(FLNK, "$(P)$(R)Control:J5TweakCalcRev.PROC")
 }
-
 record(calcout, "$(P)$(R)Control:J5TweakCalcFwd")
 {
     field(INPA, "$(P)$(R)Control:J5Cmd")
@@ -362,7 +344,6 @@ record(calcout, "$(P)$(R)Control:J5TweakCalcFwd")
     field(CALC, "A + B")
     field(OUT, "$(P)$(R)Control:J5Cmd PP")
 }
-
 record(calcout, "$(P)$(R)Control:J5TweakCalcRev")
 {
     field(INPA, "$(P)$(R)Control:J5Cmd")
@@ -370,6 +351,7 @@ record(calcout, "$(P)$(R)Control:J5TweakCalcRev")
     field(CALC, "A - B")
     field(OUT, "$(P)$(R)Control:J5Cmd PP")
 }
+
 # -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:J6Cmd")
@@ -381,25 +363,21 @@ record(ao, "$(P)$(R)Control:J6Cmd")
     field(PINI, 1)
     field(PREC, 4)
 }
-
 record(ao, "$(P)$(R)Control:J6TweakVal")
 {
     field(DESC, "Joint 6 tweak step size")
     field(EGU, "degrees")
 }
-
 record(bo, "$(P)$(R)Control:J6TweakFwd")
 {
     field(DESC, "Tweak joint 6 forward")
     field(FLNK, "$(P)$(R)Control:J6TweakCalcFwd.PROC")
 }
-
 record(bo, "$(P)$(R)Control:J6TweakRev")
 {
     field(DESC, "Tweak joint 6 backward")
     field(FLNK, "$(P)$(R)Control:J6TweakCalcRev.PROC")
 }
-
 record(calcout, "$(P)$(R)Control:J6TweakCalcFwd")
 {
     field(INPA, "$(P)$(R)Control:J6Cmd")
@@ -407,7 +385,6 @@ record(calcout, "$(P)$(R)Control:J6TweakCalcFwd")
     field(CALC, "A + B")
     field(OUT, "$(P)$(R)Control:J6Cmd PP")
 }
-
 record(calcout, "$(P)$(R)Control:J6TweakCalcRev")
 {
     field(INPA, "$(P)$(R)Control:J6Cmd")
@@ -528,6 +505,8 @@ record(seq, "$(P)Control:ResetPoseCmd")
     field(LNK5, "$(P)$(R)Control:PoseYawCmd PP")
 }
 
+# -----------------------------------------------------------
+
 record(ao, "$(P)$(R)Control:PoseXCmd")
 {
     field(DESC, "Commanded TCP X")
@@ -537,6 +516,37 @@ record(ao, "$(P)$(R)Control:PoseXCmd")
     field(PINI, 1)
     field(PREC, 4)
 }
+record(ao, "$(P)$(R)Control:PoseXTweakVal")
+{
+    field(DESC, "X TCP pose tweak step size")
+    field(EGU, "degrees")
+}
+record(bo, "$(P)$(R)Control:PoseXTweakFwd")
+{
+    field(DESC, "Tweak X TCP pose forward")
+    field(FLNK, "$(P)$(R)Control:PoseXTweakCalcFwd.PROC")
+}
+record(bo, "$(P)$(R)Control:PoseXTweakRev")
+{
+    field(DESC, "Tweak X TCP pose backward")
+    field(FLNK, "$(P)$(R)Control:PoseXTweakCalcRev.PROC")
+}
+record(calcout, "$(P)$(R)Control:PoseXTweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:PoseXCmd")
+    field(INPB, "$(P)$(R)Control:PoseXTweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:PoseXCmd PP")
+}
+record(calcout, "$(P)$(R)Control:PoseXTweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:PoseXCmd")
+    field(INPB, "$(P)$(R)Control:PoseXTweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:PoseXCmd PP")
+}
+
+# -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:PoseYCmd")
 {
@@ -547,6 +557,37 @@ record(ao, "$(P)$(R)Control:PoseYCmd")
     field(PINI, 1)
     field(PREC, 4)
 }
+record(ao, "$(P)$(R)Control:PoseYTweakVal")
+{
+    field(DESC, "Y TCP pose tweak step size")
+    field(EGU, "degrees")
+}
+record(bo, "$(P)$(R)Control:PoseYTweakFwd")
+{
+    field(DESC, "Tweak Y TCP pose forward")
+    field(FLNK, "$(P)$(R)Control:PoseYTweakCalcFwd.PROC")
+}
+record(bo, "$(P)$(R)Control:PoseYTweakRev")
+{
+    field(DESC, "Tweak Y TCP pose backward")
+    field(FLNK, "$(P)$(R)Control:PoseYTweakCalcRev.PROC")
+}
+record(calcout, "$(P)$(R)Control:PoseYTweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:PoseYCmd")
+    field(INPB, "$(P)$(R)Control:PoseYTweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:PoseYCmd PP")
+}
+record(calcout, "$(P)$(R)Control:PoseYTweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:PoseYCmd")
+    field(INPB, "$(P)$(R)Control:PoseYTweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:PoseYCmd PP")
+}
+
+# -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:PoseZCmd")
 {
@@ -557,6 +598,37 @@ record(ao, "$(P)$(R)Control:PoseZCmd")
     field(PINI, 1)
     field(PREC, 4)
 }
+record(ao, "$(P)$(R)Control:PoseZTweakVal")
+{
+    field(DESC, "TCP Z tweak step size")
+    field(EGU, "degrees")
+}
+record(bo, "$(P)$(R)Control:PoseZTweakFwd")
+{
+    field(DESC, "Tweak TCP Z forward")
+    field(FLNK, "$(P)$(R)Control:PoseZTweakCalcFwd.PROC")
+}
+record(bo, "$(P)$(R)Control:PoseZTweakRev")
+{
+    field(DESC, "Tweak TCP Z backward")
+    field(FLNK, "$(P)$(R)Control:PoseZTweakCalcRev.PROC")
+}
+record(calcout, "$(P)$(R)Control:PoseZTweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:PoseZCmd")
+    field(INPB, "$(P)$(R)Control:PoseZTweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:PoseZCmd PP")
+}
+record(calcout, "$(P)$(R)Control:PoseZTweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:PoseZCmd")
+    field(INPB, "$(P)$(R)Control:PoseZTweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:PoseZCmd PP")
+}
+
+# -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:PoseRollCmd")
 {
@@ -567,6 +639,37 @@ record(ao, "$(P)$(R)Control:PoseRollCmd")
     field(PINI, 1)
     field(PREC, 4)
 }
+record(ao, "$(P)$(R)Control:PoseRollTweakVal")
+{
+    field(DESC, "TCP roll tweak step size")
+    field(EGU, "degrees")
+}
+record(bo, "$(P)$(R)Control:PoseRollTweakFwd")
+{
+    field(DESC, "Tweak TCP roll forward")
+    field(FLNK, "$(P)$(R)Control:PoseRollTweakCalcFwd.PROC")
+}
+record(bo, "$(P)$(R)Control:PoseRollTweakRev")
+{
+    field(DESC, "Tweak TCP roll backward")
+    field(FLNK, "$(P)$(R)Control:PoseRollTweakCalcRev.PROC")
+}
+record(calcout, "$(P)$(R)Control:PoseRollTweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:PoseRollCmd")
+    field(INPB, "$(P)$(R)Control:PoseRollTweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:PoseRollCmd PP")
+}
+record(calcout, "$(P)$(R)Control:PoseRollTweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:PoseRollCmd")
+    field(INPB, "$(P)$(R)Control:PoseRollTweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:PoseRollCmd PP")
+}
+
+# -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:PosePitchCmd")
 {
@@ -577,6 +680,37 @@ record(ao, "$(P)$(R)Control:PosePitchCmd")
     field(PINI, 1)
     field(PREC, 4)
 }
+record(ao, "$(P)$(R)Control:PosePitchTweakVal")
+{
+    field(DESC, "TCP pitch tweak step size")
+    field(EGU, "degrees")
+}
+record(bo, "$(P)$(R)Control:PosePitchTweakFwd")
+{
+    field(DESC, "Tweak TCP pitch forward")
+    field(FLNK, "$(P)$(R)Control:PosePitchTweakCalcFwd.PROC")
+}
+record(bo, "$(P)$(R)Control:PosePitchTweakRev")
+{
+    field(DESC, "Tweak TCP pitch backward")
+    field(FLNK, "$(P)$(R)Control:PosePitchTweakCalcRev.PROC")
+}
+record(calcout, "$(P)$(R)Control:PosePitchTweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:PosePitchCmd")
+    field(INPB, "$(P)$(R)Control:PosePitchTweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:PosePitchCmd PP")
+}
+record(calcout, "$(P)$(R)Control:PosePitchTweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:PosePitchCmd")
+    field(INPB, "$(P)$(R)Control:PosePitchTweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:PosePitchCmd PP")
+}
+
+# -----------------------------------------------------------
 
 record(ao, "$(P)$(R)Control:PoseYawCmd")
 {
@@ -587,3 +721,33 @@ record(ao, "$(P)$(R)Control:PoseYawCmd")
     field(PINI, 1)
     field(PREC, 4)
 }
+record(ao, "$(P)$(R)Control:PoseYawTweakVal")
+{
+    field(DESC, "TCP yaw tweak step size")
+    field(EGU, "degrees")
+}
+record(bo, "$(P)$(R)Control:PoseYawTweakFwd")
+{
+    field(DESC, "Tweak TCP yaw forward")
+    field(FLNK, "$(P)$(R)Control:PoseYawTweakCalcFwd.PROC")
+}
+record(bo, "$(P)$(R)Control:PoseYawTweakRev")
+{
+    field(DESC, "Tweak TCP yaw backward")
+    field(FLNK, "$(P)$(R)Control:PoseYawTweakCalcRev.PROC")
+}
+record(calcout, "$(P)$(R)Control:PoseYawTweakCalcFwd")
+{
+    field(INPA, "$(P)$(R)Control:PoseYawCmd")
+    field(INPB, "$(P)$(R)Control:PoseYawTweakVal")
+    field(CALC, "A + B")
+    field(OUT, "$(P)$(R)Control:PoseYawCmd PP")
+}
+record(calcout, "$(P)$(R)Control:PoseYawTweakCalcRev")
+{
+    field(INPA, "$(P)$(R)Control:PoseYawCmd")
+    field(INPB, "$(P)$(R)Control:PoseYawTweakVal")
+    field(CALC, "A - B")
+    field(OUT, "$(P)$(R)Control:PoseYawCmd PP")
+}
+# -----------------------------------------------------------
