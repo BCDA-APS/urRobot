@@ -65,13 +65,14 @@ bool RTDEControl::try_connect() {
 }
 
 RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
-    : asynPortDriver(
-          asyn_port_name, MAX_CONTROLLERS,
-          asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask | asynFloat64ArrayMask |
-              asynInt32ArrayMask,
-          asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynInt32ArrayMask,
-          ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, // ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1
-          0, 0),
+    : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
+                     asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
+                         asynFloat64ArrayMask | asynInt32ArrayMask,
+                     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask |
+                         asynInt32ArrayMask,
+                     ASYN_MULTIDEVICE | ASYN_CANBLOCK,
+                     1, // ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1
+                     0, 0),
       rtde_control_(nullptr), rtde_receive_(nullptr), robot_ip_(robot_ip) {
 
     createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
@@ -80,6 +81,7 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(IS_STEADY_STRING, asynParamInt32, &isSteadyIndex_);
 
     createParam(MOVEJ_STRING, asynParamInt32, &moveJIndex_);
+    createParam(STOPJ_STRING, asynParamInt32, &stopJIndex_);
     createParam(ACTUAL_Q_STRING, asynParamFloat64Array, &actualQIndex_);
     createParam(J1CMD_STRING, asynParamFloat64, &j1CmdIndex_);
     createParam(J2CMD_STRING, asynParamFloat64, &j2CmdIndex_);
@@ -89,6 +91,7 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(J6CMD_STRING, asynParamFloat64, &j6CmdIndex_);
 
     createParam(MOVEL_STRING, asynParamInt32, &moveLIndex_);
+    createParam(STOPL_STRING, asynParamInt32, &stopLIndex_);
     createParam(ACTUAL_TCP_POSE_STRING, asynParamFloat64Array, &actualTCPPoseIndex_);
     createParam(POSE_X_CMD_STRING, asynParamFloat64, &poseXCmdIndex_);
     createParam(POSE_Y_CMD_STRING, asynParamFloat64, &poseYCmdIndex_);
@@ -146,21 +149,13 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     bool comm_ok = true;
 
     static std::map<int, int> JxCmd_map = {
-        {j1CmdIndex_, 0},
-        {j2CmdIndex_, 1},
-        {j3CmdIndex_, 2},
-        {j4CmdIndex_, 3},
-        {j5CmdIndex_, 4},
-        {j6CmdIndex_, 5}
+        {j1CmdIndex_, 0}, {j2CmdIndex_, 1}, {j3CmdIndex_, 2},
+        {j4CmdIndex_, 3}, {j5CmdIndex_, 4}, {j6CmdIndex_, 5},
     };
 
     static std::map<int, int> PoseCmd_map = {
-        {poseXCmdIndex_, 0},
-        {poseYCmdIndex_, 1},
-        {poseZCmdIndex_, 2},
-        {poseRollCmdIndex_, 3},
-        {posePitchCmdIndex_, 4},
-        {poseYawCmdIndex_, 5}
+        {poseXCmdIndex_, 0},    {poseYCmdIndex_, 1},     {poseZCmdIndex_, 2},
+        {poseRollCmdIndex_, 3}, {posePitchCmdIndex_, 4}, {poseYawCmdIndex_, 5},
     };
 
     if (rtde_control_ == nullptr) {
@@ -174,22 +169,20 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         comm_ok = false;
         goto skip;
     }
-
-    // Whenever commanded joint angles change, we update the values
+    
+    // When commanded joint angles change, update the values
     if (JxCmd_map.count(function) > 0) {
         // convert commanded joint angles to radians
         const double val = value * M_PI / 180.0;
         cmd_joints.at(JxCmd_map[function]) = val;
-        // setDoubleParam(function, val); // TODO: check
     }
 
-    // Whenever commanded TCP pose values change, we update the values
+    // When commanded TCP pose values change, update the values
     else if (PoseCmd_map.count(function) > 0) {
         // note we just need to convert roll, pitch, yaw to degrees
         int ind = PoseCmd_map[function];
-        const double val = (ind >= 3) ? (value * M_PI/180.0) : value;
+        const double val = (ind >= 3) ? (value * M_PI / 180.0) : value;
         cmd_pose.at(ind) = val;
-        // setDoubleParam(function, val);
     }
 
 skip:
@@ -234,9 +227,10 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     // RTDE Control interface function calls go here
     if (function == moveJIndex_) {
-        spdlog::info("moveJ({:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}) rad",
-                     cmd_joints.at(0), cmd_joints.at(1), cmd_joints.at(2),
-                     cmd_joints.at(3), cmd_joints.at(4), cmd_joints.at(5));
+
+        spdlog::info("moveJ({:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}) rad", cmd_joints.at(0),
+                     cmd_joints.at(1), cmd_joints.at(2), cmd_joints.at(3), cmd_joints.at(4),
+                     cmd_joints.at(5));
 
         bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints);
         if (safe) {
@@ -245,11 +239,16 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         } else {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
-    } 
+    } else if (function == stopJIndex_) {
+        spdlog::debug("stopping joint move, but not actually");
+        // rtde_control_->stopJ();
+    }
+
     else if (function == moveLIndex_) {
+
         spdlog::info("moveL({:.4f} mm, {:.4f} mm, {:.4f} mm, {:.4f} rad , {:.4f} rad, {:.4f} rad)",
-                     cmd_pose.at(0), cmd_pose.at(1), cmd_pose.at(2),
-                     cmd_pose.at(3), cmd_pose.at(4), cmd_pose.at(5));
+                     cmd_pose.at(0), cmd_pose.at(1), cmd_pose.at(2), cmd_pose.at(3), cmd_pose.at(4),
+                     cmd_pose.at(5));
 
         bool safe = rtde_control_->isPoseWithinSafetyLimits(cmd_pose);
         if (safe) {
@@ -258,8 +257,10 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         } else {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
+    } else if (function == stopLIndex_) {
+        spdlog::debug("stopping linear TCP pose move, but not actually");
+        // rtde_control_->stopL();
     }
-
 
 skip:
     callParamCallbacks();

@@ -12,6 +12,7 @@ static constexpr char IS_STEADY_STRING[] = "IS_STEADY";
 
 static constexpr char ACTUAL_Q_STRING[] = "ACTUAL_Q";
 static constexpr char MOVEJ_STRING[] = "MOVEJ";
+static constexpr char STOPJ_STRING[] = "STOPJ";
 static constexpr char J1CMD_STRING[] = "J1CMD";
 static constexpr char J2CMD_STRING[] = "J2CMD";
 static constexpr char J3CMD_STRING[] = "J3CMD";
@@ -21,6 +22,7 @@ static constexpr char J6CMD_STRING[] = "J6CMD";
 
 static constexpr char ACTUAL_TCP_POSE_STRING[] = "ACTUAL_TCP_POSE";
 static constexpr char MOVEL_STRING[] = "MOVEL";
+static constexpr char STOPL_STRING[] = "STOPL";
 static constexpr char POSE_X_CMD_STRING[] = "POSE_X_CMD";
 static constexpr char POSE_Y_CMD_STRING[] = "POSE_Y_CMD";
 static constexpr char POSE_Z_CMD_STRING[] = "POSE_Z_CMD";
@@ -59,17 +61,20 @@ class RTDEControl : public asynPortDriver {
     int reconnectIndex_;
     int isConnectedIndex_;
     int isSteadyIndex_;
+
+    int actualQIndex_;
+    int moveJIndex_;
+    int stopJIndex_;
     int j1CmdIndex_;
     int j2CmdIndex_;
     int j3CmdIndex_;
     int j4CmdIndex_;
     int j5CmdIndex_;
     int j6CmdIndex_;
-    int moveJIndex_;
-    int actualQIndex_;
 
-    int moveLIndex_;
     int actualTCPPoseIndex_;
+    int moveLIndex_;
+    int stopLIndex_;
     int poseXCmdIndex_;
     int poseYCmdIndex_;
     int poseZCmdIndex_;

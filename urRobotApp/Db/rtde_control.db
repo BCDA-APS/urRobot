@@ -28,6 +28,10 @@ record(bi, "$(P)$(R)Control:Steady")
     field(SCAN, "I/O Intr")
 }
 
+#======================
+# Joint control
+#======================
+
 record(bo, "$(P)$(R)Control:moveJ")
 {
     field(DESC, "Moves joints to commanded values")
@@ -35,10 +39,12 @@ record(bo, "$(P)$(R)Control:moveJ")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEJ")
 }
 
-
-#======================
-# Joint control
-#======================
+record(bo, "$(P)$(R)Control:stopJ")
+{
+    field(DESC, "Moves joints to commanded values")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOPJ")
+}
 
 # current joint positions for use interally with this database
 record(waveform, "$(P)$(R)Control:ActualQ")
@@ -46,6 +52,7 @@ record(waveform, "$(P)$(R)Control:ActualQ")
     field(DESC, "Actual joint positions")     
     field(DTYP, "asynFloat64ArrayIn")
     field(FTVL, "DOUBLE")
+    field(EGU, "degrees")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_Q")
     field(NELM, 6)
     field(FLNK, "$(P)$(R)Q_index_fanout.PROC")
@@ -418,6 +425,13 @@ record(bo, "$(P)$(R)Control:moveL")
     field(DESC, "Move to TCP pose linearly")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEL")
+}
+
+record(bo, "$(P)$(R)Control:stopL")
+{
+    field(DESC, "Stop linear move to TCP pose")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOPL")
 }
 
 record(waveform, "$(P)$(R)Control:ActualTCPPose")
