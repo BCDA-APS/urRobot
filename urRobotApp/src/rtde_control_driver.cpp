@@ -126,7 +126,7 @@ void RTDEControl::poll() {
                 doCallbacksFloat64Array(jvec.data(), NUM_JOINTS, actualQIndex_, 0);
 
                 std::vector<double> pose_vec = rtde_receive_->getActualTCPPose();
-                for (int i = 3; i < pose_vec.size(); i++) { // convert to deg
+                for (size_t i = 3; i < pose_vec.size(); i++) { // convert to deg
                     pose_vec.at(i) = pose_vec.at(i) * 180.0 / M_PI;
                 }
                 doCallbacksFloat64Array(pose_vec.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);

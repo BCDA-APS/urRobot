@@ -99,6 +99,9 @@ RTDEReceive::RTDEReceive(const char *asyn_port_name, const char *robot_ip)
 }
 
 void RTDEReceive::poll() {
+    std::vector<double> vec_f64(NUM_JOINTS);
+    std::vector<int> joint_modes_vec(NUM_JOINTS);
+
     while (true) {
         lock();
 
@@ -125,10 +128,7 @@ void RTDEReceive::poll() {
                 setDoubleParam(actualRobotVoltageIndex_, rtde_receive_->getActualRobotVoltage());
                 setDoubleParam(actualRobotCurrentIndex_, rtde_receive_->getActualRobotCurrent());
 
-                // TODO: don't need this array, just pass fucntion.data() directly
-                std::vector<double> vec_f64(NUM_JOINTS);
-
-                std::vector<int> joint_modes_vec = rtde_receive_->getJointMode();
+                joint_modes_vec = rtde_receive_->getJointMode();
                 doCallbacksInt32Array(joint_modes_vec.data(), NUM_JOINTS, jointModesIndex_, ASYN_ADDR);
 
                 vec_f64 = rtde_receive_->getActualToolAccelerometer();
