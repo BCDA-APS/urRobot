@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-03-28 11:49:48 by nmarks-->
+<!--Saved on 2024-04-02 10:09:38 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
   <widget type="label" version="2.0.0">
@@ -24,7 +24,7 @@
     <name>Boolean Button</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut0</pv_name>
     <x>110</x>
-    <y>150</y>
+    <y>190</y>
     <width>40</width>
     <off_label>0</off_label>
     <on_label>0</on_label>
@@ -34,7 +34,7 @@
     <name>Boolean Button_1</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut1</pv_name>
     <x>160</x>
-    <y>150</y>
+    <y>190</y>
     <width>40</width>
     <off_label>1</off_label>
     <on_label>1</on_label>
@@ -44,7 +44,7 @@
     <name>Boolean Button_2</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut2</pv_name>
     <x>210</x>
-    <y>150</y>
+    <y>190</y>
     <width>40</width>
     <off_label>2</off_label>
     <on_label>2</on_label>
@@ -54,7 +54,7 @@
     <name>Boolean Button_3</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut3</pv_name>
     <x>260</x>
-    <y>150</y>
+    <y>190</y>
     <width>40</width>
     <off_label>3</off_label>
     <on_label>3</on_label>
@@ -64,7 +64,7 @@
     <name>Boolean Button_8</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut4</pv_name>
     <x>310</x>
-    <y>150</y>
+    <y>190</y>
     <width>40</width>
     <off_label>4</off_label>
     <on_label>4</on_label>
@@ -74,7 +74,7 @@
     <name>Boolean Button_9</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut5</pv_name>
     <x>360</x>
-    <y>150</y>
+    <y>190</y>
     <width>40</width>
     <off_label>5</off_label>
     <on_label>5</on_label>
@@ -84,7 +84,7 @@
     <name>Boolean Button_10</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut6</pv_name>
     <x>410</x>
-    <y>150</y>
+    <y>190</y>
     <width>40</width>
     <off_label>6</off_label>
     <on_label>6</on_label>
@@ -94,7 +94,7 @@
     <name>Boolean Button_11</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut7</pv_name>
     <x>460</x>
-    <y>150</y>
+    <y>190</y>
     <width>40</width>
     <off_label>7</off_label>
     <on_label>7</on_label>
@@ -104,7 +104,7 @@
     <name>Boolean Button_12</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut0</pv_name>
     <x>110</x>
-    <y>210</y>
+    <y>250</y>
     <width>40</width>
     <off_label>0</off_label>
     <on_label>0</on_label>
@@ -114,7 +114,7 @@
     <name>Boolean Button_13</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut1</pv_name>
     <x>160</x>
-    <y>210</y>
+    <y>250</y>
     <width>40</width>
     <off_label>1</off_label>
     <on_label>1</on_label>
@@ -124,7 +124,7 @@
     <name>Boolean Button_14</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut2</pv_name>
     <x>210</x>
-    <y>210</y>
+    <y>250</y>
     <width>40</width>
     <off_label>2</off_label>
     <on_label>2</on_label>
@@ -134,7 +134,7 @@
     <name>Boolean Button_15</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut3</pv_name>
     <x>260</x>
-    <y>210</y>
+    <y>250</y>
     <width>40</width>
     <off_label>3</off_label>
     <on_label>3</on_label>
@@ -144,7 +144,7 @@
     <name>Boolean Button_16</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut4</pv_name>
     <x>310</x>
-    <y>210</y>
+    <y>250</y>
     <width>40</width>
     <off_label>4</off_label>
     <on_label>4</on_label>
@@ -154,7 +154,7 @@
     <name>Boolean Button_17</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut5</pv_name>
     <x>360</x>
-    <y>210</y>
+    <y>250</y>
     <width>40</width>
     <off_label>5</off_label>
     <on_label>5</on_label>
@@ -164,7 +164,7 @@
     <name>Boolean Button_18</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut6</pv_name>
     <x>410</x>
-    <y>210</y>
+    <y>250</y>
     <width>40</width>
     <off_label>6</off_label>
     <on_label>6</on_label>
@@ -174,7 +174,7 @@
     <name>Boolean Button_19</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut7</pv_name>
     <x>460</x>
-    <y>210</y>
+    <y>250</y>
     <width>40</width>
     <off_label>7</off_label>
     <on_label>7</on_label>
@@ -204,7 +204,7 @@
     <name>Label_52</name>
     <text>Standard:</text>
     <x>30</x>
-    <y>150</y>
+    <y>190</y>
     <width>70</width>
     <height>30</height>
     <font>
@@ -217,7 +217,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_53</name>
     <text>Configurable:</text>
-    <y>210</y>
+    <y>250</y>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -225,5 +225,54 @@
     </font>
     <horizontal_alignment>2</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="scaledslider" version="2.0.0">
+    <name>Scaled Slider</name>
+    <pv_name>$(P)$(R)IO:SpeedSlider</pv_name>
+    <x>110</x>
+    <y>120</y>
+    <width>270</width>
+    <height>40</height>
+    <show_scale>false</show_scale>
+    <show_minor_ticks>false</show_minor_ticks>
+    <level_hihi>100.0</level_hihi>
+    <level_high>100.0</level_high>
+    <level_low>0.0</level_low>
+    <level_lolo>0.0</level_lolo>
+    <show_hihi>false</show_hihi>
+    <show_high>false</show_high>
+    <show_low>false</show_low>
+    <show_lolo>false</show_lolo>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update</name>
+    <pv_name>eq://100*($(P)$(R)IO:SpeedSlider)</pv_name>
+    <x>390</x>
+    <y>120</y>
+    <width>60</width>
+    <background_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <precision>0</precision>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>Speed</text>
+    <x>220</x>
+    <y>100</y>
+    <width>50</width>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <text>%</text>
+    <x>420</x>
+    <y>120</y>
+    <width>20</width>
   </widget>
 </display>

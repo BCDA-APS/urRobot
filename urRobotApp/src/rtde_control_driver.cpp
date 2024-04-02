@@ -7,6 +7,7 @@
 
 #include "rtde_control_driver.hpp"
 #include "rtde_control_interface.h"
+#include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
 
@@ -100,8 +101,8 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(POSE_PITCH_CMD_STRING, asynParamFloat64, &posePitchCmdIndex_);
     createParam(POSE_YAW_CMD_STRING, asynParamFloat64, &poseYawCmdIndex_);
 
-    // TODO: can be set with shell environment variable
-    spdlog::set_level(spdlog::level::debug);
+    // gets log level from SPDLOG_LEVEL environment variable
+    spdlog::cfg::load_env_levels();
 
     try_connect();
 
@@ -169,7 +170,7 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         comm_ok = false;
         goto skip;
     }
-    
+
     // When commanded joint angles change, update the values
     if (JxCmd_map.count(function) > 0) {
         // convert commanded joint angles to radians
@@ -234,14 +235,13 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints);
         if (safe) {
-            spdlog::debug("moving joints but not actually");
-            // rtde_control_->moveJ(cmd_joints);
+            rtde_control_->moveJ(cmd_joints);
         } else {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
     } else if (function == stopJIndex_) {
-        spdlog::debug("stopping joint move, but not actually");
-        // rtde_control_->stopJ();
+        spdlog::debug("Stopping joint move");
+        rtde_control_->stopJ();
     }
 
     else if (function == moveLIndex_) {
@@ -252,14 +252,13 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isPoseWithinSafetyLimits(cmd_pose);
         if (safe) {
-            spdlog::debug("moving EE but not actually");
-            // rtde_control_->moveL(cmd_pose);
+            rtde_control_->moveL(cmd_pose);
         } else {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
     } else if (function == stopLIndex_) {
-        spdlog::debug("stopping linear TCP pose move, but not actually");
-        // rtde_control_->stopL();
+        spdlog::debug("Stopping linear TCP move");
+        rtde_control_->stopL();
     }
 
 skip:

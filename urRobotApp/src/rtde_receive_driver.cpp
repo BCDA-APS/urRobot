@@ -3,6 +3,7 @@
 #include <iocsh.h>
 
 #include "rtde_receive_driver.hpp"
+#include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 
 static void poll_thread_C(void *pPvt) {
@@ -88,8 +89,8 @@ RTDEReceive::RTDEReceive(const char *asyn_port_name, const char *robot_ip)
     createParam(ACTUAL_ROBOT_CURRENT_STRING, asynParamFloat64, &actualRobotCurrentIndex_);
     createParam(ACTUAL_JOINT_VOLTAGES_STRING, asynParamFloat64Array, &actualJointVoltagesIndex_);
 
-    // TODO: can be set with shell environment variable
-    spdlog::set_level(spdlog::level::debug);
+    // gets log level from SPDLOG_LEVEL environment variable
+    spdlog::cfg::load_env_levels();
 
     try_connect();
 
@@ -130,6 +131,9 @@ void RTDEReceive::poll() {
                 std::vector<int> joint_modes_vec = rtde_receive_->getJointMode();
                 doCallbacksInt32Array(joint_modes_vec.data(), NUM_JOINTS, jointModesIndex_, ASYN_ADDR);
 
+                vec_f64 = rtde_receive_->getActualToolAccelerometer();
+                doCallbacksFloat64Array(vec_f64.data(), 3, actualToolAccelIndex_, ASYN_ADDR);
+
                 vec_f64 = rtde_receive_->getActualQ();
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, ASYN_ADDR);
 
@@ -150,9 +154,6 @@ void RTDEReceive::poll() {
 
                 vec_f64 = rtde_receive_->getActualTCPForce();
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPForceIndex_, ASYN_ADDR);
-
-                vec_f64 = rtde_receive_->getActualToolAccelerometer();
-                doCallbacksFloat64Array(vec_f64.data(), 3, actualToolAccelIndex_, ASYN_ADDR);
 
                 vec_f64 = rtde_receive_->getTargetQ();
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointPosIndex_, ASYN_ADDR);

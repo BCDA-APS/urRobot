@@ -128,6 +128,8 @@ record(subArray, "$(P)$(R)Control:ActualQ_index5")
 # resets commanded joint angles to the current measured angles
 record(seq, "$(P)Control:ResetJCmd")
 {
+    field(PINI, 1)
+
     field(DOL0, "$(P)$(R)Control:ActualQ_index0")
     field(LNK0, "$(P)$(R)Control:J1Cmd PP")
 
@@ -486,6 +488,8 @@ record(subArray, "$(P)$(R)Control:pose_index5")
 # resets commanded TCP pose to the current measured pose
 record(seq, "$(P)Control:ResetPoseCmd")
 {
+    field(PINI, 1)
+
     field(DOL0, "$(P)$(R)Control:pose_index0")
     field(LNK0, "$(P)$(R)Control:PoseXCmd PP")
 

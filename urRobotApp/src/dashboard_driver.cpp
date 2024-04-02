@@ -3,6 +3,7 @@
 #include <iocsh.h>
 
 #include "dashboard_driver.hpp"
+#include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
 
@@ -12,6 +13,7 @@ static void poll_thread_C(void *pPvt) {
 }
 
 // wraps the ur_dashboard_->connect() function to fail gracefully
+// TODO: check nullptr?
 bool URDashboard::try_connect() {
     bool connected = false;
     try {
@@ -28,14 +30,12 @@ bool URDashboard::try_connect() {
 
 URDashboard::URDashboard(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
-                     asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
-                         asynInt32ArrayMask,
+                     asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask | asynInt32ArrayMask,
                      asynInt32Mask | asynFloat64Mask | asynOctetMask | asynInt32ArrayMask,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
                      0, 0),
-      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)),
-      poll_time_(DEFAULT_POLL_TIME) {
+      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), poll_time_(DEFAULT_POLL_TIME) {
 
     // create asyn parameters
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
@@ -65,8 +65,8 @@ URDashboard::URDashboard(const char *asyn_port_name, const char *robot_ip)
     createParam(IS_PROGRAM_SAVED, asynParamInt32, &isProgramSavedIndex_);
     createParam(IS_IN_REMOTE_CONTROL, asynParamInt32, &isInRemoteControlIndex_);
 
-    // TODO: make log level an arg to the constructor?
-    spdlog::set_level(spdlog::level::debug); // Set global log level to debug
+    // gets log level from SPDLOG_LEVEL environment variable
+    spdlog::cfg::load_env_levels();
 
     bool connected = this->try_connect();
     if (connected) {
@@ -79,8 +79,7 @@ URDashboard::URDashboard(const char *asyn_port_name, const char *robot_ip)
     }
 
     epicsThreadCreate("URDashboardPoller", epicsThreadPriorityLow,
-                      epicsThreadGetStackSize(epicsThreadStackMedium),
-                      (EPICSTHREADFUNC)poll_thread_C, this);
+                      epicsThreadGetStackSize(epicsThreadStackMedium), (EPICSTHREADFUNC)poll_thread_C, this);
 }
 
 void URDashboard::poll() {
@@ -111,43 +110,43 @@ asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     int function = pasynUser->reason;
 
     if (function == playIndex_) {
-        spdlog::info("Playing loaded program");
+        spdlog::debug("Playing loaded program");
         ur_dashboard_->play();
     } else if (function == stopIndex_) {
-        spdlog::info("Stopping current program");
+        spdlog::debug("Stopping current program");
         ur_dashboard_->stop();
     } else if (function == pauseIndex_) {
-        spdlog::info("Pausing current program");
+        spdlog::debug("Pausing current program");
         ur_dashboard_->pause();
     } else if (function == connectIndex_) {
-        spdlog::info("Connecting to dashboard server");
-        this->try_connect();
+        spdlog::debug("Connecting to dashboard server");
+        try_connect();
     } else if (function == disconnectIndex_) {
-        spdlog::info("Disconnecting from dashboard server");
+        spdlog::debug("Disconnecting from dashboard server");
         ur_dashboard_->disconnect();
     } else if (function == shutdownIndex_) {
-        spdlog::info("Shutting down robot and controller");
+        spdlog::debug("Shutting down robot and controller");
         ur_dashboard_->shutdown();
     } else if (function == closePopupIndex_) {
-        spdlog::info("Closing popup");
+        spdlog::debug("Closing popup");
         ur_dashboard_->closePopup();
     } else if (function == closeSafetyPopupIndex_) {
-        spdlog::info("Closing safety popup");
+        spdlog::debug("Closing safety popup");
         ur_dashboard_->closeSafetyPopup();
     } else if (function == powerOnIndex_) {
-        spdlog::info("Powering on robot");
+        spdlog::debug("Powering on robot");
         ur_dashboard_->powerOn();
     } else if (function == powerOffIndex_) {
-        spdlog::info("Powering off robot");
+        spdlog::debug("Powering off robot");
         ur_dashboard_->powerOff();
     } else if (function == brakeReleaseIndex_) {
-        spdlog::info("Releasing brakes");
+        spdlog::debug("Releasing brakes");
         ur_dashboard_->brakeRelease();
     } else if (function == unlockProtectiveStopIndex_) {
-        spdlog::info("Unlocking protective stop");
+        spdlog::debug("Unlocking protective stop");
         ur_dashboard_->unlockProtectiveStop();
     } else if (function == restartSafetyIndex_) {
-        spdlog::info("Restarting safety configuration");
+        spdlog::debug("Restarting safety configuration");
         ur_dashboard_->restartSafety();
     }
 
@@ -155,22 +154,21 @@ asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     return asynSuccess;
 }
 
-asynStatus URDashboard::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars,
-                                        size_t *nActual) {
+asynStatus URDashboard::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual) {
     // TODO: Check this. Seems to work but gives weird warning
     int function = pasynUser->reason;
     asynStatus status = asynSuccess;
     if (function == popupIndex_) {
         std::stringstream ss;
-        spdlog::info("Popup text: {}", value);
+        spdlog::debug("Popup text: {}", value);
         ur_dashboard_->popup(value);
     } else if (function == loadURPIndex_) {
         std::stringstream ss;
-        spdlog::info("Loading program {}", value);
+        spdlog::debug("Loading program {}", value);
         try {
             ur_dashboard_->loadURP(value);
         } catch (const std::exception &e) {
-            std::cout << "Caught exception: " << e.what() << std::endl;
+            spdlog::error("{}", e.what());
             status = asynError;
         }
     }
@@ -190,9 +188,7 @@ static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
 static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
 static const iocshFuncDef urRobotFuncDef = {"URDashboardConfig", 2, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) {
-    URDashboardConfig(args[0].sval, args[1].sval);
-}
+static void urRobotCallFunc(const iocshArgBuf *args) { URDashboardConfig(args[0].sval, args[1].sval); }
 
 void URDashboardRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 
