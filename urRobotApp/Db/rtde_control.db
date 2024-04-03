@@ -51,12 +51,27 @@ record(bo, "$(P)$(R)Control:stopJ")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOPJ")
 }
 
+record(bo, "$(P)$(R)Control:auto_moveJ")
+{
+    field(DESC, "If 1, moveJ runs when JxCmd changes")
+    field(VAL, 0)
+}
+
+record(calcout, "$(P)$(R)Control:auto_moveJ_calc")
+{
+    field(INPA, "$(P)$(R)Control:auto_moveJ")
+    field(CALC, "A")
+    field(OOPT, "When Non-zero")
+    field(OUT, "$(P)$(R)Control:moveJ.PROC")
+}
+
 # current joint positions for use interally with this database
 record(waveform, "$(P)$(R)Control:ActualQ")
 {
     field(DESC, "Actual joint positions")     
     field(DTYP, "asynFloat64ArrayIn")
     field(FTVL, "DOUBLE")
+    field(PINI, "1")
     field(EGU, "degrees")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_Q")
     field(NELM, 6)
@@ -82,6 +97,7 @@ record(subArray, "$(P)$(R)Control:ActualQ_index0")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "0")
+    field(PREC, 4)
 }
 record(subArray, "$(P)$(R)Control:ActualQ_index1")
 {
@@ -90,6 +106,7 @@ record(subArray, "$(P)$(R)Control:ActualQ_index1")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "1")
+    field(PREC, 4)
 }
 record(subArray, "$(P)$(R)Control:ActualQ_index2")
 {
@@ -98,6 +115,7 @@ record(subArray, "$(P)$(R)Control:ActualQ_index2")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "2")
+    field(PREC, 4)
 }
 record(subArray, "$(P)$(R)Control:ActualQ_index3")
 {
@@ -106,6 +124,7 @@ record(subArray, "$(P)$(R)Control:ActualQ_index3")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "3")
+    field(PREC, 4)
 }
 record(subArray, "$(P)$(R)Control:ActualQ_index4")
 {
@@ -114,6 +133,7 @@ record(subArray, "$(P)$(R)Control:ActualQ_index4")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "4")
+    field(PREC, 4)
 }
 record(subArray, "$(P)$(R)Control:ActualQ_index5")
 {
@@ -122,6 +142,7 @@ record(subArray, "$(P)$(R)Control:ActualQ_index5")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "5")
+    field(PREC, 4)
 }
 
 # stores DOLx.VAL in LNKx.VAL
@@ -159,11 +180,13 @@ record(ao, "$(P)$(R)Control:J1Cmd")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveJ_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:J1TweakVal")
 {
     field(DESC, "Joint 1 tweak step size")
     field(EGU, "degrees")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:J1TweakFwd")
 {
@@ -200,11 +223,13 @@ record(ao, "$(P)$(R)Control:J2Cmd")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveJ_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:J2TweakVal")
 {
     field(DESC, "Joint 2 tweak step size")
     field(EGU, "degrees")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:J2TweakFwd")
 {
@@ -241,11 +266,13 @@ record(ao, "$(P)$(R)Control:J3Cmd")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveJ_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:J3TweakVal")
 {
     field(DESC, "Joint 3 tweak step size")
     field(EGU, "degrees")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:J3TweakFwd")
 {
@@ -282,11 +309,13 @@ record(ao, "$(P)$(R)Control:J4Cmd")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveJ_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:J4TweakVal")
 {
     field(DESC, "Joint 4 tweak step size")
     field(EGU, "degrees")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:J4TweakFwd")
 {
@@ -323,11 +352,13 @@ record(ao, "$(P)$(R)Control:J5Cmd")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveJ_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:J5TweakVal")
 {
     field(DESC, "Joint 5 tweak step size")
     field(EGU, "degrees")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:J5TweakFwd")
 {
@@ -364,11 +395,13 @@ record(ao, "$(P)$(R)Control:J6Cmd")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveJ_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:J6TweakVal")
 {
     field(DESC, "Joint 6 tweak step size")
     field(EGU, "degrees")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:J6TweakFwd")
 {
@@ -418,6 +451,7 @@ record(waveform, "$(P)$(R)Control:ActualTCPPose")
     field(DESC, "Actual TCP Pose")     
     field(DTYP, "asynFloat64ArrayIn")
     field(FTVL, "DOUBLE")
+    field(PINI, "1")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_TCP_POSE")
     field(NELM, 6)
     field(FLNK, "$(P)$(R)pose_index_fanout.PROC")
@@ -442,6 +476,7 @@ record(subArray, "$(P)$(R)Control:pose_index0")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "0")
+    field(PREC, 4)
 }
 record(subArray, "$(P)$(R)Control:pose_index1")
 {
@@ -450,6 +485,7 @@ record(subArray, "$(P)$(R)Control:pose_index1")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "1")
+    field(PREC, 4)
 }
 record(subArray, "$(P)$(R)Control:pose_index2")
 {
@@ -458,6 +494,7 @@ record(subArray, "$(P)$(R)Control:pose_index2")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "2")
+    field(PREC, 4)
 }
 record(subArray, "$(P)$(R)Control:pose_index3")
 {
@@ -466,6 +503,7 @@ record(subArray, "$(P)$(R)Control:pose_index3")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "3")
+    field(PREC, 4)
 }
 record(subArray, "$(P)$(R)Control:pose_index4")
 {
@@ -474,6 +512,7 @@ record(subArray, "$(P)$(R)Control:pose_index4")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "4")
+    field(PREC, 4)
 }
 record(subArray, "$(P)$(R)Control:pose_index5")
 {
@@ -482,6 +521,7 @@ record(subArray, "$(P)$(R)Control:pose_index5")
     field(MALM, "6")
     field(NELM, "1")
     field(INDX, "5")
+    field(PREC, 4)
 }
 
 # stores DOLx.VAL in LNKx.VAL
@@ -523,7 +563,8 @@ record(ao, "$(P)$(R)Control:PoseXCmd")
 record(ao, "$(P)$(R)Control:PoseXTweakVal")
 {
     field(DESC, "X TCP pose tweak step size")
-    field(EGU, "degrees")
+    field(EGU, "m")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:PoseXTweakFwd")
 {
@@ -564,7 +605,8 @@ record(ao, "$(P)$(R)Control:PoseYCmd")
 record(ao, "$(P)$(R)Control:PoseYTweakVal")
 {
     field(DESC, "Y TCP pose tweak step size")
-    field(EGU, "degrees")
+    field(EGU, "m")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:PoseYTweakFwd")
 {
@@ -605,7 +647,8 @@ record(ao, "$(P)$(R)Control:PoseZCmd")
 record(ao, "$(P)$(R)Control:PoseZTweakVal")
 {
     field(DESC, "TCP Z tweak step size")
-    field(EGU, "degrees")
+    field(EGU, "m")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:PoseZTweakFwd")
 {
@@ -647,6 +690,7 @@ record(ao, "$(P)$(R)Control:PoseRollTweakVal")
 {
     field(DESC, "TCP roll tweak step size")
     field(EGU, "degrees")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:PoseRollTweakFwd")
 {
@@ -688,6 +732,7 @@ record(ao, "$(P)$(R)Control:PosePitchTweakVal")
 {
     field(DESC, "TCP pitch tweak step size")
     field(EGU, "degrees")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:PosePitchTweakFwd")
 {
@@ -729,6 +774,7 @@ record(ao, "$(P)$(R)Control:PoseYawTweakVal")
 {
     field(DESC, "TCP yaw tweak step size")
     field(EGU, "degrees")
+    field(PREC, 4)
 }
 record(bo, "$(P)$(R)Control:PoseYawTweakFwd")
 {

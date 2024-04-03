@@ -135,6 +135,9 @@ void RTDEReceive::poll() {
                 doCallbacksFloat64Array(vec_f64.data(), 3, actualToolAccelIndex_, ASYN_ADDR);
 
                 vec_f64 = rtde_receive_->getActualQ();
+                for (double &j : vec_f64) { // convert to degrees
+                    j = j * 180.0 / M_PI;
+                }
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, ASYN_ADDR);
 
                 vec_f64 = rtde_receive_->getActualQd();
