@@ -1,5 +1,6 @@
 #include <epicsExport.h>
 #include <epicsThread.h>
+#include <exception>
 #include <iocsh.h>
 
 #include "dashboard_driver.hpp"
@@ -108,16 +109,32 @@ void URDashboard::poll() {
 asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
+    bool comm_ok = true;
 
     if (function == playIndex_) {
         spdlog::debug("Playing loaded program");
-        ur_dashboard_->play();
+        try {
+            ur_dashboard_->play();
+        } catch (const std::exception &e) {
+            spdlog::error("{}", e.what());
+            comm_ok = false;
+        }
     } else if (function == stopIndex_) {
         spdlog::debug("Stopping current program");
-        ur_dashboard_->stop();
+        try {
+            ur_dashboard_->stop();
+        } catch (const std::exception &e) {
+            spdlog::error("{}", e.what());
+            comm_ok = false;
+        }
     } else if (function == pauseIndex_) {
         spdlog::debug("Pausing current program");
-        ur_dashboard_->pause();
+        try {
+            ur_dashboard_->pause();
+        } catch (const std::exception &e) {
+            spdlog::error("{}", e.what());
+            comm_ok = false;
+        }
     } else if (function == connectIndex_) {
         spdlog::debug("Connecting to dashboard server");
         try_connect();
@@ -151,7 +168,7 @@ asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     }
 
     callParamCallbacks();
-    return asynSuccess;
+    return comm_ok ? asynSuccess : asynError;
 }
 
 asynStatus URDashboard::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual) {
