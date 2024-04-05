@@ -801,3 +801,10 @@ record(calcout, "$(P)$(R)Control:PoseYawTweakCalcRev")
     field(OUT, "$(P)$(R)Control:PoseYawCmd PP")
 }
 # -----------------------------------------------------------
+
+record(stringout, "$(P)$(R)Control:LoadPosePath")
+{
+    field(DESC, "Loads a CSV of EE waypoints")
+    field(DTYP, "asynOctetWrite")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LOAD_POSE_PATH")
+}

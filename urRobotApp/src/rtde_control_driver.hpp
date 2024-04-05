@@ -5,6 +5,8 @@
 #include "ur_rtde/rtde_receive_interface.h"
 #include <asynPortDriver.h>
 
+// TODO: params for moveL/moveJ speed, accel,
+
 static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
 static constexpr char RECONNECT_STRING[] = "RECONNECT";
 static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
@@ -30,6 +32,8 @@ static constexpr char POSE_ROLL_CMD_STRING[] = "POSE_ROLL_CMD";
 static constexpr char POSE_PITCH_CMD_STRING[] = "POSE_PITCH_CMD";
 static constexpr char POSE_YAW_CMD_STRING[] = "POSE_YAW_CMD";
 
+static constexpr char LOAD_POSE_PATH_STRING[] = "LOAD_POSE_PATH";
+
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
 static constexpr double POLL_PERIOD = 0.02; // 50Hz
@@ -41,6 +45,7 @@ class RTDEControl : public asynPortDriver {
     virtual void poll(void);
     virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
+    virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual);
 
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
@@ -53,6 +58,9 @@ class RTDEControl : public asynPortDriver {
 
     // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
     std::vector<double> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+  
+    // List of end-effector waypoints to follow
+    std::vector<std::vector<double>> pose_path;
 
   protected:
     asynUser *pasynUserURRobot_;
@@ -81,6 +89,8 @@ class RTDEControl : public asynPortDriver {
     int poseRollCmdIndex_;
     int posePitchCmdIndex_;
     int poseYawCmdIndex_;
+
+    int loadPosePathIndex_;
 };
 
 #endif

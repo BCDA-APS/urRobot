@@ -4,12 +4,41 @@
 #include <exception>
 #include <iocsh.h>
 #include <stdexcept>
+#include <type_traits>
+#include <sstream>
 
 #include "rtde_control_driver.hpp"
 #include "rtde_control_interface.h"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
+
+// splits a string by a delimiter into a vector<T>
+// only int and double are supported
+template<typename T>
+std::vector<T> split_string(const std::string &msg, const char delimiter) {
+    std::vector<T> result;
+    std::string token;
+    std::istringstream token_stream(msg);
+    static_assert(std::is_same_v<T, double> or std::is_same_v<T, int>, "Only int and double is supported");
+
+    while(std::getline(token_stream, token, delimiter)) {
+	try {
+	    if constexpr (std::is_same_v<T, double>) {
+		const double value = std::stod(token);
+		result.push_back(value);
+	    } else if constexpr (std::is_same_v<T, int>) {
+		const int value = std::stoi(token);
+		result.push_back(value);
+	    } else {
+		throw std::logic_error("Invalid type provided for template");
+	    }
+	} catch (const std::exception &e) {
+	    std::cout << e.what() << std::endl;
+	}
+    }
+    return result;
+}
 
 static void poll_thread_C(void *pPvt) {
     RTDEControl *pRTDEControl = (RTDEControl *)pPvt;
@@ -63,7 +92,8 @@ bool RTDEControl::try_connect() {
         }
     }
     return connected;
-}
+} 
+
 
 RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
@@ -100,6 +130,8 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(POSE_ROLL_CMD_STRING, asynParamFloat64, &poseRollCmdIndex_);
     createParam(POSE_PITCH_CMD_STRING, asynParamFloat64, &posePitchCmdIndex_);
     createParam(POSE_YAW_CMD_STRING, asynParamFloat64, &poseYawCmdIndex_);
+
+    createParam(LOAD_POSE_PATH_STRING, asynParamOctet, &loadPosePathIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -260,6 +292,60 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         spdlog::debug("Stopping linear TCP move");
         rtde_control_->stopL();
     }
+
+skip:
+    callParamCallbacks();
+    if (comm_ok) {
+        return asynSuccess;
+    } else {
+        spdlog::debug("RTDE communincation error in RTDEControl::writeInt32");
+        return asynError;
+    }
+}
+
+asynStatus RTDEControl::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual) {
+    int function = pasynUser->reason;
+    bool comm_ok = true;
+
+    if (rtde_control_ == nullptr) {
+        spdlog::error("RTDE Control interface not initialized");
+        comm_ok = false;
+        goto skip;
+    }
+
+    if (not rtde_control_->isConnected()) {
+        spdlog::error("RTDE Control interface not connected");
+        comm_ok = false;
+        goto skip;
+    }
+    
+    // Store EE waypoints from csv file in this->pose_path
+    if (function == loadPosePathIndex_) {
+        std::ifstream file(value);
+        if (not file.is_open()) {
+            spdlog::error("failed to open file");
+            goto skip;
+        } else {
+            this->pose_path.clear();
+            std::string line;
+            while (std::getline(file, line)) {
+                std::vector<double> v = split_string<double>(line, ',');
+                this->pose_path.push_back(v);
+            }
+
+            //NOTE: below is just for debugging
+            std::cout << std::endl;
+            for (const auto &p : this->pose_path) {
+                for (const auto &i : p) {
+                    std::cout << i << ",";
+                }
+                std::cout << std::endl;
+            }
+        }
+    }
+
+    // TODO: playLoadedPosePath
+    // moveL(this->pose_path)
 
 skip:
     callParamCallbacks();
