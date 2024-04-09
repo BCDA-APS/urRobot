@@ -32,7 +32,8 @@ static constexpr char POSE_ROLL_CMD_STRING[] = "POSE_ROLL_CMD";
 static constexpr char POSE_PITCH_CMD_STRING[] = "POSE_PITCH_CMD";
 static constexpr char POSE_YAW_CMD_STRING[] = "POSE_YAW_CMD";
 
-static constexpr char LOAD_POSE_PATH_STRING[] = "LOAD_POSE_PATH";
+static constexpr char PLAY_POSE_PATH_STRING[] = "PLAY_POSE_PATH";
+static constexpr char PLAY_JOINT_PATH_STRING[] = "PLAY_JOINT_PATH";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
@@ -47,6 +48,7 @@ class RTDEControl : public asynPortDriver {
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual);
 
+
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
@@ -58,9 +60,7 @@ class RTDEControl : public asynPortDriver {
 
     // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
     std::vector<double> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-  
-    // List of end-effector waypoints to follow
-    std::vector<std::vector<double>> pose_path;
+
 
   protected:
     asynUser *pasynUserURRobot_;
@@ -90,7 +90,8 @@ class RTDEControl : public asynPortDriver {
     int posePitchCmdIndex_;
     int poseYawCmdIndex_;
 
-    int loadPosePathIndex_;
+    int playPosePathIndex_;
+    int playJointPathIndex_;
 };
 
 #endif

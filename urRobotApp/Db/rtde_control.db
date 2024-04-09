@@ -802,9 +802,16 @@ record(calcout, "$(P)$(R)Control:PoseYawTweakCalcRev")
 }
 # -----------------------------------------------------------
 
-record(stringout, "$(P)$(R)Control:LoadPosePath")
+record(stringout, "$(P)$(R)Control:PlayPosePath")
 {
-    field(DESC, "Loads a CSV of EE waypoints")
+    field(DESC, "Moves through CSV file of EE waypoints")
     field(DTYP, "asynOctetWrite")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LOAD_POSE_PATH")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PLAY_POSE_PATH")
+}
+
+record(stringout, "$(P)$(R)Control:PlayJointPath")
+{
+    field(DESC, "Moves through CSV file of joint angles")
+    field(DTYP, "asynOctetWrite")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PLAY_JOINT_PATH")
 }

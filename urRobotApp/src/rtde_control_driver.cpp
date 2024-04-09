@@ -2,10 +2,12 @@
 #include <epicsExport.h>
 #include <epicsThread.h>
 #include <exception>
+#include <fstream>
 #include <iocsh.h>
+#include <optional>
+#include <sstream>
 #include <stdexcept>
 #include <type_traits>
-#include <sstream>
 
 #include "rtde_control_driver.hpp"
 #include "rtde_control_interface.h"
@@ -13,36 +15,55 @@
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
 
-// splits a string by a delimiter into a vector<T>
-// only int and double are supported
-template<typename T>
-std::vector<T> split_string(const std::string &msg, const char delimiter) {
-    std::vector<T> result;
+// splits a string by a delimiter into a vector<T> and returns it as
+// a std::optional(vector<T>). If conversion fails, std::nullopt is returned
+template <typename T>
+std::optional<std::vector<T>> split_string(const std::string &msg, const char delimiter) {
+    std::vector<T> out;
     std::string token;
     std::istringstream token_stream(msg);
-    static_assert(std::is_same_v<T, double> or std::is_same_v<T, int>, "Only int and double is supported");
+    static_assert(std::is_same_v<T, double> or std::is_same_v<T, int> or std::is_same_v<T, std::string>);
 
-    while(std::getline(token_stream, token, delimiter)) {
-	try {
-	    if constexpr (std::is_same_v<T, double>) {
-		const double value = std::stod(token);
-		result.push_back(value);
-	    } else if constexpr (std::is_same_v<T, int>) {
-		const int value = std::stoi(token);
-		result.push_back(value);
-	    } else {
-		throw std::logic_error("Invalid type provided for template");
-	    }
-	} catch (const std::exception &e) {
-	    std::cout << e.what() << std::endl;
-	}
+    while (std::getline(token_stream, token, delimiter)) {
+        try {
+            if constexpr (std::is_same_v<T, double>) {
+                const double value = std::stod(token);
+                out.push_back(value);
+            } else if constexpr (std::is_same_v<T, int>) {
+                const int value = std::stoi(token);
+                out.push_back(value);
+            } else if constexpr (std::is_same_v<T, std::string>) {
+                out.push_back(token);
+            }
+        } catch (const std::exception &e) {
+            spdlog::error("Failed to split string. Caugh exception: {}", e.what());
+            return std::nullopt;
+        }
     }
-    return result;
+    return std::optional(out);
 }
 
-static void poll_thread_C(void *pPvt) {
-    RTDEControl *pRTDEControl = (RTDEControl *)pPvt;
-    pRTDEControl->poll();
+// Reads a CSV file, splitting each row into a vector<double> and returns
+// an optional<vector<vector<double>>>. If the file cannot be opened, or
+// splitting/conversion fails, std::nullopt is returned
+std::optional<std::vector<std::vector<double>>> read_traj_file(std::string filename) {
+    std::vector<std::vector<double>> out;
+    std::ifstream file(filename);
+    if (not file.is_open()) {
+        spdlog::error("Failed to open file {}", filename);
+        return std::nullopt;
+    } else {
+        std::string line;
+        while (std::getline(file, line)) {
+            std::optional<std::vector<double>> v = split_string<double>(line, ',');
+            if (v.has_value()) {
+                out.push_back(v.value());
+            } else {
+                return std::nullopt;
+            }
+        }
+        return std::optional(out);
+    }
 }
 
 bool RTDEControl::try_connect() {
@@ -59,8 +80,8 @@ bool RTDEControl::try_connect() {
             if (dash->robotmode() == "Robotmode: RUNNING") {
                 rtde_control_ = std::make_unique<ur_rtde::RTDEControlInterface>(robot_ip_);
             } else {
-                spdlog::error("Unable to connect to UR RTDE Control Interface: Ensure robot is on "
-                              "and brakes released");
+                spdlog::error("Unable to connect to UR RTDE Control Interface:"
+                              "Ensure robot is on, in normal mode, and brakes released");
                 connected = false;
                 dash->disconnect();
             }
@@ -73,7 +94,7 @@ bool RTDEControl::try_connect() {
                     // only if we successfully connect to RTDE Control
                     rtde_receive_ = std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip_);
                     if (rtde_receive_ == nullptr) {
-                        // HACK: should never get here
+                        // NOTE: unlikely this could ever happen
                         throw std::runtime_error(
                             "Failed connecting to receive interface from RTDEControl class");
                     }
@@ -92,8 +113,12 @@ bool RTDEControl::try_connect() {
         }
     }
     return connected;
-} 
+}
 
+static void poll_thread_C(void *pPvt) {
+    RTDEControl *pRTDEControl = (RTDEControl *)pPvt;
+    pRTDEControl->poll();
+}
 
 RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
@@ -131,7 +156,8 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(POSE_PITCH_CMD_STRING, asynParamFloat64, &posePitchCmdIndex_);
     createParam(POSE_YAW_CMD_STRING, asynParamFloat64, &poseYawCmdIndex_);
 
-    createParam(LOAD_POSE_PATH_STRING, asynParamOctet, &loadPosePathIndex_);
+    createParam(PLAY_POSE_PATH_STRING, asynParamOctet, &playPosePathIndex_);
+    createParam(PLAY_JOINT_PATH_STRING, asynParamOctet, &playJointPathIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -207,13 +233,15 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     if (JxCmd_map.count(function) > 0) {
         // convert commanded joint angles to radians
         const double val = value * M_PI / 180.0;
-        cmd_joints.at(JxCmd_map[function]) = val;
+        // cmd_joints.at(JxCmd_map[function]) = val;
+        cmd_joints.at(JxCmd_map.at(function)) = val;
     }
 
     // When commanded TCP pose values change, update the values
     else if (PoseCmd_map.count(function) > 0) {
         // note we just need to convert roll, pitch, yaw to degrees
-        int ind = PoseCmd_map[function];
+        // int ind = PoseCmd_map[function];
+        int ind = PoseCmd_map.at(function);
         const double val = (ind >= 3) ? (value * M_PI / 180.0) : value;
         cmd_pose.at(ind) = val;
     }
@@ -258,7 +286,6 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         goto skip;
     }
 
-    // RTDE Control interface function calls go here
     if (function == moveJIndex_) {
 
         spdlog::info("moveJ({:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}) rad", cmd_joints.at(0),
@@ -272,7 +299,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
     } else if (function == stopJIndex_) {
-        spdlog::debug("Stopping joint move");
+        spdlog::debug("Stopping joint move (only works in asynchronous mode)");
         rtde_control_->stopJ();
     }
 
@@ -289,7 +316,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
     } else if (function == stopLIndex_) {
-        spdlog::debug("Stopping linear TCP move");
+        spdlog::debug("Stopping linear TCP move (only works in asynchronous mode)");
         rtde_control_->stopL();
     }
 
@@ -318,34 +345,26 @@ asynStatus RTDEControl::writeOctet(asynUser *pasynUser, const char *value, size_
         comm_ok = false;
         goto skip;
     }
-    
-    // Store EE waypoints from csv file in this->pose_path
-    if (function == loadPosePathIndex_) {
-        std::ifstream file(value);
-        if (not file.is_open()) {
-            spdlog::error("failed to open file");
-            goto skip;
-        } else {
-            this->pose_path.clear();
-            std::string line;
-            while (std::getline(file, line)) {
-                std::vector<double> v = split_string<double>(line, ',');
-                this->pose_path.push_back(v);
-            }
 
-            //NOTE: below is just for debugging
-            std::cout << std::endl;
-            for (const auto &p : this->pose_path) {
-                for (const auto &i : p) {
-                    std::cout << i << ",";
-                }
-                std::cout << std::endl;
+    if (function == playPosePathIndex_) {
+        auto pose_path = read_traj_file(value);
+        if (pose_path.has_value()) {
+            for (const auto &p : pose_path.value()) {
+                spdlog::info("moveL({:.4f} mm, {:.4f} mm, {:.4f} mm, {:.4f} rad , {:.4f} rad, {:.4f} rad)",
+                             p.at(0), p.at(1), p.at(2), p.at(3), p.at(4), p.at(5));
             }
         }
     }
 
-    // TODO: playLoadedPosePath
-    // moveL(this->pose_path)
+    else if (function == playJointPathIndex_) {
+        auto joint_path = read_traj_file(value);
+        if (joint_path.has_value()) {
+            for (const auto &p : joint_path.value()) {
+                spdlog::info("moveJ({:.4f} rad, {:.4f} rad, {:.4f} rad, {:.4f} rad , {:.4f} rad, {:.4f} rad)",
+                             p.at(0), p.at(1), p.at(2), p.at(3), p.at(4), p.at(5));
+            }
+        }
+    }
 
 skip:
     callParamCallbacks();
