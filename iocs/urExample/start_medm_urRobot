@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# path to urRobot support module
+URROBOT_PATH="/home/beams/NMARKS/devel/ur-dev/urRobot"
+
+# ioc prefixes
+P="urExample:"
+R='"' # this is an empty string for MEDM
+
+export UI_FILE_MACROS=${2:-"P=${P},R=${R}"}
+export EPICS_APP_UI_DIR=${URROBOT_PATH}/urRobotApp/op/adl
+export UI_FILE1="${EPICS_APP_UI_DIR}/dashboard.adl"
+
+medm -macro ${UI_FILE_MACROS} -x ${UI_FILE1} &
