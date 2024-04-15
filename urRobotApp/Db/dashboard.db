@@ -7,11 +7,29 @@ record(bi, "$(P)$(R)Dashboard:Connected")
     field(SCAN, "I/O Intr")
 }
 
-record(stringout, "$(P)$(R)Dashboard:LoadURP")
+record(bi, "$(P)$(R)Dashboard:IsProgramSaved")
 {
-    field(DESC, "Loads a URP program")
-    field(DTYP, "asynOctetWrite")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LOAD_URP")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_PROGRAM_SAVED")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P)$(R)Dashboard:IsInRemoteControl")
+{
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_IN_REMOTE_CONTROL")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P)$(R)Dashboard:Running")
+{
+    field(DESC, "Program runnning status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_RUNNING")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
 }
 
 record(bo, "$(P)$(R)Dashboard:Play")
@@ -55,23 +73,6 @@ record(bo, "$(P)$(R)Dashboard:Shutdown")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SHUTDOWN")
 }
-
-record(bi, "$(P)$(R)Dashboard:Running")
-{
-    field(DESC, "Program runnning status")
-    field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_RUNNING")
-    field(VAL, 0)
-    field(SCAN, "I/O Intr")
-}
-
-record(stringout, "$(P)$(R)Dashboard:Popup")
-{
-    field(DESC, "Popup message")
-    field(DTYP, "asynOctetWrite")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POPUP")
-}
-
 
 record(bo, "$(P)$(R)Dashboard:ClosePopup")
 {
@@ -178,18 +179,16 @@ record(stringin, "$(P)$(R)Dashboard:SafetyStatus")
     field(SCAN, "I/O Intr")
 }
 
-record(bi, "$(P)$(R)Dashboard:IsProgramSaved")
+record(stringout, "$(P)$(R)Dashboard:Popup")
 {
-    field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_PROGRAM_SAVED")
-    field(VAL, 0)
-    field(SCAN, "I/O Intr")
+    field(DESC, "Popup message")
+    field(DTYP, "asynOctetWrite")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POPUP")
 }
 
-record(bi, "$(P)$(R)Dashboard:IsInRemoteControl")
+record(stringout, "$(P)$(R)Dashboard:LoadURP")
 {
-    field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_IN_REMOTE_CONTROL")
-    field(VAL, 0)
-    field(SCAN, "I/O Intr")
+    field(DESC, "Loads a URP program")
+    field(DTYP, "asynOctetWrite")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LOAD_URP")
 }

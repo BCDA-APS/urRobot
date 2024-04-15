@@ -1,20 +1,7 @@
 
 #======================
-# Status inputs
+# Status/Connection
 #======================
-record(bo, "$(P)$(R)Control:Disconnect")
-{
-    field(DESC, "Disconnects from the RTDE interface")
-    field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DISCONNECT")
-}
-
-record(bo, "$(P)$(R)Control:Reconnect")
-{
-    field(DESC, "Tries reconnecting to the RTDE interface")
-    field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RECONNECT")
-}
 
 record(bi, "$(P)$(R)Control:Connected")
 {
@@ -32,6 +19,19 @@ record(bi, "$(P)$(R)Control:Steady")
     field(SCAN, "I/O Intr")
 }
 
+record(bo, "$(P)$(R)Control:Disconnect")
+{
+    field(DESC, "Disconnects from the RTDE interface")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DISCONNECT")
+}
+
+record(bo, "$(P)$(R)Control:Reconnect")
+{
+    field(DESC, "Tries reconnecting to the RTDE interface")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RECONNECT")
+}
 
 #======================
 # Joint control

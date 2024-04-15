@@ -1,3 +1,11 @@
+record(bi, "$(P)$(R)Receive:Connected")
+{
+    field(DESC, "RTDE Connection status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CONNECTED")
+    field(SCAN, "I/O Intr")
+}
+
 record(bo, "$(P)$(R)Receive:Disconnect")
 {
     field(DESC, "Disconnects from the RTDE interface")
@@ -10,14 +18,6 @@ record(bo, "$(P)$(R)Receive:Reconnect")
     field(DESC, "Tries reconnecting to the RTDE interface")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RECONNECT")
-}
-
-record(bi, "$(P)$(R)Receive:Connected")
-{
-    field(DESC, "RTDE Connection status")
-    field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CONNECTED")
-    field(SCAN, "I/O Intr")
 }
 
 record(ai, "$(P)$(R)Receive:ControllerTimestamp")
@@ -105,6 +105,54 @@ record(ai, "$(P)$(R)Receive:AnalogOutput1")
     field(DESC, "Standard A1 output")
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STD_ANALOG_OUTPUT1")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)Receive:SpeedScaling")
+{
+    field(DESC, "Speed scaling")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SPEED_SCALING")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)Receive:TargetSpeedFraction")
+{
+    field(DESC, "Target speed fraction")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))TARGET_SPEED_FRACTION")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)Receive:ActualMomentum")
+{
+    field(DESC, "Norm of Cartesian linear momentum")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_MOMENTUM")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)Receive:ActualMainVoltage")
+{
+    field(DESC, "Safety control board main voltage")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_MAIN_VOLTAGE")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)Receive:ActualRobotVoltage")
+{
+    field(DESC, "Safety control board robot voltage")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_ROBOT_VOLTAGE")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)Receive:ActualRobotCurrent")
+{
+    field(DESC, "Safety control board robot current")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_ROBOT_CURRENT")
     field(SCAN, "I/O Intr")
 }
 
@@ -278,54 +326,6 @@ record(waveform, "$(P)$(R)Receive:JointTemperatures")
     field(FTVL, "DOUBLE")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_TEMPERATURES")
     field(NELM, 6)
-    field(SCAN, "I/O Intr")
-}
-
-record(ai, "$(P)$(R)Receive:SpeedScaling")
-{
-    field(DESC, "Speed scaling")
-    field(DTYP, "asynFloat64")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SPEED_SCALING")
-    field(SCAN, "I/O Intr")
-}
-
-record(ai, "$(P)$(R)Receive:TargetSpeedFraction")
-{
-    field(DESC, "Target speed fraction")
-    field(DTYP, "asynFloat64")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))TARGET_SPEED_FRACTION")
-    field(SCAN, "I/O Intr")
-}
-
-record(ai, "$(P)$(R)Receive:ActualMomentum")
-{
-    field(DESC, "Norm of Cartesian linear momentum")
-    field(DTYP, "asynFloat64")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_MOMENTUM")
-    field(SCAN, "I/O Intr")
-}
-
-record(ai, "$(P)$(R)Receive:ActualMainVoltage")
-{
-    field(DESC, "Safety control board main voltage")
-    field(DTYP, "asynFloat64")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_MAIN_VOLTAGE")
-    field(SCAN, "I/O Intr")
-}
-
-record(ai, "$(P)$(R)Receive:ActualRobotVoltage")
-{
-    field(DESC, "Safety control board robot voltage")
-    field(DTYP, "asynFloat64")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_ROBOT_VOLTAGE")
-    field(SCAN, "I/O Intr")
-}
-
-record(ai, "$(P)$(R)Receive:ActualRobotCurrent")
-{
-    field(DESC, "Safety control board robot current")
-    field(DTYP, "asynFloat64")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_ROBOT_CURRENT")
     field(SCAN, "I/O Intr")
 }
 
