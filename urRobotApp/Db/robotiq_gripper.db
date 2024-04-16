@@ -1,0 +1,15 @@
+record(bi, "$(P)$(R)RobotiqGripper:Connected")
+{
+    field(DESC, "Connection status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CONNECTED")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}
+
+record(bo, "$(P)$(R)RobotiqGripper:Connect")
+{
+    field(DESC, "Connects to Robotiq gripper")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CONNECT")
+}
