@@ -7,9 +7,87 @@ record(bi, "$(P)$(R)RobotiqGripper:Connected")
     field(SCAN, "I/O Intr")
 }
 
+record(bi, "$(P)$(R)RobotiqGripper:IsActive")
+{
+    field(DESC, "Gripper active status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_ACTIVE")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P)$(R)RobotiqGripper:IsOpen")
+{
+    field(DESC, "Gripper open status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_OPEN")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P)$(R)RobotiqGripper:IsClosed")
+{
+    field(DESC, "Gripper closed status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CLOSED")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}
+
 record(bo, "$(P)$(R)RobotiqGripper:Connect")
 {
     field(DESC, "Connects to Robotiq gripper")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CONNECT")
 }
+
+record(bo, "$(P)$(R)RobotiqGripper:Activate")
+{
+    field(DESC, "Activates Robotiq gripper")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTIVATE")
+}
+
+record(bo, "$(P)$(R)RobotiqGripper:Open")
+{
+    field(DESC, "Opens Robotiq gripper")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))OPEN")
+}
+
+record(bo, "$(P)$(R)RobotiqGripper:Close")
+{
+    field(DESC, "Close Robotiq gripper")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE")
+}
+
+record(ao, "$(P)$(R)IO:SpeedSlider")
+{
+    field(DESC, "Speed slider value(percentage)")
+    field(DTYP, "asynFloat64")
+    field(PINI, "1")
+    field(VAL, "0.5")
+    field(DRVH, "1.0")
+    field(DRVL, "0.0")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SPEED_SLIDER")
+}
+
+record(ao, "$(P)$(R)RobotiqGripper:SetSpeed")
+{
+    field(DESC, "Default gripper speed")
+    field(DTYP, "asynFloat64")
+    field(PREC, "4")
+    field(PINI, "1")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_SPEED")
+}
+
+record(ao, "$(P)$(R)RobotiqGripper:SetForce")
+{
+    field(DESC, "Default gripper force")
+    field(DTYP, "asynFloat64")
+    field(PREC, "4")
+    field(PINI, "1")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_FORCE")
+}
+
