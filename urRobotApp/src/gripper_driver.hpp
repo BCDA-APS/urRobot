@@ -12,9 +12,9 @@ static constexpr int MAX_CONTROLLERS = 1;
 static constexpr double POLL_PERIOD = 0.02; // 50Hz
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
-class Gripper : public asynPortDriver {
+class URGripper : public asynPortDriver {
   public:
-    Gripper(const char *asyn_port_name, const char *robot_port_name);
+    URGripper(const char *asyn_port_name, const char *robot_port_name);
     virtual void poll(void);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     // virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);

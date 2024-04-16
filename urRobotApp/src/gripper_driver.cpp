@@ -7,7 +7,7 @@
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 
-bool Gripper::try_connect() {
+bool URGripper::try_connect() {
     bool connected = false;
     spdlog::warn("Not actually trying to connect to gripper");
     // TODO: uncomment
@@ -25,11 +25,11 @@ bool Gripper::try_connect() {
 }
 
 static void poll_thread_C(void *pPvt) {
-    Gripper *pGripper = (Gripper *)pPvt;
+    URGripper *pGripper = (URGripper *)pPvt;
     pGripper->poll();
 }
 
-Gripper::Gripper(const char *asyn_port_name, const char *robot_ip)
+URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
                          asynFloat64ArrayMask | asynInt32ArrayMask,
@@ -52,7 +52,7 @@ Gripper::Gripper(const char *asyn_port_name, const char *robot_ip)
                       epicsThreadGetStackSize(epicsThreadStackMedium), (EPICSTHREADFUNC)poll_thread_C, this);
 }
 
-void Gripper::poll() {
+void URGripper::poll() {
     while (true) {
         lock();
         if (robotiq_gripper_->isConnected()) {
@@ -67,7 +67,7 @@ void Gripper::poll() {
     }
 }
 
-asynStatus Gripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
+asynStatus URGripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
     bool comm_ok = true;
@@ -96,21 +96,21 @@ asynStatus Gripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 }
 
 // register function for iocsh
-extern "C" int GripperConfig(const char *asyn_port_name, const char *robot_ip) {
-    Gripper *pGripper = new Gripper(asyn_port_name, robot_ip);
-    pGripper = NULL;
+extern "C" int URGripperConfig(const char *asyn_port_name, const char *robot_ip) {
+    URGripper *pURGripper = new URGripper(asyn_port_name, robot_ip);
+    pURGripper = NULL;
     return (asynSuccess);
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
 static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
-static const iocshFuncDef urRobotFuncDef = {"GripperConfig", 2, urRobotArgs};
+static const iocshFuncDef urRobotFuncDef = {"URGripperConfig", 2, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { GripperConfig(args[0].sval, args[1].sval); }
+static void urRobotCallFunc(const iocshArgBuf *args) { URGripperConfig(args[0].sval, args[1].sval); }
 
-void GripperRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
+void URGripperRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 
 extern "C" {
-epicsExportRegistrar(GripperRegister);
+epicsExportRegistrar(URGripperRegister);
 }
