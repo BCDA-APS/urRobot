@@ -9,6 +9,7 @@
 
 bool Gripper::try_connect() {
     bool connected = false;
+    spdlog::warn("Not actually trying to connect to gripper");
     // TODO: uncomment
     //
     // try {

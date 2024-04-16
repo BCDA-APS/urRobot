@@ -16,9 +16,9 @@ class Gripper : public asynPortDriver {
   public:
     Gripper(const char *asyn_port_name, const char *robot_port_name);
     virtual void poll(void);
-    virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
-    virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual);
+    // virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
+    // virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual);
 
   private:
     std::unique_ptr<ur_rtde::RobotiqGripper> robotiq_gripper_;
