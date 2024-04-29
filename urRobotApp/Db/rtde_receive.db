@@ -23,6 +23,7 @@ record(bo, "$(P)$(R)Receive:Reconnect")
 record(ai, "$(P)$(R)Receive:ControllerTimestamp")
 {
     field(DESC, "Time since controller started")
+    field(PREC, "2")
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CONTROLLER_TIMESTAMP")
     field(SCAN, "I/O Intr")

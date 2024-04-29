@@ -34,6 +34,22 @@ record(bi, "$(P)$(R)RobotiqGripper:IsClosed")
     field(SCAN, "I/O Intr")
 }
 
+record(longin, "$(P)$(R)RobotiqGripper:MoveStatusRaw")
+{
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVE_STATUS")
+    field(SCAN, "I/O Intr")
+}
+
+record(mbbi, "$(P)$(R)RobotiqGripper:MoveStatus")
+{
+    field(INP, "$(P)$(R)RobotiqGripper:MoveStatusRaw CP")
+    field(ZRST, "Moving")
+    field(ONST, "Stopped outer object")
+    field(TWST, "Stopped inner object")
+    field(THST, "At target destination")
+}
+
 record(bo, "$(P)$(R)RobotiqGripper:Connect")
 {
     field(DESC, "Connects to Robotiq gripper")
@@ -48,6 +64,13 @@ record(bo, "$(P)$(R)RobotiqGripper:Activate")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTIVATE")
 }
 
+record(bo, "$(P)$(R)RobotiqGripper:AutoCalibrate")
+{
+    field(DESC, "Calibrates open/close positions")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))AUTO_CALIBRATE")
+}
+
 record(bo, "$(P)$(R)RobotiqGripper:Open")
 {
     field(DESC, "Opens Robotiq gripper")
@@ -60,6 +83,33 @@ record(bo, "$(P)$(R)RobotiqGripper:Close")
     field(DESC, "Close Robotiq gripper")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE")
+}
+
+record(ai, "$(P)$(R)RobotiqGripper:CurrentPosition")
+{
+    field(DESC, "Current position of gripper")
+    field(PREC, "4")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CURRENT_POSITION")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)RobotiqGripper:OpenPosition")
+{
+    field(DESC, "Open position of gripper")
+    field(PREC, "4")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))OPEN_POSITION")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(R)RobotiqGripper:ClosedPosition")
+{
+    field(DESC, "Closed position of gripper")
+    field(PREC, "4")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSED_POSITION")
+    field(SCAN, "I/O Intr")
 }
 
 record(ao, "$(P)$(R)IO:SpeedSlider")

@@ -12,9 +12,13 @@ static constexpr char CONNECT_STRING[] = "CONNECT";
 static constexpr char ACTIVATE_STRING[] = "ACTIVATE";
 static constexpr char OPEN_STRING[] = "OPEN";
 static constexpr char CLOSE_STRING[] = "CLOSE";
-
+static constexpr char AUTO_CALIBRATE_STRING[] = "AUTO_CALIBRATE";
+static constexpr char OPEN_POSITION_STRING[] = "OPEN_POSITION";
+static constexpr char CLOSED_POSITION_STRING[] = "CLOSED_POSITION";
+static constexpr char CURRENT_POSITION_STRING[] = "CURRENT_POSITION";
 static constexpr char SET_SPEED_STRING[] = "SET_SPEED";
 static constexpr char SET_FORCE_STRING[] = "SET_FORCE";
+static constexpr char MOVE_STATUS_STRING[] = "MOVE_STATUS";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
@@ -47,6 +51,11 @@ class URGripper : public asynPortDriver {
     int closeIndex_;
     int setSpeedIndex_;
     int setForceIndex_;
+    int autoCalibrateIndex_;
+    int openPositionIndex_;
+    int closedPositionIndex_;
+    int currentPositionIndex_;
+    int moveStatusIndex_;
 };
 
 #endif

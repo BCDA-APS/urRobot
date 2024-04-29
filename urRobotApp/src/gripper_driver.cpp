@@ -9,18 +9,15 @@
 
 bool URGripper::try_connect() {
     bool connected = false;
-    spdlog::warn("Not actually trying to connect to gripper");
-    // TODO: uncomment
-    //
-    // try {
-    // gripper_->connect();
-    // if (gripper_->isConnected()) {
-    // spdlog::info("Connected to gripper");
-    // connected = true;
-    // }
-    // } catch (const std::exception &e) {
-    // spdlog::error(e.what());
-    // }
+    try {
+        gripper_->connect();
+        if (gripper_->isConnected()) {
+            spdlog::info("Connected to gripper");
+            connected = true;
+        }
+    } catch (const std::exception &e) {
+        spdlog::error(e.what());
+    }
     return connected;
 }
 
@@ -48,14 +45,20 @@ URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
     createParam(ACTIVATE_STRING, asynParamInt32, &activateIndex_);
     createParam(OPEN_STRING, asynParamInt32, &openIndex_);
     createParam(CLOSE_STRING, asynParamInt32, &closeIndex_);
-
     createParam(SET_SPEED_STRING, asynParamFloat64, &setSpeedIndex_);
     createParam(SET_FORCE_STRING, asynParamFloat64, &setForceIndex_);
+    createParam(AUTO_CALIBRATE_STRING, asynParamInt32, &autoCalibrateIndex_);
+    createParam(OPEN_POSITION_STRING, asynParamFloat64, &openPositionIndex_);
+    createParam(CLOSED_POSITION_STRING, asynParamFloat64, &closedPositionIndex_);
+    createParam(CURRENT_POSITION_STRING, asynParamFloat64, &currentPositionIndex_);
+    createParam(MOVE_STATUS_STRING, asynParamInt32, &moveStatusIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
 
+    spdlog::debug("Trying to connect to gripper");
     try_connect();
+    spdlog::debug("Passed try_connect()");
 
     epicsThreadCreate("GripperPoller", epicsThreadPriorityLow,
                       epicsThreadGetStackSize(epicsThreadStackMedium), (EPICSTHREADFUNC)poll_thread_C, this);
@@ -69,6 +72,11 @@ void URGripper::poll() {
             setIntegerParam(isActiveIndex_, gripper_->isActive());
             setIntegerParam(isOpenIndex_, gripper_->isOpen());
             setIntegerParam(isClosedIndex_, gripper_->isClosed());
+            setDoubleParam(currentPositionIndex_, gripper_->getCurrentPosition());
+            setDoubleParam(openPositionIndex_, gripper_->getOpenPosition());
+            setDoubleParam(closedPositionIndex_, gripper_->getClosedPosition());
+            setIntegerParam(moveStatusIndex_, gripper_->objectDetectionStatus());
+            
         } else {
             setIntegerParam(isConnectedIndex_, 0);
         }
@@ -83,22 +91,21 @@ asynStatus URGripper::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     bool comm_ok = true;
 
     // Check that it's connected before continuing
-    // TODO: uncommment
-    // if (not gripper_->isConnected()) {
-    // spdlog::error("Robotiq gripper not connected");
-    // comm_ok = false;
-    // goto skip;
-    // }
+    if (not gripper_->isConnected()) {
+        spdlog::error("Robotiq gripper not connected");
+        comm_ok = false;
+        goto skip;
+    }
 
     if (function == setSpeedIndex_) {
         spdlog::debug("Setting speed to {}", value);
-        // gripper_->setSpeed(value);
+        gripper_->setSpeed(value);
     } else if (function == setForceIndex_) {
         spdlog::debug("Setting force to {}", value);
-        // gripper_->setForce(value);
+        gripper_->setForce(value);
     }
 
-    // skip:
+skip:
     callParamCallbacks();
     if (comm_ok) {
         return asynSuccess;
@@ -114,28 +121,30 @@ asynStatus URGripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     bool comm_ok = true;
 
     // Check that it's connected before continuing
-    // TODO: uncommment
-    // if (not gripper_->isConnected()) {
-    // spdlog::error("Robotiq gripper not connected");
-    // comm_ok = false;
-    // goto skip;
-    // }
+    if (not gripper_->isConnected()) {
+        spdlog::error("Robotiq gripper not connected");
+        comm_ok = false;
+        goto skip;
+    }
 
     if (function == connectIndex_) {
         spdlog::debug("Connecting to gripper");
         try_connect();
     } else if (function == activateIndex_) {
         spdlog::debug("Activating gripper");
-        // gripper_->activate();
+        gripper_->activate();
     } else if (function == openIndex_) {
         spdlog::debug("Opening gripper");
-        // gripper_->open();
+        gripper_->open();
     } else if (function == closeIndex_) {
         spdlog::debug("Closing gripper");
-        // gripper_->close();
+        gripper_->close();
+    } else if (function == autoCalibrateIndex_) {
+        spdlog::debug("Auto calibrating open/close positions");
+        gripper_->autoCalibrate();
     }
 
-    // skip:
+skip:
     callParamCallbacks();
     if (comm_ok) {
         return asynSuccess;
