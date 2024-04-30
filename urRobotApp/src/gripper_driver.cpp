@@ -58,6 +58,10 @@ URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
     createParam(CURRENT_POSITION_STRING, asynParamFloat64, &currentPositionIndex_);
     createParam(MOVE_STATUS_STRING, asynParamInt32, &moveStatusIndex_);
 
+    createParam(SET_POSITION_RANGE_STRING, asynParamInt32, &setPositionRangeIndex_);
+    createParam(MIN_POSITION_STRING, asynParamInt32, &minPositionIndex_);
+    createParam(MAX_POSITION_STRING, asynParamInt32, &maxPositionIndex_);
+
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
 
@@ -141,15 +145,28 @@ asynStatus URGripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         spdlog::debug("Opening gripper");
         gripper_->open();
     } else if (function == closeIndex_) {
-        spdlog::debug("Closing gripper {}");
+        spdlog::debug("Closing gripper");
         gripper_->close();
-    } else if (function == autoCalibrateIndex_) {
-        spdlog::debug("Auto calibrating open/close positions");
-        gripper_->autoCalibrate();
+    }
+    else if (function == setPositionRangeIndex_) {
         int minpos = 0;
         int maxpos = 0;
-        gripper_->getNativePositionRange(minpos, maxpos);
-        gripper_->setNativePositionRange(minpos, maxpos - 1); // HACK: make a PV for this
+        getIntegerParam(minPositionIndex_, &minpos);
+        getIntegerParam(maxPositionIndex_, &maxpos);
+        gripper_->setNativePositionRange(minpos, maxpos);
+        spdlog::debug("setNativePositionRange(min={}, max={})", minpos, maxpos);
+    } 
+    else if (function == minPositionIndex_) {
+        spdlog::debug("setting min={}", value);
+        setIntegerParam(minPositionIndex_, value);
+    }
+    else if (function == maxPositionIndex_) {
+        spdlog::debug("setting max={}", value);
+        setIntegerParam(maxPositionIndex_, value);
+    }
+    else if (function == autoCalibrateIndex_) {
+        spdlog::debug("Auto calibrating open/close positions");
+        gripper_->autoCalibrate();
         spdlog::debug("Auto calibration done");
     }
 
