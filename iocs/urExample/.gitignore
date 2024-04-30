@@ -1,4 +1,5 @@
 *~
+*.local
 O.*
 *.swp
 *BAK.adl
@@ -18,4 +19,3 @@ built_*.req
 dbl-all.txt
 *.sav*
 scan1Menu.sav
-st.cmd.local
