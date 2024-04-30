@@ -7,6 +7,11 @@
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 
+// FIX: ur_rtde::RobotiqGripper throws error if you try to read
+// from it when the robot is not powered on. Should connect to the dashboard
+// and check that the robot is powered on in the try_connect funciton. See
+// rtde_control_driver.cpp for reference.
+
 bool URGripper::try_connect() {
     bool connected = false;
     try {
@@ -56,10 +61,10 @@ URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
 
-    spdlog::debug("Trying to connect to gripper");
+    // attempt to connect to the gripper
     try_connect();
-    spdlog::debug("Passed try_connect()");
 
+    // create epics polling thread
     epicsThreadCreate("GripperPoller", epicsThreadPriorityLow,
                       epicsThreadGetStackSize(epicsThreadStackMedium), (EPICSTHREADFUNC)poll_thread_C, this);
 }
@@ -76,7 +81,6 @@ void URGripper::poll() {
             setDoubleParam(openPositionIndex_, gripper_->getOpenPosition());
             setDoubleParam(closedPositionIndex_, gripper_->getClosedPosition());
             setIntegerParam(moveStatusIndex_, gripper_->objectDetectionStatus());
-            
         } else {
             setIntegerParam(isConnectedIndex_, 0);
         }
@@ -137,11 +141,16 @@ asynStatus URGripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         spdlog::debug("Opening gripper");
         gripper_->open();
     } else if (function == closeIndex_) {
-        spdlog::debug("Closing gripper");
+        spdlog::debug("Closing gripper {}");
         gripper_->close();
     } else if (function == autoCalibrateIndex_) {
         spdlog::debug("Auto calibrating open/close positions");
         gripper_->autoCalibrate();
+        int minpos = 0;
+        int maxpos = 0;
+        gripper_->getNativePositionRange(minpos, maxpos);
+        gripper_->setNativePositionRange(minpos, maxpos - 1); // HACK: make a PV for this
+        spdlog::debug("Auto calibration done");
     }
 
 skip:
