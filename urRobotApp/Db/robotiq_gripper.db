@@ -80,7 +80,6 @@ record(longout, "$(P)$(R)RobotiqGripper:MinPosition")
     field(DTYP, "asynInt32")
     field(PINI, "1")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MIN_POSITION")
-    field(VAL, "1")
 }
 
 record(longout, "$(P)$(R)RobotiqGripper:MaxPosition")
@@ -88,14 +87,23 @@ record(longout, "$(P)$(R)RobotiqGripper:MaxPosition")
     field(DTYP, "asynInt32")
     field(PINI, "1")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MAX_POSITION")
-    field(VAL, "249")
 }
 
-record(longin, "$(P)$(R)RobotiqGripper:MoveStatusRaw")
+record(mbbo, "$(P)$(R)RobotiqGripper:PositionUnit")
+{
+    field(ZRST, "Device")
+    field(ONST, "Normalized")
+    field(TWST, "Percent")
+    field(THST, "mm")
+    field(VAL, "1")
+    field(OUT, "$(P)$(R)RobotiqGripper:PositionUnitRaw PP")
+}
+
+record(longout, "$(P)$(R)RobotiqGripper:PositionUnitRaw")
 {
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVE_STATUS")
-    field(SCAN, "I/O Intr")
+    field(VAL, "1")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSITION_UNIT")
 }
 
 record(mbbi, "$(P)$(R)RobotiqGripper:MoveStatus")
@@ -105,6 +113,13 @@ record(mbbi, "$(P)$(R)RobotiqGripper:MoveStatus")
     field(ONST, "Stopped outer object")
     field(TWST, "Stopped inner object")
     field(THST, "At target destination")
+}
+
+record(longin, "$(P)$(R)RobotiqGripper:MoveStatusRaw")
+{
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVE_STATUS")
+    field(SCAN, "I/O Intr")
 }
 
 record(ai, "$(P)$(R)RobotiqGripper:CurrentPosition")

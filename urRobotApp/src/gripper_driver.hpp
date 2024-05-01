@@ -22,6 +22,7 @@ static constexpr char MOVE_STATUS_STRING[] = "MOVE_STATUS";
 static constexpr char MIN_POSITION_STRING[] = "MIN_POSITION";
 static constexpr char MAX_POSITION_STRING[] = "MAX_POSITION";
 static constexpr char SET_POSITION_RANGE_STRING[] = "SET_POSITION_RANGE";
+static constexpr char POSITION_UNIT_STRING[] = "POSITION_UNIT";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
@@ -62,6 +63,7 @@ class URGripper : public asynPortDriver {
     int minPositionIndex_;
     int maxPositionIndex_;
     int setPositionRangeIndex_;
+    int positionUnitIndex_;
 };
 
 #endif

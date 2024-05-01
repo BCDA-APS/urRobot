@@ -62,6 +62,8 @@ URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
     createParam(MIN_POSITION_STRING, asynParamInt32, &minPositionIndex_);
     createParam(MAX_POSITION_STRING, asynParamInt32, &maxPositionIndex_);
 
+    createParam(POSITION_UNIT_STRING, asynParamInt32, &positionUnitIndex_);
+
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
 
@@ -163,6 +165,33 @@ asynStatus URGripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     else if (function == maxPositionIndex_) {
         spdlog::debug("setting max={}", value);
         setIntegerParam(maxPositionIndex_, value);
+    }
+    else if (function == positionUnitIndex_) {
+        constexpr auto epos = ur_rtde::RobotiqGripper::eMoveParameter::POSITION;
+        constexpr auto eunit_device = ur_rtde::RobotiqGripper::eUnit::UNIT_DEVICE;
+        constexpr auto eunit_normalized = ur_rtde::RobotiqGripper::eUnit::UNIT_NORMALIZED;
+        constexpr auto eunit_percent = ur_rtde::RobotiqGripper::eUnit::UNIT_PERCENT;
+        constexpr auto eunit_mm = ur_rtde::RobotiqGripper::eUnit::UNIT_MM;
+        switch (value) {
+            case 0:
+                spdlog::debug("Setting position unit to 'Device' (0,255)");
+                gripper_->setUnit(epos, eunit_device);
+                break;
+            case 1:
+                spdlog::debug("Setting position unit to 'Normalized' (0,1.0)");
+                gripper_->setUnit(epos, eunit_normalized);
+                break;
+            case 2:
+                spdlog::debug("Setting position unit to 'Percent' (0,100%)");
+                gripper_->setUnit(epos, eunit_percent);
+                break;
+            case 3:
+                spdlog::debug("Setting position unit to 'mm' (must define range)");
+                gripper_->setUnit(epos, eunit_mm);
+                break;
+            default:
+                spdlog::warn("Unit {} undefined, no action taken.", value);
+        }
     }
     else if (function == autoCalibrateIndex_) {
         spdlog::debug("Auto calibrating open/close positions");
