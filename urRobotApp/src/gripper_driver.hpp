@@ -2,6 +2,7 @@
 #define _GRIPPER_DRIVER_HPP_
 
 #include "ur_rtde/robotiq_gripper.h"
+#include "ur_rtde/dashboard_client.h"
 #include <asynPortDriver.h>
 
 static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
@@ -35,12 +36,13 @@ class URGripper : public asynPortDriver {
     virtual void poll(void);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
-    // virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual);
 
   private:
     std::unique_ptr<ur_rtde::RobotiqGripper> gripper_;
+    std::unique_ptr<ur_rtde::DashboardClient> ur_dashboard_;
     const char *robot_ip_;
     bool try_connect();
+    bool robot_on_ = false;
 
   protected:
     asynUser *pasynUserURRobot_;

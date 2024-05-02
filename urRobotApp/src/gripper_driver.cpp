@@ -3,23 +3,29 @@
 #include <epicsThread.h>
 #include <iocsh.h>
 
+#include "dashboard_client.h"
 #include "gripper_driver.hpp"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 
-// FIX: ur_rtde::RobotiqGripper throws error if you try to read
-// from it when the robot is not powered on. Should connect to the dashboard
-// and check that the robot is powered on in the try_connect funciton. See
-// rtde_control_driver.cpp for reference.
-
 bool URGripper::try_connect() {
     bool connected = false;
     try {
-        gripper_->connect();
-        if (gripper_->isConnected()) {
-            spdlog::info("Connected to gripper");
-            connected = true;
+        ur_dashboard_->connect();
+        const std::string robot_mode = ur_dashboard_->robotmode();
+        if (robot_mode == "Robotmode: IDLE" or robot_mode == "Robotmode: RUNNING") {
+            gripper_->connect();
+            if (gripper_->isConnected()) {
+                spdlog::info("Connected to gripper");
+                connected = true;
+            }
+        } else {
+            spdlog::error("Unable to connect to gripper. Robot must be powered on.\nCurrent robot mode: {}",
+                          robot_mode);
+            connected = false;
+            robot_on_ = false;
         }
+
     } catch (const std::exception &e) {
         spdlog::error(e.what());
     }
@@ -40,7 +46,8 @@ URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, // ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1
                      0, 0),
-      gripper_(std::make_unique<ur_rtde::RobotiqGripper>(robot_ip)), robot_ip_(robot_ip) {
+      gripper_(std::make_unique<ur_rtde::RobotiqGripper>(robot_ip)),
+      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), robot_ip_(robot_ip) {
 
     createParam(CONNECT_STRING, asynParamInt32, &connectIndex_);
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
@@ -78,15 +85,28 @@ URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
 void URGripper::poll() {
     while (true) {
         lock();
-        if (gripper_->isConnected()) {
-            setIntegerParam(isConnectedIndex_, 1);
-            setIntegerParam(isActiveIndex_, gripper_->isActive());
-            setIntegerParam(isOpenIndex_, gripper_->isOpen());
-            setIntegerParam(isClosedIndex_, gripper_->isClosed());
-            setDoubleParam(currentPositionIndex_, gripper_->getCurrentPosition());
-            setDoubleParam(openPositionIndex_, gripper_->getOpenPosition());
-            setDoubleParam(closedPositionIndex_, gripper_->getClosedPosition());
-            setIntegerParam(moveStatusIndex_, gripper_->objectDetectionStatus());
+
+        const std::string robot_mode = ur_dashboard_->robotmode();
+        if (robot_mode == "Robotmode: IDLE" or robot_mode == "Robotmode: RUNNING") {
+            robot_on_ = true;
+        } else {
+            robot_on_ = false;
+            gripper_->disconnect(); // needed to prevent error when powering back on
+        }
+
+        if (robot_on_) {
+            if (gripper_->isConnected()) {
+                setIntegerParam(isConnectedIndex_, 1);
+                setIntegerParam(isActiveIndex_, gripper_->isActive());
+                setIntegerParam(isOpenIndex_, gripper_->isOpen());
+                setIntegerParam(isClosedIndex_, gripper_->isClosed());
+                setDoubleParam(currentPositionIndex_, gripper_->getCurrentPosition());
+                setDoubleParam(openPositionIndex_, gripper_->getOpenPosition());
+                setDoubleParam(closedPositionIndex_, gripper_->getClosedPosition());
+                setIntegerParam(moveStatusIndex_, gripper_->objectDetectionStatus());
+            } else {
+                setIntegerParam(isConnectedIndex_, 0);
+            }
         } else {
             setIntegerParam(isConnectedIndex_, 0);
         }
@@ -99,6 +119,13 @@ void URGripper::poll() {
 asynStatus URGripper::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     int function = pasynUser->reason;
     bool comm_ok = true;
+
+    // Check that robot is powered on
+    if (not robot_on_) {
+        spdlog::error("Robot must be powered on to use gripper");
+        comm_ok = false;
+        goto skip;
+    }
 
     // Check that it's connected before continuing
     if (not gripper_->isConnected()) {
@@ -130,17 +157,26 @@ asynStatus URGripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     int function = pasynUser->reason;
     bool comm_ok = true;
 
-    // Check that it's connected before continuing
+    // Check that robot is powered on
+    if (not robot_on_) {
+        spdlog::error("Robot must be powered on to use gripper");
+        comm_ok = false;
+        goto skip;
+    }
+    
+    if (function == connectIndex_) {
+        spdlog::debug("Connecting to gripper");
+        try_connect();
+    }
+
+    // Check that gripper connected before continuing
     if (not gripper_->isConnected()) {
         spdlog::error("Robotiq gripper not connected");
         comm_ok = false;
         goto skip;
     }
 
-    if (function == connectIndex_) {
-        spdlog::debug("Connecting to gripper");
-        try_connect();
-    } else if (function == activateIndex_) {
+    if (function == activateIndex_) {
         spdlog::debug("Activating gripper");
         gripper_->activate();
     } else if (function == openIndex_) {
@@ -149,54 +185,53 @@ asynStatus URGripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     } else if (function == closeIndex_) {
         spdlog::debug("Closing gripper");
         gripper_->close();
-    }
-    else if (function == setPositionRangeIndex_) {
+    } else if (function == setPositionRangeIndex_) {
         int minpos = 0;
         int maxpos = 0;
         getIntegerParam(minPositionIndex_, &minpos);
         getIntegerParam(maxPositionIndex_, &maxpos);
         gripper_->setNativePositionRange(minpos, maxpos);
         spdlog::debug("setNativePositionRange(min={}, max={})", minpos, maxpos);
-    } 
-    else if (function == minPositionIndex_) {
+    } else if (function == minPositionIndex_) {
         spdlog::debug("setting min={}", value);
         setIntegerParam(minPositionIndex_, value);
-    }
-    else if (function == maxPositionIndex_) {
+    } else if (function == maxPositionIndex_) {
         spdlog::debug("setting max={}", value);
         setIntegerParam(maxPositionIndex_, value);
-    }
-    else if (function == positionUnitIndex_) {
+    } else if (function == positionUnitIndex_) {
         constexpr auto epos = ur_rtde::RobotiqGripper::eMoveParameter::POSITION;
         constexpr auto eunit_device = ur_rtde::RobotiqGripper::eUnit::UNIT_DEVICE;
         constexpr auto eunit_normalized = ur_rtde::RobotiqGripper::eUnit::UNIT_NORMALIZED;
         constexpr auto eunit_percent = ur_rtde::RobotiqGripper::eUnit::UNIT_PERCENT;
         constexpr auto eunit_mm = ur_rtde::RobotiqGripper::eUnit::UNIT_MM;
         switch (value) {
-            case 0:
-                spdlog::debug("Setting position unit to 'Device' (0,255)");
-                gripper_->setUnit(epos, eunit_device);
-                break;
-            case 1:
-                spdlog::debug("Setting position unit to 'Normalized' (0,1.0)");
-                gripper_->setUnit(epos, eunit_normalized);
-                break;
-            case 2:
-                spdlog::debug("Setting position unit to 'Percent' (0,100%)");
-                gripper_->setUnit(epos, eunit_percent);
-                break;
-            case 3:
-                spdlog::debug("Setting position unit to 'mm' (must define range)");
-                gripper_->setUnit(epos, eunit_mm);
-                break;
-            default:
-                spdlog::warn("Unit {} undefined, no action taken.", value);
+        case 0:
+            spdlog::debug("Setting position unit to 'Device' (0,255)");
+            gripper_->setUnit(epos, eunit_device);
+            break;
+        case 1:
+            spdlog::debug("Setting position unit to 'Normalized' (0,1.0)");
+            gripper_->setUnit(epos, eunit_normalized);
+            break;
+        case 2:
+            spdlog::debug("Setting position unit to 'Percent' (0,100%)");
+            gripper_->setUnit(epos, eunit_percent);
+            break;
+        case 3:
+            spdlog::debug("Setting position unit to 'mm' (must define range)");
+            gripper_->setUnit(epos, eunit_mm);
+            break;
+        default:
+            spdlog::warn("Unit {} undefined, no action taken.", value);
         }
-    }
-    else if (function == autoCalibrateIndex_) {
+    } else if (function == autoCalibrateIndex_) {
         spdlog::debug("Auto calibrating open/close positions");
-        gripper_->autoCalibrate();
-        spdlog::debug("Auto calibration done");
+        if (gripper_->isActive()) {
+            gripper_->autoCalibrate();
+            spdlog::debug("Auto calibration done");
+        } else {
+            spdlog::error("Activate gripper before autocalibrating");
+        }
     }
 
 skip:
