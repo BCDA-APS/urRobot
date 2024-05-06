@@ -18,33 +18,51 @@ class RobotiqGripperTUI(App):
     def compose(self):
         yield Header(show_clock=True)
         with Vertical():
-            with Horizontal(classes="hrow"):
-                yield Label("Connected: ")
-                yield PVLed("$(P)RobotiqGripper:Connected", self.macros)
-            with Horizontal(classes="hrow"):
-                yield Label("Active:    ")
-                yield PVLed("$(P)RobotiqGripper:IsActive", self.macros)
-            with Horizontal(classes="hrow"):
-                yield Label("Open:      ")
-                yield PVLed("$(P)RobotiqGripper:IsOpen", self.macros)
-            with Horizontal(classes="hrow"):
-                yield Label("Closed:    ")
-                yield PVLed("$(P)RobotiqGripper:IsClosed", self.macros)
-            with Horizontal(classes="hrow"):
-                yield Label("Current Position:    ")
-                yield PVTextMonitor("$(P)RobotiqGripper:CurrentPosition", self.macros)
-            with Horizontal(classes="hrow"):
-                yield Label("Closed Position:    ")
-                yield PVTextMonitor("$(P)RobotiqGripper:ClosedPosition", self.macros)
-            with Horizontal(classes="hrow"):
-                yield Label("Open Position:    ")
-                yield PVTextMonitor("$(P)RobotiqGripper:OpenPosition", self.macros)
-            with Horizontal(classes="hrow"):
-                yield Label("Move status (raw):    ")
-                yield PVTextMonitor("$(P)RobotiqGripper:MoveStatusRaw", self.macros)
-            with Horizontal(classes="hrow"):
-                yield Label("Move status:    ")
-                yield PVTextMonitor("$(P)RobotiqGripper:MoveStatus.VAL", self.macros)
+            yield PVLed(
+                "$(P)RobotiqGripper:Connected",
+                self.macros,
+                label="Connected: "
+            )
+            yield PVLed(
+                "$(P)RobotiqGripper:IsActive",
+                self.macros,
+                label="Active:    "
+            )
+            yield PVLed(
+                "$(P)RobotiqGripper:IsOpen",
+                self.macros,
+                label="Open:      "
+            )
+            yield PVLed(
+                "$(P)RobotiqGripper:IsClosed",
+                self.macros,
+                label="Closed:    "
+            )
+            yield PVTextMonitor(
+                "$(P)RobotiqGripper:CurrentPosition",
+                self.macros,
+                label="Current Position:    "
+            )
+            yield PVTextMonitor(
+                "$(P)RobotiqGripper:ClosedPosition",
+                self.macros,
+                label="Closed Position:    "
+            )
+            yield PVTextMonitor(
+                "$(P)RobotiqGripper:OpenPosition",
+                self.macros,
+                label="Open Position:    "
+            )
+            yield PVTextMonitor(
+                "$(P)RobotiqGripper:MoveStatusRaw",
+                self.macros,
+                label="Move status (raw):    "
+            )
+            yield PVTextMonitor(
+                "$(P)RobotiqGripper:MoveStatus.VAL",
+                self.macros,
+                label="Move status:    "
+            )
             yield PVButton("$(P)RobotiqGripper:Connect", self.macros, label="Connect")
             yield PVButton("$(P)RobotiqGripper:Activate", self.macros, label="Activate")
             yield PVButton("$(P)RobotiqGripper:Open", self.macros, label="Open")

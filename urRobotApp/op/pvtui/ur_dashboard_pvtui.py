@@ -52,26 +52,17 @@ class ExampleApp(App):
             # top right
             with Vertical(id="top-right") as vert:
                 vert.border_title = "Status"
-                with Horizontal(classes="hrow"):
-                    yield Label("Connected:      ")
-                    yield PVLed("$(P)Dashboard:Connected", self.macros)
-                with Horizontal(classes="hrow"):
-                    yield Label("Remote Control: ")
-                    yield PVLed("$(P)Dashboard:IsInRemoteControl", self.macros)
-                with Horizontal(classes="hrow"):
-                    yield PVTextMonitor("$(P)Dashboard:RobotMode", self.macros)
-                with Horizontal(classes="hrow"):
-                    yield PVTextMonitor("$(P)Dashboard:SafetyStatus", self.macros)
+                yield PVLed("$(P)Dashboard:Connected", self.macros,label="Connected:      ", classes="hrow")
+                yield PVLed("$(P)Dashboard:IsInRemoteControl", self.macros, label="Remote Control: ", classes="hrow")
+                yield PVTextMonitor("$(P)Dashboard:RobotMode", self.macros, classes="hrow")
+                yield PVTextMonitor("$(P)Dashboard:SafetyStatus", self.macros, classes="hrow")
     
             # Bottom right
             with Vertical(id="bottom-right") as vert:
                 vert.border_title = "Program"
-                with Horizontal(classes="hrow"):
-                    yield PVTextMonitor("$(P)Dashboard:LoadedProgram", self.macros)
-                with Horizontal(classes="hrow"):
-                    yield PVTextMonitor("$(P)Dashboard:ProgramState", self.macros)
-                with Horizontal(classes="hrow"):
-                    yield PVInput("$(P)Dashboard:LoadURP", self.macros, placeholder="Enter URP program to load...")
+                yield PVTextMonitor("$(P)Dashboard:LoadedProgram", self.macros, classes="hrow")
+                yield PVTextMonitor("$(P)Dashboard:ProgramState", self.macros, classes="hrow")
+                yield PVInput("$(P)Dashboard:LoadURP", self.macros, placeholder="Enter URP program to load...", classes="hrow")
                 with Horizontal(classes="hrow pps"):
                     yield PVButton("$(P)Dashboard:Play", self.macros, label="Play", variant="success")
                     yield PVButton("$(P)Dashboard:Pause", self.macros, label="Pause",  variant="warning")
