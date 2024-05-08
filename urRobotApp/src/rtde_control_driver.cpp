@@ -159,6 +159,9 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(PLAY_POSE_PATH_STRING, asynParamOctet, &playPosePathIndex_);
     createParam(PLAY_JOINT_PATH_STRING, asynParamOctet, &playJointPathIndex_);
 
+    createParam(REUPLOAD_CTRL_SCRIPT_STRING, asynParamInt32, &reuploadCtrlScriptIndex_);
+    createParam(STOP_CTRL_SCRIPT_STRING, asynParamInt32, &stopCtrlScriptIndex_);
+
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
 
@@ -321,6 +324,18 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     } else if (function == stopLIndex_) {
         spdlog::debug("Stopping linear TCP move (only works in asynchronous mode)");
         // rtde_control_->stopL();
+    }
+
+    else if (function == reuploadCtrlScriptIndex_) {
+        spdlog::debug("Reuploading control script");
+        rtde_control_->reuploadScript();
+        spdlog::debug("Control script reuploaded");
+    }
+
+    else if (function == stopCtrlScriptIndex_) {
+        spdlog::debug("Stopping control script");
+        rtde_control_->stopScript();
+        spdlog::debug("Control script stopped");
     }
 
 skip:

@@ -5,7 +5,7 @@
 
 # include the urRobot support and its RELEASE file
 URROBOT = $(TOP)/../..
--include $(URROBOT)/configure/RELEASE
+-include $(URROBOT)/configure/RELEASE.local
 
 # These lines allow developers to override these RELEASE settings
 # without having to modify this file directly.

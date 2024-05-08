@@ -34,6 +34,8 @@ static constexpr char POSE_YAW_CMD_STRING[] = "POSE_YAW_CMD";
 
 static constexpr char PLAY_POSE_PATH_STRING[] = "PLAY_POSE_PATH";
 static constexpr char PLAY_JOINT_PATH_STRING[] = "PLAY_JOINT_PATH";
+static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
+static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
@@ -92,6 +94,9 @@ class RTDEControl : public asynPortDriver {
 
     int playPosePathIndex_;
     int playJointPathIndex_;
+
+    int reuploadCtrlScriptIndex_;
+    int stopCtrlScriptIndex_;
 };
 
 #endif

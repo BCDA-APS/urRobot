@@ -33,6 +33,21 @@ record(bo, "$(P)$(R)Control:Reconnect")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RECONNECT")
 }
 
+record(bo, "$(P)$(R)Control:ReuploadControlScript")
+{
+    field(DESC, "Reuploads control script to controller")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))REUPLOAD_CONTROL_SCRIPT")
+}
+
+record(bo, "$(P)$(R)Control:StopControlScript")
+{
+    field(DESC, "Stops the control script")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOP_CONTROL_SCRIPT")
+}
+
+
 #======================
 # Joint control
 #======================
