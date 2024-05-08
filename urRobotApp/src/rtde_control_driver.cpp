@@ -276,6 +276,8 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         rtde_control_->disconnect();
         rtde_receive_->disconnect();
         comm_ok = not rtde_control_->isConnected() and not rtde_receive_->isConnected();
+        // spdlog::debug("Stopping control script");
+        // rtde_control_->stopScript();
         goto skip;
     }
 
@@ -294,13 +296,13 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints);
         if (safe) {
-            rtde_control_->moveJ(cmd_joints);
+            rtde_control_->moveJ(cmd_joints, 1.05, 1.4, true); // asynchronous=true
         } else {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
     } else if (function == stopJIndex_) {
         spdlog::debug("Stopping joint move (only works in asynchronous mode)");
-        rtde_control_->stopJ();
+        rtde_control_->stopJ(2.0, true); // asynchronous=true
     }
 
     else if (function == moveLIndex_) {
@@ -311,13 +313,14 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isPoseWithinSafetyLimits(cmd_pose);
         if (safe) {
-            rtde_control_->moveL(cmd_pose);
+            // rtde_control_->moveL(cmd_pose);
+            spdlog::warn("moveL not fully implemented");
         } else {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
     } else if (function == stopLIndex_) {
         spdlog::debug("Stopping linear TCP move (only works in asynchronous mode)");
-        rtde_control_->stopL();
+        // rtde_control_->stopL();
     }
 
 skip:

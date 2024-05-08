@@ -431,6 +431,7 @@ record(calcout, "$(P)$(R)Control:J6TweakCalcRev")
 #======================
 # TCP pose control
 #======================
+# FIX: Not robust, often causes protective stop to trigger
 
 record(bo, "$(P)$(R)Control:moveL")
 {
