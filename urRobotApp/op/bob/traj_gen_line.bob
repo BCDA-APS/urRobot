@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-05-09 15:49:43 by nmarks-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>1000</width>
+  <height>75</height>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry</name>
+    <pv_name>$(P)$(R)Waypoint$(N):J1</pv_name>
+    <x>80</x>
+    <y>10</y>
+    <width>90</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_1</name>
+    <pv_name>$(P)$(R)Waypoint$(N):J2</pv_name>
+    <x>180</x>
+    <y>10</y>
+    <width>90</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_2</name>
+    <pv_name>$(P)$(R)Waypoint$(N):J3</pv_name>
+    <x>280</x>
+    <y>10</y>
+    <width>90</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_3</name>
+    <pv_name>$(P)$(R)Waypoint$(N):J4</pv_name>
+    <x>380</x>
+    <y>10</y>
+    <width>90</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_4</name>
+    <pv_name>$(P)$(R)Waypoint$(N):J5</pv_name>
+    <x>480</x>
+    <y>10</y>
+    <width>90</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_5</name>
+    <pv_name>$(P)$(R)Waypoint$(N):J6</pv_name>
+    <x>580</x>
+    <y>10</y>
+    <width>90</width>
+    <height>30</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Waypoint$(N):Reset.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)$(R)Waypoint$(N):Reset.PROC</description>
+      </action>
+    </actions>
+    <text>RST</text>
+    <x>40</x>
+    <y>10</y>
+    <width>30</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_5</name>
+    <pv_name>$(P)$(R)Waypoint$(N):Gripper</pv_name>
+    <x>680</x>
+    <y>10</y>
+    <width>90</width>
+    <off_label>Open</off_label>
+    <off_color>
+      <color name="On" red="0" green="255" blue="0">
+      </color>
+    </off_color>
+    <on_label>Closed</on_label>
+    <on_color>
+      <color name="MAJOR" red="255" green="0" blue="0">
+      </color>
+    </on_color>
+  </widget>
+  <widget type="checkbox" version="2.0.0">
+    <name>Check Box</name>
+    <pv_name>$(P)$(R)Waypoint$(N):Enabled</pv_name>
+    <label></label>
+    <x>10</x>
+    <y>10</y>
+    <width>20</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_6</name>
+    <pv_name>$(P)$(R)Waypoint$(N):Speed</pv_name>
+    <x>780</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_7</name>
+    <pv_name>$(P)$(R)Waypoint$(N):Acceleration</pv_name>
+    <x>870</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+</display>

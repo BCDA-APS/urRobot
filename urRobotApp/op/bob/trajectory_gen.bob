@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-05-09 15:45:49 by nmarks-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>1000</width>
+  <height>1000</height>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>Trajectory Generator</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display</name>
+    <macros>
+      <P>$(P)</P>
+      <N>1</N>
+      <R>$(R)</R>
+    </macros>
+    <file>traj_gen_line.bob</file>
+    <y>99</y>
+    <width>980</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_1</name>
+    <macros>
+      <P>$(P)</P>
+      <N>2</N>
+      <R>$(R)</R>
+    </macros>
+    <file>traj_gen_line.bob</file>
+    <y>148</y>
+    <width>980</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_2</name>
+    <macros>
+      <P>$(P)</P>
+      <N>3</N>
+      <R>$(R)</R>
+    </macros>
+    <file>traj_gen_line.bob</file>
+    <y>197</y>
+    <width>970</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_3</name>
+    <macros>
+      <P>$(P)</P>
+      <N>4</N>
+      <R>$(R)</R>
+    </macros>
+    <file>traj_gen_line.bob</file>
+    <y>246</y>
+    <width>970</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_4</name>
+    <macros>
+      <P>$(P)</P>
+      <N>5</N>
+      <R>$(R)</R>
+    </macros>
+    <file>traj_gen_line.bob</file>
+    <y>295</y>
+    <width>970</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_5</name>
+    <macros>
+      <P>$(P)</P>
+      <N>6</N>
+      <R>$(R)</R>
+    </macros>
+    <file>traj_gen_line.bob</file>
+    <y>344</y>
+    <width>970</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_6</name>
+    <macros>
+      <P>$(P)</P>
+      <N>7</N>
+      <R>$(R)</R>
+    </macros>
+    <file>traj_gen_line.bob</file>
+    <y>393</y>
+    <width>970</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_7</name>
+    <macros>
+      <P>$(P)</P>
+      <N>8</N>
+      <R>$(R)</R>
+    </macros>
+    <file>traj_gen_line.bob</file>
+    <y>442</y>
+    <width>970</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_8</name>
+    <macros>
+      <P>$(P)</P>
+      <N>9</N>
+      <R>$(R)</R>
+    </macros>
+    <file>traj_gen_line.bob</file>
+    <y>491</y>
+    <width>970</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_9</name>
+    <macros>
+      <P>$(P)</P>
+      <N>10</N>
+      <R>$(R)</R>
+    </macros>
+    <file>traj_gen_line.bob</file>
+    <y>540</y>
+    <width>970</width>
+    <height>49</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry</name>
+    <pv_name>$(P)$(R)WaypointsFile</pv_name>
+    <x>630</x>
+    <y>650</y>
+    <width>250</width>
+    <height>30</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)SaveWaypoints.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)$(R)SaveWaypoints.PROC</description>
+      </action>
+    </actions>
+    <text>Save</text>
+    <x>890</x>
+    <y>650</y>
+    <width>70</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>Joint Angles</text>
+    <x>290</x>
+    <y>70</y>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <text>Speed</text>
+    <x>790</x>
+    <y>70</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_3</name>
+    <text>Accel</text>
+    <x>880</x>
+    <y>70</y>
+    <width>90</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>Save to File:</text>
+    <x>630</x>
+    <y>620</y>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <text>Gripper</text>
+    <x>680</x>
+    <y>70</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_6</name>
+    <text>Use</text>
+    <y>70</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>

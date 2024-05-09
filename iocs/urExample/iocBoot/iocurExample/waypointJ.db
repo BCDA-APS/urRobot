@@ -1,0 +1,117 @@
+# This database defines a single waypoint for the robot in joint space
+# including the gripper state where 0=open and 1=closed
+
+record(ao, "$(P)$(R)Waypoint$(N):J1")
+{
+    field(DESC, "$(DESC)")
+    field(VAL, "$(j1)")
+    field(PREC, 2)
+    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+}
+
+record(ao, "$(P)$(R)Waypoint$(N):J2")
+{
+    field(DESC, "$(DESC)")
+    field(VAL, "$(j2)")
+    field(PREC, 2)
+    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+}
+
+record(ao, "$(P)$(R)Waypoint$(N):J3")
+{
+    field(DESC, "$(DESC)")
+    field(VAL, "$(j3)")
+    field(PREC, 2)
+    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+}
+
+record(ao, "$(P)$(R)Waypoint$(N):J4")
+{
+    field(DESC, "$(DESC)")
+    field(VAL, "$(j4)")
+    field(PREC, 2)
+    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+}
+
+record(ao, "$(P)$(R)Waypoint$(N):J5")
+{
+    field(DESC, "$(DESC)")
+    field(VAL, "$(j5)")
+    field(PREC, 2)
+    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+}
+
+record(ao, "$(P)$(R)Waypoint$(N):J6")
+{
+    field(DESC, "$(DESC)")
+    field(VAL, "$(j6)")
+    field(PREC, 2)
+    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+}
+
+record(bo, "$(P)$(R)Waypoint$(N):Gripper")
+{
+    field(DESC, "$(DESC)")
+    field(ZNAM, "OPEN")
+    field(ONAM, "CLOSED")
+    field(VAL, "$(GRIPPER)")
+    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+}
+
+record(ao, "$(P)$(R)Waypoint$(N):Speed")
+{
+    field(DESC, "$(DESC)")
+    field(VAL, "$(SPEED)")
+    field(PREC, 2)
+    field(EGU, "rad/s")
+    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+}
+
+record(ao, "$(P)$(R)Waypoint$(N):Acceleration")
+{
+    field(DESC, "$(DESC)")
+    field(VAL, "$(ACCEL)")
+    field(PREC, 2)
+    field(EGU, "rad/s/s")
+    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+}
+
+record(bo, "$(P)$(R)EnableWaypoint$(N)")
+{
+    field(VAL, "1")
+    field(OUT, "$(P)$(R)Waypoint$(N):Enabled PP")
+}
+
+record(bo, "$(P)$(R)Waypoint$(N):Enabled") {
+    field(ONAM, "Enabled")
+    field(ZNAM, "Disabled")
+    field(VAL, "$(EN)")
+}
+
+# stores DOLx.VAL in LNKx.VAL
+# Sets joint angles for this waypoint to the current measured angles
+# Requires that RTDE Receive databases have been loaded
+record(seq, "$(P)$(R)Waypoint$(N):Reset")
+{
+    field(FLNK, "$(P)Waypoint$(N):Enable.PROC")
+
+    field(DOL0, "$(P)$(R)Receive:ActualJointPositions0")
+    field(LNK0, "$(P)Waypoint$(N):J1 PP")
+
+    field(DOL1, "$(P)$(R)Receive:ActualJointPositions1")
+    field(LNK1, "$(P)Waypoint$(N):J2 PP")
+
+    field(DOL2, "$(P)$(R)Receive:ActualJointPositions2")
+    field(LNK2, "$(P)Waypoint$(N):J3 PP")
+
+    field(DOL3, "$(P)$(R)Receive:ActualJointPositions3")
+    field(LNK3, "$(P)Waypoint$(N):J4 PP")
+
+    field(DOL4, "$(P)$(R)Receive:ActualJointPositions4")
+    field(LNK4, "$(P)Waypoint$(N):J5 PP")
+
+    field(DOL5, "$(P)$(R)Receive:ActualJointPositions5")
+    field(LNK5, "$(P)Waypoint$(N):J6 PP")
+
+    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+}

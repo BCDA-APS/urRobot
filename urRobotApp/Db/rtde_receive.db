@@ -168,6 +168,70 @@ record(waveform, "$(P)$(R)Receive:ActualJointPositions")
     field(SCAN, "I/O Intr")
 }
 
+record(subArray, "$(P)$(R)Receive:ActualJointPositions0")
+{
+    field(INP, "$(P)$(R)Receive:ActualJointPositions.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "0")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualJointPositions1")
+{
+    field(INP, "$(P)$(R)Receive:ActualJointPositions.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "1")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualJointPositions2")
+{
+    field(INP, "$(P)$(R)Receive:ActualJointPositions.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "2")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualJointPositions3")
+{
+    field(INP, "$(P)$(R)Receive:ActualJointPositions.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "3")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualJointPositions3")
+{
+    field(INP, "$(P)$(R)Receive:ActualJointPositions.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "3")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualJointPositions4")
+{
+    field(INP, "$(P)$(R)Receive:ActualJointPositions.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "4")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualJointPositions5")
+{
+    field(INP, "$(P)$(R)Receive:ActualJointPositions.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "5")
+    field(PREC, 4)
+}
+
 record(waveform, "$(P)$(R)Receive:ActualJointVelocities")
 {
     field(DESC, "Actual joint velocities")
