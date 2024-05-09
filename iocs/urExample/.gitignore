@@ -1,4 +1,5 @@
 *~
+.iocsh_history
 *.local
 O.*
 *.swp
