@@ -37,6 +37,9 @@ static constexpr char PLAY_JOINT_PATH_STRING[] = "PLAY_JOINT_PATH";
 static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
 static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
 
+static constexpr char JOINT_SPEED_STRING[] = "JOINT_SPEED";
+static constexpr char JOINT_ACCEL_STRING[] = "JOINT_ACCELERATION";
+
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
 static constexpr double POLL_PERIOD = 0.02; // 50Hz
@@ -62,7 +65,10 @@ class RTDEControl : public asynPortDriver {
 
     // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
     std::vector<double> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-
+  
+    // Joint speed and acceleration to use with moveJ
+    double joint_speed = 1.05; // rad/s
+    double joint_accel = 1.4;  // rad/s/s
 
   protected:
     asynUser *pasynUserURRobot_;
@@ -71,7 +77,6 @@ class RTDEControl : public asynPortDriver {
     int reconnectIndex_;
     int isConnectedIndex_;
     int isSteadyIndex_;
-
     int actualQIndex_;
     int moveJIndex_;
     int stopJIndex_;
@@ -81,7 +86,6 @@ class RTDEControl : public asynPortDriver {
     int j4CmdIndex_;
     int j5CmdIndex_;
     int j6CmdIndex_;
-
     int actualTCPPoseIndex_;
     int moveLIndex_;
     int stopLIndex_;
@@ -91,12 +95,12 @@ class RTDEControl : public asynPortDriver {
     int poseRollCmdIndex_;
     int posePitchCmdIndex_;
     int poseYawCmdIndex_;
-
     int playPosePathIndex_;
     int playJointPathIndex_;
-
     int reuploadCtrlScriptIndex_;
     int stopCtrlScriptIndex_;
+    int jointSpeedIndex_;
+    int jointAccelIndex_;
 };
 
 #endif

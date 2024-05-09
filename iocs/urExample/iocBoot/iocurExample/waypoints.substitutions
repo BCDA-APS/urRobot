@@ -35,7 +35,7 @@ pattern
 {30,  "waypoint $(N)",  0,  0,  0,  0,  0,  0,  0, 	 0,  1.05,   1.4}
 }
 
-file "save_waypoints.db"
+file "waypoints.db"
 {
 pattern
 {MAX_WAYPOINTS}

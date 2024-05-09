@@ -135,7 +135,6 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
     createParam(IS_STEADY_STRING, asynParamInt32, &isSteadyIndex_);
-
     createParam(MOVEJ_STRING, asynParamInt32, &moveJIndex_);
     createParam(STOPJ_STRING, asynParamInt32, &stopJIndex_);
     createParam(ACTUAL_Q_STRING, asynParamFloat64Array, &actualQIndex_);
@@ -145,7 +144,6 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(J4CMD_STRING, asynParamFloat64, &j4CmdIndex_);
     createParam(J5CMD_STRING, asynParamFloat64, &j5CmdIndex_);
     createParam(J6CMD_STRING, asynParamFloat64, &j6CmdIndex_);
-
     createParam(MOVEL_STRING, asynParamInt32, &moveLIndex_);
     createParam(STOPL_STRING, asynParamInt32, &stopLIndex_);
     createParam(ACTUAL_TCP_POSE_STRING, asynParamFloat64Array, &actualTCPPoseIndex_);
@@ -155,12 +153,12 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(POSE_ROLL_CMD_STRING, asynParamFloat64, &poseRollCmdIndex_);
     createParam(POSE_PITCH_CMD_STRING, asynParamFloat64, &posePitchCmdIndex_);
     createParam(POSE_YAW_CMD_STRING, asynParamFloat64, &poseYawCmdIndex_);
-
     createParam(PLAY_POSE_PATH_STRING, asynParamOctet, &playPosePathIndex_);
     createParam(PLAY_JOINT_PATH_STRING, asynParamOctet, &playJointPathIndex_);
-
     createParam(REUPLOAD_CTRL_SCRIPT_STRING, asynParamInt32, &reuploadCtrlScriptIndex_);
     createParam(STOP_CTRL_SCRIPT_STRING, asynParamInt32, &stopCtrlScriptIndex_);
+    createParam(JOINT_SPEED_STRING, asynParamFloat64, &jointSpeedIndex_);
+    createParam(JOINT_ACCEL_STRING, asynParamFloat64, &jointAccelIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -249,6 +247,15 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         cmd_pose.at(ind) = val;
     }
 
+    else if (function == jointSpeedIndex_) {
+        this->joint_speed = value;
+        spdlog::debug("Setting joint speed to {}", joint_speed);
+    } 
+    else if (function == jointAccelIndex_) {
+        this->joint_accel = value;
+        spdlog::debug("Setting joint acceleration to {}", joint_accel);
+    }
+
 skip:
     callParamCallbacks();
     if (comm_ok) {
@@ -299,7 +306,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints);
         if (safe) {
-            rtde_control_->moveJ(cmd_joints, 1.05, 1.4, true); // asynchronous=true
+            rtde_control_->moveJ(cmd_joints, this->joint_speed, this->joint_accel, true); // asynchronous=true
         } else {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }

@@ -59,6 +59,24 @@ record(bo, "$(P)$(R)Control:moveJ")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEJ")
 }
 
+record(ao, "$(P)$(R)Control:JointSpeed")
+{
+    field(DESC, "Joint speeds for moveJ")
+    field(DTYP, "asynFloat64")
+    field(PREC, 2)
+    field(EGU, "rad/s")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_SPEED")
+}
+
+record(ao, "$(P)$(R)Control:JointAcceleration")
+{
+    field(DESC, "Joint accelerations for moveJ")
+    field(DTYP, "asynFloat64")
+    field(PREC, 2)
+    field(EGU, "rad/s/s")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_ACCELERATION")
+}
+
 record(bo, "$(P)$(R)Control:stopJ")
 {
     field(DESC, "Moves joints to commanded values")
