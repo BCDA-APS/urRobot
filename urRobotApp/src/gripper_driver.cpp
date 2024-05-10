@@ -70,6 +70,7 @@ URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
     createParam(MAX_POSITION_STRING, asynParamInt32, &maxPositionIndex_);
 
     createParam(POSITION_UNIT_STRING, asynParamInt32, &positionUnitIndex_);
+    createParam(IS_CALIBRATED_STRING, asynParamInt32, &isCalibratedIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -229,6 +230,7 @@ asynStatus URGripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         if (gripper_->isActive()) {
             gripper_->autoCalibrate();
             spdlog::debug("Auto calibration done");
+            setIntegerParam(isCalibratedIndex_, 1);
         } else {
             spdlog::error("Activate gripper before autocalibrating");
         }

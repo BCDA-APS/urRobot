@@ -2,6 +2,7 @@
 #define _RTDE_CONTROL_DRIVER_HPP_
 
 #include "ur_rtde/rtde_control_interface.h"
+#include "ur_rtde/robotiq_gripper.h"
 #include "ur_rtde/rtde_receive_interface.h"
 #include <asynPortDriver.h>
 
@@ -36,9 +37,9 @@ static constexpr char PLAY_POSE_PATH_STRING[] = "PLAY_POSE_PATH";
 static constexpr char PLAY_JOINT_PATH_STRING[] = "PLAY_JOINT_PATH";
 static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
 static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
-
 static constexpr char JOINT_SPEED_STRING[] = "JOINT_SPEED";
 static constexpr char JOINT_ACCEL_STRING[] = "JOINT_ACCELERATION";
+static constexpr char ASYNC_MOVE_STRING[] = "ASYNC_MOVE";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
@@ -57,6 +58,8 @@ class RTDEControl : public asynPortDriver {
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
+    std::unique_ptr<ur_rtde::RobotiqGripper> gripper_;
+
     const char *robot_ip_;
     bool try_connect();
 
@@ -69,6 +72,10 @@ class RTDEControl : public asynPortDriver {
     // Joint speed and acceleration to use with moveJ
     double joint_speed = 1.05; // rad/s
     double joint_accel = 1.4;  // rad/s/s
+
+    bool async_move = false;
+    bool async_running_ = false;
+    int async_progess_last_ = -1;
 
   protected:
     asynUser *pasynUserURRobot_;
@@ -101,6 +108,7 @@ class RTDEControl : public asynPortDriver {
     int stopCtrlScriptIndex_;
     int jointSpeedIndex_;
     int jointAccelIndex_;
+    int asyncMoveIndex_;
 };
 
 #endif

@@ -7,6 +7,15 @@ record(bi, "$(P)$(R)RobotiqGripper:Connected")
     field(SCAN, "I/O Intr")
 }
 
+record(bi, "$(P)$(R)RobotiqGripper:Calibrated")
+{
+    field(DESC, "Calibration status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CALIBRATED")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}
+
 record(bi, "$(P)$(R)RobotiqGripper:IsActive")
 {
     field(DESC, "Gripper active status")

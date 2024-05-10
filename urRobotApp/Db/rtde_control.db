@@ -47,6 +47,14 @@ record(bo, "$(P)$(R)Control:StopControlScript")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOP_CONTROL_SCRIPT")
 }
 
+record(bo, "$(P)$(R)Control:Asynchronous")
+{
+    field(DESC, "If 1, moves will be asynchronous")
+    field(DTYP, "asynInt32")
+    field(VAL, 1)
+    field(PINI, 1)
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ASYNC_MOVE")
+}
 
 #======================
 # Joint control

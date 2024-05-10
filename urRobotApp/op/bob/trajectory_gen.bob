@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-09 15:45:49 by nmarks-->
+<!--Saved on 2024-05-10 11:42:01 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
-  <width>1000</width>
+  <width>1200</width>
   <height>1000</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>Trajectory Generator</text>
+    <text>Path Generator</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>550</width>
@@ -31,7 +31,7 @@
     </macros>
     <file>traj_gen_line.bob</file>
     <y>99</y>
-    <width>980</width>
+    <width>1060</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -43,7 +43,7 @@
     </macros>
     <file>traj_gen_line.bob</file>
     <y>148</y>
-    <width>980</width>
+    <width>1060</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -55,7 +55,7 @@
     </macros>
     <file>traj_gen_line.bob</file>
     <y>197</y>
-    <width>970</width>
+    <width>1060</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -67,7 +67,7 @@
     </macros>
     <file>traj_gen_line.bob</file>
     <y>246</y>
-    <width>970</width>
+    <width>1060</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -79,7 +79,7 @@
     </macros>
     <file>traj_gen_line.bob</file>
     <y>295</y>
-    <width>970</width>
+    <width>1060</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -91,7 +91,7 @@
     </macros>
     <file>traj_gen_line.bob</file>
     <y>344</y>
-    <width>970</width>
+    <width>1060</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -103,7 +103,7 @@
     </macros>
     <file>traj_gen_line.bob</file>
     <y>393</y>
-    <width>970</width>
+    <width>1060</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -115,7 +115,7 @@
     </macros>
     <file>traj_gen_line.bob</file>
     <y>442</y>
-    <width>970</width>
+    <width>1060</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -127,7 +127,7 @@
     </macros>
     <file>traj_gen_line.bob</file>
     <y>491</y>
-    <width>970</width>
+    <width>1060</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -139,7 +139,7 @@
     </macros>
     <file>traj_gen_line.bob</file>
     <y>540</y>
-    <width>970</width>
+    <width>1060</width>
     <height>49</height>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -167,9 +167,10 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_1</name>
-    <text>Joint Angles</text>
-    <x>290</x>
+    <text>J1</text>
+    <x>80</x>
     <y>70</y>
+    <width>90</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -181,7 +182,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_2</name>
     <text>Speed</text>
-    <x>790</x>
+    <x>680</x>
     <y>70</y>
     <width>80</width>
     <height>30</height>
@@ -195,9 +196,9 @@
   <widget type="label" version="2.0.0">
     <name>Label_3</name>
     <text>Accel</text>
-    <x>880</x>
+    <x>770</x>
     <y>70</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -221,9 +222,9 @@
   <widget type="label" version="2.0.0">
     <name>Label_5</name>
     <text>Gripper</text>
-    <x>680</x>
+    <x>950</x>
     <y>70</y>
-    <width>80</width>
+    <width>90</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -237,6 +238,90 @@
     <text>Use</text>
     <y>70</y>
     <width>40</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <text>Blend</text>
+    <x>860</x>
+    <y>70</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_8</name>
+    <text>J2</text>
+    <x>180</x>
+    <y>70</y>
+    <width>90</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_9</name>
+    <text>J3</text>
+    <x>280</x>
+    <y>70</y>
+    <width>90</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_10</name>
+    <text>J4</text>
+    <x>380</x>
+    <y>70</y>
+    <width>90</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_11</name>
+    <text>J5</text>
+    <x>480</x>
+    <y>70</y>
+    <width>90</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>J6</text>
+    <x>580</x>
+    <y>70</y>
+    <width>90</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">

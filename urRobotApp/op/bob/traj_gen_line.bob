@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-09 15:49:43 by nmarks-->
+<!--Saved on 2024-05-10 11:39:40 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
-  <width>1000</width>
+  <width>1200</width>
   <height>75</height>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
@@ -70,7 +70,7 @@
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_5</name>
     <pv_name>$(P)$(R)Waypoint$(N):Gripper</pv_name>
-    <x>680</x>
+    <x>950</x>
     <y>10</y>
     <width>90</width>
     <off_label>Open</off_label>
@@ -96,7 +96,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_6</name>
     <pv_name>$(P)$(R)Waypoint$(N):Speed</pv_name>
-    <x>780</x>
+    <x>680</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -104,7 +104,15 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_7</name>
     <pv_name>$(P)$(R)Waypoint$(N):Acceleration</pv_name>
-    <x>870</x>
+    <x>770</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_8</name>
+    <pv_name>$(P)$(R)Waypoint$(N):Blend</pv_name>
+    <x>860</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>

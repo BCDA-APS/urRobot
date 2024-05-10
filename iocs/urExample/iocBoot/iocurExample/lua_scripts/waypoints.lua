@@ -1,22 +1,26 @@
 epics = require("epics")
+PI = 3.141592653589793
 
+-- TODO: Maybe rewrite this in C and call it with sub record?
 -- Save each waypoint and gripper action to the specified file
 -- with the format "j1,j2,j3,j4,j5,j6,gripper,speed,accel"
 function save_waypoints(args)
     local MAX_WAYPOINTS = A
     local file = io.open(args.filename, "w")
     if file then
-        for i = 1, MAX_WAYPOINTS do -- for each waypoint
+        for i = 1, MAX_WAYPOINTS do
             local enabled = epics.get(string.format("%s%sWaypoint%d:Enabled", args.P, args.R, i))
             if (enabled == 1) then
-                for j = 1, 6 do -- for each joint angle
+                for j = 1, 6 do
                     local jx = epics.get(string.format("%s%sWaypoint%d:J%d.VAL", args.P, args.R, i, j))
+                    jx = jx * PI / 180.0 -- convert to radians
                     file:write(string.format("%f,", jx))
                 end
                 local grip = epics.get(string.format("%s%sWaypoint%d:Gripper.VAL", args.P, args.R, i))
                 local speed = epics.get(string.format("%s%sWaypoint%d:Speed.VAL", args.P, args.R, i))
                 local accel = epics.get(string.format("%s%sWaypoint%d:Acceleration.VAL", args.P, args.R, i))
-                file:write(string.format("%f,%f,%f\n", grip, speed, accel))
+                local blend = epics.get(string.format("%s%sWaypoint%d:Blend.VAL", args.P, args.R, i))
+                file:write(string.format("%f,%f,%f,%f\n", speed, accel, blend, grip))
             end
         end
         file:close()
