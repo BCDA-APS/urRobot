@@ -197,19 +197,22 @@ void RTDEControl::poll() {
                 if (async_running_) {
                     if (async_status_ == AsyncMotionStatus::Done) {
                         if (joint_path_iter_ != joint_path_.end()) {
-                            // ur_rtde::Path path;
+
                             std::vector<double> wp = *joint_path_iter_;
                             std::cout << "Moving to waypoint: ";
                             for(const auto &i : wp) {
                                 std::cout << i << ", ";
                             }
                             std::cout << std::endl;
+
                             std::vector<double> waypoint(wp.begin(), wp.end() - 1); // last is gripper
-                            // path.addEntry({ur_rtde::PathEntry::MoveJ, ur_rtde::PathEntry::PositionJoints, waypoint});
-                            // rtde_control_->movePath(path, true);
-                            std::vector<std::vector<double>> path;
-                            path.push_back(waypoint);
-                            rtde_control_->moveJ(path, true);
+                            gripper_action_ = wp.back();
+                            
+                            // first argument to moveJ should be vector<vector<double>>
+                            // which includes joint angles, speed, accel, and blend
+                            // doesn't seem to work with async operation progress when using
+                            // moveJ(vector<double>, speed, accel, async=true)
+                            rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
                             async_status_ = AsyncMotionStatus::WaitingMotion;
                         } else {
                             spdlog::debug("Path complete");
@@ -221,56 +224,21 @@ void RTDEControl::poll() {
                             // int moving = async_op_status.value();
                             if (not op_status.isAsyncOperationRunning()) {
                                 spdlog::debug("Waypoint reached");
-                                std::vector<double> wp = *joint_path_iter_;
-                                int gripper_action = wp.back(); // HACK: shouldn't need to do twice
-                                if (gripper_action == 0) {
-                                    spdlog::debug("Opening gripper");
+                                if (gripper_action_ == 0) {
                                     gripper_->open();
                                 } else {
-                                    spdlog::debug("Closing gripper");
                                     gripper_->close();
                                 }
                                 async_status_ = AsyncMotionStatus::WaitingGripper;
-                            } else {
-                                spdlog::debug("AsyncOperationStatus {}", op_status.value());
-                                spdlog::debug("WaitingMotion {}");
                             }
                         } else if (async_status_ == AsyncMotionStatus::WaitingGripper) {
                             if (gripper_->objectDetectionStatus() != ur_rtde::RobotiqGripper::eObjectStatus::MOVING) {
-                                spdlog::debug("Gripper action complete");
                                 async_status_ = AsyncMotionStatus::Done;
                                 joint_path_iter_ = std::next(joint_path_iter_); // move iterator to next waypoint
-                            } else {
-                                spdlog::debug("WaitingGripper {}", gripper_->objectDetectionStatus());
                             }
                         }
                     }
                 }
-
-                // if (async_running_) {
-//
-                    // int prog = rtde_control_->getAsyncOperationProgress();
-                    // setIntegerParam(asyncMoveProgressIndex_, prog);
-                    // if (prog >= 0) {
-                        // if (prog != async_progess_last_) {
-                            // async_progess_last_ = prog;
-                            // spdlog::debug("Waypoint {} reached", prog);
-                            // if (gripper_iter_ != gripper_actions_.end()) {
-                                // if (*gripper_iter_ == 1) {
-                                    // spdlog::debug("Closing gripper");
-                                // } else {
-                                    // spdlog::debug("Opening gripper(blocking)");
-                                // }
-                                // gripper_iter_ = std::next(gripper_iter_);
-                            // } else {
-                                // spdlog::debug("Gripper actions finished!");
-                            // }
-                        // }
-                    // } else {
-                        // spdlog::debug("Asynchronous operation done {}", prog);
-                        // async_running_ = false;
-                    // }
-                // }
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
             }
@@ -478,31 +446,6 @@ asynStatus RTDEControl::writeOctet(asynUser *pasynUser, const char *value, size_
             comm_ok = false;
             goto skip;
         }
-
-        // gripper_actions_.clear();
-        // std::optional<std::vector<std::vector<double>>> joint_path = read_traj_file(value);
-        // if (joint_path.has_value()) {
-            // for (const auto &wp : joint_path.value()) {
-//
-                // std::stringstream ss;
-                // for (const auto &v : wp) {
-                    // ss << v << ",";
-                // }
-                // spdlog::debug("Adding waypoint [{}] to path", ss.str());
-//
-                // // joint angles, velocity, acceleration, blend
-                // std::vector<double> waypoint(wp.begin(), wp.end() - 1);
-                // path.addEntry({ur_rtde::PathEntry::MoveJ, ur_rtde::PathEntry::PositionJoints, waypoint});
-//
-                // // gripper action to do after reaching waypoint (1=close, 0=open)
-                // this->gripper_actions_.push_back(wp.back());
-            // }
-            // if (async_move) {
-                // this->gripper_iter_ = this->gripper_actions_.begin();
-                // async_running_ = true;
-                // rtde_control_->movePath(path, true);
-            // }
-        // }
     }
 
 skip:

@@ -77,7 +77,8 @@ class RTDEControl : public asynPortDriver {
     bool async_move = true;
     bool async_running_ = false;
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
-    int async_progress_last_ = -1;
+    // int async_progress_last_ = -1;
+    int gripper_action_ = 0;
     std::vector<std::vector<double>> joint_path_;
     std::vector<std::vector<double>>::iterator joint_path_iter_;
 
