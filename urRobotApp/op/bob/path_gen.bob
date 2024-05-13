@@ -29,7 +29,7 @@
       <N>1</N>
       <R>$(R)</R>
     </macros>
-    <file>traj_gen_line.bob</file>
+    <file>path_gen_line.bob</file>
     <y>99</y>
     <width>1060</width>
     <height>49</height>
@@ -41,7 +41,7 @@
       <N>2</N>
       <R>$(R)</R>
     </macros>
-    <file>traj_gen_line.bob</file>
+    <file>path_gen_line.bob</file>
     <y>148</y>
     <width>1060</width>
     <height>49</height>
@@ -53,7 +53,7 @@
       <N>3</N>
       <R>$(R)</R>
     </macros>
-    <file>traj_gen_line.bob</file>
+    <file>path_gen_line.bob</file>
     <y>197</y>
     <width>1060</width>
     <height>49</height>
@@ -65,7 +65,7 @@
       <N>4</N>
       <R>$(R)</R>
     </macros>
-    <file>traj_gen_line.bob</file>
+    <file>path_gen_line.bob</file>
     <y>246</y>
     <width>1060</width>
     <height>49</height>
@@ -77,7 +77,7 @@
       <N>5</N>
       <R>$(R)</R>
     </macros>
-    <file>traj_gen_line.bob</file>
+    <file>path_gen_line.bob</file>
     <y>295</y>
     <width>1060</width>
     <height>49</height>
@@ -89,7 +89,7 @@
       <N>6</N>
       <R>$(R)</R>
     </macros>
-    <file>traj_gen_line.bob</file>
+    <file>path_gen_line.bob</file>
     <y>344</y>
     <width>1060</width>
     <height>49</height>
@@ -101,7 +101,7 @@
       <N>7</N>
       <R>$(R)</R>
     </macros>
-    <file>traj_gen_line.bob</file>
+    <file>path_gen_line.bob</file>
     <y>393</y>
     <width>1060</width>
     <height>49</height>
@@ -113,7 +113,7 @@
       <N>8</N>
       <R>$(R)</R>
     </macros>
-    <file>traj_gen_line.bob</file>
+    <file>path_gen_line.bob</file>
     <y>442</y>
     <width>1060</width>
     <height>49</height>
@@ -125,7 +125,7 @@
       <N>9</N>
       <R>$(R)</R>
     </macros>
-    <file>traj_gen_line.bob</file>
+    <file>path_gen_line.bob</file>
     <y>491</y>
     <width>1060</width>
     <height>49</height>
@@ -137,7 +137,7 @@
       <N>10</N>
       <R>$(R)</R>
     </macros>
-    <file>traj_gen_line.bob</file>
+    <file>path_gen_line.bob</file>
     <y>540</y>
     <width>1060</width>
     <height>49</height>
