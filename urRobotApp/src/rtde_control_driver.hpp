@@ -1,12 +1,10 @@
 #ifndef _RTDE_CONTROL_DRIVER_HPP_
 #define _RTDE_CONTROL_DRIVER_HPP_
 
-#include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/robotiq_gripper.h"
+#include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/rtde_receive_interface.h"
 #include <asynPortDriver.h>
-
-// TODO: params for moveL/moveJ speed, accel,
 
 static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
 static constexpr char RECONNECT_STRING[] = "RECONNECT";
@@ -47,6 +45,8 @@ static constexpr int MAX_CONTROLLERS = 1;
 static constexpr double POLL_PERIOD = 0.02; // 50Hz
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
+enum class AsyncMotionStatus : int { WaitingMotion, WaitingGripper, Done };
+
 class RTDEControl : public asynPortDriver {
   public:
     RTDEControl(const char *asyn_port_name, const char *robot_port_name);
@@ -54,7 +54,6 @@ class RTDEControl : public asynPortDriver {
     virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual);
-
 
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
@@ -69,17 +68,18 @@ class RTDEControl : public asynPortDriver {
 
     // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
     std::vector<double> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-  
+
     // Joint speed and acceleration to use with moveJ
     double joint_speed = 1.05; // rad/s
     double joint_accel = 1.4;  // rad/s/s
-  
+
     // handle asynchronous motion through paths, etc.
     bool async_move = true;
     bool async_running_ = false;
-    int async_progess_last_ = -1;
-    std::vector<int> gripper_actions_;
-    std::vector<int>::iterator gripper_iter_;
+    AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
+    int async_progress_last_ = -1;
+    std::vector<std::vector<double>> joint_path_;
+    std::vector<std::vector<double>>::iterator joint_path_iter_;
 
   protected:
     asynUser *pasynUserURRobot_;
