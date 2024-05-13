@@ -10,7 +10,7 @@
 #include <type_traits>
 
 #include "rtde_control_driver.hpp"
-#include "rtde_control_interface.h"
+// #include "rtde_control_interface.h"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
@@ -162,6 +162,7 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(JOINT_SPEED_STRING, asynParamFloat64, &jointSpeedIndex_);
     createParam(JOINT_ACCEL_STRING, asynParamFloat64, &jointAccelIndex_);
     createParam(ASYNC_MOVE_STRING, asynParamInt32, &asyncMoveIndex_);
+    createParam(ASYNC_MOVE_PROGRESS_STRING, asynParamInt32, &asyncMoveProgressIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -194,21 +195,29 @@ void RTDEControl::poll() {
                 doCallbacksFloat64Array(pose_vec.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
 
                 if (async_running_) {
+
                     int prog = rtde_control_->getAsyncOperationProgress();
-                    // setIntegerParam(asyncMoveProgressIndex_, prog);
+                    setIntegerParam(asyncMoveProgressIndex_, prog);
                     if (prog >= 0) {
                         if (prog != async_progess_last_) {
                             async_progess_last_ = prog;
-                            // TODO: move gripper accordingly
-                            spdlog::debug("Waypoint reached");
+                            spdlog::debug("Waypoint {} reached", prog);
+                            if (gripper_iter_ != gripper_actions_.end()) {
+                                if (*gripper_iter_ == 1) {
+                                    spdlog::debug("Closing gripper");
+                                } else {
+                                    spdlog::debug("Opening gripper(blocking)");
+                                }
+                                gripper_iter_ = std::next(gripper_iter_);
+                            } else {
+                                spdlog::debug("Gripper actions finished!");
+                            }
                         }
-                    }
-                    else {
+                    } else {
                         spdlog::debug("Asynchronous operation done {}", prog);
                         async_running_ = false;
                     }
                 }
-
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
             }
@@ -404,28 +413,29 @@ asynStatus RTDEControl::writeOctet(asynUser *pasynUser, const char *value, size_
 
     else if (function == playJointPathIndex_) {
         ur_rtde::Path path;
+        gripper_actions_.clear();
 
         std::optional<std::vector<std::vector<double>>> joint_path = read_traj_file(value);
         if (joint_path.has_value()) {
             for (const auto &wp : joint_path.value()) {
 
+                std::stringstream ss;
                 for (const auto &v : wp) {
-                    std::cout << v << ",";
+                    ss << v << ",";
                 }
-                std::cout << std::endl;
+                spdlog::debug("Adding waypoint [{}] to path", ss.str());
 
-                std::vector<double> waypoint(wp.begin(), wp.end()-1);
-                bool gripper = wp.back(); // 0=open, 1=closed
-                path.addEntry({
-                    ur_rtde::PathEntry::MoveJ,
-                    ur_rtde::PathEntry::PositionJoints,
-                    waypoint
-                });
+                // joint angles, velocity, acceleration, blend
+                std::vector<double> waypoint(wp.begin(), wp.end() - 1);
+                path.addEntry({ur_rtde::PathEntry::MoveJ, ur_rtde::PathEntry::PositionJoints, waypoint});
 
-                if (async_move) {
-                    async_running_ = true;
-                    // rtde_control_->movePath(path, true);
-                }
+                // gripper action to do after reaching waypoint (1=close, 0=open)
+                this->gripper_actions_.push_back(wp.back());
+            }
+            if (async_move) {
+                this->gripper_iter_ = this->gripper_actions_.begin();
+                async_running_ = true;
+                rtde_control_->movePath(path, true);
             }
         }
     }

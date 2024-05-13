@@ -40,6 +40,7 @@ static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
 static constexpr char JOINT_SPEED_STRING[] = "JOINT_SPEED";
 static constexpr char JOINT_ACCEL_STRING[] = "JOINT_ACCELERATION";
 static constexpr char ASYNC_MOVE_STRING[] = "ASYNC_MOVE";
+static constexpr char ASYNC_MOVE_PROGRESS_STRING[] = "ASYNC_MOVE_PROGRESS";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
@@ -72,10 +73,13 @@ class RTDEControl : public asynPortDriver {
     // Joint speed and acceleration to use with moveJ
     double joint_speed = 1.05; // rad/s
     double joint_accel = 1.4;  // rad/s/s
-
-    bool async_move = false;
+  
+    // handle asynchronous motion through paths, etc.
+    bool async_move = true;
     bool async_running_ = false;
     int async_progess_last_ = -1;
+    std::vector<int> gripper_actions_;
+    std::vector<int>::iterator gripper_iter_;
 
   protected:
     asynUser *pasynUserURRobot_;
@@ -109,6 +113,7 @@ class RTDEControl : public asynPortDriver {
     int jointSpeedIndex_;
     int jointAccelIndex_;
     int asyncMoveIndex_;
+    int asyncMoveProgressIndex_;
 };
 
 #endif
