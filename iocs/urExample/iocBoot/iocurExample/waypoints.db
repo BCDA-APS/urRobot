@@ -5,11 +5,3 @@ record(luascript, "$(P)$(R)SaveWaypoints") {
     field(INAA, "$(P)WaypointsFile")
     field(CODE, "@waypoints.lua save_waypoints({P='$(P)', R='$(R)', filename=AA})")
 }
-
-record(luascript, "$(P)$(R)PlayWaypoints")
-{
-    field(INPA, "$(MAX_WAYPOINTS)")
-    field(INAA, "$(P)WaypointsFile")
-    field(SYNC, "Async")
-    field(CODE, "@waypoints.lua play_waypoints({P='$(P)', R='$(R)', filename=AA})")
-}
