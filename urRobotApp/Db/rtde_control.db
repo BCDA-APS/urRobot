@@ -851,6 +851,11 @@ record(stringout, "$(P)$(R)Control:PlayPosePath")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PLAY_POSE_PATH")
 }
 
+record(stringout, "$(P)$(R)Control:JointPathFile")
+{
+    field(OUT, "$(P)$(R)Control:PlayJointPath NPP")
+}
+
 record(stringout, "$(P)$(R)Control:PlayJointPath")
 {
     field(DESC, "Moves through CSV file of joint angles")

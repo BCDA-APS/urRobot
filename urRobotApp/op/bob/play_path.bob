@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-05-14 13:41:50 by nmarks-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>500</width>
+  <height>200</height>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry</name>
+    <pv_name>$(P)$(R)Control:JointPathFile</pv_name>
+    <x>50</x>
+    <y>50</y>
+    <width>170</width>
+    <height>30</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_52</name>
+    <text>Joint Path</text>
+    <x>10</x>
+    <y>10</y>
+    <width>160</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:PlayJointPath.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)$(R)Control:PlayJointPath.PROC</description>
+      </action>
+    </actions>
+    <text>󰐊</text>
+    <x>230</x>
+    <y>50</y>
+    <width>40</width>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Control:stopJ.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)$(R)Control:stopJ.PROC</description>
+      </action>
+    </actions>
+    <text>󰓛</text>
+    <x>280</x>
+    <y>50</y>
+    <width>40</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="fileselector" version="2.0.0">
+    <name>File Selector</name>
+    <pv_name>$(P)$(R)Control:JointPathFile</pv_name>
+    <component>2</component>
+    <x>10</x>
+    <y>50</y>
+    <width>30</width>
+    <height>30</height>
+  </widget>
+</display>

@@ -199,19 +199,16 @@ void RTDEControl::poll() {
                         if (joint_path_iter_ != joint_path_.end()) {
 
                             std::vector<double> wp = *joint_path_iter_;
-                            std::cout << "Moving to waypoint: ";
+                            std::stringstream ss;
+                            ss << "Moving to waypoint: ";
                             for(const auto &i : wp) {
-                                std::cout << i << ", ";
+                                ss << i << ", ";
                             }
-                            std::cout << std::endl;
+                            spdlog::debug("{}", ss.str());
 
                             std::vector<double> waypoint(wp.begin(), wp.end() - 1); // last is gripper
                             gripper_action_ = wp.back();
                             
-                            // first argument to moveJ should be vector<vector<double>>
-                            // which includes joint angles, speed, accel, and blend
-                            // doesn't seem to work with async operation progress when using
-                            // moveJ(vector<double>, speed, accel, async=true)
                             rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
                             async_status_ = AsyncMotionStatus::WaitingMotion;
                         } else {
