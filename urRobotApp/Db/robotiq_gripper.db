@@ -78,24 +78,28 @@ record(bo, "$(P)$(R)RobotiqGripper:Close")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE")
 }
 
-record(bo, "$(P)$(R)RobotiqGripper:SetPositionRange")
-{
-    field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_POSITION_RANGE")
-}
-
 record(longout, "$(P)$(R)RobotiqGripper:MinPosition")
 {
     field(DTYP, "asynInt32")
     field(PINI, "1")
+    field(VAL, "$(MIN_POS=0)")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MIN_POSITION")
+    field(FLNK, "$(P)$(R)RobotiqGripper:SetPositionRange.PROC")
 }
 
 record(longout, "$(P)$(R)RobotiqGripper:MaxPosition")
 {
     field(DTYP, "asynInt32")
     field(PINI, "1")
+    field(VAL, "$(MAX_POS=255)")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MAX_POSITION")
+    field(FLNK, "$(P)$(R)RobotiqGripper:SetPositionRange.PROC")
+}
+
+record(bo, "$(P)$(R)RobotiqGripper:SetPositionRange")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_POSITION_RANGE")
 }
 
 record(mbbo, "$(P)$(R)RobotiqGripper:PositionUnit")
