@@ -2,18 +2,68 @@
 #include <epicsExport.h>
 #include <epicsThread.h>
 #include <exception>
+#include <fstream>
 #include <iocsh.h>
+#include <optional>
+#include <sstream>
 #include <stdexcept>
+#include <type_traits>
 
 #include "rtde_control_driver.hpp"
-#include "rtde_control_interface.h"
+// #include "rtde_control_interface.h"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
 
-static void poll_thread_C(void *pPvt) {
-    RTDEControl *pRTDEControl = (RTDEControl *)pPvt;
-    pRTDEControl->poll();
+// splits a string by a delimiter into a vector<T> and returns it as
+// a std::optional(vector<T>). If conversion fails, std::nullopt is returned
+template <typename T>
+std::optional<std::vector<T>> split_string(const std::string &msg, const char delimiter) {
+    std::vector<T> out;
+    std::string token;
+    std::istringstream token_stream(msg);
+    static_assert(std::is_same_v<T, double> or std::is_same_v<T, int> or std::is_same_v<T, std::string>);
+
+    while (std::getline(token_stream, token, delimiter)) {
+        try {
+            if constexpr (std::is_same_v<T, double>) {
+                const double value = std::stod(token);
+                out.push_back(value);
+            } else if constexpr (std::is_same_v<T, int>) {
+                const int value = std::stoi(token);
+                out.push_back(value);
+            } else if constexpr (std::is_same_v<T, std::string>) {
+                out.push_back(token);
+            }
+        } catch (const std::exception &e) {
+            spdlog::error("Failed to split string. Caugh exception: {}", e.what());
+            return std::nullopt;
+        }
+    }
+    return std::optional(out);
+}
+
+// Reads a CSV file, splitting each row into a vector<double> and returns
+// an optional<vector<vector<double>>>. If the file cannot be opened, or
+// splitting/conversion fails, std::nullopt is returned
+std::optional<std::vector<std::vector<double>>> read_traj_file(std::string filename) {
+    std::vector<std::vector<double>> out;
+    std::ifstream file(filename);
+    if (not file.is_open()) {
+        spdlog::error("Failed to open file {}", filename);
+        return std::nullopt;
+    } else {
+        std::string line;
+        while (std::getline(file, line)) {
+            std::optional<std::vector<double>> v = split_string<double>(line, ',');
+            if (v.has_value()) {
+                out.push_back(v.value());
+            } else {
+                return std::nullopt;
+            }
+        }
+        return std::optional(out);
+    }
 }
 
 bool RTDEControl::try_connect() {
@@ -30,8 +80,8 @@ bool RTDEControl::try_connect() {
             if (dash->robotmode() == "Robotmode: RUNNING") {
                 rtde_control_ = std::make_unique<ur_rtde::RTDEControlInterface>(robot_ip_);
             } else {
-                spdlog::error("Unable to connect to UR RTDE Control Interface: Ensure robot is on "
-                              "and brakes released");
+                spdlog::error("Unable to connect to UR RTDE Control Interface:"
+                              "Ensure robot is on, in normal mode, and brakes released");
                 connected = false;
                 dash->disconnect();
             }
@@ -40,11 +90,15 @@ bool RTDEControl::try_connect() {
                     spdlog::info("Connected to UR RTDE Control interface");
                     connected = true;
 
-                    // connect to RTDE Receive to get current joint states,
+                    // connect to RTDE Receive and Robotiq Gripper,
                     // only if we successfully connect to RTDE Control
                     rtde_receive_ = std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip_);
+                    gripper_->connect();
+                    if (not gripper_->isActive()) {
+                        gripper_->activate();
+                    }
                     if (rtde_receive_ == nullptr) {
-                        // HACK: should never get here
+                        // NOTE: unlikely this could ever happen
                         throw std::runtime_error(
                             "Failed connecting to receive interface from RTDEControl class");
                     }
@@ -65,6 +119,11 @@ bool RTDEControl::try_connect() {
     return connected;
 }
 
+static void poll_thread_C(void *pPvt) {
+    RTDEControl *pRTDEControl = (RTDEControl *)pPvt;
+    pRTDEControl->poll();
+}
+
 RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
@@ -74,13 +133,13 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, // ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1
                      0, 0),
-      rtde_control_(nullptr), rtde_receive_(nullptr), robot_ip_(robot_ip) {
+      rtde_control_(nullptr), rtde_receive_(nullptr),
+      gripper_(std::make_unique<ur_rtde::RobotiqGripper>(robot_ip)), robot_ip_(robot_ip) {
 
     createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
     createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
     createParam(IS_STEADY_STRING, asynParamInt32, &isSteadyIndex_);
-
     createParam(MOVEJ_STRING, asynParamInt32, &moveJIndex_);
     createParam(STOPJ_STRING, asynParamInt32, &stopJIndex_);
     createParam(ACTUAL_Q_STRING, asynParamFloat64Array, &actualQIndex_);
@@ -90,7 +149,6 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(J4CMD_STRING, asynParamFloat64, &j4CmdIndex_);
     createParam(J5CMD_STRING, asynParamFloat64, &j5CmdIndex_);
     createParam(J6CMD_STRING, asynParamFloat64, &j6CmdIndex_);
-
     createParam(MOVEL_STRING, asynParamInt32, &moveLIndex_);
     createParam(STOPL_STRING, asynParamInt32, &stopLIndex_);
     createParam(ACTUAL_TCP_POSE_STRING, asynParamFloat64Array, &actualTCPPoseIndex_);
@@ -100,6 +158,14 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(POSE_ROLL_CMD_STRING, asynParamFloat64, &poseRollCmdIndex_);
     createParam(POSE_PITCH_CMD_STRING, asynParamFloat64, &posePitchCmdIndex_);
     createParam(POSE_YAW_CMD_STRING, asynParamFloat64, &poseYawCmdIndex_);
+    createParam(PLAY_POSE_PATH_STRING, asynParamOctet, &playPosePathIndex_);
+    createParam(PLAY_JOINT_PATH_STRING, asynParamOctet, &playJointPathIndex_);
+    createParam(REUPLOAD_CTRL_SCRIPT_STRING, asynParamInt32, &reuploadCtrlScriptIndex_);
+    createParam(STOP_CTRL_SCRIPT_STRING, asynParamInt32, &stopCtrlScriptIndex_);
+    createParam(JOINT_SPEED_STRING, asynParamFloat64, &jointSpeedIndex_);
+    createParam(JOINT_ACCEL_STRING, asynParamFloat64, &jointAccelIndex_);
+    createParam(ASYNC_MOVE_STRING, asynParamInt32, &asyncMoveIndex_);
+    createParam(ASYNC_MOVE_PROGRESS_STRING, asynParamInt32, &asyncMoveProgressIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -131,6 +197,48 @@ void RTDEControl::poll() {
                 }
                 doCallbacksFloat64Array(pose_vec.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
 
+                if (async_running_) {
+                    if (async_status_ == AsyncMotionStatus::Done) {
+                        if (joint_path_iter_ != joint_path_.end()) {
+
+                            std::vector<double> wp = *joint_path_iter_;
+                            std::stringstream ss;
+                            ss << "Moving to waypoint: ";
+                            for(const auto &i : wp) {
+                                ss << i << ", ";
+                            }
+                            spdlog::debug("{}", ss.str());
+
+                            std::vector<double> waypoint(wp.begin(), wp.end() - 1); // last is gripper
+                            gripper_action_ = wp.back();
+                            
+                            rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
+                            async_status_ = AsyncMotionStatus::WaitingMotion;
+                        } else {
+                            spdlog::debug("Path complete");
+                            async_running_ = false;
+                        }
+                    } else {
+                        if (async_status_ == AsyncMotionStatus::WaitingMotion){
+                            auto op_status = rtde_control_->getAsyncOperationProgressEx();
+                            // int moving = async_op_status.value();
+                            if (not op_status.isAsyncOperationRunning()) {
+                                spdlog::debug("Waypoint reached");
+                                if (gripper_action_ == 0) {
+                                    gripper_->open();
+                                } else {
+                                    gripper_->close();
+                                }
+                                async_status_ = AsyncMotionStatus::WaitingGripper;
+                            }
+                        } else if (async_status_ == AsyncMotionStatus::WaitingGripper) {
+                            if (gripper_->objectDetectionStatus() != ur_rtde::RobotiqGripper::eObjectStatus::MOVING) {
+                                async_status_ = AsyncMotionStatus::Done;
+                                joint_path_iter_ = std::next(joint_path_iter_); // move iterator to next waypoint
+                            }
+                        }
+                    }
+                }
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
             }
@@ -175,15 +283,25 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     if (JxCmd_map.count(function) > 0) {
         // convert commanded joint angles to radians
         const double val = value * M_PI / 180.0;
-        cmd_joints.at(JxCmd_map[function]) = val;
+        // cmd_joints.at(JxCmd_map[function]) = val;
+        cmd_joints.at(JxCmd_map.at(function)) = val;
     }
 
     // When commanded TCP pose values change, update the values
     else if (PoseCmd_map.count(function) > 0) {
         // note we just need to convert roll, pitch, yaw to degrees
-        int ind = PoseCmd_map[function];
+        // int ind = PoseCmd_map[function];
+        int ind = PoseCmd_map.at(function);
         const double val = (ind >= 3) ? (value * M_PI / 180.0) : value;
         cmd_pose.at(ind) = val;
+    }
+
+    else if (function == jointSpeedIndex_) {
+        this->joint_speed = value;
+        spdlog::debug("Setting joint speed to {}", joint_speed);
+    } else if (function == jointAccelIndex_) {
+        this->joint_accel = value;
+        spdlog::debug("Setting joint acceleration to {}", joint_accel);
     }
 
 skip:
@@ -226,7 +344,6 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         goto skip;
     }
 
-    // RTDE Control interface function calls go here
     if (function == moveJIndex_) {
 
         spdlog::info("moveJ({:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}) rad", cmd_joints.at(0),
@@ -235,13 +352,13 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints);
         if (safe) {
-            rtde_control_->moveJ(cmd_joints);
+            rtde_control_->moveJ(cmd_joints, joint_speed, joint_accel, async_move);
         } else {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
     } else if (function == stopJIndex_) {
-        spdlog::debug("Stopping joint move");
-        rtde_control_->stopJ();
+        spdlog::debug("Stopping joint move (only works in asynchronous mode)");
+        rtde_control_->stopJ(2.0, true); // asynchronous=true
     }
 
     else if (function == moveLIndex_) {
@@ -252,13 +369,83 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isPoseWithinSafetyLimits(cmd_pose);
         if (safe) {
-            rtde_control_->moveL(cmd_pose);
+            // rtde_control_->moveL(cmd_pose);
+            spdlog::warn("moveL not implemented");
         } else {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
     } else if (function == stopLIndex_) {
-        spdlog::debug("Stopping linear TCP move");
-        rtde_control_->stopL();
+        spdlog::debug("Stopping linear TCP move (only works in asynchronous mode)");
+        // rtde_control_->stopL();
+    }
+
+    else if (function == reuploadCtrlScriptIndex_) {
+        spdlog::debug("Reuploading control script");
+        rtde_control_->reuploadScript();
+        spdlog::debug("Control script reuploaded");
+    }
+
+    else if (function == stopCtrlScriptIndex_) {
+        spdlog::debug("Stopping control script");
+        rtde_control_->stopScript();
+        spdlog::debug("Control script stopped");
+    }
+
+    else if (function == asyncMoveIndex_) {
+        async_move = value;
+    }
+
+skip:
+    callParamCallbacks();
+    if (comm_ok) {
+        return asynSuccess;
+    } else {
+        spdlog::debug("RTDE communincation error in RTDEControl::writeInt32");
+        return asynError;
+    }
+}
+
+asynStatus RTDEControl::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual) {
+    int function = pasynUser->reason;
+    bool comm_ok = true;
+
+    if (rtde_control_ == nullptr) {
+        spdlog::error("RTDE Control interface not initialized");
+        comm_ok = false;
+        goto skip;
+    }
+
+    if (not rtde_control_->isConnected()) {
+        spdlog::error("RTDE Control interface not connected");
+        comm_ok = false;
+        goto skip;
+    }
+
+    if (function == playPosePathIndex_) {
+        auto pose_path = read_traj_file(value);
+        if (pose_path.has_value()) {
+            for (const auto &p : pose_path.value()) {
+                spdlog::info("moveL({:.4f} mm, {:.4f} mm, {:.4f} mm, {:.4f} rad , {:.4f} rad, {:.4f} rad)",
+                             p.at(0), p.at(1), p.at(2), p.at(3), p.at(4), p.at(5));
+            }
+        }
+        spdlog::warn("Play pose path not implemented");
+    }
+
+    else if (function == playJointPathIndex_) {
+        ur_rtde::Path path;
+        this->joint_path_.clear();
+
+        std::optional<std::vector<std::vector<double>>> joint_path = read_traj_file(value);
+
+        if (joint_path.has_value()) {
+            this->joint_path_ = joint_path.value();
+            this->joint_path_iter_ = this->joint_path_.begin();
+            async_running_ = true;
+        } else {
+            comm_ok = false;
+            goto skip;
+        }
     }
 
 skip:

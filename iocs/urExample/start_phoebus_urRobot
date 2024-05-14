@@ -4,7 +4,7 @@
 PHOEBUS="/APSshare/bin/phoebus"
 
 # path to urRobot support module
-URROBOT_PATH="/home/beams/NMARKS/devel/ur-dev/urRobot"
+URROBOT_PATH="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot"
 
 # ioc prefixes
 P="urExample:"
@@ -18,6 +18,8 @@ export UI_FILE1=${1:-${DEFAULT_UI_FILE:-ur_dashboard.bob}}
 export UI_FILE2=${1:-${DEFAULT_UI_FILE:-ur_rtde_status.bob}}
 export UI_FILE3=${1:-${DEFAULT_UI_FILE:-ur_rtde_control.bob}}
 export UI_FILE4=${1:-${DEFAULT_UI_FILE:-ur_rtde_io.bob}}
+export UI_FILE5=${1:-${DEFAULT_UI_FILE:-path_gen.bob}}
+export UI_FILE6=${1:-${DEFAULT_UI_FILE:-play_path.bob}}
 export UI_FILE_MACROS=${2:-"P=${P}&R=${R}"}
 
 # #######################################
@@ -37,5 +39,5 @@ export EDITOR=nedit
 #######################################
 # start CSS-phoebus
 
-${PHOEBUS} -layout $EPICS_APP/phoebus.layout -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE1}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE2}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE3}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE4}?${UI_FILE_MACROS}&target=window"
+${PHOEBUS} -layout $EPICS_APP/phoebus.layout -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE1}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE2}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE3}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE4}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE5}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE6}?${UI_FILE_MACROS}&target=window"
 

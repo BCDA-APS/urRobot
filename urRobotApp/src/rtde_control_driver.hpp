@@ -1,6 +1,7 @@
 #ifndef _RTDE_CONTROL_DRIVER_HPP_
 #define _RTDE_CONTROL_DRIVER_HPP_
 
+#include "ur_rtde/robotiq_gripper.h"
 #include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/rtde_receive_interface.h"
 #include <asynPortDriver.h>
@@ -30,10 +31,21 @@ static constexpr char POSE_ROLL_CMD_STRING[] = "POSE_ROLL_CMD";
 static constexpr char POSE_PITCH_CMD_STRING[] = "POSE_PITCH_CMD";
 static constexpr char POSE_YAW_CMD_STRING[] = "POSE_YAW_CMD";
 
+static constexpr char PLAY_POSE_PATH_STRING[] = "PLAY_POSE_PATH";
+static constexpr char PLAY_JOINT_PATH_STRING[] = "PLAY_JOINT_PATH";
+static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
+static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
+static constexpr char JOINT_SPEED_STRING[] = "JOINT_SPEED";
+static constexpr char JOINT_ACCEL_STRING[] = "JOINT_ACCELERATION";
+static constexpr char ASYNC_MOVE_STRING[] = "ASYNC_MOVE";
+static constexpr char ASYNC_MOVE_PROGRESS_STRING[] = "ASYNC_MOVE_PROGRESS";
+
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
 static constexpr double POLL_PERIOD = 0.02; // 50Hz
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
+
+enum class AsyncMotionStatus : int { WaitingMotion, WaitingGripper, Done };
 
 class RTDEControl : public asynPortDriver {
   public:
@@ -41,10 +53,13 @@ class RTDEControl : public asynPortDriver {
     virtual void poll(void);
     virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
+    virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual);
 
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
+    std::unique_ptr<ur_rtde::RobotiqGripper> gripper_;
+
     const char *robot_ip_;
     bool try_connect();
 
@@ -54,6 +69,19 @@ class RTDEControl : public asynPortDriver {
     // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
     std::vector<double> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
+    // Joint speed and acceleration to use with moveJ
+    double joint_speed = 1.05; // rad/s
+    double joint_accel = 1.4;  // rad/s/s
+
+    // handle asynchronous motion through paths, etc.
+    bool async_move = true;
+    bool async_running_ = false;
+    AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
+    // int async_progress_last_ = -1;
+    int gripper_action_ = 0;
+    std::vector<std::vector<double>> joint_path_;
+    std::vector<std::vector<double>>::iterator joint_path_iter_;
+
   protected:
     asynUser *pasynUserURRobot_;
 
@@ -61,7 +89,6 @@ class RTDEControl : public asynPortDriver {
     int reconnectIndex_;
     int isConnectedIndex_;
     int isSteadyIndex_;
-
     int actualQIndex_;
     int moveJIndex_;
     int stopJIndex_;
@@ -71,7 +98,6 @@ class RTDEControl : public asynPortDriver {
     int j4CmdIndex_;
     int j5CmdIndex_;
     int j6CmdIndex_;
-
     int actualTCPPoseIndex_;
     int moveLIndex_;
     int stopLIndex_;
@@ -81,6 +107,14 @@ class RTDEControl : public asynPortDriver {
     int poseRollCmdIndex_;
     int posePitchCmdIndex_;
     int poseYawCmdIndex_;
+    int playPosePathIndex_;
+    int playJointPathIndex_;
+    int reuploadCtrlScriptIndex_;
+    int stopCtrlScriptIndex_;
+    int jointSpeedIndex_;
+    int jointAccelIndex_;
+    int asyncMoveIndex_;
+    int asyncMoveProgressIndex_;
 };
 
 #endif

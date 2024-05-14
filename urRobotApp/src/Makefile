@@ -26,6 +26,7 @@ urRobot_SRCS += dashboard_driver.cpp
 urRobot_SRCS += rtde_receive_driver.cpp
 urRobot_SRCS += rtde_io_driver.cpp
 urRobot_SRCS += rtde_control_driver.cpp
+urRobot_SRCS += gripper_driver.cpp
 
 urRobot_LIBS += asyn
 urRobot_LIBS += rtde

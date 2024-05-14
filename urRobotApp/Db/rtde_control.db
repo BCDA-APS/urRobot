@@ -1,20 +1,7 @@
 
 #======================
-# Status inputs
+# Status/Connection
 #======================
-record(bo, "$(P)$(R)Control:Disconnect")
-{
-    field(DESC, "Disconnects from the RTDE interface")
-    field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DISCONNECT")
-}
-
-record(bo, "$(P)$(R)Control:Reconnect")
-{
-    field(DESC, "Tries reconnecting to the RTDE interface")
-    field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RECONNECT")
-}
 
 record(bi, "$(P)$(R)Control:Connected")
 {
@@ -32,6 +19,42 @@ record(bi, "$(P)$(R)Control:Steady")
     field(SCAN, "I/O Intr")
 }
 
+record(bo, "$(P)$(R)Control:Disconnect")
+{
+    field(DESC, "Disconnects from the RTDE interface")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DISCONNECT")
+}
+
+record(bo, "$(P)$(R)Control:Reconnect")
+{
+    field(DESC, "Tries reconnecting to the RTDE interface")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RECONNECT")
+}
+
+record(bo, "$(P)$(R)Control:ReuploadControlScript")
+{
+    field(DESC, "Reuploads control script to controller")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))REUPLOAD_CONTROL_SCRIPT")
+}
+
+record(bo, "$(P)$(R)Control:StopControlScript")
+{
+    field(DESC, "Stops the control script")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOP_CONTROL_SCRIPT")
+}
+
+record(bo, "$(P)$(R)Control:Asynchronous")
+{
+    field(DESC, "If 1, moves will be asynchronous")
+    field(DTYP, "asynInt32")
+    field(VAL, 1)
+    field(PINI, 1)
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ASYNC_MOVE")
+}
 
 #======================
 # Joint control
@@ -42,6 +65,24 @@ record(bo, "$(P)$(R)Control:moveJ")
     field(DESC, "Moves joints to commanded values")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEJ")
+}
+
+record(ao, "$(P)$(R)Control:JointSpeed")
+{
+    field(DESC, "Joint speeds for moveJ")
+    field(DTYP, "asynFloat64")
+    field(PREC, 2)
+    field(EGU, "rad/s")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_SPEED")
+}
+
+record(ao, "$(P)$(R)Control:JointAcceleration")
+{
+    field(DESC, "Joint accelerations for moveJ")
+    field(DTYP, "asynFloat64")
+    field(PREC, 2)
+    field(EGU, "rad/s/s")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_ACCELERATION")
 }
 
 record(bo, "$(P)$(R)Control:stopJ")
@@ -431,6 +472,7 @@ record(calcout, "$(P)$(R)Control:J6TweakCalcRev")
 #======================
 # TCP pose control
 #======================
+# FIX: Not robust, often causes protective stop to trigger
 
 record(bo, "$(P)$(R)Control:moveL")
 {
@@ -801,3 +843,22 @@ record(calcout, "$(P)$(R)Control:PoseYawTweakCalcRev")
     field(OUT, "$(P)$(R)Control:PoseYawCmd PP")
 }
 # -----------------------------------------------------------
+
+record(stringout, "$(P)$(R)Control:PlayPosePath")
+{
+    field(DESC, "Moves through CSV file of EE waypoints")
+    field(DTYP, "asynOctetWrite")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PLAY_POSE_PATH")
+}
+
+record(stringout, "$(P)$(R)Control:JointPathFile")
+{
+    field(OUT, "$(P)$(R)Control:PlayJointPath NPP")
+}
+
+record(stringout, "$(P)$(R)Control:PlayJointPath")
+{
+    field(DESC, "Moves through CSV file of joint angles")
+    field(DTYP, "asynOctetWrite")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PLAY_JOINT_PATH")
+}

@@ -10,9 +10,9 @@
 # EPICS_BASE=/APSshare/epics/base-7.0.8
 
 ### synApps 6-2-1 ###
-SUPPORT=/APSshare/epics/synApps_6_2_1/support
-EPICS_BASE=/APSshare/epics/base-7.0.4.1/
-ASYN = $(SUPPORT)/asyn-R4-42
+# SUPPORT=/APSshare/epics/synApps_6_2_1/support
+# EPICS_BASE=/APSshare/epics/base-7.0.4.1/
+# ASYN = $(SUPPORT)/asyn-R4-42
 
 # These lines allow developers to override these RELEASE settings
 # without having to modify this file directly.

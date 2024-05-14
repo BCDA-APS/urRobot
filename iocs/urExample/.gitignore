@@ -1,4 +1,6 @@
 *~
+.iocsh_history
+*.local
 O.*
 *.swp
 *BAK.adl
