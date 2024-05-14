@@ -1,5 +1,5 @@
 # Waypoints in joint space plus gripper state (1=open, 0=closed)
-file "waypointJ.db"
+file "$(URROBOT)/db/waypointJ.db"
 {
 pattern
 {N,   NAME,            EN, j1, j2, j3, j4, j5, j6, SPEED, ACCEL, BLEND, GRIPPER}
@@ -35,7 +35,7 @@ pattern
 {30,  "waypoint $(N)",  0,  0,  0,  0,  0,  0,  0,  1.05,   1.4,     0,       0}
 }
 
-file "waypoints.db"
+file "$(URROBOT)/db/waypoints.db"
 {
 pattern
 {MAX_WAYPOINTS}

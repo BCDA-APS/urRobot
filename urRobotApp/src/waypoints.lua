@@ -1,3 +1,4 @@
+-- NOTE: IOC must add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH
 epics = require("epics")
 PI = 3.141592653589793
 

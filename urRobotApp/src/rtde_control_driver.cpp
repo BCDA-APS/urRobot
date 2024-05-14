@@ -94,6 +94,9 @@ bool RTDEControl::try_connect() {
                     // only if we successfully connect to RTDE Control
                     rtde_receive_ = std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip_);
                     gripper_->connect();
+                    if (not gripper_->isActive()) {
+                        gripper_->activate();
+                    }
                     if (rtde_receive_ == nullptr) {
                         // NOTE: unlikely this could ever happen
                         throw std::runtime_error(
