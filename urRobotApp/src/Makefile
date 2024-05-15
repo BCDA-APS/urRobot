@@ -40,6 +40,11 @@ PROD += calibrate_gripper
 calibrate_gripper_SRCS += calibrate_gripper.cpp
 calibrate_gripper_LIBS += rtde
 
+# Program for testing ur_rtde by itself without asyn
+TESTPROD += urtest
+urtest_SRCS += urtest.cpp
+urtest_LIBS += rtde
+
 include $(TOP)/configure/RULES
 #----------------------------------------
 #  ADD RULES AFTER THIS LINE

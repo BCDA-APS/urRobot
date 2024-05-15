@@ -20,7 +20,7 @@ distribution. If you believe it should work on your OS or distribution and it do
 - [spdlog](https://github.com/gabime/spdlog) (included)
 
 Of these dependencies, you will only need to worry about EPICS base and asyn. Although the above versions are
-recommended, epics-urRobot may build with other versions. The ur_rtde library comes pre-built for the supported
+recommended, `urRobot` may build with other versions. The `ur_rtde` library comes pre-built for the supported
 operating systems, and spdlog which is used for logging is a header only library which comes included with the
 this support module as well.
 
