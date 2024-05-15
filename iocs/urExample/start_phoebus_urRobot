@@ -14,12 +14,7 @@ R=""
 
 export EPICS_APP=$(cd "$(dirname "$BASH_SOURCE")"; cd -P "$(dirname "$(readlink "$BASH_SOURCE" || echo .)")"; pwd)
 export EPICS_APP_UI_DIR=${URROBOT_PATH}/urRobotApp/op/bob
-export UI_FILE1=${1:-${DEFAULT_UI_FILE:-ur_dashboard.bob}}
-export UI_FILE2=${1:-${DEFAULT_UI_FILE:-ur_rtde_status.bob}}
-export UI_FILE3=${1:-${DEFAULT_UI_FILE:-ur_rtde_control.bob}}
-export UI_FILE4=${1:-${DEFAULT_UI_FILE:-ur_rtde_io.bob}}
-export UI_FILE5=${1:-${DEFAULT_UI_FILE:-path_gen.bob}}
-export UI_FILE6=${1:-${DEFAULT_UI_FILE:-play_path.bob}}
+export UI_FILE1=${1:-${DEFAULT_UI_FILE:-urRobot.bob}}
 export UI_FILE_MACROS=${2:-"P=${P}&R=${R}"}
 
 # #######################################
@@ -38,6 +33,4 @@ export EDITOR=nedit
 
 #######################################
 # start CSS-phoebus
-
-${PHOEBUS} -layout $EPICS_APP/phoebus.layout -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE1}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE2}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE3}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE4}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE5}?${UI_FILE_MACROS}&target=window" -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE6}?${UI_FILE_MACROS}&target=window"
-
+${PHOEBUS} -layout $EPICS_APP/phoebus.layout -resource "file:${EPICS_APP_UI_DIR}/${UI_FILE1}?${UI_FILE_MACROS}&target=window"

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-05-15 09:54:22 by nmarks-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>250</width>
+  <height>200</height>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>UR Robot</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="open_display">
+        <file>ur_dashboard.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>Dashboard</description>
+      </action>
+    </actions>
+    <text>Dashboard</text>
+    <x>10</x>
+    <y>50</y>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions>
+      <action type="open_display">
+        <file>ur_rtde_status.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>RTDE Receive</description>
+      </action>
+    </actions>
+    <text>Monitor</text>
+    <x>10</x>
+    <y>90</y>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_2</name>
+    <actions>
+      <action type="open_display">
+        <file>ur_rtde_control.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>RTDE Control</description>
+      </action>
+    </actions>
+    <text>Control</text>
+    <x>130</x>
+    <y>90</y>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_3</name>
+    <actions>
+      <action type="open_display">
+        <file>path_gen.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>Path Generator</description>
+      </action>
+    </actions>
+    <text>Path Generator</text>
+    <x>130</x>
+    <y>50</y>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_4</name>
+    <actions>
+      <action type="open_display">
+        <file>ur_rtde_io.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>I/O</description>
+      </action>
+    </actions>
+    <text>I/O</text>
+    <x>10</x>
+    <y>130</y>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+</display>

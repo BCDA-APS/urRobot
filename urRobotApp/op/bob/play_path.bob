@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-14 13:41:50 by nmarks-->
+<!--Saved on 2024-05-15 09:50:45 by nmarks-->
 <display version="2.0.0">
-  <name>Display</name>
-  <width>500</width>
+  <name>Play Path</name>
+  <width>350</width>
   <height>200</height>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
     <pv_name>$(P)$(R)Control:JointPathFile</pv_name>
     <x>50</x>
-    <y>50</y>
+    <y>90</y>
     <width>170</width>
     <height>30</height>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_52</name>
     <text>Joint Path</text>
     <x>10</x>
-    <y>10</y>
+    <y>50</y>
     <width>160</width>
     <height>30</height>
     <font>
@@ -36,21 +37,7 @@
     </actions>
     <text>󰐊</text>
     <x>230</x>
-    <y>50</y>
-    <width>40</width>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_1</name>
-    <actions>
-      <action type="write_pv">
-        <pv_name>$(P)$(R)Control:stopJ.PROC</pv_name>
-        <value>1</value>
-        <description>$(P)$(R)Control:stopJ.PROC</description>
-      </action>
-    </actions>
-    <text>󰓛</text>
-    <x>280</x>
-    <y>50</y>
+    <y>90</y>
     <width>40</width>
     <tooltip>$(actions)</tooltip>
   </widget>
@@ -59,8 +46,26 @@
     <pv_name>$(P)$(R)Control:JointPathFile</pv_name>
     <component>2</component>
     <x>10</x>
-    <y>50</y>
+    <y>90</y>
     <width>30</width>
     <height>30</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>Play Path</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>220</width>
+    <height>30</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
   </widget>
 </display>

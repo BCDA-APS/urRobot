@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-04-02 16:27:21 by nmarks-->
+<!--Saved on 2024-05-15 09:50:10 by nmarks-->
 <display version="2.0.0">
-  <name>Display</name>
+  <name>RTDE Receive</name>
   <width>1000</width>
   <height>1300</height>
   <widget type="label" version="2.0.0">
