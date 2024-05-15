@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-10 11:39:40 by nmarks-->
+<!--Saved on 2024-05-15 11:18:20 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
   <width>1200</width>
   <height>75</height>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
     <pv_name>$(P)$(R)Waypoint$(N):J1</pv_name>
@@ -65,6 +69,10 @@
     <x>40</x>
     <y>10</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -83,6 +91,10 @@
       <color name="MAJOR" red="255" green="0" blue="0">
       </color>
     </on_color>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
   </widget>
   <widget type="checkbox" version="2.0.0">
     <name>Check Box</name>

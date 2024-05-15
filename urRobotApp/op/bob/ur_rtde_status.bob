@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 09:50:10 by nmarks-->
+<!--Saved on 2024-05-15 11:16:42 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Receive</name>
   <width>1000</width>
   <height>1300</height>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -31,6 +35,10 @@
       <font family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
+    <background_color>
+      <color name="Button_Background" red="210" green="210" blue="210">
+      </color>
+    </background_color>
     <widget type="label" version="2.0.0">
       <name>Label_6</name>
       <text>Standard:</text>
@@ -164,6 +172,10 @@
       <font family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
+    <background_color>
+      <color name="Button_Background" red="210" green="210" blue="210">
+      </color>
+    </background_color>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_12</name>
       <pv_name>$(P)$(R)Receive:AnalogInput0</pv_name>
@@ -233,6 +245,10 @@
       <font family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
+    <background_color>
+      <color name="Button_Background" red="210" green="210" blue="210">
+      </color>
+    </background_color>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_9</name>
       <pv_name>$(P)$(R)Receive:SafetyStatusBits</pv_name>
@@ -346,6 +362,10 @@
       <font family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
+    <background_color>
+      <color name="Button_Background" red="210" green="210" blue="210">
+      </color>
+    </background_color>
     <widget type="label" version="2.0.0">
       <name>Label_45</name>
       <text>TCP pose:</text>
@@ -656,6 +676,10 @@
       <font family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
+    <background_color>
+      <color name="Button_Background" red="210" green="210" blue="210">
+      </color>
+    </background_color>
     <widget type="label" version="2.0.0">
       <name>Label_49</name>
       <text>TCP pose:</text>
@@ -790,6 +814,10 @@
     <text>Disconnect</text>
     <y>260</y>
     <width>150</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -804,6 +832,10 @@
     <text>Reconnect</text>
     <y>220</y>
     <width>150</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
 </display>
