@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-04-02 10:09:38 by nmarks-->
+<!--Saved on 2024-05-15 09:49:47 by nmarks-->
 <display version="2.0.0">
-  <name>Display</name>
+  <name>RTDE I/O</name>
+  <width>550</width>
+  <height>300</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-10 11:42:01 by nmarks-->
+<!--Saved on 2024-05-15 09:50:55 by nmarks-->
 <display version="2.0.0">
-  <name>Display</name>
-  <width>1200</width>
-  <height>1000</height>
+  <name>Path Generator</name>
+  <width>1100</width>
+  <height>700</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -145,10 +145,11 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
     <pv_name>$(P)$(R)WaypointsFile</pv_name>
-    <x>630</x>
-    <y>650</y>
+    <x>710</x>
+    <y>640</y>
     <width>250</width>
     <height>30</height>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button</name>
@@ -160,10 +161,11 @@
       </action>
     </actions>
     <text>Save</text>
-    <x>890</x>
-    <y>650</y>
+    <x>970</x>
+    <y>640</y>
     <width>70</width>
-    <tooltip>$(actions)</tooltip>
+    <tooltip>File saved in iocBoot/iocxxx directory</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_1</name>
@@ -210,8 +212,8 @@
   <widget type="label" version="2.0.0">
     <name>Label_4</name>
     <text>Save to File:</text>
-    <x>630</x>
-    <y>620</y>
+    <x>710</x>
+    <y>610</y>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
