@@ -164,6 +164,8 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(STOP_CTRL_SCRIPT_STRING, asynParamInt32, &stopCtrlScriptIndex_);
     createParam(JOINT_SPEED_STRING, asynParamFloat64, &jointSpeedIndex_);
     createParam(JOINT_ACCEL_STRING, asynParamFloat64, &jointAccelIndex_);
+    createParam(LINEAR_SPEED_STRING, asynParamFloat64, &linearSpeedIndex_);
+    createParam(LINEAR_ACCEL_STRING, asynParamFloat64, &linearAccelIndex_);
     createParam(ASYNC_MOVE_STRING, asynParamInt32, &asyncMoveIndex_);
     createParam(ASYNC_MOVE_PROGRESS_STRING, asynParamInt32, &asyncMoveProgressIndex_);
 
@@ -283,25 +285,31 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     if (JxCmd_map.count(function) > 0) {
         // convert commanded joint angles to radians
         const double val = value * M_PI / 180.0;
-        // cmd_joints.at(JxCmd_map[function]) = val;
         cmd_joints.at(JxCmd_map.at(function)) = val;
     }
 
     // When commanded TCP pose values change, update the values
     else if (PoseCmd_map.count(function) > 0) {
         // note we just need to convert roll, pitch, yaw to degrees
-        // int ind = PoseCmd_map[function];
         int ind = PoseCmd_map.at(function);
         const double val = (ind >= 3) ? (value * M_PI / 180.0) : value;
         cmd_pose.at(ind) = val;
     }
 
     else if (function == jointSpeedIndex_) {
-        this->joint_speed = value;
-        spdlog::debug("Setting joint speed to {}", joint_speed);
+        this->joint_speed_ = value;
+        spdlog::debug("Setting joint speed to {}", joint_speed_);
     } else if (function == jointAccelIndex_) {
-        this->joint_accel = value;
-        spdlog::debug("Setting joint acceleration to {}", joint_accel);
+        this->joint_accel_ = value;
+        spdlog::debug("Setting joint acceleration to {}", joint_accel_);
+    }
+
+    else if (function == linearSpeedIndex_) {
+        this->linear_speed_ = value;
+        spdlog::debug("Setting linear speed to {}", linear_speed_);
+    } else if (function == linearAccelIndex_) {
+        this->linear_accel_ = value;
+        spdlog::debug("Setting linear acceleration to {}", linear_accel_);
     }
 
 skip:
@@ -352,7 +360,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints);
         if (safe) {
-            rtde_control_->moveJ(cmd_joints, joint_speed, joint_accel, async_move);
+            rtde_control_->moveJ(cmd_joints, joint_speed_, joint_accel_, async_move);
         } else {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
@@ -369,14 +377,13 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isPoseWithinSafetyLimits(cmd_pose);
         if (safe) {
-            // rtde_control_->moveL(cmd_pose);
-            spdlog::warn("moveL not implemented");
+            rtde_control_->moveL(cmd_pose, linear_speed_, linear_accel_, async_move);
         } else {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
     } else if (function == stopLIndex_) {
         spdlog::debug("Stopping linear TCP move (only works in asynchronous mode)");
-        // rtde_control_->stopL();
+        rtde_control_->stopL();
     }
 
     else if (function == reuploadCtrlScriptIndex_) {

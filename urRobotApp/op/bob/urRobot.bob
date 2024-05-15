@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 10:35:13 by nmarks-->
+<!--Saved on 2024-05-15 16:01:19 by nmarks-->
 <display version="2.0.0">
-  <name>Display</name>
+  <name>UR Robot</name>
   <width>250</width>
   <height>200</height>
   <background_color>

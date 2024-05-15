@@ -92,7 +92,7 @@ record(bo, "$(P)$(R)Control:stopJ")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOPJ")
 }
 
-record(bo, "$(P)$(R)Control:auto_moveJ")
+record(bo, "$(P)$(R)Control:AutoMoveJ")
 {
     field(DESC, "If 1, moveJ runs when JxCmd changes")
     field(VAL, 0)
@@ -100,7 +100,7 @@ record(bo, "$(P)$(R)Control:auto_moveJ")
 
 record(calcout, "$(P)$(R)Control:auto_moveJ_calc")
 {
-    field(INPA, "$(P)$(R)Control:auto_moveJ")
+    field(INPA, "$(P)$(R)Control:AutoMoveJ")
     field(CALC, "A")
     field(OOPT, "When Non-zero")
     field(OUT, "$(P)$(R)Control:moveJ.PROC")
@@ -481,11 +481,43 @@ record(bo, "$(P)$(R)Control:moveL")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEL")
 }
 
+record(ao, "$(P)$(R)Control:LinearSpeed")
+{
+    field(DESC, "Linear speed for moveL")
+    field(DTYP, "asynFloat64")
+    field(PREC, 3)
+    field(EGU, "m/s")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LINEAR_SPEED")
+}
+
+record(ao, "$(P)$(R)Control:LinearAcceleration")
+{
+    field(DESC, "Linear acceleration for moveL")
+    field(DTYP, "asynFloat64")
+    field(PREC, 3)
+    field(EGU, "m/s/s")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LINEAR_ACCELERATION")
+}
+
 record(bo, "$(P)$(R)Control:stopL")
 {
     field(DESC, "Stop linear move to TCP pose")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOPL")
+}
+
+record(bo, "$(P)$(R)Control:AutoMoveL")
+{
+    field(DESC, "If 1, moveL runs when Cmd changes")
+    field(VAL, 0)
+}
+
+record(calcout, "$(P)$(R)Control:auto_moveL_calc")
+{
+    field(INPA, "$(P)$(R)Control:AutoMoveL")
+    field(CALC, "A")
+    field(OOPT, "When Non-zero")
+    field(OUT, "$(P)$(R)Control:moveL.PROC")
 }
 
 record(waveform, "$(P)$(R)Control:ActualTCPPose")
@@ -601,12 +633,15 @@ record(ao, "$(P)$(R)Control:PoseXCmd")
     field(EGU, "mm")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveL_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:PoseXTweakVal")
 {
     field(DESC, "X TCP pose tweak step size")
     field(EGU, "m")
     field(PREC, 4)
+    field(DRVH, "0.1")
+    field(DRVL, "0.0")
 }
 record(bo, "$(P)$(R)Control:PoseXTweakFwd")
 {
@@ -643,12 +678,15 @@ record(ao, "$(P)$(R)Control:PoseYCmd")
     field(EGU, "mm")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveL_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:PoseYTweakVal")
 {
     field(DESC, "Y TCP pose tweak step size")
     field(EGU, "m")
     field(PREC, 4)
+    field(DRVH, "0.1")
+    field(DRVL, "0.0")
 }
 record(bo, "$(P)$(R)Control:PoseYTweakFwd")
 {
@@ -677,6 +715,7 @@ record(calcout, "$(P)$(R)Control:PoseYTweakCalcRev")
 
 # -----------------------------------------------------------
 
+
 record(ao, "$(P)$(R)Control:PoseZCmd")
 {
     field(DESC, "Commanded TCP Z")
@@ -685,12 +724,15 @@ record(ao, "$(P)$(R)Control:PoseZCmd")
     field(EGU, "mm")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveL_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:PoseZTweakVal")
 {
     field(DESC, "TCP Z tweak step size")
     field(EGU, "m")
     field(PREC, 4)
+    field(DRVH, "0.1")
+    field(DRVL, "0.0")
 }
 record(bo, "$(P)$(R)Control:PoseZTweakFwd")
 {
@@ -727,12 +769,14 @@ record(ao, "$(P)$(R)Control:PoseRollCmd")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveL_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:PoseRollTweakVal")
 {
     field(DESC, "TCP roll tweak step size")
     field(EGU, "degrees")
     field(PREC, 4)
+    field(DRVL, "0.0")
 }
 record(bo, "$(P)$(R)Control:PoseRollTweakFwd")
 {
@@ -769,12 +813,14 @@ record(ao, "$(P)$(R)Control:PosePitchCmd")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveL_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:PosePitchTweakVal")
 {
     field(DESC, "TCP pitch tweak step size")
     field(EGU, "degrees")
     field(PREC, 4)
+    field(DRVL, "0.0")
 }
 record(bo, "$(P)$(R)Control:PosePitchTweakFwd")
 {
@@ -811,12 +857,14 @@ record(ao, "$(P)$(R)Control:PoseYawCmd")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
+    field(FLNK, "$(P)$(R)Control:auto_moveL_calc.PROC")
 }
 record(ao, "$(P)$(R)Control:PoseYawTweakVal")
 {
     field(DESC, "TCP yaw tweak step size")
     field(EGU, "degrees")
     field(PREC, 4)
+    field(DRVL, "0.0")
 }
 record(bo, "$(P)$(R)Control:PoseYawTweakFwd")
 {
@@ -844,6 +892,9 @@ record(calcout, "$(P)$(R)Control:PoseYawTweakCalcRev")
 }
 # -----------------------------------------------------------
 
+#======================
+# Path Following
+#======================
 record(stringout, "$(P)$(R)Control:PlayPosePath")
 {
     field(DESC, "Moves through CSV file of EE waypoints")

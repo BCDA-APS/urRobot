@@ -44,6 +44,8 @@ calibrate_gripper_LIBS += rtde
 TESTPROD += urtest
 urtest_SRCS += urtest.cpp
 urtest_LIBS += rtde
+urtest_SYS_LIBS += boost_system
+urtest_SYS_LIBS += boost_thread
 
 include $(TOP)/configure/RULES
 #----------------------------------------

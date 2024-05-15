@@ -40,6 +40,9 @@ static constexpr char JOINT_ACCEL_STRING[] = "JOINT_ACCELERATION";
 static constexpr char ASYNC_MOVE_STRING[] = "ASYNC_MOVE";
 static constexpr char ASYNC_MOVE_PROGRESS_STRING[] = "ASYNC_MOVE_PROGRESS";
 
+static constexpr char LINEAR_SPEED_STRING[] = "LINEAR_SPEED";
+static constexpr char LINEAR_ACCEL_STRING[] = "LINEAR_ACCELERATION";
+
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
 static constexpr double POLL_PERIOD = 0.02; // 50Hz
@@ -70,14 +73,15 @@ class RTDEControl : public asynPortDriver {
     std::vector<double> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
     // Joint speed and acceleration to use with moveJ
-    double joint_speed = 1.05; // rad/s
-    double joint_accel = 1.4;  // rad/s/s
+    double joint_speed_ = 1.05;   // rad/s
+    double joint_accel_ = 1.4;    // rad/s/s
+    double linear_speed_ = 0.05; // m/s
+    double linear_accel_ = 0.5;  // m/s/s
 
     // handle asynchronous motion through paths, etc.
     bool async_move = true;
     bool async_running_ = false;
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
-    // int async_progress_last_ = -1;
     int gripper_action_ = 0;
     std::vector<std::vector<double>> joint_path_;
     std::vector<std::vector<double>>::iterator joint_path_iter_;
@@ -113,6 +117,8 @@ class RTDEControl : public asynPortDriver {
     int stopCtrlScriptIndex_;
     int jointSpeedIndex_;
     int jointAccelIndex_;
+    int linearSpeedIndex_;
+    int linearAccelIndex_;
     int asyncMoveIndex_;
     int asyncMoveProgressIndex_;
 };
