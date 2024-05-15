@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 09:53:23 by nmarks-->
+<!--Saved on 2024-05-15 11:14:10 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Control</name>
   <width>950</width>
   <height>800</height>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_8</name>
     <x>10</x>
@@ -91,6 +95,10 @@
     <text>Disconnect</text>
     <x>160</x>
     <y>40</y>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -105,6 +113,10 @@
     <text>Reconnect</text>
     <x>270</x>
     <y>40</y>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -120,6 +132,10 @@
     <x>22</x>
     <y>270</y>
     <width>60</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -135,6 +151,10 @@
     <x>490</x>
     <y>230</y>
     <width>60</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="label" version="2.0.0">
@@ -163,6 +183,10 @@
     <x>20</x>
     <y>549</y>
     <width>60</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -178,6 +202,10 @@
     <x>420</x>
     <y>509</y>
     <width>60</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -193,6 +221,10 @@
     <x>130</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -208,6 +240,10 @@
     <x>20</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -243,6 +279,10 @@
     <x>280</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -258,6 +298,10 @@
     <x>170</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -293,6 +337,10 @@
     <x>430</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -308,6 +356,10 @@
     <x>320</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -343,6 +395,10 @@
     <x>580</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -358,6 +414,10 @@
     <x>470</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -393,6 +453,10 @@
     <x>730</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -408,6 +472,10 @@
     <x>620</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -457,6 +525,10 @@
     <x>880</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -472,6 +544,10 @@
     <x>770</x>
     <y>679</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -633,6 +709,10 @@
     <x>130</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -648,6 +728,10 @@
     <x>20</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -683,6 +767,10 @@
     <x>280</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -698,6 +786,10 @@
     <x>170</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -733,6 +825,10 @@
     <x>430</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -748,6 +844,10 @@
     <x>320</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -783,6 +883,10 @@
     <x>580</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -798,6 +902,10 @@
     <x>470</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -833,6 +941,10 @@
     <x>730</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -848,6 +960,10 @@
     <x>620</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -897,6 +1013,10 @@
     <x>880</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -912,6 +1032,10 @@
     <x>770</x>
     <y>400</y>
     <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -1088,6 +1212,10 @@
     <x>490</x>
     <y>509</y>
     <width>60</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -1103,6 +1231,10 @@
     <x>420</x>
     <y>230</y>
     <width>60</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="label" version="2.0.0">
@@ -1141,11 +1273,11 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
     <pv_name>eq://100*($(P)$(R)IO:SpeedSlider)</pv_name>
-    <x>290</x>
+    <x>280</x>
     <y>160</y>
     <width>60</width>
     <background_color>
-      <color name="Background" red="255" green="255" blue="255">
+      <color name="Button_Background" red="210" green="210" blue="210">
       </color>
     </background_color>
     <precision>0</precision>
@@ -1164,7 +1296,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_4</name>
     <text>%</text>
-    <x>320</x>
+    <x>310</x>
     <y>160</y>
     <width>20</width>
   </widget>
@@ -1253,7 +1385,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_25</name>
     <x>20</x>
-    <y>589</y>
+    <y>590</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1266,7 +1398,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_26</name>
     <x>170</x>
-    <y>589</y>
+    <y>590</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1279,7 +1411,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_27</name>
     <x>320</x>
-    <y>589</y>
+    <y>590</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1292,7 +1424,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_28</name>
     <x>470</x>
-    <y>589</y>
+    <y>590</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1305,7 +1437,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_29</name>
     <x>620</x>
-    <y>589</y>
+    <y>590</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1318,7 +1450,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_30</name>
     <x>770</x>
-    <y>589</y>
+    <y>590</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1361,6 +1493,10 @@
     <text>Reupload Script</text>
     <x>270</x>
     <y>91</y>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -1375,6 +1511,10 @@
     <text>Stop Script</text>
     <x>160</x>
     <y>91</y>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -1412,6 +1552,10 @@
     <x>630</x>
     <y>71</y>
     <width>40</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="fileselector" version="2.0.0">

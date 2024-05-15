@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 09:49:47 by nmarks-->
+<!--Saved on 2024-05-15 11:19:32 by nmarks-->
 <display version="2.0.0">
   <name>RTDE I/O</name>
   <width>550</width>
   <height>300</height>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -30,6 +34,10 @@
     <width>40</width>
     <off_label>0</off_label>
     <on_label>0</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -40,6 +48,10 @@
     <width>40</width>
     <off_label>1</off_label>
     <on_label>1</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -50,6 +62,10 @@
     <width>40</width>
     <off_label>2</off_label>
     <on_label>2</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -60,6 +76,10 @@
     <width>40</width>
     <off_label>3</off_label>
     <on_label>3</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -70,6 +90,10 @@
     <width>40</width>
     <off_label>4</off_label>
     <on_label>4</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -80,6 +104,10 @@
     <width>40</width>
     <off_label>5</off_label>
     <on_label>5</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -90,6 +118,10 @@
     <width>40</width>
     <off_label>6</off_label>
     <on_label>6</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -100,6 +132,10 @@
     <width>40</width>
     <off_label>7</off_label>
     <on_label>7</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -110,6 +146,10 @@
     <width>40</width>
     <off_label>0</off_label>
     <on_label>0</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -120,6 +160,10 @@
     <width>40</width>
     <off_label>1</off_label>
     <on_label>1</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -130,6 +174,10 @@
     <width>40</width>
     <off_label>2</off_label>
     <on_label>2</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -140,6 +188,10 @@
     <width>40</width>
     <off_label>3</off_label>
     <on_label>3</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -150,6 +202,10 @@
     <width>40</width>
     <off_label>4</off_label>
     <on_label>4</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -160,6 +216,10 @@
     <width>40</width>
     <off_label>5</off_label>
     <on_label>5</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -170,6 +230,10 @@
     <width>40</width>
     <off_label>6</off_label>
     <on_label>6</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="bool_button" version="2.0.0">
@@ -180,6 +244,10 @@
     <width>40</width>
     <off_label>7</off_label>
     <on_label>7</on_label>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="led" version="2.0.0">
@@ -253,10 +321,6 @@
     <x>390</x>
     <y>120</y>
     <width>60</width>
-    <background_color>
-      <color name="Background" red="255" green="255" blue="255">
-      </color>
-    </background_color>
     <precision>0</precision>
   </widget>
   <widget type="label" version="2.0.0">

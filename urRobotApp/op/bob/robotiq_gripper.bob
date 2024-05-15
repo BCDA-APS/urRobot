@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-05-15 11:04:58 by nmarks-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>450</width>
+  <height>250</height>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>Robotiq Gripper</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_1</name>
+    <pv_name>$(P)$(R)RobotiqGripper:Connected</pv_name>
+    <x>110</x>
+    <y>30</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <text>Connected:</text>
+    <x>10</x>
+    <y>30</y>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_2</name>
+    <pv_name>$(P)$(R)RobotiqGripper:IsActive</pv_name>
+    <x>110</x>
+    <y>61</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_6</name>
+    <text>Active:</text>
+    <x>10</x>
+    <y>61</y>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="text-symbol" version="2.0.0">
+    <name>Text Symbol_1</name>
+    <pv_name>$(P)$(R)RobotiqGripper:IsOpen</pv_name>
+    <symbols>
+      <symbol> </symbol>
+      <symbol>Open</symbol>
+    </symbols>
+    <x>260</x>
+    <y>20</y>
+    <width>70</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Off" red="60" green="100" blue="60">
+      </color>
+    </foreground_color>
+  </widget>
+  <widget type="text-symbol" version="2.0.0">
+    <name>Text Symbol_2</name>
+    <pv_name>$(P)$(R)RobotiqGripper:IsClosed</pv_name>
+    <symbols>
+      <symbol> </symbol>
+      <symbol> Closed</symbol>
+    </symbols>
+    <x>260</x>
+    <y>20</y>
+    <width>70</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="MAJOR" red="255" green="0" blue="0">
+      </color>
+    </foreground_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)RobotiqGripper:Open.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)RobotiqGripper:Open.PROC</description>
+      </action>
+    </actions>
+    <text>Open</text>
+    <x>220</x>
+    <y>79</y>
+    <width>90</width>
+    <height>31</height>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)RobotiqGripper:Close.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)RobotiqGripper:Close.PROC</description>
+      </action>
+    </actions>
+    <text>Close</text>
+    <x>320</x>
+    <y>79</y>
+    <width>90</width>
+    <height>31</height>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_9</name>
+    <text>Position:</text>
+    <x>10</x>
+    <y>91</y>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update</name>
+    <pv_name>$(P)$(R)RobotiqGripper:CurrentPosition</pv_name>
+    <x>110</x>
+    <y>91</y>
+    <width>70</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_10</name>
+    <text>State:</text>
+    <x>220</x>
+    <y>20</y>
+    <width>50</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_2</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)RobotiqGripper:Connect.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)RobotiqGripper:Connect.PROC</description>
+      </action>
+    </actions>
+    <text>Connect</text>
+    <x>10</x>
+    <y>120</y>
+    <width>90</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_3</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)RobotiqGripper:Activate.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)RobotiqGripper:Activate.PROC</description>
+      </action>
+    </actions>
+    <text>Activate</text>
+    <x>10</x>
+    <y>200</y>
+    <width>90</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_4</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)RobotiqGripper:AutoCalibrate.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)RobotiqGripper:AutoCalibrate.PROC</description>
+      </action>
+    </actions>
+    <text>Calibrate</text>
+    <x>10</x>
+    <y>160</y>
+    <width>90</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_1</name>
+    <pv_name>$(P)$(R)RobotiqGripper:MoveStatus</pv_name>
+    <x>220</x>
+    <y>50</y>
+    <width>140</width>
+  </widget>
+</display>

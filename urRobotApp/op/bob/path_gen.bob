@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 09:50:55 by nmarks-->
+<!--Saved on 2024-05-15 11:18:13 by nmarks-->
 <display version="2.0.0">
   <name>Path Generator</name>
   <width>1100</width>
   <height>700</height>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -164,6 +168,10 @@
     <x>970</x>
     <y>640</y>
     <width>70</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
     <tooltip>File saved in iocBoot/iocxxx directory</tooltip>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
