@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-16 12:38:59 by nmarks-->
+<!--Saved on 2024-05-16 16:38:46 by nmarks-->
 <display version="2.0.0">
   <name>UR Robot</name>
   <width>250</width>
-  <height>200</height>
+  <height>250</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
     </color>
@@ -93,7 +93,7 @@
     </actions>
     <text>Control</text>
     <x>130</x>
-    <y>90</y>
+    <y>130</y>
     <foreground_color>
       <color name="Background" red="255" green="255" blue="255">
       </color>
@@ -108,18 +108,18 @@
     <name>Action Button_3</name>
     <actions>
       <action type="open_display">
-        <file>path_gen.bob</file>
+        <file>waypointL.bob</file>
         <macros>
           <P>$(P)</P>
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>Waypoints</description>
+        <description>WaypointsL</description>
       </action>
     </actions>
-    <text>Waypoints</text>
+    <text>WaypointsL</text>
     <x>130</x>
-    <y>50</y>
+    <y>90</y>
     <foreground_color>
       <color name="Background" red="255" green="255" blue="255">
       </color>
@@ -170,8 +170,34 @@
       </action>
     </actions>
     <text>Gripper</text>
+    <x>10</x>
+    <y>170</y>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_6</name>
+    <actions>
+      <action type="open_display">
+        <file>waypointJ.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>WaypointsJ</description>
+      </action>
+    </actions>
+    <text>WaypointsJ</text>
     <x>130</x>
-    <y>130</y>
+    <y>50</y>
     <foreground_color>
       <color name="Background" red="255" green="255" blue="255">
       </color>

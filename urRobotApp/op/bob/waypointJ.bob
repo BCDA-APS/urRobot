@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-16 15:35:42 by nmarks-->
+<!--Saved on 2024-05-16 16:40:26 by nmarks-->
 <display version="2.0.0">
   <name>WaypointsJ</name>
   <width>1100</width>
@@ -10,7 +10,7 @@
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>Waypoints</text>
+    <text>Joint Waypoints</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>550</width>
@@ -32,7 +32,7 @@
       <N>1</N>
       <R>$(R)</R>
     </macros>
-    <file>path_gen_line.bob</file>
+    <file>waypointJ_line.bob</file>
     <y>109</y>
     <width>1090</width>
     <height>49</height>
@@ -44,7 +44,7 @@
       <N>2</N>
       <R>$(R)</R>
     </macros>
-    <file>path_gen_line.bob</file>
+    <file>waypointJ_line.bob</file>
     <y>158</y>
     <width>1090</width>
     <height>49</height>
@@ -56,7 +56,7 @@
       <N>3</N>
       <R>$(R)</R>
     </macros>
-    <file>path_gen_line.bob</file>
+    <file>waypointJ_line.bob</file>
     <y>207</y>
     <width>1090</width>
     <height>49</height>
@@ -68,7 +68,7 @@
       <N>4</N>
       <R>$(R)</R>
     </macros>
-    <file>path_gen_line.bob</file>
+    <file>waypointJ_line.bob</file>
     <y>256</y>
     <width>1090</width>
     <height>49</height>
@@ -80,7 +80,7 @@
       <N>5</N>
       <R>$(R)</R>
     </macros>
-    <file>path_gen_line.bob</file>
+    <file>waypointJ_line.bob</file>
     <y>305</y>
     <width>1090</width>
     <height>49</height>
@@ -92,7 +92,7 @@
       <N>6</N>
       <R>$(R)</R>
     </macros>
-    <file>path_gen_line.bob</file>
+    <file>waypointJ_line.bob</file>
     <y>354</y>
     <width>1090</width>
     <height>49</height>
@@ -104,7 +104,7 @@
       <N>7</N>
       <R>$(R)</R>
     </macros>
-    <file>path_gen_line.bob</file>
+    <file>waypointJ_line.bob</file>
     <y>403</y>
     <width>1090</width>
     <height>49</height>
@@ -116,7 +116,7 @@
       <N>8</N>
       <R>$(R)</R>
     </macros>
-    <file>path_gen_line.bob</file>
+    <file>waypointJ_line.bob</file>
     <y>452</y>
     <width>1090</width>
     <height>49</height>
@@ -128,7 +128,7 @@
       <N>9</N>
       <R>$(R)</R>
     </macros>
-    <file>path_gen_line.bob</file>
+    <file>waypointJ_line.bob</file>
     <y>501</y>
     <width>1090</width>
     <height>49</height>
@@ -140,7 +140,7 @@
       <N>10</N>
       <R>$(R)</R>
     </macros>
-    <file>path_gen_line.bob</file>
+    <file>waypointJ_line.bob</file>
     <y>550</y>
     <width>1090</width>
     <height>49</height>

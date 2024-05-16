@@ -272,6 +272,61 @@ record(waveform, "$(P)$(R)Receive:ActualTCPPose")
     field(SCAN, "I/O Intr")
 }
 
+record(subArray, "$(P)$(R)Receive:ActualTCP_X")
+{
+    field(INP, "$(P)$(R)Receive:ActualTCPPose.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "0")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualTCP_Y")
+{
+    field(INP, "$(P)$(R)Receive:ActualTCPPose.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "1")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualTCP_Z")
+{
+    field(INP, "$(P)$(R)Receive:ActualTCPPose.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "2")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualTCP_Roll")
+{
+    field(INP, "$(P)$(R)Receive:ActualTCPPose.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "3")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualTCP_Pitch")
+{
+    field(INP, "$(P)$(R)Receive:ActualTCPPose.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "4")
+    field(PREC, 4)
+}
+record(subArray, "$(P)$(R)Receive:ActualTCP_Yaw")
+{
+    field(INP, "$(P)$(R)Receive:ActualTCPPose.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "5")
+    field(PREC, 4)
+}
+
 record(waveform, "$(P)$(R)Receive:ActualTCPSpeed")
 {
     field(DESC, "Actual TCP speed")

@@ -14,3 +14,20 @@ pattern
 {9,  "Waypoint $(N)",       0,      0,       0,      0,     0,     0,  0.50,   1.40,  0.00,       0}
 {10, "Waypoint $(N)",       0,      0,       0,      0,     0,     0,  0.50,   1.40,  0.00,       0}
 }
+
+# Waypoints in Cartesian space plus gripper state (1=open, 0=closed)
+file "$(URROBOT)/db/waypointL.db"
+{
+pattern
+{N, 	        DESC,	    X,      Y,       Z,     ROLL,    PITCH,    YAW, SPEED,  ACCEL, BLEND, GRIPPER}
+{1,  "Waypoint $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00,       0}
+{2,  "Waypoint $(N)",       0,      0,       0,        0,     	 0,      0,  0.50,   1.40,  0.00,       0}
+{3,  "Waypoint $(N)",       0,      0,       0,        0,     	 0,      0,  0.50,   1.40,  0.00,       0}
+{4,  "Waypoint $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00,       0}
+{5,  "Waypoint $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00,       0}
+{6,  "Waypoint $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00,       0}
+{7,  "Waypoint $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00,       0}
+{8,  "Waypoint $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00,       0}
+{9,  "Waypoint $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00,       0}
+{10, "Waypoint $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00,       0}
+}

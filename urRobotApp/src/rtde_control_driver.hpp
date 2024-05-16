@@ -35,17 +35,20 @@ static constexpr char PLAY_POSE_PATH_STRING[] = "PLAY_POSE_PATH";
 static constexpr char PLAY_JOINT_PATH_STRING[] = "PLAY_JOINT_PATH";
 static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
 static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
+
+static constexpr char ASYNC_MOVE_STRING[] = "ASYNC_MOVE";
+static constexpr char ASYNC_MOVE_DONE_STRING[] = "ASYNC_MOVE_DONE";
+
 static constexpr char JOINT_SPEED_STRING[] = "JOINT_SPEED";
 static constexpr char JOINT_ACCEL_STRING[] = "JOINT_ACCELERATION";
 static constexpr char JOINT_BLEND_STRING[] = "JOINT_BLEND";
-static constexpr char ASYNC_MOVE_STRING[] = "ASYNC_MOVE";
-
-static constexpr char ASYNC_MOVE_DONE_STRING[] = "ASYNC_MOVE_DONE";
 
 static constexpr char LINEAR_SPEED_STRING[] = "LINEAR_SPEED";
 static constexpr char LINEAR_ACCEL_STRING[] = "LINEAR_ACCELERATION";
+static constexpr char LINEAR_BLEND_STRING[] = "LINEAR_BLEND";
 
 static constexpr char WAYPOINT_MOVEJ_STRING[] = "WAYPOINT_MOVEJ";
+static constexpr char WAYPOINT_MOVEL_STRING[] = "WAYPOINT_MOVEL";
 static constexpr char WAYPOINT_GRIPPER_ACTION_STRING[] = "WAYPOINT_GRIPPER_ACTION";
 
 static constexpr int NUM_JOINTS = 6;
@@ -54,6 +57,7 @@ static constexpr double POLL_PERIOD = 0.02; // 50Hz
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 enum class AsyncMotionStatus : int { WaitingMotion, WaitingGripper, Done };
+enum class AsyncRunning : int {False, Cartesian, Joint};
 
 class RTDEControl : public asynPortDriver {
   public:
@@ -77,20 +81,21 @@ class RTDEControl : public asynPortDriver {
     // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
     std::vector<double> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
-    // Joint speed and acceleration to use with moveJ
+    // Parameters for moveJ and moveL
     double joint_speed_ = 0.5;   // rad/s
     double joint_accel_ = 1.4;   // rad/s/s
-    double joint_blend_ = 0.0;   // m
+    double joint_blend_ = 0.0;   // m?
     double linear_speed_ = 0.05; // m/s
     double linear_accel_ = 0.5;  // m/s/s
+    double linear_blend_ = 0.0;  // m?
 
     // handle asynchronous motion through paths, etc.
     bool async_move = true;
-    bool async_running_ = false;
+    AsyncRunning async_running_ = AsyncRunning::False;
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
     int gripper_action_ = 0;
-    std::vector<std::vector<double>> joint_path_;
-    std::vector<std::vector<double>>::iterator joint_path_iter_;
+    std::vector<std::vector<double>> waypoint_path_;
+    std::vector<std::vector<double>>::iterator waypoint_path_iter_;
 
   protected:
     asynUser *pasynUserURRobot_;
@@ -121,18 +126,16 @@ class RTDEControl : public asynPortDriver {
     int playJointPathIndex_;
     int reuploadCtrlScriptIndex_;
     int stopCtrlScriptIndex_;
-
     int asyncMoveIndex_;
     int asyncMoveDoneIndex_;
-
     int jointSpeedIndex_;
     int jointAccelIndex_;
     int jointBlendIndex_;
-
     int linearSpeedIndex_;
     int linearAccelIndex_;
-
+    int linearBlendIndex_;
     int waypointMoveJIndex_;
+    int waypointMoveLIndex_;
     int waypointGripperActionIndex_;
 };
 

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-05-16 16:49:00 by nmarks-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>1300</width>
+  <height>75</height>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):X</pv_name>
+    <x>140</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_1</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):Y</pv_name>
+    <x>230</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_2</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):Z</pv_name>
+    <x>320</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_3</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):Roll</pv_name>
+    <x>410</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_4</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):Pitch</pv_name>
+    <x>500</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_5</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):Yaw</pv_name>
+    <x>590</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)WaypointL_$(N):Reset.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)$(R)WaypointL_$(N):Reset.PROC</description>
+      </action>
+    </actions>
+    <text>RST</text>
+    <x>10</x>
+    <y>10</y>
+    <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_5</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):Gripper</pv_name>
+    <x>950</x>
+    <y>10</y>
+    <width>80</width>
+    <off_label>Open</off_label>
+    <off_color>
+      <color name="On" red="0" green="255" blue="0">
+      </color>
+    </off_color>
+    <on_label>Closed</on_label>
+    <on_color>
+      <color name="MAJOR" red="255" green="0" blue="0">
+      </color>
+    </on_color>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_6</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):Speed</pv_name>
+    <x>680</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_7</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):Acceleration</pv_name>
+    <x>770</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_8</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):Blend</pv_name>
+    <x>860</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)WaypointL_$(N):moveL.PROC</pv_name>
+        <value>1</value>
+        <description>$(P)$(R)WaypointL_$(N):moveL.PROC</description>
+      </action>
+    </actions>
+    <text>GO</text>
+    <x>1040</x>
+    <y>10</y>
+    <width>30</width>
+    <background_color>
+      <color name="Write_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_9</name>
+    <pv_name>$(P)$(R)WaypointL_$(N):Desc</pv_name>
+    <x>50</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+</display>

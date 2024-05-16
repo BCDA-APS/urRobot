@@ -161,16 +161,20 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(PLAY_JOINT_PATH_STRING, asynParamOctet, &playJointPathIndex_);
     createParam(REUPLOAD_CTRL_SCRIPT_STRING, asynParamInt32, &reuploadCtrlScriptIndex_);
     createParam(STOP_CTRL_SCRIPT_STRING, asynParamInt32, &stopCtrlScriptIndex_);
+
     createParam(JOINT_SPEED_STRING, asynParamFloat64, &jointSpeedIndex_);
     createParam(JOINT_ACCEL_STRING, asynParamFloat64, &jointAccelIndex_);
     createParam(JOINT_BLEND_STRING, asynParamFloat64, &jointBlendIndex_);
+
     createParam(LINEAR_SPEED_STRING, asynParamFloat64, &linearSpeedIndex_);
     createParam(LINEAR_ACCEL_STRING, asynParamFloat64, &linearAccelIndex_);
+    createParam(LINEAR_BLEND_STRING, asynParamFloat64, &linearBlendIndex_);
 
     createParam(ASYNC_MOVE_STRING, asynParamInt32, &asyncMoveIndex_);
     createParam(ASYNC_MOVE_DONE_STRING, asynParamInt32, &asyncMoveDoneIndex_);
 
     createParam(WAYPOINT_MOVEJ_STRING, asynParamInt32, &waypointMoveJIndex_);
+    createParam(WAYPOINT_MOVEL_STRING, asynParamInt32, &waypointMoveLIndex_);
     createParam(WAYPOINT_GRIPPER_ACTION_STRING, asynParamInt32, &waypointGripperActionIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
@@ -203,37 +207,44 @@ void RTDEControl::poll() {
                 }
                 doCallbacksFloat64Array(pose_vec.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
 
-                if (async_running_) {
+                if (async_running_ != AsyncRunning::False) {
                     if (async_status_ == AsyncMotionStatus::Done) {
-                        if (joint_path_iter_ != joint_path_.end()) {
+                        if (waypoint_path_iter_ != waypoint_path_.end()) {
 
-                            std::vector<double> wp = *joint_path_iter_; //TODO: not needed if joint path is length 1
+                            std::vector<double> wp =
+                                *waypoint_path_iter_; // HACK: not needed if joint path is length 1
                             std::stringstream ss;
                             ss << "Moving to waypoint: ";
-                            for(const auto &i : wp) {
+                            for (const auto &i : wp) {
                                 ss << i << ", ";
                             }
                             spdlog::debug("{}", ss.str());
 
                             std::vector<double> waypoint(wp.begin(), wp.end() - 1); // last is gripper
                             gripper_action_ = wp.back();
-                            
-                            if (rtde_control_->isJointsWithinSafetyLimits({waypoint.begin(), waypoint.end()-3})) {
-                                rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
+
+                            if (rtde_control_->isJointsWithinSafetyLimits(
+                                    {waypoint.begin(), waypoint.end() - 3})) {
+                                if (async_running_ == AsyncRunning::Joint) {
+                                    rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
+                                } else if (async_running_ == AsyncRunning::Cartesian) {
+                                    rtde_control_->moveL(std::vector<std::vector<double>>{waypoint}, true);
+                                }
                                 async_status_ = AsyncMotionStatus::WaitingMotion;
                                 setIntegerParam(asyncMoveDoneIndex_, 0);
                             } else {
-                                spdlog::warn("Requested joint angles not within safety limits. No action taken.");
+                                spdlog::warn(
+                                    "Requested joint angles not within safety limits. No action taken.");
                                 async_status_ = AsyncMotionStatus::Done;
-                                async_running_ = false;
+                                async_running_ = AsyncRunning::False;
                             }
                         } else {
                             spdlog::debug("Path complete");
-                            async_running_ = false;
+                            async_running_ = AsyncRunning::False;
                             setIntegerParam(asyncMoveDoneIndex_, 1);
                         }
                     } else {
-                        if (async_status_ == AsyncMotionStatus::WaitingMotion){
+                        if (async_status_ == AsyncMotionStatus::WaitingMotion) {
                             auto op_status = rtde_control_->getAsyncOperationProgressEx();
                             if (not op_status.isAsyncOperationRunning()) {
                                 spdlog::debug("Waypoint reached");
@@ -245,9 +256,11 @@ void RTDEControl::poll() {
                                 async_status_ = AsyncMotionStatus::WaitingGripper;
                             }
                         } else if (async_status_ == AsyncMotionStatus::WaitingGripper) {
-                            if (gripper_->objectDetectionStatus() != ur_rtde::RobotiqGripper::eObjectStatus::MOVING) {
+                            if (gripper_->objectDetectionStatus() !=
+                                ur_rtde::RobotiqGripper::eObjectStatus::MOVING) {
                                 async_status_ = AsyncMotionStatus::Done;
-                                joint_path_iter_ = std::next(joint_path_iter_); // move iterator to next waypoint
+                                waypoint_path_iter_ =
+                                    std::next(waypoint_path_iter_); // move iterator to next waypoint
                             }
                         }
                     }
@@ -306,7 +319,7 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         const double val = (ind >= 3) ? (value * M_PI / 180.0) : value;
         cmd_pose.at(ind) = val;
     }
-    
+
     else if (function == jointSpeedIndex_) {
         this->joint_speed_ = value;
         spdlog::debug("Setting joint speed to {}", joint_speed_);
@@ -316,7 +329,7 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     } else if (function == jointBlendIndex_) {
         this->joint_blend_ = value;
         spdlog::debug("Setting joint blend to {}", joint_blend_);
-    } 
+    }
 
     else if (function == linearSpeedIndex_) {
         this->linear_speed_ = value;
@@ -324,6 +337,9 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     } else if (function == linearAccelIndex_) {
         this->linear_accel_ = value;
         spdlog::debug("Setting linear acceleration to {}", linear_accel_);
+    } else if (function == linearBlendIndex_) {
+        this->linear_blend_ = value;
+        spdlog::debug("Setting linear blend to {}", linear_blend_);
     }
 
 skip:
@@ -380,7 +396,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     } else if (function == stopJIndex_) {
         spdlog::debug("Stopping joint move (only works in asynchronous mode)");
         rtde_control_->stopJ(); // asynchronous=true
-        async_running_ = false;
+        async_running_ = AsyncRunning::False;
         async_status_ = AsyncMotionStatus::Done;
     }
 
@@ -402,20 +418,35 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     }
 
     else if (function == waypointMoveJIndex_) {
-        if (not async_running_) {
-            this->joint_path_.clear();
+        if (async_running_ == AsyncRunning::False) {
+            this->waypoint_path_.clear();
             std::vector<double> wp = this->cmd_joints;
             wp.push_back(this->joint_speed_);
             wp.push_back(this->joint_accel_);
             wp.push_back(this->joint_blend_);
             wp.push_back(this->gripper_action_);
-            this->joint_path_ = {wp};
-            this->joint_path_iter_ = this->joint_path_.begin();
-            this->async_running_ = true;
+            this->waypoint_path_ = {wp};
+            this->waypoint_path_iter_ = this->waypoint_path_.begin();
+            this->async_running_ = AsyncRunning::Joint;
         } else {
             spdlog::warn("Asynchronous motion in progress...please wait");
         }
-    } 
+    } else if (function == waypointMoveLIndex_) {
+        if (async_running_ == AsyncRunning::False) {
+            this->waypoint_path_.clear();
+            std::vector<double> wp = this->cmd_pose;
+            wp.push_back(this->linear_speed_);
+            wp.push_back(this->linear_accel_);
+            wp.push_back(this->linear_blend_);
+            wp.push_back(this->gripper_action_);
+            this->waypoint_path_ = {wp};
+            this->waypoint_path_iter_ = this->waypoint_path_.begin();
+            this->async_running_ = AsyncRunning::Cartesian;
+        } else {
+            spdlog::warn("Asynchronous motion in progress...please wait");
+        }
+    }
+
     else if (function == waypointGripperActionIndex_) {
         this->gripper_action_ = value;
         spdlog::debug("Setting gripper action to {}", gripper_action_);
@@ -475,14 +506,14 @@ asynStatus RTDEControl::writeOctet(asynUser *pasynUser, const char *value, size_
     }
 
     else if (function == playJointPathIndex_) {
-        this->joint_path_.clear();
+        this->waypoint_path_.clear();
 
         std::optional<std::vector<std::vector<double>>> joint_path = read_traj_file(value);
 
         if (joint_path.has_value()) {
-            this->joint_path_ = joint_path.value();
-            this->joint_path_iter_ = this->joint_path_.begin();
-            async_running_ = true;
+            this->waypoint_path_ = joint_path.value();
+            this->waypoint_path_iter_ = this->waypoint_path_.begin();
+            async_running_ = AsyncRunning::Joint;
         } else {
             comm_ok = false;
             goto skip;

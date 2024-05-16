@@ -150,6 +150,9 @@ void RTDEReceive::poll() {
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointControlCurrentsIndex_, ASYN_ADDR);
 
                 vec_f64 = rtde_receive_->getActualTCPPose();
+                for (size_t i = 3; i < vec_f64.size(); i++) { // convert to degrees
+                    vec_f64.at(i) = vec_f64.at(i) * 180.0 / M_PI;  
+                }
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseIndex_, ASYN_ADDR);
 
                 vec_f64 = rtde_receive_->getActualTCPSpeed();

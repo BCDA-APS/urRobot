@@ -65,6 +65,13 @@ record(bi, "$(P)$(R)Control:AsyncMoveDone")
     field(SCAN, "I/O Intr")
 }
 
+record(bo, "$(P)$(R)Control:WaypointGripperAction")
+{
+    field(DESC, "Gripper action after reaching waypoint")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))WAYPOINT_GRIPPER_ACTION")
+}
+
 #======================
 # Joint control
 #======================
@@ -108,13 +115,6 @@ record(ao, "$(P)$(R)Control:JointBlend")
     field(PREC, 2)
     field(EGU, "m")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_BLEND")
-}
-
-record(bo, "$(P)$(R)Control:WaypointGripperAction")
-{
-    field(DESC, "Gripper action after reaching waypoint")
-    field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))WAYPOINT_GRIPPER_ACTION")
 }
 
 record(bo, "$(P)$(R)Control:stopJ")
@@ -504,13 +504,19 @@ record(calcout, "$(P)$(R)Control:J6TweakCalcRev")
 #======================
 # TCP pose control
 #======================
-# FIX: Not robust, often causes protective stop to trigger
 
 record(bo, "$(P)$(R)Control:moveL")
 {
     field(DESC, "Move to TCP pose linearly")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEL")
+}
+
+record(bo, "$(P)$(R)Control:waypoint_moveL")
+{
+    field(DESC, "moveL followed by gripper action")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))WAYPOINT_MOVEL")
 }
 
 record(ao, "$(P)$(R)Control:LinearSpeed")
@@ -529,6 +535,15 @@ record(ao, "$(P)$(R)Control:LinearAcceleration")
     field(PREC, 3)
     field(EGU, "m/s/s")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LINEAR_ACCELERATION")
+}
+
+record(ao, "$(P)$(R)Control:LinearBlend")
+{
+    field(DESC, "Linear blend for moveL paths")
+    field(DTYP, "asynFloat64")
+    field(PREC, 3)
+    field(EGU, "m")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LINEAR_BLEND")
 }
 
 record(bo, "$(P)$(R)Control:stopL")
