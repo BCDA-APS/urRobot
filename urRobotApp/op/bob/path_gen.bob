@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 11:18:13 by nmarks-->
+<!--Saved on 2024-05-16 12:36:47 by nmarks-->
 <display version="2.0.0">
-  <name>Path Generator</name>
-  <width>1100</width>
-  <height>700</height>
+  <name>WaypointsJ</name>
+  <width>1300</width>
+  <height>800</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
     </color>
@@ -11,7 +11,7 @@
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>Path Generator</text>
+    <text>Waypoints</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>550</width>
@@ -146,35 +146,6 @@
     <width>1060</width>
     <height>49</height>
   </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Entry</name>
-    <pv_name>$(P)$(R)WaypointsFile</pv_name>
-    <x>710</x>
-    <y>640</y>
-    <width>250</width>
-    <height>30</height>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button</name>
-    <actions>
-      <action type="write_pv">
-        <pv_name>$(P)$(R)SaveWaypoints.PROC</pv_name>
-        <value>1</value>
-        <description>$(P)$(R)SaveWaypoints.PROC</description>
-      </action>
-    </actions>
-    <text>Save</text>
-    <x>970</x>
-    <y>640</y>
-    <width>70</width>
-    <background_color>
-      <color name="Write_Background" red="128" green="255" blue="255">
-      </color>
-    </background_color>
-    <tooltip>File saved in iocBoot/iocxxx directory</tooltip>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
   <widget type="label" version="2.0.0">
     <name>Label_1</name>
     <text>J1</text>
@@ -215,18 +186,6 @@
       </font>
     </font>
     <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_4</name>
-    <text>Save to File:</text>
-    <x>710</x>
-    <y>610</y>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
     <vertical_alignment>1</vertical_alignment>
   </widget>
   <widget type="label" version="2.0.0">

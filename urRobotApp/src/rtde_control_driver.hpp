@@ -37,11 +37,14 @@ static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
 static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
 static constexpr char JOINT_SPEED_STRING[] = "JOINT_SPEED";
 static constexpr char JOINT_ACCEL_STRING[] = "JOINT_ACCELERATION";
+static constexpr char JOINT_BLEND_STRING[] = "JOINT_BLEND";
 static constexpr char ASYNC_MOVE_STRING[] = "ASYNC_MOVE";
-static constexpr char ASYNC_MOVE_PROGRESS_STRING[] = "ASYNC_MOVE_PROGRESS";
 
 static constexpr char LINEAR_SPEED_STRING[] = "LINEAR_SPEED";
 static constexpr char LINEAR_ACCEL_STRING[] = "LINEAR_ACCELERATION";
+
+static constexpr char WAYPOINT_MOVEJ_STRING[] = "WAYPOINT_MOVEJ";
+static constexpr char WAYPOINT_GRIPPER_ACTION_STRING[] = "WAYPOINT_GRIPPER_ACTION";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
@@ -73,8 +76,9 @@ class RTDEControl : public asynPortDriver {
     std::vector<double> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
     // Joint speed and acceleration to use with moveJ
-    double joint_speed_ = 1.05;   // rad/s
-    double joint_accel_ = 1.4;    // rad/s/s
+    double joint_speed_ = 0.5;   // rad/s
+    double joint_accel_ = 1.4;   // rad/s/s
+    double joint_blend_ = 0.0;   // m
     double linear_speed_ = 0.05; // m/s
     double linear_accel_ = 0.5;  // m/s/s
 
@@ -115,12 +119,18 @@ class RTDEControl : public asynPortDriver {
     int playJointPathIndex_;
     int reuploadCtrlScriptIndex_;
     int stopCtrlScriptIndex_;
+
+    int asyncMoveIndex_;
+
     int jointSpeedIndex_;
     int jointAccelIndex_;
+    int jointBlendIndex_;
+
     int linearSpeedIndex_;
     int linearAccelIndex_;
-    int asyncMoveIndex_;
-    int asyncMoveProgressIndex_;
+
+    int waypointMoveJIndex_;
+    int waypointGripperActionIndex_;
 };
 
 #endif

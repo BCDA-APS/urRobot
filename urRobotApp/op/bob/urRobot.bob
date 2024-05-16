@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 16:01:19 by nmarks-->
+<!--Saved on 2024-05-16 12:38:59 by nmarks-->
 <display version="2.0.0">
   <name>UR Robot</name>
   <width>250</width>
@@ -114,10 +114,10 @@
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>Path Generator</description>
+        <description>Waypoints</description>
       </action>
     </actions>
-    <text>Path Generator</text>
+    <text>Waypoints</text>
     <x>130</x>
     <y>50</y>
     <foreground_color>

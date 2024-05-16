@@ -128,10 +128,10 @@ record(calcout, "$(P)$(R)WaypointJ_$(N):moveJ")
     field(INPA, "$(P)$(R)WaypointJ_$(N):Enabled")
     field(CALC, "A")
     field(OOPT, "When Non-zero")
-    field(OUT, "$(P)$(R)WaypointJ_$(N):moveJ_seq.PROC")
+    field(OUT, "$(P)$(R)WaypointJ_$(N):moveJ_seq1.PROC")
 }
 
-record(seq, "$(P)$(R)WaypointJ_$(N):moveJ_seq")
+record(seq, "$(P)$(R)WaypointJ_$(N):moveJ_seq1")
 {
     # Disable AutoMoveJ
     field(DOL0, "0")
@@ -151,12 +151,26 @@ record(seq, "$(P)$(R)WaypointJ_$(N):moveJ_seq")
     field(DOL6, "$(P)$(R)WaypointJ_$(N):J6")
     field(LNK6, "$(P)$(R)Control:J6Cmd PP")
     
-    # Set to asynchronous motion
-    field(DOL7, "1")
-    field(LNK7, "$(P)$(R)Control:Asynchronous")
-    
-    # Process Control:moveJ to do the move
-    field(FLNK, "$(P)$(R)Control:moveJ.PROC")
+    field(FLNK, "$(P)$(R)WaypointJ_$(N):moveJ_seq2.PROC")
 }
 
-# TODO: how to wait for motion to finish before moving gripper?
+record(seq, "$(P)$(R)WaypointJ_$(N):moveJ_seq2")
+{
+    # Set to asynchronous motion
+    field(DOL0, "1")
+    field(LNK0, "$(P)$(R)Control:Asynchronous")
+    
+    # set speed, accel, blend, gripper action
+    field(DOL1, "$(P)$(R)WaypointJ_$(N):Speed")
+    field(LNK1, "$(P)$(R)Control:JointSpeed PP")
+    field(DOL2, "$(P)$(R)WaypointJ_$(N):Acceleration")
+    field(LNK2, "$(P)$(R)Control:JointAcceleration PP")
+    field(DOL3, "$(P)$(R)WaypointJ_$(N):Blend")
+    field(LNK3, "$(P)$(R)Control:JointBlend PP")
+    field(DOL4, "$(P)$(R)WaypointJ_$(N):Gripper")
+    field(LNK4, "$(P)$(R)Control:WaypointGripperAction PP")
+    
+    # Do the move
+    field(FLNK, "$(P)$(R)Control:waypoint_moveJ.PROC")
+}
+

@@ -67,6 +67,13 @@ record(bo, "$(P)$(R)Control:moveJ")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEJ")
 }
 
+record(bo, "$(P)$(R)Control:waypoint_moveJ")
+{
+    field(DESC, "moveJ followed by gripper action")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))WAYPOINT_MOVEJ")
+}
+
 record(ao, "$(P)$(R)Control:JointSpeed")
 {
     field(DESC, "Joint speeds for moveJ")
@@ -83,6 +90,22 @@ record(ao, "$(P)$(R)Control:JointAcceleration")
     field(PREC, 2)
     field(EGU, "rad/s/s")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_ACCELERATION")
+}
+
+record(ao, "$(P)$(R)Control:JointBlend")
+{
+    field(DESC, "Blend radius for joint paths")
+    field(DTYP, "asynFloat64")
+    field(PREC, 2)
+    field(EGU, "m")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_BLEND")
+}
+
+record(bo, "$(P)$(R)Control:WaypointGripperAction")
+{
+    field(DESC, "Gripper action after reaching waypoint")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))WAYPOINT_GRIPPER_ACTION")
 }
 
 record(bo, "$(P)$(R)Control:stopJ")
