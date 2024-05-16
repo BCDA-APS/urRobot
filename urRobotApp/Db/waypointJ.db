@@ -1,127 +1,162 @@
 # This database defines a single waypoint for the robot in joint space
 # including the gripper state where 0=open and 1=closed
 
-record(stringout, "$(P)$(R)Waypoint$(N):Name")
+record(stringout, "$(P)$(R)WaypointJ_$(N):Info")
 {
-    field(VAL, "$(NAME)")
+    field(VAL, "$(INFO=$(P)$(R)WaypointJ_$(N))")
 }
 
-record(ao, "$(P)$(R)Waypoint$(N):J1")
+record(ao, "$(P)$(R)WaypointJ_$(N):J1")
 {
-    field(VAL, "$(j1)")
+    field(VAL, "$(J1=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
-record(ao, "$(P)$(R)Waypoint$(N):J2")
+record(ao, "$(P)$(R)WaypointJ_$(N):J2")
 {
-    field(VAL, "$(j2)")
+    field(VAL, "$(J2=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
-record(ao, "$(P)$(R)Waypoint$(N):J3")
+record(ao, "$(P)$(R)WaypointJ_$(N):J3")
 {
-    field(VAL, "$(j3)")
+    field(VAL, "$(J3=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
-record(ao, "$(P)$(R)Waypoint$(N):J4")
+record(ao, "$(P)$(R)WaypointJ_$(N):J4")
 {
-    field(VAL, "$(j4)")
+    field(VAL, "$(J4=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
-record(ao, "$(P)$(R)Waypoint$(N):J5")
+record(ao, "$(P)$(R)WaypointJ_$(N):J5")
 {
-    field(VAL, "$(j5)")
+    field(VAL, "$(J5=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
-record(ao, "$(P)$(R)Waypoint$(N):J6")
+record(ao, "$(P)$(R)WaypointJ_$(N):J6")
 {
-    field(VAL, "$(j6)")
+    field(VAL, "$(J6=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
-record(bo, "$(P)$(R)Waypoint$(N):Gripper")
+record(bo, "$(P)$(R)WaypointJ_$(N):Gripper")
 {
     field(ZNAM, "OPEN")
     field(ONAM, "CLOSED")
     field(VAL, "$(GRIPPER)")
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
-record(ao, "$(P)$(R)Waypoint$(N):Speed")
+record(ao, "$(P)$(R)WaypointJ_$(N):Speed")
 {
-    field(VAL, "$(SPEED)")
+    field(VAL, "$(SPEED=1.05)")
     field(PREC, 2)
     field(EGU, "rad/s")
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
-record(ao, "$(P)$(R)Waypoint$(N):Acceleration")
+record(ao, "$(P)$(R)WaypointJ_$(N):Acceleration")
 {
-    field(VAL, "$(ACCEL)")
+    field(VAL, "$(ACCEL=1.4)")
     field(PREC, 2)
     field(EGU, "rad/s/s")
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
-record(ao, "$(P)$(R)Waypoint$(N):Blend")
+record(ao, "$(P)$(R)WaypointJ_$(N):Blend")
 {
-    field(VAL, "$(BLEND)")
+    field(VAL, "$(BLEND=0.0)")
     field(PREC, 2)
     field(EGU, "m")
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
-record(bo, "$(P)$(R)EnableWaypoint$(N)")
+record(bo, "$(P)$(R)EnableWaypointJ_$(N)")
 {
     field(VAL, "1")
-    field(OUT, "$(P)$(R)Waypoint$(N):Enabled PP")
+    field(OUT, "$(P)$(R)WaypointJ_$(N):Enabled PP")
 }
 
-record(bo, "$(P)$(R)Waypoint$(N):Enabled") {
+record(bo, "$(P)$(R)WaypointJ_$(N):Enabled") {
     field(ONAM, "Enabled")
     field(ZNAM, "Disabled")
     field(VAL, "$(EN)")
 }
 
 # stores DOLx.VAL in LNKx.VAL
-# Sets joint angles for this waypoint to the current measured angles
 # Requires that RTDE Receive databases have been loaded
-record(seq, "$(P)$(R)Waypoint$(N):Reset")
+record(seq, "$(P)$(R)WaypointJ_$(N):Reset")
 {
-    field(FLNK, "$(P)Waypoint$(N):Enable.PROC")
-
+    # Sets waypoint joint angles to the current measured angles
     field(DOL0, "$(P)$(R)Receive:ActualJointPositions0")
-    field(LNK0, "$(P)Waypoint$(N):J1 PP")
-
+    field(LNK0, "$(P)WaypointJ_$(N):J1 PP")
     field(DOL1, "$(P)$(R)Receive:ActualJointPositions1")
-    field(LNK1, "$(P)Waypoint$(N):J2 PP")
-
+    field(LNK1, "$(P)WaypointJ_$(N):J2 PP")
     field(DOL2, "$(P)$(R)Receive:ActualJointPositions2")
-    field(LNK2, "$(P)Waypoint$(N):J3 PP")
-
+    field(LNK2, "$(P)WaypointJ_$(N):J3 PP")
     field(DOL3, "$(P)$(R)Receive:ActualJointPositions3")
-    field(LNK3, "$(P)Waypoint$(N):J4 PP")
-
+    field(LNK3, "$(P)WaypointJ_$(N):J4 PP")
     field(DOL4, "$(P)$(R)Receive:ActualJointPositions4")
-    field(LNK4, "$(P)Waypoint$(N):J5 PP")
-
+    field(LNK4, "$(P)WaypointJ_$(N):J5 PP")
     field(DOL5, "$(P)$(R)Receive:ActualJointPositions5")
-    field(LNK5, "$(P)Waypoint$(N):J6 PP")
-
-    field(FLNK, "$(P)$(R)EnableWaypoint$(N).PROC")
+    field(LNK5, "$(P)WaypointJ_$(N):J6 PP")
+    
+    # Enable the waypoint
+    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
+
+# Processes moveJ_seq if waypoint is enabled
+# Requires that RTDE control interface is running and
+# associated databases are loaded
+record(calcout, "$(P)$(R)WaypointJ_$(N):moveJ")
+{
+    field(INPA, "$(P)$(R)WaypointJ_$(N):Enabled")
+    field(CALC, "A")
+    field(OOPT, "When Non-zero")
+    field(OUT, "$(P)$(R)WaypointJ_$(N):moveJ_seq.PROC")
+}
+
+record(seq, "$(P)$(R)WaypointJ_$(N):moveJ_seq")
+{
+    # Disable AutoMoveJ
+    field(DOL0, "0")
+    field(LNK0, "$(P)$(R)Control:AutoMoveJ PP")
+
+    # Set Control:JxCmd to WaypointJ_$(N):Jx
+    field(DOL1, "$(P)$(R)WaypointJ_$(N):J1")
+    field(LNK1, "$(P)$(R)Control:J1Cmd PP")
+    field(DOL2, "$(P)$(R)WaypointJ_$(N):J2")
+    field(LNK2, "$(P)$(R)Control:J2Cmd PP")
+    field(DOL3, "$(P)$(R)WaypointJ_$(N):J3")
+    field(LNK3, "$(P)$(R)Control:J3Cmd PP")
+    field(DOL4, "$(P)$(R)WaypointJ_$(N):J4")
+    field(LNK4, "$(P)$(R)Control:J4Cmd PP")
+    field(DOL5, "$(P)$(R)WaypointJ_$(N):J5")
+    field(LNK5, "$(P)$(R)Control:J5Cmd PP")
+    field(DOL6, "$(P)$(R)WaypointJ_$(N):J6")
+    field(LNK6, "$(P)$(R)Control:J6Cmd PP")
+    
+    # Set to asynchronous motion
+    field(DOL7, "1")
+    field(LNK7, "$(P)$(R)Control:Asynchronous")
+    
+    # Process Control:moveJ to do the move
+    field(FLNK, "$(P)$(R)Control:moveJ.PROC")
+}
+
+# TODO: how to wait for motion to finish before moving gripper?
