@@ -56,6 +56,15 @@ record(bo, "$(P)$(R)Control:Asynchronous")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ASYNC_MOVE")
 }
 
+record(bi, "$(P)$(R)Control:AsyncMoveDone")
+{
+    field(DESC, "1 if asynchronous motion complete")
+    field(DTYP, "asynInt32")
+    field(VAL, 1)
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ASYNC_MOVE_DONE")
+    field(SCAN, "I/O Intr")
+}
+
 #======================
 # Joint control
 #======================

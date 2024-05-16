@@ -95,16 +95,6 @@ record(seq, "$(P)$(R)WaypointJ_$(N):Reset")
     field(LNK5, "$(P)WaypointJ_$(N):J6 PP")
 }
 
-# Processes moveJ_seq if waypoint is enabled
-# Requires that RTDE control interface is running and
-# associated databases are loaded
-# record(calcout, "$(P)$(R)WaypointJ_$(N):moveJ")
-# {
-    # field(INPA, "$(P)$(R)WaypointJ_$(N):Enabled")
-    # field(CALC, "A")
-    # field(OOPT, "When Non-zero")
-    # field(OUT, "$(P)$(R)WaypointJ_$(N):moveJ_seq1.PROC")
-# }
 record(bo, "$(P)$(R)WaypointJ_$(N):moveJ")
 {
     field(FLNK, "$(P)$(R)WaypointJ_$(N):moveJ_seq1.PROC")
@@ -152,4 +142,3 @@ record(seq, "$(P)$(R)WaypointJ_$(N):moveJ_seq2")
     # Do the move
     field(FLNK, "$(P)$(R)Control:waypoint_moveJ.PROC")
 }
-

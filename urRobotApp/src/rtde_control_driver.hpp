@@ -40,6 +40,8 @@ static constexpr char JOINT_ACCEL_STRING[] = "JOINT_ACCELERATION";
 static constexpr char JOINT_BLEND_STRING[] = "JOINT_BLEND";
 static constexpr char ASYNC_MOVE_STRING[] = "ASYNC_MOVE";
 
+static constexpr char ASYNC_MOVE_DONE_STRING[] = "ASYNC_MOVE_DONE";
+
 static constexpr char LINEAR_SPEED_STRING[] = "LINEAR_SPEED";
 static constexpr char LINEAR_ACCEL_STRING[] = "LINEAR_ACCELERATION";
 
@@ -121,6 +123,7 @@ class RTDEControl : public asynPortDriver {
     int stopCtrlScriptIndex_;
 
     int asyncMoveIndex_;
+    int asyncMoveDoneIndex_;
 
     int jointSpeedIndex_;
     int jointAccelIndex_;

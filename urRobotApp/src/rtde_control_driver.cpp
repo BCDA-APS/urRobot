@@ -166,7 +166,10 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(JOINT_BLEND_STRING, asynParamFloat64, &jointBlendIndex_);
     createParam(LINEAR_SPEED_STRING, asynParamFloat64, &linearSpeedIndex_);
     createParam(LINEAR_ACCEL_STRING, asynParamFloat64, &linearAccelIndex_);
+
     createParam(ASYNC_MOVE_STRING, asynParamInt32, &asyncMoveIndex_);
+    createParam(ASYNC_MOVE_DONE_STRING, asynParamInt32, &asyncMoveDoneIndex_);
+
     createParam(WAYPOINT_MOVEJ_STRING, asynParamInt32, &waypointMoveJIndex_);
     createParam(WAYPOINT_GRIPPER_ACTION_STRING, asynParamInt32, &waypointGripperActionIndex_);
 
@@ -218,6 +221,7 @@ void RTDEControl::poll() {
                             if (rtde_control_->isJointsWithinSafetyLimits({waypoint.begin(), waypoint.end()-3})) {
                                 rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
                                 async_status_ = AsyncMotionStatus::WaitingMotion;
+                                setIntegerParam(asyncMoveDoneIndex_, 0);
                             } else {
                                 spdlog::warn("Requested joint angles not within safety limits. No action taken.");
                                 async_status_ = AsyncMotionStatus::Done;
@@ -226,6 +230,7 @@ void RTDEControl::poll() {
                         } else {
                             spdlog::debug("Path complete");
                             async_running_ = false;
+                            setIntegerParam(asyncMoveDoneIndex_, 1);
                         }
                     } else {
                         if (async_status_ == AsyncMotionStatus::WaitingMotion){
@@ -374,7 +379,9 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         }
     } else if (function == stopJIndex_) {
         spdlog::debug("Stopping joint move (only works in asynchronous mode)");
-        rtde_control_->stopJ(2.0, true); // asynchronous=true
+        rtde_control_->stopJ(); // asynchronous=true
+        async_running_ = false;
+        async_status_ = AsyncMotionStatus::Done;
     }
 
     else if (function == moveLIndex_) {
@@ -400,13 +407,13 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
             std::vector<double> wp = this->cmd_joints;
             wp.push_back(this->joint_speed_);
             wp.push_back(this->joint_accel_);
-            wp.push_back(this->joint_blend_); // blend;
+            wp.push_back(this->joint_blend_);
             wp.push_back(this->gripper_action_);
             this->joint_path_ = {wp};
             this->joint_path_iter_ = this->joint_path_.begin();
             this->async_running_ = true;
         } else {
-            spdlog::warn("Asynchronous motion in progress...");
+            spdlog::warn("Asynchronous motion in progress...please wait");
         }
     } 
     else if (function == waypointGripperActionIndex_) {
