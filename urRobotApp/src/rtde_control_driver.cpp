@@ -215,8 +215,14 @@ void RTDEControl::poll() {
                             std::vector<double> waypoint(wp.begin(), wp.end() - 1); // last is gripper
                             gripper_action_ = wp.back();
                             
-                            rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
-                            async_status_ = AsyncMotionStatus::WaitingMotion;
+                            if (rtde_control_->isJointsWithinSafetyLimits({waypoint.begin(), waypoint.end()-3})) {
+                                rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
+                                async_status_ = AsyncMotionStatus::WaitingMotion;
+                            } else {
+                                spdlog::warn("Requested joint angles not within safety limits. No action taken.");
+                                async_status_ = AsyncMotionStatus::Done;
+                                async_running_ = false;
+                            }
                         } else {
                             spdlog::debug("Path complete");
                             async_running_ = false;
@@ -224,7 +230,6 @@ void RTDEControl::poll() {
                     } else {
                         if (async_status_ == AsyncMotionStatus::WaitingMotion){
                             auto op_status = rtde_control_->getAsyncOperationProgressEx();
-                            // int moving = async_op_status.value();
                             if (not op_status.isAsyncOperationRunning()) {
                                 spdlog::debug("Waypoint reached");
                                 if (gripper_action_ == 0) {
@@ -296,7 +301,7 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         const double val = (ind >= 3) ? (value * M_PI / 180.0) : value;
         cmd_pose.at(ind) = val;
     }
-
+    
     else if (function == jointSpeedIndex_) {
         this->joint_speed_ = value;
         spdlog::debug("Setting joint speed to {}", joint_speed_);
@@ -321,7 +326,6 @@ skip:
     if (comm_ok) {
         return asynSuccess;
     } else {
-        spdlog::debug("RTDE communincation error in RTDEControl::writeFloat64");
         return asynError;
     }
 }
@@ -394,13 +398,13 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         if (not async_running_) {
             this->joint_path_.clear();
             std::vector<double> wp = this->cmd_joints;
-            wp.push_back(joint_speed_);
-            wp.push_back(joint_accel_);
-            wp.push_back(joint_blend_); // blend;
-            wp.push_back(gripper_action_);
+            wp.push_back(this->joint_speed_);
+            wp.push_back(this->joint_accel_);
+            wp.push_back(this->joint_blend_); // blend;
+            wp.push_back(this->gripper_action_);
             this->joint_path_ = {wp};
             this->joint_path_iter_ = this->joint_path_.begin();
-            async_running_ = true;
+            this->async_running_ = true;
         } else {
             spdlog::warn("Asynchronous motion in progress...");
         }

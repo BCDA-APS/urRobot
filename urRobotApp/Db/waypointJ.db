@@ -1,9 +1,9 @@
 # This database defines a single waypoint for the robot in joint space
 # including the gripper state where 0=open and 1=closed
 
-record(stringout, "$(P)$(R)WaypointJ_$(N):Info")
+record(stringout, "$(P)$(R)WaypointJ_$(N):Desc")
 {
-    field(VAL, "$(INFO=$(P)$(R)WaypointJ_$(N))")
+    field(VAL, "$(DESC=)")
 }
 
 record(ao, "$(P)$(R)WaypointJ_$(N):J1")
@@ -11,7 +11,6 @@ record(ao, "$(P)$(R)WaypointJ_$(N):J1")
     field(VAL, "$(J1=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
 record(ao, "$(P)$(R)WaypointJ_$(N):J2")
@@ -19,7 +18,6 @@ record(ao, "$(P)$(R)WaypointJ_$(N):J2")
     field(VAL, "$(J2=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
 record(ao, "$(P)$(R)WaypointJ_$(N):J3")
@@ -27,7 +25,6 @@ record(ao, "$(P)$(R)WaypointJ_$(N):J3")
     field(VAL, "$(J3=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
 record(ao, "$(P)$(R)WaypointJ_$(N):J4")
@@ -35,7 +32,6 @@ record(ao, "$(P)$(R)WaypointJ_$(N):J4")
     field(VAL, "$(J4=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
 record(ao, "$(P)$(R)WaypointJ_$(N):J5")
@@ -43,7 +39,6 @@ record(ao, "$(P)$(R)WaypointJ_$(N):J5")
     field(VAL, "$(J5=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
 record(ao, "$(P)$(R)WaypointJ_$(N):J6")
@@ -51,7 +46,6 @@ record(ao, "$(P)$(R)WaypointJ_$(N):J6")
     field(VAL, "$(J6=0)")
     field(PREC, 2)
     field(EGU, "deg")
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
 record(bo, "$(P)$(R)WaypointJ_$(N):Gripper")
@@ -59,7 +53,6 @@ record(bo, "$(P)$(R)WaypointJ_$(N):Gripper")
     field(ZNAM, "OPEN")
     field(ONAM, "CLOSED")
     field(VAL, "$(GRIPPER)")
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
 record(ao, "$(P)$(R)WaypointJ_$(N):Speed")
@@ -67,7 +60,6 @@ record(ao, "$(P)$(R)WaypointJ_$(N):Speed")
     field(VAL, "$(SPEED=1.05)")
     field(PREC, 2)
     field(EGU, "rad/s")
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
 record(ao, "$(P)$(R)WaypointJ_$(N):Acceleration")
@@ -75,7 +67,6 @@ record(ao, "$(P)$(R)WaypointJ_$(N):Acceleration")
     field(VAL, "$(ACCEL=1.4)")
     field(PREC, 2)
     field(EGU, "rad/s/s")
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
 record(ao, "$(P)$(R)WaypointJ_$(N):Blend")
@@ -83,19 +74,6 @@ record(ao, "$(P)$(R)WaypointJ_$(N):Blend")
     field(VAL, "$(BLEND=0.0)")
     field(PREC, 2)
     field(EGU, "m")
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
-}
-
-record(bo, "$(P)$(R)EnableWaypointJ_$(N)")
-{
-    field(VAL, "1")
-    field(OUT, "$(P)$(R)WaypointJ_$(N):Enabled PP")
-}
-
-record(bo, "$(P)$(R)WaypointJ_$(N):Enabled") {
-    field(ONAM, "Enabled")
-    field(ZNAM, "Disabled")
-    field(VAL, "$(EN)")
 }
 
 # stores DOLx.VAL in LNKx.VAL
@@ -115,20 +93,21 @@ record(seq, "$(P)$(R)WaypointJ_$(N):Reset")
     field(LNK4, "$(P)WaypointJ_$(N):J5 PP")
     field(DOL5, "$(P)$(R)Receive:ActualJointPositions5")
     field(LNK5, "$(P)WaypointJ_$(N):J6 PP")
-    
-    # Enable the waypoint
-    field(FLNK, "$(P)$(R)EnableWaypointJ_$(N).PROC")
 }
 
 # Processes moveJ_seq if waypoint is enabled
 # Requires that RTDE control interface is running and
 # associated databases are loaded
-record(calcout, "$(P)$(R)WaypointJ_$(N):moveJ")
+# record(calcout, "$(P)$(R)WaypointJ_$(N):moveJ")
+# {
+    # field(INPA, "$(P)$(R)WaypointJ_$(N):Enabled")
+    # field(CALC, "A")
+    # field(OOPT, "When Non-zero")
+    # field(OUT, "$(P)$(R)WaypointJ_$(N):moveJ_seq1.PROC")
+# }
+record(bo, "$(P)$(R)WaypointJ_$(N):moveJ")
 {
-    field(INPA, "$(P)$(R)WaypointJ_$(N):Enabled")
-    field(CALC, "A")
-    field(OOPT, "When Non-zero")
-    field(OUT, "$(P)$(R)WaypointJ_$(N):moveJ_seq1.PROC")
+    field(FLNK, "$(P)$(R)WaypointJ_$(N):moveJ_seq1.PROC")
 }
 
 record(seq, "$(P)$(R)WaypointJ_$(N):moveJ_seq1")

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-16 12:36:47 by nmarks-->
+<!--Saved on 2024-05-16 14:40:19 by nmarks-->
 <display version="2.0.0">
   <name>WaypointsJ</name>
-  <width>1300</width>
-  <height>800</height>
+  <width>1100</width>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
     </color>
@@ -35,7 +34,7 @@
     </macros>
     <file>path_gen_line.bob</file>
     <y>99</y>
-    <width>1060</width>
+    <width>1090</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -47,7 +46,7 @@
     </macros>
     <file>path_gen_line.bob</file>
     <y>148</y>
-    <width>1060</width>
+    <width>1090</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -59,7 +58,7 @@
     </macros>
     <file>path_gen_line.bob</file>
     <y>197</y>
-    <width>1060</width>
+    <width>1090</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -71,7 +70,7 @@
     </macros>
     <file>path_gen_line.bob</file>
     <y>246</y>
-    <width>1060</width>
+    <width>1090</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -83,7 +82,7 @@
     </macros>
     <file>path_gen_line.bob</file>
     <y>295</y>
-    <width>1060</width>
+    <width>1090</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -95,7 +94,7 @@
     </macros>
     <file>path_gen_line.bob</file>
     <y>344</y>
-    <width>1060</width>
+    <width>1090</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -107,7 +106,7 @@
     </macros>
     <file>path_gen_line.bob</file>
     <y>393</y>
-    <width>1060</width>
+    <width>1090</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -119,7 +118,7 @@
     </macros>
     <file>path_gen_line.bob</file>
     <y>442</y>
-    <width>1060</width>
+    <width>1090</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -131,7 +130,7 @@
     </macros>
     <file>path_gen_line.bob</file>
     <y>491</y>
-    <width>1060</width>
+    <width>1090</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -143,15 +142,15 @@
     </macros>
     <file>path_gen_line.bob</file>
     <y>540</y>
-    <width>1060</width>
+    <width>1090</width>
     <height>49</height>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_1</name>
     <text>J1</text>
-    <x>80</x>
+    <x>140</x>
     <y>70</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -193,20 +192,7 @@
     <text>Gripper</text>
     <x>950</x>
     <y>70</y>
-    <width>90</width>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_6</name>
-    <text>Use</text>
-    <y>70</y>
-    <width>40</width>
+    <width>80</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -232,9 +218,9 @@
   <widget type="label" version="2.0.0">
     <name>Label_8</name>
     <text>J2</text>
-    <x>180</x>
+    <x>230</x>
     <y>70</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -246,9 +232,9 @@
   <widget type="label" version="2.0.0">
     <name>Label_9</name>
     <text>J3</text>
-    <x>280</x>
+    <x>320</x>
     <y>70</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -260,9 +246,9 @@
   <widget type="label" version="2.0.0">
     <name>Label_10</name>
     <text>J4</text>
-    <x>380</x>
+    <x>410</x>
     <y>70</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -274,9 +260,9 @@
   <widget type="label" version="2.0.0">
     <name>Label_11</name>
     <text>J5</text>
-    <x>480</x>
+    <x>500</x>
     <y>70</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -288,9 +274,23 @@
   <widget type="label" version="2.0.0">
     <name>Label_12</name>
     <text>J6</text>
-    <x>580</x>
+    <x>590</x>
     <y>70</y>
-    <width>90</width>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>Description</text>
+    <x>50</x>
+    <y>70</y>
+    <width>80</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-16 12:37:02 by nmarks-->
+<!--Saved on 2024-05-16 14:10:40 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
   <width>1300</width>
@@ -11,49 +11,49 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
     <pv_name>$(P)$(R)WaypointJ_$(N):J1</pv_name>
-    <x>80</x>
+    <x>140</x>
     <y>10</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_1</name>
     <pv_name>$(P)$(R)WaypointJ_$(N):J2</pv_name>
-    <x>180</x>
+    <x>230</x>
     <y>10</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_2</name>
     <pv_name>$(P)$(R)WaypointJ_$(N):J3</pv_name>
-    <x>280</x>
+    <x>320</x>
     <y>10</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_3</name>
     <pv_name>$(P)$(R)WaypointJ_$(N):J4</pv_name>
-    <x>380</x>
+    <x>410</x>
     <y>10</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_4</name>
     <pv_name>$(P)$(R)WaypointJ_$(N):J5</pv_name>
-    <x>480</x>
+    <x>500</x>
     <y>10</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_5</name>
     <pv_name>$(P)$(R)WaypointJ_$(N):J6</pv_name>
-    <x>580</x>
+    <x>590</x>
     <y>10</y>
-    <width>90</width>
+    <width>80</width>
     <height>30</height>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -66,7 +66,7 @@
       </action>
     </actions>
     <text>RST</text>
-    <x>40</x>
+    <x>10</x>
     <y>10</y>
     <width>30</width>
     <background_color>
@@ -80,7 +80,7 @@
     <pv_name>$(P)$(R)WaypointJ_$(N):Gripper</pv_name>
     <x>950</x>
     <y>10</y>
-    <width>90</width>
+    <width>80</width>
     <off_label>Open</off_label>
     <off_color>
       <color name="On" red="0" green="255" blue="0">
@@ -95,15 +95,6 @@
       <color name="Write_Background" red="128" green="255" blue="255">
       </color>
     </background_color>
-  </widget>
-  <widget type="checkbox" version="2.0.0">
-    <name>Check Box</name>
-    <pv_name>$(P)$(R)WaypointJ_$(N):Enabled</pv_name>
-    <label></label>
-    <x>10</x>
-    <y>10</y>
-    <width>20</width>
-    <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_6</name>
@@ -139,7 +130,7 @@
       </action>
     </actions>
     <text>GO</text>
-    <x>1050</x>
+    <x>1040</x>
     <y>10</y>
     <width>30</width>
     <background_color>
@@ -147,5 +138,13 @@
       </color>
     </background_color>
     <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_9</name>
+    <pv_name>$(P)$(R)WaypointJ_$(N):Desc</pv_name>
+    <x>50</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
   </widget>
 </display>
