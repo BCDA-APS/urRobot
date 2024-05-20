@@ -31,3 +31,9 @@ pattern
 {9,  "Waypoint $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00,       0}
 {10, "Waypoint $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00,       0}
 }
+
+# Adds functionality to move through a path of waypoints
+file "$(URROBOT)/db/path.db"
+{
+{}
+}

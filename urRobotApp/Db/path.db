@@ -1,0 +1,21 @@
+record(stringout, "$(P)PathPvFileName") {}
+
+record(luascript, "$(P)PlayPathFromPvFile") {
+    field(INAA, "$(P)PathPvFileName")
+    field(CODE, "@waypoints.lua play_path_pv_file({prefix='$(P)$(R)'})")
+    field(PREC, 0)
+    field(SYNC, "Async")
+}
+
+
+
+# TODO: CSV path option
+
+# record(luascript, "$(P)PlayPathFromCsvFile") {
+    # field(INAA, "")
+    # field(CODE, "@waypoints.lua play_path_csv_file({P='$(P)'})")
+    # field(PREC, 0)
+    # field(SYNC, "Async")
+# }
+
+# TODO: Path PVs option

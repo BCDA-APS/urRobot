@@ -239,7 +239,7 @@ void RTDEControl::poll() {
                                 async_running_ = AsyncRunning::False;
                             }
                         } else {
-                            spdlog::debug("Path complete");
+                            spdlog::debug("Asynchronous move done");
                             async_running_ = AsyncRunning::False;
                             setIntegerParam(asyncMoveDoneIndex_, 1);
                         }
