@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-16 16:38:46 by nmarks-->
+<!--Saved on 2024-05-21 12:28:35 by nmarks-->
 <display version="2.0.0">
   <name>UR Robot</name>
-  <width>250</width>
+  <width>300</width>
   <height>250</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
@@ -42,6 +42,7 @@
     <text>Dashboard</text>
     <x>10</x>
     <y>50</y>
+    <width>120</width>
     <foreground_color>
       <color name="Background" red="255" green="255" blue="255">
       </color>
@@ -68,6 +69,7 @@
     <text>Monitor</text>
     <x>10</x>
     <y>90</y>
+    <width>120</width>
     <foreground_color>
       <color name="Background" red="255" green="255" blue="255">
       </color>
@@ -92,34 +94,9 @@
       </action>
     </actions>
     <text>Control</text>
-    <x>130</x>
+    <x>140</x>
     <y>130</y>
-    <foreground_color>
-      <color name="Background" red="255" green="255" blue="255">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color red="51" green="153" blue="0">
-      </color>
-    </background_color>
-    <tooltip>$(actions)</tooltip>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_3</name>
-    <actions>
-      <action type="open_display">
-        <file>waypointL.bob</file>
-        <macros>
-          <P>$(P)</P>
-          <R>$(R)</R>
-        </macros>
-        <target>window</target>
-        <description>WaypointsL</description>
-      </action>
-    </actions>
-    <text>WaypointsL</text>
-    <x>130</x>
-    <y>90</y>
+    <width>120</width>
     <foreground_color>
       <color name="Background" red="255" green="255" blue="255">
       </color>
@@ -146,6 +123,7 @@
     <text>I/O</text>
     <x>10</x>
     <y>130</y>
+    <width>120</width>
     <foreground_color>
       <color name="Background" red="255" green="255" blue="255">
       </color>
@@ -172,6 +150,7 @@
     <text>Gripper</text>
     <x>10</x>
     <y>170</y>
+    <width>120</width>
     <foreground_color>
       <color name="Background" red="255" green="255" blue="255">
       </color>
@@ -186,18 +165,100 @@
     <name>Action Button_6</name>
     <actions>
       <action type="open_display">
-        <file>waypointJ.bob</file>
+        <file>waypointJ_1-50.bob</file>
         <macros>
           <P>$(P)</P>
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>WaypointsJ</description>
+        <description>1-50</description>
+      </action>
+      <action type="open_display">
+        <file>waypointJ_1-10.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>1-10</description>
+      </action>
+      <action type="open_display">
+        <file>waypointJ_11-20.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>11-20</description>
+      </action>
+      <action type="open_display">
+        <file>waypointJ_21-30.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>21-30</description>
       </action>
     </actions>
     <text>WaypointsJ</text>
-    <x>130</x>
+    <x>140</x>
     <y>50</y>
+    <width>120</width>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_7</name>
+    <actions>
+      <action type="open_display">
+        <file>waypointL_1-50.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>1-50</description>
+      </action>
+      <action type="open_display">
+        <file>waypointL_1-10.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>1-10</description>
+      </action>
+      <action type="open_display">
+        <file>waypointL_11-20.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>11-20</description>
+      </action>
+      <action type="open_display">
+        <file>waypointL_21-30.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+        </macros>
+        <target>window</target>
+        <description>21-30</description>
+      </action>
+    </actions>
+    <text>WaypointsL</text>
+    <x>140</x>
+    <y>90</y>
+    <width>120</width>
     <foreground_color>
       <color name="Background" red="255" green="255" blue="255">
       </color>

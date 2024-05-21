@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-05-21 12:24:50 by nmarks-->
+<display version="2.0.0">
+  <name>WaypointsJ</name>
+  <width>1100</width>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>Joint Waypoints (1-50)</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display</name>
+    <macros>
+      <P>$(P)</P>
+      <N>1</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>109</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_1</name>
+    <macros>
+      <P>$(P)</P>
+      <N>2</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>158</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_2</name>
+    <macros>
+      <P>$(P)</P>
+      <N>3</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>207</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_3</name>
+    <macros>
+      <P>$(P)</P>
+      <N>4</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>256</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_4</name>
+    <macros>
+      <P>$(P)</P>
+      <N>5</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>305</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_5</name>
+    <macros>
+      <P>$(P)</P>
+      <N>6</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>354</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_6</name>
+    <macros>
+      <P>$(P)</P>
+      <N>7</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>403</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_7</name>
+    <macros>
+      <P>$(P)</P>
+      <N>8</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>452</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_8</name>
+    <macros>
+      <P>$(P)</P>
+      <N>9</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>501</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_9</name>
+    <macros>
+      <P>$(P)</P>
+      <N>10</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>550</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_10</name>
+    <macros>
+      <P>$(P)</P>
+      <N>11</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>600</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_11</name>
+    <macros>
+      <P>$(P)</P>
+      <N>12</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>650</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_12</name>
+    <macros>
+      <P>$(P)</P>
+      <N>13</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>700</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_13</name>
+    <macros>
+      <P>$(P)</P>
+      <N>14</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>750</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_14</name>
+    <macros>
+      <P>$(P)</P>
+      <N>15</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>800</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_15</name>
+    <macros>
+      <P>$(P)</P>
+      <N>16</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>850</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_16</name>
+    <macros>
+      <P>$(P)</P>
+      <N>17</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>900</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_17</name>
+    <macros>
+      <P>$(P)</P>
+      <N>18</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>950</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_18</name>
+    <macros>
+      <P>$(P)</P>
+      <N>19</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1000</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_19</name>
+    <macros>
+      <P>$(P)</P>
+      <N>20</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1050</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_20</name>
+    <macros>
+      <P>$(P)</P>
+      <N>21</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1100</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_21</name>
+    <macros>
+      <P>$(P)</P>
+      <N>22</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1150</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_22</name>
+    <macros>
+      <P>$(P)</P>
+      <N>23</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1200</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_23</name>
+    <macros>
+      <P>$(P)</P>
+      <N>24</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1250</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_24</name>
+    <macros>
+      <P>$(P)</P>
+      <N>25</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1300</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_25</name>
+    <macros>
+      <P>$(P)</P>
+      <N>26</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1350</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_26</name>
+    <macros>
+      <P>$(P)</P>
+      <N>27</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1400</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_27</name>
+    <macros>
+      <P>$(P)</P>
+      <N>28</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1450</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_28</name>
+    <macros>
+      <P>$(P)</P>
+      <N>29</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1500</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_29</name>
+    <macros>
+      <P>$(P)</P>
+      <N>30</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1550</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_30</name>
+    <macros>
+      <P>$(P)</P>
+      <N>31</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1600</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_31</name>
+    <macros>
+      <P>$(P)</P>
+      <N>32</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1650</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_32</name>
+    <macros>
+      <P>$(P)</P>
+      <N>33</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1700</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_33</name>
+    <macros>
+      <P>$(P)</P>
+      <N>34</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1750</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_34</name>
+    <macros>
+      <P>$(P)</P>
+      <N>35</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1800</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_35</name>
+    <macros>
+      <P>$(P)</P>
+      <N>36</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1850</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_36</name>
+    <macros>
+      <P>$(P)</P>
+      <N>37</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1900</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_37</name>
+    <macros>
+      <P>$(P)</P>
+      <N>38</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>1950</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_38</name>
+    <macros>
+      <P>$(P)</P>
+      <N>39</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2000</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_39</name>
+    <macros>
+      <P>$(P)</P>
+      <N>40</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2050</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_40</name>
+    <macros>
+      <P>$(P)</P>
+      <N>41</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2100</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_41</name>
+    <macros>
+      <P>$(P)</P>
+      <N>42</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2150</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_42</name>
+    <macros>
+      <P>$(P)</P>
+      <N>43</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2200</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_43</name>
+    <macros>
+      <P>$(P)</P>
+      <N>44</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2250</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_44</name>
+    <macros>
+      <P>$(P)</P>
+      <N>45</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2300</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_45</name>
+    <macros>
+      <P>$(P)</P>
+      <N>46</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2350</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_46</name>
+    <macros>
+      <P>$(P)</P>
+      <N>47</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2400</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_47</name>
+    <macros>
+      <P>$(P)</P>
+      <N>48</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2450</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_48</name>
+    <macros>
+      <P>$(P)</P>
+      <N>49</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2500</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_49</name>
+    <macros>
+      <P>$(P)</P>
+      <N>50</N>
+      <R>$(R)</R>
+    </macros>
+    <file>waypointJ_line.bob</file>
+    <y>2550</y>
+    <width>1090</width>
+    <height>49</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>J1</text>
+    <x>160</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <text>Speed</text>
+    <x>700</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_3</name>
+    <text>Accel</text>
+    <x>790</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <text>Gripper</text>
+    <x>970</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <text>Blend</text>
+    <x>880</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_8</name>
+    <text>J2</text>
+    <x>250</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_9</name>
+    <text>J3</text>
+    <x>340</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_10</name>
+    <text>J4</text>
+    <x>430</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_11</name>
+    <text>J5</text>
+    <x>520</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>J6</text>
+    <x>610</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>Description</text>
+    <x>70</x>
+    <y>80</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_2</name>
+    <pv_name>$(P)$(R)Control:AsyncMoveDone</pv_name>
+    <x>50</x>
+    <y>40</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_19</name>
+    <text>Done:</text>
+    <y>40</y>
+    <width>50</width>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>
