@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-21 12:24:50 by nmarks-->
+<!--Saved on 2024-05-21 14:55:45 by nmarks-->
 <display version="2.0.0">
-  <name>WaypointsJ</name>
+  <name>WaypointsL(1-50)</name>
   <width>1100</width>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
@@ -10,7 +10,7 @@
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>Joint Waypoints (1-50)</text>
+    <text>Cartesian Waypoints (1-50)</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>550</width>
@@ -627,7 +627,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_1</name>
-    <text>J1</text>
+    <text>X</text>
     <x>160</x>
     <y>80</y>
     <width>80</width>
@@ -697,7 +697,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_8</name>
-    <text>J2</text>
+    <text>Y</text>
     <x>250</x>
     <y>80</y>
     <width>80</width>
@@ -711,7 +711,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_9</name>
-    <text>J3</text>
+    <text>Z</text>
     <x>340</x>
     <y>80</y>
     <width>80</width>
@@ -725,7 +725,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_10</name>
-    <text>J4</text>
+    <text>Roll</text>
     <x>430</x>
     <y>80</y>
     <width>80</width>
@@ -739,7 +739,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_11</name>
-    <text>J5</text>
+    <text>Pitch</text>
     <x>520</x>
     <y>80</y>
     <width>80</width>
@@ -753,7 +753,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_12</name>
-    <text>J6</text>
+    <text>Yaw</text>
     <x>610</x>
     <y>80</y>
     <width>80</width>

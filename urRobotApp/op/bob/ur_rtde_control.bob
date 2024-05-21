@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-21 10:58:22 by nmarks-->
+<!--Saved on 2024-05-21 13:50:57 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Control</name>
   <width>950</width>
@@ -1520,7 +1520,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
     <pv_name>$(P)PathPvFileName</pv_name>
-    <x>430</x>
+    <x>460</x>
     <y>91</y>
     <width>170</width>
     <height>30</height>
@@ -1536,7 +1536,7 @@
       </action>
     </actions>
     <text>󰐊</text>
-    <x>610</x>
+    <x>640</x>
     <y>91</y>
     <width>40</width>
     <background_color>
@@ -1556,12 +1556,21 @@
   <widget type="label" version="2.0.0">
     <name>Label_19</name>
     <text>Play Path:</text>
-    <x>430</x>
+    <x>460</x>
     <y>70</y>
     <font>
       <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
       </font>
     </font>
     <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="fileselector" version="2.0.0">
+    <name>File Selector</name>
+    <pv_name>$(P)PathPvFileName</pv_name>
+    <component>2</component>
+    <x>420</x>
+    <y>91</y>
+    <width>30</width>
+    <height>30</height>
   </widget>
 </display>
