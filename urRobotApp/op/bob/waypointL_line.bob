@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-16 16:49:00 by nmarks-->
+<!--Saved on 2024-05-21 10:47:44 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
   <width>1300</width>
@@ -10,48 +10,48 @@
   </background_color>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):X</pv_name>
-    <x>140</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):X</pv_name>
+    <x>160</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_1</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):Y</pv_name>
-    <x>230</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):Y</pv_name>
+    <x>250</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_2</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):Z</pv_name>
-    <x>320</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):Z</pv_name>
+    <x>340</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_3</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):Roll</pv_name>
-    <x>410</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):Roll</pv_name>
+    <x>430</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_4</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):Pitch</pv_name>
-    <x>500</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):Pitch</pv_name>
+    <x>520</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_5</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):Yaw</pv_name>
-    <x>590</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):Yaw</pv_name>
+    <x>610</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -60,15 +60,15 @@
     <name>Action Button</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)WaypointL_$(N):Reset.PROC</pv_name>
+        <pv_name>$(P)$(R)WaypointL:$(N):Reset.PROC</pv_name>
         <value>1</value>
-        <description>$(P)$(R)WaypointL_$(N):Reset.PROC</description>
+        <description>$(P)$(R)WaypointL:$(N):Reset.PROC</description>
       </action>
     </actions>
-    <text>RST</text>
+    <text>HERE</text>
     <x>10</x>
     <y>10</y>
-    <width>30</width>
+    <width>50</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
       </color>
@@ -77,8 +77,8 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_5</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):Gripper</pv_name>
-    <x>950</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):Gripper</pv_name>
+    <x>970</x>
     <y>10</y>
     <width>80</width>
     <off_label>Open</off_label>
@@ -98,24 +98,24 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_6</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):Speed</pv_name>
-    <x>680</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):Speed</pv_name>
+    <x>700</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_7</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):Acceleration</pv_name>
-    <x>770</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):Acceleration</pv_name>
+    <x>790</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_8</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):Blend</pv_name>
-    <x>860</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):Blend</pv_name>
+    <x>880</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -124,13 +124,13 @@
     <name>Action Button_1</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)WaypointL_$(N):moveL.PROC</pv_name>
+        <pv_name>$(P)$(R)WaypointL:$(N):moveL.PROC</pv_name>
         <value>1</value>
-        <description>$(P)$(R)WaypointL_$(N):moveL.PROC</description>
+        <description>$(P)$(R)WaypointL:$(N):moveL.PROC</description>
       </action>
     </actions>
     <text>GO</text>
-    <x>1040</x>
+    <x>1060</x>
     <y>10</y>
     <width>30</width>
     <background_color>
@@ -141,8 +141,8 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_9</name>
-    <pv_name>$(P)$(R)WaypointL_$(N):Desc</pv_name>
-    <x>50</x>
+    <pv_name>$(P)$(R)WaypointL:$(N):Name</pv_name>
+    <x>70</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-16 16:39:51 by nmarks-->
+<!--Saved on 2024-05-21 10:48:14 by nmarks-->
 <display version="2.0.0">
   <name>WaypointsL</name>
   <width>1100</width>
@@ -302,12 +302,13 @@
   <widget type="led" version="2.0.0">
     <name>LED_2</name>
     <pv_name>$(P)$(R)Control:AsyncMoveDone</pv_name>
-    <x>50</x>
+    <x>60</x>
     <y>40</y>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_19</name>
     <text>Done:</text>
+    <x>10</x>
     <y>40</y>
     <width>50</width>
     <font>

@@ -1,0 +1,13 @@
+$(P)$(R)Control:J1TweakVal
+$(P)$(R)Control:J2TweakVal
+$(P)$(R)Control:J3TweakVal
+$(P)$(R)Control:J4TweakVal
+$(P)$(R)Control:J5TweakVal
+$(P)$(R)Control:J6TweakVal
+
+$(P)$(R)Control:PoseXTweakVal.VAL
+$(P)$(R)Control:PoseYTweakVal.VAL
+$(P)$(R)Control:PoseZTweakVal.VAL
+$(P)$(R)Control:PoseRollTweakVal.VAL
+$(P)$(R)Control:PosePitchTweakVal.VAL
+$(P)$(R)Control:PoseYawTweakVal.VAL
