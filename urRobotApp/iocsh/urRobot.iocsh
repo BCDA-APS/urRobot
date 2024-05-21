@@ -43,3 +43,6 @@ dbLoadRecords("$(URROBOT)/db/rtde_control.db", "P=$(PREFIX), R=$(ROBOT_NAME=), P
 # Set up Robotiq Gripper
 URGripperConfig("$(GRIPPER_INSTANCE=asyn_gripper)", "$(IP)")
 dbLoadRecords("$(URROBOT)/db/robotiq_gripper.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(GRIPPER_INSTANCE=asyn_gripper), ADDR=0")
+
+# Add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH for waypoint functionality
+epicsEnvSet("LUA_SCRIPT_PATH", "$(LUA_SCRIPT_PATH=):$(URROBOT)/urRobotApp/src")
