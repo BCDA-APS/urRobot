@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 11:04:58 by nmarks-->
+<!--Saved on 2024-05-23 10:56:53 by nmarks-->
 <display version="2.0.0">
-  <name>Display</name>
+  <name>Robotiq Gripper</name>
   <width>450</width>
   <height>250</height>
   <background_color>
@@ -118,6 +118,7 @@
       <color name="Write_Background" red="128" green="255" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button_1</name>

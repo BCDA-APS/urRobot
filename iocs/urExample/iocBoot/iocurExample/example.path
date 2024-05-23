@@ -1,0 +1,3 @@
+$(P)$(R)WaypointJ:1:moveJ OPEN
+$(P)$(R)WaypointJ:2:moveJ CLOSE
+$(P)$(R)WaypointJ:1:moveJ OPEN

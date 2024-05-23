@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-21 13:50:57 by nmarks-->
+<!--Saved on 2024-05-23 11:15:09 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Control</name>
   <width>950</width>
@@ -11,7 +11,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_8</name>
     <x>10</x>
-    <y>210</y>
+    <y>170</y>
     <width>910</width>
     <height>250</height>
     <line_width>1</line_width>
@@ -25,7 +25,7 @@
     <name>Label_11</name>
     <text>Pitch</text>
     <x>650</x>
-    <y>589</y>
+    <y>549</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -38,7 +38,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_14</name>
     <x>10</x>
-    <y>489</y>
+    <y>449</y>
     <width>910</width>
     <height>250</height>
     <line_width>1</line_width>
@@ -130,7 +130,7 @@
     </actions>
     <text>Reset</text>
     <x>22</x>
-    <y>270</y>
+    <y>230</y>
     <width>60</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -149,7 +149,7 @@
     </actions>
     <text>Stop</text>
     <x>490</x>
-    <y>230</y>
+    <y>190</y>
     <width>60</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -161,7 +161,7 @@
     <name>Label_3</name>
     <text>Joint Move</text>
     <x>22</x>
-    <y>210</y>
+    <y>170</y>
     <width>110</width>
     <height>40</height>
     <font>
@@ -181,7 +181,7 @@
     </actions>
     <text>Reset</text>
     <x>20</x>
-    <y>549</y>
+    <y>509</y>
     <width>60</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -198,9 +198,9 @@
         <description>moveL</description>
       </action>
     </actions>
-    <text>Go</text>
+    <text>Move</text>
     <x>420</x>
-    <y>509</y>
+    <y>469</y>
     <width>60</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -219,7 +219,7 @@
     </actions>
     <text>&gt;</text>
     <x>130</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -238,7 +238,7 @@
     </actions>
     <text>&lt;</text>
     <x>20</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -250,7 +250,7 @@
     <name>Text Entry_42</name>
     <pv_name>$(P)$(R)Control:PoseXTweakVal</pv_name>
     <x>50</x>
-    <y>679</y>
+    <y>639</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -261,7 +261,7 @@
     <name>Text Entry_43</name>
     <pv_name>$(P)$(R)Control:PoseXCmd</pv_name>
     <x>50</x>
-    <y>650</y>
+    <y>610</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -277,7 +277,7 @@
     </actions>
     <text>&gt;</text>
     <x>280</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -296,7 +296,7 @@
     </actions>
     <text>&lt;</text>
     <x>170</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -308,7 +308,7 @@
     <name>Text Entry_44</name>
     <pv_name>$(P)$(R)Control:PoseYTweakVal</pv_name>
     <x>200</x>
-    <y>679</y>
+    <y>639</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -319,7 +319,7 @@
     <name>Text Entry_45</name>
     <pv_name>$(P)$(R)Control:PoseYCmd</pv_name>
     <x>200</x>
-    <y>649</y>
+    <y>609</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -335,7 +335,7 @@
     </actions>
     <text>&gt;</text>
     <x>430</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -354,7 +354,7 @@
     </actions>
     <text>&lt;</text>
     <x>320</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -366,7 +366,7 @@
     <name>Text Entry_46</name>
     <pv_name>$(P)$(R)Control:PoseZTweakVal</pv_name>
     <x>350</x>
-    <y>679</y>
+    <y>639</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -377,7 +377,7 @@
     <name>Text Entry_47</name>
     <pv_name>$(P)$(R)Control:PoseZCmd</pv_name>
     <x>350</x>
-    <y>649</y>
+    <y>609</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -393,7 +393,7 @@
     </actions>
     <text>&gt;</text>
     <x>580</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -412,7 +412,7 @@
     </actions>
     <text>&lt;</text>
     <x>470</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -424,7 +424,7 @@
     <name>Text Entry_48</name>
     <pv_name>$(P)$(R)Control:PoseRollTweakVal</pv_name>
     <x>500</x>
-    <y>679</y>
+    <y>639</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -435,7 +435,7 @@
     <name>Text Entry_49</name>
     <pv_name>$(P)$(R)Control:PoseRollCmd</pv_name>
     <x>500</x>
-    <y>649</y>
+    <y>609</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -451,7 +451,7 @@
     </actions>
     <text>&gt;</text>
     <x>730</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -470,7 +470,7 @@
     </actions>
     <text>&lt;</text>
     <x>620</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -482,7 +482,7 @@
     <name>Text Entry_50</name>
     <pv_name>$(P)$(R)Control:PosePitchTweakVal</pv_name>
     <x>650</x>
-    <y>679</y>
+    <y>639</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -500,7 +500,7 @@
     <name>Text Entry_51</name>
     <pv_name>$(P)$(R)Control:PosePitchCmd</pv_name>
     <x>650</x>
-    <y>649</y>
+    <y>609</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -523,7 +523,7 @@
     </actions>
     <text>&gt;</text>
     <x>880</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -542,7 +542,7 @@
     </actions>
     <text>&lt;</text>
     <x>770</x>
-    <y>679</y>
+    <y>639</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -554,7 +554,7 @@
     <name>Text Entry_52</name>
     <pv_name>$(P)$(R)Control:PoseYawTweakVal</pv_name>
     <x>800</x>
-    <y>679</y>
+    <y>639</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -572,7 +572,7 @@
     <name>Text Entry_53</name>
     <pv_name>$(P)$(R)Control:PoseYawCmd</pv_name>
     <x>800</x>
-    <y>649</y>
+    <y>609</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -588,7 +588,7 @@
     <name>Text Update_19</name>
     <pv_name>$(P)$(R)Control:pose_index0.VAL</pv_name>
     <x>50</x>
-    <y>619</y>
+    <y>579</y>
     <width>80</width>
     <precision>4</precision>
   </widget>
@@ -596,42 +596,42 @@
     <name>Text Update_20</name>
     <pv_name>$(P)$(R)Control:pose_index1</pv_name>
     <x>190</x>
-    <y>619</y>
+    <y>579</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_21</name>
     <pv_name>$(P)$(R)Control:pose_index2</pv_name>
     <x>340</x>
-    <y>619</y>
+    <y>579</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_22</name>
     <pv_name>$(P)$(R)Control:pose_index3</pv_name>
     <x>490</x>
-    <y>619</y>
+    <y>579</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_23</name>
     <pv_name>$(P)$(R)Control:pose_index4</pv_name>
     <x>640</x>
-    <y>619</y>
+    <y>579</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_24</name>
     <pv_name>$(P)$(R)Control:pose_index5</pv_name>
     <x>790</x>
-    <y>619</y>
+    <y>579</y>
     <precision>4</precision>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_6</name>
     <text>Linear TCP Move</text>
     <x>20</x>
-    <y>489</y>
+    <y>449</y>
     <width>178</width>
     <height>40</height>
     <font>
@@ -644,7 +644,7 @@
     <name>Label_7</name>
     <text>X</text>
     <x>50</x>
-    <y>589</y>
+    <y>549</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -658,7 +658,7 @@
     <name>Label_8</name>
     <text>Y</text>
     <x>200</x>
-    <y>589</y>
+    <y>549</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -672,7 +672,7 @@
     <name>Label_10</name>
     <text>Roll</text>
     <x>500</x>
-    <y>589</y>
+    <y>549</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -686,7 +686,7 @@
     <name>Label_12</name>
     <text>Yaw</text>
     <x>800</x>
-    <y>589</y>
+    <y>549</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -707,7 +707,7 @@
     </actions>
     <text>&gt;</text>
     <x>130</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -726,7 +726,7 @@
     </actions>
     <text>&lt;</text>
     <x>20</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -738,7 +738,7 @@
     <name>Text Entry_54</name>
     <pv_name>$(P)$(R)Control:J1TweakVal</pv_name>
     <x>50</x>
-    <y>401</y>
+    <y>361</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -749,7 +749,7 @@
     <name>Text Entry_55</name>
     <pv_name>$(P)$(R)Control:J1Cmd</pv_name>
     <x>50</x>
-    <y>371</y>
+    <y>331</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -765,7 +765,7 @@
     </actions>
     <text>&gt;</text>
     <x>280</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -784,7 +784,7 @@
     </actions>
     <text>&lt;</text>
     <x>170</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -796,7 +796,7 @@
     <name>Text Entry_56</name>
     <pv_name>$(P)$(R)Control:J2TweakVal</pv_name>
     <x>200</x>
-    <y>400</y>
+    <y>360</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -807,7 +807,7 @@
     <name>Text Entry_57</name>
     <pv_name>$(P)$(R)Control:J2Cmd</pv_name>
     <x>200</x>
-    <y>370</y>
+    <y>330</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -823,7 +823,7 @@
     </actions>
     <text>&gt;</text>
     <x>430</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -842,7 +842,7 @@
     </actions>
     <text>&lt;</text>
     <x>320</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -854,7 +854,7 @@
     <name>Text Entry_58</name>
     <pv_name>$(P)$(R)Control:J3TweakVal</pv_name>
     <x>350</x>
-    <y>400</y>
+    <y>360</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -865,7 +865,7 @@
     <name>Text Entry_59</name>
     <pv_name>$(P)$(R)Control:J3Cmd</pv_name>
     <x>350</x>
-    <y>370</y>
+    <y>330</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -881,7 +881,7 @@
     </actions>
     <text>&gt;</text>
     <x>580</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -900,7 +900,7 @@
     </actions>
     <text>&lt;</text>
     <x>470</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -912,7 +912,7 @@
     <name>Text Entry_60</name>
     <pv_name>$(P)$(R)Control:J4TweakVal</pv_name>
     <x>500</x>
-    <y>400</y>
+    <y>360</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -923,7 +923,7 @@
     <name>Text Entry_61</name>
     <pv_name>$(P)$(R)Control:J4Cmd</pv_name>
     <x>500</x>
-    <y>370</y>
+    <y>330</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -939,7 +939,7 @@
     </actions>
     <text>&gt;</text>
     <x>730</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -958,7 +958,7 @@
     </actions>
     <text>&lt;</text>
     <x>620</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -970,7 +970,7 @@
     <name>Text Entry_62</name>
     <pv_name>$(P)$(R)Control:J5TweakVal</pv_name>
     <x>650</x>
-    <y>400</y>
+    <y>360</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -988,7 +988,7 @@
     <name>Text Entry_63</name>
     <pv_name>$(P)$(R)Control:J5Cmd</pv_name>
     <x>650</x>
-    <y>370</y>
+    <y>330</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -1011,7 +1011,7 @@
     </actions>
     <text>&gt;</text>
     <x>880</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -1030,7 +1030,7 @@
     </actions>
     <text>&lt;</text>
     <x>770</x>
-    <y>400</y>
+    <y>360</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -1042,7 +1042,7 @@
     <name>Text Entry_64</name>
     <pv_name>$(P)$(R)Control:J6TweakVal</pv_name>
     <x>800</x>
-    <y>400</y>
+    <y>360</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -1060,7 +1060,7 @@
     <name>Text Entry_65</name>
     <pv_name>$(P)$(R)Control:J6Cmd</pv_name>
     <x>800</x>
-    <y>370</y>
+    <y>330</y>
     <width>80</width>
     <height>30</height>
     <show_units>false</show_units>
@@ -1076,7 +1076,7 @@
     <name>Text Update_25</name>
     <pv_name>$(P)$(R)Control:ActualQ_index0.VAL</pv_name>
     <x>50</x>
-    <y>340</y>
+    <y>300</y>
     <width>80</width>
     <precision>4</precision>
   </widget>
@@ -1084,42 +1084,42 @@
     <name>Text Update_26</name>
     <pv_name>$(P)$(R)Control:ActualQ_index1</pv_name>
     <x>190</x>
-    <y>340</y>
+    <y>300</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_27</name>
     <pv_name>$(P)$(R)Control:ActualQ_index2</pv_name>
     <x>340</x>
-    <y>340</y>
+    <y>300</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_28</name>
     <pv_name>$(P)$(R)Control:ActualQ_index3</pv_name>
     <x>490</x>
-    <y>340</y>
+    <y>300</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_29</name>
     <pv_name>$(P)$(R)Control:ActualQ_index4</pv_name>
     <x>640</x>
-    <y>340</y>
+    <y>300</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_30</name>
     <pv_name>$(P)$(R)Control:ActualQ_index5</pv_name>
     <x>790</x>
-    <y>340</y>
+    <y>300</y>
     <precision>4</precision>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_13</name>
     <text>Joint 1</text>
     <x>50</x>
-    <y>310</y>
+    <y>270</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -1133,7 +1133,7 @@
     <name>Label_14</name>
     <text>Joint 2</text>
     <x>200</x>
-    <y>310</y>
+    <y>270</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -1147,7 +1147,7 @@
     <name>Label_15</name>
     <text>Joint 3</text>
     <x>350</x>
-    <y>310</y>
+    <y>270</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -1161,7 +1161,7 @@
     <name>Label_16</name>
     <text>Joint 4</text>
     <x>500</x>
-    <y>310</y>
+    <y>270</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -1175,7 +1175,7 @@
     <name>Label_17</name>
     <text>Joint 5</text>
     <x>650</x>
-    <y>310</y>
+    <y>270</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -1189,7 +1189,7 @@
     <name>Label_18</name>
     <text>Joint 6</text>
     <x>800</x>
-    <y>310</y>
+    <y>270</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -1210,7 +1210,7 @@
     </actions>
     <text>Stop</text>
     <x>490</x>
-    <y>509</y>
+    <y>469</y>
     <width>60</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -1227,9 +1227,9 @@
         <description>moveJ</description>
       </action>
     </actions>
-    <text>Go</text>
+    <text>Move</text>
     <x>420</x>
-    <y>230</y>
+    <y>190</y>
     <width>60</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -1241,7 +1241,7 @@
     <name>Label_9</name>
     <text>Z</text>
     <x>350</x>
-    <y>589</y>
+    <y>549</y>
     <width>80</width>
     <height>30</height>
     <font>
@@ -1254,8 +1254,8 @@
   <widget type="scaledslider" version="2.0.0">
     <name>Scaled Slider</name>
     <pv_name>$(P)$(R)IO:SpeedSlider</pv_name>
-    <x>10</x>
-    <y>160</y>
+    <x>400</x>
+    <y>40</y>
     <width>270</width>
     <height>40</height>
     <show_scale>false</show_scale>
@@ -1273,8 +1273,8 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
     <pv_name>eq://100*($(P)$(R)IO:SpeedSlider)</pv_name>
-    <x>280</x>
-    <y>160</y>
+    <x>670</x>
+    <y>40</y>
     <width>60</width>
     <background_color>
       <color name="Button_Background" red="210" green="210" blue="210">
@@ -1285,8 +1285,8 @@
   <widget type="label" version="2.0.0">
     <name>Label_2</name>
     <text>Speed</text>
-    <x>120</x>
-    <y>140</y>
+    <x>510</x>
+    <y>20</y>
     <width>50</width>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -1296,8 +1296,8 @@
   <widget type="label" version="2.0.0">
     <name>Label_4</name>
     <text>%</text>
-    <x>310</x>
-    <y>160</y>
+    <x>700</x>
+    <y>40</y>
     <width>20</width>
   </widget>
   <widget type="led" version="2.0.0">
@@ -1320,7 +1320,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_34</name>
     <x>170</x>
-    <y>310</y>
+    <y>270</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1333,7 +1333,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_32</name>
     <x>320</x>
-    <y>310</y>
+    <y>270</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1346,7 +1346,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_33</name>
     <x>470</x>
-    <y>310</y>
+    <y>270</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1359,7 +1359,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_31</name>
     <x>620</x>
-    <y>310</y>
+    <y>270</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1372,7 +1372,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_36</name>
     <x>770</x>
-    <y>310</y>
+    <y>270</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1385,7 +1385,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_25</name>
     <x>20</x>
-    <y>590</y>
+    <y>550</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1398,7 +1398,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_26</name>
     <x>170</x>
-    <y>590</y>
+    <y>550</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1411,7 +1411,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_27</name>
     <x>320</x>
-    <y>590</y>
+    <y>550</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1424,7 +1424,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_28</name>
     <x>470</x>
-    <y>590</y>
+    <y>550</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1437,7 +1437,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_29</name>
     <x>620</x>
-    <y>590</y>
+    <y>550</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1450,7 +1450,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_30</name>
     <x>770</x>
-    <y>590</y>
+    <y>550</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1463,7 +1463,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_37</name>
     <x>20</x>
-    <y>310</y>
+    <y>270</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1476,9 +1476,9 @@
   <widget type="slide_button" version="2.0.0">
     <name>Slide Button</name>
     <pv_name>$(P)$(R)Control:AutoMoveJ</pv_name>
-    <label>Auto</label>
+    <label>Go</label>
     <x>570</x>
-    <y>230</y>
+    <y>190</y>
     <width>120</width>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -1520,7 +1520,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
     <pv_name>$(P)PathPvFileName</pv_name>
-    <x>460</x>
+    <x>440</x>
     <y>91</y>
     <width>170</width>
     <height>30</height>
@@ -1536,7 +1536,7 @@
       </action>
     </actions>
     <text>󰐊</text>
-    <x>640</x>
+    <x>620</x>
     <y>91</y>
     <width>40</width>
     <background_color>
@@ -1548,15 +1548,15 @@
   <widget type="slide_button" version="2.0.0">
     <name>Slide Button_1</name>
     <pv_name>$(P)$(R)Control:AutoMoveL</pv_name>
-    <label>Auto</label>
+    <label>Go</label>
     <x>570</x>
-    <y>510</y>
+    <y>470</y>
     <width>120</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_19</name>
     <text>Play Path:</text>
-    <x>460</x>
+    <x>440</x>
     <y>70</y>
     <font>
       <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
@@ -1568,7 +1568,7 @@
     <name>File Selector</name>
     <pv_name>$(P)PathPvFileName</pv_name>
     <component>2</component>
-    <x>420</x>
+    <x>400</x>
     <y>91</y>
     <width>30</width>
     <height>30</height>

@@ -19,6 +19,7 @@ function string_replace(str, old, new)
     return result
 end
 
+
 function split_string(input_str, delimiter)
     local words = {}
     delimiter = delimiter or "%s"  -- Default delimiter is whitespace
@@ -28,6 +29,7 @@ function split_string(input_str, delimiter)
     end
     return words
 end
+
 
 -- Waits for a process to complete
 -- The process status is specified by the value of 'done_pv'
@@ -67,52 +69,60 @@ function wait_process(done_pv, timeout)
     end
 end
 
+
 function play_path_pv_file(args)
+
     local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
     local filename = AA
     local file = io.open(filename, "r")
 
-    -- Read waypoint PVs from file
-    -- Gripper action can be overridden here
-    -- TODO: set gripper action back to what it was before running this
-    local waypoint_move_pvs = {}
+    -- Split each line by whitespace and store in table of tables, e.g.
+    -- {{"WaypointJ:1:moveJ", "OPEN"},{"WaypointJ:2"}}
+    local lines = {}
     if file then
         for line in file:lines() do
             local _line = string_replace(line, "$(P)$(R)", args.prefix)
             if string.len(_line) > 0 then
-                local move_pv = ""
-                words = split_string(_line, " ")
-                if #words == 1 then
-                    move_pv = string.format("%s.PROC",_line)
-                elseif #words == 2 then
-                    local gripper_pv = string_replace(words[1],"moveJ", "Gripper")
-                    gripper_pv = string_replace(gripper_pv,"moveL", "Gripper")
-                    if words[2] == "OPEN" then
-                        print(string.format("setting gripper action to OPEN for %s", words[1]))
-                        epics.put(gripper_pv, 0)
-                    elseif words[2] == "CLOSE" then
-                        print(string.format("setting gripper action to CLOSE for %s", words[1]))
-                        epics.put(gripper_pv, 1)
-                    else
-                        error("Error reading path file. Invalid gripper action")
-                    end
-                    move_pv = string.format("%s.PROC",words[1])
-                else
-                    error("Error reading path file")
-                end
-                table.insert(waypoint_move_pvs, move_pv)
+                local words = split_string(_line, " ")
+                table.insert(lines, words)
             end
         end
-        file:close()
     else
-        print(string.format("Error: unable to open file %s", filename))
+        error(string.format("Unable to read file '%s'", filename))
+    end
+    file:close()
+
+    -- Apply gripper override, saving initial state before
+    -- FIX: gripper0 shouldn't have duplicates
+    local gripper0 = {}
+    for _, line in ipairs(lines) do
+        local gripper_pv = string_replace(line[1], "moveJ", "Gripper")
+        gripper_pv = string_replace(gripper_pv, "moveL", "Gripper")
+        local gripper_pv_rval = string.format("%s.RVAL", gripper_pv)
+        table.insert(gripper0,{gripper_pv,epics.get(gripper_pv_rval)})
+        local override_str = line[2]
+        if override_str ~= nil then
+            if override_str == "CLOSE" or override_str == "CLOSED" then
+                -- io.write("Setting ",gripper_pv, " ", line[2],"\n")
+                epics.put(gripper_pv, 1)
+            elseif override_str == "OPEN" or override_str == "OPENED" then
+                -- io.write("Setting ", gripper_pv, " ", line[2],"\n")
+                epics.put(gripper_pv, 0)
+            else
+                error(string.format("Invalid gripper override '%s' in path file", override_str))
+            end
+        end
+
+        -- Move to the waypoint
+        local move_pv = line[1]
+        epics.put(move_pv, 1)
+        wait_process(done_pv)
+
     end
 
-    -- Move to each waypoint, waiting to reach it before continuing
-    -- TODO: ignore empty lines, handle hash comments
-    for _, line in ipairs(waypoint_move_pvs) do
-        epics.put(line, 1)
-        wait_process(done_pv)
+    -- Reset gripper action PVs to their original values
+    for _,v in ipairs(gripper0) do
+        epics.put(v[1], v[2])
     end
 
     -- reset joint and pose command values

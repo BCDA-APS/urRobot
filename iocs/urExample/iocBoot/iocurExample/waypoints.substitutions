@@ -1,4 +1,4 @@
-# Waypoints in joint space plus gripper state (1=open, 0=closed)
+# Waypoints in joint space plus gripper state (0=open, 1=closed)
 file "$(URROBOT)/db/waypointJ.db"
 {
 pattern
@@ -25,7 +25,7 @@ pattern
 {20, "WaypointJ $(N)",       0,      0,       0,      0,     0,     0,  0.50,   1.40,  0.00,       0}
 }
 
-# Waypoints in Cartesian space plus gripper state (1=open, 0=closed)
+# Waypoints in Cartesian space plus gripper state (0=open, 1=closed)
 file "$(URROBOT)/db/waypointL.db"
 {
 pattern
