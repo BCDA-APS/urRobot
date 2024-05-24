@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 11:19:32 by nmarks-->
+<!--Saved on 2024-05-24 10:07:14 by nmarks-->
 <display version="2.0.0">
   <name>RTDE I/O</name>
   <width>550</width>
-  <height>300</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
     </color>
@@ -30,7 +29,7 @@
     <name>Boolean Button</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut0</pv_name>
     <x>110</x>
-    <y>190</y>
+    <y>110</y>
     <width>40</width>
     <off_label>0</off_label>
     <on_label>0</on_label>
@@ -44,7 +43,7 @@
     <name>Boolean Button_1</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut1</pv_name>
     <x>160</x>
-    <y>190</y>
+    <y>110</y>
     <width>40</width>
     <off_label>1</off_label>
     <on_label>1</on_label>
@@ -58,7 +57,7 @@
     <name>Boolean Button_2</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut2</pv_name>
     <x>210</x>
-    <y>190</y>
+    <y>110</y>
     <width>40</width>
     <off_label>2</off_label>
     <on_label>2</on_label>
@@ -72,7 +71,7 @@
     <name>Boolean Button_3</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut3</pv_name>
     <x>260</x>
-    <y>190</y>
+    <y>110</y>
     <width>40</width>
     <off_label>3</off_label>
     <on_label>3</on_label>
@@ -86,7 +85,7 @@
     <name>Boolean Button_8</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut4</pv_name>
     <x>310</x>
-    <y>190</y>
+    <y>110</y>
     <width>40</width>
     <off_label>4</off_label>
     <on_label>4</on_label>
@@ -100,7 +99,7 @@
     <name>Boolean Button_9</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut5</pv_name>
     <x>360</x>
-    <y>190</y>
+    <y>110</y>
     <width>40</width>
     <off_label>5</off_label>
     <on_label>5</on_label>
@@ -114,7 +113,7 @@
     <name>Boolean Button_10</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut6</pv_name>
     <x>410</x>
-    <y>190</y>
+    <y>110</y>
     <width>40</width>
     <off_label>6</off_label>
     <on_label>6</on_label>
@@ -128,7 +127,7 @@
     <name>Boolean Button_11</name>
     <pv_name>$(P)$(R)IO:SetStandardDigitalOut7</pv_name>
     <x>460</x>
-    <y>190</y>
+    <y>110</y>
     <width>40</width>
     <off_label>7</off_label>
     <on_label>7</on_label>
@@ -142,7 +141,7 @@
     <name>Boolean Button_12</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut0</pv_name>
     <x>110</x>
-    <y>250</y>
+    <y>150</y>
     <width>40</width>
     <off_label>0</off_label>
     <on_label>0</on_label>
@@ -156,7 +155,7 @@
     <name>Boolean Button_13</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut1</pv_name>
     <x>160</x>
-    <y>250</y>
+    <y>150</y>
     <width>40</width>
     <off_label>1</off_label>
     <on_label>1</on_label>
@@ -170,7 +169,7 @@
     <name>Boolean Button_14</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut2</pv_name>
     <x>210</x>
-    <y>250</y>
+    <y>150</y>
     <width>40</width>
     <off_label>2</off_label>
     <on_label>2</on_label>
@@ -184,7 +183,7 @@
     <name>Boolean Button_15</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut3</pv_name>
     <x>260</x>
-    <y>250</y>
+    <y>150</y>
     <width>40</width>
     <off_label>3</off_label>
     <on_label>3</on_label>
@@ -198,7 +197,7 @@
     <name>Boolean Button_16</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut4</pv_name>
     <x>310</x>
-    <y>250</y>
+    <y>150</y>
     <width>40</width>
     <off_label>4</off_label>
     <on_label>4</on_label>
@@ -212,7 +211,7 @@
     <name>Boolean Button_17</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut5</pv_name>
     <x>360</x>
-    <y>250</y>
+    <y>150</y>
     <width>40</width>
     <off_label>5</off_label>
     <on_label>5</on_label>
@@ -226,7 +225,7 @@
     <name>Boolean Button_18</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut6</pv_name>
     <x>410</x>
-    <y>250</y>
+    <y>150</y>
     <width>40</width>
     <off_label>6</off_label>
     <on_label>6</on_label>
@@ -240,7 +239,7 @@
     <name>Boolean Button_19</name>
     <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut7</pv_name>
     <x>460</x>
-    <y>250</y>
+    <y>150</y>
     <width>40</width>
     <off_label>7</off_label>
     <on_label>7</on_label>
@@ -274,7 +273,7 @@
     <name>Label_52</name>
     <text>Standard:</text>
     <x>30</x>
-    <y>190</y>
+    <y>110</y>
     <width>70</width>
     <height>30</height>
     <font>
@@ -287,7 +286,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_53</name>
     <text>Configurable:</text>
-    <y>250</y>
+    <y>150</y>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -299,8 +298,8 @@
   <widget type="scaledslider" version="2.0.0">
     <name>Scaled Slider</name>
     <pv_name>$(P)$(R)IO:SpeedSlider</pv_name>
-    <x>110</x>
-    <y>120</y>
+    <x>160</x>
+    <y>51</y>
     <width>270</width>
     <height>40</height>
     <show_scale>false</show_scale>
@@ -318,16 +317,16 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
     <pv_name>eq://100*($(P)$(R)IO:SpeedSlider)</pv_name>
-    <x>390</x>
-    <y>120</y>
+    <x>440</x>
+    <y>51</y>
     <width>60</width>
     <precision>0</precision>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_1</name>
     <text>Speed</text>
-    <x>220</x>
-    <y>100</y>
+    <x>270</x>
+    <y>31</y>
     <width>50</width>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
@@ -337,8 +336,208 @@
   <widget type="label" version="2.0.0">
     <name>Label_2</name>
     <text>%</text>
-    <x>420</x>
-    <y>120</y>
+    <x>470</x>
+    <y>51</y>
     <width>20</width>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Digital I/O</name>
+    <x>10</x>
+    <y>210</y>
+    <width>310</width>
+    <height>320</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <background_color>
+      <color name="Button_Background" red="210" green="210" blue="210">
+      </color>
+    </background_color>
+    <widget type="label" version="2.0.0">
+      <name>Label_6</name>
+      <text>Standard:</text>
+      <x>32</x>
+      <y>52</y>
+      <width>70</width>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>Byte Monitor_3</name>
+      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
+      <x>102</x>
+      <y>52</y>
+      <bitReverse>true</bitReverse>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_7</name>
+      <text>Configurable:</text>
+      <x>12</x>
+      <y>82</y>
+      <width>90</width>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>Byte Monitor_4</name>
+      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
+      <x>102</x>
+      <y>82</y>
+      <startBit>8</startBit>
+      <bitReverse>true</bitReverse>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_8</name>
+      <text>Tool:</text>
+      <x>52</x>
+      <y>112</y>
+      <width>40</width>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>Byte Monitor_5</name>
+      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
+      <x>102</x>
+      <y>112</y>
+      <width>40</width>
+      <startBit>16</startBit>
+      <numBits>2</numBits>
+      <bitReverse>true</bitReverse>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_9</name>
+      <text>Inputs</text>
+      <x>2</x>
+      <y>22</y>
+      <font>
+        <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_10</name>
+      <text>Standard:</text>
+      <x>32</x>
+      <y>192</y>
+      <width>70</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_11</name>
+      <text>Outputs</text>
+      <x>2</x>
+      <y>162</y>
+      <font>
+        <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>Byte Monitor_6</name>
+      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
+      <x>102</x>
+      <y>192</y>
+      <bitReverse>true</bitReverse>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_12</name>
+      <text>Configurable:</text>
+      <x>12</x>
+      <y>222</y>
+      <width>90</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_13</name>
+      <text>Tool:</text>
+      <x>52</x>
+      <y>252</y>
+      <width>40</width>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>Byte Monitor_7</name>
+      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
+      <x>102</x>
+      <y>222</y>
+      <startBit>8</startBit>
+      <bitReverse>true</bitReverse>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>Byte Monitor_8</name>
+      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
+      <x>102</x>
+      <y>252</y>
+      <width>40</width>
+      <startBit>16</startBit>
+      <numBits>2</numBits>
+      <bitReverse>true</bitReverse>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Analog I/O</name>
+    <x>330</x>
+    <y>400</y>
+    <width>170</width>
+    <height>130</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <background_color>
+      <color name="Button_Background" red="210" green="210" blue="210">
+      </color>
+    </background_color>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>Byte Monitor_12</name>
+      <pv_name>$(P)$(R)Receive:AnalogInput0</pv_name>
+      <x>72</x>
+      <y>22</y>
+      <width>20</width>
+      <startBit>16</startBit>
+      <numBits>1</numBits>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_22</name>
+      <text>Inputs</text>
+      <x>12</x>
+      <y>22</y>
+      <width>50</width>
+      <font>
+        <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_24</name>
+      <text>Outputs</text>
+      <x>2</x>
+      <y>62</y>
+      <width>60</width>
+      <font>
+        <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>Byte Monitor_16</name>
+      <pv_name>$(P)$(R)Receive:AnalogInput1</pv_name>
+      <x>92</x>
+      <y>22</y>
+      <width>20</width>
+      <startBit>16</startBit>
+      <numBits>1</numBits>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>Byte Monitor_17</name>
+      <pv_name>$(P)$(R)Receive:AnalogOutput1</pv_name>
+      <x>92</x>
+      <y>62</y>
+      <width>20</width>
+      <startBit>16</startBit>
+      <numBits>1</numBits>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>Byte Monitor_18</name>
+      <pv_name>$(P)$(R)Receive:AnalogOutput0</pv_name>
+      <x>72</x>
+      <y>62</y>
+      <width>20</width>
+      <startBit>16</startBit>
+      <numBits>1</numBits>
+    </widget>
   </widget>
 </display>

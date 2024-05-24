@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 11:16:42 by nmarks-->
+<!--Saved on 2024-05-24 14:29:41 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Receive</name>
-  <width>1000</width>
-  <height>1300</height>
+  <width>750</width>
+  <height>900</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
     </color>
@@ -11,7 +11,7 @@
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>UR RTDE Status</text>
+    <text>UR RTDE Receive</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>550</width>
@@ -26,132 +26,6 @@
     </foreground_color>
     <transparent use_class="true">true</transparent>
   </widget>
-  <widget type="group" version="2.0.0">
-    <name>Digital I/O</name>
-    <y>930</y>
-    <width>310</width>
-    <height>320</height>
-    <font>
-      <font family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <background_color>
-      <color name="Button_Background" red="210" green="210" blue="210">
-      </color>
-    </background_color>
-    <widget type="label" version="2.0.0">
-      <name>Label_6</name>
-      <text>Standard:</text>
-      <x>32</x>
-      <y>52</y>
-      <width>70</width>
-    </widget>
-    <widget type="byte_monitor" version="2.0.0">
-      <name>Byte Monitor_3</name>
-      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
-      <x>102</x>
-      <y>52</y>
-      <bitReverse>true</bitReverse>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_7</name>
-      <text>Configurable:</text>
-      <x>12</x>
-      <y>82</y>
-      <width>90</width>
-    </widget>
-    <widget type="byte_monitor" version="2.0.0">
-      <name>Byte Monitor_4</name>
-      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
-      <x>102</x>
-      <y>82</y>
-      <startBit>8</startBit>
-      <bitReverse>true</bitReverse>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_8</name>
-      <text>Tool:</text>
-      <x>52</x>
-      <y>112</y>
-      <width>40</width>
-    </widget>
-    <widget type="byte_monitor" version="2.0.0">
-      <name>Byte Monitor_5</name>
-      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
-      <x>102</x>
-      <y>112</y>
-      <width>40</width>
-      <startBit>16</startBit>
-      <numBits>2</numBits>
-      <bitReverse>true</bitReverse>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_1</name>
-      <text>Inputs</text>
-      <x>2</x>
-      <y>22</y>
-      <font>
-        <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
-        </font>
-      </font>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_9</name>
-      <text>Standard:</text>
-      <x>32</x>
-      <y>192</y>
-      <width>70</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_2</name>
-      <text>Outputs</text>
-      <x>2</x>
-      <y>162</y>
-      <font>
-        <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
-        </font>
-      </font>
-    </widget>
-    <widget type="byte_monitor" version="2.0.0">
-      <name>Byte Monitor_6</name>
-      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
-      <x>102</x>
-      <y>192</y>
-      <bitReverse>true</bitReverse>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_10</name>
-      <text>Configurable:</text>
-      <x>12</x>
-      <y>222</y>
-      <width>90</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_11</name>
-      <text>Tool:</text>
-      <x>52</x>
-      <y>252</y>
-      <width>40</width>
-    </widget>
-    <widget type="byte_monitor" version="2.0.0">
-      <name>Byte Monitor_7</name>
-      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
-      <x>102</x>
-      <y>222</y>
-      <startBit>8</startBit>
-      <bitReverse>true</bitReverse>
-    </widget>
-    <widget type="byte_monitor" version="2.0.0">
-      <name>Byte Monitor_8</name>
-      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
-      <x>102</x>
-      <y>252</y>
-      <width>40</width>
-      <startBit>16</startBit>
-      <numBits>2</numBits>
-      <bitReverse>true</bitReverse>
-    </widget>
-  </widget>
   <widget type="label" version="2.0.0">
     <name>Label_15</name>
     <text>Runtime state:</text>
@@ -161,79 +35,6 @@
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Analog I/O</name>
-    <x>320</x>
-    <y>1120</y>
-    <width>170</width>
-    <height>130</height>
-    <font>
-      <font family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <background_color>
-      <color name="Button_Background" red="210" green="210" blue="210">
-      </color>
-    </background_color>
-    <widget type="byte_monitor" version="2.0.0">
-      <name>Byte Monitor_12</name>
-      <pv_name>$(P)$(R)Receive:AnalogInput0</pv_name>
-      <x>72</x>
-      <y>22</y>
-      <width>20</width>
-      <startBit>16</startBit>
-      <numBits>1</numBits>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_22</name>
-      <text>Inputs</text>
-      <x>12</x>
-      <y>22</y>
-      <width>50</width>
-      <font>
-        <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
-        </font>
-      </font>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_24</name>
-      <text>Outputs</text>
-      <x>2</x>
-      <y>62</y>
-      <width>60</width>
-      <font>
-        <font family="Liberation Sans" style="BOLD_ITALIC" size="14.0">
-        </font>
-      </font>
-    </widget>
-    <widget type="byte_monitor" version="2.0.0">
-      <name>Byte Monitor_16</name>
-      <pv_name>$(P)$(R)Receive:AnalogInput1</pv_name>
-      <x>92</x>
-      <y>22</y>
-      <width>20</width>
-      <startBit>16</startBit>
-      <numBits>1</numBits>
-    </widget>
-    <widget type="byte_monitor" version="2.0.0">
-      <name>Byte Monitor_17</name>
-      <pv_name>$(P)$(R)Receive:AnalogOutput1</pv_name>
-      <x>92</x>
-      <y>62</y>
-      <width>20</width>
-      <startBit>16</startBit>
-      <numBits>1</numBits>
-    </widget>
-    <widget type="byte_monitor" version="2.0.0">
-      <name>Byte Monitor_18</name>
-      <pv_name>$(P)$(R)Receive:AnalogOutput0</pv_name>
-      <x>72</x>
-      <y>62</y>
-      <width>20</width>
-      <startBit>16</startBit>
-      <numBits>1</numBits>
-    </widget>
   </widget>
   <widget type="group" version="2.0.0">
     <name>Safey Mode</name>
@@ -353,241 +154,20 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
-    <name>Actual</name>
-    <y>330</y>
-    <width>900</width>
-    <height>320</height>
+  <widget type="label" version="2.0.0">
+    <name>Label_50</name>
+    <text>Uptime (sec):</text>
+    <y>50</y>
+    <width>110</width>
     <font>
       <font family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
-    <background_color>
-      <color name="Button_Background" red="210" green="210" blue="210">
-      </color>
-    </background_color>
-    <widget type="label" version="2.0.0">
-      <name>Label_45</name>
-      <text>TCP pose:</text>
-      <x>62</x>
-      <y>12</y>
-      <width>70</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_4</name>
-      <pv_name>$(P)$(R)Receive:ActualTCPPose</pv_name>
-      <x>142</x>
-      <y>12</y>
-      <width>250</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_46</name>
-      <text>TCP speed:</text>
-      <x>52</x>
-      <y>42</y>
-      <width>80</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_5</name>
-      <pv_name>$(P)$(R)Receive:ActualTCPSpeed</pv_name>
-      <x>142</x>
-      <y>42</y>
-      <width>250</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_47</name>
-      <text>TCP force:</text>
-      <x>52</x>
-      <y>72</y>
-      <width>80</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_6</name>
-      <pv_name>$(P)$(R)Receive:ActualTCPForce</pv_name>
-      <x>142</x>
-      <y>72</y>
-      <width>250</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update</name>
-      <pv_name>$(P)$(R)Receive:ActualJointVelocities</pv_name>
-      <x>562</x>
-      <y>42</y>
-      <width>300</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_2</name>
-      <pv_name>$(P)$(R)Receive:ActualJointPositions</pv_name>
-      <x>562</x>
-      <y>12</y>
-      <width>300</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_3</name>
-      <pv_name>$(P)$(R)Receive:ActualJointCurrents</pv_name>
-      <x>562</x>
-      <y>72</y>
-      <width>300</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_44</name>
-      <text>Joint currents:</text>
-      <x>462</x>
-      <y>72</y>
-      <width>90</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_4</name>
-      <text>Joint velocities:</text>
-      <x>452</x>
-      <y>42</y>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_43</name>
-      <text>Joint positions:</text>
-      <x>452</x>
-      <y>12</y>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="polyline" version="2.0.0">
-      <name>Polyline_1</name>
-      <x>412</x>
-      <y>12</y>
-      <width>1</width>
-      <height>260</height>
-      <points>
-        <point x="0.0" y="260.0">
-        </point>
-        <point x="0.0" y="0.0">
-        </point>
-      </points>
-      <line_width>1</line_width>
-      <line_color>
-        <color name="Header_Background" red="77" green="77" blue="77">
-        </color>
-      </line_color>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_7</name>
-      <pv_name>$(P)$(R)Receive:ActualToolAccelerometer</pv_name>
-      <x>142</x>
-      <y>102</y>
-      <width>250</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_48</name>
-      <text>Tool accelerometer:</text>
-      <x>12</x>
-      <y>102</y>
-      <width>126</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_60</name>
-      <text>Joint temperatures:</text>
-      <x>432</x>
-      <y>102</y>
-      <width>120</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_18</name>
-      <pv_name>$(P)$(R)Receive:JointTemperatures</pv_name>
-      <x>562</x>
-      <y>102</y>
-      <width>300</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_61</name>
-      <text>Momentum:</text>
-      <x>12</x>
-      <y>132</y>
-      <width>126</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_19</name>
-      <pv_name>$(P)$(R)Receive:ActualMomentum</pv_name>
-      <x>142</x>
-      <y>132</y>
-      <width>250</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_62</name>
-      <text>Main voltage:</text>
-      <x>12</x>
-      <y>162</y>
-      <width>126</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_20</name>
-      <pv_name>$(P)$(R)Receive:ActualMainVoltage</pv_name>
-      <x>142</x>
-      <y>162</y>
-      <width>250</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_63</name>
-      <text>Robot voltage:</text>
-      <x>12</x>
-      <y>192</y>
-      <width>126</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_21</name>
-      <pv_name>$(P)$(R)Receive:ActualRobotVoltage</pv_name>
-      <x>142</x>
-      <y>192</y>
-      <width>250</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_64</name>
-      <text>Robot current:</text>
-      <x>12</x>
-      <y>222</y>
-      <width>126</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_22</name>
-      <pv_name>$(P)$(R)Receive:ActualRobotCurrent</pv_name>
-      <x>142</x>
-      <y>222</y>
-      <width>250</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_65</name>
-      <text>Joint voltages:</text>
-      <x>432</x>
-      <y>132</y>
-      <width>126</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_23</name>
-      <pv_name>$(P)$(R)Receive:ActualJointVoltages</pv_name>
-      <x>562</x>
-      <y>132</y>
-      <width>300</width>
-    </widget>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_50</name>
-    <text>Uptime (seconds):</text>
-    <y>50</y>
-    <width>120</width>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_9</name>
     <pv_name>$(P)$(R)Receive:ControllerTimestamp</pv_name>
-    <x>130</x>
+    <x>100</x>
     <y>50</y>
     <width>110</width>
   </widget>
@@ -602,10 +182,10 @@
   <widget type="multi_state_led" version="2.0.0">
     <name>LED (Multi State)</name>
     <pv_name>$(P)$(R)Receive:RuntimeState</pv_name>
-    <x>100</x>
+    <x>110</x>
     <y>130</y>
     <width>100</width>
-    <height>50</height>
+    <height>60</height>
     <states>
       <state>
         <value>0</value>
@@ -667,141 +247,6 @@
       </font>
     </font>
   </widget>
-  <widget type="group" version="2.0.0">
-    <name>Target</name>
-    <y>670</y>
-    <width>900</width>
-    <height>230</height>
-    <font>
-      <font family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <background_color>
-      <color name="Button_Background" red="210" green="210" blue="210">
-      </color>
-    </background_color>
-    <widget type="label" version="2.0.0">
-      <name>Label_49</name>
-      <text>TCP pose:</text>
-      <x>64</x>
-      <y>12</y>
-      <width>70</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_8</name>
-      <pv_name>$(P)$(R)Receive:TargetTCPPose</pv_name>
-      <x>144</x>
-      <y>12</y>
-      <width>250</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_52</name>
-      <text>TCP speed:</text>
-      <x>52</x>
-      <y>42</y>
-      <width>80</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_10</name>
-      <pv_name>$(P)$(R)Receive:TargetTCPSpeed</pv_name>
-      <x>144</x>
-      <y>42</y>
-      <width>250</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_12</name>
-      <pv_name>$(P)$(R)Receive:TargetJointVelocities</pv_name>
-      <x>572</x>
-      <y>42</y>
-      <width>290</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_13</name>
-      <pv_name>$(P)$(R)Receive:TargetJointPositions</pv_name>
-      <x>572</x>
-      <y>12</y>
-      <width>290</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_14</name>
-      <pv_name>$(P)$(R)Receive:TargetJointCurrents</pv_name>
-      <x>572</x>
-      <y>102</y>
-      <width>290</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_54</name>
-      <text>Joint currents:</text>
-      <x>472</x>
-      <y>102</y>
-      <width>90</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_55</name>
-      <text>Joint velocities:</text>
-      <x>462</x>
-      <y>42</y>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_56</name>
-      <text>Joint positions:</text>
-      <x>462</x>
-      <y>12</y>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="polyline" version="2.0.0">
-      <name>Polyline_2</name>
-      <x>412</x>
-      <y>12</y>
-      <width>1</width>
-      <height>180</height>
-      <points>
-        <point x="0.0" y="180.0">
-        </point>
-        <point x="0.0" y="0.0">
-        </point>
-      </points>
-      <line_width>1</line_width>
-      <line_color>
-        <color name="Header_Background" red="77" green="77" blue="77">
-        </color>
-      </line_color>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_58</name>
-      <text>Joint accelerations:</text>
-      <x>432</x>
-      <y>72</y>
-      <width>130</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_16</name>
-      <pv_name>$(P)$(R)Receive:TargetJointAccelerations</pv_name>
-      <x>572</x>
-      <y>72</y>
-      <width>290</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_59</name>
-      <text>Joint moments:</text>
-      <x>442</x>
-      <y>132</y>
-      <width>120</width>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_17</name>
-      <pv_name>$(P)$(R)Receive:TargetJointMoments</pv_name>
-      <x>572</x>
-      <y>132</y>
-      <width>290</width>
-    </widget>
-  </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button_1</name>
     <actions>
@@ -837,5 +282,410 @@
       </color>
     </background_color>
     <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_11</name>
+    <pv_name>$(P)$(R)Receive:ActualJointPositions0</pv_name>
+    <x>60</x>
+    <y>370</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_15</name>
+    <pv_name>$(P)$(R)Receive:ActualJointPositions1</pv_name>
+    <x>60</x>
+    <y>410</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_24</name>
+    <pv_name>$(P)$(R)Receive:ActualJointPositions2</pv_name>
+    <x>60</x>
+    <y>450</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_25</name>
+    <pv_name>$(P)$(R)Receive:ActualJointPositions3</pv_name>
+    <x>60</x>
+    <y>490</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_26</name>
+    <pv_name>$(P)$(R)Receive:ActualJointPositions4</pv_name>
+    <x>60</x>
+    <y>530</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_27</name>
+    <pv_name>$(P)$(R)Receive:ActualJointPositions5</pv_name>
+    <x>60</x>
+    <y>570</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_53</name>
+    <text>J1:</text>
+    <x>10</x>
+    <y>370</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_70</name>
+    <text>J2:</text>
+    <x>10</x>
+    <y>410</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_71</name>
+    <text>J3:</text>
+    <x>10</x>
+    <y>450</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_72</name>
+    <text>J4:</text>
+    <x>10</x>
+    <y>490</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_73</name>
+    <text>J5:</text>
+    <x>10</x>
+    <y>530</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_74</name>
+    <text>J6:</text>
+    <x>10</x>
+    <y>570</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_12</name>
+    <pv_name>$(P)$(R)Receive:ActualTCP_X</pv_name>
+    <x>430</x>
+    <y>370</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_13</name>
+    <pv_name>$(P)$(R)Receive:ActualTCP_Y</pv_name>
+    <x>430</x>
+    <y>410</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_14</name>
+    <pv_name>$(P)$(R)Receive:ActualTCP_Z</pv_name>
+    <x>430</x>
+    <y>450</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_16</name>
+    <pv_name>$(P)$(R)Receive:ActualTCP_Roll</pv_name>
+    <x>430</x>
+    <y>490</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_17</name>
+    <pv_name>$(P)$(R)Receive:ActualTCP_Pitch</pv_name>
+    <x>430</x>
+    <y>530</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_28</name>
+    <pv_name>$(P)$(R)Receive:ActualTCP_Yaw</pv_name>
+    <x>430</x>
+    <y>570</y>
+    <width>210</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="24.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_54</name>
+    <text>X:</text>
+    <x>390</x>
+    <y>370</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_55</name>
+    <text>Y:</text>
+    <x>390</x>
+    <y>410</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_56</name>
+    <text>Z:</text>
+    <x>390</x>
+    <y>450</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_57</name>
+    <text>Roll:</text>
+    <x>360</x>
+    <y>490</y>
+    <width>70</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_58</name>
+    <text>Pitch:</text>
+    <x>350</x>
+    <y>530</y>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_59</name>
+    <text>Yaw:</text>
+    <x>360</x>
+    <y>570</y>
+    <width>70</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_64</name>
+    <text>Robot current:</text>
+    <y>710</y>
+    <width>126</width>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_22</name>
+    <pv_name>$(P)$(R)Receive:ActualRobotCurrent</pv_name>
+    <x>130</x>
+    <y>710</y>
+    <width>90</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_63</name>
+    <text>Robot voltage:</text>
+    <y>680</y>
+    <width>126</width>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_21</name>
+    <pv_name>$(P)$(R)Receive:ActualRobotVoltage</pv_name>
+    <x>130</x>
+    <y>680</y>
+    <width>90</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_62</name>
+    <text>Main voltage:</text>
+    <y>650</y>
+    <width>126</width>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_20</name>
+    <pv_name>$(P)$(R)Receive:ActualMainVoltage</pv_name>
+    <x>130</x>
+    <y>650</y>
+    <width>90</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_48</name>
+    <text>Tool accelerometer:</text>
+    <y>830</y>
+    <width>126</width>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_7</name>
+    <pv_name>$(P)$(R)Receive:ActualToolAccelerometer</pv_name>
+    <x>130</x>
+    <y>830</y>
+    <width>250</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_65</name>
+    <text>Joint voltages:</text>
+    <y>740</y>
+    <width>126</width>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_23</name>
+    <pv_name>$(P)$(R)Receive:ActualJointVoltages</pv_name>
+    <x>130</x>
+    <y>740</y>
+    <width>300</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_60</name>
+    <text>Joint temperatures:</text>
+    <y>800</y>
+    <width>126</width>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_18</name>
+    <pv_name>$(P)$(R)Receive:JointTemperatures</pv_name>
+    <x>130</x>
+    <y>800</y>
+    <width>300</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_44</name>
+    <text>Joint currents:</text>
+    <y>770</y>
+    <width>126</width>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_3</name>
+    <pv_name>$(P)$(R)Receive:ActualJointCurrents</pv_name>
+    <x>130</x>
+    <y>770</y>
+    <width>300</width>
   </widget>
 </display>

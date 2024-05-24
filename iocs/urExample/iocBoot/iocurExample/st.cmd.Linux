@@ -3,14 +3,13 @@
 
 epicsEnvSet("PREFIX", "urExample:")
 epicsEnvSet("IOCSH_PS1", "$(IOC)>")
-epicsEnvSet("LUA_SCRIPT_PATH", "$(LUA_SCRIPT_PATH=):$(URROBOT)/urRobotApp/src")
 
 dbLoadDatabase("../../dbd/iocurExampleLinux.dbd")
 iocurExampleLinux_registerRecordDeviceDriver(pdbbase)
 
 # Load urRobot iocsh script with the IP address for your robot
 iocshLoad("./urRobot.iocsh", "PREFIX=$(PREFIX), IP=192.168.1.1")
-dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX),R=")
+dbLoadTemplate("./waypoints.substitutions", "P=$(PREFIX),R=")
 
 ###############################################################################
 iocInit
