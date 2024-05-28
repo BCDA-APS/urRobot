@@ -72,7 +72,7 @@ class RTDEControl : public asynPortDriver {
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
     std::unique_ptr<ur_rtde::RobotiqGripper> gripper_;
 
-    const char *robot_ip_;
+    const std::string robot_ip_ = "127.0.0.1";
     bool try_connect();
 
     // Commanded joint angles
