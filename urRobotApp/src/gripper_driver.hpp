@@ -41,7 +41,7 @@ class URGripper : public asynPortDriver {
   private:
     std::unique_ptr<ur_rtde::RobotiqGripper> gripper_;
     std::unique_ptr<ur_rtde::DashboardClient> ur_dashboard_;
-    const char *robot_ip_;
+    const std::string robot_ip_ = "";
     bool try_connect();
     bool robot_on_ = false;
 

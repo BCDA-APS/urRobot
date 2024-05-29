@@ -45,7 +45,7 @@ class RTDEInOut : public asynPortDriver {
 
   private:
     std::unique_ptr<ur_rtde::RTDEIOInterface> rtde_io_;
-    const char *robot_ip_;
+    const std::string robot_ip_ = "";
     bool try_connect();
 
   protected:

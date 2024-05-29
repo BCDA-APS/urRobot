@@ -4,7 +4,7 @@ epics = require("epics")
 
 -- Returns a new string with all occurances of 
 -- a substring 'old' in 'str' replaced with 'new'
-function string_replace(str, old, new)
+function string.replace(str, old, new)
     local result = ""
     local start_index = 1
     while true do
@@ -20,7 +20,7 @@ function string_replace(str, old, new)
 end
 
 
-function split_string(input_str, delimiter)
+function string.split(input_str, delimiter)
     local words = {}
     delimiter = delimiter or "%s"  -- Default delimiter is whitespace
     local pattern = string.format("([^%s]+)", delimiter)
@@ -81,9 +81,9 @@ function play_path_pv_file(args)
     local lines = {}
     if file then
         for line in file:lines() do
-            local _line = string_replace(line, "$(P)$(R)", args.prefix)
+            local _line = string.replace(line, "$(P)$(R)", args.prefix)
             if string.len(_line) > 0 then
-                local words = split_string(_line, " ")
+                local words = string.split(_line, " ")
                 table.insert(lines, words)
             end
         end
@@ -96,17 +96,15 @@ function play_path_pv_file(args)
     -- FIX: gripper0 shouldn't have duplicates
     local gripper0 = {}
     for _, line in ipairs(lines) do
-        local gripper_pv = string_replace(line[1], "moveJ", "Gripper")
-        gripper_pv = string_replace(gripper_pv, "moveL", "Gripper")
+        local gripper_pv = string.replace(line[1], "moveJ", "Gripper")
+        gripper_pv = string.replace(gripper_pv, "moveL", "Gripper")
         local gripper_pv_rval = string.format("%s.RVAL", gripper_pv)
         table.insert(gripper0,{gripper_pv,epics.get(gripper_pv_rval)})
         local override_str = line[2]
         if override_str ~= nil then
             if override_str == "CLOSE" or override_str == "CLOSED" then
-                -- io.write("Setting ",gripper_pv, " ", line[2],"\n")
                 epics.put(gripper_pv, 1)
             elseif override_str == "OPEN" or override_str == "OPENED" then
-                -- io.write("Setting ", gripper_pv, " ", line[2],"\n")
                 epics.put(gripper_pv, 0)
             else
                 error(string.format("Invalid gripper override '%s' in path file", override_str))

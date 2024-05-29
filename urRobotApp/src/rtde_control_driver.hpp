@@ -31,8 +31,8 @@ static constexpr char POSE_ROLL_CMD_STRING[] = "POSE_ROLL_CMD";
 static constexpr char POSE_PITCH_CMD_STRING[] = "POSE_PITCH_CMD";
 static constexpr char POSE_YAW_CMD_STRING[] = "POSE_YAW_CMD";
 
-static constexpr char PLAY_POSE_PATH_STRING[] = "PLAY_POSE_PATH";
-static constexpr char PLAY_JOINT_PATH_STRING[] = "PLAY_JOINT_PATH";
+static constexpr char PLAY_CARTESIAN_PATH_CSV_STRING[] = "PLAY_CARTESIAN_PATH_CSV";
+static constexpr char PLAY_JOINT_PATH_CSV_STRING[] = "PLAY_JOINT_PATH_CSV";
 static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
 static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
 
@@ -122,8 +122,8 @@ class RTDEControl : public asynPortDriver {
     int poseRollCmdIndex_;
     int posePitchCmdIndex_;
     int poseYawCmdIndex_;
-    int playPosePathIndex_;
-    int playJointPathIndex_;
+    int playCartesianPathCsvIndex_;
+    int playJointPathCsvIndex_;
     int reuploadCtrlScriptIndex_;
     int stopCtrlScriptIndex_;
     int asyncMoveIndex_;

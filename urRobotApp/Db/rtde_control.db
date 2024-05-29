@@ -7,7 +7,7 @@ record(bi, "$(P)$(R)Control:Connected")
 {
     field(DESC, "RTDE Connection status")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CONNECTED")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))IS_CONNECTED")
     field(SCAN, "I/O Intr")
 }
 
@@ -15,7 +15,7 @@ record(bi, "$(P)$(R)Control:Steady")
 {
     field(DESC, "Is robot fully at rest")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_STEADY")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))IS_STEADY")
     field(SCAN, "I/O Intr")
 }
 
@@ -23,28 +23,28 @@ record(bo, "$(P)$(R)Control:Disconnect")
 {
     field(DESC, "Disconnects from the RTDE interface")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DISCONNECT")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))DISCONNECT")
 }
 
 record(bo, "$(P)$(R)Control:Reconnect")
 {
     field(DESC, "Tries reconnecting to the RTDE interface")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RECONNECT")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))RECONNECT")
 }
 
 record(bo, "$(P)$(R)Control:ReuploadControlScript")
 {
     field(DESC, "Reuploads control script to controller")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))REUPLOAD_CONTROL_SCRIPT")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))REUPLOAD_CONTROL_SCRIPT")
 }
 
 record(bo, "$(P)$(R)Control:StopControlScript")
 {
     field(DESC, "Stops the control script")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOP_CONTROL_SCRIPT")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))STOP_CONTROL_SCRIPT")
 }
 
 record(bo, "$(P)$(R)Control:Asynchronous")
@@ -53,7 +53,7 @@ record(bo, "$(P)$(R)Control:Asynchronous")
     field(DTYP, "asynInt32")
     field(VAL, 1)
     field(PINI, 1)
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ASYNC_MOVE")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ASYNC_MOVE")
 }
 
 record(bi, "$(P)$(R)Control:AsyncMoveDone")
@@ -61,7 +61,7 @@ record(bi, "$(P)$(R)Control:AsyncMoveDone")
     field(DESC, "1 if asynchronous motion complete")
     field(DTYP, "asynInt32")
     field(VAL, 1)
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ASYNC_MOVE_DONE")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ASYNC_MOVE_DONE")
     field(SCAN, "I/O Intr")
 }
 
@@ -69,7 +69,7 @@ record(bo, "$(P)$(R)Control:WaypointGripperAction")
 {
     field(DESC, "Gripper action after reaching waypoint")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))WAYPOINT_GRIPPER_ACTION")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))WAYPOINT_GRIPPER_ACTION")
 }
 
 #======================
@@ -80,14 +80,14 @@ record(bo, "$(P)$(R)Control:moveJ")
 {
     field(DESC, "Moves joints to commanded values")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEJ")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))MOVEJ")
 }
 
 record(bo, "$(P)$(R)Control:waypoint_moveJ")
 {
     field(DESC, "moveJ followed by gripper action")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))WAYPOINT_MOVEJ")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))WAYPOINT_MOVEJ")
 }
 
 record(ao, "$(P)$(R)Control:JointSpeed")
@@ -96,7 +96,7 @@ record(ao, "$(P)$(R)Control:JointSpeed")
     field(DTYP, "asynFloat64")
     field(PREC, 2)
     field(EGU, "rad/s")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_SPEED")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))JOINT_SPEED")
 }
 
 record(ao, "$(P)$(R)Control:JointAcceleration")
@@ -105,7 +105,7 @@ record(ao, "$(P)$(R)Control:JointAcceleration")
     field(DTYP, "asynFloat64")
     field(PREC, 2)
     field(EGU, "rad/s/s")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_ACCELERATION")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))JOINT_ACCELERATION")
 }
 
 record(ao, "$(P)$(R)Control:JointBlend")
@@ -114,14 +114,14 @@ record(ao, "$(P)$(R)Control:JointBlend")
     field(DTYP, "asynFloat64")
     field(PREC, 2)
     field(EGU, "m")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))JOINT_BLEND")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))JOINT_BLEND")
 }
 
 record(bo, "$(P)$(R)Control:stopJ")
 {
     field(DESC, "Moves joints to commanded values")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOPJ")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))STOPJ")
 }
 
 record(bo, "$(P)$(R)Control:AutoMoveJ")
@@ -146,7 +146,7 @@ record(waveform, "$(P)$(R)Control:ActualQ")
     field(FTVL, "DOUBLE")
     field(PINI, "1")
     field(EGU, "degrees")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_Q")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ACTUAL_Q")
     field(NELM, 6)
     field(FLNK, "$(P)$(R)Q_index_fanout.PROC")
     field(SCAN, "I/O Intr")
@@ -249,7 +249,7 @@ record(ao, "$(P)$(R)Control:J1Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 1")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J1CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))J1CMD")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
@@ -292,7 +292,7 @@ record(ao, "$(P)$(R)Control:J2Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 2")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J2CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))J2CMD")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
@@ -335,7 +335,7 @@ record(ao, "$(P)$(R)Control:J3Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 3")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J3CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))J3CMD")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
@@ -378,7 +378,7 @@ record(ao, "$(P)$(R)Control:J4Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 4")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J4CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))J4CMD")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
@@ -421,7 +421,7 @@ record(ao, "$(P)$(R)Control:J5Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 5")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J5CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))J5CMD")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
@@ -464,7 +464,7 @@ record(ao, "$(P)$(R)Control:J6Cmd")
 {
     field(DESC, "Commanded angle(deg) for joint 6")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))J6CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))J6CMD")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
@@ -509,14 +509,14 @@ record(bo, "$(P)$(R)Control:moveL")
 {
     field(DESC, "Move to TCP pose linearly")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))MOVEL")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))MOVEL")
 }
 
 record(bo, "$(P)$(R)Control:waypoint_moveL")
 {
     field(DESC, "moveL followed by gripper action")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))WAYPOINT_MOVEL")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))WAYPOINT_MOVEL")
 }
 
 record(ao, "$(P)$(R)Control:LinearSpeed")
@@ -525,7 +525,7 @@ record(ao, "$(P)$(R)Control:LinearSpeed")
     field(DTYP, "asynFloat64")
     field(PREC, 3)
     field(EGU, "m/s")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LINEAR_SPEED")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))LINEAR_SPEED")
 }
 
 record(ao, "$(P)$(R)Control:LinearAcceleration")
@@ -534,7 +534,7 @@ record(ao, "$(P)$(R)Control:LinearAcceleration")
     field(DTYP, "asynFloat64")
     field(PREC, 3)
     field(EGU, "m/s/s")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LINEAR_ACCELERATION")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))LINEAR_ACCELERATION")
 }
 
 record(ao, "$(P)$(R)Control:LinearBlend")
@@ -543,14 +543,14 @@ record(ao, "$(P)$(R)Control:LinearBlend")
     field(DTYP, "asynFloat64")
     field(PREC, 3)
     field(EGU, "m")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LINEAR_BLEND")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))LINEAR_BLEND")
 }
 
 record(bo, "$(P)$(R)Control:stopL")
 {
     field(DESC, "Stop linear move to TCP pose")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOPL")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))STOPL")
 }
 
 record(bo, "$(P)$(R)Control:AutoMoveL")
@@ -573,7 +573,7 @@ record(waveform, "$(P)$(R)Control:ActualTCPPose")
     field(DTYP, "asynFloat64ArrayIn")
     field(FTVL, "DOUBLE")
     field(PINI, "1")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_TCP_POSE")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ACTUAL_TCP_POSE")
     field(NELM, 6)
     field(FLNK, "$(P)$(R)pose_index_fanout.PROC")
     field(SCAN, "I/O Intr")
@@ -676,7 +676,7 @@ record(ao, "$(P)$(R)Control:PoseXCmd")
 {
     field(DESC, "Commanded TCP X")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_X_CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POSE_X_CMD")
     field(EGU, "mm")
     field(PINI, 1)
     field(PREC, 4)
@@ -721,7 +721,7 @@ record(ao, "$(P)$(R)Control:PoseYCmd")
 {
     field(DESC, "Commanded TCP Y")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_Y_CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POSE_Y_CMD")
     field(EGU, "mm")
     field(PINI, 1)
     field(PREC, 4)
@@ -767,7 +767,7 @@ record(ao, "$(P)$(R)Control:PoseZCmd")
 {
     field(DESC, "Commanded TCP Z")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_Z_CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POSE_Z_CMD")
     field(EGU, "mm")
     field(PINI, 1)
     field(PREC, 4)
@@ -812,7 +812,7 @@ record(ao, "$(P)$(R)Control:PoseRollCmd")
 {
     field(DESC, "Commanded TCP roll")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_ROLL_CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POSE_ROLL_CMD")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
@@ -856,7 +856,7 @@ record(ao, "$(P)$(R)Control:PosePitchCmd")
 {
     field(DESC, "Commanded TCP pitch")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_PITCH_CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POSE_PITCH_CMD")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
@@ -900,7 +900,7 @@ record(ao, "$(P)$(R)Control:PoseYawCmd")
 {
     field(DESC, "Commanded TCP yaw")
     field(DTYP, "asynFloat64")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POSE_YAW_CMD")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POSE_YAW_CMD")
     field(EGU, "degrees")
     field(PINI, 1)
     field(PREC, 4)
@@ -942,21 +942,25 @@ record(calcout, "$(P)$(R)Control:PoseYawTweakCalcRev")
 #======================
 # Path Following
 #======================
-record(stringout, "$(P)$(R)Control:PlayPosePath")
+
+record(stringout, "$(P)$(R)Control:CartesianPathCsvFile")
 {
-    field(DESC, "Moves through CSV file of EE waypoints")
+    field(OUT, "$(P)$(R)Control:PlayCartesianPathFromCsvFile NPP")
+}
+record(stringout, "$(P)$(R)Control:PlayCartesianPathFromCsvFile")
+{
+    field(DESC, "Moves through CSV file of poses")
     field(DTYP, "asynOctetWrite")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PLAY_POSE_PATH")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))PLAY_CARTESIAN_PATH_CSV")
 }
 
-record(stringout, "$(P)$(R)Control:JointPathFile")
+record(stringout, "$(P)$(R)Control:JointPathCsvFile")
 {
-    field(OUT, "$(P)$(R)Control:PlayJointPath NPP")
+    field(OUT, "$(P)$(R)Control:PlayJointPathFromCsvFile NPP")
 }
-
-record(stringout, "$(P)$(R)Control:PlayJointPath")
+record(stringout, "$(P)$(R)Control:PlayJointPathFromCsvFile")
 {
     field(DESC, "Moves through CSV file of joint angles")
     field(DTYP, "asynOctetWrite")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PLAY_JOINT_PATH")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))PLAY_JOINT_PATH_CSV")
 }

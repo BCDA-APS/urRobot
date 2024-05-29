@@ -1,75 +1,75 @@
 # This database defines a single waypoint for the robot in joint space
 # including the gripper state where 0=open and 1=closed
 
-record(stringout, "$(P)$(R)WaypointL:$(N):Name")
+record(stringout, "$(P)$(R=)WaypointL:$(N):Name")
 {
     field(VAL, "$(DESC=)")
 }
 
-record(ao, "$(P)$(R)WaypointL:$(N):X")
+record(ao, "$(P)$(R=)WaypointL:$(N):X")
 {
     field(VAL, "$(X=0)")
     field(PREC, 4)
     field(EGU, "m")
 }
 
-record(ao, "$(P)$(R)WaypointL:$(N):Y")
+record(ao, "$(P)$(R=)WaypointL:$(N):Y")
 {
     field(VAL, "$(Y=0)")
     field(PREC, 4)
     field(EGU, "m")
 }
 
-record(ao, "$(P)$(R)WaypointL:$(N):Z")
+record(ao, "$(P)$(R=)WaypointL:$(N):Z")
 {
     field(VAL, "$(Z=0)")
     field(PREC, 4)
     field(EGU, "m")
 }
 
-record(ao, "$(P)$(R)WaypointL:$(N):Roll")
+record(ao, "$(P)$(R=)WaypointL:$(N):Roll")
 {
     field(VAL, "$(ROLL=0)")
     field(PREC, 2)
     field(EGU, "deg")
 }
 
-record(ao, "$(P)$(R)WaypointL:$(N):Pitch")
+record(ao, "$(P)$(R=)WaypointL:$(N):Pitch")
 {
     field(VAL, "$(PITCH=0)")
     field(PREC, 2)
     field(EGU, "deg")
 }
 
-record(ao, "$(P)$(R)WaypointL:$(N):Yaw")
+record(ao, "$(P)$(R=)WaypointL:$(N):Yaw")
 {
     field(VAL, "$(YAW=0)")
     field(PREC, 2)
     field(EGU, "deg")
 }
 
-record(bo, "$(P)$(R)WaypointL:$(N):Gripper")
+record(bo, "$(P)$(R=)WaypointL:$(N):Gripper")
 {
     field(ZNAM, "OPEN")
     field(ONAM, "CLOSED")
     field(VAL, "$(GRIPPER)")
 }
 
-record(ao, "$(P)$(R)WaypointL:$(N):Speed")
+record(ao, "$(P)$(R=)WaypointL:$(N):Speed")
 {
     field(VAL, "$(SPEED=1.05)")
     field(PREC, 2)
     field(EGU, "rad/s")
 }
 
-record(ao, "$(P)$(R)WaypointL:$(N):Acceleration")
+record(ao, "$(P)$(R=)WaypointL:$(N):Acceleration")
 {
     field(VAL, "$(ACCEL=1.4)")
     field(PREC, 2)
     field(EGU, "rad/s/s")
 }
 
-record(ao, "$(P)$(R)WaypointL:$(N):Blend")
+record(ao, "$(P)$(R=)WaypointL:$(N):Blend")
 {
     field(VAL, "$(BLEND=0.0)")
     field(PREC, 2)
@@ -78,67 +78,67 @@ record(ao, "$(P)$(R)WaypointL:$(N):Blend")
 
 # stores DOLx.VAL in LNKx.VAL
 # Requires that RTDE Receive databases have been loaded
-record(seq, "$(P)$(R)WaypointL:$(N):Reset")
+record(seq, "$(P)$(R=)WaypointL:$(N):Reset")
 {
     # Sets waypoint joint angles to the current measured angles
-    field(DOL0, "$(P)$(R)Receive:ActualTCP_X")
+    field(DOL0, "$(P)$(R=)Receive:ActualTCP_X")
     field(LNK0, "$(P)WaypointL:$(N):X PP")
-    field(DOL1, "$(P)$(R)Receive:ActualTCP_Y")
+    field(DOL1, "$(P)$(R=)Receive:ActualTCP_Y")
     field(LNK1, "$(P)WaypointL:$(N):Y PP")
-    field(DOL2, "$(P)$(R)Receive:ActualTCP_Z")
+    field(DOL2, "$(P)$(R=)Receive:ActualTCP_Z")
     field(LNK2, "$(P)WaypointL:$(N):Z PP")
-    field(DOL3, "$(P)$(R)Receive:ActualTCP_Roll")
+    field(DOL3, "$(P)$(R=)Receive:ActualTCP_Roll")
     field(LNK3, "$(P)WaypointL:$(N):Roll PP")
-    field(DOL4, "$(P)$(R)Receive:ActualTCP_Pitch")
+    field(DOL4, "$(P)$(R=)Receive:ActualTCP_Pitch")
     field(LNK4, "$(P)WaypointL:$(N):Pitch PP")
-    field(DOL5, "$(P)$(R)Receive:ActualTCP_Yaw")
+    field(DOL5, "$(P)$(R=)Receive:ActualTCP_Yaw")
     field(LNK5, "$(P)WaypointL:$(N):Yaw PP")
 }
 
-record(bo, "$(P)$(R)WaypointL:$(N):moveL")
+record(bo, "$(P)$(R=)WaypointL:$(N):moveL")
 {
-    field(FLNK, "$(P)$(R)WaypointL:$(N):moveL_seq1.PROC")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):moveL_seq1.PROC")
 }
 
-record(seq, "$(P)$(R)WaypointL:$(N):moveL_seq1")
+record(seq, "$(P)$(R=)WaypointL:$(N):moveL_seq1")
 {
     # Disable AutoMoveL
     field(DOL0, "0")
-    field(LNK0, "$(P)$(R)Control:AutoMoveL PP")
+    field(LNK0, "$(P)$(R=)Control:AutoMoveL PP")
 
     # Set Control:JxCmd to WaypointL:$(N):Jx
-    field(DOL1, "$(P)$(R)WaypointL:$(N):X")
-    field(LNK1, "$(P)$(R)Control:PoseXCmd PP")
-    field(DOL2, "$(P)$(R)WaypointL:$(N):Y")
-    field(LNK2, "$(P)$(R)Control:PoseYCmd PP")
-    field(DOL3, "$(P)$(R)WaypointL:$(N):Z")
-    field(LNK3, "$(P)$(R)Control:PoseZCmd PP")
-    field(DOL4, "$(P)$(R)WaypointL:$(N):Roll")
-    field(LNK4, "$(P)$(R)Control:PoseRollCmd PP")
-    field(DOL5, "$(P)$(R)WaypointL:$(N):Pitch")
-    field(LNK5, "$(P)$(R)Control:PosePitchCmd PP")
-    field(DOL6, "$(P)$(R)WaypointL:$(N):Yaw")
-    field(LNK6, "$(P)$(R)Control:YawCmd PP")
+    field(DOL1, "$(P)$(R=)WaypointL:$(N):X")
+    field(LNK1, "$(P)$(R=)Control:PoseXCmd PP")
+    field(DOL2, "$(P)$(R=)WaypointL:$(N):Y")
+    field(LNK2, "$(P)$(R=)Control:PoseYCmd PP")
+    field(DOL3, "$(P)$(R=)WaypointL:$(N):Z")
+    field(LNK3, "$(P)$(R=)Control:PoseZCmd PP")
+    field(DOL4, "$(P)$(R=)WaypointL:$(N):Roll")
+    field(LNK4, "$(P)$(R=)Control:PoseRollCmd PP")
+    field(DOL5, "$(P)$(R=)WaypointL:$(N):Pitch")
+    field(LNK5, "$(P)$(R=)Control:PosePitchCmd PP")
+    field(DOL6, "$(P)$(R=)WaypointL:$(N):Yaw")
+    field(LNK6, "$(P)$(R=)Control:YawCmd PP")
     
-    field(FLNK, "$(P)$(R)WaypointL:$(N):moveL_seq2.PROC")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):moveL_seq2.PROC")
 }
 
-record(seq, "$(P)$(R)WaypointL:$(N):moveL_seq2")
+record(seq, "$(P)$(R=)WaypointL:$(N):moveL_seq2")
 {
     # Set to asynchronous motion
     field(DOL0, "1")
-    field(LNK0, "$(P)$(R)Control:Asynchronous")
+    field(LNK0, "$(P)$(R=)Control:Asynchronous")
     
     # set speed, accel, blend, gripper action
-    field(DOL1, "$(P)$(R)WaypointL:$(N):Speed")
-    field(LNK1, "$(P)$(R)Control:JointSpeed PP")
-    field(DOL2, "$(P)$(R)WaypointL:$(N):Acceleration")
-    field(LNK2, "$(P)$(R)Control:JointAcceleration PP")
-    field(DOL3, "$(P)$(R)WaypointL:$(N):Blend")
-    field(LNK3, "$(P)$(R)Control:JointBlend PP")
-    field(DOL4, "$(P)$(R)WaypointL:$(N):Gripper")
-    field(LNK4, "$(P)$(R)Control:WaypointGripperAction PP")
+    field(DOL1, "$(P)$(R=)WaypointL:$(N):Speed")
+    field(LNK1, "$(P)$(R=)Control:JointSpeed PP")
+    field(DOL2, "$(P)$(R=)WaypointL:$(N):Acceleration")
+    field(LNK2, "$(P)$(R=)Control:JointAcceleration PP")
+    field(DOL3, "$(P)$(R=)WaypointL:$(N):Blend")
+    field(LNK3, "$(P)$(R=)Control:JointBlend PP")
+    field(DOL4, "$(P)$(R=)WaypointL:$(N):Gripper")
+    field(LNK4, "$(P)$(R=)Control:WaypointGripperAction PP")
     
     # Do the move
-    field(FLNK, "$(P)$(R)Control:waypoint_moveL.PROC")
+    field(FLNK, "$(P)$(R=)Control:waypoint_moveL.PROC")
 }

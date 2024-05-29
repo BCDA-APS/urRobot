@@ -56,7 +56,7 @@ class RTDEReceive : public asynPortDriver {
 
   private:
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
-    const char *robot_ip_;
+    const std::string robot_ip_ = "";
     bool try_connect();
 
   protected:
