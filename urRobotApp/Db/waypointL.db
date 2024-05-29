@@ -131,11 +131,11 @@ record(seq, "$(P)$(R=)WaypointL:$(N):moveL_seq2")
     
     # set speed, accel, blend, gripper action
     field(DOL1, "$(P)$(R=)WaypointL:$(N):Speed")
-    field(LNK1, "$(P)$(R=)Control:JointSpeed PP")
+    field(LNK1, "$(P)$(R=)Control:LinearSpeed PP")
     field(DOL2, "$(P)$(R=)WaypointL:$(N):Acceleration")
-    field(LNK2, "$(P)$(R=)Control:JointAcceleration PP")
+    field(LNK2, "$(P)$(R=)Control:LinearAcceleration PP")
     field(DOL3, "$(P)$(R=)WaypointL:$(N):Blend")
-    field(LNK3, "$(P)$(R=)Control:JointBlend PP")
+    field(LNK3, "$(P)$(R=)Control:LinearBlend PP")
     field(DOL4, "$(P)$(R=)WaypointL:$(N):Gripper")
     field(LNK4, "$(P)$(R=)Control:WaypointGripperAction PP")
     
