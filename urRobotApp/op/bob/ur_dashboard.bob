@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-15 11:15:45 by nmarks-->
+<!--Saved on 2024-05-28 10:10:36 by nmarks-->
 <display version="2.0.0">
   <name>Dashboard</name>
-  <width>600</width>
+  <width>450</width>
   <height>700</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
@@ -30,7 +30,7 @@
     <name>Program</name>
     <x>10</x>
     <y>320</y>
-    <width>510</width>
+    <width>410</width>
     <height>160</height>
     <background_color>
       <color name="Button_Background" red="210" green="210" blue="210">
@@ -110,21 +110,21 @@
       <pv_name>$(P)$(R)Dashboard:LoadedProgram</pv_name>
       <x>12</x>
       <y>12</y>
-      <width>450</width>
+      <width>350</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_6</name>
       <pv_name>$(P)$(R)Dashboard:ProgramState</pv_name>
       <x>12</x>
       <y>42</y>
-      <width>450</width>
+      <width>350</width>
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
     <name>Status</name>
     <x>10</x>
     <y>500</y>
-    <width>510</width>
+    <width>410</width>
     <height>180</height>
     <background_color>
       <color name="Button_Background" red="210" green="210" blue="210">
@@ -135,14 +135,14 @@
       <pv_name>$(P)$(R)Dashboard:RobotMode</pv_name>
       <x>12</x>
       <y>82</y>
-      <width>450</width>
+      <width>350</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update</name>
       <pv_name>$(P)$(R)Dashboard:SafetyStatus</pv_name>
       <x>12</x>
       <y>112</y>
-      <width>450</width>
+      <width>350</width>
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED</name>
@@ -289,7 +289,7 @@
   </widget>
   <widget type="group" version="2.0.0">
     <name>Power/Connection</name>
-    <x>220</x>
+    <x>230</x>
     <y>100</y>
     <width>190</width>
     <background_color>
