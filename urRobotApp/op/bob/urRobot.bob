@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-29 10:52:11 by nmarks-->
+<!--Saved on 2024-05-31 13:43:22 by nmarks-->
 <display version="2.0.0">
   <name>UR Robot</name>
   <width>300</width>
@@ -165,49 +165,13 @@
     <name>Action Button_6</name>
     <actions>
       <action type="open_display">
-        <file>waypointJ_1-50.bob</file>
+        <file>waypointJ_simple_1-50.bob</file>
         <macros>
           <P>$(P)</P>
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>1-50</description>
-      </action>
-      <action type="open_display">
-        <file>waypointJ_1-10.bob</file>
-        <macros>
-          <P>$(P)</P>
-          <R>$(R)</R>
-        </macros>
-        <target>window</target>
-        <description>1-10</description>
-      </action>
-      <action type="open_display">
-        <file>waypointJ_11-20.bob</file>
-        <macros>
-          <P>$(P)</P>
-          <R>$(R)</R>
-        </macros>
-        <target>window</target>
-        <description>11-20</description>
-      </action>
-      <action type="open_display">
-        <file>waypointJ_21-30.bob</file>
-        <macros>
-          <P>$(P)</P>
-          <R>$(R)</R>
-        </macros>
-        <target>window</target>
-        <description>21-30</description>
-      </action>
-      <action type="open_display">
-        <file>waypointJ_simple.bob</file>
-        <macros>
-          <P>$(P)</P>
-          <R>$(R)</R>
-        </macros>
-        <target>window</target>
-        <description>Simple</description>
+        <description>WaypointJ Less50</description>
       </action>
     </actions>
     <text>WaypointsJ</text>
@@ -228,40 +192,13 @@
     <name>Action Button_7</name>
     <actions>
       <action type="open_display">
-        <file>waypointL_1-50.bob</file>
+        <file>waypointL_simple_1-50.bob</file>
         <macros>
           <P>$(P)</P>
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>1-50</description>
-      </action>
-      <action type="open_display">
-        <file>waypointL_1-10.bob</file>
-        <macros>
-          <P>$(P)</P>
-          <R>$(R)</R>
-        </macros>
-        <target>window</target>
-        <description>1-10</description>
-      </action>
-      <action type="open_display">
-        <file>waypointL_11-20.bob</file>
-        <macros>
-          <P>$(P)</P>
-          <R>$(R)</R>
-        </macros>
-        <target>window</target>
-        <description>11-20</description>
-      </action>
-      <action type="open_display">
-        <file>waypointL_21-30.bob</file>
-        <macros>
-          <P>$(P)</P>
-          <R>$(R)</R>
-        </macros>
-        <target>window</target>
-        <description>21-30</description>
+        <description>WaypointL Less50</description>
       </action>
     </actions>
     <text>WaypointsL</text>

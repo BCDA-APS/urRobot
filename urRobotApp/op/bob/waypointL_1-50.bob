@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-21 14:55:45 by nmarks-->
+<!--Saved on 2024-05-31 13:07:38 by nmarks-->
 <display version="2.0.0">
   <name>WaypointsL(1-50)</name>
-  <width>1100</width>
+  <width>1150</width>
+  <height>1000</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
     </color>
@@ -10,7 +11,7 @@
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>Cartesian Waypoints (1-50)</text>
+    <text>Cartesian Waypoints</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>550</width>
@@ -34,7 +35,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>109</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -46,7 +47,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>158</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -58,7 +59,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>207</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -70,7 +71,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>256</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -82,7 +83,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>305</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -94,7 +95,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>354</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -106,7 +107,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>403</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -118,7 +119,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>452</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -130,7 +131,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>501</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -142,7 +143,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>550</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -154,7 +155,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>600</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -166,7 +167,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>650</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -178,7 +179,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>700</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -190,7 +191,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>750</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -202,7 +203,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>800</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -214,7 +215,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>850</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -226,7 +227,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>900</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -238,7 +239,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>950</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -250,7 +251,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1000</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -262,7 +263,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1050</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -274,7 +275,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1100</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -286,7 +287,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1150</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -298,7 +299,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1200</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -310,7 +311,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1250</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -322,7 +323,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1300</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -334,7 +335,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1350</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -346,7 +347,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1400</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -358,7 +359,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1450</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -370,7 +371,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1500</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -382,7 +383,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1550</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -394,7 +395,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1600</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -406,7 +407,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1650</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -418,7 +419,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1700</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -430,7 +431,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1750</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -442,7 +443,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1800</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -454,7 +455,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1850</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -466,7 +467,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1900</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -478,7 +479,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>1950</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -490,7 +491,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2000</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -502,7 +503,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2050</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -514,7 +515,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2100</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -526,7 +527,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2150</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -538,7 +539,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2200</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -550,7 +551,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2250</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -562,7 +563,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2300</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -574,7 +575,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2350</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -586,7 +587,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2400</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -598,7 +599,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2450</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -610,7 +611,7 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2500</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -622,13 +623,13 @@
     </macros>
     <file>waypointL_line.bob</file>
     <y>2550</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_1</name>
     <text>X</text>
-    <x>160</x>
+    <x>200</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -642,7 +643,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_2</name>
     <text>Speed</text>
-    <x>700</x>
+    <x>740</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -656,7 +657,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_3</name>
     <text>Accel</text>
-    <x>790</x>
+    <x>830</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -670,7 +671,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_5</name>
     <text>Gripper</text>
-    <x>970</x>
+    <x>1010</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -684,7 +685,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_7</name>
     <text>Blend</text>
-    <x>880</x>
+    <x>920</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -698,7 +699,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_8</name>
     <text>Y</text>
-    <x>250</x>
+    <x>290</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -712,7 +713,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_9</name>
     <text>Z</text>
-    <x>340</x>
+    <x>380</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -726,7 +727,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_10</name>
     <text>Roll</text>
-    <x>430</x>
+    <x>470</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -740,7 +741,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_11</name>
     <text>Pitch</text>
-    <x>520</x>
+    <x>560</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -754,7 +755,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_12</name>
     <text>Yaw</text>
-    <x>610</x>
+    <x>650</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -768,7 +769,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_4</name>
     <text>Description</text>
-    <x>70</x>
+    <x>110</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>

@@ -34,7 +34,7 @@
     </macros>
     <file>waypointJ_line.bob</file>
     <y>109</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -46,7 +46,7 @@
     </macros>
     <file>waypointJ_line.bob</file>
     <y>158</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -58,7 +58,7 @@
     </macros>
     <file>waypointJ_line.bob</file>
     <y>207</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -70,7 +70,7 @@
     </macros>
     <file>waypointJ_line.bob</file>
     <y>256</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -82,7 +82,7 @@
     </macros>
     <file>waypointJ_line.bob</file>
     <y>305</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -94,7 +94,7 @@
     </macros>
     <file>waypointJ_line.bob</file>
     <y>354</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -106,7 +106,7 @@
     </macros>
     <file>waypointJ_line.bob</file>
     <y>403</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -118,7 +118,7 @@
     </macros>
     <file>waypointJ_line.bob</file>
     <y>452</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -130,7 +130,7 @@
     </macros>
     <file>waypointJ_line.bob</file>
     <y>501</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="embedded" version="2.0.0">
@@ -142,7 +142,7 @@
     </macros>
     <file>waypointJ_line.bob</file>
     <y>550</y>
-    <width>1090</width>
+    <width>1140</width>
     <height>49</height>
   </widget>
   <widget type="label" version="2.0.0">
