@@ -1,13 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-31 13:25:48 by nmarks-->
+<!--Saved on 2024-05-31 13:28:03 by nmarks-->
 <display version="2.0.0">
-  <name>WaypointJ Simple</name>
-  <width>500</width>
-  <height>50</height>
+  <name>WaypointJ:$(N)</name>
+  <width>1225</width>
+  <height>75</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
     </color>
   </background_color>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry</name>
+    <pv_name>$(P)$(R)WaypointJ:$(N):J1</pv_name>
+    <x>270</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_1</name>
+    <pv_name>$(P)$(R)WaypointJ:$(N):J2</pv_name>
+    <x>360</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_2</name>
+    <pv_name>$(P)$(R)WaypointJ:$(N):J3</pv_name>
+    <x>450</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_3</name>
+    <pv_name>$(P)$(R)WaypointJ:$(N):J4</pv_name>
+    <x>540</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_4</name>
+    <pv_name>$(P)$(R)WaypointJ:$(N):J5</pv_name>
+    <x>630</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_5</name>
+    <pv_name>$(P)$(R)WaypointJ:$(N):J6</pv_name>
+    <x>720</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button</name>
     <actions>
@@ -30,7 +78,7 @@
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_5</name>
     <pv_name>$(P)$(R)WaypointJ:$(N):Gripper</pv_name>
-    <x>290</x>
+    <x>1080</x>
     <y>10</y>
     <width>80</width>
     <off_label>Open</off_label>
@@ -48,6 +96,30 @@
       </color>
     </background_color>
   </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_6</name>
+    <pv_name>$(P)$(R)WaypointJ:$(N):Speed</pv_name>
+    <x>810</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_7</name>
+    <pv_name>$(P)$(R)WaypointJ:$(N):Acceleration</pv_name>
+    <x>900</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_8</name>
+    <pv_name>$(P)$(R)WaypointJ:$(N):Blend</pv_name>
+    <x>990</x>
+    <y>10</y>
+    <width>80</width>
+    <height>30</height>
+  </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button_1</name>
     <actions>
@@ -58,9 +130,9 @@
       </action>
     </actions>
     <text>GO</text>
-    <x>380</x>
+    <x>1170</x>
     <y>10</y>
-    <width>50</width>
+    <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
       </color>
@@ -72,7 +144,7 @@
     <pv_name>$(P)$(R)WaypointJ:$(N):Name</pv_name>
     <x>110</x>
     <y>10</y>
-    <width>170</width>
+    <width>150</width>
     <height>30</height>
   </widget>
   <widget type="led" version="2.0.0">
@@ -82,33 +154,5 @@
     <y>10</y>
     <width>30</width>
     <height>30</height>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_2</name>
-    <actions>
-      <action type="open_display">
-        <file>waypointJ_line.bob</file>
-        <macros>
-          <P>$(P)</P>
-          <R>$(R)</R>
-          <N>$(N)</N>
-        </macros>
-        <target>window</target>
-        <description>Full</description>
-      </action>
-    </actions>
-    <text>More</text>
-    <x>440</x>
-    <y>10</y>
-    <width>50</width>
-    <foreground_color>
-      <color name="Background" red="255" green="255" blue="255">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color red="51" green="153" blue="0">
-      </color>
-    </background_color>
-    <tooltip>$(actions)</tooltip>
   </widget>
 </display>

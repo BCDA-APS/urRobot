@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-31 13:43:22 by nmarks-->
+<!--Saved on 2024-05-31 13:59:55 by nmarks-->
 <display version="2.0.0">
   <name>UR Robot</name>
   <width>300</width>
@@ -165,13 +165,12 @@
     <name>Action Button_6</name>
     <actions>
       <action type="open_display">
-        <file>waypointJ_simple_1-50.bob</file>
+        <file>waypointJ_1-50.bob</file>
         <macros>
           <P>$(P)</P>
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>WaypointJ Less50</description>
       </action>
     </actions>
     <text>WaypointsJ</text>
@@ -192,7 +191,7 @@
     <name>Action Button_7</name>
     <actions>
       <action type="open_display">
-        <file>waypointL_simple_1-50.bob</file>
+        <file>waypointL_1-50.bob</file>
         <macros>
           <P>$(P)</P>
           <R>$(R)</R>

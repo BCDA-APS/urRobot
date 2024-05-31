@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-31 13:06:58 by nmarks-->
+<!--Saved on 2024-05-31 13:23:57 by nmarks-->
 <display version="2.0.0">
   <name>WaypointsJ (1-50)</name>
-  <width>1150</width>
+  <width>500</width>
   <height>1000</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
@@ -627,135 +627,9 @@
     <height>49</height>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>Label_1</name>
-    <text>J1</text>
-    <x>200</x>
-    <y>80</y>
-    <width>80</width>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_2</name>
-    <text>Speed</text>
-    <x>740</x>
-    <y>80</y>
-    <width>80</width>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_3</name>
-    <text>Accel</text>
-    <x>830</x>
-    <y>80</y>
-    <width>80</width>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
     <name>Label_5</name>
     <text>Gripper</text>
-    <x>1010</x>
-    <y>80</y>
-    <width>80</width>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_7</name>
-    <text>Blend</text>
-    <x>920</x>
-    <y>80</y>
-    <width>80</width>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_8</name>
-    <text>J2</text>
     <x>290</x>
-    <y>80</y>
-    <width>80</width>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_9</name>
-    <text>J3</text>
-    <x>380</x>
-    <y>80</y>
-    <width>80</width>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_10</name>
-    <text>J4</text>
-    <x>470</x>
-    <y>80</y>
-    <width>80</width>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_11</name>
-    <text>J5</text>
-    <x>560</x>
-    <y>80</y>
-    <width>80</width>
-    <height>30</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_12</name>
-    <text>J6</text>
-    <x>650</x>
     <y>80</y>
     <width>80</width>
     <height>30</height>
@@ -771,7 +645,7 @@
     <text>Description</text>
     <x>110</x>
     <y>80</y>
-    <width>80</width>
+    <width>170</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
