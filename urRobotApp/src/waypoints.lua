@@ -30,6 +30,29 @@ function string.split(input_str, delimiter)
     return words
 end
 
+-- Returns true if two numbers are within the specified tolerance of each other
+function almost_equal(a, b, tol)
+    tol = tol or 1e-6
+    if (math.abs(a - b) <= tol) then
+        return true
+    else
+        return false
+    end
+end
+
+-- Returns true if two tables have equal elements within the tolerance
+function table.almost_equal(t1, t2, tol)
+    tol = tol or 1e-6
+    assert(#t1 == #t2, "Tables must be the same length")
+
+    for i, _ in ipairs(t1) do
+        if not almost_equal(t1[i], t2[i], tol) then
+            return false
+        end
+    end
+    return true
+end
+
 
 -- Waits for a process to complete
 -- The process status is specified by the value of 'done_pv'
@@ -69,6 +92,35 @@ function wait_process(done_pv, timeout)
     end
 end
 
+function waypointJ_reached(args)
+    local actual_pose = {A, B, C, D, E, F}
+    local waypoint_base = string.format("%sWaypointJ:%s", args.prefix, args.N)
+    local waypoint_pose = {
+        epics.get(string.format("%s:J1",waypoint_base)),
+        epics.get(string.format("%s:J2",waypoint_base)),
+        epics.get(string.format("%s:J3",waypoint_base)),
+        epics.get(string.format("%s:J4",waypoint_base)),
+        epics.get(string.format("%s:J5",waypoint_base)),
+        epics.get(string.format("%s:J6",waypoint_base))
+    }
+    local reached = table.almost_equal(waypoint_pose, actual_pose, args.tol)
+    return reached and 1 or 0
+end
+
+function waypointL_reached(args)
+    local actual_pose = {A, B, C, D, E, F}
+    local waypoint_base = string.format("%sWaypointL:%s", args.prefix, args.N)
+    local waypoint_pose = {
+        epics.get(string.format("%s:X",waypoint_base)),
+        epics.get(string.format("%s:Y",waypoint_base)),
+        epics.get(string.format("%s:Z",waypoint_base)),
+        epics.get(string.format("%s:Roll",waypoint_base)),
+        epics.get(string.format("%s:Pitch",waypoint_base)),
+        epics.get(string.format("%s:Yaw",waypoint_base))
+    }
+    local reached = table.almost_equal(waypoint_pose, actual_pose, args.tol)
+    return reached and 1 or 0
+end
 
 function play_path_pv_file(args)
 
@@ -130,3 +182,4 @@ function play_path_pv_file(args)
     epics.put(reset_PoseCmd_string, 1)
 
 end
+

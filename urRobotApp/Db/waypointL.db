@@ -76,6 +76,19 @@ record(ao, "$(P)$(R=)WaypointL:$(N):Blend")
     field(EGU, "m")
 }
 
+# 1 if robot is at waypoint within tolerance, otherwise 0
+record(luascript, "$(P)$(R=)WaypointL:$(N):Reached") {
+    field(INPA, "$(P)$(R=)Receive:ActualTCP_X CP")
+    field(INPB, "$(P)$(R=)Receive:ActualTCP_Y CP")
+    field(INPC, "$(P)$(R=)Receive:ActualTCP_Z CP")
+    field(INPD, "$(P)$(R=)Receive:ActualTCP_Roll CP")
+    field(INPE, "$(P)$(R=)Receive:ActualTCP_Pitch CP")
+    field(INPF, "$(P)$(R=)Receive:ActualTCP_Yaw CP")
+    field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)$(R=)', N=$(N), tol=$(TOL=1e-2)})")
+    field(PREC, 0)
+    field(VAL, 0)
+}
+
 # stores DOLx.VAL in LNKx.VAL
 # Requires that RTDE Receive databases have been loaded
 record(seq, "$(P)$(R=)WaypointL:$(N):Reset")

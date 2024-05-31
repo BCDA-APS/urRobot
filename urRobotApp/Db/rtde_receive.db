@@ -135,7 +135,7 @@ record(ai, "$(P)$(R)Receive:ActualMomentum")
 
 record(ai, "$(P)$(R)Receive:ActualMainVoltage")
 {
-    field(DESC, "Safety control board main voltage")
+    field(DESC, "Control board main voltage")
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_MAIN_VOLTAGE")
     field(SCAN, "I/O Intr")
@@ -143,7 +143,7 @@ record(ai, "$(P)$(R)Receive:ActualMainVoltage")
 
 record(ai, "$(P)$(R)Receive:ActualRobotVoltage")
 {
-    field(DESC, "Safety control board robot voltage")
+    field(DESC, "Robot voltage")
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_ROBOT_VOLTAGE")
     field(SCAN, "I/O Intr")
@@ -151,7 +151,7 @@ record(ai, "$(P)$(R)Receive:ActualRobotVoltage")
 
 record(ai, "$(P)$(R)Receive:ActualRobotCurrent")
 {
-    field(DESC, "Safety control board robot current")
+    field(DESC, "Robot current")
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ACTUAL_ROBOT_CURRENT")
     field(SCAN, "I/O Intr")

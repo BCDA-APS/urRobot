@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-21 10:47:44 by nmarks-->
+<!--Saved on 2024-05-31 12:33:16 by nmarks-->
 <display version="2.0.0">
   <name>Display</name>
   <width>1300</width>
@@ -11,7 +11,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
     <pv_name>$(P)$(R)WaypointL:$(N):X</pv_name>
-    <x>160</x>
+    <x>200</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -19,7 +19,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_1</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Y</pv_name>
-    <x>250</x>
+    <x>290</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -27,7 +27,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_2</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Z</pv_name>
-    <x>340</x>
+    <x>380</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -35,7 +35,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_3</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Roll</pv_name>
-    <x>430</x>
+    <x>470</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -43,7 +43,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_4</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Pitch</pv_name>
-    <x>520</x>
+    <x>560</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -51,7 +51,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_5</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Yaw</pv_name>
-    <x>610</x>
+    <x>650</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -66,7 +66,7 @@
       </action>
     </actions>
     <text>HERE</text>
-    <x>10</x>
+    <x>50</x>
     <y>10</y>
     <width>50</width>
     <background_color>
@@ -78,7 +78,7 @@
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_5</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Gripper</pv_name>
-    <x>970</x>
+    <x>1010</x>
     <y>10</y>
     <width>80</width>
     <off_label>Open</off_label>
@@ -99,7 +99,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_6</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Speed</pv_name>
-    <x>700</x>
+    <x>740</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -107,7 +107,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_7</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Acceleration</pv_name>
-    <x>790</x>
+    <x>830</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -115,7 +115,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_8</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Blend</pv_name>
-    <x>880</x>
+    <x>920</x>
     <y>10</y>
     <width>80</width>
     <height>30</height>
@@ -130,7 +130,7 @@
       </action>
     </actions>
     <text>GO</text>
-    <x>1060</x>
+    <x>1100</x>
     <y>10</y>
     <width>30</width>
     <background_color>
@@ -142,9 +142,17 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_9</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Name</pv_name>
-    <x>70</x>
+    <x>110</x>
     <y>10</y>
     <width>80</width>
+    <height>30</height>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED</name>
+    <pv_name>$(P)$(R)WaypointL:$(N):Reached</pv_name>
+    <x>10</x>
+    <y>10</y>
+    <width>30</width>
     <height>30</height>
   </widget>
 </display>
