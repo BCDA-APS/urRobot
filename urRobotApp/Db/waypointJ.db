@@ -1,7 +1,7 @@
 # This database defines a single waypoint for the robot in joint space
 # including the gripper state where 0=open and 1=closed
 
-record(stringout, "$(P)$(R=)WaypointJ:$(N):Name")
+record(stringout, "$(P)$(R=)WaypointJ:$(N)")
 {
     field(VAL, "$(DESC=)")
 }

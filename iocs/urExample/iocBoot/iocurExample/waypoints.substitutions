@@ -53,7 +53,10 @@ pattern
 }
 
 # Adds functionality to move through a path of waypoints
+# TODO: Allow different number of waypointJ and waypointL (NMAXJ and NMAXL?)?
 file "$(URROBOT)/db/path.db"
 {
-{}
+pattern
+{NMAX}
+{20}
 }
