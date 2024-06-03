@@ -195,6 +195,8 @@ end
 
 function play_path_pv_desc_file(args)
 
+    local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
+
     -- Lookup waypoint PVs and their string names e.g. $(P)$(R)WaypointL:$(N)
     local waypoint_pvs = {}
     local waypoint_pv_vals = {}
@@ -210,11 +212,13 @@ function play_path_pv_desc_file(args)
             if not ind then
                 table.insert(waypoint_pv_vals, pv_val)
             else
-                local msg = string.format(
-                    "\nRequested path is ambiguous. Multiple waypoints with the same name '%s'",
-                    pv_val
-                )
-                error(msg)
+                if #pv_val ~= 0 then
+                    local msg = string.format(
+                        "\nRequested path is ambiguous. Multiple waypoints with the same name '%s'",
+                        pv_val
+                    )
+                    error(msg)
+                end
             end
         end
     end
@@ -238,8 +242,10 @@ function play_path_pv_desc_file(args)
         error(string.format("Unable to read file '%s'", filename))
     end
     file:close()
-
+    
+    print("Gripper overrides:")
     local gripper0 = {}
+    local move_pvs = {}
     for i,wp in ipairs(wp_names) do
         local ind = table.find(waypoint_pv_vals, wp)
         if ind then
@@ -252,20 +258,24 @@ function play_path_pv_desc_file(args)
                 move_pv = string.format("%s:moveL.PROC", waypoint_pvs[ind])
                 gripper_pv = string.replace(move_pv, "moveL.PROC", "Gripper")
             end
+            table.insert(move_pvs, move_pv)
             table.insert(gripper0, {gripper_pv, epics.get(string.format("%s.RVAL",gripper_pv))})
             local override_str = gripper_overrides[i]
             if override_str == "OPEN" or override_str == "OPENED" then
                 epics.put(gripper_pv, 0)
-                epics.put(move_pv, 1)
             elseif override_str == "CLOSE" or override_str == "CLOSED" then
                 epics.put(gripper_pv, 1)
-                epics.put(move_pv, 1)
             elseif override_str ~= "NONE" then
                 error(string.format("Invalid gripper override '%s' in path file", override_str))
             end
         else
             error(string.format("Waypoint with name '%s' not found", wp))
         end
+    end
+
+    for _,v in ipairs(move_pvs) do
+        epics.put(v, 1)
+        wait_process(done_pv)
     end
 
     for _,v in ipairs(gripper0) do
