@@ -1,1 +1,2 @@
-$(P)PathPvFileName.VAL
+$(P)PathPvFile.VAL
+$(P)PathPvDescFile.VAL

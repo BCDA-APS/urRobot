@@ -53,17 +53,6 @@ function table.almost_equal(t1, t2, tol)
     return true
 end
 
--- Returns index where value is found in table, nil if not found
-function table.find(table, value)
-    for i, v in pairs(table) do
-        if v == value then
-            return i
-        end
-    end
-    return nil
-end
-
-
 
 -- Waits for a process to complete
 -- The process status is specified by the value of 'done_pv'
@@ -118,6 +107,7 @@ function waypointJ_reached(args)
     return reached and 1 or 0
 end
 
+-- FIX: isn't working may just need to adjust tolerance
 function waypointL_reached(args)
     local actual_pose = {A, B, C, D, E, F}
     local waypoint_base = string.format("%sWaypointL:%s", args.prefix, args.N)
@@ -193,45 +183,57 @@ function play_path_pv_file(args)
 end
 
 
+function _lookup_waypoint_pvs(args, wp_type, waypoint_pv_table)
+    local fmt_string
+    local nmax
+    if wp_type == "J" then
+        fmt_string = "%sWaypointJ:%d"
+        nmax = args.maxj
+    elseif wp_type == "L" then
+        fmt_string = "%sWaypointL:%d"
+        nmax = args.maxl
+    else
+        error("Invalid waypoint type")
+    end
+    for n = 1,nmax do
+        local pv_name = string.format(fmt_string,args.prefix, n)
+        local pv_value = epics.get(pv_name)
+        if not waypoint_pv_table[pv_value] then
+            waypoint_pv_table[pv_value] = pv_name
+        else
+            if #pv_value > 0 then
+                local msg = string.format(
+                    "\nRequested path is ambiguous. Multiple waypoints with the same name '%s'",
+                    pv_value
+                )
+                error(msg)
+            end
+        end
+    end
+end
+
 function play_path_pv_desc_file(args)
 
     local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
 
-    -- Lookup waypoint PVs and their string names e.g. $(P)$(R)WaypointL:$(N)
-    local waypoint_pvs = {}
-    local waypoint_pv_vals = {}
-    for n = 1,args.nmax do
-        local _pv_names_list = {
-            string.format("%sWaypointJ:%d",args.prefix, n),
-            string.format("%sWaypointL:%d",args.prefix, n)
-        }
-        for _,pv_name in ipairs(_pv_names_list) do
-            table.insert(waypoint_pvs, pv_name)
-            local pv_val = epics.get(pv_name)
-            local ind = table.find(waypoint_pv_vals, pv_val)
-            if not ind then
-                table.insert(waypoint_pv_vals, pv_val)
-            else
-                if #pv_val ~= 0 then
-                    local msg = string.format(
-                        "\nRequested path is ambiguous. Multiple waypoints with the same name '%s'",
-                        pv_val
-                    )
-                    error(msg)
-                end
-            end
-        end
+    -- Lookup waypoint PVs and their string names e.g. $(P)$(R)WaypointL:$(N).VAL
+    local waypoint_pvs = {} -- map {string name : pv name}
+    _lookup_waypoint_pvs(args, "J", waypoint_pvs)
+    _lookup_waypoint_pvs(args, "L", waypoint_pvs)
+    print("\nAll loaded waypoint PVs:")
+    for k,v in pairs(waypoint_pvs) do
+        print(k,v)
     end
 
-    -- read file to get waypoint string names and gripper overrides
+    -- Read file to get requested waypoints
     local filename = AA
-    local wp_names = {}
+    local wp_req = {}
     local gripper_overrides = {}
     local file = io.open(filename, "r")
     if file then
         for line in file:lines() do
             local line_split = string.split(line,'"')
-            table.insert(wp_names, line_split[1])
+            table.insert(wp_req, line_split[1])
             if line_split[2] then
                 table.insert(gripper_overrides, string.replace(line_split[2], " ",""))
             else
@@ -242,44 +244,45 @@ function play_path_pv_desc_file(args)
         error(string.format("Unable to read file '%s'", filename))
     end
     file:close()
-    
-    print("Gripper overrides:")
-    local gripper0 = {}
-    local move_pvs = {}
-    for i,wp in ipairs(wp_names) do
-        local ind = table.find(waypoint_pv_vals, wp)
-        if ind then
-            local move_pv
-            local gripper_pv
-            if string.find(waypoint_pvs[ind], "WaypointJ") ~= nil then
-                move_pv = string.format("%s:moveJ.PROC", waypoint_pvs[ind])
-                gripper_pv = string.replace(move_pv, "moveJ.PROC", "Gripper")
-            elseif string.find(waypoint_pvs[ind], "WaypointL") ~= nil then
-                move_pv = string.format("%s:moveL.PROC", waypoint_pvs[ind])
-                gripper_pv = string.replace(move_pv, "moveL.PROC", "Gripper")
-            end
-            table.insert(move_pvs, move_pv)
-            table.insert(gripper0, {gripper_pv, epics.get(string.format("%s.RVAL",gripper_pv))})
-            local override_str = gripper_overrides[i]
-            if override_str == "OPEN" or override_str == "OPENED" then
-                epics.put(gripper_pv, 0)
-            elseif override_str == "CLOSE" or override_str == "CLOSED" then
-                epics.put(gripper_pv, 1)
-            elseif override_str ~= "NONE" then
-                error(string.format("Invalid gripper override '%s' in path file", override_str))
-            end
-        else
-            error(string.format("Waypoint with name '%s' not found", wp))
-        end
+    print("\nRequested waypoints/overrides:")
+    for i,_ in ipairs(wp_req) do
+        print(wp_req[i], gripper_overrides[i])
     end
 
-    for _,v in ipairs(move_pvs) do
-        epics.put(v, 1)
+    -- Save original gripper states
+    local gripper0 = {} -- {pv_name : gripper action}
+    for _,wp in ipairs(wp_req) do
+        local grip_pv_name = string.format("%s:Gripper",waypoint_pvs[wp])
+        gripper0[grip_pv_name] = epics.get(grip_pv_name)
+    end
+
+    -- move to each requested waypoint and gripper override
+    print("")
+    for i,wp in ipairs(wp_req) do
+        print("Move to ", waypoint_pvs[wp])
+        if gripper_overrides[i] ~= "NONE" then
+            if gripper_overrides[i] == "OPEN" or gripper_overrides[i] == "OPENED" then
+                epics.put(string.format("%s:Gripper",waypoint_pvs[wp]), 0)
+                print("Overriding gripper action to OPEN")
+            elseif gripper_overrides[i] == "CLOSE" or gripper_overrides[i] == "CLOSED" then
+                epics.put(string.format("%s:Gripper",waypoint_pvs[wp]), 1)
+                print("Overriding gripper action to CLOSE")
+            end
+        end
+
+        local move_pv
+        if string.find(waypoint_pvs[wp], "WaypointJ") then
+            move_pv = string.format("%s:moveJ.PROC",waypoint_pvs[wp])
+        elseif string.find(waypoint_pvs[wp], "WaypointL") then
+            move_pv = string.format("%s:moveL.PROC",waypoint_pvs[wp])
+        end
+        epics.put(move_pv, 1)
         wait_process(done_pv)
     end
 
-    for _,v in ipairs(gripper0) do
-        epics.put(v[1], v[2])
+    -- reset gripper actions to original values
+    for k,v in pairs(gripper0) do
+        epics.put(k, v)
     end
 
     -- reset joint and pose command values

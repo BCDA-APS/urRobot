@@ -57,6 +57,6 @@ pattern
 file "$(URROBOT)/db/path.db"
 {
 pattern
-{NMAX}
-{20}
+{MAXJ, MAXL}
+{20, 20}
 }

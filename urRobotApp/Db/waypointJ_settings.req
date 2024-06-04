@@ -1,4 +1,4 @@
-$(P)$(R=)WaypointJ:$(N):Name.VAL
+$(P)$(R=)WaypointJ:$(N).VAL
 $(P)$(R=)WaypointJ:$(N):J1.VAL
 $(P)$(R=)WaypointJ:$(N):J2.VAL
 $(P)$(R=)WaypointJ:$(N):J3.VAL

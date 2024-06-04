@@ -9,7 +9,7 @@ record(luascript, "$(P)PlayPathFromPvFile") {
 record(stringout, "$(P)PathPvDescFile") {}
 record(luascript, "$(P)PlayPathFromPvDescFile") {
     field(INAA, "$(P)PathPvDescFile")
-    field(CODE, "@waypoints.lua play_path_pv_desc_file({prefix='$(P)$(R=)',nmax=$(NMAX)})")
+    field(CODE, "@waypoints.lua play_path_pv_desc_file({prefix='$(P)$(R=)',maxj=$(MAXJ),maxl=$(MAXL)})")
     field(PREC, 0)
     field(SYNC, "Async")
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-03 11:28:45 by nmarks-->
+<!--Saved on 2024-06-03 16:05:23 by nmarks-->
 <display version="2.0.0">
   <name>WaypointJ Simple</name>
   <width>500</width>
@@ -17,7 +17,7 @@
         <description>$(P)$(R)WaypointJ:$(N):Reset.PROC</description>
       </action>
     </actions>
-    <text>HERE</text>
+    <text>SET</text>
     <x>50</x>
     <y>10</y>
     <width>50</width>

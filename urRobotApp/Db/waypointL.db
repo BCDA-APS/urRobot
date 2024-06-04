@@ -52,19 +52,19 @@ record(bo, "$(P)$(R=)WaypointL:$(N):Gripper")
 {
     field(ZNAM, "OPEN")
     field(ONAM, "CLOSED")
-    field(VAL, "$(GRIPPER)")
+    field(VAL, "$(GRIPPER=0)")
 }
 
 record(ao, "$(P)$(R=)WaypointL:$(N):Speed")
 {
-    field(VAL, "$(SPEED=1.05)")
+    field(VAL, "$(SPEED=0.5)")
     field(PREC, 2)
     field(EGU, "rad/s")
 }
 
 record(ao, "$(P)$(R=)WaypointL:$(N):Acceleration")
 {
-    field(VAL, "$(ACCEL=1.4)")
+    field(VAL, "$(ACCEL=1.0)")
     field(PREC, 2)
     field(EGU, "rad/s/s")
 }
@@ -84,7 +84,7 @@ record(luascript, "$(P)$(R=)WaypointL:$(N):Reached") {
     field(INPD, "$(P)$(R=)Receive:ActualTCP_Roll CP")
     field(INPE, "$(P)$(R=)Receive:ActualTCP_Pitch CP")
     field(INPF, "$(P)$(R=)Receive:ActualTCP_Yaw CP")
-    field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)$(R=)', N=$(N), tol=$(TOL=1e-2)})")
+    field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)$(R=)', N=$(N), tol=$(TOL=1e-1)})")
     field(PREC, 0)
     field(VAL, 0)
 }
