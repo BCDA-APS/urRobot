@@ -154,7 +154,7 @@ function play_path_pv_file(args)
         table.insert(gripper0,{gripper_pv,epics.get(gripper_pv_rval)})
         local override_str = line[2]
         if override_str ~= nil then
-            if override_str == "close" or override_str == "closed" then
+            if override_str == "CLOSE" or override_str == "CLOSED" then
                 epics.put(gripper_pv, 1)
             elseif override_str == "OPEN" or override_str == "OPENED" then
                 epics.put(gripper_pv, 0)
