@@ -1,4 +1,4 @@
-# This database defines a single waypoint for the robot in joint space
+# This database defines a single waypoint for the robot in Cartesian space
 # including the gripper state where 0=open and 1=closed
 
 record(stringout, "$(P)$(R=)WaypointL:$(N)")
@@ -6,11 +6,23 @@ record(stringout, "$(P)$(R=)WaypointL:$(N)")
     field(VAL, "$(DESC=)")
 }
 
+record(bo, "$(P)$(R=)WaypointL:$(N):Enabled")
+{
+    field(VAL, 0)
+}
+
+record(bo, "$(P)$(R=)WaypointL:$(N):SetEnabled")
+{
+    field(VAL, 1)
+    field(OUT, "$(P)$(R=)WaypointL:$(N):Enabled PP")
+}
+
 record(ao, "$(P)$(R=)WaypointL:$(N):X")
 {
     field(VAL, "$(X=0)")
     field(PREC, 4)
     field(EGU, "m")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 record(ao, "$(P)$(R=)WaypointL:$(N):Y")
@@ -18,6 +30,7 @@ record(ao, "$(P)$(R=)WaypointL:$(N):Y")
     field(VAL, "$(Y=0)")
     field(PREC, 4)
     field(EGU, "m")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 record(ao, "$(P)$(R=)WaypointL:$(N):Z")
@@ -25,6 +38,7 @@ record(ao, "$(P)$(R=)WaypointL:$(N):Z")
     field(VAL, "$(Z=0)")
     field(PREC, 4)
     field(EGU, "m")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 record(ao, "$(P)$(R=)WaypointL:$(N):Roll")
@@ -32,6 +46,7 @@ record(ao, "$(P)$(R=)WaypointL:$(N):Roll")
     field(VAL, "$(ROLL=0)")
     field(PREC, 2)
     field(EGU, "deg")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 record(ao, "$(P)$(R=)WaypointL:$(N):Pitch")
@@ -39,6 +54,7 @@ record(ao, "$(P)$(R=)WaypointL:$(N):Pitch")
     field(VAL, "$(PITCH=0)")
     field(PREC, 2)
     field(EGU, "deg")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 record(ao, "$(P)$(R=)WaypointL:$(N):Yaw")
@@ -46,6 +62,7 @@ record(ao, "$(P)$(R=)WaypointL:$(N):Yaw")
     field(VAL, "$(YAW=0)")
     field(PREC, 2)
     field(EGU, "deg")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 record(bo, "$(P)$(R=)WaypointL:$(N):Gripper")
@@ -53,13 +70,15 @@ record(bo, "$(P)$(R=)WaypointL:$(N):Gripper")
     field(ZNAM, "OPEN")
     field(ONAM, "CLOSED")
     field(VAL, "$(GRIPPER=0)")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 record(ao, "$(P)$(R=)WaypointL:$(N):Speed")
 {
-    field(VAL, "$(SPEED=0.5)")
+    field(VAL, "$(SPEED=0.1)")
     field(PREC, 2)
     field(EGU, "rad/s")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 record(ao, "$(P)$(R=)WaypointL:$(N):Acceleration")
@@ -67,6 +86,7 @@ record(ao, "$(P)$(R=)WaypointL:$(N):Acceleration")
     field(VAL, "$(ACCEL=1.0)")
     field(PREC, 2)
     field(EGU, "rad/s/s")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 record(ao, "$(P)$(R=)WaypointL:$(N):Blend")
@@ -74,6 +94,7 @@ record(ao, "$(P)$(R=)WaypointL:$(N):Blend")
     field(VAL, "$(BLEND=0.0)")
     field(PREC, 2)
     field(EGU, "m")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 # 1 if robot is at waypoint within tolerance, otherwise 0
@@ -84,7 +105,7 @@ record(luascript, "$(P)$(R=)WaypointL:$(N):Reached") {
     field(INPD, "$(P)$(R=)Receive:ActualTCP_Roll CP")
     field(INPE, "$(P)$(R=)Receive:ActualTCP_Pitch CP")
     field(INPF, "$(P)$(R=)Receive:ActualTCP_Yaw CP")
-    field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)$(R=)', N=$(N), tol=$(TOL=1e-1)})")
+    field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)$(R=)', N=$(N), tol=$(TOL=0.01)})")
     field(PREC, 0)
     field(VAL, 0)
 }
@@ -106,11 +127,20 @@ record(seq, "$(P)$(R=)WaypointL:$(N):Reset")
     field(LNK4, "$(P)WaypointL:$(N):Pitch PP")
     field(DOL5, "$(P)$(R=)Receive:ActualTCP_Yaw")
     field(LNK5, "$(P)WaypointL:$(N):Yaw PP")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):SetEnabled.PROC")
 }
 
 record(bo, "$(P)$(R=)WaypointL:$(N):moveL")
 {
-    field(FLNK, "$(P)$(R=)WaypointL:$(N):moveL_seq1.PROC")
+    field(FLNK, "$(P)$(R=)WaypointL:$(N):moveL_IfEnabled.PROC")
+}
+
+record(calcout, "$(P)$(R=)WaypointL:$(N):moveL_IfEnabled")
+{
+    field(INPA, "$(P)$(R=)WaypointL:$(N):Enabled")
+    field(OOPT, "When Non-zero")
+    field(CALC, "A")
+    field(OUT,"$(P)$(R=)WaypointL:$(N):moveL_seq1.PROC")
 }
 
 record(seq, "$(P)$(R=)WaypointL:$(N):moveL_seq1")

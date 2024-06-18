@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-31 13:23:57 by nmarks-->
+<!--Saved on 2024-06-18 09:43:27 by nmarks-->
 <display version="2.0.0">
   <name>WaypointsJ (1-50)</name>
-  <width>500</width>
+  <width>550</width>
   <height>1000</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">

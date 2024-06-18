@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-03 16:05:23 by nmarks-->
+<!--Saved on 2024-06-17 15:10:35 by nmarks-->
 <display version="2.0.0">
   <name>WaypointJ Simple</name>
-  <width>500</width>
+  <width>550</width>
   <height>50</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
@@ -18,7 +18,7 @@
       </action>
     </actions>
     <text>SET</text>
-    <x>50</x>
+    <x>80</x>
     <y>10</y>
     <width>50</width>
     <background_color>
@@ -30,7 +30,7 @@
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_5</name>
     <pv_name>$(P)$(R)WaypointJ:$(N):Gripper</pv_name>
-    <x>290</x>
+    <x>320</x>
     <y>10</y>
     <width>80</width>
     <off_label>Open</off_label>
@@ -58,7 +58,7 @@
       </action>
     </actions>
     <text>GO</text>
-    <x>380</x>
+    <x>410</x>
     <y>10</y>
     <width>50</width>
     <background_color>
@@ -70,7 +70,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_9</name>
     <pv_name>$(P)$(R)WaypointJ:$(N)</pv_name>
-    <x>110</x>
+    <x>140</x>
     <y>10</y>
     <width>170</width>
     <height>30</height>
@@ -78,7 +78,7 @@
   <widget type="led" version="2.0.0">
     <name>LED</name>
     <pv_name>$(P)$(R)WaypointJ:$(N):Reached</pv_name>
-    <x>10</x>
+    <x>40</x>
     <y>10</y>
     <width>30</width>
     <height>30</height>
@@ -98,7 +98,7 @@
       </action>
     </actions>
     <text>More</text>
-    <x>440</x>
+    <x>470</x>
     <y>10</y>
     <width>50</width>
     <foreground_color>
@@ -110,5 +110,14 @@
       </color>
     </background_color>
     <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="checkbox" version="2.0.0">
+    <name>Check Box</name>
+    <pv_name>$(P)$(R)WaypointJ:$(N):Enabled</pv_name>
+    <label></label>
+    <x>10</x>
+    <y>10</y>
+    <width>20</width>
+    <height>30</height>
   </widget>
 </display>
