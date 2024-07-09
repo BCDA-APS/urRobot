@@ -65,13 +65,13 @@ record(ao, "$(P)$(R=)WaypointJ:$(N):J6")
     field(FLNK, "$(P)$(R=)WaypointJ:$(N):SetEnabled.PROC")
 }
 
-record(bo, "$(P)$(R=)WaypointJ:$(N):Gripper")
-{
-    field(ZNAM, "OPEN")
-    field(ONAM, "CLOSED")
-    field(VAL, "$(GRIPPER=0)")
-    field(FLNK, "$(P)$(R=)WaypointJ:$(N):SetEnabled.PROC")
-}
+# record(bo, "$(P)$(R=)WaypointJ:$(N):Gripper")
+# {
+    # field(ZNAM, "OPEN")
+    # field(ONAM, "CLOSED")
+    # field(VAL, "$(GRIPPER=0)")
+    # field(FLNK, "$(P)$(R=)WaypointJ:$(N):SetEnabled.PROC")
+# }
 
 record(ao, "$(P)$(R=)WaypointJ:$(N):Speed")
 {
@@ -95,6 +95,41 @@ record(ao, "$(P)$(R=)WaypointJ:$(N):Blend")
     field(PREC, 2)
     field(EGU, "m")
     field(FLNK, "$(P)$(R=)WaypointJ:$(N):SetEnabled.PROC")
+}
+
+record(bo, "$(P)$(R=)WaypointJ:$(N):Action")
+{
+}
+
+record(calcout, "$(P)$(R=)WaypointJ:$(N):ActionDoneCalc")
+{
+    field(CALC, "A")
+    field(OUT, "$(P)$(R=)WaypointJ:$(N):ActionDone PP")
+}
+
+record(bo, "$(P)$(R=)WaypointJ:$(N):ActionDone") 
+{
+    field(DESC, "1 if the action is done, otherwise 0")
+    field(VAL, 1)
+}
+
+record(luascript, "$(P)$(R=)WaypointJ:$(N):CopyActionLink")
+{
+    field(CODE, "@copy_action_link.lua copy_action_link({P='$(P)',R='$(R=)',T='J',N='$(N)'})")
+}
+
+record(mbbi, "$(P)$(R=)WaypointJ:$(N):ActionOpt")
+{
+    field(ZRST, "Robotiq Gripper")
+    field(ONST, "one")
+    field(TWST, "two")
+    field(FLNK, "$(P)$(R=)WaypointJ:$(N):ActionOptSelect")
+}
+
+record(luascript, "$(P)$(R=)WaypointJ:$(N):ActionOptSelect")
+{
+    field(INPA, "$(P)$(R=)WaypointJ:$(N):ActionOpt")
+    field(CODE, "@action_opt.lua select()")
 }
 
 # 1 if robot is at waypoint within tolerance, otherwise 0
@@ -179,8 +214,10 @@ record(seq, "$(P)$(R=)WaypointJ:$(N):moveJ_seq2")
     field(LNK2, "$(P)$(R=)Control:JointAcceleration PP")
     field(DOL3, "$(P)$(R=)WaypointJ:$(N):Blend")
     field(LNK3, "$(P)$(R=)Control:JointBlend PP")
-    field(DOL4, "$(P)$(R=)WaypointJ:$(N):Gripper")
-    field(LNK4, "$(P)$(R=)Control:WaypointGripperAction PP")
+    # field(DOL4, "$(P)$(R=)WaypointJ:$(N):Gripper")
+    # field(LNK4, "$(P)$(R=)Control:WaypointGripperAction PP")
+    field(DOL4, "1")
+    field(LNK4, "$(P)$(R=)WaypointJ:$(N):CopyActionLink.PROC")
     
     # Do the move
     field(FLNK, "$(P)$(R=)Control:waypoint_moveJ.PROC")

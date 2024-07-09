@@ -65,11 +65,32 @@ record(bi, "$(P)$(R)Control:AsyncMoveDone")
     field(SCAN, "I/O Intr")
 }
 
-record(bo, "$(P)$(R)Control:WaypointGripperAction")
+record(bi, "$(P)$(R)Control:WaypointActionAsyn")
 {
-    field(DESC, "Gripper action after reaching waypoint")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))WAYPOINT_GRIPPER_ACTION")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))RUN_WAYPOINT_ACTION")
+    field(SCAN, "I/O Intr")
+    field(FLNK, "$(P)$(R)Control:WaypointAction.PROC")
+}
+
+record(bo, "$(P)$(R)Control:WaypointAction")
+{
+    field(FLNK, "") # set by waypoint
+}
+
+record(calcout, "$(P)$(R)Control:WaypointActionDoneCalc")
+{
+    field(INPA, "") # set by waypoint
+    field(CALC, "A")
+    field(OUT, "$(P)$(R)Control:WaypointActionDone PP")
+}
+
+record(bo, "$(P)$(R)Control:WaypointActionDone")
+{
+    field(DESC, "1 if waypoint action done, otherwise 0")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))WAYPOINT_ACTION_DONE")
+    field(FLNK, "$(P)$(R)Control:ResetWaypointActionAsyn.PROC")
 }
 
 #======================

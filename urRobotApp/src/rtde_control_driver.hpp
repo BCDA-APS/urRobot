@@ -50,13 +50,15 @@ static constexpr char LINEAR_BLEND_STRING[] = "LINEAR_BLEND";
 static constexpr char WAYPOINT_MOVEJ_STRING[] = "WAYPOINT_MOVEJ";
 static constexpr char WAYPOINT_MOVEL_STRING[] = "WAYPOINT_MOVEL";
 static constexpr char WAYPOINT_GRIPPER_ACTION_STRING[] = "WAYPOINT_GRIPPER_ACTION";
+static constexpr char RUN_WAYPOINT_ACTION_STRING[] = "RUN_WAYPOINT_ACTION";
+static constexpr char WAYPOINT_ACTION_DONE_STRING[] = "WAYPOINT_ACTION_DONE";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
 static constexpr double POLL_PERIOD = 0.02; // 50Hz
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
-enum class AsyncMotionStatus : int { WaitingMotion, WaitingGripper, Done };
+enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
 enum class AsyncRunning : int {False, Cartesian, Joint};
 
 class RTDEControl : public asynPortDriver {
@@ -137,6 +139,8 @@ class RTDEControl : public asynPortDriver {
     int waypointMoveJIndex_;
     int waypointMoveLIndex_;
     int waypointGripperActionIndex_;
+    int runWaypointActionIndex_;
+    int waypointActionDoneIndex_;
 };
 
 #endif

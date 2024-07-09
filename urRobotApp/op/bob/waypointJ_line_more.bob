@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-03 16:05:41 by nmarks-->
+<!--Saved on 2024-07-09 15:31:21 by nmarks-->
 <display version="2.0.0">
   <name>WaypointJ:$(N)</name>
   <width>1225</width>
@@ -75,27 +75,6 @@
     </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
-  <widget type="bool_button" version="2.0.0">
-    <name>Boolean Button_5</name>
-    <pv_name>$(P)$(R)WaypointJ:$(N):Gripper</pv_name>
-    <x>1080</x>
-    <y>10</y>
-    <width>80</width>
-    <off_label>Open</off_label>
-    <off_color>
-      <color name="On" red="0" green="255" blue="0">
-      </color>
-    </off_color>
-    <on_label>Closed</on_label>
-    <on_color>
-      <color name="MAJOR" red="255" green="0" blue="0">
-      </color>
-    </on_color>
-    <background_color>
-      <color name="Write_Background" red="128" green="255" blue="255">
-      </color>
-    </background_color>
-  </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_6</name>
     <pv_name>$(P)$(R)WaypointJ:$(N):Speed</pv_name>
@@ -130,7 +109,7 @@
       </action>
     </actions>
     <text>GO</text>
-    <x>1170</x>
+    <x>1140</x>
     <y>10</y>
     <width>30</width>
     <background_color>
@@ -154,5 +133,34 @@
     <y>10</y>
     <width>30</width>
     <height>30</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_2</name>
+    <actions>
+      <action type="open_display">
+        <file>userCalcOut.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+          <N>$(N)</N>
+          <C>WaypointJ:$(N):ActionDoneCalc</C>
+        </macros>
+        <target>window</target>
+        <description>Waypoint action</description>
+      </action>
+    </actions>
+    <text>Action</text>
+    <x>1080</x>
+    <y>10</y>
+    <width>50</width>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
 </display>

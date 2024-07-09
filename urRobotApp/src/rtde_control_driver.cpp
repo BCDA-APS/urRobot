@@ -184,6 +184,8 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(WAYPOINT_MOVEJ_STRING, asynParamInt32, &waypointMoveJIndex_);
     createParam(WAYPOINT_MOVEL_STRING, asynParamInt32, &waypointMoveLIndex_);
     createParam(WAYPOINT_GRIPPER_ACTION_STRING, asynParamInt32, &waypointGripperActionIndex_);
+    createParam(RUN_WAYPOINT_ACTION_STRING, asynParamInt32, &runWaypointActionIndex_);
+    createParam(WAYPOINT_ACTION_DONE_STRING, asynParamInt32, &waypointActionDoneIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -195,6 +197,8 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
 }
 
 void RTDEControl::poll() {
+    int run_action_val = 0;
+
     while (true) {
         lock();
 
@@ -236,7 +240,7 @@ void RTDEControl::poll() {
                             if (async_running_ == AsyncRunning::Joint) {
                                 if (rtde_control_->isJointsWithinSafetyLimits(
                                         {waypoint.begin(), waypoint.end() - 3})) {
-                                    rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
+                                    // rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
                                     async_status_ = AsyncMotionStatus::WaitingMotion;
                                     setIntegerParam(asyncMoveDoneIndex_, 0);
                                 } else {
@@ -249,7 +253,7 @@ void RTDEControl::poll() {
                             else if (async_running_ == AsyncRunning::Cartesian) {
                                 if (rtde_control_->isPoseWithinSafetyLimits(
                                         {waypoint.begin(), waypoint.end() - 3})) {
-                                    rtde_control_->moveL(std::vector<std::vector<double>>{waypoint}, true);
+                                    // rtde_control_->moveL(std::vector<std::vector<double>>{waypoint}, true);
                                     async_status_ = AsyncMotionStatus::WaitingMotion;
                                     setIntegerParam(asyncMoveDoneIndex_, 0);
                                 } else {
@@ -269,19 +273,31 @@ void RTDEControl::poll() {
                             auto op_status = rtde_control_->getAsyncOperationProgressEx();
                             if (not op_status.isAsyncOperationRunning()) {
                                 spdlog::debug("Waypoint reached");
-                                if (gripper_action_ == 0) {
-                                    gripper_->open();
-                                } else {
-                                    gripper_->close();
-                                }
-                                async_status_ = AsyncMotionStatus::WaitingGripper;
+                                spdlog::debug("Starting action...");
+                                run_action_val = 1^run_action_val;
+                                setIntegerParam(waypointActionDoneIndex_, 0);
+                                setIntegerParam(runWaypointActionIndex_, run_action_val);
+                                // if (gripper_action_ == 0) {
+                                    // gripper_->open();
+                                // } else {
+                                    // gripper_->close();
+                                // }
+                                async_status_ = AsyncMotionStatus::WaitingAction;
                             }
-                        } else if (async_status_ == AsyncMotionStatus::WaitingGripper) {
-                            if (gripper_->objectDetectionStatus() !=
-                                ur_rtde::RobotiqGripper::eObjectStatus::MOVING) {
+                        } else if (async_status_ == AsyncMotionStatus::WaitingAction) {
+                            // TODO: create asyn parameter to get done PV
+                            int done = 0;
+                            getIntegerParam(waypointActionDoneIndex_, &done);
+                            if (done) {
+                                spdlog::debug("Action done!");
                                 async_status_ = AsyncMotionStatus::Done;
                                 waypoint_path_iter_ = std::next(waypoint_path_iter_);
                             }
+                            // if (gripper_->objectDetectionStatus() !=
+                                // ur_rtde::RobotiqGripper::eObjectStatus::MOVING) {
+                                // async_status_ = AsyncMotionStatus::Done;
+                                // waypoint_path_iter_ = std::next(waypoint_path_iter_);
+                            // }
                         }
                     }
                 }
@@ -472,6 +488,10 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     else if (function == waypointGripperActionIndex_) {
         this->gripper_action_ = value;
         spdlog::debug("Setting gripper action to {}", gripper_action_);
+    }
+
+    else if (function == waypointActionDoneIndex_) {
+        setIntegerParam(waypointActionDoneIndex_, value);
     }
 
     else if (function == reuploadCtrlScriptIndex_) {
