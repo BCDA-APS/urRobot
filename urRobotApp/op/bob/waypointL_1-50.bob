@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-17 14:29:59 by nmarks-->
+<!--Saved on 2024-07-10 12:49:16 by nmarks-->
 <display version="2.0.0">
-  <name>WaypointsL(1-50)</name>
+  <name>WaypointsJ (1-50)</name>
   <width>550</width>
   <height>1000</height>
   <background_color>
@@ -628,10 +628,10 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_5</name>
-    <text>Gripper</text>
-    <x>320</x>
+    <text>Action</text>
+    <x>380</x>
     <y>80</y>
-    <width>80</width>
+    <width>110</width>
     <height>30</height>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">

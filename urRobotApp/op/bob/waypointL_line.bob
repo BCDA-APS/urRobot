@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-17 14:28:36 by nmarks-->
+<!--Saved on 2024-07-10 12:52:57 by nmarks-->
 <display version="2.0.0">
-  <name>Display</name>
+  <name>WaypointL Simple</name>
   <width>550</width>
   <height>50</height>
   <background_color>
@@ -27,27 +27,6 @@
     </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
-  <widget type="bool_button" version="2.0.0">
-    <name>Boolean Button_5</name>
-    <pv_name>$(P)$(R)WaypointL:$(N):Gripper</pv_name>
-    <x>320</x>
-    <y>10</y>
-    <width>80</width>
-    <off_label>Open</off_label>
-    <off_color>
-      <color name="On" red="0" green="255" blue="0">
-      </color>
-    </off_color>
-    <on_label>Closed</on_label>
-    <on_color>
-      <color name="MAJOR" red="255" green="0" blue="0">
-      </color>
-    </on_color>
-    <background_color>
-      <color name="Write_Background" red="128" green="255" blue="255">
-      </color>
-    </background_color>
-  </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button_1</name>
     <actions>
@@ -58,7 +37,7 @@
       </action>
     </actions>
     <text>GO</text>
-    <x>410</x>
+    <x>320</x>
     <y>10</y>
     <width>50</width>
     <background_color>
@@ -94,13 +73,24 @@
           <N>$(N)</N>
         </macros>
         <target>window</target>
-        <description>WaypointL:$(N)</description>
+        <description>Waypoint</description>
+      </action>
+      <action type="open_display">
+        <file>action_calcL.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+          <N>$(N)</N>
+          <C>WaypointL:$(N):ActionDoneCalc</C>
+        </macros>
+        <target>window</target>
+        <description>Waypoint action</description>
       </action>
     </actions>
     <text>More</text>
-    <x>470</x>
+    <x>500</x>
     <y>10</y>
-    <width>50</width>
+    <width>40</width>
     <foreground_color>
       <color name="Background" red="255" green="255" blue="255">
       </color>
@@ -119,5 +109,12 @@
     <y>10</y>
     <width>20</width>
     <height>30</height>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>Combo Box</name>
+    <pv_name>$(P)WaypointL:$(N):ActionOpt</pv_name>
+    <x>380</x>
+    <y>10</y>
+    <width>110</width>
   </widget>
 </display>

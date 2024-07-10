@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-03 16:05:00 by nmarks-->
+<!--Saved on 2024-07-10 12:55:55 by nmarks-->
 <display version="2.0.0">
   <name>WaypointL:$(N)</name>
   <width>1225</width>
-  <height>50</height>
+  <height>75</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
     </color>
@@ -12,7 +12,7 @@
     <name>Text Entry</name>
     <pv_name>$(P)$(R)WaypointL:$(N):X</pv_name>
     <x>270</x>
-    <y>10</y>
+    <y>30</y>
     <width>80</width>
     <height>30</height>
   </widget>
@@ -20,7 +20,7 @@
     <name>Text Entry_1</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Y</pv_name>
     <x>360</x>
-    <y>10</y>
+    <y>30</y>
     <width>80</width>
     <height>30</height>
   </widget>
@@ -28,7 +28,7 @@
     <name>Text Entry_2</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Z</pv_name>
     <x>450</x>
-    <y>10</y>
+    <y>30</y>
     <width>80</width>
     <height>30</height>
   </widget>
@@ -36,7 +36,7 @@
     <name>Text Entry_3</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Roll</pv_name>
     <x>540</x>
-    <y>10</y>
+    <y>30</y>
     <width>80</width>
     <height>30</height>
   </widget>
@@ -44,7 +44,7 @@
     <name>Text Entry_4</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Pitch</pv_name>
     <x>630</x>
-    <y>10</y>
+    <y>30</y>
     <width>80</width>
     <height>30</height>
   </widget>
@@ -52,7 +52,7 @@
     <name>Text Entry_5</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Yaw</pv_name>
     <x>720</x>
-    <y>10</y>
+    <y>30</y>
     <width>80</width>
     <height>30</height>
   </widget>
@@ -67,7 +67,7 @@
     </actions>
     <text>SET</text>
     <x>50</x>
-    <y>10</y>
+    <y>30</y>
     <width>50</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -75,32 +75,11 @@
     </background_color>
     <tooltip>$(actions)</tooltip>
   </widget>
-  <widget type="bool_button" version="2.0.0">
-    <name>Boolean Button_5</name>
-    <pv_name>$(P)$(R)WaypointL:$(N):Gripper</pv_name>
-    <x>1080</x>
-    <y>10</y>
-    <width>80</width>
-    <off_label>Open</off_label>
-    <off_color>
-      <color name="On" red="0" green="255" blue="0">
-      </color>
-    </off_color>
-    <on_label>Closed</on_label>
-    <on_color>
-      <color name="MAJOR" red="255" green="0" blue="0">
-      </color>
-    </on_color>
-    <background_color>
-      <color name="Write_Background" red="128" green="255" blue="255">
-      </color>
-    </background_color>
-  </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_6</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Speed</pv_name>
     <x>810</x>
-    <y>10</y>
+    <y>30</y>
     <width>80</width>
     <height>30</height>
   </widget>
@@ -108,7 +87,7 @@
     <name>Text Entry_7</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Acceleration</pv_name>
     <x>900</x>
-    <y>10</y>
+    <y>30</y>
     <width>80</width>
     <height>30</height>
   </widget>
@@ -116,7 +95,7 @@
     <name>Text Entry_8</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Blend</pv_name>
     <x>990</x>
-    <y>10</y>
+    <y>30</y>
     <width>80</width>
     <height>30</height>
   </widget>
@@ -130,8 +109,8 @@
       </action>
     </actions>
     <text>GO</text>
-    <x>1170</x>
-    <y>10</y>
+    <x>1140</x>
+    <y>30</y>
     <width>30</width>
     <background_color>
       <color name="Write_Background" red="128" green="255" blue="255">
@@ -143,7 +122,7 @@
     <name>Text Entry_9</name>
     <pv_name>$(P)$(R)WaypointL:$(N)</pv_name>
     <x>110</x>
-    <y>10</y>
+    <y>30</y>
     <width>150</width>
     <height>30</height>
   </widget>
@@ -151,8 +130,167 @@
     <name>LED</name>
     <pv_name>$(P)$(R)WaypointL:$(N):Reached</pv_name>
     <x>10</x>
-    <y>10</y>
+    <y>30</y>
     <width>30</width>
     <height>30</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_2</name>
+    <actions>
+      <action type="open_display">
+        <file>action_calcL.bob</file>
+        <macros>
+          <P>$(P)</P>
+          <R>$(R)</R>
+          <N>$(N)</N>
+          <C>WaypointL:$(N):ActionDoneCalc</C>
+        </macros>
+        <target>window</target>
+        <description>Waypoint action</description>
+      </action>
+    </actions>
+    <text>Action</text>
+    <x>1080</x>
+    <y>30</y>
+    <width>50</width>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <text>X</text>
+    <x>270</x>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <text>Y</text>
+    <x>360</x>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_8</name>
+    <text>Z</text>
+    <x>450</x>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_9</name>
+    <text>Roll</text>
+    <x>540</x>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_10</name>
+    <text>Pitch</text>
+    <x>630</x>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_11</name>
+    <text>Yaw</text>
+    <x>720</x>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>Speed</text>
+    <x>810</x>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_13</name>
+    <text>Accel</text>
+    <x>900</x>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_14</name>
+    <text>Blend</text>
+    <x>990</x>
+    <width>80</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_15</name>
+    <text>Description</text>
+    <x>110</x>
+    <width>150</width>
+    <height>30</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
   </widget>
 </display>
