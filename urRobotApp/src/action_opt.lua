@@ -1,4 +1,4 @@
-eRobotiqpics = require("epics")
+epics = require("epics")
 
 local Actions = {
     Custom = 0, -- empty calc record
@@ -20,25 +20,21 @@ function select(args)
     local vald = string.format("%s%sWaypoint%s:%d:ActionDoneCalc.D", args.P, args.R, args.T, args.N)
     local calc = string.format("%s%sWaypoint%s:%d:ActionDoneCalc.CALC", args.P, args.R, args.T, args.N)
 
+    local move_status = string.format("%s%sRobotiqGripper:MoveStatusRaw CP", args.P, args.R)
+
     if (A == Actions.OpenRobotiqGripper) then
         local open = string.format("%s%sRobotiqGripper:Open.PROC", args.P, args.R)
         epics.put(action, open)
 
-        local move_status = string.format("%s%sRobotiqGripper:MoveStatusRaw CP", args.P, args.R)
-        local is_open = string.format("%s%sRobotiqGripper:IsOpen CP", args.P, args.R)
         epics.put(inpa, move_status)
-        epics.put(inpb, is_open)
-        epics.put(calc, "(A!=0)&&(B==1)")
+        epics.put(calc, "(A!=0)")
 
     elseif (A == Actions.CloseRobotiqGripper) then
         local close = string.format("%s%sRobotiqGripper:Close.PROC", args.P, args.R)
         epics.put(action, close)
 
-        local move_status = string.format("%s%sRobotiqGripper:MoveStatusRaw CP", args.P, args.R)
-        local is_closed = string.format("%s%sRobotiqGripper:IsClosed CP", args.P, args.R)
         epics.put(inpa, move_status)
-        epics.put(inpb, is_closed)
-        epics.put(calc, "(A!=0)&&(B==1)")
+        epics.put(calc, "(A!=0)")
 
     elseif (A == Actions.Custom) then
         epics.put(action, "")
