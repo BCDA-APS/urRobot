@@ -9,6 +9,4 @@ $(P)$(R=)WaypointJ:$(N):Speed.VAL
 $(P)$(R=)WaypointJ:$(N):Acceleration.VAL
 $(P)$(R=)WaypointJ:$(N):Blend.VAL
 $(P)$(R=)WaypointJ:$(N):Enabled
-$(P)$(R=)WaypointJ:$(N):Action
-$(P)$(R=)WaypointJ:$(N):ActionDoneCalc
 $(P)$(R=)WaypointJ:$(N):ActionOpt
