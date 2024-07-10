@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-09 15:35:29 by nmarks-->
+<!--Saved on 2024-07-10 12:21:03 by nmarks-->
 <display version="2.0.0">
   <name>WaypointJ Simple</name>
   <width>550</width>
@@ -88,7 +88,7 @@
       </action>
     </actions>
     <text>More</text>
-    <x>470</x>
+    <x>500</x>
     <y>10</y>
     <width>40</width>
     <foreground_color>
@@ -113,8 +113,8 @@
   <widget type="combo" version="2.0.0">
     <name>Combo Box</name>
     <pv_name>$(P)WaypointJ:$(N):ActionOpt</pv_name>
-    <x>390</x>
+    <x>380</x>
     <y>10</y>
-    <width>70</width>
+    <width>110</width>
   </widget>
 </display>

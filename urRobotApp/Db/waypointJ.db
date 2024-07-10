@@ -131,16 +131,18 @@ record(luascript, "$(P)$(R=)WaypointJ:$(N):CopyActionLink")
 
 record(mbbi, "$(P)$(R=)WaypointJ:$(N):ActionOpt")
 {
-    field(ZRST, "Open gripper")
-    field(ONST, "Close gripper")
-    field(TWST, "Custom")
+    field(VAL, 0)
+    field(PINI, 1)
+    field(ZRST, "Custom")
+    field(ONST, "Open gripper")
+    field(TWST, "Close gripper")
     field(FLNK, "$(P)$(R=)WaypointJ:$(N):ActionOptSelect")
 }
 
 record(luascript, "$(P)$(R=)WaypointJ:$(N):ActionOptSelect")
 {
     field(INPA, "$(P)$(R=)WaypointJ:$(N):ActionOpt")
-    field(CODE, "@action_opt.lua select()")
+    field(CODE, "@action_opt.lua select({P='$(P)',R='$(R=)',T='J',N='$(N)'})")
 }
 
 # 1 if robot is at waypoint within tolerance, otherwise 0
