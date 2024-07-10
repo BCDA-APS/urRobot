@@ -99,12 +99,23 @@ record(ao, "$(P)$(R=)WaypointJ:$(N):Blend")
 
 record(bo, "$(P)$(R=)WaypointJ:$(N):Action")
 {
+    field(FLNK, "") # Action link set by user
+    field(VAL, 1)
+    field(OUT, "$(P)$(R=)WaypointJ:$(N):set_not_done_seq.PROC")
 }
 
+# Action processing automatically sets ActionDone=0 to start
+record(seq, "$(P)$(R=)WaypointJ:$(N):set_not_done_seq")
+{
+    field(DOL0, "0")
+    field(LNK0, "$(P)$(R=)WaypointJ:$(N):ActionDone PP")
+}
+
+# set by user to define when action is done
 record(calcout, "$(P)$(R=)WaypointJ:$(N):ActionDoneCalc")
 {
-    field(CALC, "A")
     field(OUT, "$(P)$(R=)WaypointJ:$(N):ActionDone PP")
+    field(SCAN, ".1 second") # needed if inputs not CP
 }
 
 record(bo, "$(P)$(R=)WaypointJ:$(N):ActionDone") 
@@ -120,9 +131,9 @@ record(luascript, "$(P)$(R=)WaypointJ:$(N):CopyActionLink")
 
 record(mbbi, "$(P)$(R=)WaypointJ:$(N):ActionOpt")
 {
-    field(ZRST, "Robotiq Gripper")
-    field(ONST, "one")
-    field(TWST, "two")
+    field(ZRST, "Open gripper")
+    field(ONST, "Close gripper")
+    field(TWST, "Custom")
     field(FLNK, "$(P)$(R=)WaypointJ:$(N):ActionOptSelect")
 }
 
@@ -214,8 +225,6 @@ record(seq, "$(P)$(R=)WaypointJ:$(N):moveJ_seq2")
     field(LNK2, "$(P)$(R=)Control:JointAcceleration PP")
     field(DOL3, "$(P)$(R=)WaypointJ:$(N):Blend")
     field(LNK3, "$(P)$(R=)Control:JointBlend PP")
-    # field(DOL4, "$(P)$(R=)WaypointJ:$(N):Gripper")
-    # field(LNK4, "$(P)$(R=)Control:WaypointGripperAction PP")
     field(DOL4, "1")
     field(LNK4, "$(P)$(R=)WaypointJ:$(N):CopyActionLink.PROC")
     

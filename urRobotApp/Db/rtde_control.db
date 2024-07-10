@@ -90,7 +90,6 @@ record(bo, "$(P)$(R)Control:WaypointActionDone")
     field(DESC, "1 if waypoint action done, otherwise 0")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))WAYPOINT_ACTION_DONE")
-    field(FLNK, "$(P)$(R)Control:ResetWaypointActionAsyn.PROC")
 }
 
 #======================

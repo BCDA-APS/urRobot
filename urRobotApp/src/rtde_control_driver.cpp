@@ -218,9 +218,8 @@ void RTDEControl::poll() {
                     pose_vec.at(i) = pose_vec.at(i) * 180.0 / M_PI;
                 }
                 doCallbacksFloat64Array(pose_vec.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
-
-                // NOTE: This code supports moving to individual waypoints
-                // as well as moving through a vector<vector<double>> when reading a CSV file
+                
+                //FIX: WaypointActions break CSV file support
                 if (async_running_ != AsyncRunning::False) {
                     if (async_status_ == AsyncMotionStatus::Done) {
                         if (waypoint_path_iter_ != waypoint_path_.end()) {
@@ -240,7 +239,7 @@ void RTDEControl::poll() {
                             if (async_running_ == AsyncRunning::Joint) {
                                 if (rtde_control_->isJointsWithinSafetyLimits(
                                         {waypoint.begin(), waypoint.end() - 3})) {
-                                    // rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
+                                    rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint}, true);
                                     async_status_ = AsyncMotionStatus::WaitingMotion;
                                     setIntegerParam(asyncMoveDoneIndex_, 0);
                                 } else {
@@ -253,12 +252,11 @@ void RTDEControl::poll() {
                             else if (async_running_ == AsyncRunning::Cartesian) {
                                 if (rtde_control_->isPoseWithinSafetyLimits(
                                         {waypoint.begin(), waypoint.end() - 3})) {
-                                    // rtde_control_->moveL(std::vector<std::vector<double>>{waypoint}, true);
+                                    rtde_control_->moveL(std::vector<std::vector<double>>{waypoint}, true);
                                     async_status_ = AsyncMotionStatus::WaitingMotion;
                                     setIntegerParam(asyncMoveDoneIndex_, 0);
                                 } else {
-                                    spdlog::warn(
-                                        "Requested TCP pose not within safety limits. No action taken.");
+                                    spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
                                     async_status_ = AsyncMotionStatus::Done;
                                     async_running_ = AsyncRunning::False;
                                 }
@@ -272,32 +270,20 @@ void RTDEControl::poll() {
                         if (async_status_ == AsyncMotionStatus::WaitingMotion) {
                             auto op_status = rtde_control_->getAsyncOperationProgressEx();
                             if (not op_status.isAsyncOperationRunning()) {
-                                spdlog::debug("Waypoint reached");
-                                spdlog::debug("Starting action...");
-                                run_action_val = 1^run_action_val;
+                                spdlog::debug("Waypoint reached. Starting action...");
+                                run_action_val = 1^run_action_val; // only processes on change
                                 setIntegerParam(waypointActionDoneIndex_, 0);
                                 setIntegerParam(runWaypointActionIndex_, run_action_val);
-                                // if (gripper_action_ == 0) {
-                                    // gripper_->open();
-                                // } else {
-                                    // gripper_->close();
-                                // }
                                 async_status_ = AsyncMotionStatus::WaitingAction;
                             }
                         } else if (async_status_ == AsyncMotionStatus::WaitingAction) {
-                            // TODO: create asyn parameter to get done PV
                             int done = 0;
                             getIntegerParam(waypointActionDoneIndex_, &done);
                             if (done) {
                                 spdlog::debug("Action done!");
                                 async_status_ = AsyncMotionStatus::Done;
                                 waypoint_path_iter_ = std::next(waypoint_path_iter_);
-                            }
-                            // if (gripper_->objectDetectionStatus() !=
-                                // ur_rtde::RobotiqGripper::eObjectStatus::MOVING) {
-                                // async_status_ = AsyncMotionStatus::Done;
-                                // waypoint_path_iter_ = std::next(waypoint_path_iter_);
-                            // }
+                            } 
                         }
                     }
                 }
@@ -501,9 +487,6 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     else if (function == stopCtrlScriptIndex_) {
         spdlog::debug("Stopping control script");
-        // this->async_running_ = AsyncRunning::False;
-        // this->async_status_ = AsyncMotionStatus::Done;
-        // this->waypoint_path_.clear();
         rtde_control_->stopScript();
     }
 
