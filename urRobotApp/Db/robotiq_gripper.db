@@ -43,6 +43,24 @@ record(bi, "$(P)$(R)RobotiqGripper:IsClosed")
     field(SCAN, "I/O Intr")
 }
 
+record(bi, "$(P)$(R)RobotiqGripper:IsStoppedInner")
+{
+    field(DESC, "Stopped on inner object")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_STOPPED_INNER")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P)$(R)RobotiqGripper:IsStoppedOuter")
+{
+    field(DESC, "Stopped on outer object")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_STOPPED_OUTER")
+    field(VAL, 0)
+    field(SCAN, "I/O Intr")
+}
+
 record(bo, "$(P)$(R)RobotiqGripper:Connect")
 {
     field(DESC, "Connects to Robotiq gripper")

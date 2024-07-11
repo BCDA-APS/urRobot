@@ -1,4 +1,4 @@
-eRobotiqpics = require("epics")
+epics = require("epics")
 
 local Actions = {
     Custom = 0, -- empty calc record
@@ -26,9 +26,11 @@ function select(args)
 
         local move_status = string.format("%s%sRobotiqGripper:MoveStatusRaw CP", args.P, args.R)
         local is_open = string.format("%s%sRobotiqGripper:IsOpen CP", args.P, args.R)
+        local is_stopped_outer = string.format("%s%sRobotiqGripper:IsStoppedOuter CP", args.P, args.R)
         epics.put(inpa, move_status)
         epics.put(inpb, is_open)
-        epics.put(calc, "(A!=0)&&(B==1)")
+        epics.put(inpc, is_stopped_outer)
+        epics.put(calc, "(A!=0) && ((B==1) || (C==1))")
 
     elseif (A == Actions.CloseRobotiqGripper) then
         local close = string.format("%s%sRobotiqGripper:Close.PROC", args.P, args.R)
@@ -36,9 +38,11 @@ function select(args)
 
         local move_status = string.format("%s%sRobotiqGripper:MoveStatusRaw CP", args.P, args.R)
         local is_closed = string.format("%s%sRobotiqGripper:IsClosed CP", args.P, args.R)
+        local is_stopped_inner = string.format("%s%sRobotiqGripper:IsStoppedInner CP", args.P, args.R)
         epics.put(inpa, move_status)
         epics.put(inpb, is_closed)
-        epics.put(calc, "(A!=0)&&(B==1)")
+        epics.put(inpc, is_stopped_inner)
+        epics.put(calc, "(A!=0) && ((B==1) || (C==1))")
 
     elseif (A == Actions.Custom) then
         epics.put(action, "")

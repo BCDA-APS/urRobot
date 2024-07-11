@@ -53,6 +53,10 @@ URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
     createParam(IS_OPEN_STRING, asynParamInt32, &isOpenIndex_);
     createParam(IS_CLOSED_STRING, asynParamInt32, &isClosedIndex_);
+
+    createParam(IS_STOPPED_INNER_STRING, asynParamInt32, &isStoppedInnerIndex_);
+    createParam(IS_STOPPED_OUTER_STRING, asynParamInt32, &isStoppedOuterIndex_);
+
     createParam(IS_ACTIVE_STRING, asynParamInt32, &isActiveIndex_);
     createParam(ACTIVATE_STRING, asynParamInt32, &activateIndex_);
     createParam(OPEN_STRING, asynParamInt32, &openIndex_);
@@ -104,7 +108,23 @@ void URGripper::poll() {
                 setDoubleParam(currentPositionIndex_, gripper_->getCurrentPosition());
                 setDoubleParam(openPositionIndex_, gripper_->getOpenPosition());
                 setDoubleParam(closedPositionIndex_, gripper_->getClosedPosition());
-                setIntegerParam(moveStatusIndex_, gripper_->objectDetectionStatus());
+
+                ur_rtde::RobotiqGripper::eObjectStatus move_status = gripper_->objectDetectionStatus();
+                setIntegerParam(moveStatusIndex_, move_status);
+                switch (move_status) {
+                    case ur_rtde::RobotiqGripper::eObjectStatus::STOPPED_INNER_OBJECT:
+                        setIntegerParam(isStoppedInnerIndex_, 1);
+                        setIntegerParam(isStoppedOuterIndex_, 0);
+                        break;
+                    case ur_rtde::RobotiqGripper::eObjectStatus::STOPPED_OUTER_OBJECT:
+                        setIntegerParam(isStoppedInnerIndex_, 0);
+                        setIntegerParam(isStoppedOuterIndex_, 1);
+                        break;
+                    default:
+                        setIntegerParam(isStoppedInnerIndex_, 0);
+                        setIntegerParam(isStoppedOuterIndex_, 0);
+                        break;
+                }
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
             }
@@ -164,7 +184,7 @@ asynStatus URGripper::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         comm_ok = false;
         goto skip;
     }
-    
+
     if (function == connectIndex_) {
         spdlog::debug("Connecting to gripper");
         try_connect();
