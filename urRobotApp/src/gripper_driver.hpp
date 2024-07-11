@@ -8,6 +8,8 @@
 static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
 static constexpr char IS_OPEN_STRING[] = "IS_OPEN";
 static constexpr char IS_CLOSED_STRING[] = "IS_CLOSED";
+static constexpr char IS_STOPPED_INNER_STRING[] = "IS_STOPPED_INNER";
+static constexpr char IS_STOPPED_OUTER_STRING[] = "IS_STOPPED_OUTER";
 static constexpr char IS_ACTIVE_STRING[] = "IS_ACTIVE";
 static constexpr char CONNECT_STRING[] = "CONNECT";
 static constexpr char ACTIVATE_STRING[] = "ACTIVATE";
@@ -51,6 +53,8 @@ class URGripper : public asynPortDriver {
     int isConnectedIndex_;
     int isOpenIndex_;
     int isClosedIndex_;
+    int isStoppedInnerIndex_;
+    int isStoppedOuterIndex_;
     int isActiveIndex_;
     int connectIndex_;
     int activateIndex_;
