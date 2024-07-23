@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # path to urRobot support module
-URROBOT_PATH="/home/beams/NMARKS/devel/ur-dev/urRobot"
+URROBOT_PATH="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot"
 
 # ioc prefixes
 P="urExample:"

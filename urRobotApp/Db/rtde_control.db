@@ -957,30 +957,3 @@ record(calcout, "$(P)$(R)Control:PoseYawTweakCalcRev")
     field(CALC, "A - B")
     field(OUT, "$(P)$(R)Control:PoseYawCmd PP")
 }
-# -----------------------------------------------------------
-
-#======================
-# Path Following
-#======================
-
-record(stringout, "$(P)$(R)Control:CartesianPathCsvFile")
-{
-    field(OUT, "$(P)$(R)Control:PlayCartesianPathFromCsvFile NPP")
-}
-record(stringout, "$(P)$(R)Control:PlayCartesianPathFromCsvFile")
-{
-    field(DESC, "Moves through CSV file of poses")
-    field(DTYP, "asynOctetWrite")
-    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))PLAY_CARTESIAN_PATH_CSV")
-}
-
-record(stringout, "$(P)$(R)Control:JointPathCsvFile")
-{
-    field(OUT, "$(P)$(R)Control:PlayJointPathFromCsvFile NPP")
-}
-record(stringout, "$(P)$(R)Control:PlayJointPathFromCsvFile")
-{
-    field(DESC, "Moves through CSV file of joint angles")
-    field(DTYP, "asynOctetWrite")
-    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))PLAY_JOINT_PATH_CSV")
-}

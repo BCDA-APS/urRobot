@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-31 14:11:31 by nmarks-->
+<!--Saved on 2024-07-23 15:32:37 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Control</name>
   <width>950</width>
@@ -1524,32 +1524,5 @@
     <x>570</x>
     <y>510</y>
     <width>120</width>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_8</name>
-    <actions>
-      <action type="open_display">
-        <file>paths.bob</file>
-        <macros>
-          <P>$(P)</P>
-          <R>$(R)</R>
-        </macros>
-        <target>window</target>
-        <description>Paths</description>
-      </action>
-    </actions>
-    <text>Paths</text>
-    <x>400</x>
-    <y>40</y>
-    <width>60</width>
-    <foreground_color>
-      <color name="Background" red="255" green="255" blue="255">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color red="51" green="153" blue="0">
-      </color>
-    </background_color>
-    <tooltip>$(actions)</tooltip>
   </widget>
 </display>

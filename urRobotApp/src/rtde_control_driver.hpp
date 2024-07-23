@@ -31,8 +31,6 @@ static constexpr char POSE_ROLL_CMD_STRING[] = "POSE_ROLL_CMD";
 static constexpr char POSE_PITCH_CMD_STRING[] = "POSE_PITCH_CMD";
 static constexpr char POSE_YAW_CMD_STRING[] = "POSE_YAW_CMD";
 
-static constexpr char PLAY_CARTESIAN_PATH_CSV_STRING[] = "PLAY_CARTESIAN_PATH_CSV";
-static constexpr char PLAY_JOINT_PATH_CSV_STRING[] = "PLAY_JOINT_PATH_CSV";
 static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
 static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
 
@@ -49,7 +47,6 @@ static constexpr char LINEAR_BLEND_STRING[] = "LINEAR_BLEND";
 
 static constexpr char WAYPOINT_MOVEJ_STRING[] = "WAYPOINT_MOVEJ";
 static constexpr char WAYPOINT_MOVEL_STRING[] = "WAYPOINT_MOVEL";
-static constexpr char WAYPOINT_GRIPPER_ACTION_STRING[] = "WAYPOINT_GRIPPER_ACTION";
 static constexpr char RUN_WAYPOINT_ACTION_STRING[] = "RUN_WAYPOINT_ACTION";
 static constexpr char WAYPOINT_ACTION_DONE_STRING[] = "WAYPOINT_ACTION_DONE";
 
@@ -72,7 +69,6 @@ class RTDEControl : public asynPortDriver {
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
-    std::unique_ptr<ur_rtde::RobotiqGripper> gripper_;
 
     const std::string robot_ip_ = "127.0.0.1";
     bool try_connect();
@@ -95,7 +91,6 @@ class RTDEControl : public asynPortDriver {
     bool async_move = true;
     AsyncRunning async_running_ = AsyncRunning::False;
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
-    int gripper_action_ = 0;
     std::vector<std::vector<double>> waypoint_path_;
     std::vector<std::vector<double>>::iterator waypoint_path_iter_;
 
@@ -124,8 +119,6 @@ class RTDEControl : public asynPortDriver {
     int poseRollCmdIndex_;
     int posePitchCmdIndex_;
     int poseYawCmdIndex_;
-    int playCartesianPathCsvIndex_;
-    int playJointPathCsvIndex_;
     int reuploadCtrlScriptIndex_;
     int stopCtrlScriptIndex_;
     int asyncMoveIndex_;
@@ -138,7 +131,6 @@ class RTDEControl : public asynPortDriver {
     int linearBlendIndex_;
     int waypointMoveJIndex_;
     int waypointMoveLIndex_;
-    int waypointGripperActionIndex_;
     int runWaypointActionIndex_;
     int waypointActionDoneIndex_;
 };
