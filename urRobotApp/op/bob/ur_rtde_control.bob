@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-23 15:32:37 by nmarks-->
+<!--Saved on 2024-07-23 16:16:28 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Control</name>
   <width>950</width>
@@ -125,7 +125,7 @@
       <action type="write_pv">
         <pv_name>$(P)$(R)Control:ResetJCmd.PROC</pv_name>
         <value>1</value>
-        <description>ResetJCmd</description>
+        <description>$(P)$(R)Control:ResetJCmd.PROC</description>
       </action>
     </actions>
     <text>Reset</text>
@@ -144,7 +144,7 @@
       <action type="write_pv">
         <pv_name>$(P)$(R)Control:stopJ.PROC</pv_name>
         <value>1</value>
-        <description>stopJ</description>
+        <description>$(P)$(R)Control:stopJ.PROC</description>
       </action>
     </actions>
     <text>Stop</text>

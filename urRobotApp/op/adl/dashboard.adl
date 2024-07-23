@@ -1,14 +1,14 @@
 
 file {
-	name="/home/beams0/NMARKS/devel/ur-dev/urRobot/urRobotApp/op/adl/dashboard.adl"
+	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/dashboard.adl"
 	version=030111
 }
 display {
 	object {
-		x=2068
-		y=341
-		width=566
-		height=749
+		x=465
+		y=226
+		width=540
+		height=700
 	}
 	clr=14
 	bclr=4
@@ -97,7 +97,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:Connect"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Connect"
 	press_msg="1"
@@ -112,7 +112,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:Disconnect"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Disconnect"
 	press_msg="1"
@@ -127,7 +127,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:PowerOn"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="On"
 	press_msg="1"
@@ -142,7 +142,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:PowerOff"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Off"
 	press_msg="1"
@@ -157,7 +157,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:Shutdown"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Shutdown"
 	press_msg="1"
@@ -172,7 +172,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:ClosePopup"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Close Popup"
 	press_msg="1"
@@ -187,7 +187,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:CloseSafetyPopup"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Close Safety Popup"
 	press_msg="1"
@@ -202,7 +202,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:UnlockProtectiveStop"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Unlock Protect Stop"
 	press_msg="1"
@@ -217,7 +217,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:BrakeRelease"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Release Brakes"
 	press_msg="1"
@@ -232,7 +232,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:RestartSafety"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Restart Safety"
 	press_msg="1"
@@ -263,7 +263,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:Play"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Play"
 	press_msg="1"
@@ -278,7 +278,7 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:Pause"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Pause"
 	press_msg="1"
@@ -293,15 +293,15 @@ display {
 	control {
 		chan="$(P)$(R)Dashboard:Stop"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	label="Stop"
 	press_msg="1"
 }
 text {
 	object {
-		x=0
-		y=0
+		x=5
+		y=5
 		width=255
 		height=50
 	}
@@ -314,12 +314,12 @@ text {
 	object {
 		x=15
 		y=320
-		width=375
+		width=475
 		height=25
 	}
 	monitor {
 		chan="$(P)$(R)Dashboard:LoadedProgram"
-		clr=14
+		clr=54
 		bclr=4
 	}
 	format="string"
@@ -330,12 +330,12 @@ text {
 	object {
 		x=15
 		y=360
-		width=375
+		width=475
 		height=25
 	}
 	monitor {
 		chan="$(P)$(R)Dashboard:ProgramState"
-		clr=14
+		clr=54
 		bclr=4
 	}
 	format="string"
@@ -346,12 +346,12 @@ text {
 	object {
 		x=15
 		y=595
-		width=375
+		width=475
 		height=25
 	}
 	monitor {
 		chan="$(P)$(R)Dashboard:RobotMode"
-		clr=14
+		clr=54
 		bclr=4
 	}
 	format="string"
@@ -362,12 +362,12 @@ text {
 	object {
 		x=15
 		y=635
-		width=375
+		width=475
 		height=25
 	}
 	monitor {
 		chan="$(P)$(R)Dashboard:SafetyStatus"
-		clr=14
+		clr=54
 		bclr=4
 	}
 	format="string"
