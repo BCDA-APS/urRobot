@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-10 12:52:05 by nmarks-->
+<!--Saved on 2024-07-24 10:17:07 by nmarks-->
 <display version="2.0.0">
   <name>WaypointJ Simple</name>
   <width>550</width>
@@ -12,9 +12,9 @@
     <name>Action Button</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)WaypointJ:$(N):Reset.PROC</pv_name>
+        <pv_name>$(P)WaypointJ:$(N):Reset.PROC</pv_name>
         <value>1</value>
-        <description>$(P)$(R)WaypointJ:$(N):Reset.PROC</description>
+        <description>$(P)WaypointJ:$(N):Reset.PROC</description>
       </action>
     </actions>
     <text>SET</text>
@@ -31,9 +31,9 @@
     <name>Action Button_1</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)WaypointJ:$(N):moveJ.PROC</pv_name>
+        <pv_name>$(P)WaypointJ:$(N):moveJ.PROC</pv_name>
         <value>1</value>
-        <description>$(P)$(R)WaypointJ:$(N):moveJ.PROC</description>
+        <description>$(P)WaypointJ:$(N):moveJ.PROC</description>
       </action>
     </actions>
     <text>GO</text>
@@ -48,7 +48,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_9</name>
-    <pv_name>$(P)$(R)WaypointJ:$(N)</pv_name>
+    <pv_name>$(P)WaypointJ:$(N)</pv_name>
     <x>140</x>
     <y>10</y>
     <width>170</width>
@@ -56,7 +56,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(P)$(R)WaypointJ:$(N):Reached</pv_name>
+    <pv_name>$(P)WaypointJ:$(N):Reached</pv_name>
     <x>40</x>
     <y>10</y>
     <width>30</width>
@@ -69,7 +69,6 @@
         <file>waypointJ_line_more.bob</file>
         <macros>
           <P>$(P)</P>
-          <R>$(R)</R>
           <N>$(N)</N>
         </macros>
         <target>window</target>
@@ -79,7 +78,6 @@
         <file>action_calcJ.bob</file>
         <macros>
           <P>$(P)</P>
-          <R>$(R)</R>
           <N>$(N)</N>
           <C>WaypointJ:$(N):ActionDoneCalc</C>
         </macros>
@@ -103,7 +101,7 @@
   </widget>
   <widget type="checkbox" version="2.0.0">
     <name>Check Box</name>
-    <pv_name>$(P)$(R)WaypointJ:$(N):Enabled</pv_name>
+    <pv_name>$(P)WaypointJ:$(N):Enabled</pv_name>
     <label></label>
     <x>10</x>
     <y>10</y>

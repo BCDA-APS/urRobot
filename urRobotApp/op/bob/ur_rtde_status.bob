@@ -52,7 +52,7 @@
     </background_color>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_9</name>
-      <pv_name>$(P)$(R)Receive:SafetyStatusBits</pv_name>
+      <pv_name>$(P)Receive:SafetyStatusBits</pv_name>
       <x>2</x>
       <y>12</y>
       <width>20</width>
@@ -166,14 +166,14 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_9</name>
-    <pv_name>$(P)$(R)Receive:ControllerTimestamp</pv_name>
+    <pv_name>$(P)Receive:ControllerTimestamp</pv_name>
     <x>100</x>
     <y>50</y>
     <width>110</width>
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(P)$(R)Receive:Connected</pv_name>
+    <pv_name>$(P)Receive:Connected</pv_name>
     <x>90</x>
     <y>80</y>
     <width>30</width>
@@ -181,7 +181,7 @@
   </widget>
   <widget type="multi_state_led" version="2.0.0">
     <name>LED (Multi State)</name>
-    <pv_name>$(P)$(R)Receive:RuntimeState</pv_name>
+    <pv_name>$(P)Receive:RuntimeState</pv_name>
     <x>110</x>
     <y>130</y>
     <width>100</width>
@@ -251,7 +251,7 @@
     <name>Action Button_1</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Receive:Disconnect.PROC</pv_name>
+        <pv_name>$(P)Receive:Disconnect.PROC</pv_name>
         <value>1</value>
         <description>Disconnect</description>
       </action>
@@ -269,7 +269,7 @@
     <name>Action Button_11</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Receive:Reconnect.PROC</pv_name>
+        <pv_name>$(P)Receive:Reconnect.PROC</pv_name>
         <value>1</value>
         <description>Reconnect</description>
       </action>
@@ -285,7 +285,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_11</name>
-    <pv_name>$(P)$(R)Receive:ActualJointPositions0</pv_name>
+    <pv_name>$(P)Receive:ActualJointPositions0</pv_name>
     <x>60</x>
     <y>370</y>
     <width>210</width>
@@ -297,7 +297,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_15</name>
-    <pv_name>$(P)$(R)Receive:ActualJointPositions1</pv_name>
+    <pv_name>$(P)Receive:ActualJointPositions1</pv_name>
     <x>60</x>
     <y>410</y>
     <width>210</width>
@@ -309,7 +309,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_24</name>
-    <pv_name>$(P)$(R)Receive:ActualJointPositions2</pv_name>
+    <pv_name>$(P)Receive:ActualJointPositions2</pv_name>
     <x>60</x>
     <y>450</y>
     <width>210</width>
@@ -321,7 +321,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_25</name>
-    <pv_name>$(P)$(R)Receive:ActualJointPositions3</pv_name>
+    <pv_name>$(P)Receive:ActualJointPositions3</pv_name>
     <x>60</x>
     <y>490</y>
     <width>210</width>
@@ -333,7 +333,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_26</name>
-    <pv_name>$(P)$(R)Receive:ActualJointPositions4</pv_name>
+    <pv_name>$(P)Receive:ActualJointPositions4</pv_name>
     <x>60</x>
     <y>530</y>
     <width>210</width>
@@ -345,7 +345,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_27</name>
-    <pv_name>$(P)$(R)Receive:ActualJointPositions5</pv_name>
+    <pv_name>$(P)Receive:ActualJointPositions5</pv_name>
     <x>60</x>
     <y>570</y>
     <width>210</width>
@@ -435,7 +435,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_12</name>
-    <pv_name>$(P)$(R)Receive:ActualTCP_X</pv_name>
+    <pv_name>$(P)Receive:ActualTCP_X</pv_name>
     <x>430</x>
     <y>370</y>
     <width>210</width>
@@ -447,7 +447,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_13</name>
-    <pv_name>$(P)$(R)Receive:ActualTCP_Y</pv_name>
+    <pv_name>$(P)Receive:ActualTCP_Y</pv_name>
     <x>430</x>
     <y>410</y>
     <width>210</width>
@@ -459,7 +459,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_14</name>
-    <pv_name>$(P)$(R)Receive:ActualTCP_Z</pv_name>
+    <pv_name>$(P)Receive:ActualTCP_Z</pv_name>
     <x>430</x>
     <y>450</y>
     <width>210</width>
@@ -471,7 +471,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_16</name>
-    <pv_name>$(P)$(R)Receive:ActualTCP_Roll</pv_name>
+    <pv_name>$(P)Receive:ActualTCP_Roll</pv_name>
     <x>430</x>
     <y>490</y>
     <width>210</width>
@@ -483,7 +483,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_17</name>
-    <pv_name>$(P)$(R)Receive:ActualTCP_Pitch</pv_name>
+    <pv_name>$(P)Receive:ActualTCP_Pitch</pv_name>
     <x>430</x>
     <y>530</y>
     <width>210</width>
@@ -495,7 +495,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_28</name>
-    <pv_name>$(P)$(R)Receive:ActualTCP_Yaw</pv_name>
+    <pv_name>$(P)Receive:ActualTCP_Yaw</pv_name>
     <x>430</x>
     <y>570</y>
     <width>210</width>
@@ -593,7 +593,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_22</name>
-    <pv_name>$(P)$(R)Receive:ActualRobotCurrent</pv_name>
+    <pv_name>$(P)Receive:ActualRobotCurrent</pv_name>
     <x>130</x>
     <y>710</y>
     <width>90</width>
@@ -608,7 +608,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_21</name>
-    <pv_name>$(P)$(R)Receive:ActualRobotVoltage</pv_name>
+    <pv_name>$(P)Receive:ActualRobotVoltage</pv_name>
     <x>130</x>
     <y>680</y>
     <width>90</width>
@@ -623,7 +623,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_20</name>
-    <pv_name>$(P)$(R)Receive:ActualMainVoltage</pv_name>
+    <pv_name>$(P)Receive:ActualMainVoltage</pv_name>
     <x>130</x>
     <y>650</y>
     <width>90</width>
@@ -638,7 +638,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_7</name>
-    <pv_name>$(P)$(R)Receive:ActualToolAccelerometer</pv_name>
+    <pv_name>$(P)Receive:ActualToolAccelerometer</pv_name>
     <x>130</x>
     <y>830</y>
     <width>250</width>
@@ -653,7 +653,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_23</name>
-    <pv_name>$(P)$(R)Receive:ActualJointVoltages</pv_name>
+    <pv_name>$(P)Receive:ActualJointVoltages</pv_name>
     <x>130</x>
     <y>740</y>
     <width>300</width>
@@ -668,7 +668,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_18</name>
-    <pv_name>$(P)$(R)Receive:JointTemperatures</pv_name>
+    <pv_name>$(P)Receive:JointTemperatures</pv_name>
     <x>130</x>
     <y>800</y>
     <width>300</width>
@@ -683,7 +683,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_3</name>
-    <pv_name>$(P)$(R)Receive:ActualJointCurrents</pv_name>
+    <pv_name>$(P)Receive:ActualJointCurrents</pv_name>
     <x>130</x>
     <y>770</y>
     <width>300</width>

@@ -31,7 +31,7 @@
     <macros>
       <P>$(P)</P>
       <N>1</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>109</y>
@@ -43,7 +43,7 @@
     <macros>
       <P>$(P)</P>
       <N>2</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>158</y>
@@ -55,7 +55,7 @@
     <macros>
       <P>$(P)</P>
       <N>3</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>207</y>
@@ -67,7 +67,7 @@
     <macros>
       <P>$(P)</P>
       <N>4</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>256</y>
@@ -79,7 +79,7 @@
     <macros>
       <P>$(P)</P>
       <N>5</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>305</y>
@@ -91,7 +91,7 @@
     <macros>
       <P>$(P)</P>
       <N>6</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>354</y>
@@ -103,7 +103,7 @@
     <macros>
       <P>$(P)</P>
       <N>7</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>403</y>
@@ -115,7 +115,7 @@
     <macros>
       <P>$(P)</P>
       <N>8</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>452</y>
@@ -127,7 +127,7 @@
     <macros>
       <P>$(P)</P>
       <N>9</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>501</y>
@@ -139,7 +139,7 @@
     <macros>
       <P>$(P)</P>
       <N>10</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>550</y>
@@ -151,7 +151,7 @@
     <macros>
       <P>$(P)</P>
       <N>11</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>600</y>
@@ -163,7 +163,7 @@
     <macros>
       <P>$(P)</P>
       <N>12</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>650</y>
@@ -175,7 +175,7 @@
     <macros>
       <P>$(P)</P>
       <N>13</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>700</y>
@@ -187,7 +187,7 @@
     <macros>
       <P>$(P)</P>
       <N>14</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>750</y>
@@ -199,7 +199,7 @@
     <macros>
       <P>$(P)</P>
       <N>15</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>800</y>
@@ -211,7 +211,7 @@
     <macros>
       <P>$(P)</P>
       <N>16</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>850</y>
@@ -223,7 +223,7 @@
     <macros>
       <P>$(P)</P>
       <N>17</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>900</y>
@@ -235,7 +235,7 @@
     <macros>
       <P>$(P)</P>
       <N>18</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>950</y>
@@ -247,7 +247,7 @@
     <macros>
       <P>$(P)</P>
       <N>19</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1000</y>
@@ -259,7 +259,7 @@
     <macros>
       <P>$(P)</P>
       <N>20</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1050</y>
@@ -271,7 +271,7 @@
     <macros>
       <P>$(P)</P>
       <N>21</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1100</y>
@@ -283,7 +283,7 @@
     <macros>
       <P>$(P)</P>
       <N>22</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1150</y>
@@ -295,7 +295,7 @@
     <macros>
       <P>$(P)</P>
       <N>23</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1200</y>
@@ -307,7 +307,7 @@
     <macros>
       <P>$(P)</P>
       <N>24</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1250</y>
@@ -319,7 +319,7 @@
     <macros>
       <P>$(P)</P>
       <N>25</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1300</y>
@@ -331,7 +331,7 @@
     <macros>
       <P>$(P)</P>
       <N>26</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1350</y>
@@ -343,7 +343,7 @@
     <macros>
       <P>$(P)</P>
       <N>27</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1400</y>
@@ -355,7 +355,7 @@
     <macros>
       <P>$(P)</P>
       <N>28</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1450</y>
@@ -367,7 +367,7 @@
     <macros>
       <P>$(P)</P>
       <N>29</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1500</y>
@@ -379,7 +379,7 @@
     <macros>
       <P>$(P)</P>
       <N>30</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1550</y>
@@ -391,7 +391,7 @@
     <macros>
       <P>$(P)</P>
       <N>31</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1600</y>
@@ -403,7 +403,7 @@
     <macros>
       <P>$(P)</P>
       <N>32</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1650</y>
@@ -415,7 +415,7 @@
     <macros>
       <P>$(P)</P>
       <N>33</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1700</y>
@@ -427,7 +427,7 @@
     <macros>
       <P>$(P)</P>
       <N>34</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1750</y>
@@ -439,7 +439,7 @@
     <macros>
       <P>$(P)</P>
       <N>35</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1800</y>
@@ -451,7 +451,7 @@
     <macros>
       <P>$(P)</P>
       <N>36</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1850</y>
@@ -463,7 +463,7 @@
     <macros>
       <P>$(P)</P>
       <N>37</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1900</y>
@@ -475,7 +475,7 @@
     <macros>
       <P>$(P)</P>
       <N>38</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>1950</y>
@@ -487,7 +487,7 @@
     <macros>
       <P>$(P)</P>
       <N>39</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2000</y>
@@ -499,7 +499,7 @@
     <macros>
       <P>$(P)</P>
       <N>40</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2050</y>
@@ -511,7 +511,7 @@
     <macros>
       <P>$(P)</P>
       <N>41</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2100</y>
@@ -523,7 +523,7 @@
     <macros>
       <P>$(P)</P>
       <N>42</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2150</y>
@@ -535,7 +535,7 @@
     <macros>
       <P>$(P)</P>
       <N>43</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2200</y>
@@ -547,7 +547,7 @@
     <macros>
       <P>$(P)</P>
       <N>44</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2250</y>
@@ -559,7 +559,7 @@
     <macros>
       <P>$(P)</P>
       <N>45</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2300</y>
@@ -571,7 +571,7 @@
     <macros>
       <P>$(P)</P>
       <N>46</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2350</y>
@@ -583,7 +583,7 @@
     <macros>
       <P>$(P)</P>
       <N>47</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2400</y>
@@ -595,7 +595,7 @@
     <macros>
       <P>$(P)</P>
       <N>48</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2450</y>
@@ -607,7 +607,7 @@
     <macros>
       <P>$(P)</P>
       <N>49</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2500</y>
@@ -619,7 +619,7 @@
     <macros>
       <P>$(P)</P>
       <N>50</N>
-      <R>$(R)</R>
+      <R></R>
     </macros>
     <file>waypointL_line_more.bob</file>
     <y>2550</y>
@@ -782,7 +782,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_2</name>
-    <pv_name>$(P)$(R)Control:AsyncMoveDone</pv_name>
+    <pv_name>$(P)Control:AsyncMoveDone</pv_name>
     <x>50</x>
     <y>40</y>
   </widget>

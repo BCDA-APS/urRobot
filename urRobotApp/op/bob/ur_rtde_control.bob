@@ -79,7 +79,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(P)$(R)Control:Connected</pv_name>
+    <pv_name>$(P)Control:Connected</pv_name>
     <x>100</x>
     <y>50</y>
   </widget>
@@ -87,7 +87,7 @@
     <name>Action Button_1</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:Disconnect.PROC</pv_name>
+        <pv_name>$(P)Control:Disconnect.PROC</pv_name>
         <value>1</value>
         <description>Disconnect</description>
       </action>
@@ -105,7 +105,7 @@
     <name>Action Button_11</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:Reconnect.PROC</pv_name>
+        <pv_name>$(P)Control:Reconnect.PROC</pv_name>
         <value>1</value>
         <description>Connect</description>
       </action>
@@ -123,9 +123,9 @@
     <name>Action Button</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:ResetJCmd.PROC</pv_name>
+        <pv_name>$(P)Control:ResetJCmd.PROC</pv_name>
         <value>1</value>
-        <description>$(P)$(R)Control:ResetJCmd.PROC</description>
+        <description>$(P)Control:ResetJCmd.PROC</description>
       </action>
     </actions>
     <text>Reset</text>
@@ -142,9 +142,9 @@
     <name>Action Button_2</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:stopJ.PROC</pv_name>
+        <pv_name>$(P)Control:stopJ.PROC</pv_name>
         <value>1</value>
-        <description>$(P)$(R)Control:stopJ.PROC</description>
+        <description>$(P)Control:stopJ.PROC</description>
       </action>
     </actions>
     <text>Stop</text>
@@ -174,7 +174,7 @@
     <name>Action Button_44</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:ResetPoseCmd.PROC</pv_name>
+        <pv_name>$(P)Control:ResetPoseCmd.PROC</pv_name>
         <value>1</value>
         <description>ResetPoseCmd</description>
       </action>
@@ -193,7 +193,7 @@
     <name>Action Button_45</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:moveL.PROC</pv_name>
+        <pv_name>$(P)Control:moveL.PROC</pv_name>
         <value>1</value>
         <description>moveL</description>
       </action>
@@ -212,7 +212,7 @@
     <name>Action Button_46</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PoseXTweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:PoseXTweakFwd.PROC</pv_name>
         <value>1</value>
         <description>PoseXTweakFwd</description>
       </action>
@@ -231,7 +231,7 @@
     <name>Action Button_47</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PoseXTweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:PoseXTweakRev.PROC</pv_name>
         <value>1</value>
         <description>PoseXTweakRev</description>
       </action>
@@ -248,7 +248,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_42</name>
-    <pv_name>$(P)$(R)Control:PoseXTweakVal</pv_name>
+    <pv_name>$(P)Control:PoseXTweakVal</pv_name>
     <x>50</x>
     <y>679</y>
     <width>80</width>
@@ -259,7 +259,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_43</name>
-    <pv_name>$(P)$(R)Control:PoseXCmd</pv_name>
+    <pv_name>$(P)Control:PoseXCmd</pv_name>
     <x>50</x>
     <y>650</y>
     <width>80</width>
@@ -270,7 +270,7 @@
     <name>Action Button_48</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PoseYTweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:PoseYTweakFwd.PROC</pv_name>
         <value>1</value>
         <description>PoseYTweakFwd</description>
       </action>
@@ -289,7 +289,7 @@
     <name>Action Button_49</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PoseYTweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:PoseYTweakRev.PROC</pv_name>
         <value>1</value>
         <description>PoseYTweakRev</description>
       </action>
@@ -306,7 +306,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_44</name>
-    <pv_name>$(P)$(R)Control:PoseYTweakVal</pv_name>
+    <pv_name>$(P)Control:PoseYTweakVal</pv_name>
     <x>200</x>
     <y>679</y>
     <width>80</width>
@@ -317,7 +317,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_45</name>
-    <pv_name>$(P)$(R)Control:PoseYCmd</pv_name>
+    <pv_name>$(P)Control:PoseYCmd</pv_name>
     <x>200</x>
     <y>649</y>
     <width>80</width>
@@ -328,7 +328,7 @@
     <name>Action Button_50</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PoseZTweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:PoseZTweakFwd.PROC</pv_name>
         <value>1</value>
         <description>PoseZTweakFwd</description>
       </action>
@@ -347,7 +347,7 @@
     <name>Action Button_51</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PoseZTweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:PoseZTweakRev.PROC</pv_name>
         <value>1</value>
         <description>PoseZTweakRev</description>
       </action>
@@ -364,7 +364,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_46</name>
-    <pv_name>$(P)$(R)Control:PoseZTweakVal</pv_name>
+    <pv_name>$(P)Control:PoseZTweakVal</pv_name>
     <x>350</x>
     <y>679</y>
     <width>80</width>
@@ -375,7 +375,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_47</name>
-    <pv_name>$(P)$(R)Control:PoseZCmd</pv_name>
+    <pv_name>$(P)Control:PoseZCmd</pv_name>
     <x>350</x>
     <y>649</y>
     <width>80</width>
@@ -386,7 +386,7 @@
     <name>Action Button_52</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PoseRollTweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:PoseRollTweakFwd.PROC</pv_name>
         <value>1</value>
         <description>PoseRollTweakFwd</description>
       </action>
@@ -405,7 +405,7 @@
     <name>Action Button_53</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PoseRollTweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:PoseRollTweakRev.PROC</pv_name>
         <value>1</value>
         <description>PoseRollTweakRev</description>
       </action>
@@ -422,7 +422,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_48</name>
-    <pv_name>$(P)$(R)Control:PoseRollTweakVal</pv_name>
+    <pv_name>$(P)Control:PoseRollTweakVal</pv_name>
     <x>500</x>
     <y>679</y>
     <width>80</width>
@@ -433,7 +433,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_49</name>
-    <pv_name>$(P)$(R)Control:PoseRollCmd</pv_name>
+    <pv_name>$(P)Control:PoseRollCmd</pv_name>
     <x>500</x>
     <y>649</y>
     <width>80</width>
@@ -444,7 +444,7 @@
     <name>Action Button_54</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PosePitchTweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:PosePitchTweakFwd.PROC</pv_name>
         <value>1</value>
         <description>PosePitchTweakFwd</description>
       </action>
@@ -463,7 +463,7 @@
     <name>Action Button_55</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PosePitchTweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:PosePitchTweakRev.PROC</pv_name>
         <value>1</value>
         <description>PosePitchTweakRev</description>
       </action>
@@ -480,7 +480,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_50</name>
-    <pv_name>$(P)$(R)Control:PosePitchTweakVal</pv_name>
+    <pv_name>$(P)Control:PosePitchTweakVal</pv_name>
     <x>650</x>
     <y>679</y>
     <width>80</width>
@@ -489,7 +489,7 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J5TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J5TweakFwd</description>
       </action>
@@ -498,7 +498,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_51</name>
-    <pv_name>$(P)$(R)Control:PosePitchCmd</pv_name>
+    <pv_name>$(P)Control:PosePitchCmd</pv_name>
     <x>650</x>
     <y>649</y>
     <width>80</width>
@@ -506,7 +506,7 @@
     <show_units>false</show_units>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J5TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J5TweakFwd</description>
       </action>
@@ -516,7 +516,7 @@
     <name>Action Button_56</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PoseYawTweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:PoseYawTweakFwd.PROC</pv_name>
         <value>1</value>
         <description>PoseYawTweakFwd</description>
       </action>
@@ -535,7 +535,7 @@
     <name>Action Button_57</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:PoseYawTweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:PoseYawTweakRev.PROC</pv_name>
         <value>1</value>
         <description>PoseYawTweakRev</description>
       </action>
@@ -552,7 +552,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_52</name>
-    <pv_name>$(P)$(R)Control:PoseYawTweakVal</pv_name>
+    <pv_name>$(P)Control:PoseYawTweakVal</pv_name>
     <x>800</x>
     <y>679</y>
     <width>80</width>
@@ -561,7 +561,7 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J5TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J5TweakFwd</description>
       </action>
@@ -570,7 +570,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_53</name>
-    <pv_name>$(P)$(R)Control:PoseYawCmd</pv_name>
+    <pv_name>$(P)Control:PoseYawCmd</pv_name>
     <x>800</x>
     <y>649</y>
     <width>80</width>
@@ -578,7 +578,7 @@
     <show_units>false</show_units>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J5TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J5TweakFwd</description>
       </action>
@@ -586,7 +586,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_19</name>
-    <pv_name>$(P)$(R)Control:pose_index0.VAL</pv_name>
+    <pv_name>$(P)Control:pose_index0.VAL</pv_name>
     <x>50</x>
     <y>619</y>
     <width>80</width>
@@ -594,35 +594,35 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_20</name>
-    <pv_name>$(P)$(R)Control:pose_index1</pv_name>
+    <pv_name>$(P)Control:pose_index1</pv_name>
     <x>190</x>
     <y>619</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_21</name>
-    <pv_name>$(P)$(R)Control:pose_index2</pv_name>
+    <pv_name>$(P)Control:pose_index2</pv_name>
     <x>340</x>
     <y>619</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_22</name>
-    <pv_name>$(P)$(R)Control:pose_index3</pv_name>
+    <pv_name>$(P)Control:pose_index3</pv_name>
     <x>490</x>
     <y>619</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_23</name>
-    <pv_name>$(P)$(R)Control:pose_index4</pv_name>
+    <pv_name>$(P)Control:pose_index4</pv_name>
     <x>640</x>
     <y>619</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_24</name>
-    <pv_name>$(P)$(R)Control:pose_index5</pv_name>
+    <pv_name>$(P)Control:pose_index5</pv_name>
     <x>790</x>
     <y>619</y>
     <precision>4</precision>
@@ -700,7 +700,7 @@
     <name>Action Button_58</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J1TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J1TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J1TweakFwd</description>
       </action>
@@ -719,7 +719,7 @@
     <name>Action Button_59</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J1TweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:J1TweakRev.PROC</pv_name>
         <value>1</value>
         <description>J1TweakRev</description>
       </action>
@@ -736,7 +736,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_54</name>
-    <pv_name>$(P)$(R)Control:J1TweakVal</pv_name>
+    <pv_name>$(P)Control:J1TweakVal</pv_name>
     <x>50</x>
     <y>401</y>
     <width>80</width>
@@ -747,7 +747,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_55</name>
-    <pv_name>$(P)$(R)Control:J1Cmd</pv_name>
+    <pv_name>$(P)Control:J1Cmd</pv_name>
     <x>50</x>
     <y>371</y>
     <width>80</width>
@@ -758,7 +758,7 @@
     <name>Action Button_60</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J2TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J2TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J2TweakFwd</description>
       </action>
@@ -777,7 +777,7 @@
     <name>Action Button_61</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J2TweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:J2TweakRev.PROC</pv_name>
         <value>1</value>
         <description>J2TweakRev</description>
       </action>
@@ -794,7 +794,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_56</name>
-    <pv_name>$(P)$(R)Control:J2TweakVal</pv_name>
+    <pv_name>$(P)Control:J2TweakVal</pv_name>
     <x>200</x>
     <y>400</y>
     <width>80</width>
@@ -805,7 +805,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_57</name>
-    <pv_name>$(P)$(R)Control:J2Cmd</pv_name>
+    <pv_name>$(P)Control:J2Cmd</pv_name>
     <x>200</x>
     <y>370</y>
     <width>80</width>
@@ -816,7 +816,7 @@
     <name>Action Button_62</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J3TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J3TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J3TweakFwd</description>
       </action>
@@ -835,7 +835,7 @@
     <name>Action Button_63</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J3TweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:J3TweakRev.PROC</pv_name>
         <value>1</value>
         <description>J3TweakRev</description>
       </action>
@@ -852,7 +852,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_58</name>
-    <pv_name>$(P)$(R)Control:J3TweakVal</pv_name>
+    <pv_name>$(P)Control:J3TweakVal</pv_name>
     <x>350</x>
     <y>400</y>
     <width>80</width>
@@ -863,7 +863,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_59</name>
-    <pv_name>$(P)$(R)Control:J3Cmd</pv_name>
+    <pv_name>$(P)Control:J3Cmd</pv_name>
     <x>350</x>
     <y>370</y>
     <width>80</width>
@@ -874,7 +874,7 @@
     <name>Action Button_64</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J4TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J4TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J4TweakFwd</description>
       </action>
@@ -893,7 +893,7 @@
     <name>Action Button_65</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J4TweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:J4TweakRev.PROC</pv_name>
         <value>1</value>
         <description>J4TweakRev</description>
       </action>
@@ -910,7 +910,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_60</name>
-    <pv_name>$(P)$(R)Control:J4TweakVal</pv_name>
+    <pv_name>$(P)Control:J4TweakVal</pv_name>
     <x>500</x>
     <y>400</y>
     <width>80</width>
@@ -921,7 +921,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_61</name>
-    <pv_name>$(P)$(R)Control:J4Cmd</pv_name>
+    <pv_name>$(P)Control:J4Cmd</pv_name>
     <x>500</x>
     <y>370</y>
     <width>80</width>
@@ -932,7 +932,7 @@
     <name>Action Button_66</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J5TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J5TweakFwd</description>
       </action>
@@ -951,7 +951,7 @@
     <name>Action Button_67</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J5TweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:J5TweakRev.PROC</pv_name>
         <value>1</value>
         <description>J5TweakRev</description>
       </action>
@@ -968,7 +968,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_62</name>
-    <pv_name>$(P)$(R)Control:J5TweakVal</pv_name>
+    <pv_name>$(P)Control:J5TweakVal</pv_name>
     <x>650</x>
     <y>400</y>
     <width>80</width>
@@ -977,7 +977,7 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J5TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J5TweakFwd</description>
       </action>
@@ -986,7 +986,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_63</name>
-    <pv_name>$(P)$(R)Control:J5Cmd</pv_name>
+    <pv_name>$(P)Control:J5Cmd</pv_name>
     <x>650</x>
     <y>370</y>
     <width>80</width>
@@ -994,7 +994,7 @@
     <show_units>false</show_units>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J5TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J5TweakFwd</description>
       </action>
@@ -1004,7 +1004,7 @@
     <name>Action Button_68</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J6TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J6TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J6TweakFwd</description>
       </action>
@@ -1023,7 +1023,7 @@
     <name>Action Button_69</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J6TweakRev.PROC</pv_name>
+        <pv_name>$(P)Control:J6TweakRev.PROC</pv_name>
         <value>1</value>
         <description>J6TweakRev</description>
       </action>
@@ -1040,7 +1040,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_64</name>
-    <pv_name>$(P)$(R)Control:J6TweakVal</pv_name>
+    <pv_name>$(P)Control:J6TweakVal</pv_name>
     <x>800</x>
     <y>400</y>
     <width>80</width>
@@ -1049,7 +1049,7 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J5TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J5TweakFwd</description>
       </action>
@@ -1058,7 +1058,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_65</name>
-    <pv_name>$(P)$(R)Control:J6Cmd</pv_name>
+    <pv_name>$(P)Control:J6Cmd</pv_name>
     <x>800</x>
     <y>370</y>
     <width>80</width>
@@ -1066,7 +1066,7 @@
     <show_units>false</show_units>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:J5TweakFwd.PROC</pv_name>
+        <pv_name>$(P)Control:J5TweakFwd.PROC</pv_name>
         <value>1</value>
         <description>J5TweakFwd</description>
       </action>
@@ -1074,7 +1074,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_25</name>
-    <pv_name>$(P)$(R)Control:ActualQ_index0.VAL</pv_name>
+    <pv_name>$(P)Control:ActualQ_index0.VAL</pv_name>
     <x>50</x>
     <y>340</y>
     <width>80</width>
@@ -1082,35 +1082,35 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_26</name>
-    <pv_name>$(P)$(R)Control:ActualQ_index1</pv_name>
+    <pv_name>$(P)Control:ActualQ_index1</pv_name>
     <x>190</x>
     <y>340</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_27</name>
-    <pv_name>$(P)$(R)Control:ActualQ_index2</pv_name>
+    <pv_name>$(P)Control:ActualQ_index2</pv_name>
     <x>340</x>
     <y>340</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_28</name>
-    <pv_name>$(P)$(R)Control:ActualQ_index3</pv_name>
+    <pv_name>$(P)Control:ActualQ_index3</pv_name>
     <x>490</x>
     <y>340</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_29</name>
-    <pv_name>$(P)$(R)Control:ActualQ_index4</pv_name>
+    <pv_name>$(P)Control:ActualQ_index4</pv_name>
     <x>640</x>
     <y>340</y>
     <precision>4</precision>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_30</name>
-    <pv_name>$(P)$(R)Control:ActualQ_index5</pv_name>
+    <pv_name>$(P)Control:ActualQ_index5</pv_name>
     <x>790</x>
     <y>340</y>
     <precision>4</precision>
@@ -1203,7 +1203,7 @@
     <name>Action Button_70</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:stopL.PROC</pv_name>
+        <pv_name>$(P)Control:stopL.PROC</pv_name>
         <value>1</value>
         <description>stopL</description>
       </action>
@@ -1222,7 +1222,7 @@
     <name>Action Button_71</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:moveJ.PROC</pv_name>
+        <pv_name>$(P)Control:moveJ.PROC</pv_name>
         <value>1</value>
         <description>moveJ</description>
       </action>
@@ -1253,7 +1253,7 @@
   </widget>
   <widget type="scaledslider" version="2.0.0">
     <name>Scaled Slider</name>
-    <pv_name>$(P)$(R)IO:SpeedSlider</pv_name>
+    <pv_name>$(P)IO:SpeedSlider</pv_name>
     <x>10</x>
     <y>160</y>
     <width>270</width>
@@ -1272,7 +1272,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>eq://100*($(P)$(R)IO:SpeedSlider)</pv_name>
+    <pv_name>eq://100*($(P)IO:SpeedSlider)</pv_name>
     <x>280</x>
     <y>160</y>
     <width>60</width>
@@ -1302,7 +1302,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_1</name>
-    <pv_name>$(P)$(R)Control:Steady</pv_name>
+    <pv_name>$(P)Control:Steady</pv_name>
     <x>100</x>
     <y>91</y>
   </widget>
@@ -1475,7 +1475,7 @@
   </widget>
   <widget type="slide_button" version="2.0.0">
     <name>Slide Button</name>
-    <pv_name>$(P)$(R)Control:AutoMoveJ</pv_name>
+    <pv_name>$(P)Control:AutoMoveJ</pv_name>
     <label>Go</label>
     <x>570</x>
     <y>230</y>
@@ -1485,7 +1485,7 @@
     <name>Action Button_3</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:ReuploadControlScript.PROC</pv_name>
+        <pv_name>$(P)Control:ReuploadControlScript.PROC</pv_name>
         <value>1</value>
         <description>Reupload Script</description>
       </action>
@@ -1503,7 +1503,7 @@
     <name>Action Button_4</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)Control:StopControlScript.PROC</pv_name>
+        <pv_name>$(P)Control:StopControlScript.PROC</pv_name>
         <value>1</value>
         <description>Stop Script</description>
       </action>
@@ -1519,7 +1519,7 @@
   </widget>
   <widget type="slide_button" version="2.0.0">
     <name>Slide Button_1</name>
-    <pv_name>$(P)$(R)Control:AutoMoveL</pv_name>
+    <pv_name>$(P)Control:AutoMoveL</pv_name>
     <label>Go</label>
     <x>570</x>
     <y>510</y>

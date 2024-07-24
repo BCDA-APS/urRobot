@@ -28,7 +28,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_1</name>
-    <pv_name>$(P)$(R)RobotiqGripper:Connected</pv_name>
+    <pv_name>$(P)RobotiqGripper:Connected</pv_name>
     <x>110</x>
     <y>30</y>
   </widget>
@@ -45,7 +45,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_2</name>
-    <pv_name>$(P)$(R)RobotiqGripper:IsActive</pv_name>
+    <pv_name>$(P)RobotiqGripper:IsActive</pv_name>
     <x>110</x>
     <y>61</y>
   </widget>
@@ -62,7 +62,7 @@
   </widget>
   <widget type="text-symbol" version="2.0.0">
     <name>Text Symbol_1</name>
-    <pv_name>$(P)$(R)RobotiqGripper:IsOpen</pv_name>
+    <pv_name>$(P)RobotiqGripper:IsOpen</pv_name>
     <symbols>
       <symbol> </symbol>
       <symbol>Open</symbol>
@@ -82,7 +82,7 @@
   </widget>
   <widget type="text-symbol" version="2.0.0">
     <name>Text Symbol_2</name>
-    <pv_name>$(P)$(R)RobotiqGripper:IsClosed</pv_name>
+    <pv_name>$(P)RobotiqGripper:IsClosed</pv_name>
     <symbols>
       <symbol> </symbol>
       <symbol> Closed</symbol>
@@ -153,7 +153,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>$(P)$(R)RobotiqGripper:CurrentPosition</pv_name>
+    <pv_name>$(P)RobotiqGripper:CurrentPosition</pv_name>
     <x>110</x>
     <y>91</y>
     <width>70</width>
@@ -230,7 +230,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_1</name>
-    <pv_name>$(P)$(R)RobotiqGripper:MoveStatus</pv_name>
+    <pv_name>$(P)RobotiqGripper:MoveStatus</pv_name>
     <x>220</x>
     <y>50</y>
     <width>140</width>

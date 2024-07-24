@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-28 10:10:36 by nmarks-->
+<!--Saved on 2024-07-24 10:13:36 by nmarks-->
 <display version="2.0.0">
   <name>Dashboard</name>
   <width>450</width>
@@ -40,9 +40,9 @@
       <name>Action Button</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:Play.PROC</pv_name>
+          <pv_name>$(P)Dashboard:Play.PROC</pv_name>
           <value>1</value>
-          <description>Play</description>
+          <description>$(P)Dashboard:Play.PROC</description>
         </action>
       </actions>
       <text>󰐊</text>
@@ -60,9 +60,9 @@
       <name>Action Button_2</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:Pause.PROC</pv_name>
+          <pv_name>$(P)Dashboard:Pause.PROC</pv_name>
           <value>1</value>
-          <description>Pause</description>
+          <description>$(P)Dashboard:Pause.PROC</description>
         </action>
       </actions>
       <text>󰏤</text>
@@ -80,9 +80,9 @@
       <name>Action Button_3</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:Stop.PROC</pv_name>
+          <pv_name>$(P)Dashboard:Stop.PROC</pv_name>
           <value>1</value>
-          <description>Stop</description>
+          <description>$(P)Dashboard:Stop.PROC</description>
         </action>
       </actions>
       <text>󰓛</text>
@@ -98,7 +98,7 @@
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Text Entry</name>
-      <pv_name>$(P)$(R)Dashboard:LoadURP</pv_name>
+      <pv_name>$(P)Dashboard:LoadURP</pv_name>
       <x>12</x>
       <y>81</y>
       <width>180</width>
@@ -107,14 +107,14 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_2</name>
-      <pv_name>$(P)$(R)Dashboard:LoadedProgram</pv_name>
+      <pv_name>$(P)Dashboard:LoadedProgram</pv_name>
       <x>12</x>
       <y>12</y>
       <width>350</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_6</name>
-      <pv_name>$(P)$(R)Dashboard:ProgramState</pv_name>
+      <pv_name>$(P)Dashboard:ProgramState</pv_name>
       <x>12</x>
       <y>42</y>
       <width>350</width>
@@ -132,21 +132,21 @@
     </background_color>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_1</name>
-      <pv_name>$(P)$(R)Dashboard:RobotMode</pv_name>
+      <pv_name>$(P)Dashboard:RobotMode</pv_name>
       <x>12</x>
       <y>82</y>
       <width>350</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update</name>
-      <pv_name>$(P)$(R)Dashboard:SafetyStatus</pv_name>
+      <pv_name>$(P)Dashboard:SafetyStatus</pv_name>
       <x>12</x>
       <y>112</y>
       <width>350</width>
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED</name>
-      <pv_name>$(P)$(R)Dashboard:Connected.RVAL</pv_name>
+      <pv_name>$(P)Dashboard:Connected.RVAL</pv_name>
       <x>122</x>
       <y>12</y>
       <off_color>
@@ -164,7 +164,7 @@
     </widget>
     <widget type="led" version="2.0.0">
       <name>LED_1</name>
-      <pv_name>$(P)$(R)Dashboard:IsInRemoteControl.RVAL</pv_name>
+      <pv_name>$(P)Dashboard:IsInRemoteControl.RVAL</pv_name>
       <x>122</x>
       <y>42</y>
       <off_color>
@@ -195,9 +195,9 @@
       <name>Action Button_8</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:UnlockProtectiveStop.PROC</pv_name>
+          <pv_name>$(P)Dashboard:UnlockProtectiveStop.PROC</pv_name>
           <value>1</value>
-          <description>UnlockProtectiveStop</description>
+          <description>$(P)Dashboard:UnlockProtectiveStop.PROC</description>
         </action>
       </actions>
       <text>Unlock Protective Stop</text>
@@ -214,9 +214,9 @@
       <name>Action Button_10</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:CloseSafetyPopup.PROC</pv_name>
+          <pv_name>$(P)Dashboard:CloseSafetyPopup.PROC</pv_name>
           <value>1</value>
-          <description>CloseSafetyPopup</description>
+          <description>$(P)Dashboard:CloseSafetyPopup.PROC</description>
         </action>
       </actions>
       <text>Close Safety Popup</text>
@@ -233,9 +233,9 @@
       <name>Action Button_9</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:ClosePopup.PROC</pv_name>
+          <pv_name>$(P)Dashboard:ClosePopup.PROC</pv_name>
           <value>1</value>
-          <description>ClosePopup</description>
+          <description>$(P)Dashboard:ClosePopup.PROC</description>
         </action>
       </actions>
       <text>Close Popup</text>
@@ -252,9 +252,9 @@
       <name>Action Button_4</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:BrakeRelease.PROC</pv_name>
+          <pv_name>$(P)Dashboard:BrakeRelease.PROC</pv_name>
           <value>1</value>
-          <description>Release brakes</description>
+          <description>$(P)Dashboard:BrakeRelease.PROC</description>
         </action>
       </actions>
       <text>Release Brakes</text>
@@ -271,9 +271,9 @@
       <name>Action Button_7</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:RestartSafety.PROC</pv_name>
+          <pv_name>$(P)Dashboard:RestartSafety.PROC</pv_name>
           <value>1</value>
-          <description>Restart safety</description>
+          <description>$(P)Dashboard:RestartSafety.PROC</description>
         </action>
       </actions>
       <text>Restart safety</text>
@@ -300,9 +300,9 @@
       <name>Action Button_5</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:PowerOn.PROC</pv_name>
+          <pv_name>$(P)Dashboard:PowerOn.PROC</pv_name>
           <value>1</value>
-          <description>PowerOn</description>
+          <description>$(P)Dashboard:PowerOn.PROC</description>
         </action>
       </actions>
       <text>On</text>
@@ -319,9 +319,9 @@
       <name>Action Button_6</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:PowerOff.PROC</pv_name>
+          <pv_name>$(P)Dashboard:PowerOff.PROC</pv_name>
           <value>1</value>
-          <description>PowerOff</description>
+          <description>$(P)Dashboard:PowerOff.PROC</description>
         </action>
       </actions>
       <text>Off</text>
@@ -338,9 +338,9 @@
       <name>Action Button_1</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:Disconnect.PROC</pv_name>
+          <pv_name>$(P)Dashboard:Disconnect.PROC</pv_name>
           <value>1</value>
-          <description>Disconnect</description>
+          <description>$(P)Dashboard:Disconnect.PROC</description>
         </action>
       </actions>
       <text>Disconnect</text>
@@ -357,9 +357,9 @@
       <name>Action Button_16</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:Shutdown.PROC</pv_name>
+          <pv_name>$(P)Dashboard:Shutdown.PROC</pv_name>
           <value>1</value>
-          <description>Shutdown</description>
+          <description>$(P)Dashboard:Shutdown.PROC</description>
         </action>
       </actions>
       <text>Shutdown</text>
@@ -376,9 +376,9 @@
       <name>Action Button_11</name>
       <actions>
         <action type="write_pv">
-          <pv_name>$(P)$(R)Dashboard:Connect.PROC</pv_name>
+          <pv_name>$(P)Dashboard:Connect.PROC</pv_name>
           <value>1</value>
-          <description>Connect</description>
+          <description>$(P)Dashboard:Connect.PROC</description>
         </action>
       </actions>
       <text>Connect</text>

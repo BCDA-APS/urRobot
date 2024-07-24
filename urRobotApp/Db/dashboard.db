@@ -1,4 +1,4 @@
-record(bi, "$(P)$(R)Dashboard:Connected")
+record(bi, "$(P)Dashboard:Connected")
 {
     field(DESC, "Connection status")
     field(DTYP, "asynInt32")
@@ -7,7 +7,7 @@ record(bi, "$(P)$(R)Dashboard:Connected")
     field(SCAN, "I/O Intr")
 }
 
-record(bi, "$(P)$(R)Dashboard:IsProgramSaved")
+record(bi, "$(P)Dashboard:IsProgramSaved")
 {
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_PROGRAM_SAVED")
@@ -15,7 +15,7 @@ record(bi, "$(P)$(R)Dashboard:IsProgramSaved")
     field(SCAN, "I/O Intr")
 }
 
-record(bi, "$(P)$(R)Dashboard:IsInRemoteControl")
+record(bi, "$(P)Dashboard:IsInRemoteControl")
 {
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_IN_REMOTE_CONTROL")
@@ -23,7 +23,7 @@ record(bi, "$(P)$(R)Dashboard:IsInRemoteControl")
     field(SCAN, "I/O Intr")
 }
 
-record(bi, "$(P)$(R)Dashboard:Running")
+record(bi, "$(P)Dashboard:Running")
 {
     field(DESC, "Program runnning status")
     field(DTYP, "asynInt32")
@@ -32,98 +32,98 @@ record(bi, "$(P)$(R)Dashboard:Running")
     field(SCAN, "I/O Intr")
 }
 
-record(bo, "$(P)$(R)Dashboard:Play")
+record(bo, "$(P)Dashboard:Play")
 {
     field(DESC, "Play program")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PLAY")
 }
 
-record(bo, "$(P)$(R)Dashboard:Stop")
+record(bo, "$(P)Dashboard:Stop")
 {
     field(DESC, "Stop program")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOP")
 }
 
-record(bo, "$(P)$(R)Dashboard:Pause")
+record(bo, "$(P)Dashboard:Pause")
 {
     field(DESC, "Pause program")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PAUSE")
 }
 
-record(bo, "$(P)$(R)Dashboard:Connect")
+record(bo, "$(P)Dashboard:Connect")
 {
     field(DESC, "Connects to dashboard server")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CONNECT")
 }
 
-record(bo, "$(P)$(R)Dashboard:Disconnect")
+record(bo, "$(P)Dashboard:Disconnect")
 {
     field(DESC, "Closes connection")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DISCONNECT")
 }
 
-record(bo, "$(P)$(R)Dashboard:Shutdown")
+record(bo, "$(P)Dashboard:Shutdown")
 {
     field(DESC, "Shuts down robot and controller")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SHUTDOWN")
 }
 
-record(bo, "$(P)$(R)Dashboard:ClosePopup")
+record(bo, "$(P)Dashboard:ClosePopup")
 {
     field(DESC, "Close popup")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE_POPUP")
 }
 
-record(bo, "$(P)$(R)Dashboard:CloseSafetyPopup")
+record(bo, "$(P)Dashboard:CloseSafetyPopup")
 {
     field(DESC, "Close safety popup")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE_SAFETY_POPUP")
 }
 
-record(bo, "$(P)$(R)Dashboard:PowerOn")
+record(bo, "$(P)Dashboard:PowerOn")
 {
     field(DESC, "Powers on the robot")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POWER_ON")
 }
 
-record(bo, "$(P)$(R)Dashboard:PowerOff")
+record(bo, "$(P)Dashboard:PowerOff")
 {
     field(DESC, "Powers off the robot")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POWER_OFF")
 }
 
-record(bo, "$(P)$(R)Dashboard:BrakeRelease")
+record(bo, "$(P)Dashboard:BrakeRelease")
 {
     field(DESC, "Release breaks")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))BRAKE_RELEASE")
 }
 
-record(bo, "$(P)$(R)Dashboard:UnlockProtectiveStop")
+record(bo, "$(P)Dashboard:UnlockProtectiveStop")
 {
     field(DESC, "Unlocks protective stop")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))UNLOCK_PROTECTIVE_STOP")
 }
 
-record(bo, "$(P)$(R)Dashboard:RestartSafety")
+record(bo, "$(P)Dashboard:RestartSafety")
 {
     field(DESC, "Restarts safety, power off robot")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RESTART_SAFETY")
 }
 
-record(stringin, "$(P)$(R)Dashboard:PolyscopeVersion")
+record(stringin, "$(P)Dashboard:PolyscopeVersion")
 {
     field(DESC, "Polyscope version")
     field(DTYP, "asynOctetRead")
@@ -131,7 +131,7 @@ record(stringin, "$(P)$(R)Dashboard:PolyscopeVersion")
     field(SCAN, "I/O Intr")
 }
 
-record(stringin, "$(P)$(R)Dashboard:SerialNumber")
+record(stringin, "$(P)Dashboard:SerialNumber")
 {
     field(DESC, "Serial number")
     field(DTYP, "asynOctetRead")
@@ -139,7 +139,7 @@ record(stringin, "$(P)$(R)Dashboard:SerialNumber")
     field(SCAN, "I/O Intr")
 }
 
-record(stringin, "$(P)$(R)Dashboard:ProgramState")
+record(stringin, "$(P)Dashboard:ProgramState")
 {
     field(DESC, "Program state")
     field(DTYP, "asynOctetRead")
@@ -147,7 +147,7 @@ record(stringin, "$(P)$(R)Dashboard:ProgramState")
     field(SCAN, "I/O Intr")
 }
 
-record(stringin, "$(P)$(R)Dashboard:RobotMode")
+record(stringin, "$(P)Dashboard:RobotMode")
 {
     field(DESC, "Robot mode")
     field(DTYP, "asynOctetRead")
@@ -155,7 +155,7 @@ record(stringin, "$(P)$(R)Dashboard:RobotMode")
     field(SCAN, "I/O Intr")
 }
 
-record(stringin, "$(P)$(R)Dashboard:RobotModel")
+record(stringin, "$(P)Dashboard:RobotModel")
 {
     field(DESC, "Robot model")
     field(DTYP, "asynOctetRead")
@@ -163,7 +163,7 @@ record(stringin, "$(P)$(R)Dashboard:RobotModel")
     field(SCAN, "I/O Intr")
 }
 
-record(stringin, "$(P)$(R)Dashboard:LoadedProgram")
+record(stringin, "$(P)Dashboard:LoadedProgram")
 {
     field(DESC, "Loaded program")
     field(DTYP, "asynOctetRead")
@@ -171,7 +171,7 @@ record(stringin, "$(P)$(R)Dashboard:LoadedProgram")
     field(SCAN, "I/O Intr")
 }
 
-record(stringin, "$(P)$(R)Dashboard:SafetyStatus")
+record(stringin, "$(P)Dashboard:SafetyStatus")
 {
     field(DESC, "Safety status")
     field(DTYP, "asynOctetRead")
@@ -179,14 +179,14 @@ record(stringin, "$(P)$(R)Dashboard:SafetyStatus")
     field(SCAN, "I/O Intr")
 }
 
-record(stringout, "$(P)$(R)Dashboard:Popup")
+record(stringout, "$(P)Dashboard:Popup")
 {
     field(DESC, "Popup message")
     field(DTYP, "asynOctetWrite")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POPUP")
 }
 
-record(stringout, "$(P)$(R)Dashboard:LoadURP")
+record(stringout, "$(P)Dashboard:LoadURP")
 {
     field(DESC, "Loads a URP program")
     field(DTYP, "asynOctetWrite")

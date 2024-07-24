@@ -12,9 +12,9 @@
     <name>Action Button</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)WaypointL:$(N):Reset.PROC</pv_name>
+        <pv_name>$(P)WaypointL:$(N):Reset.PROC</pv_name>
         <value>1</value>
-        <description>$(P)$(R)WaypointL:$(N):Reset.PROC</description>
+        <description>$(P)WaypointL:$(N):Reset.PROC</description>
       </action>
     </actions>
     <text>SET</text>
@@ -31,9 +31,9 @@
     <name>Action Button_1</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)$(R)WaypointL:$(N):moveL.PROC</pv_name>
+        <pv_name>$(P)WaypointL:$(N):moveL.PROC</pv_name>
         <value>1</value>
-        <description>$(P)$(R)WaypointL:$(N):moveL.PROC</description>
+        <description>$(P)WaypointL:$(N):moveL.PROC</description>
       </action>
     </actions>
     <text>GO</text>
@@ -48,7 +48,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_9</name>
-    <pv_name>$(P)$(R)WaypointL:$(N)</pv_name>
+    <pv_name>$(P)WaypointL:$(N)</pv_name>
     <x>140</x>
     <y>10</y>
     <width>170</width>
@@ -56,7 +56,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(P)$(R)WaypointL:$(N):Reached</pv_name>
+    <pv_name>$(P)WaypointL:$(N):Reached</pv_name>
     <x>40</x>
     <y>10</y>
     <width>30</width>
@@ -69,7 +69,7 @@
         <file>waypointL_line_more.bob</file>
         <macros>
           <P>$(P)</P>
-          <R>$(R)</R>
+          <R></R>
           <N>$(N)</N>
         </macros>
         <target>window</target>
@@ -79,7 +79,7 @@
         <file>action_calcL.bob</file>
         <macros>
           <P>$(P)</P>
-          <R>$(R)</R>
+          <R></R>
           <N>$(N)</N>
           <C>WaypointL:$(N):ActionDoneCalc</C>
         </macros>
@@ -103,7 +103,7 @@
   </widget>
   <widget type="checkbox" version="2.0.0">
     <name>Check Box</name>
-    <pv_name>$(P)$(R)WaypointL:$(N):Enabled</pv_name>
+    <pv_name>$(P)WaypointL:$(N):Enabled</pv_name>
     <label></label>
     <x>10</x>
     <y>10</y>

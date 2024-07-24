@@ -27,7 +27,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button</name>
-    <pv_name>$(P)$(R)IO:SetStandardDigitalOut0</pv_name>
+    <pv_name>$(P)IO:SetStandardDigitalOut0</pv_name>
     <x>110</x>
     <y>110</y>
     <width>40</width>
@@ -41,7 +41,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_1</name>
-    <pv_name>$(P)$(R)IO:SetStandardDigitalOut1</pv_name>
+    <pv_name>$(P)IO:SetStandardDigitalOut1</pv_name>
     <x>160</x>
     <y>110</y>
     <width>40</width>
@@ -55,7 +55,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_2</name>
-    <pv_name>$(P)$(R)IO:SetStandardDigitalOut2</pv_name>
+    <pv_name>$(P)IO:SetStandardDigitalOut2</pv_name>
     <x>210</x>
     <y>110</y>
     <width>40</width>
@@ -69,7 +69,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_3</name>
-    <pv_name>$(P)$(R)IO:SetStandardDigitalOut3</pv_name>
+    <pv_name>$(P)IO:SetStandardDigitalOut3</pv_name>
     <x>260</x>
     <y>110</y>
     <width>40</width>
@@ -83,7 +83,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_8</name>
-    <pv_name>$(P)$(R)IO:SetStandardDigitalOut4</pv_name>
+    <pv_name>$(P)IO:SetStandardDigitalOut4</pv_name>
     <x>310</x>
     <y>110</y>
     <width>40</width>
@@ -97,7 +97,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_9</name>
-    <pv_name>$(P)$(R)IO:SetStandardDigitalOut5</pv_name>
+    <pv_name>$(P)IO:SetStandardDigitalOut5</pv_name>
     <x>360</x>
     <y>110</y>
     <width>40</width>
@@ -111,7 +111,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_10</name>
-    <pv_name>$(P)$(R)IO:SetStandardDigitalOut6</pv_name>
+    <pv_name>$(P)IO:SetStandardDigitalOut6</pv_name>
     <x>410</x>
     <y>110</y>
     <width>40</width>
@@ -125,7 +125,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_11</name>
-    <pv_name>$(P)$(R)IO:SetStandardDigitalOut7</pv_name>
+    <pv_name>$(P)IO:SetStandardDigitalOut7</pv_name>
     <x>460</x>
     <y>110</y>
     <width>40</width>
@@ -139,7 +139,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_12</name>
-    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut0</pv_name>
+    <pv_name>$(P)IO:SetConfigurableDigitalOut0</pv_name>
     <x>110</x>
     <y>150</y>
     <width>40</width>
@@ -153,7 +153,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_13</name>
-    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut1</pv_name>
+    <pv_name>$(P)IO:SetConfigurableDigitalOut1</pv_name>
     <x>160</x>
     <y>150</y>
     <width>40</width>
@@ -167,7 +167,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_14</name>
-    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut2</pv_name>
+    <pv_name>$(P)IO:SetConfigurableDigitalOut2</pv_name>
     <x>210</x>
     <y>150</y>
     <width>40</width>
@@ -181,7 +181,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_15</name>
-    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut3</pv_name>
+    <pv_name>$(P)IO:SetConfigurableDigitalOut3</pv_name>
     <x>260</x>
     <y>150</y>
     <width>40</width>
@@ -195,7 +195,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_16</name>
-    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut4</pv_name>
+    <pv_name>$(P)IO:SetConfigurableDigitalOut4</pv_name>
     <x>310</x>
     <y>150</y>
     <width>40</width>
@@ -209,7 +209,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_17</name>
-    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut5</pv_name>
+    <pv_name>$(P)IO:SetConfigurableDigitalOut5</pv_name>
     <x>360</x>
     <y>150</y>
     <width>40</width>
@@ -223,7 +223,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_18</name>
-    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut6</pv_name>
+    <pv_name>$(P)IO:SetConfigurableDigitalOut6</pv_name>
     <x>410</x>
     <y>150</y>
     <width>40</width>
@@ -237,7 +237,7 @@
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button_19</name>
-    <pv_name>$(P)$(R)IO:SetConfigurableDigitalOut7</pv_name>
+    <pv_name>$(P)IO:SetConfigurableDigitalOut7</pv_name>
     <x>460</x>
     <y>150</y>
     <width>40</width>
@@ -251,7 +251,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(P)$(R)Receive:Connected</pv_name>
+    <pv_name>$(P)Receive:Connected</pv_name>
     <x>90</x>
     <y>50</y>
     <width>30</width>
@@ -297,7 +297,7 @@
   </widget>
   <widget type="scaledslider" version="2.0.0">
     <name>Scaled Slider</name>
-    <pv_name>$(P)$(R)IO:SpeedSlider</pv_name>
+    <pv_name>$(P)IO:SpeedSlider</pv_name>
     <x>160</x>
     <y>51</y>
     <width>270</width>
@@ -316,7 +316,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>eq://100*($(P)$(R)IO:SpeedSlider)</pv_name>
+    <pv_name>eq://100*($(P)IO:SpeedSlider)</pv_name>
     <x>440</x>
     <y>51</y>
     <width>60</width>
@@ -363,7 +363,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_3</name>
-      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
+      <pv_name>$(P)Receive:DigitalInputBits</pv_name>
       <x>102</x>
       <y>52</y>
       <bitReverse>true</bitReverse>
@@ -377,7 +377,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_4</name>
-      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
+      <pv_name>$(P)Receive:DigitalInputBits</pv_name>
       <x>102</x>
       <y>82</y>
       <startBit>8</startBit>
@@ -392,7 +392,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_5</name>
-      <pv_name>$(P)$(R)Receive:DigitalInputBits</pv_name>
+      <pv_name>$(P)Receive:DigitalInputBits</pv_name>
       <x>102</x>
       <y>112</y>
       <width>40</width>
@@ -429,7 +429,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_6</name>
-      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
+      <pv_name>$(P)Receive:DigitalOutputBits</pv_name>
       <x>102</x>
       <y>192</y>
       <bitReverse>true</bitReverse>
@@ -450,7 +450,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_7</name>
-      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
+      <pv_name>$(P)Receive:DigitalOutputBits</pv_name>
       <x>102</x>
       <y>222</y>
       <startBit>8</startBit>
@@ -458,7 +458,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_8</name>
-      <pv_name>$(P)$(R)Receive:DigitalOutputBits</pv_name>
+      <pv_name>$(P)Receive:DigitalOutputBits</pv_name>
       <x>102</x>
       <y>252</y>
       <width>40</width>
@@ -483,7 +483,7 @@
     </background_color>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_12</name>
-      <pv_name>$(P)$(R)Receive:AnalogInput0</pv_name>
+      <pv_name>$(P)Receive:AnalogInput0</pv_name>
       <x>72</x>
       <y>22</y>
       <width>20</width>
@@ -514,7 +514,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_16</name>
-      <pv_name>$(P)$(R)Receive:AnalogInput1</pv_name>
+      <pv_name>$(P)Receive:AnalogInput1</pv_name>
       <x>92</x>
       <y>22</y>
       <width>20</width>
@@ -523,7 +523,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_17</name>
-      <pv_name>$(P)$(R)Receive:AnalogOutput1</pv_name>
+      <pv_name>$(P)Receive:AnalogOutput1</pv_name>
       <x>92</x>
       <y>62</y>
       <width>20</width>
@@ -532,7 +532,7 @@
     </widget>
     <widget type="byte_monitor" version="2.0.0">
       <name>Byte Monitor_18</name>
-      <pv_name>$(P)$(R)Receive:AnalogOutput0</pv_name>
+      <pv_name>$(P)Receive:AnalogOutput0</pv_name>
       <x>72</x>
       <y>62</y>
       <width>20</width>

@@ -1,4 +1,4 @@
-record(ao, "$(P)$(R)IO:SpeedSlider")
+record(ao, "$(P)IO:SpeedSlider")
 {
     field(DESC, "Speed slider value(percentage)")
     field(DTYP, "asynFloat64")
@@ -9,7 +9,7 @@ record(ao, "$(P)$(R)IO:SpeedSlider")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SPEED_SLIDER")
 }
 
-record(ao, "$(P)$(R)IO:SetVoltageAnalogOut0")
+record(ao, "$(P)IO:SetVoltageAnalogOut0")
 {
     field(DESC, "Analog output voltage 0")
     field(DTYP, "asynFloat64")
@@ -18,7 +18,7 @@ record(ao, "$(P)$(R)IO:SetVoltageAnalogOut0")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT0")
 }
 
-record(ao, "$(P)$(R)IO:SetVoltageAnalogOut1")
+record(ao, "$(P)IO:SetVoltageAnalogOut1")
 {
     field(DESC, "Analog output voltage 1")
     field(DTYP, "asynFloat64")
@@ -27,7 +27,7 @@ record(ao, "$(P)$(R)IO:SetVoltageAnalogOut1")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT1")
 }
 
-record(ao, "$(P)$(R)IO:SetCurrentAnalogOut0")
+record(ao, "$(P)IO:SetCurrentAnalogOut0")
 {
     field(DESC, "Analog output current 0")
     field(DTYP, "asynFloat64")
@@ -36,7 +36,7 @@ record(ao, "$(P)$(R)IO:SetCurrentAnalogOut0")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CURRENT_ANALOG_OUT0")
 }
 
-record(ao, "$(P)$(R)IO:SetCurrentAnalogOut1")
+record(ao, "$(P)IO:SetCurrentAnalogOut1")
 {
     field(DESC, "Analog output current 1")
     field(DTYP, "asynFloat64")
@@ -45,126 +45,126 @@ record(ao, "$(P)$(R)IO:SetCurrentAnalogOut1")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CURRENT_ANALOG_OUT1")
 }
 
-record(bo, "$(P)$(R)IO:SetStandardDigitalOut0")
+record(bo, "$(P)IO:SetStandardDigitalOut0")
 {
     field(DESC, "Standard digital output 0")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT0")
 }
 
-record(bo, "$(P)$(R)IO:SetStandardDigitalOut1")
+record(bo, "$(P)IO:SetStandardDigitalOut1")
 {
     field(DESC, "Standard digital output 1")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT1")
 }
 
-record(bo, "$(P)$(R)IO:SetStandardDigitalOut2")
+record(bo, "$(P)IO:SetStandardDigitalOut2")
 {
     field(DESC, "Standard digital output 2")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT2")
 }
 
-record(bo, "$(P)$(R)IO:SetStandardDigitalOut3")
+record(bo, "$(P)IO:SetStandardDigitalOut3")
 {
     field(DESC, "Standard digital output 3")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT3")
 }
 
-record(bo, "$(P)$(R)IO:SetStandardDigitalOut4")
+record(bo, "$(P)IO:SetStandardDigitalOut4")
 {
     field(DESC, "Standard digital output 4")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT4")
 }
 
-record(bo, "$(P)$(R)IO:SetStandardDigitalOut5")
+record(bo, "$(P)IO:SetStandardDigitalOut5")
 {
     field(DESC, "Standard digital output 5")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT5")
 }
 
-record(bo, "$(P)$(R)IO:SetStandardDigitalOut6")
+record(bo, "$(P)IO:SetStandardDigitalOut6")
 {
     field(DESC, "Standard digital output 6")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT6")
 }
 
-record(bo, "$(P)$(R)IO:SetStandardDigitalOut7")
+record(bo, "$(P)IO:SetStandardDigitalOut7")
 {
     field(DESC, "Standard digital output 7")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT7")
 }
 
-record(bo, "$(P)$(R)IO:SetConfigurableDigitalOut0")
+record(bo, "$(P)IO:SetConfigurableDigitalOut0")
 {
     field(DESC, "Configurable digital output 0")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT0")
 }
 
-record(bo, "$(P)$(R)IO:SetConfigurableDigitalOut1")
+record(bo, "$(P)IO:SetConfigurableDigitalOut1")
 {
     field(DESC, "Configurable digital output 1")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT1")
 }
 
-record(bo, "$(P)$(R)IO:SetConfigurableDigitalOut2")
+record(bo, "$(P)IO:SetConfigurableDigitalOut2")
 {
     field(DESC, "Configurable digital output 2")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT2")
 }
 
-record(bo, "$(P)$(R)IO:SetConfigurableDigitalOut3")
+record(bo, "$(P)IO:SetConfigurableDigitalOut3")
 {
     field(DESC, "Configurable digital output 3")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT3")
 }
 
-record(bo, "$(P)$(R)IO:SetConfigurableDigitalOut4")
+record(bo, "$(P)IO:SetConfigurableDigitalOut4")
 {
     field(DESC, "Configurable digital output 4")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT4")
 }
 
-record(bo, "$(P)$(R)IO:SetConfigurableDigitalOut5")
+record(bo, "$(P)IO:SetConfigurableDigitalOut5")
 {
     field(DESC, "Configurable digital output 5")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT5")
 }
 
-record(bo, "$(P)$(R)IO:SetConfigurableDigitalOut6")
+record(bo, "$(P)IO:SetConfigurableDigitalOut6")
 {
     field(DESC, "Configurable digital output 6")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT6")
 }
 
-record(bo, "$(P)$(R)IO:SetConfigurableDigitalOut7")
+record(bo, "$(P)IO:SetConfigurableDigitalOut7")
 {
     field(DESC, "Configurable digital output 7")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT7")
 }
 
-record(bo, "$(P)$(R)IO:SetToolDigitalOut0")
+record(bo, "$(P)IO:SetToolDigitalOut0")
 {
     field(DESC, "Tool digital output 0")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_TOOL_DIGITAL_OUT0")
 }
 
-record(bo, "$(P)$(R)IO:SetToolDigitalOut1")
+record(bo, "$(P)IO:SetToolDigitalOut1")
 {
     field(DESC, "Tool digital output 1")
     field(DTYP, "asynInt32")
