@@ -1,0 +1,15 @@
+#!/bin/bash
+
+URROBOT_PATH=/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot
+
+# export EPICS_APP=`dirname ${BASH_SOURCE:-$0}`
+export EPICS_APP_UI_DIR=${URROBOT_PATH}/urRobotApp/op/ui
+export DEFAULT_UI_FILE=${1:-${DEFAULT_UI_FILE:-urRobot.ui}}
+export UI_FILE_MACROS=${2:-"P=urExample:"}
+
+export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${EPICS_APP_UI_DIR}
+export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${EPICS_APP_UI_DIR}/autoconvert
+
+/APSshare/bin/caQtDM -style plastique -noMsg -macro ${UI_FILE_MACROS} ${DEFAULT_UI_FILE} &
+
+
