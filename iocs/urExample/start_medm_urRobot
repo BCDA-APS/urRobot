@@ -5,10 +5,9 @@ URROBOT_PATH="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot"
 
 # ioc prefixes
 P="urExample:"
-R='"' # this is an empty string for MEDM
 
-export UI_FILE_MACROS=${2:-"P=${P},R=${R}"}
+export UI_FILE_MACROS=${2:-"P=${P}"}
 export EPICS_APP_UI_DIR=${URROBOT_PATH}/urRobotApp/op/adl
-export UI_FILE1="${EPICS_APP_UI_DIR}/dashboard.adl"
+export UI_FILE1="${EPICS_APP_UI_DIR}/urRobot.adl"
 
 medm -macro ${UI_FILE_MACROS} -x ${UI_FILE1} &

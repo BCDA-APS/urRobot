@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-18 09:26:09 by nmarks-->
+<!--Saved on 2024-07-24 10:31:02 by nmarks-->
 <display version="2.0.0">
   <name>UR Robot</name>
   <width>300</width>
@@ -36,7 +36,7 @@
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>Dashboard</description>
+        <description>ur_dashboard.bob</description>
       </action>
     </actions>
     <text>Dashboard</text>
@@ -63,7 +63,7 @@
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>RTDE Receive</description>
+        <description>ur_rtde_status.bob</description>
       </action>
     </actions>
     <text>Status</text>
@@ -90,7 +90,7 @@
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>RTDE Control</description>
+        <description>ur_rtde_control.bob</description>
       </action>
     </actions>
     <text>Control</text>
@@ -118,7 +118,7 @@
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>I/O</description>
+        <description>ur_rtde_io.bob</description>
       </action>
     </actions>
     <text>I/O</text>
@@ -145,7 +145,7 @@
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>Robotiq Gripper</description>
+        <description>robotiq_gripper.bob</description>
       </action>
     </actions>
     <text>Gripper</text>
@@ -172,7 +172,7 @@
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>Open Display</description>
+        <description>waypointJ_1-50.bob</description>
       </action>
     </actions>
     <text>WaypointsJ</text>
@@ -199,7 +199,7 @@
           <R>$(R)</R>
         </macros>
         <target>window</target>
-        <description>WaypointL Less50</description>
+        <description>waypointL_1-50.bob</description>
       </action>
     </actions>
     <text>WaypointsL</text>

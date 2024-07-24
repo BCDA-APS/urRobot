@@ -95,7 +95,7 @@ display {
 		height=30
 	}
 	control {
-		chan="$(P)$(R)Dashboard:Connect"
+		chan="$(P)Dashboard:Connect"
 		clr=14
 		bclr=51
 	}
@@ -110,7 +110,7 @@ display {
 		height=30
 	}
 	control {
-		chan="$(P)$(R)Dashboard:Disconnect"
+		chan="$(P)Dashboard:Disconnect"
 		clr=14
 		bclr=51
 	}
@@ -125,7 +125,7 @@ display {
 		height=30
 	}
 	control {
-		chan="$(P)$(R)Dashboard:PowerOn"
+		chan="$(P)Dashboard:PowerOn"
 		clr=14
 		bclr=51
 	}
@@ -140,7 +140,7 @@ display {
 		height=30
 	}
 	control {
-		chan="$(P)$(R)Dashboard:PowerOff"
+		chan="$(P)Dashboard:PowerOff"
 		clr=14
 		bclr=51
 	}
@@ -155,7 +155,7 @@ display {
 		height=30
 	}
 	control {
-		chan="$(P)$(R)Dashboard:Shutdown"
+		chan="$(P)Dashboard:Shutdown"
 		clr=14
 		bclr=51
 	}
@@ -170,7 +170,7 @@ display {
 		height=30
 	}
 	control {
-		chan="$(P)$(R)Dashboard:ClosePopup"
+		chan="$(P)Dashboard:ClosePopup"
 		clr=14
 		bclr=51
 	}
@@ -185,7 +185,7 @@ display {
 		height=30
 	}
 	control {
-		chan="$(P)$(R)Dashboard:CloseSafetyPopup"
+		chan="$(P)Dashboard:CloseSafetyPopup"
 		clr=14
 		bclr=51
 	}
@@ -200,7 +200,7 @@ display {
 		height=30
 	}
 	control {
-		chan="$(P)$(R)Dashboard:UnlockProtectiveStop"
+		chan="$(P)Dashboard:UnlockProtectiveStop"
 		clr=14
 		bclr=51
 	}
@@ -215,7 +215,7 @@ display {
 		height=30
 	}
 	control {
-		chan="$(P)$(R)Dashboard:BrakeRelease"
+		chan="$(P)Dashboard:BrakeRelease"
 		clr=14
 		bclr=51
 	}
@@ -230,7 +230,7 @@ display {
 		height=30
 	}
 	control {
-		chan="$(P)$(R)Dashboard:RestartSafety"
+		chan="$(P)Dashboard:RestartSafety"
 		clr=14
 		bclr=51
 	}
@@ -245,7 +245,7 @@ display {
 		height=40
 	}
 	control {
-		chan="$(P)$(R)Dashboard:LoadURP"
+		chan="$(P)Dashboard:LoadURP"
 		clr=14
 		bclr=51
 	}
@@ -261,7 +261,7 @@ display {
 		height=40
 	}
 	control {
-		chan="$(P)$(R)Dashboard:Play"
+		chan="$(P)Dashboard:Play"
 		clr=14
 		bclr=51
 	}
@@ -276,7 +276,7 @@ display {
 		height=40
 	}
 	control {
-		chan="$(P)$(R)Dashboard:Pause"
+		chan="$(P)Dashboard:Pause"
 		clr=14
 		bclr=51
 	}
@@ -291,7 +291,7 @@ display {
 		height=40
 	}
 	control {
-		chan="$(P)$(R)Dashboard:Stop"
+		chan="$(P)Dashboard:Stop"
 		clr=14
 		bclr=51
 	}
@@ -318,7 +318,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)$(R)Dashboard:LoadedProgram"
+		chan="$(P)Dashboard:LoadedProgram"
 		clr=54
 		bclr=4
 	}
@@ -334,7 +334,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)$(R)Dashboard:ProgramState"
+		chan="$(P)Dashboard:ProgramState"
 		clr=54
 		bclr=4
 	}
@@ -350,7 +350,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)$(R)Dashboard:RobotMode"
+		chan="$(P)Dashboard:RobotMode"
 		clr=54
 		bclr=4
 	}
@@ -366,7 +366,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)$(R)Dashboard:SafetyStatus"
+		chan="$(P)Dashboard:SafetyStatus"
 		clr=54
 		bclr=4
 	}
@@ -386,7 +386,7 @@ oval {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(R)Dashboard:Connected"
+		chan="$(P)Dashboard:Connected"
 	}
 }
 oval {
@@ -401,7 +401,7 @@ oval {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(R)Dashboard:Connected"
+		chan="$(P)Dashboard:Connected"
 	}
 }
 text {
@@ -440,7 +440,7 @@ oval {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(R)Dashboard:IsInRemoteControl"
+		chan="$(P)Dashboard:IsInRemoteControl"
 	}
 }
 oval {
@@ -455,7 +455,7 @@ oval {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(R)Dashboard:IsInRemoteControl"
+		chan="$(P)Dashboard:IsInRemoteControl"
 	}
 }
 rectangle {
@@ -472,7 +472,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(R)Dashboard:LoadURP"
+		chan="$(P)Dashboard:LoadURP"
 	}
 }
 rectangle {
@@ -489,7 +489,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(R)Dashboard:LoadURP"
+		chan="$(P)Dashboard:LoadURP"
 	}
 }
 rectangle {
@@ -506,7 +506,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(R)Dashboard:LoadURP"
+		chan="$(P)Dashboard:LoadURP"
 	}
 }
 rectangle {
@@ -523,6 +523,6 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(R)Dashboard:LoadURP"
+		chan="$(P)Dashboard:LoadURP"
 	}
 }

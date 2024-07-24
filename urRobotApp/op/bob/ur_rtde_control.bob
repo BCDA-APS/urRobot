@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-23 16:16:28 by nmarks-->
+<!--Saved on 2024-07-24 11:09:07 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Control</name>
   <width>950</width>
@@ -89,7 +89,7 @@
       <action type="write_pv">
         <pv_name>$(P)Control:Disconnect.PROC</pv_name>
         <value>1</value>
-        <description>Disconnect</description>
+        <description>$(P)Control:Disconnect.PROC</description>
       </action>
     </actions>
     <text>Disconnect</text>
@@ -107,7 +107,7 @@
       <action type="write_pv">
         <pv_name>$(P)Control:Reconnect.PROC</pv_name>
         <value>1</value>
-        <description>Connect</description>
+        <description>$(P)Control:Reconnect.PROC</description>
       </action>
     </actions>
     <text>Reconnect</text>
@@ -176,7 +176,7 @@
       <action type="write_pv">
         <pv_name>$(P)Control:ResetPoseCmd.PROC</pv_name>
         <value>1</value>
-        <description>ResetPoseCmd</description>
+        <description>$(P)Control:ResetPoseCmd.PROC</description>
       </action>
     </actions>
     <text>Reset</text>
@@ -1487,7 +1487,7 @@
       <action type="write_pv">
         <pv_name>$(P)Control:ReuploadControlScript.PROC</pv_name>
         <value>1</value>
-        <description>Reupload Script</description>
+        <description>$(P)Control:ReuploadControlScript.PROC</description>
       </action>
     </actions>
     <text>Reupload Script</text>
@@ -1505,7 +1505,7 @@
       <action type="write_pv">
         <pv_name>$(P)Control:StopControlScript.PROC</pv_name>
         <value>1</value>
-        <description>Stop Script</description>
+        <description>$(P)Control:StopControlScript.PROC</description>
       </action>
     </actions>
     <text>Stop Script</text>
