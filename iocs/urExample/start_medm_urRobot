@@ -1,13 +1,52 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# path to urRobot support module
-URROBOT_PATH="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot"
+if [ -f "configure/RELEASE.local" ]; then
+    RELEASE_FILE="configure/RELEASE.local";
+elif [ -f "configure/RELEASE" ]; then
+    RELEASE_FILE="configure/RELEASE";
+else
+    echo "Can't find release file"
+    exit 1
+fi
 
-# ioc prefixes
-P="urExample:"
+function find_module() {
+    local module=$1
+    local module_path=$(grep "^${module}[[:space:]]*=" "${RELEASE_FILE}" | sed -E "s/^${module}[[:space:]]*=[[:space:]]*//" | tr -d '"')
+    if [ -z "${module_path}" ]; then
+        echo "Module ${module} not found in release file"
+        exit 1
+    fi
+    module_path=$(echo "${module_path}" | sed 's/\$(TOP)/./g')
+    echo "${module_path}"
+}
 
-export UI_FILE_MACROS=${2:-"P=${P}"}
+# Note: this won't work if there are multiple IOCs in iocBoot/
+# as it just gets the first prefix it finds
+function find_prefix() {
+    local pattern='epicsEnvSet\("PREFIX", "([^"]*)"\)'
+    grep -rPo "$pattern" . | while IFS= read -r line; do
+        if [[ $line =~ $pattern ]]; then
+            local value="${BASH_REMATCH[1]}"
+            echo ${value}
+            break
+        fi
+    done
+}
+
+##################################################
+
+# Find the relative path to the URROBOT support
+URROBOT_PATH=$(find_module "URROBOT")
+
+# Find the IOC prefix 
+PREFIX=$(find_prefix)
+
 export EPICS_APP_UI_DIR=${URROBOT_PATH}/urRobotApp/op/adl
-export UI_FILE1="${EPICS_APP_UI_DIR}/urRobot.adl"
+export UI_FILE="${EPICS_APP_UI_DIR}/urRobot.adl"
+export UI_FILE_MACROS=${2:-"P=${PREFIX}"}
 
-medm -macro ${UI_FILE_MACROS} -x ${UI_FILE1} &
+export EPICS_DISPLAY_PATH=${EPICS_DISPLAY_PATH}:${EPICS_APP_UI_DIR}
+export EPICS_DISPLAY_PATH=${EPICS_DISPLAY_PATH}:${EPICS_APP_UI_DIR}/autoconvert
+
+# Start medm
+medm -macro ${UI_FILE_MACROS} -x ${UI_FILE} &
