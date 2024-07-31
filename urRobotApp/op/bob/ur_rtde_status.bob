@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-24 14:29:41 by nmarks-->
+<!--Saved on 2024-07-31 14:34:11 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Receive</name>
   <width>750</width>
@@ -253,7 +253,7 @@
       <action type="write_pv">
         <pv_name>$(P)Receive:Disconnect.PROC</pv_name>
         <value>1</value>
-        <description>Disconnect</description>
+        <description>$(P)Receive:Disconnect.PROC</description>
       </action>
     </actions>
     <text>Disconnect</text>
@@ -271,7 +271,7 @@
       <action type="write_pv">
         <pv_name>$(P)Receive:Reconnect.PROC</pv_name>
         <value>1</value>
-        <description>Reconnect</description>
+        <description>$(P)Receive:Reconnect.PROC</description>
       </action>
     </actions>
     <text>Reconnect</text>
