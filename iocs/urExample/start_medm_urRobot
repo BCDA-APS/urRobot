@@ -12,11 +12,15 @@ fi
 function find_module() {
     local module=$1
     local module_path=$(grep "^${module}[[:space:]]*=" "${RELEASE_FILE}" | sed -E "s/^${module}[[:space:]]*=[[:space:]]*//" | tr -d '"')
+    local support_path=$(grep "^SUPPORT[[:space:]]*=" "${RELEASE_FILE}" | sed -E "s/^SUPPORT[[:space:]]*=[[:space:]]*//" | tr -d '"')
+    local local_support_path=$(grep "^LOCAL_SUPPORT[[:space:]]*=" "${RELEASE_FILE}" | sed -E "s/^LOCAL_SUPPORT[[:space:]]*=[[:space:]]*//" | tr -d '"')
     if [ -z "${module_path}" ]; then
         echo "Module ${module} not found in release file"
         exit 1
     fi
-    module_path=$(echo "${module_path}" | sed 's/\$(TOP)/./g')
+    module_path=$(echo "${module_path}" | sed "s/\$(TOP)/./g")
+    module_path=$(echo "${module_path}" | sed "s/\$(SUPPORT)/$(echo "${support_path}" | sed 's/[&/\]/\\&/g')/g")
+    module_path=$(echo "${module_path}" | sed "s/\$(LOCAL_SUPPORT)/$(echo "${local_support_path}" | sed 's/[&/\]/\\&/g')/g")
     echo "${module_path}"
 }
 
