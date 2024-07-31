@@ -110,7 +110,7 @@ display {
 		height=25
 	}
 	display[0] {
-		name="ur_rtde_status.adl"
+		name="ur_rtde_receive.adl"
 		args="P=$(P)"
 	}
 	clr=0
