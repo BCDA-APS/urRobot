@@ -31,19 +31,22 @@ The various buttons here will open the additional screens.
 <img src="./assets/GUIs/urRobot_dashboard_css.png" alt="css-dashboard" width="500">
 
 **RTDE Receive:**  
-<img src="./assets/GUIs/urRobot_receive_css.png" alt="css-receive" width="500">
+<img src="./assets/GUIs/urRobot_receive_css.png" alt="css-receive" width="600">
 
 **RTDE I/O**  
-<img src="./assets/GUIs/urRobot_io_css.png" alt="css-io" width="500">
+<img src="./assets/GUIs/urRobot_io_css.png" alt="css-io" width="600">
+
+**RTDE Control:**  
+<img src="./assets/GUIs/urRobot_control_css.png" alt="css-receive" width="600">
 
 **Robotiq Gripper**  
-<img src="./assets/GUIs/urRobot_gripper_css.png" alt="css-gripper" width="500">
+<img src="./assets/GUIs/urRobot_gripper_css.png" alt="css-gripper" width="600">
 
 **WaypointL**  
-<img src="./assets/GUIs/urRobot_waypointL_css.png" alt="css-waypointL" width="500">
+<img src="./assets/GUIs/urRobot_waypointL_css.png" alt="css-waypointL" width="600">
 
 **Waypoint Action**  
-<img src="./assets/GUIs/urRobot_waypointL_action_css.png" alt="css-waypointL-action" width="500">
+<img src="./assets/GUIs/urRobot_waypointL_action_css.png" alt="css-waypointL-action" width="600">
 
 
 ## MEDM/caQtDM
