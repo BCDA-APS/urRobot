@@ -23,3 +23,15 @@ compile_commands.json
 .cache/
 *.local
 .loglogin
+
+# Jekyll build artifacts
+_site/
+.jekyll-cache/
+.metadata/
+Gemfile.lock
+.bundle/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
