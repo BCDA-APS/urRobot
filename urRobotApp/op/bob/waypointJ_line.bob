@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-24 10:17:07 by nmarks-->
+<!--Saved on 2024-08-15 13:32:58 by nmarks-->
 <display version="2.0.0">
   <name>WaypointJ Simple</name>
-  <width>550</width>
+  <width>600</width>
   <height>50</height>
   <background_color>
     <color name="Button_Background" red="210" green="210" blue="210">
@@ -18,7 +18,7 @@
       </action>
     </actions>
     <text>SET</text>
-    <x>80</x>
+    <x>120</x>
     <y>10</y>
     <width>50</width>
     <background_color>
@@ -37,7 +37,7 @@
       </action>
     </actions>
     <text>GO</text>
-    <x>320</x>
+    <x>360</x>
     <y>10</y>
     <width>50</width>
     <background_color>
@@ -49,7 +49,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_9</name>
     <pv_name>$(P)WaypointJ:$(N)</pv_name>
-    <x>140</x>
+    <x>180</x>
     <y>10</y>
     <width>170</width>
     <height>30</height>
@@ -57,7 +57,7 @@
   <widget type="led" version="2.0.0">
     <name>LED</name>
     <pv_name>$(P)WaypointJ:$(N):Reached</pv_name>
-    <x>40</x>
+    <x>80</x>
     <y>10</y>
     <width>30</width>
     <height>30</height>
@@ -86,7 +86,7 @@
       </action>
     </actions>
     <text>More</text>
-    <x>500</x>
+    <x>540</x>
     <y>10</y>
     <width>40</width>
     <foreground_color>
@@ -103,7 +103,7 @@
     <name>Check Box</name>
     <pv_name>$(P)WaypointJ:$(N):Enabled</pv_name>
     <label></label>
-    <x>10</x>
+    <x>50</x>
     <y>10</y>
     <width>20</width>
     <height>30</height>
@@ -111,8 +111,21 @@
   <widget type="combo" version="2.0.0">
     <name>Combo Box</name>
     <pv_name>$(P)WaypointJ:$(N):ActionOpt</pv_name>
-    <x>380</x>
+    <x>420</x>
     <y>10</y>
     <width>110</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <text>$(N)</text>
+    <y>10</y>
+    <width>40</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
   </widget>
 </display>
