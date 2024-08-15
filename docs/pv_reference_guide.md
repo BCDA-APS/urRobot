@@ -289,14 +289,15 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 |-------------- | -------------- | -------------- |
 | WaypointJ:$(N)    | stringout     | Waypoint name     |
 | WaypointJ:$(N):Enabled    | bo     | 1 if waypoint is enabled otherwise 0     |
-| WaypointJ:$(N):SetEnabled    | bo     | Sets Waypoint:$(N):Enabled to 1     |
-| WaypointJ:$(N):J1    | ao     | Joint 1 angle for waypoint     |
-| WaypointJ:$(N):J2    | ao     | Joint 2 angle for waypoint     |
-| WaypointJ:$(N):J3    | ao     | Joint 3 angle for waypoint     |
-| WaypointJ:$(N):J4    | ao     | Joint 4 angle for waypoint     |
-| WaypointJ:$(N):J5    | ao     | Joint 5 angle for waypoint     |
-| WaypointJ:$(N):J6    | ao     | Joint 6 angle for waypoint     |
-| WaypointJ:$(N):Gripper    | bo     | Gripper state at waypoint     |
+| WaypointJ:$(N):SetEnabled    | bo     | Sets WaypointJ:$(N):Enabled to 1     |
+| WaypointJ:$(N):J1    | ao     | Joint 1 angle for waypoint (deg)    |
+| WaypointJ:$(N):J2    | ao     | Joint 2 angle for waypoint (deg)    |
+| WaypointJ:$(N):J3    | ao     | Joint 3 angle for waypoint (deg)    |
+| WaypointJ:$(N):J4    | ao     | Joint 4 angle for waypoint (deg)    |
+| WaypointJ:$(N):J5    | ao     | Joint 5 angle for waypoint (deg)    |
+| WaypointJ:$(N):J6    | ao     | Joint 6 angle for waypoint (deg)    |
+| WaypointJ:$(N):Action    | bo     | Used to define FLNK that points to waypoint action PV     |
+| WaypointJ:$(N):ActionOpt    | mbbo     | Enum of available waypoint actions |
 | WaypointJ:$(N):Speed    | ao     | Speed when moving to waypoint     |
 | WaypointJ:$(N):Acceleration    | ao     | Acceleration when moving to waypoint     |
 | WaypointJ:$(N):Blend    | ao     | Blend when moving to waypoint     |
@@ -314,18 +315,19 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 |-------------- | -------------- | -------------- |
 | WaypointL:$(N)    | stringout     | Waypoint name     |
 | WaypointL:$(N):Enabled    | bo     | 1 if waypoint is enabled otherwise 0     |
-| WaypointL:$(N):SetEnabled    | bo     | Sets Waypoint:$(N):Enabled to 1     |
-| WaypointL:$(N):J1    | ao     | X position of waypoint     |
-| WaypointL:$(N):J2    | ao     | Y position of waypoint     |
-| WaypointL:$(N):J3    | ao     | Z position of waypoint     |
-| WaypointL:$(N):J4    | ao     | Roll angle of waypoint     |
-| WaypointL:$(N):J5    | ao     | Pitch angle of waypoint     |
-| WaypointL:$(N):J6    | ao     | Yaw angle of waypoint     |
-| WaypointL:$(N):Gripper    | bo     | Gripper state at waypoint     |
+| WaypointL:$(N):SetEnabled    | bo     | Sets WaypointL:$(N):Enabled to 1     |
+| WaypointL:$(N):X    | ao     | X position of waypoint     |
+| WaypointL:$(N):Y    | ao     | Y position of waypoint     |
+| WaypointL:$(N):Z    | ao     | Z position of waypoint     |
+| WaypointL:$(N):Roll    | ao     | Roll angle of waypoint (deg)    |
+| WaypointL:$(N):Pitch    | ao     | Pitch angle of waypoint (deg)   |
+| WaypointL:$(N):Yaw    | ao     | Yaw angle of waypoint (deg)    |
+| WaypointL:$(N):Action    | bo     | Used to define FLNK that points to waypoint action PV     |
+| WaypointL:$(N):ActionOpt    | mbbo     | Enum of available waypoint actions |
 | WaypointL:$(N):Speed    | ao     | Speed when moving to waypoint     |
 | WaypointL:$(N):Acceleration    | ao     | Acceleration when moving to waypoint     |
 | WaypointL:$(N):Blend    | ao     | Blend when moving to waypoint     |
 | WaypointL:$(N):Reached    | luascript     | 1 when robot is at waypoint otherwise 0     |
 | WaypointL:$(N):Reset    | seq     | Sets waypoint to the current location     |
-| WaypointL:$(N):moveJ    | bo     | Executes a moveL to the waypoint if waypoint is enabled    |
+| WaypointL:$(N):moveL    | bo     | Executes a moveL to the waypoint if waypoint is enabled    |
 
