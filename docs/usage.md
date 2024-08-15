@@ -56,3 +56,54 @@ converted to caQtDM as well and those can be started with `start_caQTDM_urRobot`
 
 **TODO:** Add screenshots
 
+## Scripting
+
+It is often useful to program the robot by interacting with the available PVs in a script.
+Below an example python script using [PyEpics](https://github.com/pyepics/pyepics) is provided which demonstrates how to move
+joint 6 (wrist) +10deg, then -10deg back to where it started.
+
+
+```python
+from epics import caget, caput
+
+PREFIX = "bcur:" # replace with your IOC prefix
+
+def wait_motion():
+    '''block execution until commanded motion finishes'''
+    while True:
+        if caget(f"{PREFIX}Control:Steady") == 0:
+            break
+    while True:
+        if caget(f"{PREFIX}Control:Steady") == 1:
+            break
+
+# Disable auto move
+# when enabled, changing commanded values will automatically move
+# when disabled, you need to call moveJ to trigger the move
+caput(f"{PREFIX}Control:AutoMoveJ", 0)
+
+# Set commanded joint positions to current position
+caput(f"{PREFIX}Control:ResetJCmd", 1)
+# the above is the same as doing the following:
+#  caput(f"{PREFIX}Control:J1Cmd", joint_angles[0])
+#  caput(f"{PREFIX}Control:J2Cmd", joint_angles[1])
+#  caput(f"{PREFIX}Control:J3Cmd", joint_angles[2])
+#  caput(f"{PREFIX}Control:J4Cmd", joint_angles[3])
+#  caput(f"{PREFIX}Control:J5Cmd", joint_angles[4])
+#  caput(f"{PREFIX}Control:J6Cmd", joint_angles[5])
+
+# Move J6 +20deg
+print("Moving Joint 6 +10deg...")
+joint_angles = caget(f"{PREFIX}Receive:ActualJointPositions")
+caput(f"{PREFIX}Control:J6Cmd", joint_angles[5]+10)
+caput(f"{PREFIX}Control:moveJ", 1)
+wait_motion()
+
+# Move J6 back to where it started
+print("Moving Joint 6 -10deg...")
+joint_angles = caget(f"{PREFIX}Receive:ActualJointPositions")
+caput(f"{PREFIX}Control:J6Cmd", joint_angles[5]-10)
+caput(f"{PREFIX}Control:moveJ", 1)
+wait_motion()
+print("Done!")
+```
