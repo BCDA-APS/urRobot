@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-24 11:09:07 by nmarks-->
+<!--Saved on 2024-08-19 14:37:59 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Control</name>
   <width>950</width>
@@ -1272,10 +1272,10 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>eq://100*($(P)IO:SpeedSlider)</pv_name>
+    <pv_name>$(P)IO:SpeedSlider</pv_name>
     <x>280</x>
     <y>160</y>
-    <width>60</width>
+    <width>40</width>
     <background_color>
       <color name="Button_Background" red="210" green="210" blue="210">
       </color>
@@ -1292,13 +1292,6 @@
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_4</name>
-    <text>%</text>
-    <x>310</x>
-    <y>160</y>
-    <width>20</width>
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_1</name>

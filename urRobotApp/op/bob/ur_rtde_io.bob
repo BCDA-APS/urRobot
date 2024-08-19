@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-05-24 10:07:14 by nmarks-->
+<!--Saved on 2024-08-19 14:38:17 by nmarks-->
 <display version="2.0.0">
   <name>RTDE I/O</name>
   <width>550</width>
@@ -316,11 +316,15 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>eq://100*($(P)IO:SpeedSlider)</pv_name>
+    <pv_name>$(P)IO:SpeedSlider</pv_name>
     <x>440</x>
     <y>51</y>
-    <width>60</width>
-    <precision>0</precision>
+    <width>40</width>
+    <background_color>
+      <color name="Button_Background" red="210" green="210" blue="210">
+      </color>
+    </background_color>
+    <precision>2</precision>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_1</name>
@@ -332,13 +336,6 @@
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_2</name>
-    <text>%</text>
-    <x>470</x>
-    <y>51</y>
-    <width>20</width>
   </widget>
   <widget type="group" version="2.0.0">
     <name>Digital I/O</name>
