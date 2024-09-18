@@ -209,7 +209,7 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq1")
     field(DOL5, "$(P)WaypointL:$(N):Pitch")
     field(LNK5, "$(P)Control:PosePitchCmd PP")
     field(DOL6, "$(P)WaypointL:$(N):Yaw")
-    field(LNK6, "$(P)Control:YawCmd PP")
+    field(LNK6, "$(P)Control:PoseYawCmd PP")
     
     field(FLNK, "$(P)WaypointL:$(N):moveL_seq2.PROC")
 }
