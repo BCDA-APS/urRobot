@@ -92,6 +92,13 @@ record(bo, "$(P)Control:WaypointActionDone")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))WAYPOINT_ACTION_DONE")
 }
 
+record(bo, "$(P)Control:TeachMode")
+{
+    field(DESC, "Enabled teach/freedrive mode")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TEACH_MODE")
+}
+
 #======================
 # Joint control
 #======================

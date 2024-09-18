@@ -122,6 +122,7 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
     createParam(WAYPOINT_MOVEL_STRING, asynParamInt32, &waypointMoveLIndex_);
     createParam(RUN_WAYPOINT_ACTION_STRING, asynParamInt32, &runWaypointActionIndex_);
     createParam(WAYPOINT_ACTION_DONE_STRING, asynParamInt32, &waypointActionDoneIndex_);
+    createParam(TEACH_MODE_STRING, asynParamInt32, &teachModeIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -415,6 +416,16 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     else if (function == stopCtrlScriptIndex_) {
         spdlog::debug("Stopping control script");
         rtde_control_->stopScript();
+    }
+
+    else if (function == teachModeIndex_) {
+        if (value) {
+            spdlog::debug("Enabling teach mode");
+            rtde_control_->teachMode();
+        } else {
+            spdlog::debug("Disabling teach mode");
+            rtde_control_->endTeachMode();
+        }
     }
 
     else if (function == asyncMoveIndex_) {

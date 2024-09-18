@@ -50,6 +50,8 @@ static constexpr char WAYPOINT_MOVEL_STRING[] = "WAYPOINT_MOVEL";
 static constexpr char RUN_WAYPOINT_ACTION_STRING[] = "RUN_WAYPOINT_ACTION";
 static constexpr char WAYPOINT_ACTION_DONE_STRING[] = "WAYPOINT_ACTION_DONE";
 
+static constexpr char TEACH_MODE_STRING[] = "TEACH_MODE";
+
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
 static constexpr double POLL_PERIOD = 0.02; // 50Hz
@@ -133,6 +135,7 @@ class RTDEControl : public asynPortDriver {
     int waypointMoveLIndex_;
     int runWaypointActionIndex_;
     int waypointActionDoneIndex_;
+    int teachModeIndex_;
 };
 
 #endif

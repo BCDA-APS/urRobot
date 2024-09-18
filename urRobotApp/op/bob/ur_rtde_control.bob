@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-08-19 14:37:59 by nmarks-->
+<!--Saved on 2024-09-18 17:16:42 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Control</name>
   <width>950</width>
@@ -1516,6 +1516,14 @@
     <label>Go</label>
     <x>570</x>
     <y>510</y>
+    <width>120</width>
+  </widget>
+  <widget type="slide_button" version="2.0.0">
+    <name>Slide Button_2</name>
+    <pv_name>$(P)Control:TeachMode</pv_name>
+    <label>Teach Mode</label>
+    <x>410</x>
+    <y>40</y>
     <width>120</width>
   </widget>
 </display>
