@@ -140,6 +140,16 @@ void RTDEReceive::poll() {
                 }
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, ASYN_ADDR);
 
+                vec_f64 = rtde_receive_->getActualTCPPose();
+                for (size_t i = 0; i < vec_f64.size(); i++) {
+                    if (i <= 2) {
+                        vec_f64.at(i) = vec_f64.at(i) * 1000.0; // convert m -> mm
+                    } else {
+                        vec_f64.at(i) = vec_f64.at(i) * 180.0 / M_PI; // convert rad -> deg
+                    }
+                }
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseIndex_, ASYN_ADDR);
+
                 vec_f64 = rtde_receive_->getActualQd();
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVelIndex_, ASYN_ADDR);
 
@@ -148,12 +158,6 @@ void RTDEReceive::poll() {
 
                 vec_f64 = rtde_receive_->getJointControlOutput();
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointControlCurrentsIndex_, ASYN_ADDR);
-
-                vec_f64 = rtde_receive_->getActualTCPPose();
-                for (size_t i = 3; i < vec_f64.size(); i++) { // convert to degrees
-                    vec_f64.at(i) = vec_f64.at(i) * 180.0 / M_PI;  
-                }
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseIndex_, ASYN_ADDR);
 
                 vec_f64 = rtde_receive_->getActualTCPSpeed();
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPSpeedIndex_, ASYN_ADDR);

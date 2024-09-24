@@ -21,7 +21,7 @@ record(ao, "$(P)WaypointL:$(N):X")
 {
     field(VAL, "$(X=0)")
     field(PREC, 4)
-    field(EGU, "m")
+    field(EGU, "mm")
     field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
 }
 
@@ -29,7 +29,7 @@ record(ao, "$(P)WaypointL:$(N):Y")
 {
     field(VAL, "$(Y=0)")
     field(PREC, 4)
-    field(EGU, "m")
+    field(EGU, "mm")
     field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
 }
 
@@ -37,7 +37,7 @@ record(ao, "$(P)WaypointL:$(N):Z")
 {
     field(VAL, "$(Z=0)")
     field(PREC, 4)
-    field(EGU, "m")
+    field(EGU, "mm")
     field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
 }
 
@@ -153,7 +153,7 @@ record(luascript, "$(P)WaypointL:$(N):Reached") {
     field(INPD, "$(P)Receive:ActualTCP_Roll CP")
     field(INPE, "$(P)Receive:ActualTCP_Pitch CP")
     field(INPF, "$(P)Receive:ActualTCP_Yaw CP")
-    field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)', N=$(N), tol=$(TOL=0.01)})")
+    field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)', N=$(N)})")
     field(PREC, 0)
     field(VAL, 0)
 }

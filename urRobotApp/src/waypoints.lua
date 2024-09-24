@@ -123,7 +123,7 @@ function waypointL_reached(args)
         epics.get(string.format("%s:Yaw",waypoint_base))
     }
 
-    local reached1 = table.almost_equal(waypoint_pose_xyz, actual_pose_xyz, 0.001)
+    local reached1 = table.almost_equal(waypoint_pose_xyz, actual_pose_xyz, 1.0)
     local reached2 = table.almost_equal(waypoint_pose_rpy, actual_pose_rpy, 0.1)
     return (reached1 and reached2) and 1 or 0
 end

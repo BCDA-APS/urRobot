@@ -145,15 +145,19 @@ void RTDEControl::poll() {
                 setIntegerParam(isConnectedIndex_, 1);
                 setIntegerParam(isSteadyIndex_, rtde_control_->isSteady());
 
-                std::vector<double> jvec = rtde_receive_->getActualQ(); // rad
-                for (double &j : jvec) {                                // convert to deg
-                    j = j * 180.0 / M_PI;
+                std::vector<double> jvec = rtde_receive_->getActualQ();
+                for (double &j : jvec) {
+                    j = j * 180.0 / M_PI; // convert rad -> deg
                 }
                 doCallbacksFloat64Array(jvec.data(), NUM_JOINTS, actualQIndex_, 0);
 
                 std::vector<double> pose_vec = rtde_receive_->getActualTCPPose();
-                for (size_t i = 3; i < pose_vec.size(); i++) { // convert to deg
-                    pose_vec.at(i) = pose_vec.at(i) * 180.0 / M_PI;
+                for (size_t i = 0; i < pose_vec.size(); i++) {
+                    if (i <= 2) {
+                        pose_vec.at(i) = pose_vec.at(i) * 1000.0; // convert m -> mm
+                    } else {
+                        pose_vec.at(i) = pose_vec.at(i) * 180.0 / M_PI; // convert rad -> deg
+                    }
                 }
                 doCallbacksFloat64Array(pose_vec.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
 
@@ -163,15 +167,12 @@ void RTDEControl::poll() {
 
                             // TODO: only need when path length > 1
                             std::vector<double> waypoint = *waypoint_path_iter_;
-                            // std::vector<double> wp = *waypoint_path_iter_;
                             std::stringstream ss;
                             ss << "Moving to waypoint: ";
                             for (const auto &i : waypoint) {
                                 ss << i << ", ";
                             }
                             spdlog::debug("{}", ss.str());
-
-                            // std::vector<double> waypoint(wp.begin(), wp.end());
 
                             if (async_running_ == AsyncRunning::Joint) {
                                 if (rtde_control_->isJointsWithinSafetyLimits(
@@ -273,9 +274,9 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
 
     // When commanded TCP pose values change, update the values
     else if (PoseCmd_map.count(function) > 0) {
-        // convert commanded roll, pitch, yaw to radians
+        // convert commanded x,y,z to meters and roll, pitch, yaw to radians
         int ind = PoseCmd_map.at(function);
-        const double val = (ind >= 3) ? (value * M_PI / 180.0) : value;
+        const double val = (ind >= 3) ? (value * M_PI / 180.0) : (value / 1000.0);
         this->cmd_pose.at(ind) = val;
     }
 
