@@ -77,7 +77,7 @@ record(ao, "$(P)WaypointL:$(N):Speed")
 {
     field(VAL, "$(SPEED=0.1)")
     field(PREC, 2)
-    field(EGU, "rad/s")
+    field(EGU, "m/s")
     field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
 }
 
@@ -85,7 +85,7 @@ record(ao, "$(P)WaypointL:$(N):Acceleration")
 {
     field(VAL, "$(ACCEL=1.0)")
     field(PREC, 2)
-    field(EGU, "rad/s/s")
+    field(EGU, "m/s/s")
     field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
 }
 
