@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-09-24 15:27:35 by nmarks-->
+<!--Saved on 2024-09-24 16:39:45 by nmarks-->
 <display version="2.0.0">
   <name>RTDE Control</name>
   <width>950</width>
@@ -591,6 +591,8 @@
     <y>619</y>
     <width>80</width>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_20</name>
@@ -598,6 +600,8 @@
     <x>190</x>
     <y>619</y>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_21</name>
@@ -605,6 +609,8 @@
     <x>340</x>
     <y>619</y>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_22</name>
@@ -612,6 +618,8 @@
     <x>490</x>
     <y>619</y>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_23</name>
@@ -619,6 +627,8 @@
     <x>640</x>
     <y>619</y>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_24</name>
@@ -626,6 +636,8 @@
     <x>790</x>
     <y>619</y>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_6</name>
@@ -1079,6 +1091,8 @@
     <y>340</y>
     <width>80</width>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_26</name>
@@ -1086,6 +1100,8 @@
     <x>190</x>
     <y>340</y>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_27</name>
@@ -1093,6 +1109,8 @@
     <x>340</x>
     <y>340</y>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_28</name>
@@ -1100,6 +1118,8 @@
     <x>490</x>
     <y>340</y>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_29</name>
@@ -1107,6 +1127,8 @@
     <x>640</x>
     <y>340</y>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_30</name>
@@ -1114,6 +1136,8 @@
     <x>790</x>
     <y>340</y>
     <precision>4</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_13</name>
@@ -1378,7 +1402,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_25</name>
     <x>20</x>
-    <y>590</y>
+    <y>589</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1391,7 +1415,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_26</name>
     <x>170</x>
-    <y>590</y>
+    <y>589</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1404,7 +1428,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_27</name>
     <x>320</x>
-    <y>590</y>
+    <y>589</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1417,7 +1441,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_28</name>
     <x>470</x>
-    <y>590</y>
+    <y>589</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1430,7 +1454,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_29</name>
     <x>620</x>
-    <y>590</y>
+    <y>589</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1443,7 +1467,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_30</name>
     <x>770</x>
-    <y>590</y>
+    <y>589</y>
     <width>140</width>
     <height>120</height>
     <line_width>2</line_width>
@@ -1455,7 +1479,7 @@
   </widget>
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_37</name>
-    <x>20</x>
+    <x>22</x>
     <y>310</y>
     <width>140</width>
     <height>120</height>
@@ -1525,5 +1549,257 @@
     <x>410</x>
     <y>40</y>
     <width>120</width>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_31</name>
+    <pv_name>$(P)Control:ActualQ.EGU</pv_name>
+    <x>50</x>
+    <y>360</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_32</name>
+    <pv_name>$(P)Control:ActualQ.EGU</pv_name>
+    <x>200</x>
+    <y>360</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_33</name>
+    <pv_name>$(P)Control:ActualQ.EGU</pv_name>
+    <x>350</x>
+    <y>360</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_34</name>
+    <pv_name>$(P)Control:ActualQ.EGU</pv_name>
+    <x>500</x>
+    <y>360</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_35</name>
+    <pv_name>$(P)Control:ActualQ.EGU</pv_name>
+    <x>650</x>
+    <y>360</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_36</name>
+    <pv_name>$(P)Control:ActualQ.EGU</pv_name>
+    <x>800</x>
+    <y>360</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_37</name>
+    <pv_name>$(P)Control:PoseRollCmd.EGU</pv_name>
+    <x>500</x>
+    <y>639</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_38</name>
+    <pv_name>$(P)Control:PosePitchCmd.EGU</pv_name>
+    <x>650</x>
+    <y>639</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_39</name>
+    <pv_name>$(P)Control:PoseYawCmd.EGU</pv_name>
+    <x>800</x>
+    <y>639</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_40</name>
+    <pv_name>$(P)Control:PoseXCmd.EGU</pv_name>
+    <x>50</x>
+    <y>639</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_41</name>
+    <pv_name>$(P)Control:PoseYCmd.EGU</pv_name>
+    <x>200</x>
+    <y>639</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_42</name>
+    <pv_name>$(P)Control:PoseZCmd.EGU</pv_name>
+    <x>350</x>
+    <y>639</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
 </display>
