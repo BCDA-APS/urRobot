@@ -240,7 +240,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(N)</string>
+                <string>$(N).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>

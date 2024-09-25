@@ -4,10 +4,10 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>1019</x>
-            <y>946</y>
-            <width>401</width>
-            <height>323</height>
+            <x>566</x>
+            <y>1052</y>
+            <width>400</width>
+            <height>325</height>
         </rect>
     </property>
     <property name="styleSheet">
@@ -273,7 +273,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP1)</string>
+                <string>$(WP1).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -618,7 +618,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP2)</string>
+                <string>$(WP2).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -963,7 +963,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP3)</string>
+                <string>$(WP3).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -1308,7 +1308,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP4)</string>
+                <string>$(WP4).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -1653,7 +1653,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP5)</string>
+                <string>$(WP5).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -1662,7 +1662,7 @@ caMenu{
                 <rect>
                     <x>5</x>
                     <y>170</y>
-                    <width>20</width>
+                    <width>25</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1998,7 +1998,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP6)</string>
+                <string>$(WP6).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -2343,7 +2343,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP7)</string>
+                <string>$(WP7).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -2688,7 +2688,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP8)</string>
+                <string>$(WP8).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -3033,7 +3033,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP9)</string>
+                <string>$(WP9).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -3378,7 +3378,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP10)</string>
+                <string>$(WP10).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -3610,9 +3610,9 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>82</red>
+                    <green>218</green>
+                    <blue>59</blue>
                 </color>
             </property>
             <property name="fillstyle">
@@ -3620,9 +3620,9 @@ caMenu{
             </property>
             <property name="lineColor">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>82</red>
+                    <green>218</green>
+                    <blue>59</blue>
                 </color>
             </property>
             <property name="linestyle">
@@ -3710,43 +3710,6 @@ caMenu{
                 <string>$(P)Control:AsyncMoveDone</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_22">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>50</x>
-                    <y>40</y>
-                    <width>16</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-        </widget>
         <zorder>caLabel_0</zorder>
         <zorder>caGraphics_0</zorder>
         <zorder>caLabel_1</zorder>
@@ -3781,7 +3744,6 @@ caMenu{
         <zorder>caGraphics_20</zorder>
         <zorder>caLabel_11</zorder>
         <zorder>caGraphics_21</zorder>
-        <zorder>caGraphics_22</zorder>
         <zorder>caMenu_0</zorder>
         <zorder>caRelatedDisplay_0</zorder>
         <zorder>caChoice_0</zorder>

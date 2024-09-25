@@ -141,7 +141,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(N)"
+	textix="$(N)."
 }
 "choice button" {
 	object {

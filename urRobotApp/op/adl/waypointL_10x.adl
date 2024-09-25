@@ -157,7 +157,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(WP1)"
+	textix="$(WP1)."
 }
 "choice button" {
 	object {
@@ -291,7 +291,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(WP2)"
+	textix="$(WP2)."
 }
 "choice button" {
 	object {
@@ -425,7 +425,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(WP3)"
+	textix="$(WP3)."
 }
 "choice button" {
 	object {
@@ -559,7 +559,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(WP4)"
+	textix="$(WP4)."
 }
 "choice button" {
 	object {
@@ -693,7 +693,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(WP5)"
+	textix="$(WP5)."
 }
 "choice button" {
 	object {
@@ -827,7 +827,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(WP6)"
+	textix="$(WP6)."
 }
 "choice button" {
 	object {
@@ -961,7 +961,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(WP7)"
+	textix="$(WP7)."
 }
 "choice button" {
 	object {
@@ -1095,7 +1095,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(WP8)"
+	textix="$(WP8)."
 }
 "choice button" {
 	object {
@@ -1229,7 +1229,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(WP9)"
+	textix="$(WP9)."
 }
 "choice button" {
 	object {
@@ -1363,7 +1363,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(WP10)"
+	textix="$(WP10)."
 }
 "choice button" {
 	object {
@@ -1447,7 +1447,7 @@ oval {
 		height=15
 	}
 	"basic attribute" {
-		clr=60
+		clr=61
 	}
 	"dynamic attribute" {
 		vis="if not zero"

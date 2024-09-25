@@ -4,10 +4,10 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>1029</x>
-            <y>954</y>
+            <x>1025</x>
+            <y>986</y>
             <width>400</width>
-            <height>290</height>
+            <height>325</height>
         </rect>
     </property>
     <property name="styleSheet">
@@ -129,7 +129,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>Joint Waypoints</string>
+                <string>Cartesian Waypoints</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -153,7 +153,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>40</y>
+                    <y>70</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -189,7 +189,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>290</x>
-                    <y>40</y>
+                    <y>70</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -219,7 +219,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>355</x>
-                    <y>40</y>
+                    <y>70</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -273,7 +273,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP1)</string>
+                <string>$(WP1).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -281,7 +281,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>40</y>
+                    <y>70</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -294,7 +294,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>40</y>
+                    <y>70</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -327,7 +327,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>40</y>
+                    <y>70</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -369,7 +369,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>40</y>
+                    <y>70</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -405,7 +405,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>145</x>
-                    <y>40</y>
+                    <y>70</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -456,7 +456,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>250</x>
-                    <y>40</y>
+                    <y>70</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -498,7 +498,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>65</y>
+                    <y>95</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -534,7 +534,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>290</x>
-                    <y>65</y>
+                    <y>95</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -564,7 +564,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>355</x>
-                    <y>65</y>
+                    <y>95</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -618,7 +618,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP2)</string>
+                <string>$(WP2).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -626,7 +626,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>65</y>
+                    <y>95</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -639,7 +639,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>65</y>
+                    <y>95</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -672,7 +672,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>65</y>
+                    <y>95</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -714,7 +714,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>65</y>
+                    <y>95</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -750,7 +750,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>145</x>
-                    <y>65</y>
+                    <y>95</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -801,7 +801,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>250</x>
-                    <y>65</y>
+                    <y>95</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -843,7 +843,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>90</y>
+                    <y>120</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -879,7 +879,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>290</x>
-                    <y>90</y>
+                    <y>120</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -909,7 +909,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>355</x>
-                    <y>90</y>
+                    <y>120</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -963,7 +963,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP3)</string>
+                <string>$(WP3).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -971,7 +971,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>90</y>
+                    <y>120</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -984,7 +984,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>90</y>
+                    <y>120</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1017,7 +1017,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>90</y>
+                    <y>120</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -1059,7 +1059,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>90</y>
+                    <y>120</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1095,7 +1095,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>145</x>
-                    <y>90</y>
+                    <y>120</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -1146,7 +1146,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>250</x>
-                    <y>90</y>
+                    <y>120</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -1188,7 +1188,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>115</y>
+                    <y>145</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1224,7 +1224,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>290</x>
-                    <y>115</y>
+                    <y>145</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -1254,7 +1254,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>355</x>
-                    <y>115</y>
+                    <y>145</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1308,7 +1308,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP4)</string>
+                <string>$(WP4).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -1316,7 +1316,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>115</y>
+                    <y>145</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1329,7 +1329,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>115</y>
+                    <y>145</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1362,7 +1362,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>115</y>
+                    <y>145</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -1404,7 +1404,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>115</y>
+                    <y>145</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1440,7 +1440,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>145</x>
-                    <y>115</y>
+                    <y>145</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -1491,7 +1491,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>250</x>
-                    <y>115</y>
+                    <y>145</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -1533,7 +1533,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>140</y>
+                    <y>170</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1569,7 +1569,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>290</x>
-                    <y>140</y>
+                    <y>170</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -1599,7 +1599,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>355</x>
-                    <y>140</y>
+                    <y>170</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1653,7 +1653,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP5)</string>
+                <string>$(WP5).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -1661,7 +1661,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>140</y>
+                    <y>170</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1674,7 +1674,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>140</y>
+                    <y>170</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1707,7 +1707,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>140</y>
+                    <y>170</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -1749,7 +1749,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>140</y>
+                    <y>170</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1785,7 +1785,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>145</x>
-                    <y>140</y>
+                    <y>170</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -1836,7 +1836,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>250</x>
-                    <y>140</y>
+                    <y>170</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -1878,7 +1878,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>165</y>
+                    <y>195</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1914,7 +1914,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>290</x>
-                    <y>165</y>
+                    <y>195</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -1944,7 +1944,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>355</x>
-                    <y>165</y>
+                    <y>195</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1998,7 +1998,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP6)</string>
+                <string>$(WP6).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -2006,7 +2006,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>165</y>
+                    <y>195</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2019,7 +2019,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>165</y>
+                    <y>195</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2052,7 +2052,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>165</y>
+                    <y>195</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -2094,7 +2094,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>165</y>
+                    <y>195</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2130,7 +2130,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>145</x>
-                    <y>165</y>
+                    <y>195</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -2181,7 +2181,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>250</x>
-                    <y>165</y>
+                    <y>195</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -2223,7 +2223,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>190</y>
+                    <y>220</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2259,7 +2259,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>290</x>
-                    <y>190</y>
+                    <y>220</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -2289,7 +2289,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>355</x>
-                    <y>190</y>
+                    <y>220</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2343,7 +2343,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP7)</string>
+                <string>$(WP7).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -2351,7 +2351,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>190</y>
+                    <y>220</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2364,7 +2364,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>190</y>
+                    <y>220</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2397,7 +2397,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>190</y>
+                    <y>220</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -2439,7 +2439,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>190</y>
+                    <y>220</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2475,7 +2475,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>145</x>
-                    <y>190</y>
+                    <y>220</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -2526,7 +2526,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>250</x>
-                    <y>190</y>
+                    <y>220</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -2568,7 +2568,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>215</y>
+                    <y>245</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2604,7 +2604,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>290</x>
-                    <y>215</y>
+                    <y>245</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -2634,7 +2634,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>355</x>
-                    <y>215</y>
+                    <y>245</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2688,7 +2688,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP8)</string>
+                <string>$(WP8).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -2696,7 +2696,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>215</y>
+                    <y>245</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2709,7 +2709,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>215</y>
+                    <y>245</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2742,7 +2742,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>215</y>
+                    <y>245</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -2784,7 +2784,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>215</y>
+                    <y>245</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2820,7 +2820,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>145</x>
-                    <y>215</y>
+                    <y>245</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -2871,7 +2871,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>250</x>
-                    <y>215</y>
+                    <y>245</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -2913,7 +2913,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>240</y>
+                    <y>270</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2949,7 +2949,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>290</x>
-                    <y>240</y>
+                    <y>270</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -2979,7 +2979,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>355</x>
-                    <y>240</y>
+                    <y>270</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3033,7 +3033,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP9)</string>
+                <string>$(WP9).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -3041,7 +3041,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>240</y>
+                    <y>270</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3054,7 +3054,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>240</y>
+                    <y>270</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3087,7 +3087,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>240</y>
+                    <y>270</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -3129,7 +3129,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>240</y>
+                    <y>270</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3165,7 +3165,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>145</x>
-                    <y>240</y>
+                    <y>270</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -3216,7 +3216,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>250</x>
-                    <y>240</y>
+                    <y>270</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -3258,7 +3258,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>265</y>
+                    <y>295</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3294,7 +3294,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>290</x>
-                    <y>265</y>
+                    <y>295</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -3324,7 +3324,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>355</x>
-                    <y>265</y>
+                    <y>295</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3378,7 +3378,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>$(WP10)</string>
+                <string>$(WP10).</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -3386,7 +3386,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>265</y>
+                    <y>295</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3399,7 +3399,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>265</y>
+                    <y>295</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3432,7 +3432,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>265</y>
+                    <y>295</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -3474,7 +3474,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>265</y>
+                    <y>295</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3510,7 +3510,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>145</x>
-                    <y>265</y>
+                    <y>295</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -3561,7 +3561,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>250</x>
-                    <y>265</y>
+                    <y>295</y>
                     <width>35</width>
                     <height>20</height>
                 </rect>
@@ -3596,6 +3596,120 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
+        <widget class="caGraphics" name="caGraphics_20">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>50</x>
+                    <y>40</y>
+                    <width>15</width>
+                    <height>15</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>82</red>
+                    <green>218</green>
+                    <blue>59</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>82</red>
+                    <green>218</green>
+                    <blue>59</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Control:AsyncMoveDone</string>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_11">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Done:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>40</y>
+                    <width>50</width>
+                    <height>15</height>
+                </rect>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_21">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>50</x>
+                    <y>40</y>
+                    <width>15</width>
+                    <height>15</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Control:AsyncMoveDone</string>
+            </property>
+        </widget>
         <zorder>caLabel_0</zorder>
         <zorder>caGraphics_0</zorder>
         <zorder>caLabel_1</zorder>
@@ -3627,6 +3741,9 @@ caMenu{
         <zorder>caGraphics_18</zorder>
         <zorder>caLabel_10</zorder>
         <zorder>caGraphics_19</zorder>
+        <zorder>caGraphics_20</zorder>
+        <zorder>caLabel_11</zorder>
+        <zorder>caGraphics_21</zorder>
         <zorder>caMenu_0</zorder>
         <zorder>caRelatedDisplay_0</zorder>
         <zorder>caChoice_0</zorder>
