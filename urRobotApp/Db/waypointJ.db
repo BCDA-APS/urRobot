@@ -9,6 +9,8 @@ record(stringout, "$(P)WaypointJ:$(N)")
 record(bo, "$(P)WaypointJ:$(N):Enabled")
 {
     field(VAL, 0)
+    field(ZNAM, "D")
+    field(ONAM, "E")
 }
 
 record(bo, "$(P)WaypointJ:$(N):SetEnabled")

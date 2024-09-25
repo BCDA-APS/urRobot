@@ -311,10 +311,10 @@ caMenu{
                 <string></string>
             </property>
             <property name="files">
-                <string>waypointJ_1-50.adl</string>
+                <string>waypointJ_10x.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P)</string>
+                <string>P=$(P),WP1=1,WP2=2,WP3=3,WP4=4,WP5=5,WP6=6,WP7=7,WP8=8,WP9=9,WP10=10</string>
             </property>
             <property name="removeParent">
                 <string>false</string>
@@ -353,10 +353,10 @@ caMenu{
                 <string></string>
             </property>
             <property name="files">
-                <string>waypointL_1-50.adl</string>
+                <string>waypointL_10x.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P)</string>
+                <string>P=$(P),WP1=1,WP2=2,WP3=3,WP4=4,WP5=5,WP6=6,WP7=7,WP8=8,WP9=9,WP10=10</string>
             </property>
             <property name="removeParent">
                 <string>false</string>
@@ -433,7 +433,7 @@ caMenu{
                     <x>5</x>
                     <y>5</y>
                     <width>240</width>
-                    <height>40</height>
+                    <height>30</height>
                 </rect>
             </property>
             <property name="alignment">

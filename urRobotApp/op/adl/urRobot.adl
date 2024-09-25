@@ -155,8 +155,8 @@ display {
 		height=25
 	}
 	display[0] {
-		name="waypointJ_1-50.adl"
-		args="P=$(P)"
+		name="waypointJ_10x.adl"
+		args="P=$(P),WP1=1,WP2=2,WP3=3,WP4=4,WP5=5,WP6=6,WP7=7,WP8=8,WP9=9,WP10=10"
 	}
 	clr=0
 	bclr=17
@@ -170,8 +170,8 @@ display {
 		height=25
 	}
 	display[0] {
-		name="waypointL_1-50.adl"
-		args="P=$(P)"
+		name="waypointL_10x.adl"
+		args="P=$(P),WP1=1,WP2=2,WP3=3,WP4=4,WP5=5,WP6=6,WP7=7,WP8=8,WP9=9,WP10=10"
 	}
 	clr=0
 	bclr=17
@@ -197,7 +197,7 @@ text {
 		x=5
 		y=5
 		width=240
-		height=40
+		height=30
 	}
 	"basic attribute" {
 		clr=14

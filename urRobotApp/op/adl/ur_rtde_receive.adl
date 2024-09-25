@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=1318
-		y=197
-		width=725
-		height=883
+		x=987
+		y=652
+		width=627
+		height=845
 	}
 	clr=14
 	bclr=4
@@ -99,42 +99,12 @@ text {
 	}
 	textix="UR RTDE Receive"
 }
-oval {
-	object {
-		x=140
-		y=115
-		width=25
-		height=25
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Receive:Connected"
-	}
-}
-oval {
-	object {
-		x=140
-		y=115
-		width=25
-		height=25
-	}
-	"basic attribute" {
-		clr=20
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Receive:Connected"
-	}
-}
 "text update" {
 	object {
 		x=145
 		y=70
 		width=150
-		height=25
+		height=20
 	}
 	monitor {
 		chan="$(P)Receive:ControllerTimestamp"
@@ -148,7 +118,7 @@ oval {
 "message button" {
 	object {
 		x=10
-		y=260
+		y=165
 		width=150
 		height=30
 	}
@@ -162,7 +132,7 @@ oval {
 }
 byte {
 	object {
-		x=425
+		x=365
 		y=70
 		width=20
 		height=250
@@ -191,19 +161,23 @@ text {
 text {
 	object {
 		x=10
-		y=120
-		width=130
-		height=20
+		y=250
+		width=150
+		height=25
 	}
 	"basic attribute" {
-		clr=14
+		clr=60
 	}
-	textix="Connection:"
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Receive:Connected"
+	}
+	textix="Connected"
 }
 "message button" {
 	object {
 		x=10
-		y=300
+		y=205
 		width=150
 		height=30
 	}
@@ -215,22 +189,9 @@ text {
 	label="Disconnect"
 	press_msg="1"
 }
-rectangle {
-	object {
-		x=400
-		y=35
-		width=295
-		height=296
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-		width=2
-	}
-}
 text {
 	object {
-		x=405
+		x=345
 		y=40
 		width=130
 		height=20
@@ -242,9 +203,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=75
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -254,9 +215,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=97
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -266,9 +227,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=120
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -278,9 +239,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=143
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -290,9 +251,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=165
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -302,9 +263,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=187
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -314,9 +275,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=210
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -326,9 +287,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=235
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -338,9 +299,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=257
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -350,9 +311,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=280
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -362,9 +323,9 @@ text {
 }
 text {
 	object {
-		x=450
+		x=390
 		y=303
-		width=130
+		width=220
 		height=15
 	}
 	"basic attribute" {
@@ -375,8 +336,8 @@ text {
 text {
 	object {
 		x=10
-		y=170
-		width=130
+		y=110
+		width=150
 		height=20
 	}
 	"basic attribute" {
@@ -689,9 +650,9 @@ text {
 }
 text {
 	object {
-		x=370
-		y=484
-		width=30
+		x=325
+		y=485
+		width=80
 		height=25
 	}
 	"basic attribute" {
@@ -702,9 +663,9 @@ text {
 }
 text {
 	object {
-		x=370
-		y=519
-		width=30
+		x=325
+		y=520
+		width=80
 		height=25
 	}
 	"basic attribute" {
@@ -715,9 +676,9 @@ text {
 }
 text {
 	object {
-		x=370
-		y=554
-		width=30
+		x=355
+		y=555
+		width=50
 		height=25
 	}
 	"basic attribute" {
@@ -728,8 +689,8 @@ text {
 }
 text {
 	object {
-		x=165
-		y=170
+		x=150
+		y=110
 		width=130
 		height=25
 	}
@@ -745,8 +706,8 @@ text {
 }
 text {
 	object {
-		x=165
-		y=170
+		x=150
+		y=110
 		width=130
 		height=25
 	}
@@ -762,8 +723,8 @@ text {
 }
 text {
 	object {
-		x=165
-		y=170
+		x=150
+		y=110
 		width=130
 		height=25
 	}
@@ -779,8 +740,8 @@ text {
 }
 text {
 	object {
-		x=165
-		y=170
+		x=150
+		y=110
 		width=130
 		height=25
 	}
@@ -796,8 +757,8 @@ text {
 }
 text {
 	object {
-		x=165
-		y=170
+		x=150
+		y=110
 		width=130
 		height=25
 	}
@@ -813,8 +774,8 @@ text {
 }
 text {
 	object {
-		x=165
-		y=170
+		x=150
+		y=110
 		width=130
 		height=25
 	}
@@ -895,9 +856,9 @@ text {
 }
 text {
 	object {
-		x=55
+		x=5
 		y=780
-		width=150
+		width=200
 		height=20
 	}
 	"basic attribute" {
@@ -908,9 +869,9 @@ text {
 }
 text {
 	object {
-		x=55
+		x=5
 		y=810
-		width=150
+		width=200
 		height=20
 	}
 	"basic attribute" {
@@ -1222,4 +1183,20 @@ text {
 	format="string"
 	limits {
 	}
+}
+text {
+	object {
+		x=10
+		y=250
+		width=150
+		height=25
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Receive:Connected"
+	}
+	textix="Disconnected"
 }

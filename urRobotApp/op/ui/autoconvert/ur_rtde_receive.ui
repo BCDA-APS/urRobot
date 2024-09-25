@@ -4,10 +4,10 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>1318</x>
-            <y>197</y>
-            <width>725</width>
-            <height>883</height>
+            <x>987</x>
+            <y>652</y>
+            <width>627</width>
+            <height>845</height>
         </rect>
     </property>
     <property name="styleSheet">
@@ -146,91 +146,13 @@ caMenu{
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_0">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>115</y>
-                    <width>25</width>
-                    <height>25</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>216</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="fillstyle">
-                <enum>Filled</enum>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>216</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-            <property name="visibility">
-                <enum>caGraphics::IfNotZero</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Receive:Connected</string>
-            </property>
-        </widget>
-        <widget class="caGraphics" name="caGraphics_1">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>115</y>
-                    <width>25</width>
-                    <height>25</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="fillstyle">
-                <enum>Filled</enum>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-            <property name="visibility">
-                <enum>caGraphics::IfZero</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Receive:Connected</string>
-            </property>
-        </widget>
         <widget class="caLineEdit" name="caLineEdit_0">
             <property name="geometry">
                 <rect>
                     <x>145</x>
                     <y>70</y>
                     <width>150</width>
-                    <height>25</height>
+                    <height>20</height>
                 </rect>
             </property>
             <property name="fontScaleMode">
@@ -282,7 +204,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>10</x>
-                    <y>260</y>
+                    <y>165</y>
                     <width>150</width>
                     <height>30</height>
                 </rect>
@@ -320,7 +242,7 @@ caMenu{
         <widget class="caByte" name="caByte_0">
             <property name="geometry">
                 <rect>
-                    <x>425</x>
+                    <x>365</x>
                     <y>70</y>
                     <width>20</width>
                     <height>250</height>
@@ -404,20 +326,26 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
+                    <red>115</red>
+                    <green>255</green>
+                    <blue>107</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
+                    <red>115</red>
+                    <green>255</green>
+                    <blue>107</blue>
                 </color>
             </property>
+            <property name="visibility">
+                <enum>caLabel::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Receive:Connected</string>
+            </property>
             <property name="text">
-                <string>Connection:</string>
+                <string>Connected</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -425,9 +353,9 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>10</x>
-                    <y>120</y>
-                    <width>130</width>
-                    <height>20</height>
+                    <y>250</y>
+                    <width>150</width>
+                    <height>25</height>
                 </rect>
             </property>
             <property name="alignment">
@@ -438,7 +366,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>10</x>
-                    <y>300</y>
+                    <y>205</y>
                     <width>150</width>
                     <height>30</height>
                 </rect>
@@ -473,46 +401,6 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_0">
-            <property name="form">
-                <enum>caGraphics::Rectangle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>400</x>
-                    <y>35</y>
-                    <width>295</width>
-                    <height>296</height>
-                </rect>
-            </property>
-            <property name="lineSize">
-                <number>2</number>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-        </widget>
         <widget class="caLabel" name="caLabel_3">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
@@ -539,7 +427,7 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>405</x>
+                    <x>345</x>
                     <y>40</y>
                     <width>130</width>
                     <height>20</height>
@@ -575,9 +463,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>75</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -611,9 +499,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>97</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -647,9 +535,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>120</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -683,9 +571,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>143</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -719,9 +607,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>165</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -755,9 +643,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>187</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -791,9 +679,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>210</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -827,9 +715,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>235</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -863,9 +751,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>257</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -899,9 +787,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>280</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -935,9 +823,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>450</x>
+                    <x>390</x>
                     <y>303</y>
-                    <width>130</width>
+                    <width>220</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -972,8 +860,8 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>10</x>
-                    <y>170</y>
-                    <width>130</width>
+                    <y>110</y>
+                    <width>150</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1982,9 +1870,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>370</x>
-                    <y>484</y>
-                    <width>30</width>
+                    <x>325</x>
+                    <y>485</y>
+                    <width>80</width>
                     <height>25</height>
                 </rect>
             </property>
@@ -2018,9 +1906,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>370</x>
-                    <y>519</y>
-                    <width>30</width>
+                    <x>325</x>
+                    <y>520</y>
+                    <width>80</width>
                     <height>25</height>
                 </rect>
             </property>
@@ -2054,9 +1942,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>370</x>
-                    <y>554</y>
-                    <width>30</width>
+                    <x>355</x>
+                    <y>555</y>
+                    <width>50</width>
                     <height>25</height>
                 </rect>
             </property>
@@ -2096,8 +1984,8 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>165</x>
-                    <y>170</y>
+                    <x>150</x>
+                    <y>110</y>
                     <width>130</width>
                     <height>25</height>
                 </rect>
@@ -2141,8 +2029,8 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>165</x>
-                    <y>170</y>
+                    <x>150</x>
+                    <y>110</y>
                     <width>130</width>
                     <height>25</height>
                 </rect>
@@ -2186,8 +2074,8 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>165</x>
-                    <y>170</y>
+                    <x>150</x>
+                    <y>110</y>
                     <width>130</width>
                     <height>25</height>
                 </rect>
@@ -2231,8 +2119,8 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>165</x>
-                    <y>170</y>
+                    <x>150</x>
+                    <y>110</y>
                     <width>130</width>
                     <height>25</height>
                 </rect>
@@ -2276,8 +2164,8 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>165</x>
-                    <y>170</y>
+                    <x>150</x>
+                    <y>110</y>
                     <width>130</width>
                     <height>25</height>
                 </rect>
@@ -2321,8 +2209,8 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>165</x>
-                    <y>170</y>
+                    <x>150</x>
+                    <y>110</y>
                     <width>130</width>
                     <height>25</height>
                 </rect>
@@ -2540,9 +2428,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>55</x>
+                    <x>5</x>
                     <y>780</y>
-                    <width>150</width>
+                    <width>200</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -2576,9 +2464,9 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>55</x>
+                    <x>5</x>
                     <y>810</y>
-                    <width>150</width>
+                    <width>200</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -3609,12 +3497,51 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
+        <widget class="caLabel" name="caLabel_41">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>253</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>253</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="visibility">
+                <enum>caLabel::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Receive:Connected</string>
+            </property>
+            <property name="text">
+                <string>Disconnected</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>250</y>
+                    <width>150</width>
+                    <height>25</height>
+                </rect>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
         <zorder>caLabel_0</zorder>
-        <zorder>caGraphics_0</zorder>
-        <zorder>caGraphics_1</zorder>
         <zorder>caLabel_1</zorder>
         <zorder>caLabel_2</zorder>
-        <zorder>caRectangle_0</zorder>
         <zorder>caLabel_3</zorder>
         <zorder>caLabel_4</zorder>
         <zorder>caLabel_5</zorder>
@@ -3653,6 +3580,7 @@ caMenu{
         <zorder>caLabel_38</zorder>
         <zorder>caLabel_39</zorder>
         <zorder>caLabel_40</zorder>
+        <zorder>caLabel_41</zorder>
         <zorder>caLineEdit_0</zorder>
         <zorder>caMessageButton_0</zorder>
         <zorder>caByte_0</zorder>
