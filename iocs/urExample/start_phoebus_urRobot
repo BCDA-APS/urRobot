@@ -15,22 +15,7 @@ R=""
 export EPICS_APP=$(cd "$(dirname "$BASH_SOURCE")"; cd -P "$(dirname "$(readlink "$BASH_SOURCE" || echo .)")"; pwd)
 export EPICS_APP_UI_DIR=${URROBOT_PATH}/urRobotApp/op/bob
 export UI_FILE1=${1:-${DEFAULT_UI_FILE:-urRobot.bob}}
-# export UI_FILE_MACROS=${2:-"P=${P}&R=${R}"}
 export UI_FILE_MACROS=${2:-"P=${P}"}
-
-# #######################################
-# # optional: support for PVs with large data sizes, such as areaDetector
-# # This should agree with the environment variable set by the ioc
-# # see 'putenv "EPICS_CA_MAX_ARRAY_BYTES=64008"' in iocBoot/ioc<target>/st.cmd
-
-if [ "" == "${EPICS_CA_MAX_ARRAY_BYTES}" ]; then
-  #export EPICS_CA_MAX_ARRAY_BYTES=64008
-  export EPICS_CA_MAX_ARRAY_BYTES=8000100
-fi
-
-export START_PUTRECORDER=${EPICS_APP}/start_putrecorder
-export MACROS_PY=${EPICS_APP_UI_DIR}/../python/macros.py
-export EDITOR=nedit
 
 #######################################
 # start CSS-phoebus

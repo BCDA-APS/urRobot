@@ -155,6 +155,8 @@ record(bo, "$(P)Control:stopJ")
 record(bo, "$(P)Control:AutoMoveJ")
 {
     field(DESC, "If 1, moveJ runs when JxCmd changes")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
     field(VAL, 0)
 }
 
@@ -584,6 +586,8 @@ record(bo, "$(P)Control:stopL")
 record(bo, "$(P)Control:AutoMoveL")
 {
     field(DESC, "If 1, moveL runs when Cmd changes")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
     field(VAL, 0)
 }
 

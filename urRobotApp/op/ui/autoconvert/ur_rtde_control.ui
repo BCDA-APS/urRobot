@@ -4,8 +4,8 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>147</x>
-            <y>73</y>
+            <x>783</x>
+            <y>831</y>
             <width>823</width>
             <height>726</height>
         </rect>
@@ -15,13 +15,105 @@
 
 QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
 
+caTable {
+       background: cornsilk;
+       alternate-background-color: wheat;
+}
+
+caLineEdit {
+     border-radius: 1px;
+     background: lightyellow;
+     color: black;
+ }
+ 
+ caLabel {
+     border-radius: 1px;
+     background: lightyellow;
+     color: black;
+ }
+
+caTextEntry {
+    color: rgb(127, 0, 63);
+    background-color: cornsilk;
+    selection-color: #0a214c;
+    selection-background-color: wheat;
+    border: 1px groove black;
+    border-radius: 1px;
+    padding: 1px;
+}
+
+caTextEntry:focus {
+    padding: 0px;
+    border: 2px groove darkred;
+    border-radius: 1px;
+}
+
+/* when font specified, no font sizing is done any more,  font: 10pt; is not bad */
+QPushButton {
+      border-color: #00b;
+      border-radius: 2px;
+      padding: 3px;
+      border-width: 1px;
+
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						   stop:0   rgba(224, 239, 255, 255),
+						   stop:0.5 rgba(199, 215, 230, 255),
+						   stop:1   rgba(184, 214, 236, 255));
+}
+QPushButton:hover {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(201, 226, 255, 255),
+						stop:0.5 rgba(177, 204, 230, 255),
+						stop:1   rgba(163, 205, 236, 255));
+}
+QPushButton:pressed {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(174, 219, 255, 255),
+						stop:0.5 rgba(165, 199, 230, 255),
+						stop:1   rgba(134, 188, 236, 255));
+}
+
+QPushButton:disabled {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(174, 219, 255, 255),
+						stop:0.5 rgba(165, 199, 230, 255),
+						stop:1   rgba(134, 188, 236, 255));
+}
+
+
+caChoice &gt; QPushButton {
+text-align: left;
+background-color: lightgray;
+border: 3px gray;
+}
+
+caChoice &gt; QPushButton:pressed {
+background-color: lightgray;
+border: 3px gray;
+}
+
+caChoice &gt; QPushButton:checked {
+background-color: #EEEEEE;
+border: 3px gray;
+}
+
+caChoice &gt; QPushButton:default {
+background-color: lightgray;
+border: 3px gray;
+}
+
+caMenu{
+    background: lightyellow;
+}
+
+
 </string>
     </property>
     <widget class="QWidget" name="centralWidget">
         <widget class="caChoice" name="caChoice_0">
             <property name="geometry">
                 <rect>
-                    <x>55</x>
+                    <x>50</x>
                     <y>235</y>
                     <width>80</width>
                     <height>20</height>
@@ -171,8 +263,8 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
         <widget class="caMessageButton" name="caMessageButton_0">
             <property name="geometry">
                 <rect>
-                    <x>75</x>
-                    <y>260</y>
+                    <x>145</x>
+                    <y>235</y>
                     <width>50</width>
                     <height>20</height>
                 </rect>
@@ -675,7 +767,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <rect>
                     <x>20</x>
                     <y>200</y>
-                    <width>60</width>
+                    <width>100</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -726,8 +818,8 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
         <widget class="caMessageButton" name="caMessageButton_3">
             <property name="geometry">
                 <rect>
-                    <x>20</x>
-                    <y>260</y>
+                    <x>25</x>
+                    <y>270</y>
                     <width>50</width>
                     <height>20</height>
                 </rect>
@@ -819,9 +911,9 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
             </property>
             <property name="background">
                 <color alpha="255">
-                    <red>187</red>
-                    <green>187</green>
-                    <blue>187</blue>
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
                 </color>
             </property>
             <property name="incrementValue">
@@ -963,78 +1055,6 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                     <y>310</y>
                     <width>100</width>
                     <height>15</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="caLabel" name="caLabel_6">
-            <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="text">
-                <string>ON</string>
-            </property>
-            <property name="fontScaleMode">
-                <enum>ESimpleLabel::WidthAndHeight</enum>
-            </property>
-            <property name="alignment">
-                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>95</x>
-                    <y>225</y>
-                    <width>40</width>
-                    <height>10</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="caLabel" name="caLabel_7">
-            <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="text">
-                <string>OFF</string>
-            </property>
-            <property name="fontScaleMode">
-                <enum>ESimpleLabel::WidthAndHeight</enum>
-            </property>
-            <property name="alignment">
-                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>55</x>
-                    <y>225</y>
-                    <width>40</width>
-                    <height>10</height>
                 </rect>
             </property>
         </widget>
@@ -1550,7 +1570,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_8">
+        <widget class="caLabel" name="caLabel_6">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -2098,7 +2118,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_9">
+        <widget class="caLabel" name="caLabel_7">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -2646,7 +2666,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_10">
+        <widget class="caLabel" name="caLabel_8">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -3194,7 +3214,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_11">
+        <widget class="caLabel" name="caLabel_9">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -3742,7 +3762,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_12">
+        <widget class="caLabel" name="caLabel_10">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -3781,7 +3801,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
         <widget class="caChoice" name="caChoice_1">
             <property name="geometry">
                 <rect>
-                    <x>55</x>
+                    <x>50</x>
                     <y>500</y>
                     <width>80</width>
                     <height>20</height>
@@ -3886,8 +3906,8 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
         <widget class="caMessageButton" name="caMessageButton_14">
             <property name="geometry">
                 <rect>
-                    <x>75</x>
-                    <y>525</y>
+                    <x>140</x>
+                    <y>500</y>
                     <width>50</width>
                     <height>20</height>
                 </rect>
@@ -4326,7 +4346,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_13">
+        <widget class="caLabel" name="caLabel_11">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -4362,7 +4382,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_14">
+        <widget class="caLabel" name="caLabel_12">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -4390,7 +4410,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <rect>
                     <x>20</x>
                     <y>465</y>
-                    <width>60</width>
+                    <width>150</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -4441,8 +4461,8 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
         <widget class="caMessageButton" name="caMessageButton_17">
             <property name="geometry">
                 <rect>
-                    <x>20</x>
-                    <y>525</y>
+                    <x>25</x>
+                    <y>535</y>
                     <width>50</width>
                     <height>20</height>
                 </rect>
@@ -4513,7 +4533,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_15">
+        <widget class="caLabel" name="caLabel_13">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -4546,78 +4566,6 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                     <y>575</y>
                     <width>100</width>
                     <height>15</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="caLabel" name="caLabel_16">
-            <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="text">
-                <string>ON</string>
-            </property>
-            <property name="fontScaleMode">
-                <enum>ESimpleLabel::WidthAndHeight</enum>
-            </property>
-            <property name="alignment">
-                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>95</x>
-                    <y>490</y>
-                    <width>40</width>
-                    <height>10</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="caLabel" name="caLabel_17">
-            <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="text">
-                <string>OFF</string>
-            </property>
-            <property name="fontScaleMode">
-                <enum>ESimpleLabel::WidthAndHeight</enum>
-            </property>
-            <property name="alignment">
-                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>55</x>
-                    <y>490</y>
-                    <width>40</width>
-                    <height>10</height>
                 </rect>
             </property>
         </widget>
@@ -5133,7 +5081,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_18">
+        <widget class="caLabel" name="caLabel_14">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -5681,7 +5629,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_19">
+        <widget class="caLabel" name="caLabel_15">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -6229,7 +6177,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_20">
+        <widget class="caLabel" name="caLabel_16">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -6777,7 +6725,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_21">
+        <widget class="caLabel" name="caLabel_17">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -7325,7 +7273,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_22">
+        <widget class="caLabel" name="caLabel_18">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -7517,7 +7465,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_23">
+        <widget class="caLabel" name="caLabel_19">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -7562,7 +7510,7 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 </rect>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_24">
+        <widget class="caLabel" name="caLabel_20">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -7607,6 +7555,84 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                 </rect>
             </property>
         </widget>
+        <widget class="caMessageButton" name="caMessageButton_32">
+            <property name="geometry">
+                <rect>
+                    <x>205</x>
+                    <y>235</y>
+                    <width>50</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="fontScaleMode">
+                <enum>EPushButton::WidthAndHeight</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Control:moveJ.PROC</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="label">
+                <string>Move</string>
+            </property>
+            <property name="pressMessage">
+                <string>1</string>
+            </property>
+            <property name="colorMode">
+                <enum>caMessageButton::Static</enum>
+            </property>
+        </widget>
+        <widget class="caMessageButton" name="caMessageButton_33">
+            <property name="geometry">
+                <rect>
+                    <x>200</x>
+                    <y>500</y>
+                    <width>50</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="fontScaleMode">
+                <enum>EPushButton::WidthAndHeight</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Control:moveL.PROC</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="label">
+                <string>Move</string>
+            </property>
+            <property name="pressMessage">
+                <string>1</string>
+            </property>
+            <property name="colorMode">
+                <enum>caMessageButton::Static</enum>
+            </property>
+        </widget>
         <zorder>caRectangle_0</zorder>
         <zorder>caRectangle_1</zorder>
         <zorder>caLabel_0</zorder>
@@ -7620,92 +7646,88 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
         <zorder>caLabel_4</zorder>
         <zorder>caRectangle_6</zorder>
         <zorder>caLabel_5</zorder>
-        <zorder>caLabel_6</zorder>
-        <zorder>caLabel_7</zorder>
         <zorder>caRectangle_7</zorder>
         <zorder>caRectangle_8</zorder>
         <zorder>caRectangle_9</zorder>
         <zorder>caRectangle_10</zorder>
         <zorder>caRectangle_11</zorder>
         <zorder>caRectangle_12</zorder>
-        <zorder>caLabel_8</zorder>
+        <zorder>caLabel_6</zorder>
         <zorder>caRectangle_13</zorder>
         <zorder>caRectangle_14</zorder>
         <zorder>caRectangle_15</zorder>
         <zorder>caRectangle_16</zorder>
         <zorder>caRectangle_17</zorder>
         <zorder>caRectangle_18</zorder>
-        <zorder>caLabel_9</zorder>
+        <zorder>caLabel_7</zorder>
         <zorder>caRectangle_19</zorder>
         <zorder>caRectangle_20</zorder>
         <zorder>caRectangle_21</zorder>
         <zorder>caRectangle_22</zorder>
         <zorder>caRectangle_23</zorder>
         <zorder>caRectangle_24</zorder>
-        <zorder>caLabel_10</zorder>
+        <zorder>caLabel_8</zorder>
         <zorder>caRectangle_25</zorder>
         <zorder>caRectangle_26</zorder>
         <zorder>caRectangle_27</zorder>
         <zorder>caRectangle_28</zorder>
         <zorder>caRectangle_29</zorder>
         <zorder>caRectangle_30</zorder>
-        <zorder>caLabel_11</zorder>
+        <zorder>caLabel_9</zorder>
         <zorder>caRectangle_31</zorder>
         <zorder>caRectangle_32</zorder>
         <zorder>caRectangle_33</zorder>
         <zorder>caRectangle_34</zorder>
         <zorder>caRectangle_35</zorder>
         <zorder>caRectangle_36</zorder>
-        <zorder>caLabel_12</zorder>
+        <zorder>caLabel_10</zorder>
         <zorder>caRectangle_37</zorder>
         <zorder>caRectangle_38</zorder>
         <zorder>caRectangle_39</zorder>
         <zorder>caRectangle_40</zorder>
         <zorder>caRectangle_41</zorder>
-        <zorder>caLabel_13</zorder>
-        <zorder>caLabel_14</zorder>
+        <zorder>caLabel_11</zorder>
+        <zorder>caLabel_12</zorder>
         <zorder>caRectangle_42</zorder>
         <zorder>caRectangle_43</zorder>
-        <zorder>caLabel_15</zorder>
-        <zorder>caLabel_16</zorder>
-        <zorder>caLabel_17</zorder>
+        <zorder>caLabel_13</zorder>
         <zorder>caRectangle_44</zorder>
         <zorder>caRectangle_45</zorder>
         <zorder>caRectangle_46</zorder>
         <zorder>caRectangle_47</zorder>
         <zorder>caRectangle_48</zorder>
         <zorder>caRectangle_49</zorder>
-        <zorder>caLabel_18</zorder>
+        <zorder>caLabel_14</zorder>
         <zorder>caRectangle_50</zorder>
         <zorder>caRectangle_51</zorder>
         <zorder>caRectangle_52</zorder>
         <zorder>caRectangle_53</zorder>
         <zorder>caRectangle_54</zorder>
         <zorder>caRectangle_55</zorder>
-        <zorder>caLabel_19</zorder>
+        <zorder>caLabel_15</zorder>
         <zorder>caRectangle_56</zorder>
         <zorder>caRectangle_57</zorder>
         <zorder>caRectangle_58</zorder>
         <zorder>caRectangle_59</zorder>
         <zorder>caRectangle_60</zorder>
         <zorder>caRectangle_61</zorder>
-        <zorder>caLabel_20</zorder>
+        <zorder>caLabel_16</zorder>
         <zorder>caRectangle_62</zorder>
         <zorder>caRectangle_63</zorder>
         <zorder>caRectangle_64</zorder>
         <zorder>caRectangle_65</zorder>
         <zorder>caRectangle_66</zorder>
         <zorder>caRectangle_67</zorder>
-        <zorder>caLabel_21</zorder>
+        <zorder>caLabel_17</zorder>
         <zorder>caRectangle_68</zorder>
         <zorder>caRectangle_69</zorder>
         <zorder>caRectangle_70</zorder>
         <zorder>caRectangle_71</zorder>
         <zorder>caRectangle_72</zorder>
         <zorder>caRectangle_73</zorder>
-        <zorder>caLabel_22</zorder>
-        <zorder>caLabel_23</zorder>
-        <zorder>caLabel_24</zorder>
+        <zorder>caLabel_18</zorder>
+        <zorder>caLabel_19</zorder>
+        <zorder>caLabel_20</zorder>
         <zorder>caChoice_0</zorder>
         <zorder>caMessageButton_0</zorder>
         <zorder>caMessageButton_1</zorder>
@@ -7789,6 +7811,8 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
         <zorder>caMessageButton_29</zorder>
         <zorder>caMessageButton_30</zorder>
         <zorder>caMessageButton_31</zorder>
+        <zorder>caMessageButton_32</zorder>
+        <zorder>caMessageButton_33</zorder>
     </widget>
 </widget>
 </ui>
