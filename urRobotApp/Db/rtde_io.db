@@ -48,6 +48,8 @@ record(ao, "$(P)IO:SetCurrentAnalogOut1")
 record(bo, "$(P)IO:SetStandardDigitalOut0")
 {
     field(DESC, "Standard digital output 0")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT0")
 }
@@ -55,6 +57,8 @@ record(bo, "$(P)IO:SetStandardDigitalOut0")
 record(bo, "$(P)IO:SetStandardDigitalOut1")
 {
     field(DESC, "Standard digital output 1")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT1")
 }
@@ -62,6 +66,8 @@ record(bo, "$(P)IO:SetStandardDigitalOut1")
 record(bo, "$(P)IO:SetStandardDigitalOut2")
 {
     field(DESC, "Standard digital output 2")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT2")
 }
@@ -69,6 +75,8 @@ record(bo, "$(P)IO:SetStandardDigitalOut2")
 record(bo, "$(P)IO:SetStandardDigitalOut3")
 {
     field(DESC, "Standard digital output 3")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT3")
 }
@@ -76,6 +84,8 @@ record(bo, "$(P)IO:SetStandardDigitalOut3")
 record(bo, "$(P)IO:SetStandardDigitalOut4")
 {
     field(DESC, "Standard digital output 4")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT4")
 }
@@ -83,6 +93,8 @@ record(bo, "$(P)IO:SetStandardDigitalOut4")
 record(bo, "$(P)IO:SetStandardDigitalOut5")
 {
     field(DESC, "Standard digital output 5")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT5")
 }
@@ -90,6 +102,8 @@ record(bo, "$(P)IO:SetStandardDigitalOut5")
 record(bo, "$(P)IO:SetStandardDigitalOut6")
 {
     field(DESC, "Standard digital output 6")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT6")
 }
@@ -97,6 +111,8 @@ record(bo, "$(P)IO:SetStandardDigitalOut6")
 record(bo, "$(P)IO:SetStandardDigitalOut7")
 {
     field(DESC, "Standard digital output 7")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT7")
 }
@@ -104,6 +120,8 @@ record(bo, "$(P)IO:SetStandardDigitalOut7")
 record(bo, "$(P)IO:SetConfigurableDigitalOut0")
 {
     field(DESC, "Configurable digital output 0")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT0")
 }
@@ -111,6 +129,8 @@ record(bo, "$(P)IO:SetConfigurableDigitalOut0")
 record(bo, "$(P)IO:SetConfigurableDigitalOut1")
 {
     field(DESC, "Configurable digital output 1")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT1")
 }
@@ -118,6 +138,8 @@ record(bo, "$(P)IO:SetConfigurableDigitalOut1")
 record(bo, "$(P)IO:SetConfigurableDigitalOut2")
 {
     field(DESC, "Configurable digital output 2")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT2")
 }
@@ -125,6 +147,8 @@ record(bo, "$(P)IO:SetConfigurableDigitalOut2")
 record(bo, "$(P)IO:SetConfigurableDigitalOut3")
 {
     field(DESC, "Configurable digital output 3")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT3")
 }
@@ -132,6 +156,8 @@ record(bo, "$(P)IO:SetConfigurableDigitalOut3")
 record(bo, "$(P)IO:SetConfigurableDigitalOut4")
 {
     field(DESC, "Configurable digital output 4")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT4")
 }
@@ -139,6 +165,8 @@ record(bo, "$(P)IO:SetConfigurableDigitalOut4")
 record(bo, "$(P)IO:SetConfigurableDigitalOut5")
 {
     field(DESC, "Configurable digital output 5")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT5")
 }
@@ -146,6 +174,8 @@ record(bo, "$(P)IO:SetConfigurableDigitalOut5")
 record(bo, "$(P)IO:SetConfigurableDigitalOut6")
 {
     field(DESC, "Configurable digital output 6")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT6")
 }
@@ -153,6 +183,8 @@ record(bo, "$(P)IO:SetConfigurableDigitalOut6")
 record(bo, "$(P)IO:SetConfigurableDigitalOut7")
 {
     field(DESC, "Configurable digital output 7")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT7")
 }
@@ -160,6 +192,8 @@ record(bo, "$(P)IO:SetConfigurableDigitalOut7")
 record(bo, "$(P)IO:SetToolDigitalOut0")
 {
     field(DESC, "Tool digital output 0")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_TOOL_DIGITAL_OUT0")
 }
@@ -167,6 +201,8 @@ record(bo, "$(P)IO:SetToolDigitalOut0")
 record(bo, "$(P)IO:SetToolDigitalOut1")
 {
     field(DESC, "Tool digital output 1")
+    field(ZNAM,"LO")
+    field(ONAM,"HI")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_TOOL_DIGITAL_OUT1")
 }

@@ -1,0 +1,1380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+<class>MainWindow</class>
+<widget class="QMainWindow" name="MainWindow">
+    <property name="geometry">
+        <rect>
+            <x>722</x>
+            <y>324</y>
+            <width>420</width>
+            <height>390</height>
+        </rect>
+    </property>
+    <property name="styleSheet">
+        <string>
+
+QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
+
+caTable {
+       background: cornsilk;
+       alternate-background-color: wheat;
+}
+
+caLineEdit {
+     border-radius: 1px;
+     background: lightyellow;
+     color: black;
+ }
+ 
+ caLabel {
+     border-radius: 1px;
+     background: lightyellow;
+     color: black;
+ }
+
+caTextEntry {
+    color: rgb(127, 0, 63);
+    background-color: cornsilk;
+    selection-color: #0a214c;
+    selection-background-color: wheat;
+    border: 1px groove black;
+    border-radius: 1px;
+    padding: 1px;
+}
+
+caTextEntry:focus {
+    padding: 0px;
+    border: 2px groove darkred;
+    border-radius: 1px;
+}
+
+/* when font specified, no font sizing is done any more,  font: 10pt; is not bad */
+QPushButton {
+      border-color: #00b;
+      border-radius: 2px;
+      padding: 3px;
+      border-width: 1px;
+
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						   stop:0   rgba(224, 239, 255, 255),
+						   stop:0.5 rgba(199, 215, 230, 255),
+						   stop:1   rgba(184, 214, 236, 255));
+}
+QPushButton:hover {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(201, 226, 255, 255),
+						stop:0.5 rgba(177, 204, 230, 255),
+						stop:1   rgba(163, 205, 236, 255));
+}
+QPushButton:pressed {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(174, 219, 255, 255),
+						stop:0.5 rgba(165, 199, 230, 255),
+						stop:1   rgba(134, 188, 236, 255));
+}
+
+QPushButton:disabled {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(174, 219, 255, 255),
+						stop:0.5 rgba(165, 199, 230, 255),
+						stop:1   rgba(134, 188, 236, 255));
+}
+
+
+caChoice &gt; QPushButton {
+text-align: left;
+background-color: lightgray;
+border: 3px gray;
+}
+
+caChoice &gt; QPushButton:pressed {
+background-color: lightgray;
+border: 3px gray;
+}
+
+caChoice &gt; QPushButton:checked {
+background-color: #EEEEEE;
+border: 3px gray;
+}
+
+caChoice &gt; QPushButton:default {
+background-color: lightgray;
+border: 3px gray;
+}
+
+caMenu{
+    background: lightyellow;
+}
+
+
+</string>
+    </property>
+    <widget class="QWidget" name="centralWidget">
+        <widget class="caLabel" name="caLabel_0">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>UR RTDE I/O</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>5</y>
+                    <width>240</width>
+                    <height>25</height>
+                </rect>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="caByte" name="caByte_0">
+            <property name="geometry">
+                <rect>
+                    <x>140</x>
+                    <y>175</y>
+                    <width>252</width>
+                    <height>18</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)Receive:DigitalInputBits</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>187</red>
+                    <green>187</green>
+                    <blue>187</blue>
+                </color>
+            </property>
+            <property name="startBit">
+                <number>0</number>
+            </property>
+            <property name="endBit">
+                <number>7</number>
+            </property>
+            <property name="colorMode">
+                <enum>caByte::Static</enum>
+            </property>
+            <property name="startBit">
+                <number>0</number>
+            </property>
+            <property name="endBit">
+                <number>7</number>
+            </property>
+            <property name="direction">
+                <enum>Right</enum>
+            </property>
+        </widget>
+        <widget class="caByte" name="caByte_1">
+            <property name="geometry">
+                <rect>
+                    <x>140</x>
+                    <y>205</y>
+                    <width>252</width>
+                    <height>18</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)Receive:DigitalInputBits</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>187</red>
+                    <green>187</green>
+                    <blue>187</blue>
+                </color>
+            </property>
+            <property name="startBit">
+                <number>8</number>
+            </property>
+            <property name="endBit">
+                <number>15</number>
+            </property>
+            <property name="colorMode">
+                <enum>caByte::Static</enum>
+            </property>
+            <property name="startBit">
+                <number>8</number>
+            </property>
+            <property name="endBit">
+                <number>15</number>
+            </property>
+            <property name="direction">
+                <enum>Right</enum>
+            </property>
+        </widget>
+        <widget class="caByte" name="caByte_2">
+            <property name="geometry">
+                <rect>
+                    <x>140</x>
+                    <y>235</y>
+                    <width>65</width>
+                    <height>17</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)Receive:DigitalInputBits</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>187</red>
+                    <green>187</green>
+                    <blue>187</blue>
+                </color>
+            </property>
+            <property name="startBit">
+                <number>16</number>
+            </property>
+            <property name="endBit">
+                <number>17</number>
+            </property>
+            <property name="colorMode">
+                <enum>caByte::Static</enum>
+            </property>
+            <property name="startBit">
+                <number>16</number>
+            </property>
+            <property name="endBit">
+                <number>17</number>
+            </property>
+            <property name="direction">
+                <enum>Right</enum>
+            </property>
+        </widget>
+        <widget class="caByte" name="caByte_3">
+            <property name="geometry">
+                <rect>
+                    <x>140</x>
+                    <y>305</y>
+                    <width>252</width>
+                    <height>18</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)Receive:DigitalOutputBits</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>187</red>
+                    <green>187</green>
+                    <blue>187</blue>
+                </color>
+            </property>
+            <property name="startBit">
+                <number>0</number>
+            </property>
+            <property name="endBit">
+                <number>7</number>
+            </property>
+            <property name="colorMode">
+                <enum>caByte::Static</enum>
+            </property>
+            <property name="startBit">
+                <number>0</number>
+            </property>
+            <property name="endBit">
+                <number>7</number>
+            </property>
+            <property name="direction">
+                <enum>Right</enum>
+            </property>
+        </widget>
+        <widget class="caByte" name="caByte_4">
+            <property name="geometry">
+                <rect>
+                    <x>140</x>
+                    <y>335</y>
+                    <width>252</width>
+                    <height>18</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)Receive:DigitalOutputBits</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>187</red>
+                    <green>187</green>
+                    <blue>187</blue>
+                </color>
+            </property>
+            <property name="startBit">
+                <number>8</number>
+            </property>
+            <property name="endBit">
+                <number>15</number>
+            </property>
+            <property name="colorMode">
+                <enum>caByte::Static</enum>
+            </property>
+            <property name="startBit">
+                <number>8</number>
+            </property>
+            <property name="endBit">
+                <number>15</number>
+            </property>
+            <property name="direction">
+                <enum>Right</enum>
+            </property>
+        </widget>
+        <widget class="caByte" name="caByte_5">
+            <property name="geometry">
+                <rect>
+                    <x>140</x>
+                    <y>365</y>
+                    <width>65</width>
+                    <height>17</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)Receive:DigitalOutputBits</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>187</red>
+                    <green>187</green>
+                    <blue>187</blue>
+                </color>
+            </property>
+            <property name="startBit">
+                <number>16</number>
+            </property>
+            <property name="endBit">
+                <number>17</number>
+            </property>
+            <property name="colorMode">
+                <enum>caByte::Static</enum>
+            </property>
+            <property name="startBit">
+                <number>16</number>
+            </property>
+            <property name="endBit">
+                <number>17</number>
+            </property>
+            <property name="direction">
+                <enum>Right</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_1">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Inputs:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>145</y>
+                    <width>100</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_2">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Standard:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>175</y>
+                    <width>125</width>
+                    <height>15</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_3">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Configurable:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>205</y>
+                    <width>125</width>
+                    <height>15</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_4">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Tool:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>235</y>
+                    <width>125</width>
+                    <height>15</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_5">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Outputs:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>270</y>
+                    <width>100</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_6">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Standard:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>305</y>
+                    <width>125</width>
+                    <height>15</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_7">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Configurable:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>335</y>
+                    <width>125</width>
+                    <height>15</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_8">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Tool:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>365</y>
+                    <width>125</width>
+                    <height>15</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_9">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>45</red>
+                    <green>127</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>45</red>
+                    <green>127</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="visibility">
+                <enum>caLabel::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Receive:Connected</string>
+            </property>
+            <property name="text">
+                <string>Connected</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>294</x>
+                    <y>0</y>
+                    <width>119</width>
+                    <height>20</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_10">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>253</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>253</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="visibility">
+                <enum>caLabel::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Receive:Connected</string>
+            </property>
+            <property name="text">
+                <string>Disconnected</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>295</x>
+                    <y>0</y>
+                    <width>120</width>
+                    <height>20</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_0">
+            <property name="geometry">
+                <rect>
+                    <x>135</x>
+                    <y>50</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetStandardDigitalOut0</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_1">
+            <property name="geometry">
+                <rect>
+                    <x>170</x>
+                    <y>50</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetStandardDigitalOut1</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_2">
+            <property name="geometry">
+                <rect>
+                    <x>205</x>
+                    <y>50</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetStandardDigitalOut2</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_3">
+            <property name="geometry">
+                <rect>
+                    <x>240</x>
+                    <y>50</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetStandardDigitalOut3</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_4">
+            <property name="geometry">
+                <rect>
+                    <x>275</x>
+                    <y>50</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetStandardDigitalOut4</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_5">
+            <property name="geometry">
+                <rect>
+                    <x>310</x>
+                    <y>50</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetStandardDigitalOut5</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_6">
+            <property name="geometry">
+                <rect>
+                    <x>345</x>
+                    <y>50</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetStandardDigitalOut6</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_7">
+            <property name="geometry">
+                <rect>
+                    <x>380</x>
+                    <y>50</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetStandardDigitalOut7</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_8">
+            <property name="geometry">
+                <rect>
+                    <x>135</x>
+                    <y>90</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetConfigurableDigitalOut0</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_9">
+            <property name="geometry">
+                <rect>
+                    <x>170</x>
+                    <y>90</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetConfigurableDigitalOut1</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_10">
+            <property name="geometry">
+                <rect>
+                    <x>205</x>
+                    <y>90</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetConfigurableDigitalOut2</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_11">
+            <property name="geometry">
+                <rect>
+                    <x>240</x>
+                    <y>90</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetConfigurableDigitalOut3</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_12">
+            <property name="geometry">
+                <rect>
+                    <x>275</x>
+                    <y>90</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetConfigurableDigitalOut4</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_13">
+            <property name="geometry">
+                <rect>
+                    <x>310</x>
+                    <y>90</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetConfigurableDigitalOut5</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_14">
+            <property name="geometry">
+                <rect>
+                    <x>345</x>
+                    <y>90</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetConfigurableDigitalOut6</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_15">
+            <property name="geometry">
+                <rect>
+                    <x>380</x>
+                    <y>90</y>
+                    <width>30</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)IO:SetConfigurableDigitalOut7</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_11">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Standard:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>55</y>
+                    <width>125</width>
+                    <height>15</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_12">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Configurable:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>95</y>
+                    <width>125</width>
+                    <height>15</height>
+                </rect>
+            </property>
+        </widget>
+        <zorder>caLabel_0</zorder>
+        <zorder>caLabel_1</zorder>
+        <zorder>caLabel_2</zorder>
+        <zorder>caLabel_3</zorder>
+        <zorder>caLabel_4</zorder>
+        <zorder>caLabel_5</zorder>
+        <zorder>caLabel_6</zorder>
+        <zorder>caLabel_7</zorder>
+        <zorder>caLabel_8</zorder>
+        <zorder>caLabel_9</zorder>
+        <zorder>caLabel_10</zorder>
+        <zorder>caLabel_11</zorder>
+        <zorder>caLabel_12</zorder>
+        <zorder>caByte_0</zorder>
+        <zorder>caByte_1</zorder>
+        <zorder>caByte_2</zorder>
+        <zorder>caByte_3</zorder>
+        <zorder>caByte_4</zorder>
+        <zorder>caByte_5</zorder>
+        <zorder>caChoice_0</zorder>
+        <zorder>caChoice_1</zorder>
+        <zorder>caChoice_2</zorder>
+        <zorder>caChoice_3</zorder>
+        <zorder>caChoice_4</zorder>
+        <zorder>caChoice_5</zorder>
+        <zorder>caChoice_6</zorder>
+        <zorder>caChoice_7</zorder>
+        <zorder>caChoice_8</zorder>
+        <zorder>caChoice_9</zorder>
+        <zorder>caChoice_10</zorder>
+        <zorder>caChoice_11</zorder>
+        <zorder>caChoice_12</zorder>
+        <zorder>caChoice_13</zorder>
+        <zorder>caChoice_14</zorder>
+        <zorder>caChoice_15</zorder>
+    </widget>
+</widget>
+</ui>
