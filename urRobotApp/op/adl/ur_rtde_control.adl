@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=783
-		y=831
+		x=763
+		y=815
 		width=823
 		height=726
 	}
@@ -124,24 +124,6 @@ rectangle {
 		clr=14
 		width=3
 	}
-}
-text {
-	object {
-		x=305
-		y=145
-		width=120
-		height=25
-	}
-	"basic attribute" {
-		clr=60
-		fill="outline"
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		calc="!A"
-		chan="$(P)Control:Steady"
-	}
-	textix="Moving"
 }
 "message button" {
 	object {
@@ -2599,4 +2581,74 @@ text {
 	}
 	label="Move"
 	press_msg="1"
+}
+text {
+	object {
+		x=320
+		y=150
+		width=70
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="Steady:"
+}
+oval {
+	object {
+		x=395
+		y=145
+		width=25
+		height=25
+	}
+	"basic attribute" {
+		clr=61
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Control:Steady"
+	}
+}
+oval {
+	object {
+		x=395
+		y=145
+		width=25
+		height=25
+	}
+	"basic attribute" {
+		clr=6
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Control:Steady"
+	}
+}
+"choice button" {
+	object {
+		x=255
+		y=80
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)Control:TeachMode"
+		clr=14
+		bclr=51
+	}
+	stacking="column"
+}
+text {
+	object {
+		x=240
+		y=60
+		width=100
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="Teach Mode:"
 }

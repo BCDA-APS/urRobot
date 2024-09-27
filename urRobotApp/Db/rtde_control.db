@@ -96,6 +96,8 @@ record(bo, "$(P)Control:TeachMode")
 {
     field(DESC, "Enabled teach/freedrive mode")
     field(DTYP, "asynInt32")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
     field(VAL, 0)
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TEACH_MODE")
 }
