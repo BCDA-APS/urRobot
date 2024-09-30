@@ -38,8 +38,10 @@ RTDEControlConfig("$(RTDE_CTRL_INSTANCE=asyn_rtde_ctrl)", "$(IP)")
 dbLoadRecords("$(URROBOT)/db/rtde_control.db", "P=$(PREFIX), PORT=$(RTDE_CTRL_INSTANCE=asyn_rtde_ctrl), ADDR=0")
 
 # Set up Robotiq Gripper
+# Optionally can specify MIN_POS and MAX_POS which define the closed/open positions
+# and AUTO_ACTIVATE (YES/NO) which will activate the gripper if the robot is on after IOC init
 URGripperConfig("$(GRIPPER_INSTANCE=asyn_gripper)", "$(IP)")
-dbLoadRecords("$(URROBOT)/db/robotiq_gripper.db", "P=$(PREFIX), PORT=$(GRIPPER_INSTANCE=asyn_gripper), ADDR=0")
+dbLoadRecords("$(URROBOT)/db/robotiq_gripper.db", "P=$(PREFIX), MIN_POS=3, MAX_POS=248, AUTO_ACTIVATE=YES, PORT=$(GRIPPER_INSTANCE=asyn_gripper), ADDR=0")
 
 # Add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH for waypoint functionality
 epicsEnvSet("LUA_SCRIPT_PATH", "$(LUA_SCRIPT_PATH=):$(URROBOT)/urRobotApp/src")
