@@ -125,6 +125,7 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:Connected    | bi     | RTDE Control connection status     |
 | Control:Steady    | bi     | 1 if robot is fully at rest     |
 | Control:ActualQ    | waveform     | Actual joint positions     |
+| Control:AsyncMoveDone   | bi     | 1 if motion and waypoint action complete else 0 |
 | Control:ActualQ_index0    | subArray     | Actual joint 1 angle     |
 | Control:ActualQ_index1    | subArray     | actual joint 2 angle     |
 | Control:ActualQ_index2    | subArray     | Actual joint 3 angle     |
@@ -148,6 +149,9 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:ReuploadControlScript    | bo     | Reuploads control script to controller     |
 | Control:StopControlScript    | bo     | Stops the control script     |
 | Control:Asynchronous    | bo     | If 1, moves will be asynchronous     |
+| Control:WaypointActionDoneCalc   | calcout     | Defines when waypoint action is considered done |
+| Control:WaypointActionDone   | bo     | 1 when waypoint action is done else 0 |
+| Control:TeachMode   | bo     | Enables/disables teach (freedrive) mode |
 | Control:moveJ    | bo     | Calls moveJ for the commanded joint angles J1Cmd-J6Cmd     |
 | Control:JointSpeed    | ao     | Joint speeds for moveJ     |
 | Control:JointAcceleration    | ao     | Joint accelerations for moveJ     |
@@ -207,8 +211,6 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:PoseYawTweakVal    | ao     | TCP yaw tweak step size     |
 | Control:PoseYawTweakFwd    | bo     | Tweak TCP yaw forward     |
 | Control:PoseYawTweakRev    | bo     | Tweak TCP yaw backward     |
-| Control:PlayPosePath    | stringout     | Moves through CSV file of EE waypoints     |
-| Control:PlayJointPath    | stringout     | Moves through CSV file of joint angles with given speed, acceleration, blend, and gripper state     |
 
 ***
 
