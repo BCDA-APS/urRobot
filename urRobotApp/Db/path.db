@@ -39,3 +39,11 @@ record(luascript, "$(P)Path$(N):$(K):get_desc") {
 record(stringin, "$(P)Path$(N):$(K):Desc") {
     field(INP, "$(P)Path$(N):$(K):get_desc.SVAL CP")
 }
+
+# NOTE: lua epics.put directly to ActionOpt PV throws mutex error,
+# probably because of logic in waypoint databases, which is why we
+# need to do the following
+record(longout, "$(P)Path$(N):$(K):action_opt_val") {}
+record(seq, "$(P)Path$(N):$(K):set_action_opt") {
+    field(DOL0, "$(P)Path$(N):$(K):action_opt_val.VAL CP")
+}

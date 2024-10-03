@@ -304,19 +304,46 @@ function path_go(args)
     local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
 
     for i = 1,args.kmax do
-        wp_type = epics.get(string.format("%sPath%d:%d:Type", args.prefix, args.N, i))
+        local wp_type = epics.get(string.format("%sPath%d:%d:Type", args.prefix, args.N, i))
         wp_type = (wp_type == 0.0) and "L" or "J"
-        wp_num = epics.get(string.format("%sPath%d:%d:Number", args.prefix, args.N, i))
-        wp = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
-
-        wp_action = epics.get(string.format("%sPath%d:%d:ActionOverride", args.prefix, args.N, i))
-        wp_enabled = epics.get(string.format("%sPath%d:%d:Enabled", args.prefix, args.N, i))
+        local wp_num = epics.get(string.format("%sPath%d:%d:Number", args.prefix, args.N, i))
+        local wp = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
+        local wp_action = epics.get(string.format("%sPath%d:%d:ActionOverride", args.prefix, args.N, i))
+        local wp_enabled = epics.get(string.format("%sPath%d:%d:Enabled", args.prefix, args.N, i))
 
         if wp_enabled ~= 0 then
-            print(string.format("Moving to waypoint %s", wp))
-        end
+            print(string.format("Moving to waypoint %s...", wp))
 
+            -- Apply action override
+            local wp_action0
+            if wp_action ~= 3 then
+                print(string.format("Overriding action to %d", wp_action))
+                action_pv = string.format("%s:ActionOpt PP", wp)
+                -- wp_action0 = math.floor(epics.get(action_pv))
+                action_opt_val = string.format("%sPath%d:%d:action_opt_val", args.prefix, args.N, i)
+                set_action_opt_lnk0 = string.format("%sPath%d:%d:set_action_opt.LNK0", args.prefix, args.N, i)
+                epics.put(action_opt_val, math.floor(wp_action))
+                epics.put(set_action_opt_lnk0, action_pv)
+                -- print(wp_action0)
+            end
+
+            -- Move to waypoint and wait for motion and action to finish
+            move_pv = string.format("%s:move%s.PROC", wp, wp_type)
+            print(string.format("Executing caput %s 1 (not really)", move_pv))
+            -- epics.put(move_pv, 1)
+            print(string.format("Waiting on %s...", done_pv))
+            -- wait_process(done_pv)
+            print("Done waiting")
+
+            -- Restore original action
+            if wp_action ~= 3 then
+                print("restoring action")
+                -- print(string.format("Executing caput %s:ActionOpt %d", wp, wp_action0))
+            end
+            print("")
+        end
     end
+    print(string.format("Path %d completed!", args.N))
 end
 
 function get_desc(args)
