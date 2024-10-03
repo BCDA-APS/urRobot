@@ -1,15 +1,35 @@
-record(stringout, "$(P)PathPvFile") {}
-record(luascript, "$(P)PlayPathFromPvFile") {
-    field(INAA, "$(P)PathPvFile")
-    field(CODE, "@waypoints.lua play_path_pv_file({prefix='$(P)$(R=)'})")
-    field(PREC, 0)
-    field(SYNC, "Async")
+# Type of K'th waypoint in path N
+record(mbbo, "$(P)Path$(N):$(K):Type") {
+    field(ZRST,"L") # Cartesian waypoint (WaypointL)
+    field(ONST,"J") # Joint waypoint (WaypointJ)
+    field(VAL, "$(TYPE=0)")
 }
 
-record(stringout, "$(P)PathPvDescFile") {}
-record(luascript, "$(P)PlayPathFromPvDescFile") {
-    field(INAA, "$(P)PathPvDescFile")
-    field(CODE, "@waypoints.lua play_path_pv_desc_file({prefix='$(P)$(R=)',maxj=$(MAXJ),maxl=$(MAXL)})")
-    field(PREC, 0)
-    field(SYNC, "Async")
+# Waypoint number of K'th waypoint in path N
+record(longout, "$(P)Path$(N):$(K):Number") {
+    field(VAL, "$(WP_NUM=$(K))") # FIX:
+}
+
+# Action override of K'th waypoint in path N
+record(mbbo, "$(P)Path$(N):$(K):ActionOverride") {
+    field(ZRST, "Custom")
+    field(ONST, "Open gripper")
+    field(TWST, "Close gripper")
+    field(THST, "None")
+    field(VAL, "$(ACTION=3)")
+}
+
+# Enable/disable K'th waypoint in path N
+record(bo, "$(P)Path$(N):$(K):Enabled") {
+    field(DESC, "1 if path point enabled, else 0")
+    field(VAL, 0)
+}
+
+record(luascript, "$(P)Path$(N):$(K):get_desc") {
+    field(CODE, "@paths.lua get_desc({prefix='$(P)',N=$(N),k=$(K)})")
+    field(SCAN, "1 second")
+}
+
+record(stringin, "$(P)Path$(N):$(K):Desc") {
+    field(INP, "$(P)Path$(N):$(K):get_desc.SVAL CP")
 }

@@ -1,0 +1,5 @@
+record(luascript, "$(P)Path$(N):Go") {
+    field(CODE, "@paths.lua path_go({prefix='$(P)',N=$(N),kmax=$(KMAX)})")
+    field(PREC, 0)
+    field(SYNC, "Async")
+}
