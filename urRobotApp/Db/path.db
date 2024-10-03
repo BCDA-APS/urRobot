@@ -19,7 +19,6 @@ record(mbbo, "$(P)Path$(N):$(K):ActionOverride") {
     field(TWST, "Close gripper")
     field(THST, "None")
     field(VAL, "$(ACTION=3)")
-    field(FLNK, "$(P)Path$(N):$(K):get_desc.PROC")
 }
 
 # Enable/disable K'th waypoint in path N
@@ -45,5 +44,5 @@ record(stringin, "$(P)Path$(N):$(K):Desc") {
 # need to do the following
 record(longout, "$(P)Path$(N):$(K):action_opt_val") {}
 record(seq, "$(P)Path$(N):$(K):set_action_opt") {
-    field(DOL0, "$(P)Path$(N):$(K):action_opt_val.VAL CP")
+    field(DOL0, "$(P)Path$(N):$(K):action_opt_val.VAL")
 }

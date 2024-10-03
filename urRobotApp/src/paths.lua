@@ -308,38 +308,45 @@ function path_go(args)
         wp_type = (wp_type == 0.0) and "L" or "J"
         local wp_num = epics.get(string.format("%sPath%d:%d:Number", args.prefix, args.N, i))
         local wp = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
-        local wp_action = epics.get(string.format("%sPath%d:%d:ActionOverride", args.prefix, args.N, i))
+        local wp_action = math.floor(epics.get(string.format("%sPath%d:%d:ActionOverride", args.prefix, args.N, i)))
         local wp_enabled = epics.get(string.format("%sPath%d:%d:Enabled", args.prefix, args.N, i))
 
         if wp_enabled ~= 0 then
             print(string.format("Moving to waypoint %s...", wp))
 
             -- Apply action override
-            local wp_action0
             if wp_action ~= 3 then
                 print(string.format("Overriding action to %d", wp_action))
-                action_pv = string.format("%s:ActionOpt PP", wp)
-                -- wp_action0 = math.floor(epics.get(action_pv))
-                action_opt_val = string.format("%sPath%d:%d:action_opt_val", args.prefix, args.N, i)
-                set_action_opt_lnk0 = string.format("%sPath%d:%d:set_action_opt.LNK0", args.prefix, args.N, i)
-                epics.put(action_opt_val, math.floor(wp_action))
-                epics.put(set_action_opt_lnk0, action_pv)
-                -- print(wp_action0)
+                action_pv = string.format("%s:ActionOpt", wp)
+                wp_action0 = math.floor(epics.get(action_pv))
+                action_opt_val_pv = string.format("%sPath%d:%d:action_opt_val", args.prefix, args.N, i)
+                set_action_opt_lnk0_pv = string.format("%sPath%d:%d:set_action_opt.LNK0", args.prefix, args.N, i)
+                set_action_opt_proc_pv = string.format("%sPath%d:%d:set_action_opt.PROC", args.prefix, args.N, i)
+                epics.put(action_opt_val_pv, wp_action)
+                epics.put(set_action_opt_lnk0_pv, string.format("%s PP",action_pv))
+                epics.put(set_action_opt_proc_pv, 1) -- manually force processing
             end
 
             -- Move to waypoint and wait for motion and action to finish
-            move_pv = string.format("%s:move%s.PROC", wp, wp_type)
-            print(string.format("Executing caput %s 1 (not really)", move_pv))
+            -- move_pv = string.format("%s:move%s.PROC", wp, wp_type)
             -- epics.put(move_pv, 1)
-            print(string.format("Waiting on %s...", done_pv))
+
             -- wait_process(done_pv)
+            t0 = os.time()
+            while true do
+                local elap = os.time() - t0
+                if (elap >= 3.0) then
+                    break
+                end
+            end
             print("Done waiting")
 
             -- Restore original action
-            if wp_action ~= 3 then
-                print("restoring action")
-                -- print(string.format("Executing caput %s:ActionOpt %d", wp, wp_action0))
-            end
+            -- if wp_action ~= 3 then
+                -- print(string.format("Restoring original action to %d", wp_action0))
+                -- epics.put(action_opt_val_pv, wp_action0)
+                -- epics.put(set_action_opt_lnk0_pv, string.format("%s PP",action_pv))
+            -- end
             print("")
         end
     end
@@ -353,7 +360,7 @@ function get_desc(args)
     if wp_num > 0 then
         wp = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
         return epics.get(wp)
-    else        
+    else
         return ""
     end
 end
