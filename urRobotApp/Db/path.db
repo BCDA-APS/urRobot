@@ -3,11 +3,13 @@ record(mbbo, "$(P)Path$(N):$(K):Type") {
     field(ZRST,"Linear") # Cartesian waypoint (WaypointL)
     field(ONST,"Joint") # Joint waypoint (WaypointJ)
     field(VAL, "$(TYPE=0)")
+    field(FLNK, "$(P)Path$(N):$(K):get_desc.PROC")
 }
 
 # Waypoint number of K'th waypoint in path N
 record(longout, "$(P)Path$(N):$(K):Number") {
     field(VAL, "$(WP_NUM=$(K))") # FIX:
+    field(FLNK, "$(P)Path$(N):$(K):get_desc.PROC")
 }
 
 # Action override of K'th waypoint in path N
@@ -17,6 +19,7 @@ record(mbbo, "$(P)Path$(N):$(K):ActionOverride") {
     field(TWST, "Close gripper")
     field(THST, "None")
     field(VAL, "$(ACTION=3)")
+    field(FLNK, "$(P)Path$(N):$(K):get_desc.PROC")
 }
 
 # Enable/disable K'th waypoint in path N
@@ -25,11 +28,12 @@ record(bo, "$(P)Path$(N):$(K):Enabled") {
     field(ZNAM, "D")
     field(ONAM, "E")
     field(VAL, 0)
+    field(FLNK, "$(P)Path$(N):$(K):get_desc.PROC")
 }
 
 record(luascript, "$(P)Path$(N):$(K):get_desc") {
     field(CODE, "@paths.lua get_desc({prefix='$(P)',N=$(N),k=$(K)})")
-    field(SCAN, "1 second")
+    field(PINI, 1)
 }
 
 record(stringin, "$(P)Path$(N):$(K):Desc") {
