@@ -8,7 +8,7 @@ record(mbbo, "$(P)Path$(N):$(K):Type") {
 
 # Waypoint number of K'th waypoint in path N
 record(longout, "$(P)Path$(N):$(K):Number") {
-    field(VAL, "$(WP_NUM=$(K))") # FIX:
+    field(VAL, "$(WP_NUM=0)")
     field(FLNK, "$(P)Path$(N):$(K):get_desc.PROC")
 }
 
@@ -25,8 +25,8 @@ record(mbbo, "$(P)Path$(N):$(K):ActionOverride") {
 # Enable/disable K'th waypoint in path N
 record(bo, "$(P)Path$(N):$(K):Enabled") {
     field(DESC, "1 if path point enabled, else 0")
-    field(ZNAM, "D")
-    field(ONAM, "E")
+    field(ZNAM, "0")
+    field(ONAM, "1")
     field(VAL, 0)
     field(FLNK, "$(P)Path$(N):$(K):get_desc.PROC")
 }

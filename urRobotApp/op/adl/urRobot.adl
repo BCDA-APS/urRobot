@@ -202,7 +202,7 @@ display {
 "related display" {
 	object {
 		x=120
-		y=105
+		y=135
 		width=100
 		height=25
 	}
@@ -225,4 +225,30 @@ text {
 		clr=14
 	}
 	textix="UR Robot"
+}
+"related display" {
+	object {
+		x=120
+		y=105
+		width=100
+		height=25
+	}
+	display[0] {
+		label="Path 1"
+		name="path.adl"
+		args="P=$(P),N=1"
+	}
+	display[1] {
+		label="Path 2"
+		name="path.adl"
+		args="P=$(P),N=2"
+	}
+	display[2] {
+		label="Path 3"
+		name="path.adl"
+		args="P=$(P),N=3"
+	}
+	clr=0
+	bclr=17
+	label="-   Paths"
 }

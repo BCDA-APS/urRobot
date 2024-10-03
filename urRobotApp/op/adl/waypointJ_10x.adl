@@ -169,7 +169,7 @@ text {
 	control {
 		chan="$(P)WaypointJ:$(WP1):Enabled"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	stacking="column"
 }
@@ -303,7 +303,7 @@ text {
 	control {
 		chan="$(P)WaypointJ:$(WP2):Enabled"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	stacking="column"
 }
@@ -437,7 +437,7 @@ text {
 	control {
 		chan="$(P)WaypointJ:$(WP3):Enabled"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	stacking="column"
 }
@@ -571,7 +571,7 @@ text {
 	control {
 		chan="$(P)WaypointJ:$(WP4):Enabled"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	stacking="column"
 }
@@ -705,7 +705,7 @@ text {
 	control {
 		chan="$(P)WaypointJ:$(WP5):Enabled"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	stacking="column"
 }
@@ -839,7 +839,7 @@ text {
 	control {
 		chan="$(P)WaypointJ:$(WP6):Enabled"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	stacking="column"
 }
@@ -973,7 +973,7 @@ text {
 	control {
 		chan="$(P)WaypointJ:$(WP7):Enabled"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	stacking="column"
 }
@@ -1107,7 +1107,7 @@ text {
 	control {
 		chan="$(P)WaypointJ:$(WP8):Enabled"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	stacking="column"
 }
@@ -1241,7 +1241,7 @@ text {
 	control {
 		chan="$(P)WaypointJ:$(WP9):Enabled"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	stacking="column"
 }
@@ -1375,7 +1375,7 @@ text {
 	control {
 		chan="$(P)WaypointJ:$(WP10):Enabled"
 		clr=14
-		bclr=4
+		bclr=51
 	}
 	stacking="column"
 }
