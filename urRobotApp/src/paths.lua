@@ -323,6 +323,10 @@ function get_desc(args)
     wp_type = epics.get(string.format("%sPath%d:%d:Type", args.prefix, args.N, args.k))
     wp_type = (wp_type == 0.0) and "L" or "J"
     wp_num = epics.get(string.format("%sPath%d:%d:Number", args.prefix, args.N, args.k))
-    wp = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
-    return epics.get(wp)
+    if wp_num > 0 then
+        wp = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
+        return epics.get(wp)
+    else        
+        return ""
+    end
 end
