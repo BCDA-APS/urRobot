@@ -1,5 +1,5 @@
 # Load PVs for three paths, each with 30 possible waypoints
-file "$(URROBOT)/db/path.db"
+file "$(URROBOT)/db/path_waypoint.db"
 {
 pattern
 {N,  K}
@@ -95,8 +95,8 @@ pattern
 {3, 30}
 }
 
-# Loads Path$(N):Go PVs for each of the above paths
-file "$(URROBOT)/db/path_go.db"
+# Loads path PVs for each of the above paths
+file "$(URROBOT)/db/path.db"
 {
 pattern
 {N, KMAX}
