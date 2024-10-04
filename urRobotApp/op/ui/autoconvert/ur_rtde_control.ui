@@ -4220,7 +4220,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index0.VAL</string>
+                <string>$(P)Control:pose_index0.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4919,7 +4919,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index1.VAL</string>
+                <string>$(P)Control:pose_index1.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5467,7 +5467,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index2.VAL</string>
+                <string>$(P)Control:pose_index2.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6015,7 +6015,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index3.VAL</string>
+                <string>$(P)Control:pose_index3.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6563,7 +6563,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index4.VAL</string>
+                <string>$(P)Control:pose_index4.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -7111,7 +7111,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index5.VAL</string>
+                <string>$(P)Control:pose_index5.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

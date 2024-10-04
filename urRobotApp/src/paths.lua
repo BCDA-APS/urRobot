@@ -5,16 +5,19 @@ epics = require("epics")
 -- The process status is specified by the value of 'done_pv'
 -- which is 1 when the process is done, and 0 when the process is not done
 -- The timeout to wait for is given in seconds
-function wait_process(done_pv, timeout)
-    if timeout == nil then
-        timeout = 300.0 -- seconds
+function wait_process(done_pv, start_timeout, finish_timeout)
+    if start_timeout == nil then
+        start_timeout = 5.0 -- seconds
+    end
+    if finish_timeout == nil then
+        finish_timeout = 300.0 -- seconds
     end
 
     -- wait to start
     local t0 = os.time()
     while true do
         local elap = (os.time() - t0)
-        if (elap >= timeout) then
+        if (elap >= start_timeout) then
             print("Error: Timeout exceeded waiting to start process")
             break
         end
@@ -28,7 +31,7 @@ function wait_process(done_pv, timeout)
     t0 = os.time()
     while true do
         local elap = (os.time() - t0)
-        if (elap >= timeout) then
+        if (elap >= finish_timeout) then
             print("Error: Timeout exceeded waiting for process to complete")
             break
         end
@@ -39,7 +42,7 @@ function wait_process(done_pv, timeout)
     end
 end
 
-
+-- Moves robot through all enabled points along path
 function path_go(args)
 
     local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
@@ -56,7 +59,6 @@ function path_go(args)
         end
 
         if wp_enabled ~= 0 then
-            print(string.format("Moving to waypoint %s...", wp))
 
             -- Apply action override
             local action_pv
@@ -65,7 +67,6 @@ function path_go(args)
             local set_action_opt_lnk0_pv
             local set_action_opt_proc_pv
             if wp_action ~= 3 then
-                print(string.format("Overriding action to %d", wp_action))
                 action_pv = string.format("%s:ActionOpt", wp)
                 wp_action0 = math.floor(epics.get(action_pv))
                 action_opt_val_pv = string.format("%sPath%d:%d:action_opt_val", args.prefix, args.N, i)
@@ -77,28 +78,17 @@ function path_go(args)
             end
 
             -- Move to waypoint and wait for motion and action to finish
-            -- move_pv = string.format("%s:move%s.PROC", wp, wp_type)
-            -- epics.put(move_pv, 1)
-
-            -- wait_process(done_pv)
-            -- wait for 3 seconds to simulate waiting for motion
-            t0 = os.time()
-            while true do
-                local elap = os.time() - t0
-                if (elap >= 3.0) then
-                    break
-                end
-            end
-            print("Done waiting")
+            print(string.format("Moving to waypoint %s...", wp))
+            move_pv = string.format("%s:move%s.PROC", wp, wp_type)
+            epics.put(move_pv, 1)
+            wait_process(done_pv)
 
             -- Restore original action
             if wp_action ~= 3 then
-                print(string.format("Restoring original action to %d", wp_action0))
                 epics.put(action_opt_val_pv, wp_action0)
                 epics.put(set_action_opt_lnk0_pv, string.format("%s PP",action_pv))
                 epics.put(set_action_opt_proc_pv, 1) -- manually force processing
             end
-            print("")
         end
     end
     print(string.format("Path %d completed!", args.N))
@@ -113,7 +103,7 @@ function get_wp_info(args)
         local wp_pv = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
         local reached_inp_pv = string.format("%sPath%d:%d:Reached.INP",args.prefix,args.N,args.k)
         local wp_reached_pv = string.format("%s:Reached CP",wp_pv)
-        epics.put(reached_inp_pv, wp_reached_pv)
+        epics.put(reached_inp_pv, wp_reached_pv) -- set link to Waypoint:Reached PV
         return epics.get(wp_pv)
     else
         return ""

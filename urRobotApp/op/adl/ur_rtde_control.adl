@@ -1453,7 +1453,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index0.VAL"
+		chan="$(P)Control:pose_index0.VAL"
 		clr=54
 		bclr=3
 	}
@@ -1687,7 +1687,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index1.VAL"
+		chan="$(P)Control:pose_index1.VAL"
 		clr=54
 		bclr=3
 	}
@@ -1867,7 +1867,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index2.VAL"
+		chan="$(P)Control:pose_index2.VAL"
 		clr=54
 		bclr=3
 	}
@@ -2047,7 +2047,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index3.VAL"
+		chan="$(P)Control:pose_index3.VAL"
 		clr=54
 		bclr=3
 	}
@@ -2227,7 +2227,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index4.VAL"
+		chan="$(P)Control:pose_index4.VAL"
 		clr=54
 		bclr=3
 	}
@@ -2407,7 +2407,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index5.VAL"
+		chan="$(P)Control:pose_index5.VAL"
 		clr=54
 		bclr=3
 	}

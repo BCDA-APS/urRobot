@@ -1,4 +1,4 @@
-record(bi, "$(P)RobotiqGriACTIVATEpper:Connected")
+record(bi, "$(P)RobotiqGripper:Connected")
 {
     field(DESC, "Connection status")
     field(DTYP, "asynInt32")

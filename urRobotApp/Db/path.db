@@ -4,7 +4,3 @@ record(luascript, "$(P)Path$(N):Go") {
     field(PREC, 0)
     field(SYNC, "Async")
 }
-
-record(stringout, "$(P)Path$(N):Status") {
-    field(DESC, "Status message for path $(N)")
-}
