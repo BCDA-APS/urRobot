@@ -3,13 +3,13 @@ record(mbbo, "$(P)Path$(N):$(K):Type") {
     field(ZRST,"Linear") # Cartesian waypoint (WaypointL)
     field(ONST,"Joint") # Joint waypoint (WaypointJ)
     field(VAL, "$(TYPE=0)")
-    field(FLNK, "$(P)Path$(N):$(K):get_desc.PROC")
+    field(FLNK, "$(P)Path$(N):$(K):get_wp_info.PROC")
 }
 
 # Waypoint number of K'th waypoint in path N
 record(longout, "$(P)Path$(N):$(K):Number") {
     field(VAL, "$(WP_NUM=0)")
-    field(FLNK, "$(P)Path$(N):$(K):get_desc.PROC")
+    field(FLNK, "$(P)Path$(N):$(K):get_wp_info.PROC")
 }
 
 # Action override of K'th waypoint in path N
@@ -27,22 +27,27 @@ record(bo, "$(P)Path$(N):$(K):Enabled") {
     field(ZNAM, "0")
     field(ONAM, "1")
     field(VAL, 0)
-    field(FLNK, "$(P)Path$(N):$(K):get_desc.PROC")
+    field(FLNK, "$(P)Path$(N):$(K):get_wp_info.PROC")
 }
 
-record(luascript, "$(P)Path$(N):$(K):get_desc") {
-    field(CODE, "@paths.lua get_desc({prefix='$(P)',N=$(N),k=$(K)})")
+record(luascript, "$(P)Path$(N):$(K):get_wp_info") {
+    field(CODE, "@paths.lua get_wp_info({prefix='$(P)',N=$(N),k=$(K)})")
     field(PINI, 1)
 }
 
 record(stringin, "$(P)Path$(N):$(K):Desc") {
-    field(INP, "$(P)Path$(N):$(K):get_desc.SVAL CP")
+    field(INP, "$(P)Path$(N):$(K):get_wp_info.SVAL CP")
+}
+
+# INP link to Waypoint:Reached set by get_wp_info func
+record(ai, "$(P)Path$(N):$(K):Reached") {
 }
 
 # NOTE: lua epics.put directly to ActionOpt PV throws mutex error,
 # probably because of logic in waypoint databases, which is why we
 # need to do the following
 record(longout, "$(P)Path$(N):$(K):action_opt_val") {}
+
 record(seq, "$(P)Path$(N):$(K):set_action_opt") {
     field(DOL0, "$(P)Path$(N):$(K):action_opt_val.VAL")
 }

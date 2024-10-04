@@ -1,5 +1,10 @@
 record(luascript, "$(P)Path$(N):Go") {
+    field(DESC, "Executes path $(N)")
     field(CODE, "@paths.lua path_go({prefix='$(P)',N=$(N),kmax=$(KMAX)})")
     field(PREC, 0)
     field(SYNC, "Async")
+}
+
+record(stringout, "$(P)Path$(N):Status") {
+    field(DESC, "Status message for path $(N)")
 }

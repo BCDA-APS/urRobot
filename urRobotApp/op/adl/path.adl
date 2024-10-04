@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=1734
-		y=650
+		x=438
+		y=108
 		width=415
 		height=825
 	}
@@ -164,21 +164,6 @@ text {
 	textix="Description"
 	align="horiz. centered"
 }
-oval {
-	object {
-		x=81
-		y=75
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):1:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -224,17 +209,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=75
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -294,21 +268,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=100
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):2:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -354,17 +313,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=100
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -424,21 +372,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=125
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):3:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -484,17 +417,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=125
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -554,21 +476,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=150
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):4:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -614,17 +521,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=150
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -684,21 +580,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=175
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):5:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -744,17 +625,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=175
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -814,21 +684,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=200
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):6:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -874,17 +729,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=200
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -944,21 +788,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=225
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):7:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -1004,17 +833,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=225
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -1074,21 +892,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=250
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):8:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -1134,17 +937,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=250
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -1204,21 +996,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=275
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):9:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -1264,17 +1041,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=275
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -1334,21 +1100,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=300
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):10:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -1394,17 +1145,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=300
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -1464,21 +1204,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=325
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):11:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -1524,17 +1249,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=325
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -1594,21 +1308,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=350
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):12:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -1654,17 +1353,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=350
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -1724,21 +1412,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=375
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):13:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -1784,17 +1457,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=375
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -1854,21 +1516,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=400
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):14:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -1914,17 +1561,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=400
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -1984,21 +1620,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=425
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):15:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -2044,17 +1665,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=425
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -2114,21 +1724,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=450
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):16:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -2174,17 +1769,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=450
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -2244,21 +1828,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=475
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):17:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -2304,17 +1873,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=475
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -2374,21 +1932,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=500
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):18:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -2434,17 +1977,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=500
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -2504,21 +2036,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=525
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):19:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -2564,17 +2081,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=525
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -2634,21 +2140,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=550
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):20:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -2694,17 +2185,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=550
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -2764,21 +2244,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=575
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):21:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -2824,17 +2289,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=575
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -2894,21 +2348,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=600
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):22:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -2954,17 +2393,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=600
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -3024,21 +2452,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=625
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):23:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -3084,17 +2497,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=625
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -3154,21 +2556,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=650
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):24:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -3214,17 +2601,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=650
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -3284,21 +2660,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=675
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):25:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -3344,17 +2705,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=675
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -3414,21 +2764,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=700
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):26:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -3474,17 +2809,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=700
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -3544,21 +2868,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=725
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):27:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -3604,17 +2913,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=725
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -3674,21 +2972,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=750
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):28:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -3734,17 +3017,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=750
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -3804,21 +3076,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=775
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):29:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -3864,17 +3121,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=775
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -3934,21 +3180,6 @@ menu {
 	limits {
 	}
 }
-oval {
-	object {
-		x=81
-		y=800
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Path$(N):30:Reached"
-	}
-}
 text {
 	object {
 		x=5
@@ -3994,17 +3225,6 @@ text {
 		bclr=51
 	}
 	stacking="column"
-}
-oval {
-	object {
-		x=81
-		y=800
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
 }
 menu {
 	object {
@@ -4081,7 +3301,7 @@ menu {
 }
 oval {
 	object {
-		x=50
+		x=35
 		y=35
 		width=15
 		height=15
@@ -4105,4 +3325,919 @@ text {
 		clr=14
 	}
 	textix="Done:"
+}
+oval {
+	object {
+		x=35
+		y=35
+		width=15
+		height=15
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Control:AsyncMoveDone"
+	}
+}
+oval {
+	object {
+		x=80
+		y=100
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):2:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=100
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):2:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=125
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):3:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=125
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):3:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=150
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):4:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=150
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):4:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=175
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):5:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=175
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):5:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=200
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):6:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=200
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):6:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=225
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):7:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=225
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):7:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=250
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):8:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=250
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):8:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=275
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):9:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=275
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):9:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=300
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):10:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=300
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):10:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=325
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):11:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=325
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):11:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=350
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):12:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=350
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):12:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=375
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):13:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=375
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):13:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=400
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):14:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=400
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):14:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=425
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):15:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=425
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):15:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=450
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):16:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=450
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):16:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=475
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):17:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=475
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):17:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=500
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):18:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=500
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):18:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=525
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):19:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=525
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):19:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=550
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):20:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=550
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):20:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=575
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):21:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=575
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):21:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=600
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):22:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=600
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):22:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=625
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):23:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=625
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):23:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=650
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):24:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=650
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):24:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=675
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):25:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=675
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):25:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=700
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):26:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=700
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):26:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=725
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):27:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=725
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):27:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=750
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):28:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=750
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):28:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=775
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):29:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=775
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):29:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=800
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):30:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=800
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):30:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=75
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Path$(N):1:Reached"
+	}
+}
+oval {
+	object {
+		x=80
+		y=75
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Path$(N):1:Reached"
+	}
 }

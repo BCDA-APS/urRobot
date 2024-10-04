@@ -105,13 +105,16 @@ function path_go(args)
 end
 
 
-function get_desc(args)
-    wp_type = epics.get(string.format("%sPath%d:%d:Type", args.prefix, args.N, args.k))
+function get_wp_info(args)
+    local wp_type = epics.get(string.format("%sPath%d:%d:Type", args.prefix, args.N, args.k))
     wp_type = (wp_type == 0.0) and "L" or "J"
-    wp_num = epics.get(string.format("%sPath%d:%d:Number", args.prefix, args.N, args.k))
+    local wp_num = epics.get(string.format("%sPath%d:%d:Number", args.prefix, args.N, args.k))
     if wp_num > 0 then
-        wp = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
-        return epics.get(wp)
+        local wp_pv = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
+        local reached_inp_pv = string.format("%sPath%d:%d:Reached.INP",args.prefix,args.N,args.k)
+        local wp_reached_pv = string.format("%s:Reached CP",wp_pv)
+        epics.put(reached_inp_pv, wp_reached_pv)
+        return epics.get(wp_pv)
     else
         return ""
     end
