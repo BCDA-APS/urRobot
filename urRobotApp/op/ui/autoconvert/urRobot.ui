@@ -473,7 +473,7 @@ caMenu{
                 <string>Path 1;Path 2;Path 3</string>
             </property>
             <property name="files">
-                <string>path.adl;path.adl;path.adl</string>
+                <string>path_less.adl;path_less.adl;path_less.adl</string>
             </property>
             <property name="args">
                 <string>P=$(P),N=1;P=$(P),N=2;P=$(P),N=3</string>

@@ -1,12 +1,12 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path.adl"
+	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path_more.adl"
 	version=030111
 }
 display {
 	object {
-		x=438
-		y=108
+		x=428
+		y=100
 		width=415
 		height=825
 	}
@@ -3301,7 +3301,7 @@ menu {
 }
 oval {
 	object {
-		x=35
+		x=40
 		y=35
 		width=15
 		height=15
@@ -3328,7 +3328,7 @@ text {
 }
 oval {
 	object {
-		x=35
+		x=40
 		y=35
 		width=15
 		height=15
@@ -4240,4 +4240,20 @@ oval {
 		vis="if not zero"
 		chan="$(P)Path$(N):1:Reached"
 	}
+}
+"related display" {
+	object {
+		x=360
+		y=5
+		width=50
+		height=20
+	}
+	display[0] {
+		name="path_less.adl"
+		args="P=$(P),N=$(N)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=63
+	label="Less"
 }

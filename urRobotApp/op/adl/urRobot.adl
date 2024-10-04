@@ -235,17 +235,17 @@ text {
 	}
 	display[0] {
 		label="Path 1"
-		name="path.adl"
+		name="path_less.adl"
 		args="P=$(P),N=1"
 	}
 	display[1] {
 		label="Path 2"
-		name="path.adl"
+		name="path_less.adl"
 		args="P=$(P),N=2"
 	}
 	display[2] {
 		label="Path 3"
-		name="path.adl"
+		name="path_less.adl"
 		args="P=$(P),N=3"
 	}
 	clr=0
