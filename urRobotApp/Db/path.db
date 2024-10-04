@@ -1,3 +1,6 @@
+record(stringout, "$(P)Path$(N)") {
+    field(VAL, "$(DESC=Path $(N))")
+}
 record(luascript, "$(P)Path$(N):Go") {
     field(DESC, "Executes path $(N)")
     field(CODE, "@paths.lua path_go({prefix='$(P)',N=$(N),kmax=$(KMAX)})")

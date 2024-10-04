@@ -234,21 +234,11 @@ text {
 		height=25
 	}
 	display[0] {
-		label="Path 1"
-		name="path_less.adl"
-		args="P=$(P),N=1"
-	}
-	display[1] {
-		label="Path 2"
-		name="path_less.adl"
-		args="P=$(P),N=2"
-	}
-	display[2] {
-		label="Path 3"
-		name="path_less.adl"
-		args="P=$(P),N=3"
+		label="Path"
+		name="topPaths5x.adl"
+		args="P=$(P),N1=1,N2=2,N3=3,N4=4,N5=5"
 	}
 	clr=0
 	bclr=17
-	label="-   Paths"
+	label="-Paths"
 }

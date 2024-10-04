@@ -464,22 +464,22 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-   Paths</string>
+                <string>-Paths</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string>Path 1;Path 2;Path 3</string>
+                <string>Path</string>
             </property>
             <property name="files">
-                <string>path_less.adl;path_less.adl;path_less.adl</string>
+                <string>topPaths5x.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),N=1;P=$(P),N=2;P=$(P),N=3</string>
+                <string>P=$(P),N1=1,N2=2,N3=3,N4=4,N5=5</string>
             </property>
             <property name="removeParent">
-                <string>false;false;false</string>
+                <string>false</string>
             </property>
         </widget>
         <zorder>caLabel_0</zorder>
