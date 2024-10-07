@@ -99,7 +99,10 @@ asynStatus RTDEInOut::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     // RTDEIOInterface has no isConnected field for us to check
 
     if (function == speedSliderIndex_) {
-        spdlog::debug("Setting speed slider to {}", value);
+        if ((static_cast<int>(value * 1000) % 10) == 0) {
+            // so we don't print too many values
+            spdlog::debug("Setting speed slider to {:.2f}", value);
+        }
         comm_ok = rtde_io_->setSpeedSlider(value);
     } else if (function == setVoltageAOUT0Index_) {
         spdlog::debug("Setting analog output voltage 0 to {}", value);
