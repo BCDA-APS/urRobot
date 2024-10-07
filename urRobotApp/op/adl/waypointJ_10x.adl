@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=566
-		y=1052
+		x=601
+		y=384
 		width=400
 		height=325
 	}
@@ -1480,4 +1480,19 @@ oval {
 		vis="if zero"
 		chan="$(P)Control:AsyncMoveDone"
 	}
+}
+"message button" {
+	object {
+		x=75
+		y=35
+		width=50
+		height=20
+	}
+	control {
+		chan="$(P)Control:stopJ.PROC"
+		clr=31
+		bclr=20
+	}
+	label="STOP"
+	press_msg="1"
 }

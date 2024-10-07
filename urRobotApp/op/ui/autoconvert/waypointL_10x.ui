@@ -4,8 +4,8 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>1025</x>
-            <y>986</y>
+            <x>156</x>
+            <y>396</y>
             <width>400</width>
             <height>325</height>
         </rect>
@@ -3710,6 +3710,45 @@ caMenu{
                 <string>$(P)Control:AsyncMoveDone</string>
             </property>
         </widget>
+        <widget class="caMessageButton" name="caMessageButton_20">
+            <property name="geometry">
+                <rect>
+                    <x>75</x>
+                    <y>35</y>
+                    <width>50</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="fontScaleMode">
+                <enum>EPushButton::WidthAndHeight</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Control:stopL.PROC</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>253</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="label">
+                <string>STOP</string>
+            </property>
+            <property name="pressMessage">
+                <string>1</string>
+            </property>
+            <property name="colorMode">
+                <enum>caMessageButton::Static</enum>
+            </property>
+        </widget>
         <zorder>caLabel_0</zorder>
         <zorder>caGraphics_0</zorder>
         <zorder>caLabel_1</zorder>
@@ -3804,6 +3843,7 @@ caMenu{
         <zorder>caMessageButton_18</zorder>
         <zorder>caTextEntry_9</zorder>
         <zorder>caMessageButton_19</zorder>
+        <zorder>caMessageButton_20</zorder>
     </widget>
 </widget>
 </ui>

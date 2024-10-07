@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=763
-		y=815
+		x=1164
+		y=674
 		width=823
 		height=726
 	}
@@ -2651,4 +2651,19 @@ text {
 		fill="outline"
 	}
 	textix="Teach Mode:"
+}
+"message button" {
+	object {
+		x=440
+		y=145
+		width=60
+		height=25
+	}
+	control {
+		chan="$(P)Control:Stop.PROC"
+		clr=31
+		bclr=20
+	}
+	label="STOP"
+	press_msg="1"
 }

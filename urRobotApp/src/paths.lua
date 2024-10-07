@@ -46,8 +46,19 @@ end
 function path_go(args)
 
     local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
+    local path_stop_pv = string.format("%sPath%d:Stop", args.prefix, args.N)
+    epics.put(path_stop_pv, 0)
+    local stopped = 0
 
     for i = 1,args.kmax do
+        
+        -- check if Path$(N):Stop is called
+        local path_stop_val = epics.get(path_stop_pv)
+        if path_stop_val == 1 then
+            stopped = 1
+            break
+        end
+
         local wp_type = epics.get(string.format("%sPath%d:%d:Type", args.prefix, args.N, i))
         wp_type = (wp_type == 0.0) and "L" or "J"
         local wp_num = epics.get(string.format("%sPath%d:%d:Number", args.prefix, args.N, i))
@@ -91,7 +102,11 @@ function path_go(args)
             end
         end
     end
-    print(string.format("Path %d completed!", args.N))
+    if stopped then
+        print(string.format("Path %d stopped", args.N))
+    else
+        print(string.format("Path %d completed!", args.N))
+    end
 end
 
 

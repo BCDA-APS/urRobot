@@ -356,7 +356,9 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
     } else if (function == stopJIndex_) {
-        spdlog::debug("Stopping joint move (only works in asynchronous mode)");
+        this->async_running_ = AsyncRunning::False;
+        this->async_status_ = AsyncMotionStatus::Done;
+        spdlog::debug("Stopping joint move");
         rtde_control_->stopJ(); // asynchronous=true
     }
 
@@ -373,7 +375,9 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
     } else if (function == stopLIndex_) {
-        spdlog::debug("Stopping linear TCP move (only works in asynchronous mode)");
+        this->async_running_ = AsyncRunning::False;
+        this->async_status_ = AsyncMotionStatus::Done;
+        spdlog::debug("Stopping linear move");
         rtde_control_->stopL();
     }
 

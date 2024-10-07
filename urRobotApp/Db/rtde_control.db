@@ -47,6 +47,10 @@ record(bo, "$(P)Control:StopControlScript")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))STOP_CONTROL_SCRIPT")
 }
 
+#======================
+# Misc
+#======================
+
 record(bo, "$(P)Control:Asynchronous")
 {
     field(DESC, "If 1, moves will be asynchronous")
@@ -100,6 +104,12 @@ record(bo, "$(P)Control:TeachMode")
     field(ONAM, "On")
     field(VAL, 0)
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TEACH_MODE")
+}
+
+record(fanout, "$(P)Control:Stop")
+{
+    field(LNK0, "$(P)Control:stopJ")
+    field(LNK1, "$(P)Control:stopL")
 }
 
 #======================

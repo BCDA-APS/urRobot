@@ -4260,3 +4260,18 @@ oval {
 	limits {
 	}
 }
+"message button" {
+	object {
+		x=235
+		y=10
+		width=50
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):Stop"
+		clr=30
+		bclr=20
+	}
+	label="Stop"
+	release_msg="1"
+}
