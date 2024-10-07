@@ -15,46 +15,109 @@ nav_order: 3
 If you haven't yet added the EPICS urRobot support to an IOC, please see
 the Quickstart page for instructions.
 
-Most of the basic functionality can be done through the provided GUIs using either
+Most features of the robot are accessable through the provided GUIs using either
 MEDM, caQtDM, or CSS-Phoebus. To start the screens, three bash scripts are
-provided: `start_phoebus_urRobot` `start_MEDM_urRobot`, and `start_caQtdm_urRobot`
+provided: `start_phoebus_urRobot` `start_MEDM_urRobot`, and `start_caQtdm_urRobot`. Copy the script(s)
+you want to the top level directory of your IOC. The below examples will show the caQtDM GUIs, however
+the MEDM and CSS-Phoebus versions are nearly identical. Users are encourages to create their own GUIs
+in addition to the ones provided for more specific needs.
 
-## CSS Phoebus GUIs
+## Main Menu
 
-After running the `start_phoebus_urRobot` a script, the below screen will open.
-The various buttons here will open the additional screens.
+After running the `start_caQtDM_urRobot` script, you will be greeted with a menu which
+contains links to all the other provided screens.
 
-<img src="./assets/GUIs/urRobot_top_css.png" alt="css-top" width="500">
-
-
-**Dashboard:**  
-<img src="./assets/GUIs/urRobot_dashboard_css.png" alt="css-dashboard" width="500">
-
-**RTDE Receive:**  
-<img src="./assets/GUIs/urRobot_receive_css.png" alt="css-receive" width="600">
-
-**RTDE I/O**  
-<img src="./assets/GUIs/urRobot_io_css.png" alt="css-io" width="600">
-
-**RTDE Control:**  
-<img src="./assets/GUIs/urRobot_control_css.png" alt="css-receive" width="600">
-
-**Robotiq Gripper**  
-<img src="./assets/GUIs/urRobot_gripper_css.png" alt="css-gripper" width="600">
-
-**WaypointL**  
-<img src="./assets/GUIs/urRobot_waypointL_css.png" alt="css-waypointL" width="600">
-
-**Waypoint Action**  
-<img src="./assets/GUIs/urRobot_waypointL_action_css.png" alt="css-waypointL-action" width="600">
+<img src="./assets/GUIs/ui/urRobot_top.png" alt="ui-waypointJ" width="400">
 
 
-## MEDM/caQtDM
+## UR Dashboard
 
-MEDM screens are provided and can be started with provided `start_MEDM_urRobot` script. These screens have been
-converted to caQtDM as well and those can be started with `start_caQTDM_urRobot`.
+The dashboard screen provides access to the most basic features of the robot like powering on/off,
+and releasing brakes. It also allows a user to load and play URP programs that are saved in the robot controller.
+The input for the URP filename ($(P)Dashboard:LoadURP) is the name of the URP file that is present in the `/programs`
+directory on the robot controller.
 
-**TODO:** Add screenshots
+<img src="./assets/GUIs/ui/urRobot_dashboard.png" alt="ui-dashboard" width="500">
+
+
+## RTDE Receive
+
+The RTDE Receive screen shows all the basic static information about the robot. The only interactive
+element is the connect/disconnect buttons which allow for connecting and disconnecting to the RTDE
+receive interface.
+
+<img src="./assets/GUIs/ui/urRobot_receive.png" alt="ui-receive" width="400">
+
+## RTDE I/O
+The I/O screen allows for setting and reading digital and analog inputs and outputs on the robot controller.
+
+<img src="./assets/GUIs/ui/urRobot_io.png" alt="ui-io" width="400">
+
+
+## RTDE Control
+The RTDE Control screen can be used to move the robot by directly commanding joint or end-effector positions.
+It also has a button to enable/disable freedrive mode.
+
+<img src="./assets/GUIs/ui/urRobot_control.png" alt="ui-control" width="600">
+
+Although the GUI may look similar to typical EPICS motor screens, the robot's joint are *not* true EPICS motors.
+The first thing to note is the "RESET" buttons, which write to the `$(P)Control:ResetJCmd` and `$(P)Control:ResetPoseCmd`
+PVs respectively. When these PVs process they store the current measured values in the commanded values, similiar to
+EPICS motor record behaivor after motion completes. Before tweaking joint or TCP values, clicking RESET is a good idea.
+
+The "Go" toggles (which write to the `$(P)Control:AutoMoveJ` or `$(P)Control:AutoMoveL` PVs) are similar to the Go/Move
+options in the EPICS motor record. For example, to move Joint 1 to -75deg, if "Go" is set to "No" (`$(P)Control:AutoMoveJ`=0),
+then you must set Joint 1 to -75deg and click "Move" (`$(P)Control:moveJ`). If "Go" is set to "Yes" (`$(P)Control:AutoMoveJ`=1),
+the robot will begin moving as soon as the commanded values change, so typing -75 in the box for Joint 1 and clicking enter will
+start the robot moving. The same goes for the Cartesian moves.
+
+
+## Robotiq Gripper
+
+Currently the Robotiq Hand-E gripper is the only supported gripper.
+The gripper screen has buttons for opening, closing, connecting, activating, and auto-calibrating.
+It also shows the open/closed state, actual position, and motion status.
+
+<img src="./assets/GUIs/ui/urRobot_gripper.png" alt="ui-robotiq-gripper" width="400">
+
+Although the auto-calibration works quite well, it requires the gripper to move through it's full range to determine
+the correct open and closed positions, and must be re-calibrated each IOC restart. To avoid this, 
+you can find the open and closed positions for your gripper and specify them when loading the gripper support
+by passing the `MIN_POS` and `MAX_POS` macros to `robotiq_gripper.db`. Additionally the `AUTO_ACTIVATE` macro
+can be set to YES (or NO) to automatically activate the gripper which must be done after a power cycle.
+
+A command line tool for finding the min/max positions is provided with this EPICS support.
+In the bin directory of the urRobot support (for example `urRobot/bin/rhel9-x86_64/`) you will find a `calibrate_gripper`
+program. Running this with your robot's IP as argument will give you the min/max positions.
+```bash
+$ ./calibrate_gripper 164.54.100.100
+Auto calibrating gripper...
+Gripper calibrated
+
+Min (closed) = 3
+Max (open)   = 248
+```
+For my gripper, I found the minimum and maximum positions to be 3 and 248 respectively, so I loaded load `robotiq_gripper.db`
+as follows:
+```
+dbLoadRecords("$(URROBOT)/db/robotiq_gripper.db", "P=$(PREFIX), MIN_POS=3, MAX_POS=248, AUTO_ACTIVATE=YES, PORT=asyn_gripper, ADDR=0")
+```
+
+## Waypoints
+
+**TODO**
+
+<img src="./assets/GUIs/ui/urRobot_waypointJ.png" alt="ui-waypointJ" width="400">
+<img src="./assets/GUIs/ui/urRobot_action_calcL_open.png" alt="ui-calcL" width="400">
+
+
+## Paths
+
+**TODO**
+
+<img src="./assets/GUIs/ui/urRobot_paths_top.png" alt="ui-path-top" width="500">
+<img src="./assets/GUIs/ui/urRobot_path1_less.png" alt="ui-path1-less" width="500">
+
 
 ## Scripting
 

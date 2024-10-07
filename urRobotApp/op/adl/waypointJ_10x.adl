@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=601
-		y=384
+		x=997
+		y=938
 		width=400
 		height=325
 	}
@@ -1495,4 +1495,43 @@ oval {
 	}
 	label="STOP"
 	press_msg="1"
+}
+text {
+	object {
+		x=145
+		y=55
+		width=100
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Description"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=285
+		y=45
+		width=60
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Waypoint"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=285
+		y=55
+		width=60
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Action"
+	align="horiz. centered"
 }

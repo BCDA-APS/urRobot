@@ -4,8 +4,8 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>283</x>
-            <y>790</y>
+            <x>273</x>
+            <y>782</y>
             <width>404</width>
             <height>380</height>
         </rect>
@@ -3050,6 +3050,9 @@ caMenu{
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
             </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
             <property name="geometry">
                 <rect>
                     <x>6</x>
@@ -3057,9 +3060,6 @@ caMenu{
                     <width>40</width>
                     <height>10</height>
                 </rect>
-            </property>
-            <property name="alignment">
-                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
         <widget class="caLabel" name="caLabel_22">

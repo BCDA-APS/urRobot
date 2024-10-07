@@ -16,7 +16,8 @@ Robots e-series robot arm. It works by mapping function calls in the
 ## Key Features
 - Access to large number of UR robot commands and status information
 - Control individual joints and end-effector position
-- Define joint or Cartesian space waypoints in EPICS PVs which have associated `move` functions which move the robot to a waypoint
+- Define joint or Cartesian space waypoints wtih associated waypoint actions in EPICS PVs
+- Define paths to move through a series of waypoints
 - GUIs in CSS-Phoebus, MEDM, and caQtDM
 
 ## Interfaces
@@ -24,12 +25,10 @@ The primary method for controlling Universal Robots remotely is through connecti
 to various servers hosted on the robot's controller. The `ur_rtde` library breaks up functionality
 into four specific clients, or *interfaces*. For maximum flexibility, each interface in the
 `ur_rtde` library can be loaded separately and each accepts multiple connections,
-except the RTDE Control interface which you can only connect to in a single instance.
+except the RTDE Control interface which only support a single connection.
 
 For an example on how to load all the available interfaces in a IOC startup script, see `urRobotApp/iocsh/urRobot.iocsh`.
-In short, each "Config" function such as `URDashboardConfig` takes a name for the asyn port to create for the interface
-and the IP address of the robot. Then to load the records, you must define the IOC prefix P,
-asyn port PORT, and asyn address ADDR (which is typically zero).
+
 
 ### Dashboard Interface
 
@@ -38,13 +37,6 @@ The dashboard interface provides basic functionality for interacting with the ro
 - Turning the robot and controller power on/off
 - Releasing the breaks, closing popups, and restarting the safety configuration
 - Basic status information such as the robot's mode, runtime state, and safety status
-
-Below is an example of how the dashboard interface can be loaded from and an EPICS IOC startup script:
-```
-URDashboardConfig("asyn_dash", "192.168.1.1")
-dbLoadRecords("$(URROBOT)/db/dashboard.db", "P=$(PREFIX), PORT=asyn_dash, ADDR=0")
-```
-
 
 ### RTDE Receive Interface
 
@@ -58,31 +50,28 @@ The RTDE Receive Interface provides in-depth status information on the robot inc
 - Digital inputs and outputs
 - Analog inputs and outputs
 
-Below is an example of how the RTDE Receive interface can be loaded from an EPICS IOC startup script
-```
-RTDEReceiveConfig("asyn_rtde_recv", "192.168.1.1")
-dbLoadRecords("$(URROBOT)/db/rtde_receive.db", "P=$(PREFIX), PORT=asyn_rtde_recv, ADDR=0")
-```
-
 ### RTDE Control Interface
 
 The RTDE Control Interface provides functions for moving the robot including:
 - Moving individual joints to specified angles
 - Moving the end-effector a specified pose
 
-Below is an example of how the RTDE Control interface can be loaded from an EPICS IOC startup script
-```
-RTDEControlConfig("asyn_rtde_ctrl", "192.168.1.1")
-dbLoadRecords("$(URROBOT)/db/rtde_control.db", "P=$(PREFIX), PORT=asyn_rtde_ctrl, ADDR=0")
-```
 
 ### RTDE I/O Interface
 
 The RTDE I/O interface provides functions for setting the digital and analog output pins on the robot
-controller.
+controller, as well as the ability to adjust the speed slider.
 
-Below is an example of how the RTDE I/O interface can be loaded from an EPICS IOC startup script
-```
-RTDEInOutConfig("asyn_rtde_io", "192.168.1.1")
-dbLoadRecords("$(URROBOT)/db/rtde_io.db", "P=$(PREFIX), PORT=asyn_rtde_io, ADDR=0")
-```
+
+## Additional Features
+
+### Waypoints
+Cartesian (linear in tool space) and joint space waypoints in can be defined using the provided `waypointJ.db`
+and `waypointL.db` databased. It is often most useful to load many waypoints using a substitutions file
+and configure the waypoints later at runtime. An example substitutions file can be found
+at `urRobotApp/iocsh/waypoints.substitutions`.
+
+### Paths
+Paths of waypoints can be defined using the provided `path.db` and `path_waypoint.db` databases. Like waypoints, it is
+often useful to load several paths with a number of possible points using a substitutions file. An example can be found
+at `urRobotApp/iocsh/paths.substitutions`.

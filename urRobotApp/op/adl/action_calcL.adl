@@ -1,12 +1,12 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/userCalcOut.adl"
+	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/action_calcL.adl"
 	version=030111
 }
 display {
 	object {
-		x=283
-		y=790
+		x=273
+		y=782
 		width=404
 		height=380
 	}
@@ -1189,6 +1189,7 @@ text {
 		clr=14
 	}
 	textix="ACTION"
+	align="horiz. centered"
 }
 text {
 	object {
