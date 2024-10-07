@@ -1,0 +1,4 @@
+$(P)Path$(N):$(K):Type.VAL
+$(P)Path$(N):$(K):Number.VAL
+$(P)Path$(N):$(K):ActionOverride.VAL
+$(P)Path$(N):$(K):Enabled

@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=905
-		y=138
+		x=895
+		y=130
 		width=415
 		height=325
 	}
@@ -86,18 +86,6 @@ display {
 		289315,
 		1a7309,
 	}
-}
-text {
-	object {
-		x=0
-		y=0
-		width=150
-		height=25
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Path $(N)"
 }
 text {
 	object {
@@ -1576,4 +1564,19 @@ oval {
 	clr=0
 	bclr=63
 	label="More"
+}
+"text update" {
+	object {
+		x=0
+		y=0
+		width=150
+		height=25
+	}
+	monitor {
+		chan="$(P)Path$(N)"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
 }

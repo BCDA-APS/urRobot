@@ -4,8 +4,8 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>401</x>
-            <y>959</y>
+            <x>391</x>
+            <y>951</y>
             <width>379</width>
             <height>244</height>
         </rect>
@@ -199,9 +199,9 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="fillstyle">
@@ -209,9 +209,9 @@ caMenu{
             </property>
             <property name="lineColor">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="linestyle">
@@ -577,9 +577,9 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="fillstyle">
@@ -587,9 +587,9 @@ caMenu{
             </property>
             <property name="lineColor">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="linestyle">
@@ -755,6 +755,84 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
+        <widget class="caGraphics" name="caGraphics_2">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>125</x>
+                    <y>60</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)RobotiqGripper:Connected</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_3">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>125</x>
+                    <y>90</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)RobotiqGripper:IsActive</string>
+            </property>
+        </widget>
         <zorder>caLabel_0</zorder>
         <zorder>caGraphics_0</zorder>
         <zorder>caLabel_1</zorder>
@@ -764,6 +842,8 @@ caMenu{
         <zorder>caLabel_5</zorder>
         <zorder>caGraphics_1</zorder>
         <zorder>caLabel_6</zorder>
+        <zorder>caGraphics_2</zorder>
+        <zorder>caGraphics_3</zorder>
         <zorder>caMessageButton_0</zorder>
         <zorder>caLineEdit_0</zorder>
         <zorder>caMessageButton_1</zorder>

@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=401
-		y=959
+		x=391
+		y=951
 		width=379
 		height=244
 	}
@@ -122,7 +122,7 @@ oval {
 		height=20
 	}
 	"basic attribute" {
-		clr=60
+		clr=15
 	}
 	"dynamic attribute" {
 		vis="if not zero"
@@ -252,7 +252,7 @@ oval {
 		height=20
 	}
 	"basic attribute" {
-		clr=60
+		clr=15
 	}
 	"dynamic attribute" {
 		vis="if not zero"
@@ -315,4 +315,34 @@ text {
 	}
 	label="Activate"
 	press_msg="1"
+}
+oval {
+	object {
+		x=125
+		y=60
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)RobotiqGripper:Connected"
+	}
+}
+oval {
+	object {
+		x=125
+		y=90
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)RobotiqGripper:IsActive"
+	}
 }
