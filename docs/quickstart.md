@@ -111,7 +111,6 @@ URGripperConfig("asyn_gripper", "164.54.104.148")
 dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/robotiq_gripper.db", "P=bcur:, R=, MIN_POS=3, MAX_POS=248, AUTO_ACTIVATE=YES, PORT=asyn_gripper, ADDR=0")
 # add URROBOT/urRobotApp/src to LUA_SCRIPT_PATH for waypoint functionality
 epicsEnvSet("LUA_SCRIPT_PATH", "lua_scripts:/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/src")
--- iocshLoad("simple_urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
 dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX)")
 dbLoadTemplate("paths.substitutions", "P=$(PREFIX)")
 ```

@@ -1,5 +1,6 @@
 # Type of K'th waypoint in path N
 record(mbbo, "$(P)Path$(N):$(K):Type") {
+    field(DESC, "Type of waypoint for waypoint in path")
     field(ZRST,"Linear") # Cartesian waypoint (WaypointL)
     field(ONST,"Joint") # Joint waypoint (WaypointJ)
     field(VAL, "$(TYPE=0)")
@@ -8,12 +9,14 @@ record(mbbo, "$(P)Path$(N):$(K):Type") {
 
 # Waypoint number of K'th waypoint in path N
 record(longout, "$(P)Path$(N):$(K):Number") {
+    field(DESC, "Waypoint number for waypoint in path")
     field(VAL, "$(WP_NUM=0)")
     field(FLNK, "$(P)Path$(N):$(K):get_wp_info.PROC")
 }
 
 # Action override of K'th waypoint in path N
 record(mbbo, "$(P)Path$(N):$(K):ActionOverride") {
+    field(DESC, "Action override for waypoint in path")
     field(ZRST, "Custom")
     field(ONST, "Open gripper")
     field(TWST, "Close gripper")
@@ -23,7 +26,7 @@ record(mbbo, "$(P)Path$(N):$(K):ActionOverride") {
 
 # Enable/disable K'th waypoint in path N
 record(bo, "$(P)Path$(N):$(K):Enabled") {
-    field(DESC, "1 if path point enabled, else 0")
+    field(DESC, "1 if waypoint in path enabled, else 0")
     field(ZNAM, "0")
     field(ONAM, "1")
     field(VAL, 0)
@@ -36,11 +39,13 @@ record(luascript, "$(P)Path$(N):$(K):get_wp_info") {
 }
 
 record(stringin, "$(P)Path$(N):$(K):Desc") {
+    field(DESC, "Description of waypoint in path")
     field(INP, "$(P)Path$(N):$(K):get_wp_info.SVAL CP")
 }
 
 # INP link to Waypoint:Reached set by get_wp_info func
 record(ai, "$(P)Path$(N):$(K):Reached") {
+    field(DESC, "1 if robot at waypoint, else 0")
 }
 
 # NOTE: lua epics.put directly to ActionOpt PV throws mutex error,

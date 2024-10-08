@@ -152,11 +152,12 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:WaypointActionDoneCalc   | calcout     | Defines when waypoint action is considered done |
 | Control:WaypointActionDone   | bo     | 1 when waypoint action is done else 0 |
 | Control:TeachMode   | bo     | Enables/disables teach (freedrive) mode |
+| Control:Stop    | bo     | Stops motion from moveJ and moveL when written to 1 |
 | Control:moveJ    | bo     | Calls moveJ for the commanded joint angles J1Cmd-J6Cmd     |
 | Control:JointSpeed    | ao     | Joint speeds for moveJ     |
 | Control:JointAcceleration    | ao     | Joint accelerations for moveJ     |
 | Control:stopJ    | bo     | Stops motion from moveJ only if asynchronous=True     |
-| Control:auto_moveJ    | bo     | If 1, moveJ runs when JxCmd changes     |
+| Control:AutoMoveJ    | bo     | If 1, moveJ runs when JxCmd changes     |
 | Control:ResetJCmd    | seq     | Resets J1Cmd-J6Cmd to current joint angles     |
 | Control:J1Cmd    | ao     | Commanded angle(deg) for joint 1     |
 | Control:J1TweakVal    | ao     | Joint 1 tweak step size     |
@@ -186,6 +187,7 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:J6TweakRev    | bo     | Tweak joint 6 backward by J6TweakVal     |
 | Control:moveL    | bo     | Move to TCP pose linearly     |
 | Control:stopL    | bo     | Stops motion from moveL only if asynchronous=True     |
+| Control:AutoMoveL    | bo     | If 1, moveL runs when PoseCmd changes     |
 | Control:ResetPoseCmd    | seq     | Resets the commanded TCP pose to current TCP pose     |
 | Control:PoseXCmd    | ao     | Commanded TCP X     |
 | Control:PoseXTweakVal    | ao     | X TCP pose tweak step size     |
@@ -213,7 +215,6 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:PoseYawTweakRev    | bo     | Tweak TCP yaw backward     |
 
 ***
-
 
 ## rtde_io.db
 
@@ -333,3 +334,34 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | WaypointL:$(N):Reset    | seq     | Sets waypoint to the current location     |
 | WaypointL:$(N):moveL    | bo     | Executes a moveL to the waypoint if waypoint is enabled    |
 
+***
+
+## path.db
+
+***Outputs***
+
+| Record  | Type   | Description   |
+|-------------- | -------------- | -------------- |
+| Path$(N)    | stringout     | Description of path     |
+| Path$(N):Go    | luascript     | Executes path     |
+| Path$(N):Stop    | bo     | Stops motion and aborts path     |
+
+***
+
+## path_waypoint.db
+
+***Outputs***
+
+| Record  | Type   | Description   |
+|-------------- | -------------- | -------------- |
+| Path$(N):$(K):Type    | mbbo     | Type of waypoint for waypoint in path     |
+| Path$(N):$(K):Number    | longout     | Waypoint number for waypoint in path     |
+| Path$(N):$(K):ActionOverride    | mbbo     | Action override for waypoint in path     |
+| Path$(N):$(K):Enabled    | bo     | 1 if waypoint in path enabled, else 0     |
+
+***Inputs***
+
+| Record  | Type   | Description   |
+|-------------- | -------------- | -------------- |
+| Path$(N):$(K):Reached    | ai     | 1 if robot at waypoint, else 0     |
+| Path$(N):$(K):Desc    | stringin     | Description of waypoint in path     |

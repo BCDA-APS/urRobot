@@ -21,13 +21,13 @@ Robots e-series robot arm. It works by mapping function calls in the
 - GUIs in CSS-Phoebus, MEDM, and caQtDM
 
 ## Interfaces
-The primary method for controlling Universal Robots remotely is through connecting a client
-to various servers hosted on the robot's controller. The `ur_rtde` library breaks up functionality
+The primary method for controlling Universal Robots remotely is through connecting a TCP client
+to various servers hosted by the robot's controller. The `ur_rtde` library breaks up functionality
 into four specific clients, or *interfaces*. For maximum flexibility, each interface in the
 `ur_rtde` library can be loaded separately and each accepts multiple connections,
 except the RTDE Control interface which only support a single connection.
 
-For an example on how to load all the available interfaces in a IOC startup script, see `urRobotApp/iocsh/urRobot.iocsh`.
+For more details on how to add the EPICS UR Robot support to an IOC, see [Quickstart]({{ site.baseurl }}/quickstart.html).
 
 
 ### Dashboard Interface
@@ -37,6 +37,7 @@ The dashboard interface provides basic functionality for interacting with the ro
 - Turning the robot and controller power on/off
 - Releasing the breaks, closing popups, and restarting the safety configuration
 - Basic status information such as the robot's mode, runtime state, and safety status
+
 
 ### RTDE Receive Interface
 
@@ -50,6 +51,7 @@ The RTDE Receive Interface provides in-depth status information on the robot inc
 - Digital inputs and outputs
 - Analog inputs and outputs
 
+
 ### RTDE Control Interface
 
 The RTDE Control Interface provides functions for moving the robot including:
@@ -59,8 +61,9 @@ The RTDE Control Interface provides functions for moving the robot including:
 
 ### RTDE I/O Interface
 
-The RTDE I/O interface provides functions for setting the digital and analog output pins on the robot
+The RTDE I/O interface provides functions for reading and writing to the digital and analog I/O pins on the robot
 controller, as well as the ability to adjust the speed slider.
+
 
 
 ## Additional Features
@@ -70,6 +73,7 @@ Cartesian (linear in tool space) and joint space waypoints in can be defined usi
 and `waypointL.db` databased. It is often most useful to load many waypoints using a substitutions file
 and configure the waypoints later at runtime. An example substitutions file can be found
 at `urRobotApp/iocsh/waypoints.substitutions`.
+
 
 ### Paths
 Paths of waypoints can be defined using the provided `path.db` and `path_waypoint.db` databases. Like waypoints, it is

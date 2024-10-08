@@ -1,0 +1,80 @@
+#!/bin/bash
+
+if [ -f "configure/RELEASE.local" ]; then
+    RELEASE_FILE="configure/RELEASE.local";
+elif [ -f "configure/RELEASE" ]; then
+    RELEASE_FILE="configure/RELEASE";
+else
+    echo "Can't find release file"
+    exit 1
+fi
+
+function find_module() {
+    local module=$1
+    local module_path=$(grep "^${module}[[:space:]]*=" "${RELEASE_FILE}" | sed -E "s/^${module}[[:space:]]*=[[:space:]]*//" | tr -d '"')
+    local support_path=$(grep "^SUPPORT[[:space:]]*=" "${RELEASE_FILE}" | sed -E "s/^SUPPORT[[:space:]]*=[[:space:]]*//" | tr -d '"')
+    local local_support_path=$(grep "^LOCAL_SUPPORT[[:space:]]*=" "${RELEASE_FILE}" | sed -E "s/^LOCAL_SUPPORT[[:space:]]*=[[:space:]]*//" | tr -d '"')
+    if [ -z "${module_path}" ]; then
+        echo "Module ${module} not found in release file"
+        exit 1
+    fi
+    module_path=$(echo "${module_path}" | sed "s/\$(TOP)/./g")
+    module_path=$(echo "${module_path}" | sed "s/\$(SUPPORT)/$(echo "${support_path}" | sed 's/[&/\]/\\&/g')/g")
+    module_path=$(echo "${module_path}" | sed "s/\$(LOCAL_SUPPORT)/$(echo "${local_support_path}" | sed 's/[&/\]/\\&/g')/g")
+    echo "${module_path}"
+}
+
+# Note: this won't work if there are multiple IOCs in iocBoot/
+# as it just gets the first prefix it finds
+function find_prefix() {
+    local pattern='epicsEnvSet\("PREFIX", "([^"]*)"\)'
+    grep -rPo "$pattern" . | while IFS= read -r line; do
+        if [[ $line =~ $pattern ]]; then
+            local value="${BASH_REMATCH[1]}"
+            echo ${value}
+            break
+        fi
+    done
+}
+
+##################################################
+
+# Define paths to display manager binaries
+CAQTDM=/APSshare/bin/caQtDM
+PHOEBUS=/APSshare/bin/phoebus
+MEDM=/APSshare/epics/extensions/bin/linux-x86_64/medm
+
+# Display manager to use
+DM="${1:-caqtdm}"
+
+# Find the relative path to the URROBOT support
+URROBOT_PATH=$(find_module "URROBOT")
+
+# Find the IOC prefix
+PREFIX=$(find_prefix)
+
+if [[ $DM == "caqtdm" ]]; then
+    export UI_DIR=${URROBOT_PATH}/urRobotApp/op/ui
+    export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${UI_DIR}
+    export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${UI_DIR}/autoconvert
+    ${CAQTDM} -style plastique -noMsg -macro "P=${PREFIX}" "urRobot.ui" &
+
+elif [[ $DM == "medm" ]]; then
+    export ADL_DIR=${URROBOT_PATH}/urRobotApp/op/adl
+    if [ -z "$EPICS_DISPLAY_PATH" ]; then
+        export EPICS_DISPLAY_PATH=${ADL_DIR}
+    else
+        export EPICS_DISPLAY_PATH=$EPICS_DISPLAY_PATH:${ADL_DIR}
+    fi
+    ${MEDM} -macro "P=${PREFIX}" -x "urRobot.adl" &
+
+elif [[ $DM == "phoebus" ]]; then
+    export EPICS_APP=$(cd "$(dirname "$BASH_SOURCE")"; cd -P "$(dirname "$(readlink "$BASH_SOURCE" || echo .)")"; pwd)
+    export EPICS_APP_BOB_DIR=${URROBOT_PATH}/urRobotApp/op/bob
+    cd ${EPICS_APP_BOB_DIR}
+    export BOB_FILE="$(pwd)/urRobot.bob" # needs an absolute path??
+    export BOB_FILE_MACROS="P=${PREFIX}"
+    ${PHOEBUS} -layout $EPICS_APP/phoebus.layout -resource "file:${BOB_FILE}?${BOB_FILE_MACROS}&target=window"
+else
+    echo "Display manager must be one of the following: caqtdm, medm, phoebus "
+fi 
