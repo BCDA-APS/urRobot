@@ -147,6 +147,12 @@ record(luascript, "$(P)WaypointJ:$(N):ActionOptSelect")
     field(CODE, "@action_opt.lua select({P='$(P)',R='',T='J',N='$(N)'})")
 }
 
+# Stores the last values of ActionDoneCalc and Action so they can
+# be restored if overriden by path records
+record(calcout, "$(P)WaypointJ:$(N):action_done_calc_save") {}
+record(bo, "$(P)WaypointJ:$(N):action_save") {}
+record(longout, "$(P)WaypointJ:$(N):action_opt_last") {}
+
 # 1 if robot is at waypoint within tolerance, otherwise 0
 record(luascript, "$(P)WaypointJ:$(N):Reached") {
     field(INPA, "$(P)Receive:ActualJointPositions0 CP")
