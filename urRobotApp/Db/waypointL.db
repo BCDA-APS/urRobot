@@ -134,11 +134,11 @@ record(luascript, "$(P)WaypointL:$(N):CopyActionLink")
 
 record(mbbi, "$(P)WaypointL:$(N):ActionOpt")
 {
-    field(VAL, 0)
-    field(PINI, 1)
-    field(ZRST, "Custom")
-    field(ONST, "Open gripper")
-    field(TWST, "Close gripper")
+    field(VAL, 1)
+    # field(PINI, 1)
+    # field(ZRST, "Custom")
+    # field(ONST, "Open gripper")
+    # field(TWST, "Close gripper")
     field(FLNK, "$(P)WaypointL:$(N):ActionOptSelect")
 }
 
@@ -147,12 +147,6 @@ record(luascript, "$(P)WaypointL:$(N):ActionOptSelect")
     field(INPA, "$(P)WaypointL:$(N):ActionOpt")
     field(CODE, "@action_opt.lua select({P='$(P)',R='',T='L',N='$(N)'})")
 }
-
-# Stores the last values of ActionDoneCalc and Action so they can
-# be restored if overriden by path records
-record(calcout, "$(P)WaypointL:$(N):action_done_calc_save") {}
-record(bo, "$(P)WaypointL:$(N):action_save") {}
-record(longout, "$(P)WaypointL:$(N):action_opt_last") {}
 
 # 1 if robot is at waypoint within tolerance, otherwise 0
 record(luascript, "$(P)WaypointL:$(N):Reached") {

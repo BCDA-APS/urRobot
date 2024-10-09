@@ -1535,3 +1535,18 @@ text {
 	textix="Action"
 	align="horiz. centered"
 }
+"related display" {
+	object {
+		x=290
+		y=10
+		width=75
+		height=20
+	}
+	display[0] {
+		name="waypoint_actions10x.adl"
+		args="P=$(P)"
+	}
+	clr=0
+	bclr=18
+	label="Actions"
+}

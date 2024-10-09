@@ -1,0 +1,30 @@
+record(calcout, "$(P)ActionDoneCalc1") {}
+record(bo, "$(P)ActionLink1"){}
+
+record(calcout, "$(P)ActionDoneCalc2") {}
+record(bo, "$(P)ActionLink2"){}
+
+record(calcout, "$(P)ActionDoneCalc3") {}
+record(bo, "$(P)ActionLink3"){}
+
+record(calcout, "$(P)ActionDoneCalc4") {}
+record(bo, "$(P)ActionLink4"){}
+
+record(calcout, "$(P)ActionDoneCalc5") {}
+record(bo, "$(P)ActionLink5"){}
+
+record(calcout, "$(P)ActionDoneCalc6") {}
+record(bo, "$(P)ActionLink6"){}
+
+record(calcout, "$(P)ActionDoneCalc7") {}
+record(bo, "$(P)ActionLink7"){}
+
+record(calcout, "$(P)ActionDoneCalc8") {}
+record(bo, "$(P)ActionLink8"){}
+
+record(calcout, "$(P)ActionDoneCalc9") {}
+record(bo, "$(P)ActionLink9"){}
+
+record(calcout, "$(P)ActionDoneCalc10") {}
+record(bo, "$(P)ActionLink10"){}
+

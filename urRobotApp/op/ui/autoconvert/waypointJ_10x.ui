@@ -3857,6 +3857,48 @@ caMenu{
                 </rect>
             </property>
         </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_10">
+            <property name="geometry">
+                <rect>
+                    <x>290</x>
+                    <y>10</y>
+                    <width>75</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>45</red>
+                    <green>127</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="label">
+                <string>Actions</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Menu</enum>
+            </property>
+            <property name="labels">
+                <string></string>
+            </property>
+            <property name="files">
+                <string>waypoint_actions10x.adl</string>
+            </property>
+            <property name="args">
+                <string>P=$(P)</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+        </widget>
         <zorder>caLabel_0</zorder>
         <zorder>caGraphics_0</zorder>
         <zorder>caLabel_1</zorder>
@@ -3955,6 +3997,7 @@ caMenu{
         <zorder>caTextEntry_9</zorder>
         <zorder>caMessageButton_19</zorder>
         <zorder>caMessageButton_20</zorder>
+        <zorder>caRelatedDisplay_10</zorder>
     </widget>
 </widget>
 </ui>
