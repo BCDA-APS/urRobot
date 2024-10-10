@@ -53,18 +53,23 @@ URROBOT_PATH=$(find_module "URROBOT")
 # Find the IOC prefix
 PREFIX=$(find_prefix)
 
+# NOTE: you may need to adjust paths to calc screens
 if [[ $DM == "caqtdm" ]]; then
     export UI_DIR=${URROBOT_PATH}/urRobotApp/op/ui
     export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${UI_DIR}
     export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${UI_DIR}/autoconvert
+    export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:/APSshare/epics/synApps_6_3/support/calc-R3-7-5/calcApp/op/ui
+    export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:/APSshare/epics/synApps_6_3/support/calc-R3-7-5/calcApp/op/ui/autoconvert/
     ${CAQTDM} -style plastique -noMsg -macro "P=${PREFIX}" "urRobot.ui" &
 
 elif [[ $DM == "medm" ]]; then
     export ADL_DIR=${URROBOT_PATH}/urRobotApp/op/adl
     if [ -z "$EPICS_DISPLAY_PATH" ]; then
         export EPICS_DISPLAY_PATH=${ADL_DIR}
+        export EPICS_DISPLAY_PATH=/APSshare/epics/synApps_6_3/support/calc-R3-7-5/calcApp/op/adl
     else
         export EPICS_DISPLAY_PATH=$EPICS_DISPLAY_PATH:${ADL_DIR}
+        export EPICS_DISPLAY_PATH=$EPICS_DISPLAY_PATH:/APSshare/epics/synApps_6_3/support/calc-R3-7-5/calcApp/op/adl
     fi
     ${MEDM} -macro "P=${PREFIX}" -x "urRobot.adl" &
 

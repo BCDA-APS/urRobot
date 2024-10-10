@@ -1,5 +1,4 @@
 # This database defines a single waypoint for the robot in joint space
-# including the gripper state where 0=open and 1=closed
 
 record(stringout, "$(P)WaypointJ:$(N)")
 {
@@ -173,15 +172,21 @@ record(luascript, "$(P)WaypointJ:$(N):ActionOptSelect")
     field(CODE, "@action_opt.lua select({P='$(P)',T='J',N='$(N)'})")
 }
 
-record(luascript, "$(P)WaypointJ:$(N):get_action_desc")
+record(printf, "$(P)WaypointJ:$(N):format_desc_pv")
 {
-    field(INPA, "$(P)WaypointJ:$(N):ActionOpt CP")
-    field(CODE, "@waypoints.lua get_action_desc({P='$(P)',T='J',N='$(N)'})")
-    field(PINI, 1)
+    field(INP0, "$(P)WaypointJ:$(N):ActionOpt CP")
+    field(FMT, "$(P)ActionLink%d.DESC")
 }
 
-record(stringin, "$(P)WaypointJ:$(N):ActionDesc") {
-    field(DESC, "Description of action for WaypointJ:$(N)")
+record(luascript, "$(P)WaypointJ:$(N):get_action_desc")
+{
+    field(INPA, "$(P)WaypointJ:$(N):ActionOpt")
+    field(INAA,"$(P)WaypointJ:$(N):format_desc_pv.VAL CP")
+    field(CODE, 'epics=require("epics");return (A == 0) and "" or epics.get(AA)')
+}
+
+record(stringin, "$(P)WaypointJ:$(N):ActionDesc")
+{
     field(INP, "$(P)WaypointJ:$(N):get_action_desc.SVAL CP")
 }
 

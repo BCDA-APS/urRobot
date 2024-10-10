@@ -130,13 +130,3 @@ function waypointL_reached(args)
     local reached2 = table.almost_equal(waypoint_pose_rpy, actual_pose_rpy, 0.1)
     return (reached1 and reached2) and 1 or 0
 end
-
-
-function get_action_desc(args)
-    local action_opt_val = A
-    if action_opt_val == 0 then
-        return ""
-    else
-        return epics.get(string.format("%sActionLink%d.DESC", args.P, action_opt_val))
-    end
-end

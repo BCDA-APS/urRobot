@@ -1,5 +1,4 @@
 # This database defines a single waypoint for the robot in Cartesian space
-# including the gripper state where 0=open and 1=closed
 
 record(stringout, "$(P)WaypointL:$(N)")
 {
@@ -168,17 +167,24 @@ record(calcout, "$(P)WaypointL:$(N):link_trigger_select")
 record(luascript, "$(P)WaypointL:$(N):ActionOptSelect")
 {
     field(INPA, "$(P)WaypointL:$(N):ActionOpt")
-    field(CODE, "@action_opt.lua select({P='$(P)',R='',T='L',N='$(N)'})")
+    field(CODE, "@action_opt.lua select({P='$(P)',T='L',N='$(N)'})")
+}
+
+record(printf, "$(P)WaypointL:$(N):format_desc_pv")
+{
+    field(INP0, "$(P)WaypointL:$(N):ActionOpt CP")
+    field(FMT, "$(P)ActionLink%d.DESC")
 }
 
 record(luascript, "$(P)WaypointL:$(N):get_action_desc")
 {
-    field(INPA, "$(P)WaypointL:$(N):ActionOpt CP")
-    field(CODE, "@waypoints.lua get_action_desc({P='$(P)',T='L',N='$(N)'})")
-    field(PINI, 1)
+    field(INPA, "$(P)WaypointL:$(N):ActionOpt")
+    field(INAA,"$(P)WaypointL:$(N):format_desc_pv.VAL CP")
+    field(CODE, 'epics=require("epics");return (A == 0) and "" or epics.get(AA)')
 }
 
-record(stringin, "$(P)WaypointL:$(N):ActionDesc") {
+record(stringin, "$(P)WaypointL:$(N):ActionDesc")
+{
     field(DESC, "Description of action for WaypointL:$(N)")
     field(INP, "$(P)WaypointL:$(N):get_action_desc.SVAL CP")
 }
