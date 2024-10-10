@@ -180,7 +180,7 @@ record(luascript, "$(P)WaypointL:$(N):get_action_desc")
 {
     field(INPA, "$(P)WaypointL:$(N):ActionOpt")
     field(INAA,"$(P)WaypointL:$(N):format_desc_pv.VAL CP")
-    field(CODE, 'epics=require("epics");return (A == 0) and "" or epics.get(AA)')
+    field(CODE, 'epics=require("epics"); return (A == 0) and "" or (#AA > 0) and epics.get(AA) or ""')
 }
 
 record(stringin, "$(P)WaypointL:$(N):ActionDesc")
