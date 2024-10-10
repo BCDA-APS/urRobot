@@ -17,10 +17,17 @@ record(longout, "$(P)Path$(N):$(K):Number") {
 # Action override of K'th waypoint in path N
 record(mbbo, "$(P)Path$(N):$(K):ActionOverride") {
     field(DESC, "Action override for waypoint in path")
-    field(ZRST, "Custom")
-    field(ONST, "Open gripper")
-    field(TWST, "Close gripper")
-    field(THST, "None")
+    field(ZRST, "None")
+    field(ONST, "Action 1")
+    field(TWST, "Action 2")
+    field(THST, "Action 3")
+    field(FRST, "Action 4")
+    field(FVST, "Action 5")
+    field(SXST, "Action 6")
+    field(SVST, "Action 7")
+    field(EIST, "Action 8")
+    field(NIST, "Action 9")
+    field(TEST, "Action 10")
     field(VAL, "$(ACTION=3)")
 }
 

@@ -113,13 +113,13 @@ record(seq, "$(P)WaypointL:$(N):set_not_done_seq")
     field(LNK0, "$(P)WaypointL:$(N):ActionDone PP")
 }
 
-# set by user to define when action is done
 record(calcout, "$(P)WaypointL:$(N):ActionDoneCalc")
 {
+    field(INPA, "") # set to selected action calc's .OUT by select func
+    field(CALC, "A")
     field(OUT, "$(P)WaypointL:$(N):ActionDone PP")
-    field(SCAN, ".1 second") # needed if inputs not CP
+    field(SCAN, ".1 second") # not sure why this is needed
 }
-
 
 record(bo, "$(P)WaypointL:$(N):ActionDone") 
 {
@@ -134,12 +134,35 @@ record(luascript, "$(P)WaypointL:$(N):CopyActionLink")
 
 record(mbbi, "$(P)WaypointL:$(N):ActionOpt")
 {
-    field(VAL, 1)
-    # field(PINI, 1)
-    # field(ZRST, "Custom")
-    # field(ONST, "Open gripper")
-    # field(TWST, "Close gripper")
+    field(VAL, 0)
+    field(ZRST, "None")
+    field(ONST, "Action 1")
+    field(TWST, "Action 2")
+    field(THST, "Action 3")
+    field(FRST, "Action 4")
+    field(FVST, "Action 5")
+    field(SXST, "Action 6")
+    field(SVST, "Action 7")
+    field(EIST, "Action 8")
+    field(NIST, "Action 9")
+    field(TEST, "Action 10")
     field(FLNK, "$(P)WaypointL:$(N):ActionOptSelect")
+}
+
+# processes ActionOptSelect when ActionLink's change
+record(calcout, "$(P)WaypointL:$(N):link_trigger_select")
+{
+    field(INPA, "$(P)ActionLink1.FLNK CP")
+    field(INPB, "$(P)ActionLink2.FLNK CP")
+    field(INPC, "$(P)ActionLink3.FLNK CP")
+    field(INPD, "$(P)ActionLink4.FLNK CP")
+    field(INPE, "$(P)ActionLink5.FLNK CP")
+    field(INPF, "$(P)ActionLink6.FLNK CP")
+    field(INPG, "$(P)ActionLink7.FLNK CP")
+    field(INPH, "$(P)ActionLink8.FLNK CP")
+    field(INPI, "$(P)ActionLink9.FLNK CP")
+    field(INPJ, "$(P)ActionLink10.FLNK CP")
+    field(FLNK, "$(P)WaypointL:$(N):ActionOptSelect.PROC")
 }
 
 record(luascript, "$(P)WaypointL:$(N):ActionOptSelect")

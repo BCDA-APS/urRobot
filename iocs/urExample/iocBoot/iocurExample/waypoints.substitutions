@@ -71,3 +71,8 @@ pattern
 {29, "WaypointL $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00}
 {30, "WaypointL $(N)",       0,      0,       0,        0,        0,      0,  0.50,   1.40,  0.00}
 }
+
+file "$(URROBOT)/db/waypoint_actions10.db"
+{
+{}
+}

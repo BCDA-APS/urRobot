@@ -1,0 +1,30 @@
+file calcout_settings.req P=$(P)ActionDoneCalc1
+$(P)ActionLink1.DESC
+$(P)ActionLink1.FLNK
+file calcout_settings.req P=$(P)ActionDoneCalc2
+$(P)ActionLink2.DESC
+$(P)ActionLink2.FLNK
+file calcout_settings.req P=$(P)ActionDoneCalc3
+$(P)ActionLink3.DESC
+$(P)ActionLink3.FLNK
+file calcout_settings.req P=$(P)ActionDoneCalc4
+$(P)ActionLink4.DESC
+$(P)ActionLink4.FLNK
+file calcout_settings.req P=$(P)ActionDoneCalc5
+$(P)ActionLink5.DESC
+$(P)ActionLink5.FLNK
+file calcout_settings.req P=$(P)ActionDoneCalc6
+$(P)ActionLink6.DESC
+$(P)ActionLink6.FLNK
+file calcout_settings.req P=$(P)ActionDoneCalc7
+$(P)ActionLink7.DESC
+$(P)ActionLink7.FLNK
+file calcout_settings.req P=$(P)ActionDoneCalc8
+$(P)ActionLink8.DESC
+$(P)ActionLink8.FLNK
+file calcout_settings.req P=$(P)ActionDoneCalc9
+$(P)ActionLink9.DESC
+$(P)ActionLink9.FLNK
+file calcout_settings.req P=$(P)ActionDoneCalc10
+$(P)ActionLink10.DESC
+$(P)ActionLink10.FLNK

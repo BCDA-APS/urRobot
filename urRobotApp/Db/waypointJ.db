@@ -113,19 +113,12 @@ record(seq, "$(P)WaypointJ:$(N):set_not_done_seq")
     field(LNK0, "$(P)WaypointJ:$(N):ActionDone PP")
 }
 
-# set by user to define when action is done
-# record(calcout, "$(P)WaypointJ:$(N):ActionDoneCalc")
-# {
-    # field(OUT, "$(P)WaypointJ:$(N):ActionDone PP")
-    # field(SCAN, ".1 second") # needed if inputs not CP
-# }
-
 record(calcout, "$(P)WaypointJ:$(N):ActionDoneCalc")
 {
     field(INPA, "") # set to selected action calc's .OUT by select func
     field(CALC, "A")
     field(OUT, "$(P)WaypointJ:$(N):ActionDone PP")
-    # field(SCAN, ".1 second") # needed if inputs not CP
+    field(SCAN, ".1 second") # not sure why this is needed
 }
 
 record(bo, "$(P)WaypointJ:$(N):ActionDone") 
@@ -143,8 +136,9 @@ record(luascript, "$(P)WaypointJ:$(N):CopyActionLink")
 
 record(mbbi, "$(P)WaypointJ:$(N):ActionOpt")
 {
-    field(ONST, "Open gripper")
-    field(TWST, "Close gripper")
+    field(VAL, 0)
+    field(ONST, "Action 1")
+    field(TWST, "Action 2")
     field(THST, "Action 3")
     field(FRST, "Action 4")
     field(FVST, "Action 5")
@@ -156,7 +150,8 @@ record(mbbi, "$(P)WaypointJ:$(N):ActionOpt")
     field(FLNK, "$(P)WaypointJ:$(N):ActionOptSelect")
 }
 
-record(calcout, "$(P)WaypointJ:$(N):calc_trigger_select1")
+# processes ActionOptSelect when ActionLink's change
+record(calcout, "$(P)WaypointJ:$(N):link_trigger_select")
 {
     field(INPA, "$(P)ActionLink1.FLNK CP")
     field(INPB, "$(P)ActionLink2.FLNK CP")
@@ -176,22 +171,6 @@ record(luascript, "$(P)WaypointJ:$(N):ActionOptSelect")
     field(INPA, "$(P)WaypointJ:$(N):ActionOpt")
     field(CODE, "@action_opt.lua select({P='$(P)',T='J',N='$(N)'})")
 }
-
-# record(luascript, "$(P)WaypointJ:$(N):get_action_descs")
-# {
-    # field(INAA, "$(P)ActionLink1.DESC CP")
-    # field(INBB, "$(P)ActionLink2.DESC CP")
-    # field(INCC, "$(P)ActionLink3.DESC CP")
-    # field(INDD, "$(P)ActionLink4.DESC CP")
-    # field(INEE, "$(P)ActionLink5.DESC CP")
-    # field(INFF, "$(P)ActionLink6.DESC CP")
-    # field(INGG, "$(P)ActionLink7.DESC CP")
-    # field(INHH, "$(P)ActionLink8.DESC CP")
-    # field(INII, "$(P)ActionLink9.DESC CP")
-    # field(INJJ, "$(P)ActionLink10.DESC CP")
-    # field(CODE, "@action_opt.lua update_option_names({P='$(P)',T='J',N='$(N)'})")
-# }
-# record(bo, "$(P)WaypointJ:$(N):updating_names_flag"){}
 
 # 1 if robot is at waypoint within tolerance, otherwise 0
 record(luascript, "$(P)WaypointJ:$(N):Reached") {
