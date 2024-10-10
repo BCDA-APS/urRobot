@@ -5,9 +5,9 @@ file {
 }
 display {
 	object {
-		x=697
-		y=975
-		width=290
+		x=375
+		y=567
+		width=325
 		height=220
 	}
 	clr=14
@@ -692,4 +692,154 @@ text {
 	}
 	textix="Action Link"
 	align="horiz. centered"
+}
+"message button" {
+	object {
+		x=290
+		y=15
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)ActionLink1.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Run"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=290
+		y=35
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)ActionLink2.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Run"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=290
+		y=55
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)ActionLink3.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Run"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=290
+		y=75
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)ActionLink4.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Run"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=290
+		y=95
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)ActionLink5.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Run"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=290
+		y=115
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)ActionLink6.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Run"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=290
+		y=135
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)ActionLink7.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Run"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=290
+		y=155
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)ActionLink8.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Run"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=290
+		y=175
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)ActionLink9.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Run"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=290
+		y=195
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)ActionLink10.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Run"
+	release_msg="1"
 }

@@ -18,17 +18,17 @@ record(longout, "$(P)Path$(N):$(K):Number") {
 record(mbbo, "$(P)Path$(N):$(K):ActionOverride") {
     field(DESC, "Action override for waypoint in path")
     field(ZRST, "None")
-    field(ONST, "Action 1")
-    field(TWST, "Action 2")
-    field(THST, "Action 3")
-    field(FRST, "Action 4")
-    field(FVST, "Action 5")
-    field(SXST, "Action 6")
-    field(SVST, "Action 7")
-    field(EIST, "Action 8")
-    field(NIST, "Action 9")
-    field(TEST, "Action 10")
-    field(VAL, "$(ACTION=3)")
+    field(ONST, "1")
+    field(TWST, "2")
+    field(THST, "3")
+    field(FRST, "4")
+    field(FVST, "5")
+    field(SXST, "6")
+    field(SVST, "7")
+    field(EIST, "8")
+    field(NIST, "9")
+    field(TEST, "10")
+    field(VAL, "$(ACTION=0)")
 }
 
 # Enable/disable K'th waypoint in path N

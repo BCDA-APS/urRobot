@@ -136,16 +136,16 @@ record(mbbi, "$(P)WaypointL:$(N):ActionOpt")
 {
     field(VAL, 0)
     field(ZRST, "None")
-    field(ONST, "Action 1")
-    field(TWST, "Action 2")
-    field(THST, "Action 3")
-    field(FRST, "Action 4")
-    field(FVST, "Action 5")
-    field(SXST, "Action 6")
-    field(SVST, "Action 7")
-    field(EIST, "Action 8")
-    field(NIST, "Action 9")
-    field(TEST, "Action 10")
+    field(ONST, "1")
+    field(TWST, "2")
+    field(THST, "3")
+    field(FRST, "4")
+    field(FVST, "5")
+    field(SXST, "6")
+    field(SVST, "7")
+    field(EIST, "8")
+    field(NIST, "9")
+    field(TEST, "10")
     field(FLNK, "$(P)WaypointL:$(N):ActionOptSelect")
 }
 
@@ -169,6 +169,18 @@ record(luascript, "$(P)WaypointL:$(N):ActionOptSelect")
 {
     field(INPA, "$(P)WaypointL:$(N):ActionOpt")
     field(CODE, "@action_opt.lua select({P='$(P)',R='',T='L',N='$(N)'})")
+}
+
+record(luascript, "$(P)WaypointL:$(N):get_action_desc")
+{
+    field(INPA, "$(P)WaypointL:$(N):ActionOpt CP")
+    field(CODE, "@waypoints.lua get_action_desc({P='$(P)',T='L',N='$(N)'})")
+    field(PINI, 1)
+}
+
+record(stringin, "$(P)WaypointL:$(N):ActionDesc") {
+    field(DESC, "Description of action for WaypointL:$(N)")
+    field(INP, "$(P)WaypointL:$(N):get_action_desc.SVAL CP")
 }
 
 # 1 if robot is at waypoint within tolerance, otherwise 0

@@ -311,10 +311,10 @@ caMenu{
                 <string>1-10;11-20;21-30</string>
             </property>
             <property name="files">
-                <string>waypointJ_10x.adl;waypointJ_10x.adl;waypointJ_10x.adl</string>
+                <string>waypoint_10x.adl;waypoint_10x.adl;waypoint_10x.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),WP1=1,WP2=2,WP3=3,WP4=4,WP5=5,WP6=6,WP7=7,WP8=8,WP9=9,WP10=10;P=$(P),WP1=11,WP2=12,WP3=13,WP4=14,WP5=15,WP6=16,WP7=17,WP8=18,WP9=19,WP10=20;P=$(P),WP1=21,WP2=22,WP3=23,WP4=24,WP5=25,WP6=26,WP7=27,WP8=28,WP9=29,WP10=30</string>
+                <string>P=$(P),T=J,TITLE=Joint,WP1=1,WP2=2,WP3=3,WP4=4,WP5=5,WP6=6,WP7=7,WP8=8,WP9=9,WP10=10;P=$(P),T=J,TITLE=Joint,WP1=11,WP2=12,WP3=13,WP4=14,WP5=15,WP6=16,WP7=17,WP8=18,WP9=19,WP10=20;P=$(P),T=J,TITLE=Joint,WP1=21,WP2=22,WP3=23,WP4=24,WP5=25,WP6=26,WP7=27,WP8=28,WP9=29,WP10=30</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false</string>
@@ -353,10 +353,10 @@ caMenu{
                 <string>1-10;11-20;21-30</string>
             </property>
             <property name="files">
-                <string>waypointL_10x.adl;waypointL_10x.adl;waypointL_10x.adl</string>
+                <string>waypoint_10x.adl;waypoint_10x.adl;waypoint_10x.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),WP1=1,WP2=2,WP3=3,WP4=4,WP5=5,WP6=6,WP7=7,WP8=8,WP9=9,WP10=10;P=$(P),WP1=11,WP2=12,WP3=13,WP4=14,WP5=15,WP6=16,WP7=17,WP8=18,WP9=19,WP10=20;P=$(P),WP1=21,WP2=22,WP3=23,WP4=24,WP5=25,WP6=26,WP7=27,WP8=28,WP9=29,WP10=30</string>
+                <string>P=$(P),T=L,TITLE=Cartesian,WP1=1,WP2=2,WP3=3,WP4=4,WP5=5,WP6=6,WP7=7,WP8=8,WP9=9,WP10=10;P=$(P),T=L,TITLE=Cartesian,WP1=11,WP2=12,WP3=13,WP4=14,WP5=15,WP6=16,WP7=17,WP8=18,WP9=19,WP10=20;P=$(P),T=L,TITLE=Cartesian,WP1=21,WP2=22,WP3=23,WP4=24,WP5=25,WP6=26,WP7=27,WP8=28,WP9=29,WP10=30</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false</string>
