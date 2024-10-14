@@ -5,9 +5,9 @@ file {
 }
 display {
 	object {
-		x=572
-		y=526
-		width=415
+		x=562
+		y=518
+		width=545
 		height=825
 	}
 	clr=14
@@ -137,19 +137,6 @@ text {
 		clr=14
 	}
 	textix="Override"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=290
-		y=60
-		width=120
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Description"
 	align="horiz. centered"
 }
 text {
@@ -3274,7 +3261,7 @@ menu {
 }
 "message button" {
 	object {
-		x=180
+		x=240
 		y=10
 		width=50
 		height=20
@@ -3289,7 +3276,7 @@ menu {
 }
 oval {
 	object {
-		x=40
+		x=45
 		y=35
 		width=15
 		height=15
@@ -3316,7 +3303,7 @@ text {
 }
 oval {
 	object {
-		x=40
+		x=45
 		y=35
 		width=15
 		height=15
@@ -4231,8 +4218,8 @@ oval {
 }
 "related display" {
 	object {
-		x=360
-		y=5
+		x=490
+		y=0
 		width=50
 		height=20
 	}
@@ -4262,7 +4249,7 @@ oval {
 }
 "message button" {
 	object {
-		x=235
+		x=295
 		y=10
 		width=50
 		height=20
@@ -4274,4 +4261,555 @@ oval {
 	}
 	label="Stop"
 	release_msg="1"
+}
+"text update" {
+	object {
+		x=415
+		y=75
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):1:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=100
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):2:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=125
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):3:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=150
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):4:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=175
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):5:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=200
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):6:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=225
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):7:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=250
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):8:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=275
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):9:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=300
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):10:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=325
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):11:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=350
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):12:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=375
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):13:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=400
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):14:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=425
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):15:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=450
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):16:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=475
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):17:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=500
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):18:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=525
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):19:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=550
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):20:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=575
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):21:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=600
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):22:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=625
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):23:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=650
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):24:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=675
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):25:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=700
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):26:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=725
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):27:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=750
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):28:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=775
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):29:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=415
+		y=800
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)Path$(N):30:ActionDesc"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=420
+		y=60
+		width=120
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Action Desc "
+	align="horiz. centered"
+}
+text {
+	object {
+		x=290
+		y=60
+		width=120
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Waypoint Desc"
+	align="horiz. centered"
+}
+"related display" {
+	object {
+		x=465
+		y=25
+		width=75
+		height=20
+	}
+	display[0] {
+		name="waypoint_actions10x.adl"
+		args="P=$(P)"
+	}
+	clr=0
+	bclr=18
+	label="Actions"
 }

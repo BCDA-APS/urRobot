@@ -77,7 +77,7 @@ function path_go(args)
             local action_opt_val_pv
             local set_action_opt_lnk0_pv
             local set_action_opt_proc_pv
-            if wp_action ~= 3 then
+            if wp_action ~= 0 then -- TODO: check this works, was 3?
                 action_pv = string.format("%s:ActionOpt", wp)
                 wp_action0 = math.floor(epics.get(action_pv))
                 action_opt_val_pv = string.format("%sPath%d:%d:action_opt_val", args.prefix, args.N, i)
@@ -95,7 +95,7 @@ function path_go(args)
             wait_process(done_pv)
 
             -- Restore original action
-            if wp_action ~= 3 then
+            if wp_action ~= 0 then -- TODO: check this works, was 3?
                 epics.put(action_opt_val_pv, wp_action0)
                 epics.put(set_action_opt_lnk0_pv, string.format("%s PP",action_pv))
                 epics.put(set_action_opt_proc_pv, 1) -- manually force processing
@@ -115,12 +115,23 @@ function get_wp_info(args)
     wp_type = (wp_type == 0.0) and "L" or "J"
     local wp_num = epics.get(string.format("%sPath%d:%d:Number", args.prefix, args.N, args.k))
     if wp_num > 0 then
+        local default_action_num = epics.get(string.format("%sWaypoint%s:%d:ActionOpt", args.prefix, wp_type, wp_num))
+        local override_action_num = epics.get(string.format("%sPath%d:%d:ActionOverride", args.prefix, args.N, args.k))
+        local action_desc
+        if override_action_num == 0 then
+            action_desc = epics.get(string.format("%sWaypoint%s:%d:ActionDesc", args.prefix, wp_type, wp_num))
+        else
+            action_desc = epics.get(string.format("%sActionLink%d.DESC", args.prefix, override_action_num))
+        end
+        epics.put(string.format("%sPath%d:%d:ActionDesc", args.prefix, args.N, args.k), action_desc)
+
         local wp_pv = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
         local reached_inp_pv = string.format("%sPath%d:%d:Reached.INP",args.prefix,args.N,args.k)
         local wp_reached_pv = string.format("%s:Reached CP",wp_pv)
         epics.put(reached_inp_pv, wp_reached_pv) -- set link to Waypoint:Reached PV
         return epics.get(wp_pv)
     else
+        epics.put(string.format("%sPath%d:%d:ActionDesc", args.prefix, args.N, args.k), "")
         return ""
     end
 end

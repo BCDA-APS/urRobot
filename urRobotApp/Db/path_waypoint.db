@@ -29,6 +29,7 @@ record(mbbo, "$(P)Path$(N):$(K):ActionOverride") {
     field(NIST, "9")
     field(TEST, "10")
     field(VAL, "$(ACTION=0)")
+    field(FLNK, "$(P)Path$(N):$(K):get_wp_info.PROC")
 }
 
 # Enable/disable K'th waypoint in path N
@@ -48,6 +49,10 @@ record(luascript, "$(P)Path$(N):$(K):get_wp_info") {
 record(stringin, "$(P)Path$(N):$(K):Desc") {
     field(DESC, "Description of waypoint in path")
     field(INP, "$(P)Path$(N):$(K):get_wp_info.SVAL CP")
+}
+
+record(stringout, "$(P)Path$(N):$(K):ActionDesc") {
+    field(DESC, "Description of action at point in path")
 }
 
 # INP link to Waypoint:Reached set by get_wp_info func
