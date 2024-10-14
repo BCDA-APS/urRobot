@@ -13,7 +13,8 @@ nav_order: 3
 {:toc}
 
 If you haven't yet added the EPICS urRobot support to an IOC, please see
-the Quickstart page for instructions.
+the Quickstart page for instructions. After starting an IOC with the urRobot support
+included, you are ready to use your UR robot through EPICS.
 
 Most features of the robot are accessable through the provided GUIs using either
 MEDM, caQtDM, or CSS-Phoebus (still in development). To start the screens, a `start_urRobot` bash script is provided at
@@ -22,6 +23,13 @@ arguments to open the caQtDM screens, however optionally you can specify "medm" 
 to use either of those display managers. The below examples will show the caQtDM GUIs, however the MEDM and CSS-Phoebus
 versions are nearly identical. Users are encouraged to create their own GUIs in addition to the ones provided for more
 specific needs.
+
+## Logging
+The UR robot EPICS driver uses [spdlog](https://github.com/gabime/spdlog) for logging. By default you will only see
+log messages from the UR robot driver in the IOC console with "info", "warning", or "error" severity, however if you'd
+like to see additional messages (with "debug" severity), you can set the "SPDLOG_LEVEL" environent variable before running
+the IOC. The easiest way is to add the following command to your your .bashrc: `export SPDLOG_LEVEL=debug,mylogger=trace`. 
+
 
 ## Main Menu
 
