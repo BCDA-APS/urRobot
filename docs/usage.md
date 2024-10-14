@@ -16,15 +16,16 @@ If you haven't yet added the EPICS urRobot support to an IOC, please see
 the Quickstart page for instructions.
 
 Most features of the robot are accessable through the provided GUIs using either
-MEDM, caQtDM, or CSS-Phoebus. To start the screens, three bash scripts are
-provided: `start_phoebus_urRobot` `start_MEDM_urRobot`, and `start_caQtdm_urRobot`. Copy the script(s)
-you want to the top level directory of your IOC. The below examples will show the caQtDM GUIs, however
-the MEDM and CSS-Phoebus versions are nearly identical. Users are encouraged to create their own GUIs
-in addition to the ones provided for more specific needs.
+MEDM, caQtDM, or CSS-Phoebus (still in development). To start the screens, a `start_urRobot` bash script is provided at
+`urRobot/iocs/urExample/start_urRobot`. Copy the script to the top level directory of your IOC and run it without any
+arguments to open the caQtDM screens, however optionally you can specify "medm" or "phoebus" as argument to the script
+to use either of those display managers. The below examples will show the caQtDM GUIs, however the MEDM and CSS-Phoebus
+versions are nearly identical. Users are encouraged to create their own GUIs in addition to the ones provided for more
+specific needs.
 
 ## Main Menu
 
-After running the `start_caQtDM_urRobot` script, you will be greeted with a menu which
+After running the `start_urRobot` script, you will be greeted with a menu which
 contains links to all the other provided screens.
 
 <img src="./assets/GUIs/ui/urRobot_top.png" alt="ui-waypointJ" width="400">
@@ -42,7 +43,7 @@ directory on the robot controller.
 
 ## RTDE Receive
 
-The RTDE Receive screen shows all the basic static information about the robot. The only interactive
+The RTDE Receive screen shows all the basic status information about the robot. The only interactive
 element is the connect/disconnect buttons which allow for connecting and disconnecting to the RTDE
 receive interface.
 
@@ -56,7 +57,7 @@ The I/O screen allows for setting and reading digital and analog inputs and outp
 
 ## RTDE Control
 The RTDE Control screen can be used to move the robot by directly commanding joint or end-effector positions.
-It also has a button to enable/disable freedrive mode.
+It also has a button to enable/disable teach (freedrive) mode.
 
 <img src="./assets/GUIs/ui/urRobot_control.png" alt="ui-control" width="600">
 
@@ -74,7 +75,8 @@ start the robot moving. The same goes for the Cartesian moves.
 
 ## Robotiq Gripper
 
-Currently the Robotiq Hand-E gripper is the only supported gripper.
+Currently the Robotiq Hand-E gripper is the only supported gripper in this EPICS module, howevever other grippers
+and tools could still be made to work through waypoint actions which are discussed later.
 The gripper screen has buttons for opening, closing, connecting, activating, and auto-calibrating.
 It also shows the open/closed state, actual position, and motion status.
 
@@ -88,7 +90,8 @@ can be set to YES (or NO) to automatically activate the gripper which must be do
 
 A command line tool for finding the min/max positions is provided with this EPICS support.
 In the bin directory of the urRobot support (for example `urRobot/bin/rhel9-x86_64/`) you will find a `calibrate_gripper`
-program. Running this with your robot's IP as argument will give you the min/max positions.
+program. Running this with your robot's IP as argument will give you the min/max positions. Note that this will cause the gripper
+to move through its full range of motion, so ensure there is nothing in the way of the gripper before running this program.
 ```bash
 $ ./calibrate_gripper 164.54.100.100
 Auto calibrating gripper...
@@ -106,8 +109,16 @@ dbLoadRecords("$(URROBOT)/db/robotiq_gripper.db", "P=$(PREFIX), MIN_POS=3, MAX_P
 ## Waypoints
 
 Waypoints are configurations of the robot which can be defined in either joint space or end-effector
-space (also called the tool center point, or TCP). Two screens are provided for defining joint or
-end-effector space waypoints:
+space (we also refer to the end-effector position by the tool center point, or TCP). Motion between points when using
+`waypointL.db` is done linearly in Cartesian space, so you will also see these referred to as as "Cartesian" waypoints.
+
+Although not currently supported, theoretically we could define waypoints in joint space, then execute linear motion
+in Cartesian space to the waypoint, or conversely define a waypoint in Cartesian space and exectute linear
+motion in joint space to the waypoint. For now though, executing a move to a joint waypoint (`waypointJ.db`) will
+move linearly in joint space, and executing a move to a Cartesian waypoint (`waypointL.db`) will
+move linearly in Cartesian (end-effector) space.
+
+Two screens are provided for defining joint or Cartesian waypoints:
 
 <div style="display: flex; justify-content: center; gap: 10px;">
   <img src="./assets/GUIs/ui/urRobot_waypointJ.png" alt="ui-waypointJ" width="380">
@@ -115,40 +126,46 @@ end-effector space waypoints:
 </div>
 
 A single waypoint is defined by an instance of `waypointL.db` or `waypointJ.db`. It is typically most useful to
-load many blank waypoints in your IOC startup script with a subtitutions file (`urRobotApp/iocsh/waypoints.substitutions`),
+load many waypoints in your IOC startup script with a subtitutions file (`urRobotApp/iocsh/waypoints.substitutions`),
 then define them at runtime. `.req` files for autosave are provided in `urRobotApp/Db/`.
 Looking at the above Cartesian Waypoint display, from left to right on each line you have the following:
 - Waypoint number for quick reference (call it `$(N)`) which ranges from 1-10 in this example.
 - Enable(1)/Disable(0) toggle (`$(P)WaypointL:$(N):Enabled`)
 - Indicator for when the waypoint is reached (`$(P)WaypointL:$(N):Reached`)
 - "Set" button to save the current robot configuration to the waypoint (`$(P)WaypointL:$(N):Reset`)
+- Related display to view and edit the waypoint coordinates and dynamics.
 - A string description of the waypoint (`$(P)WaypointL:$(N)`)
 - "Go" button to attempt to move the robot from the current configuration to the waypoint (`$(P)WaypointL:$(N):moveL`)
     - Before motion is attempted, the driver checks that the robot will remain within safety limits throughout the move.
     If the move will break the safety limits, it will not be attempted and a message saying so will be printed in the IOC console.
+    The move will also not be started if another move is currently in progress.
 - Waypoint action selection menu (`$(P)WaypointL:$(N):ActionOpt`) which is used to select the action to perform after
 the robot reaches the waypoint. Waypoint actions are discussed in greater detail in the next section.
-- Related display to view and edit the waypoint coordinates and dynamics as well as the waypoint action.
+- String description of the selected waypoint action
 - At the top of the display there is a indicator to signal when a motion is done (`$(P)Control:AsyncMoveDone`) and a stop
 button to stop a move in progress.
 
 
 ### Waypoint Actions
 
-Each waypoint has an associated action which is executed automatically after the robot reaches a waypoint.
-In software, the action is just another EPICS forward link (`$(P)WaypointL:$(N):Action.FLNK`) together with a
-calcout record (`$(P)WaypointL:$(N):ActionDoneCalc`) that defines when the action is done.
-For maximum flexibility, the action link and calcout record are left to the user to configure,
-however two pre-configured actions are provided for opening the gripper and closing the gripper.
+Each waypoint has an associated action which is executed automatically after the robot reaches the waypoint.
+Each action is defined by an EPICS forward link together with a calcout record that determines when
+the action is done (1=done, 0=not done). There are 10 configurable waypoint actions which are
+defined in `waypoint_actions10.db`. All ten actions can be overwritten, however the first two come
+pre-configured for opening and closing the Robotiq gripper, which many users may find useful.
 
-<img src="./assets/GUIs/ui/urRobot_action_calcL_open.png" alt="ui-calcL" width="400">
+The below screen is used to configure the waypoint actions. Each waypoint action should
+be given an EPICS link to process and optionally a string description of the action. Then, by selection the
+green "calc" buttons, you can define the conditions under which the action is considered to be finished.
 
-To create a new custom action, specify the PV you would like to process after reaching the
-waypoint in the "Action Link" box (`$(P)WaypointL:$(N):Action.FLNK`). Then, fill out the calcout
-record (`$(P)WaypointL:$(N):ActionDoneCalc`) such that its VAL=0 when the action is not complete and
-VAL=1 when the action is done. See "Open Gripper" or "Close gripper" actions for an example.
+<img src="./assets/GUIs/ui/urRobot_actions.png" alt="ui-waypoint_actions" width="400">
+<img src="./assets/GUIs/ui/urRobot_action1_calcout.png" alt="ui-waypoint_action1_calc" width="400">
 
-
+The "Run" button processes the action link. When developing a new custom waypoint action, to ensure the
+calcout record properly determines when the action is completed, it is useful to use the "Run" button
+and verify that the calcout record's value is 0 when the action is running, and 1 when it completes.
+The calcout logic is crucial for motion along a path (discussed in the next section) since the value
+of the calcout record is used to determine when to move on to the next point.
 
 ## Paths
 
@@ -160,16 +177,17 @@ with 30 possible waypoints each.
 
 After selecting "Paths" from the main menu, you will get the topPaths5x screen:
 
-<img src="./assets/GUIs/ui/urRobot_paths_top.png" alt="ui-path-top" width="400">
+<img src="./assets/GUIs/ui/urRobot_paths_top.png" alt="ui-path-top" width="300">
 
 From this screen you can give a string description of the path and execute and stop the path with the
 "Go" and "Stop" buttons. If you select the green path number button on the left you will get the following
 screen which lets you define the path:
 
-<img src="./assets/GUIs/ui/urRobot_path1_less.png" alt="ui-path1-less" width="400">
+<img src="./assets/GUIs/ui/urRobot_path1_less.png" alt="ui-path1-less" width="500">
 
-Looking at the above screen for Path `$(N)`, each line (1-10 on this screen) defines a waypoint along the path.
-From left to right, each line contains the following:
+Looking at the above screen for Path `$(N)` which we have named "A to B", each line (1-10 on this screen)
+defines a waypoint along the path. This path in particular uses some predefined waypoints to create a pick
+and place operation. From left to right, each line contains the following:
 - Path point number for reference (`$(K)`)
 - Enable(1)/Disable(0) toggle (`$(P)Path$(N):$(K):Enabled`)
 - Indicator for when the waypoint is reached (`$(P)Path$(N):$(K):Reached`)
@@ -180,13 +198,17 @@ From left to right, each line contains the following:
     when you want to go to the same waypoint multiple times in a path but with different actions.
     After the path is complete, the original action that was defined for the waypoint will be restored.
 - Description of the selection waypoint (`$(P)Path$(N):$(K):Desc`)
-- "Go" button at the top which starts motion along the path. The robot will move to each waypoint, execute the waypoint action,
-then move to the next waypoint in the path. The stop button will stop motion immediately and abort the path. This means
-that you must start the path from the beginning if it has been stopped. There is no way to pause a path at this time.
+- Description of the selection waypoint action (`$(P)Path$(N):$(K):ActionDesc`).
+    - Note that the waypoint description and waypoint action description will only update when any of the
+    other fields change (type, number, override, etc.)
+- "Go" and "Stop" buttons at the top which starts/stops motion along the path. The go button will tell the
+robot will move to each waypoint, execute the waypoint action, then move to the next waypoint in the path.
+The stop button will stop motion immediately and abort the path. This means that you must start the path from
+the beginning if it has been stopped. There is no way to pause a path at this time.
 
-With the above in mind, let's give an example. Say you have defined $(P)WaypointL:3 and you want to set the first
+Let's give a quick example. Say you have defined $(P)WaypointL:3 and you want to set the first
 point in your path to be WaypointL:3 and to make sure that the gripper is open.
-For point 1 in your path, you'd set the Type to "Linear", Number to 3, and Action Override to "Open".
+For point 1 in your path, you'd set the Type to "Linear", Number to 3, and Action Override to 1 (open gripper).
 
 
 ## Scripting

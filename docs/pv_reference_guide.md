@@ -365,3 +365,21 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 |-------------- | -------------- | -------------- |
 | Path$(N):$(K):Reached    | ai     | 1 if robot at waypoint, else 0     |
 | Path$(N):$(K):Desc    | stringin     | Description of waypoint in path     |
+| Path$(N):$(K):ActionDesc    | stringin     | Description of waypoint action for waypoint in path     |
+
+***
+
+## waypoint_actions10.db
+
+***Outputs***
+
+*Note:* there are 10 copies of the below records but they are ommited here for brevity
+(e.g. ActionLink1-ActionLink10)
+
+| Record  | Type   | Description   |
+|-------------- | -------------- | -------------- |
+| ActionDoneCalc1    | calcout     | 1 if action completed, else 0     |
+| ActionLink1    | bo     | Stores the .FLNK to process the action     |
+
+<!-- record(calcout, "$(P)ActionDoneCalc1") {} -->
+<!-- record(bo, "$(P)ActionLink1"){} -->
