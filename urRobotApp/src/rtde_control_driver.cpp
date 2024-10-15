@@ -359,6 +359,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         this->async_running_ = AsyncRunning::False;
         this->async_status_ = AsyncMotionStatus::Done;
         spdlog::debug("Stopping joint move");
+        setIntegerParam(asyncMoveDoneIndex_, 1);
         rtde_control_->stopJ(); // asynchronous=true
     }
 
@@ -377,6 +378,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     } else if (function == stopLIndex_) {
         this->async_running_ = AsyncRunning::False;
         this->async_status_ = AsyncMotionStatus::Done;
+        setIntegerParam(asyncMoveDoneIndex_, 1);
         spdlog::debug("Stopping linear move");
         rtde_control_->stopL();
     }
