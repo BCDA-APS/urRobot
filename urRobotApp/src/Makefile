@@ -40,6 +40,12 @@ PROD += calibrate_gripper
 calibrate_gripper_SRCS += calibrate_gripper.cpp
 calibrate_gripper_LIBS += rtde
 
+# Tool for tweaking the robot's pose with your keyboard keys
+PROD += keyboard_tweak
+keyboard_tweak_SRCS += keyboard_tweak.cpp
+keyboard_tweak_LIBS += pvAccessCA ca pvAccess pvData Com
+keyboard_tweak_SYS_LIBS += ncurses
+
 # Program for testing ur_rtde by itself without asyn
 TESTPROD += urtest
 urtest_SRCS += urtest.cpp
