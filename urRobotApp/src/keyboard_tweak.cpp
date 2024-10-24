@@ -1,9 +1,13 @@
-#include "pva/client.h"
+#include <memory>
 #include <ncurses.h>
 #include <string>
 #include <iostream>
 #include <cassert>
-#include <sstream>
+
+#include <pva/client.h>
+#include <pv/caProvider.h>
+#include <pv/pvData.h>
+
 
 int main(int argc, char *argv[]) {
     
@@ -11,52 +15,57 @@ int main(int argc, char *argv[]) {
         std::cout << "Please provide IOC prefix" << std::endl;
         return 1;
     }
-
     std::string prefix(argv[1]);
-
-    pvac::ClientProvider provider("pva");
     
-    // // PVs for positive and negative X, Y, and Z
-    // std::stringstream ss;
-    // ss << prefix << "Control:PoseXTweakFwd";
+    // using channel access for provider
+    epics::pvAccess::ca::CAClientFactory::start();
+    pvac::ClientProvider provider("ca");
 
-    pvac::ClientChannel channel_up(provider.connect("nam:UP"));
-    pvac::ClientChannel channel_down(provider.connect("nam:DOWN"));
-    pvac::ClientChannel channel_left(provider.connect("nam:LEFT"));
-    pvac::ClientChannel channel_right(provider.connect("nam:RIGHT"));
+    // Enable auto move and reset commanded values
+    // TODO: fix this
+    // pvac::ClientChannel channel_AutoMoveL(provider.connect(prefix + "Control:AutoMoveL"));
+    // pvac::ClientChannel channel_RstPoseCmd(provider.connect(prefix + "Control:ResetPoseCmd.PROC"));
+    // channel_RstPoseCmd.put().set("value", 1).exec();
+    // channel_AutoMoveL.put().set("value", 1).exec();
 
+    // Connect PVs for positive and negative X, Y, and Z
+    pvac::ClientChannel channel_XFwd(provider.connect(prefix + "Control:PoseXTweakFwd.PROC"));
+    pvac::ClientChannel channel_XRev(provider.connect(prefix + "Control:PoseXTweakRev.PROC"));
+    pvac::ClientChannel channel_YFwd(provider.connect(prefix + "Control:PoseYTweakFwd.PROC"));
+    pvac::ClientChannel channel_YRev(provider.connect(prefix + "Control:PoseYTweakRev.PROC"));
+    pvac::ClientChannel channel_ZFwd(provider.connect(prefix + "Control:PoseZTweakFwd.PROC"));
+    pvac::ClientChannel channel_ZRev(provider.connect(prefix + "Control:PoseZTweakRev.PROC"));
+
+    // initialize ncurses
     initscr();
     keypad(stdscr, TRUE);
     noecho();
-
-    int value_up = 0;
-    int value_down = 0;
-    int value_left = 0;
-    int value_right = 0;
 
     bool running = true;
     while(running) {
         int ch = getch();
         switch (ch) {
+            case 'w':
             case KEY_UP:
-                printw("Up\n");
-                value_up = channel_up.get()->getSubField<epics::pvData::PVInt>("value")->getAs<int>();
-                channel_up.put().set("value", value_up+1).exec();
+                channel_YFwd.put().set("value", 1).exec();
                 break;
+            case 'a':
             case KEY_LEFT:
-                printw("Left\n");
-                value_left = channel_left.get()->getSubField<epics::pvData::PVInt>("value")->getAs<int>();
-                channel_left.put().set("value", value_left+1).exec();
+                channel_XRev.put().set("value", 1).exec();
                 break;
-            case KEY_RIGHT:
-                printw("Right\n");
-                value_right = channel_right.get()->getSubField<epics::pvData::PVInt>("value")->getAs<int>();
-                channel_right.put().set("value", value_right+1).exec();
-                break;
+            case 's':
             case KEY_DOWN:
-                printw("Down\n");
-                value_down = channel_down.get()->getSubField<epics::pvData::PVInt>("value")->getAs<int>();
-                channel_down.put().set("value", value_down+1).exec();
+                channel_YRev.put().set("value", 1).exec();
+                break;
+            case 'd':
+            case KEY_RIGHT:
+                channel_XFwd.put().set("value", 1).exec();
+                break;
+            case 'W':
+                channel_ZFwd.put().set("value", 1).exec();
+                break;
+            case 'S':
+                channel_ZRev.put().set("value", 1).exec();
                 break;
             case 'q':
                 printw("Quit by user\n");
