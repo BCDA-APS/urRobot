@@ -69,6 +69,20 @@ record(bi, "$(P)Control:AsyncMoveDone")
     field(SCAN, "I/O Intr")
 }
 
+record(calcout, "$(P)Control:resetJ_after_async_move") {
+    field(INPA, "$(P)Control:AsyncMoveDone CP")
+    field(CALC, "A")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)Control:ResetJCmd.PROC")
+}
+
+record(calcout, "$(P)Control:resetL_after_async_move") {
+    field(INPA, "$(P)Control:AsyncMoveDone CP")
+    field(CALC, "A")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)Control:ResetPoseCmd.PROC")
+}
+
 record(bi, "$(P)Control:WaypointActionAsyn")
 {
     field(DTYP, "asynInt32")
@@ -108,8 +122,14 @@ record(bo, "$(P)Control:TeachMode")
 
 record(fanout, "$(P)Control:Stop")
 {
-    field(LNK0, "$(P)Control:stopJ")
-    field(LNK1, "$(P)Control:stopL")
+    field(LNK0, "$(P)Control:stopL")
+    field(LNK1, "$(P)Control:reset_both_cmd")
+}
+
+record(fanout, "$(P)Control:reset_both_cmd")
+{
+    field(LNK0, "$(P)Control:ResetJCmd")
+    field(LNK1, "$(P)Control:ResetPoseCmd")
 }
 
 #======================
@@ -162,6 +182,7 @@ record(bo, "$(P)Control:stopJ")
     field(DESC, "Moves joints to commanded values")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))STOPJ")
+    field(FLNK, "$(P)Control:reset_both_cmd.PROC")
 }
 
 record(bo, "$(P)Control:AutoMoveJ")
@@ -593,6 +614,7 @@ record(bo, "$(P)Control:stopL")
     field(DESC, "Stop linear move to TCP pose")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))STOPL")
+    field(FLNK, "$(P)Control:reset_both_cmd.PROC")
 }
 
 record(bo, "$(P)Control:AutoMoveL")

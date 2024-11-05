@@ -1,7 +1,6 @@
 #ifndef _RTDE_CONTROL_DRIVER_HPP_
 #define _RTDE_CONTROL_DRIVER_HPP_
 
-#include "ur_rtde/robotiq_gripper.h"
 #include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/rtde_receive_interface.h"
 #include <asynPortDriver.h>
@@ -72,14 +71,14 @@ class RTDEControl : public asynPortDriver {
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
 
-    const std::string robot_ip_ = "127.0.0.1";
+    const std::string robot_ip_ = "0.0.0.0";
     bool try_connect();
 
     // Commanded joint angles
-    std::vector<double> cmd_joints = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+    std::vector<double> cmd_joints_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
     // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
-    std::vector<double> cmd_pose = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+    std::vector<double> cmd_pose_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
     // Parameters for moveJ and moveL
     double joint_speed_ = 0.5;   // rad/s
@@ -90,7 +89,7 @@ class RTDEControl : public asynPortDriver {
     double linear_blend_ = 0.0;  // m?
 
     // handle asynchronous motion through paths, etc.
-    bool async_move = true;
+    bool async_move_ = true;
     AsyncRunning async_running_ = AsyncRunning::False;
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
     std::vector<std::vector<double>> waypoint_path_;

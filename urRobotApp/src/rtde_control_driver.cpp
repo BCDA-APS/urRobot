@@ -8,6 +8,8 @@
 #include <stdexcept>
 
 #include "rtde_control_driver.hpp"
+#include "rtde_control_interface.h"
+#include "rtde_io_driver.hpp"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
@@ -232,6 +234,7 @@ void RTDEControl::poll() {
             setIntegerParam(isConnectedIndex_, 0);
         }
 
+
         callParamCallbacks();
         unlock();
         epicsThreadSleep(POLL_PERIOD);
@@ -243,12 +246,12 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     int function = pasynUser->reason;
     bool comm_ok = true;
 
-    static std::map<int, int> JxCmd_map = {
+    static std::map<int, int> joint_cmd_map = {
         {j1CmdIndex_, 0}, {j2CmdIndex_, 1}, {j3CmdIndex_, 2},
         {j4CmdIndex_, 3}, {j5CmdIndex_, 4}, {j6CmdIndex_, 5},
     };
 
-    static std::map<int, int> PoseCmd_map = {
+    static std::map<int, int> pose_cmd_map = {
         {poseXCmdIndex_, 0},    {poseYCmdIndex_, 1},     {poseZCmdIndex_, 2},
         {poseRollCmdIndex_, 3}, {posePitchCmdIndex_, 4}, {poseYawCmdIndex_, 5},
     };
@@ -266,18 +269,18 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     }
 
     // When commanded joint angles change, update the values
-    if (JxCmd_map.count(function) > 0) {
+    if (joint_cmd_map.count(function) > 0) {
         // convert commanded joint angles to radians
         const double val = value * M_PI / 180.0;
-        this->cmd_joints.at(JxCmd_map.at(function)) = val;
+        this->cmd_joints_.at(joint_cmd_map.at(function)) = val;
     }
 
     // When commanded TCP pose values change, update the values
-    else if (PoseCmd_map.count(function) > 0) {
+    else if (pose_cmd_map.count(function) > 0) {
         // convert commanded x,y,z to meters and roll, pitch, yaw to radians
-        int ind = PoseCmd_map.at(function);
+        int ind = pose_cmd_map.at(function);
         const double val = (ind >= 3) ? (value * M_PI / 180.0) : (value / 1000.0);
-        this->cmd_pose.at(ind) = val;
+        this->cmd_pose_.at(ind) = val;
     }
 
     // Dynamics for joint moves (moveJ)
@@ -345,13 +348,13 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     if (function == moveJIndex_) {
 
-        spdlog::info("moveJ({:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}) rad", cmd_joints.at(0),
-                     cmd_joints.at(1), cmd_joints.at(2), cmd_joints.at(3), cmd_joints.at(4),
-                     cmd_joints.at(5));
+        spdlog::info("moveJ({:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}) rad", cmd_joints_.at(0),
+                     cmd_joints_.at(1), cmd_joints_.at(2), cmd_joints_.at(3), cmd_joints_.at(4),
+                     cmd_joints_.at(5));
 
-        bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints);
+        bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints_);
         if (safe) {
-            rtde_control_->moveJ(cmd_joints, joint_speed_, joint_accel_, async_move);
+            rtde_control_->moveJ(cmd_joints_, joint_speed_, joint_accel_, async_move_);
         } else {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
@@ -366,12 +369,12 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     else if (function == moveLIndex_) {
 
         spdlog::info("moveL({:.4f} mm, {:.4f} mm, {:.4f} mm, {:.4f} rad , {:.4f} rad, {:.4f} rad)",
-                     cmd_pose.at(0), cmd_pose.at(1), cmd_pose.at(2), cmd_pose.at(3), cmd_pose.at(4),
-                     cmd_pose.at(5));
+                     cmd_pose_.at(0), cmd_pose_.at(1), cmd_pose_.at(2), cmd_pose_.at(3), cmd_pose_.at(4),
+                     cmd_pose_.at(5));
 
-        bool safe = rtde_control_->isPoseWithinSafetyLimits(cmd_pose);
+        bool safe = rtde_control_->isPoseWithinSafetyLimits(cmd_pose_);
         if (safe) {
-            rtde_control_->moveL(cmd_pose, linear_speed_, linear_accel_, async_move);
+            rtde_control_->moveL(cmd_pose_, linear_speed_, linear_accel_, async_move_);
         } else {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
@@ -386,7 +389,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     else if (function == waypointMoveJIndex_) {
         if (async_running_ == AsyncRunning::False) {
             this->waypoint_path_.clear();
-            std::vector<double> wp = this->cmd_joints;
+            std::vector<double> wp = this->cmd_joints_;
             wp.push_back(this->joint_speed_);
             wp.push_back(this->joint_accel_);
             wp.push_back(this->joint_blend_);
@@ -399,7 +402,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     } else if (function == waypointMoveLIndex_) {
         if (async_running_ == AsyncRunning::False) {
             this->waypoint_path_.clear();
-            std::vector<double> wp = this->cmd_pose;
+            std::vector<double> wp = this->cmd_pose_;
             wp.push_back(this->linear_speed_);
             wp.push_back(this->linear_accel_);
             wp.push_back(this->linear_blend_);
@@ -436,7 +439,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     }
 
     else if (function == asyncMoveIndex_) {
-        async_move = value;
+        async_move_ = value;
     }
 
 skip:
