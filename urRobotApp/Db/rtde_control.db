@@ -69,20 +69,6 @@ record(bi, "$(P)Control:AsyncMoveDone")
     field(SCAN, "I/O Intr")
 }
 
-record(calcout, "$(P)Control:resetJ_after_async_move") {
-    field(INPA, "$(P)Control:AsyncMoveDone CP")
-    field(CALC, "A")
-    field(OOPT, "Transition To Non-zero")
-    field(OUT, "$(P)Control:ResetJCmd.PROC")
-}
-
-record(calcout, "$(P)Control:resetL_after_async_move") {
-    field(INPA, "$(P)Control:AsyncMoveDone CP")
-    field(CALC, "A")
-    field(OOPT, "Transition To Non-zero")
-    field(OUT, "$(P)Control:ResetPoseCmd.PROC")
-}
-
 record(bi, "$(P)Control:WaypointActionAsyn")
 {
     field(DTYP, "asynInt32")
@@ -130,6 +116,13 @@ record(fanout, "$(P)Control:reset_both_cmd")
 {
     field(LNK0, "$(P)Control:ResetJCmd")
     field(LNK1, "$(P)Control:ResetPoseCmd")
+}
+
+record(calcout, "$(P)Control:reset_after_async_move") {
+    field(INPA, "$(P)Control:AsyncMoveDone CP")
+    field(CALC, "A")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)Control:reset_both_cmd.PROC")
 }
 
 #======================
