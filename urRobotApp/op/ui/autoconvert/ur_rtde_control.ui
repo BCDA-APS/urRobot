@@ -4,8 +4,8 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>1164</x>
-            <y>674</y>
+            <x>1154</x>
+            <y>666</y>
             <width>823</width>
             <height>726</height>
         </rect>
@@ -110,6 +110,39 @@ caMenu{
 </string>
     </property>
     <widget class="QWidget" name="centralWidget">
+        <widget class="caGraphics" name="caRectangle_0">
+            <property name="form">
+                <enum>caGraphics::Rectangle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>900</width>
+                    <height>40</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>10</red>
+                    <green>0</green>
+                    <blue>184</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>10</red>
+                    <green>0</green>
+                    <blue>184</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+        </widget>
         <widget class="caChoice" name="caChoice_0">
             <property name="geometry">
                 <rect>
@@ -143,7 +176,7 @@ caMenu{
                 <enum>caChoice::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_0">
+        <widget class="caGraphics" name="caRectangle_1">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -179,7 +212,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_1">
+        <widget class="caGraphics" name="caRectangle_2">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -488,7 +521,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_2">
+        <widget class="caGraphics" name="caRectangle_3">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -524,7 +557,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_3">
+        <widget class="caGraphics" name="caRectangle_4">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -618,7 +651,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_4">
+        <widget class="caGraphics" name="caRectangle_5">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -730,7 +763,7 @@ caMenu{
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_5">
+        <widget class="caGraphics" name="caRectangle_6">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -815,16 +848,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
                 </color>
             </property>
             <property name="text">
@@ -941,7 +974,7 @@ caMenu{
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_6">
+        <widget class="caGraphics" name="caRectangle_7">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1013,7 +1046,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_7">
+        <widget class="caGraphics" name="caRectangle_8">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1049,7 +1082,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_8">
+        <widget class="caGraphics" name="caRectangle_9">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1319,7 +1352,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_9">
+        <widget class="caGraphics" name="caRectangle_10">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1355,7 +1388,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_10">
+        <widget class="caGraphics" name="caRectangle_11">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1449,7 +1482,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_11">
+        <widget class="caGraphics" name="caRectangle_12">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1489,7 +1522,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_12">
+        <widget class="caGraphics" name="caRectangle_13">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1561,7 +1594,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_13">
+        <widget class="caGraphics" name="caRectangle_14">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1597,7 +1630,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_14">
+        <widget class="caGraphics" name="caRectangle_15">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1867,7 +1900,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_15">
+        <widget class="caGraphics" name="caRectangle_16">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1903,7 +1936,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_16">
+        <widget class="caGraphics" name="caRectangle_17">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -1997,7 +2030,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_17">
+        <widget class="caGraphics" name="caRectangle_18">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2037,7 +2070,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_18">
+        <widget class="caGraphics" name="caRectangle_19">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2109,7 +2142,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_19">
+        <widget class="caGraphics" name="caRectangle_20">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2145,7 +2178,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_20">
+        <widget class="caGraphics" name="caRectangle_21">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2415,7 +2448,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_21">
+        <widget class="caGraphics" name="caRectangle_22">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2451,7 +2484,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_22">
+        <widget class="caGraphics" name="caRectangle_23">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2545,7 +2578,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_23">
+        <widget class="caGraphics" name="caRectangle_24">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2585,7 +2618,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_24">
+        <widget class="caGraphics" name="caRectangle_25">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2657,7 +2690,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_25">
+        <widget class="caGraphics" name="caRectangle_26">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2693,7 +2726,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_26">
+        <widget class="caGraphics" name="caRectangle_27">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2963,7 +2996,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_27">
+        <widget class="caGraphics" name="caRectangle_28">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -2999,7 +3032,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_28">
+        <widget class="caGraphics" name="caRectangle_29">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -3093,7 +3126,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_29">
+        <widget class="caGraphics" name="caRectangle_30">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -3133,7 +3166,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_30">
+        <widget class="caGraphics" name="caRectangle_31">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -3205,7 +3238,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_31">
+        <widget class="caGraphics" name="caRectangle_32">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -3241,7 +3274,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_32">
+        <widget class="caGraphics" name="caRectangle_33">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -3511,7 +3544,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_33">
+        <widget class="caGraphics" name="caRectangle_34">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -3547,7 +3580,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_34">
+        <widget class="caGraphics" name="caRectangle_35">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -3641,7 +3674,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_35">
+        <widget class="caGraphics" name="caRectangle_36">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -3681,7 +3714,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_36">
+        <widget class="caGraphics" name="caRectangle_37">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -3786,7 +3819,7 @@ caMenu{
                 <enum>caChoice::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_37">
+        <widget class="caGraphics" name="caRectangle_38">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -3822,7 +3855,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_38">
+        <widget class="caGraphics" name="caRectangle_39">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -4131,7 +4164,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_39">
+        <widget class="caGraphics" name="caRectangle_40">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -4167,7 +4200,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_40">
+        <widget class="caGraphics" name="caRectangle_41">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -4261,7 +4294,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_41">
+        <widget class="caGraphics" name="caRectangle_42">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -4373,7 +4406,7 @@ caMenu{
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_42">
+        <widget class="caGraphics" name="caRectangle_43">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -4452,7 +4485,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_43">
+        <widget class="caGraphics" name="caRectangle_44">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -4524,7 +4557,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_44">
+        <widget class="caGraphics" name="caRectangle_45">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -4560,7 +4593,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_45">
+        <widget class="caGraphics" name="caRectangle_46">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -4830,7 +4863,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_46">
+        <widget class="caGraphics" name="caRectangle_47">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -4866,7 +4899,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_47">
+        <widget class="caGraphics" name="caRectangle_48">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -4960,7 +4993,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_48">
+        <widget class="caGraphics" name="caRectangle_49">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5000,7 +5033,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_49">
+        <widget class="caGraphics" name="caRectangle_50">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5072,7 +5105,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_50">
+        <widget class="caGraphics" name="caRectangle_51">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5108,7 +5141,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_51">
+        <widget class="caGraphics" name="caRectangle_52">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5378,7 +5411,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_52">
+        <widget class="caGraphics" name="caRectangle_53">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5414,7 +5447,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_53">
+        <widget class="caGraphics" name="caRectangle_54">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5508,7 +5541,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_54">
+        <widget class="caGraphics" name="caRectangle_55">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5548,7 +5581,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_55">
+        <widget class="caGraphics" name="caRectangle_56">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5620,7 +5653,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_56">
+        <widget class="caGraphics" name="caRectangle_57">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5656,7 +5689,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_57">
+        <widget class="caGraphics" name="caRectangle_58">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5926,7 +5959,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_58">
+        <widget class="caGraphics" name="caRectangle_59">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -5962,7 +5995,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_59">
+        <widget class="caGraphics" name="caRectangle_60">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -6056,7 +6089,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_60">
+        <widget class="caGraphics" name="caRectangle_61">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -6096,7 +6129,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_61">
+        <widget class="caGraphics" name="caRectangle_62">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -6168,7 +6201,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_62">
+        <widget class="caGraphics" name="caRectangle_63">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -6204,7 +6237,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_63">
+        <widget class="caGraphics" name="caRectangle_64">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -6474,7 +6507,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_64">
+        <widget class="caGraphics" name="caRectangle_65">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -6510,7 +6543,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_65">
+        <widget class="caGraphics" name="caRectangle_66">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -6604,7 +6637,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_66">
+        <widget class="caGraphics" name="caRectangle_67">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -6644,7 +6677,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_67">
+        <widget class="caGraphics" name="caRectangle_68">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -6716,7 +6749,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_68">
+        <widget class="caGraphics" name="caRectangle_69">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -6752,7 +6785,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_69">
+        <widget class="caGraphics" name="caRectangle_70">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -7022,7 +7055,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_70">
+        <widget class="caGraphics" name="caRectangle_71">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -7058,7 +7091,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_71">
+        <widget class="caGraphics" name="caRectangle_72">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -7152,7 +7185,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_72">
+        <widget class="caGraphics" name="caRectangle_73">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -7192,7 +7225,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caRectangle_73">
+        <widget class="caGraphics" name="caRectangle_74">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
             </property>
@@ -7459,7 +7492,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>670</x>
-                    <y>5</y>
+                    <y>45</y>
                     <width>150</width>
                     <height>20</height>
                 </rect>
@@ -7504,7 +7537,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>670</x>
-                    <y>5</y>
+                    <y>45</y>
                     <width>150</width>
                     <height>20</height>
                 </rect>
@@ -7815,92 +7848,93 @@ caMenu{
         <zorder>caRectangle_2</zorder>
         <zorder>caRectangle_3</zorder>
         <zorder>caRectangle_4</zorder>
+        <zorder>caRectangle_5</zorder>
         <zorder>caLabel_0</zorder>
         <zorder>caLabel_1</zorder>
-        <zorder>caRectangle_5</zorder>
+        <zorder>caRectangle_6</zorder>
         <zorder>caLabel_2</zorder>
         <zorder>caLabel_3</zorder>
-        <zorder>caRectangle_6</zorder>
-        <zorder>caLabel_4</zorder>
         <zorder>caRectangle_7</zorder>
+        <zorder>caLabel_4</zorder>
         <zorder>caRectangle_8</zorder>
         <zorder>caRectangle_9</zorder>
         <zorder>caRectangle_10</zorder>
         <zorder>caRectangle_11</zorder>
         <zorder>caRectangle_12</zorder>
-        <zorder>caLabel_5</zorder>
         <zorder>caRectangle_13</zorder>
+        <zorder>caLabel_5</zorder>
         <zorder>caRectangle_14</zorder>
         <zorder>caRectangle_15</zorder>
         <zorder>caRectangle_16</zorder>
         <zorder>caRectangle_17</zorder>
         <zorder>caRectangle_18</zorder>
-        <zorder>caLabel_6</zorder>
         <zorder>caRectangle_19</zorder>
+        <zorder>caLabel_6</zorder>
         <zorder>caRectangle_20</zorder>
         <zorder>caRectangle_21</zorder>
         <zorder>caRectangle_22</zorder>
         <zorder>caRectangle_23</zorder>
         <zorder>caRectangle_24</zorder>
-        <zorder>caLabel_7</zorder>
         <zorder>caRectangle_25</zorder>
+        <zorder>caLabel_7</zorder>
         <zorder>caRectangle_26</zorder>
         <zorder>caRectangle_27</zorder>
         <zorder>caRectangle_28</zorder>
         <zorder>caRectangle_29</zorder>
         <zorder>caRectangle_30</zorder>
-        <zorder>caLabel_8</zorder>
         <zorder>caRectangle_31</zorder>
+        <zorder>caLabel_8</zorder>
         <zorder>caRectangle_32</zorder>
         <zorder>caRectangle_33</zorder>
         <zorder>caRectangle_34</zorder>
         <zorder>caRectangle_35</zorder>
         <zorder>caRectangle_36</zorder>
-        <zorder>caLabel_9</zorder>
         <zorder>caRectangle_37</zorder>
+        <zorder>caLabel_9</zorder>
         <zorder>caRectangle_38</zorder>
         <zorder>caRectangle_39</zorder>
         <zorder>caRectangle_40</zorder>
         <zorder>caRectangle_41</zorder>
+        <zorder>caRectangle_42</zorder>
         <zorder>caLabel_10</zorder>
         <zorder>caLabel_11</zorder>
-        <zorder>caRectangle_42</zorder>
         <zorder>caRectangle_43</zorder>
-        <zorder>caLabel_12</zorder>
         <zorder>caRectangle_44</zorder>
+        <zorder>caLabel_12</zorder>
         <zorder>caRectangle_45</zorder>
         <zorder>caRectangle_46</zorder>
         <zorder>caRectangle_47</zorder>
         <zorder>caRectangle_48</zorder>
         <zorder>caRectangle_49</zorder>
-        <zorder>caLabel_13</zorder>
         <zorder>caRectangle_50</zorder>
+        <zorder>caLabel_13</zorder>
         <zorder>caRectangle_51</zorder>
         <zorder>caRectangle_52</zorder>
         <zorder>caRectangle_53</zorder>
         <zorder>caRectangle_54</zorder>
         <zorder>caRectangle_55</zorder>
-        <zorder>caLabel_14</zorder>
         <zorder>caRectangle_56</zorder>
+        <zorder>caLabel_14</zorder>
         <zorder>caRectangle_57</zorder>
         <zorder>caRectangle_58</zorder>
         <zorder>caRectangle_59</zorder>
         <zorder>caRectangle_60</zorder>
         <zorder>caRectangle_61</zorder>
-        <zorder>caLabel_15</zorder>
         <zorder>caRectangle_62</zorder>
+        <zorder>caLabel_15</zorder>
         <zorder>caRectangle_63</zorder>
         <zorder>caRectangle_64</zorder>
         <zorder>caRectangle_65</zorder>
         <zorder>caRectangle_66</zorder>
         <zorder>caRectangle_67</zorder>
-        <zorder>caLabel_16</zorder>
         <zorder>caRectangle_68</zorder>
+        <zorder>caLabel_16</zorder>
         <zorder>caRectangle_69</zorder>
         <zorder>caRectangle_70</zorder>
         <zorder>caRectangle_71</zorder>
         <zorder>caRectangle_72</zorder>
         <zorder>caRectangle_73</zorder>
+        <zorder>caRectangle_74</zorder>
         <zorder>caLabel_17</zorder>
         <zorder>caLabel_18</zorder>
         <zorder>caLabel_19</zorder>

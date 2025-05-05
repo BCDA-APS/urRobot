@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=391
-		y=951
+		x=381
+		y=943
 		width=379
 		height=244
 	}
@@ -87,6 +87,17 @@ display {
 		1a7309,
 	}
 }
+rectangle {
+	object {
+		x=-25
+		y=0
+		width=500
+		height=40
+	}
+	"basic attribute" {
+		clr=54
+	}
+}
 "message button" {
 	object {
 		x=215
@@ -107,10 +118,10 @@ text {
 		x=5
 		y=5
 		width=255
-		height=50
+		height=30
 	}
 	"basic attribute" {
-		clr=14
+		clr=0
 	}
 	textix="Robotiq Gripper"
 }

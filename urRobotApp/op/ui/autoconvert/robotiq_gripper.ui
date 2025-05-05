@@ -4,8 +4,8 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>391</x>
-            <y>951</y>
+            <x>381</x>
+            <y>943</y>
             <width>379</width>
             <height>244</height>
         </rect>
@@ -110,6 +110,39 @@ caMenu{
 </string>
     </property>
     <widget class="QWidget" name="centralWidget">
+        <widget class="caGraphics" name="caRectangle_0">
+            <property name="form">
+                <enum>caGraphics::Rectangle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>-25</x>
+                    <y>0</y>
+                    <width>500</width>
+                    <height>40</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>10</red>
+                    <green>0</green>
+                    <blue>184</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>10</red>
+                    <green>0</green>
+                    <blue>184</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+        </widget>
         <widget class="caMessageButton" name="caMessageButton_0">
             <property name="geometry">
                 <rect>
@@ -155,16 +188,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
                 </color>
             </property>
             <property name="text">
@@ -178,7 +211,7 @@ caMenu{
                     <x>5</x>
                     <y>5</y>
                     <width>255</width>
-                    <height>50</height>
+                    <height>30</height>
                 </rect>
             </property>
             <property name="alignment">
@@ -833,6 +866,7 @@ caMenu{
                 <string>$(P)RobotiqGripper:IsActive</string>
             </property>
         </widget>
+        <zorder>caRectangle_0</zorder>
         <zorder>caLabel_0</zorder>
         <zorder>caGraphics_0</zorder>
         <zorder>caLabel_1</zorder>

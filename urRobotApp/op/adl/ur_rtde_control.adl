@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=1164
-		y=674
+		x=1154
+		y=666
 		width=823
 		height=726
 	}
@@ -14,7 +14,7 @@ display {
 	bclr=4
 	cmap=""
 	gridSpacing=5
-	gridOn=0
+	gridOn=1
 	snapToGrid=1
 }
 "color map" {
@@ -85,6 +85,17 @@ display {
 		3cb420,
 		289315,
 		1a7309,
+	}
+}
+rectangle {
+	object {
+		x=0
+		y=0
+		width=900
+		height=40
+	}
+	"basic attribute" {
+		clr=54
 	}
 }
 "choice button" {
@@ -332,7 +343,7 @@ text {
 		height=30
 	}
 	"basic attribute" {
-		clr=14
+		clr=0
 	}
 	textix="UR RTDE Control"
 }
@@ -2517,7 +2528,7 @@ text {
 text {
 	object {
 		x=670
-		y=5
+		y=45
 		width=150
 		height=20
 	}
@@ -2536,7 +2547,7 @@ text {
 text {
 	object {
 		x=670
-		y=5
+		y=45
 		width=150
 		height=20
 	}

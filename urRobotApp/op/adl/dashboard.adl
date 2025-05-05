@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=465
-		y=226
-		width=540
-		height=700
+		x=737
+		y=703
+		width=535
+		height=605
 	}
 	clr=14
 	bclr=4
@@ -87,10 +87,21 @@ display {
 		1a7309,
 	}
 }
+rectangle {
+	object {
+		x=0
+		y=0
+		width=600
+		height=40
+	}
+	"basic attribute" {
+		clr=54
+	}
+}
 "message button" {
 	object {
 		x=270
-		y=150
+		y=143
 		width=200
 		height=30
 	}
@@ -105,7 +116,7 @@ display {
 "message button" {
 	object {
 		x=270
-		y=190
+		y=183
 		width=200
 		height=30
 	}
@@ -120,7 +131,7 @@ display {
 "message button" {
 	object {
 		x=270
-		y=110
+		y=103
 		width=90
 		height=30
 	}
@@ -135,7 +146,7 @@ display {
 "message button" {
 	object {
 		x=380
-		y=110
+		y=103
 		width=90
 		height=30
 	}
@@ -150,7 +161,7 @@ display {
 "message button" {
 	object {
 		x=270
-		y=230
+		y=223
 		width=200
 		height=30
 	}
@@ -165,7 +176,7 @@ display {
 "message button" {
 	object {
 		x=15
-		y=70
+		y=63
 		width=200
 		height=30
 	}
@@ -180,7 +191,7 @@ display {
 "message button" {
 	object {
 		x=15
-		y=110
+		y=103
 		width=200
 		height=30
 	}
@@ -195,7 +206,7 @@ display {
 "message button" {
 	object {
 		x=15
-		y=150
+		y=143
 		width=200
 		height=30
 	}
@@ -210,7 +221,7 @@ display {
 "message button" {
 	object {
 		x=15
-		y=190
+		y=183
 		width=200
 		height=30
 	}
@@ -225,7 +236,7 @@ display {
 "message button" {
 	object {
 		x=15
-		y=230
+		y=223
 		width=200
 		height=30
 	}
@@ -240,7 +251,7 @@ display {
 "text entry" {
 	object {
 		x=15
-		y=400
+		y=375
 		width=250
 		height=40
 	}
@@ -255,9 +266,9 @@ display {
 }
 "message button" {
 	object {
-		x=285
-		y=400
-		width=70
+		x=275
+		y=375
+		width=75
 		height=40
 	}
 	control {
@@ -270,9 +281,9 @@ display {
 }
 "message button" {
 	object {
-		x=365
-		y=400
-		width=70
+		x=360
+		y=375
+		width=75
 		height=40
 	}
 	control {
@@ -286,8 +297,8 @@ display {
 "message button" {
 	object {
 		x=445
-		y=400
-		width=70
+		y=375
+		width=75
 		height=40
 	}
 	control {
@@ -302,19 +313,19 @@ text {
 	object {
 		x=5
 		y=5
-		width=255
-		height=50
+		width=317
+		height=30
 	}
 	"basic attribute" {
-		clr=14
+		clr=0
 	}
 	textix="UR Dashboard"
 }
 "text update" {
 	object {
 		x=15
-		y=320
-		width=475
+		y=295
+		width=500
 		height=25
 	}
 	monitor {
@@ -329,8 +340,8 @@ text {
 "text update" {
 	object {
 		x=15
-		y=360
-		width=475
+		y=335
+		width=500
 		height=25
 	}
 	monitor {
@@ -345,7 +356,7 @@ text {
 "text update" {
 	object {
 		x=15
-		y=595
+		y=520
 		width=475
 		height=25
 	}
@@ -361,7 +372,7 @@ text {
 "text update" {
 	object {
 		x=15
-		y=635
+		y=558
 		width=475
 		height=25
 	}
@@ -377,7 +388,7 @@ text {
 oval {
 	object {
 		x=210
-		y=510
+		y=447
 		width=25
 		height=25
 	}
@@ -392,7 +403,7 @@ oval {
 oval {
 	object {
 		x=210
-		y=510
+		y=447
 		width=25
 		height=25
 	}
@@ -407,7 +418,7 @@ oval {
 text {
 	object {
 		x=15
-		y=510
+		y=447
 		width=111
 		height=25
 	}
@@ -419,7 +430,7 @@ text {
 text {
 	object {
 		x=15
-		y=545
+		y=482
 		width=111
 		height=25
 	}
@@ -431,7 +442,7 @@ text {
 oval {
 	object {
 		x=210
-		y=545
+		y=482
 		width=25
 		height=25
 	}
@@ -446,7 +457,7 @@ oval {
 oval {
 	object {
 		x=210
-		y=545
+		y=482
 		width=25
 		height=25
 	}
@@ -461,7 +472,7 @@ oval {
 rectangle {
 	object {
 		x=260
-		y=90
+		y=83
 		width=220
 		height=185
 	}
@@ -478,7 +489,7 @@ rectangle {
 rectangle {
 	object {
 		x=5
-		y=55
+		y=48
 		width=220
 		height=220
 	}
@@ -495,9 +506,9 @@ rectangle {
 rectangle {
 	object {
 		x=5
-		y=305
-		width=519
-		height=165
+		y=280
+		width=520
+		height=145
 	}
 	"basic attribute" {
 		clr=14
@@ -512,9 +523,9 @@ rectangle {
 rectangle {
 	object {
 		x=5
-		y=500
-		width=519
-		height=184
+		y=437
+		width=520
+		height=160
 	}
 	"basic attribute" {
 		clr=14
