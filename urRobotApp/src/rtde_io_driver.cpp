@@ -216,7 +216,7 @@ asynStatus RTDEInOut::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 // register function for iocsh
 extern "C" int RTDEInOutConfig(const char *asyn_port_name, const char *robot_ip) {
     RTDEInOut *pRTDEInOut = new RTDEInOut(asyn_port_name, robot_ip);
-    pRTDEInOut = NULL;
+    (void)pRTDEInOut;
     return (asynSuccess);
 }
 

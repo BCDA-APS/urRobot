@@ -269,7 +269,7 @@ skip:
 // register function for iocsh
 extern "C" int URGripperConfig(const char *asyn_port_name, const char *robot_ip) {
     URGripper *pURGripper = new URGripper(asyn_port_name, robot_ip);
-    pURGripper = NULL;
+    (void)pURGripper;
     return (asynSuccess);
 }
 

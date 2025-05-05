@@ -196,7 +196,7 @@ asynStatus URDashboard::writeOctet(asynUser *pasynUser, const char *value, size_
 // register function for iocsh
 extern "C" int URDashboardConfig(const char *asyn_port_name, const char *robot_ip) {
     URDashboard *pURDashboard = new URDashboard(asyn_port_name, robot_ip);
-    pURDashboard = NULL;
+    (void)pURDashboard;
     return (asynSuccess);
 }
 

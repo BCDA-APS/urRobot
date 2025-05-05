@@ -252,7 +252,7 @@ skip:
 // register function for iocsh
 extern "C" int RTDEReceiveConfig(const char *asyn_port_name, const char *robot_ip) {
     RTDEReceive *pRTDEReceive = new RTDEReceive(asyn_port_name, robot_ip);
-    pRTDEReceive = NULL;
+    (void)pRTDEReceive;
     return (asynSuccess);
 }
 

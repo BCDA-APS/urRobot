@@ -453,7 +453,7 @@ skip:
 }
 
 asynStatus RTDEControl::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual) {
-    int function = pasynUser->reason;
+    // int function = pasynUser->reason;
     bool comm_ok = true;
 
     if (rtde_control_ == nullptr) {
@@ -481,7 +481,7 @@ skip:
 // register function for iocsh
 extern "C" int RTDEControlConfig(const char *asyn_port_name, const char *robot_ip) {
     RTDEControl *pRTDEControl = new RTDEControl(asyn_port_name, robot_ip);
-    pRTDEControl = NULL;
+    (void)pRTDEControl;
     return (asynSuccess);
 }
 
