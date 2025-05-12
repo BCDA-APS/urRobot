@@ -92,8 +92,7 @@ class RTDEControl : public asynPortDriver {
     bool async_move_ = true;
     AsyncRunning async_running_ = AsyncRunning::False;
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
-    std::vector<std::vector<double>> waypoint_path_;
-    std::vector<std::vector<double>>::iterator waypoint_path_iter_;
+    std::vector<double> waypoint_;
 
   protected:
     asynUser *pasynUserURRobot_;
