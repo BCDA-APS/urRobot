@@ -1,0 +1,17 @@
+file "$(MOTOR)/db/asyn_motor.db"
+{
+pattern
+{N,   M,       DTYP,         PORT,  ADDR,   DESC,      EGU,  DIR,  VELO,  VBAS,  ACCL,  BDST,  BVEL,  BACC,   MRES,      PREC,  DHLM,  DLLM, INIT}
+{1,  "m$(N)",  "asynMotor",  URMC,  0,  "Motor $(N)",  deg,  Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{2,  "m$(N)",  "asynMotor",  URMC,  1,  "Motor $(N)",  deg,  Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{3,  "m$(N)",  "asynMotor",  URMC,  2,  "Motor $(N)",  deg,  Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{4,  "m$(N)",  "asynMotor",  URMC,  3,  "Motor $(N)",  deg,  Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{5,  "m$(N)",  "asynMotor",  URMC,  4,  "Motor $(N)",  deg,  Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{6,  "m$(N)",  "asynMotor",  URMC,  5,  "Motor $(N)",  deg,  Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{7,  "m$(N)",  "asynMotor",  URMC,  6,  "Motor $(N)",  mm,   Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{8,  "m$(N)",  "asynMotor",  URMC,  7,  "Motor $(N)",  mm,   Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{9,  "m$(N)",  "asynMotor",  URMC,  8,  "Motor $(N)",  mm,   Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{10,  "m$(N)",  "asynMotor",  URMC, 9,  "Motor $(N)",  deg,  Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{11,  "m$(N)",  "asynMotor",  URMC, 10, "Motor $(N)",  deg,  Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+{12,  "m$(N)",  "asynMotor",  URMC, 11, "Motor $(N)",  deg,  Pos,  1,     .1,    .2,    0,       1,    .2,   0.003,         6,   100,  -100,  ""}
+}

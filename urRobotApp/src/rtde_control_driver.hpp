@@ -7,6 +7,11 @@
 #include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/rtde_receive_interface.h"
 
+static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
+static constexpr char IS_STEADY_STRING[] = "IS_STEADY";
+static constexpr char ACTUAL_Q_STRING[] = "ACTUAL_Q";
+static constexpr char ACTUAL_TCP_POSE_STRING[] = "ACTUAL_TCP_POSE";
+
 class epicsShareClass URMotorAxis : public asynMotorAxis {
   public:
     URMotorAxis(class URMotorController *pC, int axisNo);
@@ -47,12 +52,18 @@ class epicsShareClass URMotorController : public asynMotorController {
     /// \param[in] axisNo Axis index number
     /// \returns NULL if the axis number is invalid
     URMotorAxis *getAxis(int axisNo);
+    
+    asynStatus poll();
 
     void report(FILE *fp, int level);
     asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
 
   protected:
+    int isConnectedIndex_;
+    int isSteadyIndex_;
+    int actualQIndex_;
+    int actualTCPPoseIndex_;
     friend class URMotorAxis;
 
   private:
@@ -60,6 +71,9 @@ class epicsShareClass URMotorController : public asynMotorController {
     
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
+
+    std::array<double, 6> joints_ = {0.0};
+    std::array<double, 6> pose_ = {0.0};
     
     bool try_connect();
 

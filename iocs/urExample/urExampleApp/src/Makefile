@@ -43,6 +43,12 @@ ifdef LUA
   $(PROD_NAME)_LIBS := lua $($(PROD_NAME)_LIBS)
 endif
 
+ifdef MOTOR
+  $(DBD_NAME)_DBD += motorSupport.dbd
+  $(PROD_NAME)_LIBS := motor $($(PROD_NAME)_LIBS)
+endif
+
+
 $(PROD_NAME)_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 # <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd

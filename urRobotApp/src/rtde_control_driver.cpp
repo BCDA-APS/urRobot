@@ -10,6 +10,8 @@
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
 
+constexpr int NUM_JOINTS = 12;
+
 bool URMotorController::try_connect() {
     // RTDE class construction automatically tries connecting.
     // If this function hasn't been called or if connecting fails,
@@ -78,19 +80,20 @@ URMotorController::URMotorController(const char *portName, const char *URMotorPo
                           0, // No additional callback interfaces beyond those in base class
                           ASYN_CANBLOCK | ASYN_MULTIDEVICE,
                           1,    // autoconnect
-                          0, 0) // Default priority and stack size
+                          0, 0), robot_ip_(URMotorPortName)
 {
     asynStatus status;
     int axis;
     URMotorAxis *pAxis;
     static const char *functionName = "URMotorController::URMotorController";
 
-    // // Connect to motor controller
-    // status = pasynOctetSyncIO->connect(URMotorPortName, 0, &pasynUserController_, NULL);
-    // if (status) {
-        // asynPrint(this->pasynUserSelf, ASYN_TRACE_ERROR, "%s: cannot connect to UR robot controller\n",
-                  // functionName);
-    // }
+    // tries connecting to the control and receive servers on the robot controller
+    try_connect();
+
+    createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
+    createParam(IS_STEADY_STRING, asynParamInt32, &isSteadyIndex_);
+    createParam(ACTUAL_Q_STRING, asynParamFloat64Array, &actualQIndex_);
+    createParam(ACTUAL_TCP_POSE_STRING, asynParamFloat64Array, &actualTCPPoseIndex_);
 
     // Create URMotorAxis object for each axis
     // if not done here, user must call URMotorCreateAxis from cmd file
@@ -105,7 +108,8 @@ extern "C" int URMotorCreateController(const char *portName, const char *URMotor
                                           int numAxes, int movingPollPeriod, int idlePollPeriod) {
     URMotorController *pURMotorController = new URMotorController(
         portName, URMotorPortName, numAxes, movingPollPeriod / 1000., idlePollPeriod / 1000.);
-    pURMotorController = NULL;
+    (void)pURMotorController;
+    // pURMotorController = NULL;
     return (asynSuccess);
 }
 
@@ -169,6 +173,51 @@ asynStatus URMotorAxis::move(double position, int relative, double minVelocity,
 asynStatus URMotorAxis::poll(bool *moving) {
     asynStatus asyn_status = asynSuccess;
 
+    if (axisNo_ <= 5) {
+        // Joint angles
+        setDoubleParam(pC_->motorPosition_, pC_->joints_.at(axisNo_));
+        setDoubleParam(pC_->motorEncoderPosition_, pC_->joints_.at(axisNo_));
+    } else {
+        // TCP Pose
+        setDoubleParam(pC_->motorPosition_, pC_->pose_.at(axisNo_-6));
+        setDoubleParam(pC_->motorEncoderPosition_, pC_->pose_.at(axisNo_-6));
+    }
+
+    setIntegerParam(pC_->motorStatusDone_, not *moving);
+    setIntegerParam(pC_->motorStatusMoving_, *moving);
+
+    callParamCallbacks();
+    return asyn_status;
+}
+
+asynStatus URMotorController::poll() {
+    asynStatus asyn_status = asynSuccess;
+
+    if (rtde_control_) {
+        if (rtde_control_->isConnected()) {
+            setIntegerParam(isConnectedIndex_, 1);
+            setIntegerParam(isSteadyIndex_, rtde_control_->isSteady());
+
+            std::vector<double> jvec = rtde_receive_->getActualQ();
+            for (double &j : jvec) {
+                j = j * (180.0 / M_PI) * 1000.0; // convert rad -> mdeg "steps"
+            }
+            std::copy(jvec.begin(), jvec.begin()+jvec.size(), this->joints_.begin());
+
+            std::vector<double> pose_vec = rtde_receive_->getActualTCPPose();
+            for (size_t i = 0; i < pose_vec.size(); i++) {
+                if (i <= 2) {
+                    pose_vec.at(i) = pose_vec.at(i) * 1000.0 * 1000.0; // convert m -> um steps
+                } else {
+                    pose_vec.at(i) = pose_vec.at(i) * (180.0 / M_PI) * 1000.0; // convert rad -> mdeg steps
+                }
+            }
+            std::copy(pose_vec.begin(), pose_vec.begin()+pose_vec.size(), this->pose_.begin());
+        } else {
+            setIntegerParam(isConnectedIndex_, 0);
+        }
+    }
+
     callParamCallbacks();
     return asyn_status;
 }
@@ -177,14 +226,13 @@ asynStatus URMotorController::writeInt32(asynUser *pasynUser, epicsInt32 value) 
 
     asynStatus asyn_status = asynSuccess;
     int function = pasynUser->reason;
-    URMotorAxis *pAxis;
-
-    pAxis = getAxis(pasynUser);
-    if (!pAxis) {
-        return asynError;
-    }
-
-    pAxis->callParamCallbacks();
+    // URMotorAxis *pAxis;
+//
+    // pAxis = getAxis(pasynUser);
+    // if (!pAxis) {
+        // return asynError;
+    // }
+    // pAxis->callParamCallbacks();
     return asyn_status;
 }
 
@@ -193,9 +241,8 @@ asynStatus URMotorController::writeFloat64(asynUser *pasynUser, epicsFloat64 val
 
     asynStatus asyn_status = asynSuccess;
     int function = pasynUser->reason;
-    URMotorAxis *pAxis;
-
-    pAxis->callParamCallbacks();
+    // URMotorAxis *pAxis;
+    // pAxis->callParamCallbacks();
     return asyn_status;
 }
 
@@ -205,7 +252,7 @@ asynStatus URMotorController::writeFloat64(asynUser *pasynUser, epicsFloat64 val
 // ==================
 
 static const iocshArg URMotorCreateControllerArg0 = {"Controller port name", iocshArgString};
-static const iocshArg URMotorCreateControllerArg1 = {"drvAsynIPPort name", iocshArgString};
+static const iocshArg URMotorCreateControllerArg1 = {"Robot IP", iocshArgString};
 static const iocshArg URMotorCreateControllerArg2 = {"Number of axes", iocshArgInt};
 static const iocshArg URMotorCreateControllerArg3 = {"Moving poll period (ms)", iocshArgInt};
 static const iocshArg URMotorCreateControllerArg4 = {"Idle poll period (ms)", iocshArgInt};

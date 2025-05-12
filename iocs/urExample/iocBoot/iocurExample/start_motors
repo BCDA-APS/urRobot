@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export CAQTDM_DISPLAY_PATH="/APSshare/epics/synApps_6_3/support/motor-R7-3-1/motorApp/op/ui/autoconvert"
+/APSshare/bin/caQtDM -attach -macro "P=urExample:,M1=m1,M2=m2,M3=m3,M4=m4,M5=m5,M6=m6" motor6x.ui &
+/APSshare/bin/caQtDM -attach -macro "P=urExample:,M1=m7,M2=m8,M3=m9,M4=m10,M5=m11,M6=m12" motor6x.ui &

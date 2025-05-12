@@ -1,5 +1,5 @@
 registrar(RTDEReceiveRegister)
-registrar(RTDEControlRegister)
+registrar(URMotorRegister)
 registrar(RTDEInOutRegister)
 registrar(URDashboardRegister)
 registrar(URGripperRegister)
