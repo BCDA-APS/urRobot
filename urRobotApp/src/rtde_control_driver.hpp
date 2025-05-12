@@ -1,139 +1,67 @@
-#ifndef _RTDE_CONTROL_DRIVER_HPP_
-#define _RTDE_CONTROL_DRIVER_HPP_
+#include <memory>
+
+#include "asynDriver.h"
+#include "asynMotorAxis.h"
+#include "asynMotorController.h"
 
 #include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/rtde_receive_interface.h"
-#include <asynPortDriver.h>
 
-static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
-static constexpr char RECONNECT_STRING[] = "RECONNECT";
-static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
-static constexpr char IS_STEADY_STRING[] = "IS_STEADY";
-
-static constexpr char ACTUAL_Q_STRING[] = "ACTUAL_Q";
-static constexpr char MOVEJ_STRING[] = "MOVEJ";
-static constexpr char STOPJ_STRING[] = "STOPJ";
-static constexpr char J1CMD_STRING[] = "J1CMD";
-static constexpr char J2CMD_STRING[] = "J2CMD";
-static constexpr char J3CMD_STRING[] = "J3CMD";
-static constexpr char J4CMD_STRING[] = "J4CMD";
-static constexpr char J5CMD_STRING[] = "J5CMD";
-static constexpr char J6CMD_STRING[] = "J6CMD";
-
-static constexpr char ACTUAL_TCP_POSE_STRING[] = "ACTUAL_TCP_POSE";
-static constexpr char MOVEL_STRING[] = "MOVEL";
-static constexpr char STOPL_STRING[] = "STOPL";
-static constexpr char POSE_X_CMD_STRING[] = "POSE_X_CMD";
-static constexpr char POSE_Y_CMD_STRING[] = "POSE_Y_CMD";
-static constexpr char POSE_Z_CMD_STRING[] = "POSE_Z_CMD";
-static constexpr char POSE_ROLL_CMD_STRING[] = "POSE_ROLL_CMD";
-static constexpr char POSE_PITCH_CMD_STRING[] = "POSE_PITCH_CMD";
-static constexpr char POSE_YAW_CMD_STRING[] = "POSE_YAW_CMD";
-
-static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
-static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
-
-static constexpr char ASYNC_MOVE_STRING[] = "ASYNC_MOVE";
-static constexpr char ASYNC_MOVE_DONE_STRING[] = "ASYNC_MOVE_DONE";
-
-static constexpr char JOINT_SPEED_STRING[] = "JOINT_SPEED";
-static constexpr char JOINT_ACCEL_STRING[] = "JOINT_ACCELERATION";
-static constexpr char JOINT_BLEND_STRING[] = "JOINT_BLEND";
-
-static constexpr char LINEAR_SPEED_STRING[] = "LINEAR_SPEED";
-static constexpr char LINEAR_ACCEL_STRING[] = "LINEAR_ACCELERATION";
-static constexpr char LINEAR_BLEND_STRING[] = "LINEAR_BLEND";
-
-static constexpr char WAYPOINT_MOVEJ_STRING[] = "WAYPOINT_MOVEJ";
-static constexpr char WAYPOINT_MOVEL_STRING[] = "WAYPOINT_MOVEL";
-static constexpr char RUN_WAYPOINT_ACTION_STRING[] = "RUN_WAYPOINT_ACTION";
-static constexpr char WAYPOINT_ACTION_DONE_STRING[] = "WAYPOINT_ACTION_DONE";
-
-static constexpr char TEACH_MODE_STRING[] = "TEACH_MODE";
-
-static constexpr int NUM_JOINTS = 6;
-static constexpr int MAX_CONTROLLERS = 1;
-static constexpr double POLL_PERIOD = 0.02; // 50Hz
-static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
-
-enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
-enum class AsyncRunning : int {False, Cartesian, Joint};
-
-class RTDEControl : public asynPortDriver {
+class epicsShareClass URMotorAxis : public asynMotorAxis {
   public:
-    RTDEControl(const char *asyn_port_name, const char *robot_port_name);
-    virtual void poll(void);
-    virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
-    virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
-    virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual);
+    URMotorAxis(class URMotorController *pC, int axisNo);
+    void report(FILE *fp, int level);
+    asynStatus stop(double acceleration);
+    asynStatus poll(bool *moving);
+    asynStatus move(double position, int relative, double minVelocity, double maxVelocity, double acceleration);
 
   private:
-    std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
-    std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
+    URMotorController *pC_;
+    int axisIndex_;
+    bool moveStarted_ = false;
+    int targetPos_;
+    int doneTolerance_ = 50; // nanometers
 
-    const std::string robot_ip_ = "0.0.0.0";
-    bool try_connect();
-
-    // Commanded joint angles
-    std::vector<double> cmd_joints_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-
-    // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
-    std::vector<double> cmd_pose_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-
-    // Parameters for moveJ and moveL
-    double joint_speed_ = 0.5;   // rad/s
-    double joint_accel_ = 1.4;   // rad/s/s
-    double joint_blend_ = 0.0;   // m?
-    double linear_speed_ = 0.05; // m/s
-    double linear_accel_ = 0.5;  // m/s/s
-    double linear_blend_ = 0.0;  // m?
-
-    // handle asynchronous motion through paths, etc.
-    bool async_move_ = true;
-    AsyncRunning async_running_ = AsyncRunning::False;
-    AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
-    std::vector<double> waypoint_;
-
-  protected:
-    asynUser *pasynUserURRobot_;
-
-    int disconnectIndex_;
-    int reconnectIndex_;
-    int isConnectedIndex_;
-    int isSteadyIndex_;
-    int actualQIndex_;
-    int moveJIndex_;
-    int stopJIndex_;
-    int j1CmdIndex_;
-    int j2CmdIndex_;
-    int j3CmdIndex_;
-    int j4CmdIndex_;
-    int j5CmdIndex_;
-    int j6CmdIndex_;
-    int actualTCPPoseIndex_;
-    int moveLIndex_;
-    int stopLIndex_;
-    int poseXCmdIndex_;
-    int poseYCmdIndex_;
-    int poseZCmdIndex_;
-    int poseRollCmdIndex_;
-    int posePitchCmdIndex_;
-    int poseYawCmdIndex_;
-    int reuploadCtrlScriptIndex_;
-    int stopCtrlScriptIndex_;
-    int asyncMoveIndex_;
-    int asyncMoveDoneIndex_;
-    int jointSpeedIndex_;
-    int jointAccelIndex_;
-    int jointBlendIndex_;
-    int linearSpeedIndex_;
-    int linearAccelIndex_;
-    int linearBlendIndex_;
-    int waypointMoveJIndex_;
-    int waypointMoveLIndex_;
-    int runWaypointActionIndex_;
-    int waypointActionDoneIndex_;
-    int teachModeIndex_;
+    friend class URMotorController;
 };
 
-#endif
+class epicsShareClass URMotorController : public asynMotorController {
+  public:
+    /// \brief Create a new URMotorController object
+    ///
+    /// \param[in] portName             The name of the asyn port that will be created for this
+    /// driver
+    /// \param[in] URPortName       The name of the drvAsynIPPort that was created previously
+    /// \param[in] numAxes              The number of axes that this controller supports
+    /// \param[in] movingPollPeriod     The time between polls when any axis is moving
+    /// \param[in] idlePollPeriod       The time between polls when no axis is moving
+    URMotorController(const char *portName, const char *URMotorController, int numAxes,
+                         double movingPollPeriod, double idlePollPeriod);
+
+    /// \brief Returns a pointer to a URMotorAxis object
+    /// \param[in] asynUser structure that encodes the axis index number
+    /// \returns NULL if the axis number encoded in pasynUser is invalid
+    URMotorAxis *getAxis(asynUser *pasynUser);
+
+    /// \brief Returns a pointer to a URMotorAxis object
+    /// \param[in] axisNo Axis index number
+    /// \returns NULL if the axis number is invalid
+    URMotorAxis *getAxis(int axisNo);
+
+    void report(FILE *fp, int level);
+    asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
+    asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
+
+  protected:
+    friend class URMotorAxis;
+
+  private:
+    const std::string robot_ip_ = "0.0.0.0";
+    
+    std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
+    std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
+    
+    bool try_connect();
+
+
+};

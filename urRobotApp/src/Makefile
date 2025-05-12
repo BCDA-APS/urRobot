@@ -29,7 +29,7 @@ urRobot_SRCS += rtde_control_driver.cpp
 urRobot_SRCS += gripper_driver.cpp
 
 # Libraries needed for urRobot
-urRobot_LIBS += asyn
+urRobot_LIBS += asyn motor
 urRobot_LIBS += rtde
 urRobot_LIBS += $(EPICS_BASE_IOC_LIBS)
 urRobot_SYS_LIBS += boost_system
