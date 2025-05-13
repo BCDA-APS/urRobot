@@ -352,7 +352,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions0"
+		chan="$(P)Receive:Joint0"
 		clr=54
 		bclr=4
 	}
@@ -368,7 +368,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions1"
+		chan="$(P)Receive:Joint1"
 		clr=54
 		bclr=4
 	}
@@ -384,7 +384,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions2"
+		chan="$(P)Receive:Joint2"
 		clr=54
 		bclr=4
 	}
@@ -400,7 +400,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions3"
+		chan="$(P)Receive:Joint3"
 		clr=54
 		bclr=4
 	}
@@ -416,7 +416,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions4"
+		chan="$(P)Receive:Joint4"
 		clr=54
 		bclr=4
 	}
@@ -432,7 +432,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions5"
+		chan="$(P)Receive:Joint5"
 		clr=54
 		bclr=4
 	}
@@ -460,7 +460,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_X"
+		chan="$(P)Receive:TCP_X"
 		clr=54
 		bclr=4
 	}
@@ -476,7 +476,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_Y"
+		chan="$(P)Receive:TCP_Y"
 		clr=54
 		bclr=4
 	}
@@ -492,7 +492,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_Z"
+		chan="$(P)Receive:TCP_Z"
 		clr=54
 		bclr=4
 	}
@@ -508,7 +508,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_Roll"
+		chan="$(P)Receive:TCP_Roll"
 		clr=54
 		bclr=4
 	}
@@ -524,7 +524,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_Pitch"
+		chan="$(P)Receive:TCP_Pitch"
 		clr=54
 		bclr=4
 	}
@@ -540,7 +540,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_Yaw"
+		chan="$(P)Receive:TCP_Yaw"
 		clr=54
 		bclr=4
 	}
@@ -939,7 +939,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions0.EGU"
+		chan="$(P)Receive:Joint0.EGU"
 		clr=54
 		bclr=4
 	}
@@ -955,7 +955,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions1.EGU"
+		chan="$(P)Receive:Joint1.EGU"
 		clr=54
 		bclr=4
 	}
@@ -971,7 +971,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions2.EGU"
+		chan="$(P)Receive:Joint2.EGU"
 		clr=54
 		bclr=4
 	}
@@ -987,7 +987,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions3.EGU"
+		chan="$(P)Receive:Joint3.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1003,7 +1003,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions4.EGU"
+		chan="$(P)Receive:Joint4.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1019,7 +1019,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualJointPositions5.EGU"
+		chan="$(P)Receive:Joint5.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1035,7 +1035,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_X.EGU"
+		chan="$(P)Receive:TCP_X.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1051,7 +1051,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_Y.EGU"
+		chan="$(P)Receive:TCP_Y.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1067,7 +1067,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_Z.EGU"
+		chan="$(P)Receive:TCP_Z.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1083,7 +1083,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_Roll.EGU"
+		chan="$(P)Receive:TCP_Roll.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1099,7 +1099,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_Pitch.EGU"
+		chan="$(P)Receive:TCP_Pitch.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1115,7 +1115,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:ActualTCP_Yaw.EGU"
+		chan="$(P)Receive:TCP_Yaw.EGU"
 		clr=54
 		bclr=4
 	}

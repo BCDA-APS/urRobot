@@ -586,7 +586,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_19</name>
-    <pv_name>$(P)Control:pose_index0.VAL</pv_name>
+    <pv_name>$(P)Receive:TCP_X.VAL</pv_name>
     <x>50</x>
     <y>619</y>
     <width>80</width>
@@ -596,7 +596,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_20</name>
-    <pv_name>$(P)Control:pose_index1</pv_name>
+    <pv_name>$(P)Receive:TCP_Y</pv_name>
     <x>190</x>
     <y>619</y>
     <precision>4</precision>
@@ -605,7 +605,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_21</name>
-    <pv_name>$(P)Control:pose_index2</pv_name>
+    <pv_name>$(P)Receive:TCP_Z</pv_name>
     <x>340</x>
     <y>619</y>
     <precision>4</precision>
@@ -614,7 +614,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_22</name>
-    <pv_name>$(P)Control:pose_index3</pv_name>
+    <pv_name>$(P)Receive:TCP_Roll</pv_name>
     <x>490</x>
     <y>619</y>
     <precision>4</precision>
@@ -623,7 +623,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_23</name>
-    <pv_name>$(P)Control:pose_index4</pv_name>
+    <pv_name>$(P)Receive:TCP_Pitch</pv_name>
     <x>640</x>
     <y>619</y>
     <precision>4</precision>
@@ -632,7 +632,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_24</name>
-    <pv_name>$(P)Control:pose_index5</pv_name>
+    <pv_name>$(P)Receive:TCP_Yaw</pv_name>
     <x>790</x>
     <y>619</y>
     <precision>4</precision>
@@ -1086,7 +1086,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_25</name>
-    <pv_name>$(P)Control:ActualQ_index0.VAL</pv_name>
+    <pv_name>$(P)Receive:Joint0.VAL</pv_name>
     <x>50</x>
     <y>340</y>
     <width>80</width>
@@ -1096,7 +1096,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_26</name>
-    <pv_name>$(P)Control:ActualQ_index1</pv_name>
+    <pv_name>$(P)Receive:Joint1</pv_name>
     <x>190</x>
     <y>340</y>
     <precision>4</precision>
@@ -1105,7 +1105,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_27</name>
-    <pv_name>$(P)Control:ActualQ_index2</pv_name>
+    <pv_name>$(P)Receive:Joint2</pv_name>
     <x>340</x>
     <y>340</y>
     <precision>4</precision>
@@ -1114,7 +1114,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_28</name>
-    <pv_name>$(P)Control:ActualQ_index3</pv_name>
+    <pv_name>$(P)Receive:Joint3</pv_name>
     <x>490</x>
     <y>340</y>
     <precision>4</precision>
@@ -1123,7 +1123,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_29</name>
-    <pv_name>$(P)Control:ActualQ_index4</pv_name>
+    <pv_name>$(P)Receive:Joint4</pv_name>
     <x>640</x>
     <y>340</y>
     <precision>4</precision>
@@ -1132,7 +1132,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_30</name>
-    <pv_name>$(P)Control:ActualQ_index5</pv_name>
+    <pv_name>$(P)Receive:Joint5</pv_name>
     <x>790</x>
     <y>340</y>
     <precision>4</precision>

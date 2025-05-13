@@ -610,7 +610,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index0.VAL</string>
+                <string>$(P)Receive:Joint0.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1441,7 +1441,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index1.VAL</string>
+                <string>$(P)Receive:Joint1.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1989,7 +1989,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index2.VAL</string>
+                <string>$(P)Receive:Joint2.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2537,7 +2537,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index3.VAL</string>
+                <string>$(P)Receive:Joint3.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3085,7 +3085,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index4.VAL</string>
+                <string>$(P)Receive:Joint4.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3633,7 +3633,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:ActualQ_index5.VAL</string>
+                <string>$(P)Receive:Joint5.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4253,7 +4253,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:pose_index0.VAL</string>
+                <string>$(P)Receive:TCP_X.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4952,7 +4952,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:pose_index1.VAL</string>
+                <string>$(P)Receive:TCP_Y.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5500,7 +5500,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:pose_index2.VAL</string>
+                <string>$(P)Receive:TCP_Z.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6048,7 +6048,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:pose_index3.VAL</string>
+                <string>$(P)Receive:TCP_Roll.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6596,7 +6596,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:pose_index4.VAL</string>
+                <string>$(P)Receive:TCP_Pitch.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -7144,7 +7144,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:pose_index5.VAL</string>
+                <string>$(P)Receive:TCP_Yaw.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

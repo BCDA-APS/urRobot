@@ -260,7 +260,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index0.VAL"
+		chan="$(P)Receive:Joint0.VAL"
 		clr=54
 		bclr=3
 	}
@@ -535,7 +535,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index1.VAL"
+		chan="$(P)Receive:Joint1.VAL"
 		clr=54
 		bclr=3
 	}
@@ -715,7 +715,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index2.VAL"
+		chan="$(P)Receive:Joint2.VAL"
 		clr=54
 		bclr=3
 	}
@@ -895,7 +895,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index3.VAL"
+		chan="$(P)Receive:Joint3.VAL"
 		clr=54
 		bclr=3
 	}
@@ -1075,7 +1075,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index4.VAL"
+		chan="$(P)Receive:Joint4.VAL"
 		clr=54
 		bclr=3
 	}
@@ -1255,7 +1255,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:ActualQ_index5.VAL"
+		chan="$(P)Receive:Joint5.VAL"
 		clr=54
 		bclr=3
 	}
@@ -1464,7 +1464,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:pose_index0.VAL"
+		chan="$(P)Receive:TCP_X.VAL"
 		clr=54
 		bclr=3
 	}
@@ -1698,7 +1698,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:pose_index1.VAL"
+		chan="$(P)Receive:TCP_Y.VAL"
 		clr=54
 		bclr=3
 	}
@@ -1878,7 +1878,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:pose_index2.VAL"
+		chan="$(P)Receive:TCP_Z.VAL"
 		clr=54
 		bclr=3
 	}
@@ -2058,7 +2058,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:pose_index3.VAL"
+		chan="$(P)Receive:TCP_Roll.VAL"
 		clr=54
 		bclr=3
 	}
@@ -2238,7 +2238,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:pose_index4.VAL"
+		chan="$(P)Receive:TCP_Pitch.VAL"
 		clr=54
 		bclr=3
 	}
@@ -2418,7 +2418,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)Control:pose_index5.VAL"
+		chan="$(P)Receive:TCP_Yaw.VAL"
 		clr=54
 		bclr=3
 	}

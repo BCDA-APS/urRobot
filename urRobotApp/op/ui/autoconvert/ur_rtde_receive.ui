@@ -879,7 +879,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions0</string>
+                <string>$(P)Receive:Joint0</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -933,7 +933,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions1</string>
+                <string>$(P)Receive:Joint1</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -987,7 +987,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions2</string>
+                <string>$(P)Receive:Joint2</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1041,7 +1041,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions3</string>
+                <string>$(P)Receive:Joint3</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1095,7 +1095,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions4</string>
+                <string>$(P)Receive:Joint4</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1149,7 +1149,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions5</string>
+                <string>$(P)Receive:Joint5</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1239,7 +1239,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_X</string>
+                <string>$(P)Receive:TCP_X</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1293,7 +1293,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_Y</string>
+                <string>$(P)Receive:TCP_Y</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1347,7 +1347,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_Z</string>
+                <string>$(P)Receive:TCP_Z</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1401,7 +1401,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_Roll</string>
+                <string>$(P)Receive:TCP_Roll</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1455,7 +1455,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_Pitch</string>
+                <string>$(P)Receive:TCP_Pitch</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1509,7 +1509,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_Yaw</string>
+                <string>$(P)Receive:TCP_Yaw</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2679,7 +2679,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions0.EGU</string>
+                <string>$(P)Receive:Joint0.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2733,7 +2733,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions1.EGU</string>
+                <string>$(P)Receive:Joint1.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2787,7 +2787,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions2.EGU</string>
+                <string>$(P)Receive:Joint2.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2841,7 +2841,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions3.EGU</string>
+                <string>$(P)Receive:Joint3.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2895,7 +2895,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions4.EGU</string>
+                <string>$(P)Receive:Joint4.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2949,7 +2949,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualJointPositions5.EGU</string>
+                <string>$(P)Receive:Joint5.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3003,7 +3003,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_X.EGU</string>
+                <string>$(P)Receive:TCP_X.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3057,7 +3057,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_Y.EGU</string>
+                <string>$(P)Receive:TCP_Y.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3111,7 +3111,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_Z.EGU</string>
+                <string>$(P)Receive:TCP_Z.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3165,7 +3165,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_Roll.EGU</string>
+                <string>$(P)Receive:TCP_Roll.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3219,7 +3219,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_Pitch.EGU</string>
+                <string>$(P)Receive:TCP_Pitch.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3273,7 +3273,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:ActualTCP_Yaw.EGU</string>
+                <string>$(P)Receive:TCP_Yaw.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
