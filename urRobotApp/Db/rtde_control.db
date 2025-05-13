@@ -1002,3 +1002,59 @@ record(calcout, "$(P)Control:PoseYawTweakCalcRev")
     field(CALC, "A - B")
     field(OUT, "$(P)Control:PoseYawCmd PP")
 }
+
+record(ao, "$(P)Control:TCPOffset_X")
+{
+    field(DESC, "X TCP offset")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TCP_OFFSET_X")
+    field(EGU, "mm")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+record(ao, "$(P)Control:TCPOffset_Y")
+{
+    field(DESC, "Y TCP offset")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TCP_OFFSET_Y")
+    field(EGU, "mm")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+record(ao, "$(P)Control:TCPOffset_Z")
+{
+    field(DESC, "Z TCP offset")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TCP_OFFSET_Z")
+    field(EGU, "mm")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+record(ao, "$(P)Control:TCPOffset_Roll")
+{
+    field(DESC, "Roll TCP offset")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TCP_OFFSET_ROLL")
+    field(EGU, "deg")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+record(ao, "$(P)Control:TCPOffset_Pitch")
+{
+    field(DESC, "Pitch TCP offset")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TCP_OFFSET_PITCH")
+    field(EGU, "deg")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+record(ao, "$(P)Control:TCPOffset_Yaw")
+{
+    field(DESC, "Yaw TCP offset")
+    field(DTYP, "asynFloat64")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TCP_OFFSET_YAW")
+    field(EGU, "deg")
+    field(PINI, 1)
+    field(PREC, 4)
+}
+

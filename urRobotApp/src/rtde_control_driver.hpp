@@ -30,6 +30,13 @@ static constexpr char POSE_ROLL_CMD_STRING[] = "POSE_ROLL_CMD";
 static constexpr char POSE_PITCH_CMD_STRING[] = "POSE_PITCH_CMD";
 static constexpr char POSE_YAW_CMD_STRING[] = "POSE_YAW_CMD";
 
+static constexpr char TCP_OFFSET_X_STRING[] = "TCP_OFFSET_X";
+static constexpr char TCP_OFFSET_Y_STRING[] = "TCP_OFFSET_Y";
+static constexpr char TCP_OFFSET_Z_STRING[] = "TCP_OFFSET_Z";
+static constexpr char TCP_OFFSET_ROLL_STRING[] = "TCP_OFFSET_ROLL";
+static constexpr char TCP_OFFSET_PITCH_STRING[] = "TCP_OFFSET_PITCH";
+static constexpr char TCP_OFFSET_YAW_STRING[] = "TCP_OFFSET_YAW";
+
 static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
 static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
 
@@ -80,6 +87,9 @@ class RTDEControl : public asynPortDriver {
     // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
     std::vector<double> cmd_pose_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
+    // TCP pose offset
+    std::vector<double> tcp_offset_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+
     // Parameters for moveJ and moveL
     double joint_speed_ = 0.5;   // rad/s
     double joint_accel_ = 1.4;   // rad/s/s
@@ -119,6 +129,12 @@ class RTDEControl : public asynPortDriver {
     int poseRollCmdIndex_;
     int posePitchCmdIndex_;
     int poseYawCmdIndex_;
+    int tcpOffsetXIndex_;
+    int tcpOffsetYIndex_;
+    int tcpOffsetZIndex_;
+    int tcpOffsetRollIndex_;
+    int tcpOffsetPitchIndex_;
+    int tcpOffsetYawIndex_;
     int reuploadCtrlScriptIndex_;
     int stopCtrlScriptIndex_;
     int asyncMoveIndex_;
