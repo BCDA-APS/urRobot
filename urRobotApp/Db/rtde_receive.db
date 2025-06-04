@@ -168,7 +168,7 @@ record(waveform, "$(P)Receive:ActualJointPositions")
     field(SCAN, "I/O Intr")
 }
 
-record(subArray, "$(P)Receive:Joint0")
+record(subArray, "$(P)Receive:Joint1")
 {
     field(INP, "$(P)Receive:ActualJointPositions.VAL CP")
     field(FTVL, "DOUBLE")
@@ -178,7 +178,7 @@ record(subArray, "$(P)Receive:Joint0")
     field(INDX, "0")
     field(PREC, 4)
 }
-record(subArray, "$(P)Receive:Joint1")
+record(subArray, "$(P)Receive:Joint2")
 {
     field(INP, "$(P)Receive:ActualJointPositions.VAL CP")
     field(FTVL, "DOUBLE")
@@ -188,7 +188,7 @@ record(subArray, "$(P)Receive:Joint1")
     field(INDX, "1")
     field(PREC, 4)
 }
-record(subArray, "$(P)Receive:Joint2")
+record(subArray, "$(P)Receive:Joint3")
 {
     field(INP, "$(P)Receive:ActualJointPositions.VAL CP")
     field(FTVL, "DOUBLE")
@@ -198,27 +198,17 @@ record(subArray, "$(P)Receive:Joint2")
     field(INDX, "2")
     field(PREC, 4)
 }
-record(subArray, "$(P)Receive:Joint3")
-{
-    field(INP, "$(P)Receive:ActualJointPositions.VAL CP")
-    field(FTVL, "DOUBLE")
-    field(EGU, "deg")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "3")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Receive:Joint3")
-{
-    field(INP, "$(P)Receive:ActualJointPositions.VAL CP")
-    field(FTVL, "DOUBLE")
-    field(EGU, "deg")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "3")
-    field(PREC, 4)
-}
 record(subArray, "$(P)Receive:Joint4")
+{
+    field(INP, "$(P)Receive:ActualJointPositions.VAL CP")
+    field(FTVL, "DOUBLE")
+    field(EGU, "deg")
+    field(MALM, "6")
+    field(NELM, "1")
+    field(INDX, "3")
+    field(PREC, 4)
+}
+record(subArray, "$(P)Receive:Joint5")
 {
     field(INP, "$(P)Receive:ActualJointPositions.VAL CP")
     field(FTVL, "DOUBLE")
@@ -228,7 +218,7 @@ record(subArray, "$(P)Receive:Joint4")
     field(INDX, "4")
     field(PREC, 4)
 }
-record(subArray, "$(P)Receive:Joint5")
+record(subArray, "$(P)Receive:Joint6")
 {
     field(INP, "$(P)Receive:ActualJointPositions.VAL CP")
     field(FTVL, "DOUBLE")
@@ -279,7 +269,7 @@ record(waveform, "$(P)Receive:ActualTCPPose")
     field(SCAN, "I/O Intr")
 }
 
-record(subArray, "$(P)Receive:TCP_X")
+record(subArray, "$(P)Receive:PoseX")
 {
     field(INP, "$(P)Receive:ActualTCPPose.VAL CP")
     field(FTVL, "DOUBLE")
@@ -289,7 +279,7 @@ record(subArray, "$(P)Receive:TCP_X")
     field(INDX, "0")
     field(PREC, 4)
 }
-record(subArray, "$(P)Receive:TCP_Y")
+record(subArray, "$(P)Receive:PoseY")
 {
     field(INP, "$(P)Receive:ActualTCPPose.VAL CP")
     field(FTVL, "DOUBLE")
@@ -299,7 +289,7 @@ record(subArray, "$(P)Receive:TCP_Y")
     field(INDX, "1")
     field(PREC, 4)
 }
-record(subArray, "$(P)Receive:TCP_Z")
+record(subArray, "$(P)Receive:PoseZ")
 {
     field(INP, "$(P)Receive:ActualTCPPose.VAL CP")
     field(FTVL, "DOUBLE")
@@ -309,7 +299,7 @@ record(subArray, "$(P)Receive:TCP_Z")
     field(INDX, "2")
     field(PREC, 4)
 }
-record(subArray, "$(P)Receive:TCP_Roll")
+record(subArray, "$(P)Receive:PoseRoll")
 {
     field(INP, "$(P)Receive:ActualTCPPose.VAL CP")
     field(FTVL, "DOUBLE")
@@ -319,7 +309,7 @@ record(subArray, "$(P)Receive:TCP_Roll")
     field(INDX, "3")
     field(PREC, 4)
 }
-record(subArray, "$(P)Receive:TCP_Pitch")
+record(subArray, "$(P)Receive:PosePitch")
 {
     field(INP, "$(P)Receive:ActualTCPPose.VAL CP")
     field(FTVL, "DOUBLE")
@@ -329,7 +319,7 @@ record(subArray, "$(P)Receive:TCP_Pitch")
     field(INDX, "4")
     field(PREC, 4)
 }
-record(subArray, "$(P)Receive:TCP_Yaw")
+record(subArray, "$(P)Receive:PoseYaw")
 {
     field(INP, "$(P)Receive:ActualTCPPose.VAL CP")
     field(FTVL, "DOUBLE")

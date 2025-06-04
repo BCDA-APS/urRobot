@@ -285,7 +285,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_11</name>
-    <pv_name>$(P)Receive:Joint0</pv_name>
+    <pv_name>$(P)Receive:Joint1</pv_name>
     <x>60</x>
     <y>370</y>
     <width>210</width>
@@ -297,7 +297,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_15</name>
-    <pv_name>$(P)Receive:Joint1</pv_name>
+    <pv_name>$(P)Receive:Joint2</pv_name>
     <x>60</x>
     <y>410</y>
     <width>210</width>
@@ -309,7 +309,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_24</name>
-    <pv_name>$(P)Receive:Joint2</pv_name>
+    <pv_name>$(P)Receive:Joint3</pv_name>
     <x>60</x>
     <y>450</y>
     <width>210</width>
@@ -321,7 +321,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_25</name>
-    <pv_name>$(P)Receive:Joint3</pv_name>
+    <pv_name>$(P)Receive:Joint4</pv_name>
     <x>60</x>
     <y>490</y>
     <width>210</width>
@@ -333,7 +333,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_26</name>
-    <pv_name>$(P)Receive:Joint4</pv_name>
+    <pv_name>$(P)Receive:Joint5</pv_name>
     <x>60</x>
     <y>530</y>
     <width>210</width>
@@ -345,7 +345,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_27</name>
-    <pv_name>$(P)Receive:Joint5</pv_name>
+    <pv_name>$(P)Receive:Joint6</pv_name>
     <x>60</x>
     <y>570</y>
     <width>210</width>
@@ -435,7 +435,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_12</name>
-    <pv_name>$(P)Receive:TCP_X</pv_name>
+    <pv_name>$(P)Receive:PoseX</pv_name>
     <x>430</x>
     <y>370</y>
     <width>210</width>
@@ -447,7 +447,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_13</name>
-    <pv_name>$(P)Receive:TCP_Y</pv_name>
+    <pv_name>$(P)Receive:PoseY</pv_name>
     <x>430</x>
     <y>410</y>
     <width>210</width>
@@ -459,7 +459,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_14</name>
-    <pv_name>$(P)Receive:TCP_Z</pv_name>
+    <pv_name>$(P)Receive:PoseZ</pv_name>
     <x>430</x>
     <y>450</y>
     <width>210</width>
@@ -471,7 +471,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_16</name>
-    <pv_name>$(P)Receive:TCP_Roll</pv_name>
+    <pv_name>$(P)Receive:PoseRoll</pv_name>
     <x>430</x>
     <y>490</y>
     <width>210</width>
@@ -483,7 +483,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_17</name>
-    <pv_name>$(P)Receive:TCP_Pitch</pv_name>
+    <pv_name>$(P)Receive:PosePitch</pv_name>
     <x>430</x>
     <y>530</y>
     <width>210</width>
@@ -495,7 +495,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_28</name>
-    <pv_name>$(P)Receive:TCP_Yaw</pv_name>
+    <pv_name>$(P)Receive:PoseYaw</pv_name>
     <x>430</x>
     <y>570</y>
     <width>210</width>

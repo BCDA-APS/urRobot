@@ -352,7 +352,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:Joint0"
+		chan="$(P)Receive:Joint1"
 		clr=54
 		bclr=4
 	}
@@ -368,7 +368,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:Joint1"
+		chan="$(P)Receive:Joint2"
 		clr=54
 		bclr=4
 	}
@@ -384,7 +384,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:Joint2"
+		chan="$(P)Receive:Joint3"
 		clr=54
 		bclr=4
 	}
@@ -400,7 +400,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:Joint3"
+		chan="$(P)Receive:Joint4"
 		clr=54
 		bclr=4
 	}
@@ -416,7 +416,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:Joint4"
+		chan="$(P)Receive:Joint5"
 		clr=54
 		bclr=4
 	}
@@ -432,7 +432,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:Joint5"
+		chan="$(P)Receive:Joint6"
 		clr=54
 		bclr=4
 	}
@@ -460,7 +460,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:TCP_X"
+		chan="$(P)Receive:PoseX"
 		clr=54
 		bclr=4
 	}
@@ -476,7 +476,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:TCP_Y"
+		chan="$(P)Receive:PoseY"
 		clr=54
 		bclr=4
 	}
@@ -492,7 +492,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:TCP_Z"
+		chan="$(P)Receive:PoseZ"
 		clr=54
 		bclr=4
 	}
@@ -508,7 +508,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:TCP_Roll"
+		chan="$(P)Receive:PoseRoll"
 		clr=54
 		bclr=4
 	}
@@ -524,7 +524,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:TCP_Pitch"
+		chan="$(P)Receive:PosePitch"
 		clr=54
 		bclr=4
 	}
@@ -540,7 +540,7 @@ text {
 		height=25
 	}
 	monitor {
-		chan="$(P)Receive:TCP_Yaw"
+		chan="$(P)Receive:PoseYaw"
 		clr=54
 		bclr=4
 	}
@@ -1035,7 +1035,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:TCP_X.EGU"
+		chan="$(P)Receive:PoseX.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1051,7 +1051,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:TCP_Y.EGU"
+		chan="$(P)Receive:PoseY.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1067,7 +1067,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:TCP_Z.EGU"
+		chan="$(P)Receive:PoseZ.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1083,7 +1083,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:TCP_Roll.EGU"
+		chan="$(P)Receive:PoseRoll.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1099,7 +1099,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:TCP_Pitch.EGU"
+		chan="$(P)Receive:PosePitch.EGU"
 		clr=54
 		bclr=4
 	}
@@ -1115,7 +1115,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)Receive:TCP_Yaw.EGU"
+		chan="$(P)Receive:PoseYaw.EGU"
 		clr=54
 		bclr=4
 	}
