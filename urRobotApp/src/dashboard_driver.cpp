@@ -172,7 +172,6 @@ asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 }
 
 asynStatus URDashboard::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual) {
-    // TODO: Check this. Seems to work but gives weird warning
     int function = pasynUser->reason;
     asynStatus status = asynSuccess;
     if (function == popupIndex_) {
@@ -190,6 +189,7 @@ asynStatus URDashboard::writeOctet(asynUser *pasynUser, const char *value, size_
         }
     }
 
+    *nActual = strlen(value);
     callParamCallbacks();
     return status;
 }
