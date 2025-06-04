@@ -94,6 +94,18 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Receive:ActualTCPPose    | waveform     | Actual TCP pose (x,y,z,r,p,y)     |
 | Receive:ActualTCPSpeed    | waveform     | Actual TCP speed     |
 | Receive:ActualTCPForce    | waveform     | Actual TCP force     |
+| Receive:Joint1    | subArray (double)     | Joint 1 position  |
+| Receive:Joint2    | subArray (double)     | Joint 2 position  |
+| Receive:Joint3    | subArray (double)     | Joint 3 position  |
+| Receive:Joint4    | subArray (double)     | Joint 4 position  |
+| Receive:Joint5    | subArray (double)     | Joint 5 position  |
+| Receive:Joint6    | subArray (double)     | Joint 6 position  |
+| Receive:PoseX    | subArray (double)     | X TCP Pose position  |
+| Receive:PoseY    | subArray (double)     | Y TCP Pose position  |
+| Receive:PoseZ    | subArray (double)     | Z TCP Pose position  |
+| Receive:PoseRoll    | subArray (double)     | Roll TCP Pose position  |
+| Receive:PosePitch    | subArray (double)     | Pitch TCP Pose position  |
+| Receive:PoseYaw    | subArray (double)     | Yaw TCP Pose position  |
 | Receive:JointModes    | waveform     | Joint control modes     |
 | Receive:ActualToolAccelerometer    | waveform     | Tool accelerometer (X,Y,Z)     |
 | Receive:TargetJointPositions    | waveform     | Target joint positions     |
