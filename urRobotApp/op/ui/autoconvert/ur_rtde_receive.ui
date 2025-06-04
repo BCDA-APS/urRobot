@@ -2679,7 +2679,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:Joint0.EGU</string>
+                <string>$(P)Receive:Joint1.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2733,7 +2733,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:Joint1.EGU</string>
+                <string>$(P)Receive:Joint2.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2787,7 +2787,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:Joint2.EGU</string>
+                <string>$(P)Receive:Joint3.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2841,7 +2841,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:Joint3.EGU</string>
+                <string>$(P)Receive:Joint4.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2895,7 +2895,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:Joint4.EGU</string>
+                <string>$(P)Receive:Joint5.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2949,7 +2949,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Receive:Joint5.EGU</string>
+                <string>$(P)Receive:Joint6.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
