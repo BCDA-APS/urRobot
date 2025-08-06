@@ -190,6 +190,7 @@ record(calcout, "$(P)Control:auto_moveJ_calc")
 {
     field(INPA, "$(P)Control:AutoMoveJ")
     field(CALC, "A")
+    field(DISV, 1)
     field(OOPT, "When Non-zero")
     field(OUT, "$(P)Control:moveJ.PROC")
 }
@@ -197,7 +198,7 @@ record(calcout, "$(P)Control:auto_moveJ_calc")
 # current joint positions for use interally with this database
 record(waveform, "$(P)Control:ActualQ")
 {
-    field(DESC, "Actual joint positions")     
+    field(DESC, "Actual joint positions")
     field(DTYP, "asynFloat64ArrayIn")
     field(FTVL, "DOUBLE")
     field(PINI, "1")
@@ -274,29 +275,48 @@ record(subArray, "$(P)Control:ActualQ_index5")
     field(PREC, 4)
 }
 
-# stores DOLx.VAL in LNKx.VAL
 # resets commanded joint angles to the current measured angles
-record(seq, "$(P)Control:ResetJCmd")
+record(calcout, "$(P)Control:auto_reset_j_cmd")
 {
-    field(PINI, 1)
+    field(INPA, "$(P)Control:Steady.VAL CP NMS")
+    field(CALC, "A")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)Control:ResetJCmd.PROC")
+}
+record(sseq, "$(P)Control:ResetJCmd")
+{
+    field(PINI, 0)
 
-    field(DOL0, "$(P)Control:ActualQ_index0")
-    field(LNK0, "$(P)Control:J1Cmd PP")
+    field(LNK1, "$(P)Control:auto_moveJ_calc.DISA CA")
+    field(STR1, "1")
 
-    field(DOL1, "$(P)Control:ActualQ_index1")
-    field(LNK1, "$(P)Control:J2Cmd PP")
+    field(DOL2, "$(P)Control:ActualQ_index0")
+    field(LNK2, "$(P)Control:J1Cmd CA")
+    field(WAIT2, "After1")
 
-    field(DOL2, "$(P)Control:ActualQ_index2")
-    field(LNK2, "$(P)Control:J3Cmd PP")
+    field(DOL3, "$(P)Control:ActualQ_index1")
+    field(LNK3, "$(P)Control:J2Cmd CA")
+    field(WAIT3, "After1")
 
-    field(DOL3, "$(P)Control:ActualQ_index3")
-    field(LNK3, "$(P)Control:J4Cmd PP")
-    
-    field(DOL4, "$(P)Control:ActualQ_index4")
-    field(LNK4, "$(P)Control:J5Cmd PP")
+    field(DOL4, "$(P)Control:ActualQ_index2")
+    field(LNK4, "$(P)Control:J3Cmd CA")
+    field(WAIT4, "After1")
 
-    field(DOL5, "$(P)Control:ActualQ_index5")
-    field(LNK5, "$(P)Control:J6Cmd PP")
+    field(DOL5, "$(P)Control:ActualQ_index3")
+    field(LNK5, "$(P)Control:J4Cmd CA")
+    field(WAIT5, "After1")
+
+    field(DOL6, "$(P)Control:ActualQ_index4")
+    field(LNK6, "$(P)Control:J5Cmd CA")
+    field(WAIT6, "After1")
+
+    field(DOL7, "$(P)Control:ActualQ_index5")
+    field(LNK7, "$(P)Control:J6Cmd CA")
+    field(WAIT7, "After1")
+
+    field(LNK8, "$(P)Control:auto_moveJ_calc.DISA CA")
+    field(STR8, "0")
+    field(WAIT8, "After7")
 }
 
 # -----------------------------------------------------------
@@ -622,13 +642,14 @@ record(calcout, "$(P)Control:auto_moveL_calc")
 {
     field(INPA, "$(P)Control:AutoMoveL")
     field(CALC, "A")
+    field(DISV, 1)
     field(OOPT, "When Non-zero")
     field(OUT, "$(P)Control:moveL.PROC")
 }
 
 record(waveform, "$(P)Control:ActualTCPPose")
 {
-    field(DESC, "Actual TCP Pose")     
+    field(DESC, "Actual TCP Pose")
     field(DTYP, "asynFloat64ArrayIn")
     field(FTVL, "DOUBLE")
     field(PINI, "1")
@@ -710,29 +731,47 @@ record(subArray, "$(P)Control:pose_index5")
     field(PREC, 4)
 }
 
-# stores DOLx.VAL in LNKx.VAL
-# resets commanded TCP pose to the current measured pose
-record(seq, "$(P)Control:ResetPoseCmd")
+record(calcout, "$(P)Control:auto_reset_pose_cmd")
 {
-    field(PINI, 1)
+    field(INPA, "$(P)Control:Steady.VAL CP NMS")
+    field(CALC, "A")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)Control:ResetPoseCmd.PROC")
+}
+record(sseq, "$(P)Control:ResetPoseCmd")
+{
+    field(PINI, 0)
 
-    field(DOL0, "$(P)Control:pose_index0")
-    field(LNK0, "$(P)Control:PoseXCmd PP")
+    field(LNK1, "$(P)Control:auto_moveL_calc.DISA CA")
+    field(STR1, "1")
 
-    field(DOL1, "$(P)Control:pose_index1")
-    field(LNK1, "$(P)Control:PoseYCmd PP")
+    field(DOL2, "$(P)Control:pose_index0")
+    field(LNK2, "$(P)Control:PoseXCmd CA")
+    field(WAIT2, "After1")
 
-    field(DOL2, "$(P)Control:pose_index2")
-    field(LNK2, "$(P)Control:PoseZCmd PP")
+    field(DOL3, "$(P)Control:pose_index1")
+    field(LNK3, "$(P)Control:PoseYCmd CA")
+    field(WAIT3, "After1")
 
-    field(DOL3, "$(P)Control:pose_index3")
-    field(LNK3, "$(P)Control:PoseRollCmd PP")
-    
-    field(DOL4, "$(P)Control:pose_index4")
-    field(LNK4, "$(P)Control:PosePitchCmd PP")
+    field(DOL4, "$(P)Control:pose_index2")
+    field(LNK4, "$(P)Control:PoseZCmd CA")
+    field(WAIT4, "After1")
 
-    field(DOL5, "$(P)Control:pose_index5")
-    field(LNK5, "$(P)Control:PoseYawCmd PP")
+    field(DOL5, "$(P)Control:pose_index3")
+    field(LNK5, "$(P)Control:PoseRollCmd CA")
+    field(WAIT5, "After1")
+
+    field(DOL6, "$(P)Control:pose_index4")
+    field(LNK6, "$(P)Control:PosePitchCmd CA")
+    field(WAIT6, "After1")
+
+    field(DOL7, "$(P)Control:pose_index5")
+    field(LNK7, "$(P)Control:PoseYawCmd CA")
+    field(WAIT7, "After1")
+
+    field(LNK8, "$(P)Control:auto_moveL_calc.DISA CA")
+    field(STR8, "0")
+    field(WAIT8, "After7")
 }
 
 # -----------------------------------------------------------
