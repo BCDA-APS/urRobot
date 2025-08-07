@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 if [ -f "configure/RELEASE.local" ]; then
     RELEASE_FILE="configure/RELEASE.local";
 elif [ -f "configure/RELEASE" ]; then
