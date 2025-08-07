@@ -7,6 +7,9 @@
 URROBOT = $(TOP)/../..
 -include $(URROBOT)/configure/RELEASE.local
 
+# optionally include motor if you'd like to use soft motors
+MOTOR = /APSshare/epics/synApps_6_3/support/motor-R7-3-1
+
 # These lines allow developers to override these RELEASE settings
 # without having to modify this file directly.
 -include $(TOP)/../RELEASE.local
