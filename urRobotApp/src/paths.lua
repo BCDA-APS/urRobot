@@ -47,11 +47,18 @@ function path_go(args)
 
     local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
     local path_stop_pv = string.format("%sPath%d:Stop", args.prefix, args.N)
+    local sync_joint_disa_pv = string.format("%sControl:sync_joint_cmd.DISA", args.prefix)
+    local sync_pose_disa_pv = string.format("%sControl:sync_pose_cmd.DISA", args.prefix)
+
+    -- disable automatic syncing of joint and pose command values
+    epics.put(sync_joint_disa_pv, 1)
+    epics.put(sync_pose_disa_pv, 1)
+
     epics.put(path_stop_pv, 0)
     local stopped = 0
 
     for i = 1,args.kmax do
-        
+
         -- check if Path$(N):Stop is called
         local path_stop_val = epics.get(path_stop_pv)
         if path_stop_val == 1 then
@@ -107,6 +114,10 @@ function path_go(args)
     else
         print(string.format("Path %d completed!", args.N))
     end
+
+    -- re-enable automatic syncing of joint and pose command values
+    epics.put(sync_joint_disa_pv, 0)
+    epics.put(sync_pose_disa_pv, 0)
 end
 
 
