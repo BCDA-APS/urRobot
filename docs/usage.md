@@ -69,16 +69,21 @@ It also has a button to enable/disable teach (freedrive) mode.
 
 <img src="./assets/GUIs/ui/urRobot_control.png" alt="ui-control" width="600">
 
-Although the GUI may look similar to typical EPICS motor screens, the robot's joint are *not* true EPICS motors.
-The first thing to note is the "RESET" buttons, which write to the `$(P)Control:sync_joint_cmd` and `$(P)Control:sync_pose_cmd`
-PVs respectively. When these PVs process they store the current measured values in the commanded values, similiar to
-EPICS motor record behaivor after motion completes. Before tweaking joint or TCP values, clicking RESET is a good idea.
+Although the default control GUI may look similar to typical EPICS motor screens, the robot's joint are *not* true EPICS motors.
+The x, y, z, roll, pitch, and yaw motors are virtual axes and moving them will move one or more joint motors. The joint motors
+themselves are independent of each other, however motion of any joint motor will affect the position of the tool. To reconcile
+this and reduce the likelyhood of accidentally commanding motion you didn't indend, every time motion completes, the command values
+are automatically set to the current readback values, similar to an EPICS motor record. Since many EPICS users are accustomed to
+the benefits of the motor record, a substitutions file is provided (urRobotApp/Db/ur_soft_motors.substitutions") which loads
+12 soft motor records for the 6 joints and 6 tool coordinates. Additionally a version f the control GUI is provided for the soft
+motors (urRobotApp/op/adl/ur_rtde_controlSM.adl).
 
 The "Go" toggles (which write to the `$(P)Control:AutoMoveJ` or `$(P)Control:AutoMoveL` PVs) are similar to the Go/Move
 options in the EPICS motor record. For example, to move Joint 1 to -75deg, if "Go" is set to "No" (`$(P)Control:AutoMoveJ`=0),
 then you must set Joint 1 to -75deg and click "Move" (`$(P)Control:moveJ`). If "Go" is set to "Yes" (`$(P)Control:AutoMoveJ`=1),
 the robot will begin moving as soon as the commanded values change, so typing -75 in the box for Joint 1 and clicking enter will
-start the robot moving. The same goes for the Cartesian moves.
+start the robot moving. The same goes for the Cartesian moves. Note that the "Move" buttons tell the robot to move to the current
+joint or cartesian configuration defined by all 6 of the respective target values (J1Cmd, J2cmd... or PoseXCmd, PoseYCmd...).
 
 
 ## Robotiq Gripper
