@@ -437,9 +437,14 @@ class RTDEUtility
       tv_cycle_end_with_slack = timepointToTimespec(time_point_cast<nanoseconds>(t_cycle_end_with_slack));
       clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &tv_cycle_end_with_slack, NULL);
 
-      clock_gettime(CLOCK_MONOTONIC, &curr);
-      for (; curr.tv_nsec < tv_cycle_end.tv_nsec; clock_gettime(CLOCK_MONOTONIC, &curr))
-        ;
+      while (true) {
+        clock_gettime(CLOCK_MONOTONIC, &curr);
+        if (curr.tv_sec > tv_cycle_end.tv_sec ||
+            (curr.tv_sec == tv_cycle_end.tv_sec && curr.tv_nsec >= tv_cycle_end.tv_nsec))
+        {
+          break;
+        }
+      }
     }
 #endif
   }

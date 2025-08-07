@@ -9,15 +9,15 @@
 #  ifndef RTDE_EXPORT
 #    ifdef rtde_EXPORTS
         /* We are building this library */
-#      define RTDE_EXPORT __attribute__((visibility("default")))
+#      define RTDE_EXPORT 
 #    else
         /* We are using this library */
-#      define RTDE_EXPORT __attribute__((visibility("default")))
+#      define RTDE_EXPORT 
 #    endif
 #  endif
 
 #  ifndef RTDE_NO_EXPORT
-#    define RTDE_NO_EXPORT __attribute__((visibility("hidden")))
+#    define RTDE_NO_EXPORT 
 #  endif
 #endif
 
@@ -33,6 +33,7 @@
 #  define RTDE_DEPRECATED_NO_EXPORT RTDE_NO_EXPORT RTDE_DEPRECATED
 #endif
 
+/* NOLINTNEXTLINE(readability-avoid-unconditional-preprocessor-if) */
 #if 0 /* DEFINE_NO_DEPRECATED */
 #  ifndef RTDE_NO_DEPRECATED
 #    define RTDE_NO_DEPRECATED

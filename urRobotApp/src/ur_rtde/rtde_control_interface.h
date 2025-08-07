@@ -5,6 +5,7 @@
 #include <ur_rtde/rtde.h>
 #include <ur_rtde/rtde_export.h>
 #include <ur_rtde/rtde_utility.h>
+#include <ur_rtde/thread_utility.h>
 #if !defined(_WIN32) && !defined(__APPLE__)
 #include <urcl/script_sender.h>
 #endif
@@ -184,6 +185,50 @@ class AsyncOperationStatus
 class RTDEControlInterface
 {
  public:
+ /**
+  * @enum Flags
+  * @brief Configuration flags for the RTDEControlInterface
+  *
+  * These flags modify the behavior of the RTDEControlInterface when passed to the constructor.
+  * Multiple flags can be combined using bitwise OR ('|') operations.
+  *
+  * @var Flags::FLAG_UPLOAD_SCRIPT
+  * @brief Upload the default control URScript to the robot controller (enabled by default).
+  *
+  * @var Flags::FLAG_USE_EXT_UR_CAP
+  * @brief Use the External URCap interface for control.
+  *
+  * @var Flags::FLAG_VERBOSE
+  * @brief Enable verbose output for debugging purposes.
+  *
+  * @var Flags::FLAG_UPPER_RANGE_REGISTERS
+  * @brief Use the upper range registers for RTDE communication.
+  *
+  * @var Flags::FLAG_NO_WAIT
+  * @brief When you execute your ur_rtde application it will simply wait
+  * for you to press play on the controller in order to start, unless you
+  * use the FLAG_NO_WAIT, in which case the interface will be initialized,
+  * but cannot be used before the program is running on the controller. See
+  * the 'Use with ExternalControl UR Cap' example in the ur_rtde documentation.
+  *
+  * @var Flags::FLAG_CUSTOM_SCRIPT
+  * @brief The rtde control script is uploaded to the robot by default.
+  * However if you want to modify the script and execute it as a part
+  * of a program on the controller, you have the option of not uploading
+  * the default rtde control script. This means that ur_rtde expects a
+  * script to be running on the controller that you have set up manually
+  * eg. copied to the controller from USB or scp over the network. See
+  the 'Use with custom script' example in the ur_rtde documentation.
+  *
+  * @var Flags::FLAG_NO_EXT_FT
+  * @brief Do not use external force-torque sensor
+  *
+  * @var Flags::FLAG_DISABLE_REMOTE_CONTROL_CHECK
+  * @brief Disable the remote control check.
+  *
+  * @var Flags::FLAGS_DEFAULT
+  * @brief Default flags (only FLAG_UPLOAD_SCRIPT is enabled)
+  */
   enum Flags
   {
     FLAG_UPLOAD_SCRIPT = 0x01,
@@ -192,9 +237,28 @@ class RTDEControlInterface
     FLAG_UPPER_RANGE_REGISTERS = 0x08,
     FLAG_NO_WAIT = 0x10,
     FLAG_CUSTOM_SCRIPT = 0x20,
+    FLAG_NO_EXT_FT = 0x40,
+    FLAG_DISABLE_REMOTE_CONTROL_CHECK = 0x80,
     FLAGS_DEFAULT = FLAG_UPLOAD_SCRIPT
   };
 
+  /**
+   * @brief Constructor for the RTDEControlInterface class
+   *
+   * Creates an interface to control and execute robot movements on a Universal Robot.
+   *
+   * @param hostname The IP address or hostname of the robot.
+   * @param frequency The frequency at which RTDE data will be exchanged with the robot (-1.0 means use the robot's default frequency,
+   * 500Hz for e-Series and UR-Series, while its 125Hz for the CB-series).
+   * @param flags Configuration flags that modify the behavior of the interface (see @ref Flags).
+   * @param ur_cap_port The port used for the External URCap interface (default: 50002)
+   * @param rt_priority Real-time priority of the RTDEControlInterface thread (if supported by the OS).
+   *
+   * @note The RTDEControlInterface is not thread-safe. The caller must provide
+   * protection using mutexes if needed.
+   *
+   * @see Flags for detailed information about available configuration flags
+   */
   RTDE_EXPORT explicit RTDEControlInterface(std::string hostname, double frequency = -1.0,
                                             uint16_t flags = FLAGS_DEFAULT, int ur_cap_port = 50002,
                                             int rt_priority = RT_PRIORITY_UNDEFINED);
@@ -255,6 +319,11 @@ class RTDEControlInterface
    * @returns Connection status for RTDE, useful for checking for lost connection.
    */
   RTDE_EXPORT bool isConnected();
+
+  /**
+   * @returns When the next state has been received
+   */
+  RTDE_EXPORT bool waitForNextState();
 
   /**
    * @brief Used for waiting the rest of the control period, set implicitly as dt = 1 / frequency. A combination of
@@ -1054,6 +1123,89 @@ class RTDEControlInterface
    */
   RTDE_EXPORT bool stopContactDetection();
 
+  /**
+   * @brief Sets the mass, center of gravity (abbr. CoG) and the inertia matrix of the active payload.
+   *
+   * This function must be called when the payload mass, the mass displacement (CoG) or the inertia
+   * matrix changes - (i.e. when the robot picks up or puts down a workpiece).
+   *
+   * Notes:
+   * - This script should be used instead of the deprecated set_payload, set_payload_mass, and set_payload_cog.
+   * - The payload mass and CoG are required, the inertia matrix is optional. When left out a zero
+   *   inertia matrix will be used.
+   * - The maximum value allowed for each component of the inertia matrix is +/- 133 kg*m^2. An exception is thrown
+   *   if limits are exceeded
+   *
+   * @param mass Mass in kilograms
+   * @param cog Center of Gravity, a vector [CoGx, CoGy, CoGz] specifying the displacement (in meters) from the
+   * toolmount.
+   * @param inertia payload inertia matrix (in kg*m^2), as a vector with six elements [Ixx, Iyy, Izz, Ixy, Ixz, Iyz]
+   * with origin in the CoG and the axes aligned with the tool flange axes.
+   */
+  RTDE_EXPORT bool setTargetPayload(double mass, const std::vector<double> &cog = {},
+    const std::vector<double> &inertia = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0});
+
+  /**
+   * @brief Set the joint torques of the robot.
+   *
+   * The torqueCommand will use one timestep no matter the speed scaling, similar to the sync() function. It
+   * needs to be called continuously at each robot times step. Otherwise the robot will return to position control
+   * mode.
+   *
+   * It compensates for gravity and uses, by default, our friction compensation. The friction compensation can be
+   * disabled by the optional argument friction_comp=False .
+   *
+   * @param torque vector of target torques to be commanded to the robot joints.
+   * @param friction_comp Enable internal friction compensation; Enabled by default
+   */
+  RTDE_EXPORT bool torqueCommand(const std::vector<double> &torque, bool friction_comp=true);
+
+  /**
+   * @brief Get mass matrix.
+   *
+   * @param q Robot joint position; Default uses the current robot joint positions
+   * @param include_rotors_inertia; also includes the inertia on the motor side of the gear; It is disabled by default.
+   * @returns The mass matrix
+   */
+  RTDE_EXPORT std::vector<double> getMassMatrix(const std::vector<double> &q = {}, bool include_rotors_inertia=false);
+
+  /**
+   * @brief Get the coriolis and centrifugal torques.
+   *
+   * @param q Robot joint position; Default uses the current robot joint positions
+   * @param qd Robot joint velocities; Default uses the current robot joint velocities.
+   */
+  RTDE_EXPORT std::vector<double> getCoriolisAndCentrifugalTorques(const std::vector<double> &q = {}, const std::vector<double> &qd = {});
+
+  /**
+   * @brief Get target joint accelerations.
+   *
+   * @returns List of the joints acceleration derived directly from the encoders.
+   * Please expect noise on the output.
+   */
+  RTDE_EXPORT std::vector<double> getTargetJointAccelerations();
+
+  /**
+   * @brief Get Jacobian matrix
+   *
+   * @param pos Joint space position; Default uses the robots current pose for the tool flange.
+   * @param tcp tcp offset; Default uses the active tcp offset
+
+   * @returns Return the Jacobian matrix.
+   */
+  RTDE_EXPORT std::vector<double> getJacobian(const std::vector<double> &pos = {}, const std::vector<double> &tcp = {});
+
+  /**
+   * @brief Get time-derivative Jacobian matrix
+   *
+   * @param pos Joint space position; Default uses the robot's current pose for the tool flange.
+   * @param vel Joint space velocity; Default uses the robot's current velocity of the tool flange.
+   * @param tcp; tcp offset; Default uses the active tcp offset.
+   *
+   * @returns Return the Jacobian matrix.
+   */
+  RTDE_EXPORT std::vector<double> getJacobianTimeDerivative(const std::vector<double> &pos = {}, const std::vector<double> &vel = {}, const std::vector<double> &tcp = {});
+
   // Unlocks a protective stop via the dashboard client.
   void unlockProtectiveStop();
 
@@ -1103,7 +1255,7 @@ class RTDEControlInterface
 
   std::string buildPathScriptCode(const std::vector<std::vector<double>> &path, const std::string &cmd);
 
-  void receiveCallback();
+  void receiveCallback(std::atomic<bool> *stop_thread);
 
   /**
    * This function waits until the script program is running.
@@ -1135,14 +1287,14 @@ class RTDEControlInterface
   bool use_upper_range_registers_;
   bool no_wait_;
   bool custom_script_;
+  bool no_ext_ft_;
   bool custom_script_running_;
   int ur_cap_port_;
   int rt_priority_;
   double delta_time_;
   int register_offset_;
   std::shared_ptr<RTDE> rtde_;
-  std::atomic<bool> stop_thread_{false};
-  std::shared_ptr<boost::thread> th_;
+  ur_rtde::ThreadUtility th_;
   std::shared_ptr<DashboardClient> db_client_;
   std::shared_ptr<ScriptClient> script_client_;
   std::shared_ptr<RobotState> robot_state_;

@@ -11,8 +11,8 @@ USR_INCLUDES += -I../spdlog
 
 LIB_INSTALLS += ../os/rhel9/librtde.a
 BIN_INSTALLS += ../os/rhel9/librtde.so
-BIN_INSTALLS += ../os/rhel9/librtde.so.1.5
-BIN_INSTALLS += ../os/rhel9/librtde.so.1.5.7
+BIN_INSTALLS += ../os/rhel9/librtde.so.1.6
+BIN_INSTALLS += ../os/rhel9/librtde.so.1.6.1
 
 # Define IOC library name
 LIBRARY_IOC += urRobot

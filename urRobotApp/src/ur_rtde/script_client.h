@@ -4,7 +4,7 @@
 
 #include <ur_rtde/rtde_export.h>
 
-#include <boost/asio/io_service.hpp>
+#include <boost/asio/io_context.hpp>
 #include <boost/asio/ip/tcp.hpp>
 #include <memory>
 #include <string>
@@ -81,7 +81,7 @@ class ScriptClient
   bool verbose_;
   ConnectionState conn_state_;
   std::string script_file_name_;
-  std::shared_ptr<boost::asio::io_service> io_service_;
+  std::shared_ptr<boost::asio::io_context> io_context_;
   std::shared_ptr<boost::asio::ip::tcp::socket> socket_;
   std::shared_ptr<boost::asio::ip::tcp::resolver> resolver_;
   std::vector<ScriptInjectItem> script_injections_;

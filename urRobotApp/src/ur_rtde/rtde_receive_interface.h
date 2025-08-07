@@ -5,6 +5,7 @@
 #include <ur_rtde/rtde_export.h>
 #include <ur_rtde/robot_state.h>
 #include <ur_rtde/rtde_utility.h>
+#include <ur_rtde/thread_utility.h>
 
 #include <atomic>
 #include <chrono>
@@ -44,6 +45,22 @@ namespace ur_rtde
 class RTDEReceiveInterface
 {
  public:
+ /**
+  * @brief Constructor for the RTDEReceiveInterface class
+  *
+  * Creates an interface to receive data from a Universal Robot.
+  *
+  * @param hostname The IP address or hostname of the robot.
+  * @param frequency The frequency at which RTDE data will be exchanged with the robot (-1.0 means use the robot's default frequency,
+  * 500Hz for e-Series and UR-Series, while its 125Hz for the CB-series).
+  * @param variables A vector of variable names to be monitored (empty vector means use all default variables).
+  * @param verbose Enable verbose output for debugging purposes.
+  * @param use_upper_range_registers Use the upper range registers for RTDE communication.
+  * @param rt_priority Real-time priority of the RTDEReceiveInterface thread (if supported by the OS).
+  *
+  * @note The list of available variables depends on the robot model and software version.
+  * Refer to the UR RTDE documentation for a complete list of available variables.
+  */
   RTDE_EXPORT explicit RTDEReceiveInterface(std::string hostname, double frequency = -1.0,
                                             std::vector<std::string> variables = {},
                                             bool verbose = false, bool use_upper_range_registers = false,
@@ -459,9 +476,9 @@ class RTDEReceiveInterface
    */
   RTDE_EXPORT std::vector<double> getPayloadInertia();
 
-  RTDE_EXPORT void receiveCallback();
+  RTDE_EXPORT void receiveCallback(std::atomic<bool> *stop_thread);
 
-  RTDE_EXPORT void recordCallback();
+  RTDE_EXPORT void recordCallback(std::atomic<bool> *stop_thread);
 
   const std::shared_ptr<RobotState>& robot_state() const {
     return robot_state_;
@@ -497,10 +514,8 @@ class RTDEReceiveInterface
   int register_offset_;
   double delta_time_;
   std::shared_ptr<RTDE> rtde_;
-  std::atomic<bool> stop_receive_thread{false};
-  std::atomic<bool> stop_record_thread{false};
-  std::shared_ptr<boost::thread> th_;
-  std::shared_ptr<boost::thread> record_thrd_;
+  ur_rtde::ThreadUtility th_;
+  ur_rtde::ThreadUtility record_thrd_;
   std::shared_ptr<RobotState> robot_state_;
   PausingState pausing_state_;
   std::shared_ptr<std::ofstream> file_recording_;

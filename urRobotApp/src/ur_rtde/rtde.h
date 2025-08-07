@@ -4,17 +4,17 @@
 
 #include <ur_rtde/rtde_export.h>
 
-#include <boost/asio/io_service.hpp>
-#include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/deadline_timer.hpp>
+#include <boost/asio/io_context.hpp>
+#include <boost/asio/ip/tcp.hpp>
 #include <cstdint>
 #include <functional>
 #include <memory>
 #include <string>
+#include <tuple>
 #include <unordered_map>
 #include <utility>
 #include <vector>
-#include <tuple>
 
 // forward declarations
 namespace ur_rtde
@@ -107,6 +107,13 @@ class RTDE
       START_CONTACT_DETECTION = 62,
       STOP_CONTACT_DETECTION = 63,
       READ_CONTACT_DETECTION = 64,
+      SET_TARGET_PAYLOAD = 65,
+      TORQUE_COMMAND = 66,
+      GET_MASS_MATRIX = 67,
+      GET_CORIOLIS_AND_CENTRIFUGAL_TORQUES = 68,
+      GET_TARGET_JOINT_ACCELERATIONS = 69,
+      GET_JACOBIAN = 70,
+      GET_JACOBIAN_TIME_DERIVATIVE = 71,
       WATCHDOG = 99,
       STOP_SCRIPT = 255
     };
@@ -132,7 +139,10 @@ class RTDE
       RECIPE_17 = 17,
       RECIPE_18 = 18,
       RECIPE_19 = 19,
-      RECIPE_20 = 20
+      RECIPE_20 = 20,
+      RECIPE_21 = 21,
+      RECIPE_22 = 22,
+      RECIPE_23 = 23
     };
 
     RobotCommand() : type_(NO_CMD), recipe_id_(1)
@@ -142,6 +152,8 @@ class RTDE
     Type type_ = NO_CMD;
     std::uint8_t recipe_id_;
     std::int32_t async_;
+    std::int32_t friction_comp_;
+    std::int32_t include_rotors_inertia_;
     std::int32_t ft_rtde_input_enable_;
     std::int32_t reg_int_val_;
     double reg_double_val_;
@@ -186,7 +198,7 @@ class RTDE
 
  public:
   RTDE_EXPORT void connect();
-  RTDE_EXPORT void disconnect();
+  RTDE_EXPORT void disconnect(bool send_pause = true);
   RTDE_EXPORT bool isConnected();
   RTDE_EXPORT bool isStarted();
   RTDE_EXPORT bool isDataAvailable();
@@ -202,14 +214,14 @@ class RTDE
   RTDE_EXPORT bool sendOutputSetup(const std::vector<std::string> &output_names, double frequency);
   RTDE_EXPORT bool sendInputSetup(const std::vector<std::string> &input_names);
 
-private:
+ private:
   std::string hostname_;
   int port_;
   bool verbose_;
   ConnectionState conn_state_;
   std::vector<std::string> output_types_;
   std::vector<std::string> output_names_;
-  boost::asio::io_service io_service_;
+  boost::asio::io_context io_context_;
   std::shared_ptr<boost::asio::ip::tcp::socket> socket_;
   std::shared_ptr<boost::asio::ip::tcp::resolver> resolver_;
   std::vector<char> buffer_;
@@ -222,7 +234,7 @@ private:
    * \return Bytes received
    */
   template <typename AsyncReadStream, typename MutableBufferSequence>
-  std::size_t async_read_some(AsyncReadStream& s, const MutableBufferSequence& buffers,
+  std::size_t async_read_some(AsyncReadStream &s, const MutableBufferSequence &buffers,
                               boost::system::error_code &error, int timeout_ms = -1);
 
   /**

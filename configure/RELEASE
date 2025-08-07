@@ -6,7 +6,7 @@
 
 # SUPPORT=/APSshare/epics/synApps_6_3/support
 # ASYN=$(SUPPORT)/asyn-R4-44-2
-# CALC=$(SUPPORT)/asyn-R3-7-5
+# CALC=$(SUPPORT)/calc-R3-7-5
 # LUA = $(SUPPORT)/lua-R3-1/
 # EPICS_BASE=/APSshare/epics/base-7.0.8
 

@@ -5,7 +5,7 @@
 #include <ur_rtde/rtde_export.h>
 #include <ur_rtde/dashboard_enums.h>
 #include <boost/asio/ip/tcp.hpp>
-#include <boost/asio/io_service.hpp>
+#include <boost/asio/io_context.hpp>
 #include <boost/asio/deadline_timer.hpp>
 #include <boost/asio/streambuf.hpp>
 #include <memory>
@@ -195,7 +195,7 @@ class DashboardClient
   int port_;
   bool verbose_;
   ConnectionState conn_state_;
-  boost::asio::io_service io_service_;
+  boost::asio::io_context io_context_;
   std::shared_ptr<boost::asio::ip::tcp::socket> socket_;
   std::shared_ptr<boost::asio::ip::tcp::resolver> resolver_;
   boost::asio::deadline_timer deadline_;
