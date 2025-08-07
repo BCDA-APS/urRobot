@@ -388,7 +388,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     else if (function == moveLIndex_) {
 
-        spdlog::info("moveL({:.4f} mm, {:.4f} mm, {:.4f} mm, {:.4f} rad , {:.4f} rad, {:.4f} rad)",
+        spdlog::info("moveL({:.4f} m, {:.4f} m, {:.4f} m, {:.4f} rad , {:.4f} rad, {:.4f} rad)",
                      cmd_pose_.at(0), cmd_pose_.at(1), cmd_pose_.at(2), cmd_pose_.at(3), cmd_pose_.at(4),
                      cmd_pose_.at(5));
 
