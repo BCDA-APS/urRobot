@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     // Enable auto move and reset commanded values
     // TODO: fix this
     // pvac::ClientChannel channel_AutoMoveL(provider.connect(prefix + "Control:AutoMoveL"));
-    // pvac::ClientChannel channel_RstPoseCmd(provider.connect(prefix + "Control:ResetPoseCmd.PROC"));
+    // pvac::ClientChannel channel_RstPoseCmd(provider.connect(prefix + "Control:sync_pose_cmd.PROC"));
     // channel_RstPoseCmd.put().set("value", 1).exec();
     // channel_AutoMoveL.put().set("value", 1).exec();
 

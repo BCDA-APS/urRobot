@@ -16,6 +16,9 @@ iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.1.100")
 dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX)")
 dbLoadTemplate("paths.substitutions", "P=$(PREFIX)")
 
+# if you'd like to control the robot axes with soft motors:
+dbLoadTemplate("$(URROBOT)/db/ur_soft_motors.substitutions", "P=$(PREFIX)")
+
 ###############################################################################
 iocInit
 ###############################################################################

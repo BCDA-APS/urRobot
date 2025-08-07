@@ -170,7 +170,6 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:JointAcceleration    | ao     | Joint accelerations for moveJ     |
 | Control:stopJ    | bo     | Stops motion from moveJ only if asynchronous=True     |
 | Control:AutoMoveJ    | bo     | If 1, moveJ runs when JxCmd changes     |
-| Control:ResetJCmd    | seq     | Resets J1Cmd-J6Cmd to current joint angles     |
 | Control:J1Cmd    | ao     | Commanded angle(deg) for joint 1     |
 | Control:J1TweakVal    | ao     | Joint 1 tweak step size     |
 | Control:J1TweakFwd    | bo     | Tweak joint 1 forward     |
@@ -200,7 +199,6 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:moveL    | bo     | Move to TCP pose linearly     |
 | Control:stopL    | bo     | Stops motion from moveL only if asynchronous=True     |
 | Control:AutoMoveL    | bo     | If 1, moveL runs when PoseCmd changes     |
-| Control:ResetPoseCmd    | seq     | Resets the commanded TCP pose to current TCP pose     |
 | Control:PoseXCmd    | ao     | Commanded TCP X     |
 | Control:PoseXTweakVal    | ao     | X TCP pose tweak step size     |
 | Control:PoseXTweakFwd    | bo     | Tweak X TCP pose forward     |

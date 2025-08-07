@@ -327,45 +327,6 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_1">
-            <property name="geometry">
-                <rect>
-                    <x>260</x>
-                    <y>295</y>
-                    <width>50</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Control:ResetJCmd.PROC</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>115</red>
-                    <green>223</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Reset</string>
-            </property>
-            <property name="pressMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
         <widget class="caLabel" name="caLabel_2">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
@@ -531,7 +492,7 @@ caMenu{
                 <enum>caChoice::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_2">
+        <widget class="caMessageButton" name="caMessageButton_1">
             <property name="geometry">
                 <rect>
                     <x>140</x>
@@ -682,46 +643,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_3">
-            <property name="geometry">
-                <rect>
-                    <x>260</x>
-                    <y>585</y>
-                    <width>50</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Control:ResetPoseCmd.PROC</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>115</red>
-                    <green>223</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Reset</string>
-            </property>
-            <property name="pressMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
-        <widget class="caMessageButton" name="caMessageButton_4">
+        <widget class="caMessageButton" name="caMessageButton_2">
             <property name="geometry">
                 <rect>
                     <x>10</x>
@@ -760,7 +682,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_5">
+        <widget class="caMessageButton" name="caMessageButton_3">
             <property name="geometry">
                 <rect>
                     <x>105</x>
@@ -799,7 +721,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_6">
+        <widget class="caMessageButton" name="caMessageButton_4">
             <property name="geometry">
                 <rect>
                     <x>10</x>
@@ -838,7 +760,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_7">
+        <widget class="caMessageButton" name="caMessageButton_5">
             <property name="geometry">
                 <rect>
                     <x>105</x>
@@ -967,7 +889,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_8">
+        <widget class="caMessageButton" name="caMessageButton_6">
             <property name="geometry">
                 <rect>
                     <x>205</x>
@@ -1006,7 +928,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_9">
+        <widget class="caMessageButton" name="caMessageButton_7">
             <property name="geometry">
                 <rect>
                     <x>200</x>
@@ -1228,7 +1150,7 @@ caMenu{
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_10">
+        <widget class="caMessageButton" name="caMessageButton_8">
             <property name="geometry">
                 <rect>
                     <x>305</x>
@@ -1280,7 +1202,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).DESC</string>
+                <string>$(P)SM:J1.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1360,7 +1282,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).DMOV</string>
+                <string>$(P)SM:J1.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_4">
@@ -1402,7 +1324,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).LVIO</string>
+                <string>$(P)SM:J1.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_5">
@@ -1444,7 +1366,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1)_able.VAL</string>
+                <string>$(P)SM:J1_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_6">
@@ -1505,7 +1427,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).DMOV</string>
+                <string>$(P)SM:J1.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -1547,7 +1469,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).SET</string>
+                <string>$(P)SM:J1.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -1567,7 +1489,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_11">
+        <widget class="caMessageButton" name="caMessageButton_9">
             <property name="geometry">
                 <rect>
                     <x>94</x>
@@ -1606,7 +1528,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_12">
+        <widget class="caMessageButton" name="caMessageButton_10">
             <property name="geometry">
                 <rect>
                     <x>72</x>
@@ -1619,7 +1541,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1):scanParms.GO</string>
+                <string>$(P)SM:J1:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1714,7 +1636,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_13">
+        <widget class="caMessageButton" name="caMessageButton_11">
             <property name="geometry">
                 <rect>
                     <x>50</x>
@@ -1727,7 +1649,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1):scanParms.LOAD</string>
+                <string>$(P)SM:J1:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1753,7 +1675,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_14">
+        <widget class="caMessageButton" name="caMessageButton_12">
             <property name="geometry">
                 <rect>
                     <x>80</x>
@@ -1766,7 +1688,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).STOP</string>
+                <string>$(P)SM:J1.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1825,7 +1747,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M1);P=$(P),M=$(M1);P=$(P),M=$(M1);P=$(P),M=$(M1);P=$(P),Q=$(M1),PV=$(M1)</string>
+                <string>P=$(P),M=SM:J1;P=$(P),M=SM:J1;P=$(P),M=SM:J1;P=$(P),M=SM:J1;P=$(P),Q=SM:J1,PV=SM:J1</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -1867,7 +1789,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_15">
+        <widget class="caMessageButton" name="caMessageButton_13">
             <property name="geometry">
                 <rect>
                     <x>22</x>
@@ -1880,7 +1802,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).TWR</string>
+                <string>$(P)SM:J1.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1919,7 +1841,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).TWV</string>
+                <string>$(P)SM:J1.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1957,7 +1879,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_16">
+        <widget class="caMessageButton" name="caMessageButton_14">
             <property name="geometry">
                 <rect>
                     <x>109</x>
@@ -1970,7 +1892,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).TWF</string>
+                <string>$(P)SM:J1.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2009,7 +1931,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).VAL</string>
+                <string>$(P)SM:J1.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2083,7 +2005,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).LLS</string>
+                <string>$(P)SM:J1.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_9">
@@ -2122,7 +2044,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).HLS</string>
+                <string>$(P)SM:J1.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_1">
@@ -2138,7 +2060,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).EGU</string>
+                <string>$(P)SM:J1.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2234,7 +2156,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M1))</string>
+                <string>($(P)SM:J1)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -2294,7 +2216,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).SET</string>
+                <string>$(P)SM:J1.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_12">
@@ -2340,7 +2262,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).SET</string>
+                <string>$(P)SM:J1.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_2">
@@ -2356,7 +2278,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).RBV</string>
+                <string>$(P)SM:J1.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2419,7 +2341,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1).LVIO</string>
+                <string>$(P)SM:J1.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -2482,7 +2404,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M1)_able.VAL</string>
+                <string>$(P)SM:J1_able.VAL</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_3">
@@ -2498,7 +2420,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).DESC</string>
+                <string>$(P)SM:J2.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2578,7 +2500,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).DMOV</string>
+                <string>$(P)SM:J2.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_15">
@@ -2620,7 +2542,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).LVIO</string>
+                <string>$(P)SM:J2.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_16">
@@ -2662,7 +2584,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2)_able.VAL</string>
+                <string>$(P)SM:J2_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_17">
@@ -2723,7 +2645,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).DMOV</string>
+                <string>$(P)SM:J2.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -2765,7 +2687,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).SET</string>
+                <string>$(P)SM:J2.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -2785,7 +2707,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_17">
+        <widget class="caMessageButton" name="caMessageButton_15">
             <property name="geometry">
                 <rect>
                     <x>214</x>
@@ -2824,7 +2746,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_18">
+        <widget class="caMessageButton" name="caMessageButton_16">
             <property name="geometry">
                 <rect>
                     <x>192</x>
@@ -2837,7 +2759,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2):scanParms.GO</string>
+                <string>$(P)SM:J2:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2932,7 +2854,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_19">
+        <widget class="caMessageButton" name="caMessageButton_17">
             <property name="geometry">
                 <rect>
                     <x>170</x>
@@ -2945,7 +2867,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2):scanParms.LOAD</string>
+                <string>$(P)SM:J2:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2971,7 +2893,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_20">
+        <widget class="caMessageButton" name="caMessageButton_18">
             <property name="geometry">
                 <rect>
                     <x>200</x>
@@ -2984,7 +2906,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).STOP</string>
+                <string>$(P)SM:J2.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3043,7 +2965,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M2);P=$(P),M=$(M2);P=$(P),M=$(M2);P=$(P),M=$(M2);P=$(P),Q=$(M2),PV=$(M2)</string>
+                <string>P=$(P),M=SM:J2;P=$(P),M=SM:J2;P=$(P),M=SM:J2;P=$(P),M=SM:J2;P=$(P),Q=SM:J2,PV=SM:J2</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -3085,7 +3007,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_21">
+        <widget class="caMessageButton" name="caMessageButton_19">
             <property name="geometry">
                 <rect>
                     <x>142</x>
@@ -3098,7 +3020,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).TWR</string>
+                <string>$(P)SM:J2.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3137,7 +3059,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).TWV</string>
+                <string>$(P)SM:J2.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3175,7 +3097,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_22">
+        <widget class="caMessageButton" name="caMessageButton_20">
             <property name="geometry">
                 <rect>
                     <x>229</x>
@@ -3188,7 +3110,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).TWF</string>
+                <string>$(P)SM:J2.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3227,7 +3149,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).VAL</string>
+                <string>$(P)SM:J2.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3301,7 +3223,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).LLS</string>
+                <string>$(P)SM:J2.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_20">
@@ -3340,7 +3262,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).HLS</string>
+                <string>$(P)SM:J2.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_4">
@@ -3356,7 +3278,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).EGU</string>
+                <string>$(P)SM:J2.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3452,7 +3374,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M2))</string>
+                <string>($(P)SM:J2)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -3512,7 +3434,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).SET</string>
+                <string>$(P)SM:J2.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_23">
@@ -3558,7 +3480,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).SET</string>
+                <string>$(P)SM:J2.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_5">
@@ -3574,7 +3496,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).RBV</string>
+                <string>$(P)SM:J2.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3637,7 +3559,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2).LVIO</string>
+                <string>$(P)SM:J2.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -3700,7 +3622,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M2)_able.VAL</string>
+                <string>$(P)SM:J2_able.VAL</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_6">
@@ -3716,7 +3638,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).DESC</string>
+                <string>$(P)SM:J3.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3796,7 +3718,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).DMOV</string>
+                <string>$(P)SM:J3.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_26">
@@ -3838,7 +3760,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).LVIO</string>
+                <string>$(P)SM:J3.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_27">
@@ -3880,7 +3802,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3)_able.VAL</string>
+                <string>$(P)SM:J3_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_28">
@@ -3941,7 +3863,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).DMOV</string>
+                <string>$(P)SM:J3.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -3983,7 +3905,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).SET</string>
+                <string>$(P)SM:J3.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -4003,7 +3925,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_23">
+        <widget class="caMessageButton" name="caMessageButton_21">
             <property name="geometry">
                 <rect>
                     <x>334</x>
@@ -4042,7 +3964,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_24">
+        <widget class="caMessageButton" name="caMessageButton_22">
             <property name="geometry">
                 <rect>
                     <x>312</x>
@@ -4055,7 +3977,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3):scanParms.GO</string>
+                <string>$(P)SM:J3:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4150,7 +4072,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_25">
+        <widget class="caMessageButton" name="caMessageButton_23">
             <property name="geometry">
                 <rect>
                     <x>290</x>
@@ -4163,7 +4085,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3):scanParms.LOAD</string>
+                <string>$(P)SM:J3:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4189,7 +4111,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_26">
+        <widget class="caMessageButton" name="caMessageButton_24">
             <property name="geometry">
                 <rect>
                     <x>320</x>
@@ -4202,7 +4124,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).STOP</string>
+                <string>$(P)SM:J3.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4261,7 +4183,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M3);P=$(P),M=$(M3);P=$(P),M=$(M3);P=$(P),M=$(M3);P=$(P),Q=$(M3),PV=$(M3)</string>
+                <string>P=$(P),M=SM:J3;P=$(P),M=SM:J3;P=$(P),M=SM:J3;P=$(P),M=SM:J3;P=$(P),Q=SM:J3,PV=SM:J3</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -4303,7 +4225,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_27">
+        <widget class="caMessageButton" name="caMessageButton_25">
             <property name="geometry">
                 <rect>
                     <x>262</x>
@@ -4316,7 +4238,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).TWR</string>
+                <string>$(P)SM:J3.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4355,7 +4277,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).TWV</string>
+                <string>$(P)SM:J3.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4393,7 +4315,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_28">
+        <widget class="caMessageButton" name="caMessageButton_26">
             <property name="geometry">
                 <rect>
                     <x>349</x>
@@ -4406,7 +4328,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).TWF</string>
+                <string>$(P)SM:J3.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4445,7 +4367,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).VAL</string>
+                <string>$(P)SM:J3.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4519,7 +4441,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).LLS</string>
+                <string>$(P)SM:J3.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_31">
@@ -4558,7 +4480,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).HLS</string>
+                <string>$(P)SM:J3.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_7">
@@ -4574,7 +4496,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).EGU</string>
+                <string>$(P)SM:J3.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4670,7 +4592,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M3))</string>
+                <string>($(P)SM:J3)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -4730,7 +4652,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).SET</string>
+                <string>$(P)SM:J3.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_34">
@@ -4776,7 +4698,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).SET</string>
+                <string>$(P)SM:J3.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_8">
@@ -4792,7 +4714,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).RBV</string>
+                <string>$(P)SM:J3.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -4855,7 +4777,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3).LVIO</string>
+                <string>$(P)SM:J3.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -4918,7 +4840,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M3)_able.VAL</string>
+                <string>$(P)SM:J3_able.VAL</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_9">
@@ -4934,7 +4856,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).DESC</string>
+                <string>$(P)SM:J4.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5014,7 +4936,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).DMOV</string>
+                <string>$(P)SM:J4.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_37">
@@ -5056,7 +4978,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).LVIO</string>
+                <string>$(P)SM:J4.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_38">
@@ -5098,7 +5020,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4)_able.VAL</string>
+                <string>$(P)SM:J4_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_39">
@@ -5159,7 +5081,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).DMOV</string>
+                <string>$(P)SM:J4.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -5201,7 +5123,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).SET</string>
+                <string>$(P)SM:J4.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -5221,7 +5143,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_29">
+        <widget class="caMessageButton" name="caMessageButton_27">
             <property name="geometry">
                 <rect>
                     <x>454</x>
@@ -5260,7 +5182,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_30">
+        <widget class="caMessageButton" name="caMessageButton_28">
             <property name="geometry">
                 <rect>
                     <x>432</x>
@@ -5273,7 +5195,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4):scanParms.GO</string>
+                <string>$(P)SM:J4:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5368,7 +5290,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_31">
+        <widget class="caMessageButton" name="caMessageButton_29">
             <property name="geometry">
                 <rect>
                     <x>410</x>
@@ -5381,7 +5303,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4):scanParms.LOAD</string>
+                <string>$(P)SM:J4:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5407,7 +5329,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_32">
+        <widget class="caMessageButton" name="caMessageButton_30">
             <property name="geometry">
                 <rect>
                     <x>440</x>
@@ -5420,7 +5342,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).STOP</string>
+                <string>$(P)SM:J4.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5479,7 +5401,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M4);P=$(P),M=$(M4);P=$(P),M=$(M4);P=$(P),M=$(M4);P=$(P),Q=$(M4),PV=$(M4)</string>
+                <string>P=$(P),M=SM:J4;P=$(P),M=SM:J4;P=$(P),M=SM:J4;P=$(P),M=SM:J4;P=$(P),Q=SM:J4,PV=SM:J4</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -5521,7 +5443,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_33">
+        <widget class="caMessageButton" name="caMessageButton_31">
             <property name="geometry">
                 <rect>
                     <x>382</x>
@@ -5534,7 +5456,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).TWR</string>
+                <string>$(P)SM:J4.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5573,7 +5495,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).TWV</string>
+                <string>$(P)SM:J4.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5611,7 +5533,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_34">
+        <widget class="caMessageButton" name="caMessageButton_32">
             <property name="geometry">
                 <rect>
                     <x>469</x>
@@ -5624,7 +5546,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).TWF</string>
+                <string>$(P)SM:J4.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5663,7 +5585,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).VAL</string>
+                <string>$(P)SM:J4.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5737,7 +5659,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).LLS</string>
+                <string>$(P)SM:J4.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_42">
@@ -5776,7 +5698,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).HLS</string>
+                <string>$(P)SM:J4.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_10">
@@ -5792,7 +5714,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).EGU</string>
+                <string>$(P)SM:J4.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -5888,7 +5810,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M4))</string>
+                <string>($(P)SM:J4)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -5948,7 +5870,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).SET</string>
+                <string>$(P)SM:J4.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_45">
@@ -5994,7 +5916,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).SET</string>
+                <string>$(P)SM:J4.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_11">
@@ -6010,7 +5932,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).RBV</string>
+                <string>$(P)SM:J4.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6073,7 +5995,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4).LVIO</string>
+                <string>$(P)SM:J4.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -6136,7 +6058,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M4)_able.VAL</string>
+                <string>$(P)SM:J4_able.VAL</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_12">
@@ -6152,7 +6074,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).DESC</string>
+                <string>$(P)SM:J5.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6232,7 +6154,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).DMOV</string>
+                <string>$(P)SM:J5.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_48">
@@ -6274,7 +6196,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).LVIO</string>
+                <string>$(P)SM:J5.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_49">
@@ -6316,7 +6238,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5)_able.VAL</string>
+                <string>$(P)SM:J5_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_50">
@@ -6377,7 +6299,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).DMOV</string>
+                <string>$(P)SM:J5.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -6419,7 +6341,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).SET</string>
+                <string>$(P)SM:J5.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -6439,7 +6361,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_35">
+        <widget class="caMessageButton" name="caMessageButton_33">
             <property name="geometry">
                 <rect>
                     <x>574</x>
@@ -6478,7 +6400,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_36">
+        <widget class="caMessageButton" name="caMessageButton_34">
             <property name="geometry">
                 <rect>
                     <x>552</x>
@@ -6491,7 +6413,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5):scanParms.GO</string>
+                <string>$(P)SM:J5:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6586,7 +6508,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_37">
+        <widget class="caMessageButton" name="caMessageButton_35">
             <property name="geometry">
                 <rect>
                     <x>530</x>
@@ -6599,7 +6521,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5):scanParms.LOAD</string>
+                <string>$(P)SM:J5:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6625,7 +6547,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_38">
+        <widget class="caMessageButton" name="caMessageButton_36">
             <property name="geometry">
                 <rect>
                     <x>560</x>
@@ -6638,7 +6560,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).STOP</string>
+                <string>$(P)SM:J5.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6697,7 +6619,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M5);P=$(P),M=$(M5);P=$(P),M=$(M5);P=$(P),M=$(M5);P=$(P),Q=$(M5),PV=$(M5)</string>
+                <string>P=$(P),M=SM:J5;P=$(P),M=SM:J5;P=$(P),M=SM:J5;P=$(P),M=SM:J5;P=$(P),Q=SM:J5,PV=SM:J5</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -6739,7 +6661,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_39">
+        <widget class="caMessageButton" name="caMessageButton_37">
             <property name="geometry">
                 <rect>
                     <x>502</x>
@@ -6752,7 +6674,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).TWR</string>
+                <string>$(P)SM:J5.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6791,7 +6713,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).TWV</string>
+                <string>$(P)SM:J5.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6829,7 +6751,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_40">
+        <widget class="caMessageButton" name="caMessageButton_38">
             <property name="geometry">
                 <rect>
                     <x>589</x>
@@ -6842,7 +6764,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).TWF</string>
+                <string>$(P)SM:J5.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6881,7 +6803,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).VAL</string>
+                <string>$(P)SM:J5.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -6955,7 +6877,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).LLS</string>
+                <string>$(P)SM:J5.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_53">
@@ -6994,7 +6916,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).HLS</string>
+                <string>$(P)SM:J5.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_13">
@@ -7010,7 +6932,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).EGU</string>
+                <string>$(P)SM:J5.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -7106,7 +7028,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M5))</string>
+                <string>($(P)SM:J5)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -7166,7 +7088,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).SET</string>
+                <string>$(P)SM:J5.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_56">
@@ -7212,7 +7134,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).SET</string>
+                <string>$(P)SM:J5.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_14">
@@ -7228,7 +7150,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).RBV</string>
+                <string>$(P)SM:J5.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -7291,7 +7213,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5).LVIO</string>
+                <string>$(P)SM:J5.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -7354,7 +7276,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M5)_able.VAL</string>
+                <string>$(P)SM:J5_able.VAL</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_15">
@@ -7370,7 +7292,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).DESC</string>
+                <string>$(P)SM:J6.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -7450,7 +7372,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).DMOV</string>
+                <string>$(P)SM:J6.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_59">
@@ -7492,7 +7414,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).LVIO</string>
+                <string>$(P)SM:J6.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_60">
@@ -7534,7 +7456,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6)_able.VAL</string>
+                <string>$(P)SM:J6_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_61">
@@ -7595,7 +7517,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).DMOV</string>
+                <string>$(P)SM:J6.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -7637,7 +7559,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).SET</string>
+                <string>$(P)SM:J6.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -7657,7 +7579,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_41">
+        <widget class="caMessageButton" name="caMessageButton_39">
             <property name="geometry">
                 <rect>
                     <x>694</x>
@@ -7696,7 +7618,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_42">
+        <widget class="caMessageButton" name="caMessageButton_40">
             <property name="geometry">
                 <rect>
                     <x>672</x>
@@ -7709,7 +7631,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6):scanParms.GO</string>
+                <string>$(P)SM:J6:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -7804,7 +7726,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_43">
+        <widget class="caMessageButton" name="caMessageButton_41">
             <property name="geometry">
                 <rect>
                     <x>650</x>
@@ -7817,7 +7739,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6):scanParms.LOAD</string>
+                <string>$(P)SM:J6:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -7843,7 +7765,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_44">
+        <widget class="caMessageButton" name="caMessageButton_42">
             <property name="geometry">
                 <rect>
                     <x>680</x>
@@ -7856,7 +7778,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).STOP</string>
+                <string>$(P)SM:J6.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -7915,7 +7837,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M6);P=$(P),M=$(M6);P=$(P),M=$(M6);P=$(P),M=$(M6);P=$(P),Q=$(M6),PV=$(M6)</string>
+                <string>P=$(P),M=SM:J6;P=$(P),M=SM:J6;P=$(P),M=SM:J6;P=$(P),M=SM:J6;P=$(P),Q=SM:J6,PV=SM:J6</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -7957,7 +7879,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_45">
+        <widget class="caMessageButton" name="caMessageButton_43">
             <property name="geometry">
                 <rect>
                     <x>622</x>
@@ -7970,7 +7892,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).TWR</string>
+                <string>$(P)SM:J6.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -8009,7 +7931,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).TWV</string>
+                <string>$(P)SM:J6.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -8047,7 +7969,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_46">
+        <widget class="caMessageButton" name="caMessageButton_44">
             <property name="geometry">
                 <rect>
                     <x>709</x>
@@ -8060,7 +7982,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).TWF</string>
+                <string>$(P)SM:J6.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -8099,7 +8021,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).VAL</string>
+                <string>$(P)SM:J6.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -8173,7 +8095,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).LLS</string>
+                <string>$(P)SM:J6.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_64">
@@ -8212,7 +8134,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).HLS</string>
+                <string>$(P)SM:J6.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_16">
@@ -8228,7 +8150,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).EGU</string>
+                <string>$(P)SM:J6.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -8324,7 +8246,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M6))</string>
+                <string>($(P)SM:J6)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -8384,7 +8306,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).SET</string>
+                <string>$(P)SM:J6.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_67">
@@ -8430,7 +8352,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).SET</string>
+                <string>$(P)SM:J6.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_17">
@@ -8446,7 +8368,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).RBV</string>
+                <string>$(P)SM:J6.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -8509,7 +8431,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6).LVIO</string>
+                <string>$(P)SM:J6.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -8572,7 +8494,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M6)_able.VAL</string>
+                <string>$(P)SM:J6_able.VAL</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_0">
@@ -8768,7 +8690,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).DESC</string>
+                <string>$(P)SM:X.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -8848,7 +8770,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).DMOV</string>
+                <string>$(P)SM:X.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_70">
@@ -8890,7 +8812,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).LVIO</string>
+                <string>$(P)SM:X.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_71">
@@ -8932,7 +8854,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7)_able.VAL</string>
+                <string>$(P)SM:X_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_72">
@@ -8993,7 +8915,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).DMOV</string>
+                <string>$(P)SM:X.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -9035,7 +8957,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).SET</string>
+                <string>$(P)SM:X.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -9055,7 +8977,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_47">
+        <widget class="caMessageButton" name="caMessageButton_45">
             <property name="geometry">
                 <rect>
                     <x>94</x>
@@ -9094,7 +9016,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_48">
+        <widget class="caMessageButton" name="caMessageButton_46">
             <property name="geometry">
                 <rect>
                     <x>72</x>
@@ -9107,7 +9029,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7):scanParms.GO</string>
+                <string>$(P)SM:X:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -9202,7 +9124,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_49">
+        <widget class="caMessageButton" name="caMessageButton_47">
             <property name="geometry">
                 <rect>
                     <x>50</x>
@@ -9215,7 +9137,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7):scanParms.LOAD</string>
+                <string>$(P)SM:X:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -9241,7 +9163,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_50">
+        <widget class="caMessageButton" name="caMessageButton_48">
             <property name="geometry">
                 <rect>
                     <x>80</x>
@@ -9254,7 +9176,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).STOP</string>
+                <string>$(P)SM:X.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -9313,7 +9235,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M7);P=$(P),M=$(M7);P=$(P),M=$(M7);P=$(P),M=$(M7);P=$(P),Q=$(M7),PV=$(M7)</string>
+                <string>P=$(P),M=SM:X;P=$(P),M=SM:X;P=$(P),M=SM:X;P=$(P),M=SM:X;P=$(P),Q=SM:X,PV=SM:X</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -9355,7 +9277,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_51">
+        <widget class="caMessageButton" name="caMessageButton_49">
             <property name="geometry">
                 <rect>
                     <x>22</x>
@@ -9368,7 +9290,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).TWR</string>
+                <string>$(P)SM:X.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -9407,7 +9329,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).TWV</string>
+                <string>$(P)SM:X.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -9445,7 +9367,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_52">
+        <widget class="caMessageButton" name="caMessageButton_50">
             <property name="geometry">
                 <rect>
                     <x>109</x>
@@ -9458,7 +9380,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).TWF</string>
+                <string>$(P)SM:X.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -9497,7 +9419,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).VAL</string>
+                <string>$(P)SM:X.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -9571,7 +9493,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).LLS</string>
+                <string>$(P)SM:X.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_75">
@@ -9610,7 +9532,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).HLS</string>
+                <string>$(P)SM:X.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_19">
@@ -9626,7 +9548,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).EGU</string>
+                <string>$(P)SM:X.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -9722,7 +9644,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M7))</string>
+                <string>($(P)SM:X)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -9782,7 +9704,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).SET</string>
+                <string>$(P)SM:X.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_78">
@@ -9828,7 +9750,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).SET</string>
+                <string>$(P)SM:X.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_20">
@@ -9844,7 +9766,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).RBV</string>
+                <string>$(P)SM:X.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -9907,7 +9829,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7).LVIO</string>
+                <string>$(P)SM:X.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -9970,7 +9892,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M7)_able.VAL</string>
+                <string>$(P)SM:X_able.VAL</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_21">
@@ -9986,7 +9908,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).DESC</string>
+                <string>$(P)SM:Y.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -10066,7 +9988,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).DMOV</string>
+                <string>$(P)SM:Y.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_81">
@@ -10108,7 +10030,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).LVIO</string>
+                <string>$(P)SM:Y.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_82">
@@ -10150,7 +10072,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8)_able.VAL</string>
+                <string>$(P)SM:Y_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_83">
@@ -10211,7 +10133,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).DMOV</string>
+                <string>$(P)SM:Y.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -10253,7 +10175,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).SET</string>
+                <string>$(P)SM:Y.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -10273,7 +10195,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_53">
+        <widget class="caMessageButton" name="caMessageButton_51">
             <property name="geometry">
                 <rect>
                     <x>214</x>
@@ -10312,7 +10234,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_54">
+        <widget class="caMessageButton" name="caMessageButton_52">
             <property name="geometry">
                 <rect>
                     <x>192</x>
@@ -10325,7 +10247,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8):scanParms.GO</string>
+                <string>$(P)SM:Y:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -10420,7 +10342,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_55">
+        <widget class="caMessageButton" name="caMessageButton_53">
             <property name="geometry">
                 <rect>
                     <x>170</x>
@@ -10433,7 +10355,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8):scanParms.LOAD</string>
+                <string>$(P)SM:Y:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -10459,7 +10381,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_56">
+        <widget class="caMessageButton" name="caMessageButton_54">
             <property name="geometry">
                 <rect>
                     <x>200</x>
@@ -10472,7 +10394,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).STOP</string>
+                <string>$(P)SM:Y.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -10531,7 +10453,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M8);P=$(P),M=$(M8);P=$(P),M=$(M8);P=$(P),M=$(M8);P=$(P),Q=$(M8),PV=$(M8)</string>
+                <string>P=$(P),M=SM:Y;P=$(P),M=SM:Y;P=$(P),M=SM:Y;P=$(P),M=SM:Y;P=$(P),Q=SM:Y,PV=SM:Y</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -10573,7 +10495,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_57">
+        <widget class="caMessageButton" name="caMessageButton_55">
             <property name="geometry">
                 <rect>
                     <x>142</x>
@@ -10586,7 +10508,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).TWR</string>
+                <string>$(P)SM:Y.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -10625,7 +10547,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).TWV</string>
+                <string>$(P)SM:Y.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -10663,7 +10585,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_58">
+        <widget class="caMessageButton" name="caMessageButton_56">
             <property name="geometry">
                 <rect>
                     <x>229</x>
@@ -10676,7 +10598,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).TWF</string>
+                <string>$(P)SM:Y.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -10715,7 +10637,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).VAL</string>
+                <string>$(P)SM:Y.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -10789,7 +10711,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).LLS</string>
+                <string>$(P)SM:Y.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_86">
@@ -10828,7 +10750,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).HLS</string>
+                <string>$(P)SM:Y.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_22">
@@ -10844,7 +10766,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).EGU</string>
+                <string>$(P)SM:Y.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -10940,7 +10862,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M8))</string>
+                <string>($(P)SM:Y)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -11000,7 +10922,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).SET</string>
+                <string>$(P)SM:Y.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_89">
@@ -11046,7 +10968,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).SET</string>
+                <string>$(P)SM:Y.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_23">
@@ -11062,7 +10984,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).RBV</string>
+                <string>$(P)SM:Y.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -11125,7 +11047,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8).LVIO</string>
+                <string>$(P)SM:Y.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -11188,7 +11110,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M8)_able.VAL</string>
+                <string>$(P)SM:Y_able.VAL</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_24">
@@ -11204,7 +11126,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).DESC</string>
+                <string>$(P)SM:Z.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -11284,7 +11206,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).DMOV</string>
+                <string>$(P)SM:Z.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_92">
@@ -11326,7 +11248,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).LVIO</string>
+                <string>$(P)SM:Z.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_93">
@@ -11368,7 +11290,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9)_able.VAL</string>
+                <string>$(P)SM:Z_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_94">
@@ -11429,7 +11351,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).DMOV</string>
+                <string>$(P)SM:Z.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -11471,7 +11393,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).SET</string>
+                <string>$(P)SM:Z.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -11491,7 +11413,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_59">
+        <widget class="caMessageButton" name="caMessageButton_57">
             <property name="geometry">
                 <rect>
                     <x>334</x>
@@ -11530,7 +11452,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_60">
+        <widget class="caMessageButton" name="caMessageButton_58">
             <property name="geometry">
                 <rect>
                     <x>312</x>
@@ -11543,7 +11465,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9):scanParms.GO</string>
+                <string>$(P)SM:Z:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -11638,7 +11560,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_61">
+        <widget class="caMessageButton" name="caMessageButton_59">
             <property name="geometry">
                 <rect>
                     <x>290</x>
@@ -11651,7 +11573,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9):scanParms.LOAD</string>
+                <string>$(P)SM:Z:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -11677,7 +11599,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_62">
+        <widget class="caMessageButton" name="caMessageButton_60">
             <property name="geometry">
                 <rect>
                     <x>320</x>
@@ -11690,7 +11612,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).STOP</string>
+                <string>$(P)SM:Z.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -11749,7 +11671,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M9);P=$(P),M=$(M9);P=$(P),M=$(M9);P=$(P),M=$(M9);P=$(P),Q=$(M9),PV=$(M9)</string>
+                <string>P=$(P),M=SM:Z;P=$(P),M=SM:Z;P=$(P),M=SM:Z;P=$(P),M=SM:Z;P=$(P),Q=SM:Z,PV=SM:Z</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -11791,7 +11713,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_63">
+        <widget class="caMessageButton" name="caMessageButton_61">
             <property name="geometry">
                 <rect>
                     <x>262</x>
@@ -11804,7 +11726,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).TWR</string>
+                <string>$(P)SM:Z.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -11843,7 +11765,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).TWV</string>
+                <string>$(P)SM:Z.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -11881,7 +11803,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_64">
+        <widget class="caMessageButton" name="caMessageButton_62">
             <property name="geometry">
                 <rect>
                     <x>349</x>
@@ -11894,7 +11816,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).TWF</string>
+                <string>$(P)SM:Z.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -11933,7 +11855,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).VAL</string>
+                <string>$(P)SM:Z.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -12007,7 +11929,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).LLS</string>
+                <string>$(P)SM:Z.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_97">
@@ -12046,7 +11968,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).HLS</string>
+                <string>$(P)SM:Z.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_25">
@@ -12062,7 +11984,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).EGU</string>
+                <string>$(P)SM:Z.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -12158,7 +12080,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M9))</string>
+                <string>($(P)SM:Z)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -12218,7 +12140,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).SET</string>
+                <string>$(P)SM:Z.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_100">
@@ -12264,7 +12186,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).SET</string>
+                <string>$(P)SM:Z.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_26">
@@ -12280,7 +12202,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).RBV</string>
+                <string>$(P)SM:Z.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -12343,7 +12265,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9).LVIO</string>
+                <string>$(P)SM:Z.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -12406,7 +12328,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M9)_able.VAL</string>
+                <string>$(P)SM:Z_able.VAL</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_27">
@@ -12422,7 +12344,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).DESC</string>
+                <string>$(P)SM:Roll.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -12502,7 +12424,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).DMOV</string>
+                <string>$(P)SM:Roll.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_103">
@@ -12544,7 +12466,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).LVIO</string>
+                <string>$(P)SM:Roll.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_104">
@@ -12586,7 +12508,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10)_able.VAL</string>
+                <string>$(P)SM:Roll_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_105">
@@ -12647,7 +12569,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).DMOV</string>
+                <string>$(P)SM:Roll.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -12689,7 +12611,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).SET</string>
+                <string>$(P)SM:Roll.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -12709,7 +12631,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_65">
+        <widget class="caMessageButton" name="caMessageButton_63">
             <property name="geometry">
                 <rect>
                     <x>454</x>
@@ -12748,7 +12670,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_66">
+        <widget class="caMessageButton" name="caMessageButton_64">
             <property name="geometry">
                 <rect>
                     <x>432</x>
@@ -12761,7 +12683,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10):scanParms.GO</string>
+                <string>$(P)SM:Roll:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -12856,7 +12778,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_67">
+        <widget class="caMessageButton" name="caMessageButton_65">
             <property name="geometry">
                 <rect>
                     <x>410</x>
@@ -12869,7 +12791,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10):scanParms.LOAD</string>
+                <string>$(P)SM:Roll:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -12895,7 +12817,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_68">
+        <widget class="caMessageButton" name="caMessageButton_66">
             <property name="geometry">
                 <rect>
                     <x>440</x>
@@ -12908,7 +12830,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).STOP</string>
+                <string>$(P)SM:Roll.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -12967,7 +12889,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M10);P=$(P),M=$(M10);P=$(P),M=$(M10);P=$(P),M=$(M10);P=$(P),Q=$(M10),PV=$(M10)</string>
+                <string>P=$(P),M=SM:Roll;P=$(P),M=SM:Roll;P=$(P),M=SM:Roll;P=$(P),M=SM:Roll;P=$(P),Q=SM:Roll,PV=SM:Roll</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -13009,7 +12931,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_69">
+        <widget class="caMessageButton" name="caMessageButton_67">
             <property name="geometry">
                 <rect>
                     <x>382</x>
@@ -13022,7 +12944,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).TWR</string>
+                <string>$(P)SM:Roll.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -13061,7 +12983,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).TWV</string>
+                <string>$(P)SM:Roll.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -13099,7 +13021,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_70">
+        <widget class="caMessageButton" name="caMessageButton_68">
             <property name="geometry">
                 <rect>
                     <x>469</x>
@@ -13112,7 +13034,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).TWF</string>
+                <string>$(P)SM:Roll.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -13151,7 +13073,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).VAL</string>
+                <string>$(P)SM:Roll.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -13225,7 +13147,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).LLS</string>
+                <string>$(P)SM:Roll.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_108">
@@ -13264,7 +13186,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).HLS</string>
+                <string>$(P)SM:Roll.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_28">
@@ -13280,7 +13202,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).EGU</string>
+                <string>$(P)SM:Roll.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -13376,7 +13298,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M10))</string>
+                <string>($(P)SM:Roll)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -13436,7 +13358,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).SET</string>
+                <string>$(P)SM:Roll.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_111">
@@ -13482,7 +13404,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).SET</string>
+                <string>$(P)SM:Roll.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_29">
@@ -13498,7 +13420,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).RBV</string>
+                <string>$(P)SM:Roll.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -13561,7 +13483,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10).LVIO</string>
+                <string>$(P)SM:Roll.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -13624,7 +13546,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M10)_able.VAL</string>
+                <string>$(P)SM:Roll_able.VAL</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_30">
@@ -13640,7 +13562,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).DESC</string>
+                <string>$(P)SM:Pitch.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -13720,7 +13642,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).DMOV</string>
+                <string>$(P)SM:Pitch.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_114">
@@ -13762,7 +13684,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).LVIO</string>
+                <string>$(P)SM:Pitch.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_115">
@@ -13804,7 +13726,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11)_able.VAL</string>
+                <string>$(P)SM:Pitch_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_116">
@@ -13865,7 +13787,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).DMOV</string>
+                <string>$(P)SM:Pitch.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -13907,7 +13829,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).SET</string>
+                <string>$(P)SM:Pitch.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -13927,7 +13849,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_71">
+        <widget class="caMessageButton" name="caMessageButton_69">
             <property name="geometry">
                 <rect>
                     <x>574</x>
@@ -13966,7 +13888,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_72">
+        <widget class="caMessageButton" name="caMessageButton_70">
             <property name="geometry">
                 <rect>
                     <x>552</x>
@@ -13979,7 +13901,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11):scanParms.GO</string>
+                <string>$(P)SM:Pitch:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -14074,7 +13996,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_73">
+        <widget class="caMessageButton" name="caMessageButton_71">
             <property name="geometry">
                 <rect>
                     <x>530</x>
@@ -14087,7 +14009,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11):scanParms.LOAD</string>
+                <string>$(P)SM:Pitch:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -14113,7 +14035,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_74">
+        <widget class="caMessageButton" name="caMessageButton_72">
             <property name="geometry">
                 <rect>
                     <x>560</x>
@@ -14126,7 +14048,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).STOP</string>
+                <string>$(P)SM:Pitch.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -14185,7 +14107,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M11);P=$(P),M=$(M11);P=$(P),M=$(M11);P=$(P),M=$(M11);P=$(P),Q=$(M11),PV=$(M11)</string>
+                <string>P=$(P),M=SM:Pitch;P=$(P),M=SM:Pitch;P=$(P),M=SM:Pitch;P=$(P),M=SM:Pitch;P=$(P),Q=SM:Pitch,PV=SM:Pitch</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -14227,7 +14149,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_75">
+        <widget class="caMessageButton" name="caMessageButton_73">
             <property name="geometry">
                 <rect>
                     <x>502</x>
@@ -14240,7 +14162,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).TWR</string>
+                <string>$(P)SM:Pitch.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -14279,7 +14201,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).TWV</string>
+                <string>$(P)SM:Pitch.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -14317,7 +14239,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_76">
+        <widget class="caMessageButton" name="caMessageButton_74">
             <property name="geometry">
                 <rect>
                     <x>589</x>
@@ -14330,7 +14252,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).TWF</string>
+                <string>$(P)SM:Pitch.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -14369,7 +14291,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).VAL</string>
+                <string>$(P)SM:Pitch.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -14443,7 +14365,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).LLS</string>
+                <string>$(P)SM:Pitch.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_119">
@@ -14482,7 +14404,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).HLS</string>
+                <string>$(P)SM:Pitch.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_31">
@@ -14498,7 +14420,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).EGU</string>
+                <string>$(P)SM:Pitch.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -14594,7 +14516,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M11))</string>
+                <string>($(P)SM:Pitch)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -14654,7 +14576,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).SET</string>
+                <string>$(P)SM:Pitch.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_122">
@@ -14700,7 +14622,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).SET</string>
+                <string>$(P)SM:Pitch.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_32">
@@ -14716,7 +14638,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).RBV</string>
+                <string>$(P)SM:Pitch.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -14779,7 +14701,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11).LVIO</string>
+                <string>$(P)SM:Pitch.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -14842,7 +14764,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M11)_able.VAL</string>
+                <string>$(P)SM:Pitch_able.VAL</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_33">
@@ -14858,7 +14780,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).DESC</string>
+                <string>$(P)SM:Yaw.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -14938,7 +14860,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).DMOV</string>
+                <string>$(P)SM:Yaw.DMOV</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_125">
@@ -14980,7 +14902,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).LVIO</string>
+                <string>$(P)SM:Yaw.LVIO</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_126">
@@ -15022,7 +14944,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12)_able.VAL</string>
+                <string>$(P)SM:Yaw_able.VAL</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_127">
@@ -15083,7 +15005,7 @@ caMenu{
                 <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).DMOV</string>
+                <string>$(P)SM:Yaw.DMOV</string>
             </property>
             <property name="text">
                 <string>Moving</string>
@@ -15125,7 +15047,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).SET</string>
+                <string>$(P)SM:Yaw.SET</string>
             </property>
             <property name="text">
                 <string>Calibrate</string>
@@ -15145,7 +15067,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_77">
+        <widget class="caMessageButton" name="caMessageButton_75">
             <property name="geometry">
                 <rect>
                     <x>694</x>
@@ -15184,7 +15106,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_78">
+        <widget class="caMessageButton" name="caMessageButton_76">
             <property name="geometry">
                 <rect>
                     <x>672</x>
@@ -15197,7 +15119,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12):scanParms.GO</string>
+                <string>$(P)SM:Yaw:scanParms.GO</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -15292,7 +15214,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_79">
+        <widget class="caMessageButton" name="caMessageButton_77">
             <property name="geometry">
                 <rect>
                     <x>650</x>
@@ -15305,7 +15227,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12):scanParms.LOAD</string>
+                <string>$(P)SM:Yaw:scanParms.LOAD</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -15331,7 +15253,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_80">
+        <widget class="caMessageButton" name="caMessageButton_78">
             <property name="geometry">
                 <rect>
                     <x>680</x>
@@ -15344,7 +15266,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).STOP</string>
+                <string>$(P)SM:Yaw.STOP</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -15403,7 +15325,7 @@ caMenu{
                 <string>motorx_help.adl;motorx_more.adl;motorx_setup.adl;motorx_all.adl;scanParms.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),M=$(M12);P=$(P),M=$(M12);P=$(P),M=$(M12);P=$(P),M=$(M12);P=$(P),Q=$(M12),PV=$(M12)</string>
+                <string>P=$(P),M=SM:Yaw;P=$(P),M=SM:Yaw;P=$(P),M=SM:Yaw;P=$(P),M=SM:Yaw;P=$(P),Q=SM:Yaw,PV=SM:Yaw</string>
             </property>
             <property name="removeParent">
                 <string>false;false;false;false;false</string>
@@ -15445,7 +15367,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_81">
+        <widget class="caMessageButton" name="caMessageButton_79">
             <property name="geometry">
                 <rect>
                     <x>622</x>
@@ -15458,7 +15380,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).TWR</string>
+                <string>$(P)SM:Yaw.TWR</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -15497,7 +15419,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).TWV</string>
+                <string>$(P)SM:Yaw.TWV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -15535,7 +15457,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_82">
+        <widget class="caMessageButton" name="caMessageButton_80">
             <property name="geometry">
                 <rect>
                     <x>709</x>
@@ -15548,7 +15470,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).TWF</string>
+                <string>$(P)SM:Yaw.TWF</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -15587,7 +15509,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).VAL</string>
+                <string>$(P)SM:Yaw.VAL</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -15661,7 +15583,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).LLS</string>
+                <string>$(P)SM:Yaw.LLS</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_130">
@@ -15700,7 +15622,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).HLS</string>
+                <string>$(P)SM:Yaw.HLS</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_34">
@@ -15716,7 +15638,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).EGU</string>
+                <string>$(P)SM:Yaw.EGU</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -15812,7 +15734,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>($(P)$(M12))</string>
+                <string>($(P)SM:Yaw)</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -15872,7 +15794,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).SET</string>
+                <string>$(P)SM:Yaw.SET</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_133">
@@ -15918,7 +15840,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).SET</string>
+                <string>$(P)SM:Yaw.SET</string>
             </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_35">
@@ -15934,7 +15856,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).RBV</string>
+                <string>$(P)SM:Yaw.RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -15997,7 +15919,7 @@ caMenu{
                 <enum>caLabel::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12).LVIO</string>
+                <string>$(P)SM:Yaw.LVIO</string>
             </property>
             <property name="text">
                 <string>Soft limit</string>
@@ -16060,7 +15982,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(M12)_able.VAL</string>
+                <string>$(P)SM:Yaw_able.VAL</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_5">
@@ -17076,160 +16998,158 @@ caMenu{
         <zorder>caLabel_89</zorder>
         <zorder>caChoice_0</zorder>
         <zorder>caMessageButton_0</zorder>
-        <zorder>caMessageButton_1</zorder>
         <zorder>caSlider_0</zorder>
         <zorder>caChoice_1</zorder>
+        <zorder>caMessageButton_1</zorder>
         <zorder>caMessageButton_2</zorder>
         <zorder>caMessageButton_3</zorder>
         <zorder>caMessageButton_4</zorder>
         <zorder>caMessageButton_5</zorder>
         <zorder>caMessageButton_6</zorder>
         <zorder>caMessageButton_7</zorder>
-        <zorder>caMessageButton_8</zorder>
-        <zorder>caMessageButton_9</zorder>
         <zorder>caChoice_2</zorder>
-        <zorder>caMessageButton_10</zorder>
+        <zorder>caMessageButton_8</zorder>
         <zorder>caLineEdit_0</zorder>
+        <zorder>caMessageButton_9</zorder>
+        <zorder>caMessageButton_10</zorder>
         <zorder>caMessageButton_11</zorder>
         <zorder>caMessageButton_12</zorder>
-        <zorder>caMessageButton_13</zorder>
-        <zorder>caMessageButton_14</zorder>
         <zorder>caRelatedDisplay_0</zorder>
-        <zorder>caMessageButton_15</zorder>
+        <zorder>caMessageButton_13</zorder>
         <zorder>caTextEntry_0</zorder>
-        <zorder>caMessageButton_16</zorder>
+        <zorder>caMessageButton_14</zorder>
         <zorder>caTextEntry_1</zorder>
         <zorder>caLineEdit_1</zorder>
         <zorder>caLineEdit_2</zorder>
         <zorder>caLineEdit_3</zorder>
+        <zorder>caMessageButton_15</zorder>
+        <zorder>caMessageButton_16</zorder>
         <zorder>caMessageButton_17</zorder>
         <zorder>caMessageButton_18</zorder>
-        <zorder>caMessageButton_19</zorder>
-        <zorder>caMessageButton_20</zorder>
         <zorder>caRelatedDisplay_1</zorder>
-        <zorder>caMessageButton_21</zorder>
+        <zorder>caMessageButton_19</zorder>
         <zorder>caTextEntry_2</zorder>
-        <zorder>caMessageButton_22</zorder>
+        <zorder>caMessageButton_20</zorder>
         <zorder>caTextEntry_3</zorder>
         <zorder>caLineEdit_4</zorder>
         <zorder>caLineEdit_5</zorder>
         <zorder>caLineEdit_6</zorder>
+        <zorder>caMessageButton_21</zorder>
+        <zorder>caMessageButton_22</zorder>
         <zorder>caMessageButton_23</zorder>
         <zorder>caMessageButton_24</zorder>
-        <zorder>caMessageButton_25</zorder>
-        <zorder>caMessageButton_26</zorder>
         <zorder>caRelatedDisplay_2</zorder>
-        <zorder>caMessageButton_27</zorder>
+        <zorder>caMessageButton_25</zorder>
         <zorder>caTextEntry_4</zorder>
-        <zorder>caMessageButton_28</zorder>
+        <zorder>caMessageButton_26</zorder>
         <zorder>caTextEntry_5</zorder>
         <zorder>caLineEdit_7</zorder>
         <zorder>caLineEdit_8</zorder>
         <zorder>caLineEdit_9</zorder>
+        <zorder>caMessageButton_27</zorder>
+        <zorder>caMessageButton_28</zorder>
         <zorder>caMessageButton_29</zorder>
         <zorder>caMessageButton_30</zorder>
-        <zorder>caMessageButton_31</zorder>
-        <zorder>caMessageButton_32</zorder>
         <zorder>caRelatedDisplay_3</zorder>
-        <zorder>caMessageButton_33</zorder>
+        <zorder>caMessageButton_31</zorder>
         <zorder>caTextEntry_6</zorder>
-        <zorder>caMessageButton_34</zorder>
+        <zorder>caMessageButton_32</zorder>
         <zorder>caTextEntry_7</zorder>
         <zorder>caLineEdit_10</zorder>
         <zorder>caLineEdit_11</zorder>
         <zorder>caLineEdit_12</zorder>
+        <zorder>caMessageButton_33</zorder>
+        <zorder>caMessageButton_34</zorder>
         <zorder>caMessageButton_35</zorder>
         <zorder>caMessageButton_36</zorder>
-        <zorder>caMessageButton_37</zorder>
-        <zorder>caMessageButton_38</zorder>
         <zorder>caRelatedDisplay_4</zorder>
-        <zorder>caMessageButton_39</zorder>
+        <zorder>caMessageButton_37</zorder>
         <zorder>caTextEntry_8</zorder>
-        <zorder>caMessageButton_40</zorder>
+        <zorder>caMessageButton_38</zorder>
         <zorder>caTextEntry_9</zorder>
         <zorder>caLineEdit_13</zorder>
         <zorder>caLineEdit_14</zorder>
         <zorder>caLineEdit_15</zorder>
+        <zorder>caMessageButton_39</zorder>
+        <zorder>caMessageButton_40</zorder>
         <zorder>caMessageButton_41</zorder>
         <zorder>caMessageButton_42</zorder>
-        <zorder>caMessageButton_43</zorder>
-        <zorder>caMessageButton_44</zorder>
         <zorder>caRelatedDisplay_5</zorder>
-        <zorder>caMessageButton_45</zorder>
+        <zorder>caMessageButton_43</zorder>
         <zorder>caTextEntry_10</zorder>
-        <zorder>caMessageButton_46</zorder>
+        <zorder>caMessageButton_44</zorder>
         <zorder>caTextEntry_11</zorder>
         <zorder>caLineEdit_16</zorder>
         <zorder>caLineEdit_17</zorder>
         <zorder>caLineEdit_18</zorder>
+        <zorder>caMessageButton_45</zorder>
+        <zorder>caMessageButton_46</zorder>
         <zorder>caMessageButton_47</zorder>
         <zorder>caMessageButton_48</zorder>
-        <zorder>caMessageButton_49</zorder>
-        <zorder>caMessageButton_50</zorder>
         <zorder>caRelatedDisplay_6</zorder>
-        <zorder>caMessageButton_51</zorder>
+        <zorder>caMessageButton_49</zorder>
         <zorder>caTextEntry_12</zorder>
-        <zorder>caMessageButton_52</zorder>
+        <zorder>caMessageButton_50</zorder>
         <zorder>caTextEntry_13</zorder>
         <zorder>caLineEdit_19</zorder>
         <zorder>caLineEdit_20</zorder>
         <zorder>caLineEdit_21</zorder>
+        <zorder>caMessageButton_51</zorder>
+        <zorder>caMessageButton_52</zorder>
         <zorder>caMessageButton_53</zorder>
         <zorder>caMessageButton_54</zorder>
-        <zorder>caMessageButton_55</zorder>
-        <zorder>caMessageButton_56</zorder>
         <zorder>caRelatedDisplay_7</zorder>
-        <zorder>caMessageButton_57</zorder>
+        <zorder>caMessageButton_55</zorder>
         <zorder>caTextEntry_14</zorder>
-        <zorder>caMessageButton_58</zorder>
+        <zorder>caMessageButton_56</zorder>
         <zorder>caTextEntry_15</zorder>
         <zorder>caLineEdit_22</zorder>
         <zorder>caLineEdit_23</zorder>
         <zorder>caLineEdit_24</zorder>
+        <zorder>caMessageButton_57</zorder>
+        <zorder>caMessageButton_58</zorder>
         <zorder>caMessageButton_59</zorder>
         <zorder>caMessageButton_60</zorder>
-        <zorder>caMessageButton_61</zorder>
-        <zorder>caMessageButton_62</zorder>
         <zorder>caRelatedDisplay_8</zorder>
-        <zorder>caMessageButton_63</zorder>
+        <zorder>caMessageButton_61</zorder>
         <zorder>caTextEntry_16</zorder>
-        <zorder>caMessageButton_64</zorder>
+        <zorder>caMessageButton_62</zorder>
         <zorder>caTextEntry_17</zorder>
         <zorder>caLineEdit_25</zorder>
         <zorder>caLineEdit_26</zorder>
         <zorder>caLineEdit_27</zorder>
+        <zorder>caMessageButton_63</zorder>
+        <zorder>caMessageButton_64</zorder>
         <zorder>caMessageButton_65</zorder>
         <zorder>caMessageButton_66</zorder>
-        <zorder>caMessageButton_67</zorder>
-        <zorder>caMessageButton_68</zorder>
         <zorder>caRelatedDisplay_9</zorder>
-        <zorder>caMessageButton_69</zorder>
+        <zorder>caMessageButton_67</zorder>
         <zorder>caTextEntry_18</zorder>
-        <zorder>caMessageButton_70</zorder>
+        <zorder>caMessageButton_68</zorder>
         <zorder>caTextEntry_19</zorder>
         <zorder>caLineEdit_28</zorder>
         <zorder>caLineEdit_29</zorder>
         <zorder>caLineEdit_30</zorder>
+        <zorder>caMessageButton_69</zorder>
+        <zorder>caMessageButton_70</zorder>
         <zorder>caMessageButton_71</zorder>
         <zorder>caMessageButton_72</zorder>
-        <zorder>caMessageButton_73</zorder>
-        <zorder>caMessageButton_74</zorder>
         <zorder>caRelatedDisplay_10</zorder>
-        <zorder>caMessageButton_75</zorder>
+        <zorder>caMessageButton_73</zorder>
         <zorder>caTextEntry_20</zorder>
-        <zorder>caMessageButton_76</zorder>
+        <zorder>caMessageButton_74</zorder>
         <zorder>caTextEntry_21</zorder>
         <zorder>caLineEdit_31</zorder>
         <zorder>caLineEdit_32</zorder>
         <zorder>caLineEdit_33</zorder>
+        <zorder>caMessageButton_75</zorder>
+        <zorder>caMessageButton_76</zorder>
         <zorder>caMessageButton_77</zorder>
         <zorder>caMessageButton_78</zorder>
-        <zorder>caMessageButton_79</zorder>
-        <zorder>caMessageButton_80</zorder>
         <zorder>caRelatedDisplay_11</zorder>
-        <zorder>caMessageButton_81</zorder>
+        <zorder>caMessageButton_79</zorder>
         <zorder>caTextEntry_22</zorder>
-        <zorder>caMessageButton_82</zorder>
+        <zorder>caMessageButton_80</zorder>
         <zorder>caTextEntry_23</zorder>
         <zorder>caLineEdit_34</zorder>
         <zorder>caLineEdit_35</zorder>

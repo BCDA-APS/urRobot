@@ -4,108 +4,16 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>265</x>
-            <y>687</y>
-            <width>823</width>
-            <height>776</height>
+            <x>255</x>
+            <y>679</y>
+            <width>825</width>
+            <height>690</height>
         </rect>
     </property>
     <property name="styleSheet">
         <string>
 
 QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
-
-caTable {
-       background: cornsilk;
-       alternate-background-color: wheat;
-}
-
-caLineEdit {
-     border-radius: 1px;
-     background: lightyellow;
-     color: black;
- }
- 
- caLabel {
-     border-radius: 1px;
-     background: lightyellow;
-     color: black;
- }
-
-caTextEntry {
-    color: rgb(127, 0, 63);
-    background-color: cornsilk;
-    selection-color: #0a214c;
-    selection-background-color: wheat;
-    border: 1px groove black;
-    border-radius: 1px;
-    padding: 1px;
-}
-
-caTextEntry:focus {
-    padding: 0px;
-    border: 2px groove darkred;
-    border-radius: 1px;
-}
-
-/* when font specified, no font sizing is done any more,  font: 10pt; is not bad */
-QPushButton {
-      border-color: #00b;
-      border-radius: 2px;
-      padding: 3px;
-      border-width: 1px;
-
-	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
-						   stop:0   rgba(224, 239, 255, 255),
-						   stop:0.5 rgba(199, 215, 230, 255),
-						   stop:1   rgba(184, 214, 236, 255));
-}
-QPushButton:hover {
-	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
-						stop:0   rgba(201, 226, 255, 255),
-						stop:0.5 rgba(177, 204, 230, 255),
-						stop:1   rgba(163, 205, 236, 255));
-}
-QPushButton:pressed {
-	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
-						stop:0   rgba(174, 219, 255, 255),
-						stop:0.5 rgba(165, 199, 230, 255),
-						stop:1   rgba(134, 188, 236, 255));
-}
-
-QPushButton:disabled {
-	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
-						stop:0   rgba(174, 219, 255, 255),
-						stop:0.5 rgba(165, 199, 230, 255),
-						stop:1   rgba(134, 188, 236, 255));
-}
-
-
-caChoice &gt; QPushButton {
-text-align: left;
-background-color: lightgray;
-border: 3px gray;
-}
-
-caChoice &gt; QPushButton:pressed {
-background-color: lightgray;
-border: 3px gray;
-}
-
-caChoice &gt; QPushButton:checked {
-background-color: #EEEEEE;
-border: 3px gray;
-}
-
-caChoice &gt; QPushButton:default {
-background-color: lightgray;
-border: 3px gray;
-}
-
-caMenu{
-    background: lightyellow;
-}
-
 
 </string>
     </property>
@@ -183,7 +91,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>26</x>
-                    <y>422</y>
+                    <y>382</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -219,7 +127,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>26</x>
-                    <y>453</y>
+                    <y>413</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -291,7 +199,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>28</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -330,7 +238,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>54</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -381,7 +289,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>115</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -420,7 +328,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>425</y>
+                    <y>385</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -471,7 +379,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>26</x>
-                    <y>388</y>
+                    <y>348</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -528,7 +436,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>26</x>
-                    <y>376</y>
+                    <y>336</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -564,7 +472,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>26</x>
-                    <y>398</y>
+                    <y>358</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -601,7 +509,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>37</x>
-                    <y>401</y>
+                    <y>361</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -658,7 +566,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>355</y>
+                    <y>315</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -772,7 +680,7 @@ caMenu{
                     <x>10</x>
                     <y>245</y>
                     <width>800</width>
-                    <height>250</height>
+                    <height>200</height>
                 </rect>
             </property>
             <property name="lineSize">
@@ -801,45 +709,6 @@ caMenu{
             </property>
             <property name="linestyle">
                 <enum>Solid</enum>
-            </property>
-        </widget>
-        <widget class="caMessageButton" name="caMessageButton_3">
-            <property name="geometry">
-                <rect>
-                    <x>25</x>
-                    <y>320</y>
-                    <width>50</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Control:ResetJCmd.PROC</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>115</red>
-                    <green>223</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>RESET</string>
-            </property>
-            <property name="pressMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
             </property>
         </widget>
         <widget class="caLabel" name="caLabel_2">
@@ -981,7 +850,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>27</x>
-                    <y>357</y>
+                    <y>317</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -1040,7 +909,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>360</y>
+                    <y>320</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -1053,7 +922,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>156</x>
-                    <y>422</y>
+                    <y>382</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -1089,7 +958,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>156</x>
-                    <y>453</y>
+                    <y>413</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -1118,11 +987,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_4">
+        <widget class="caMessageButton" name="caMessageButton_3">
             <property name="geometry">
                 <rect>
                     <x>158</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -1161,7 +1030,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>184</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -1208,11 +1077,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_5">
+        <widget class="caMessageButton" name="caMessageButton_4">
             <property name="geometry">
                 <rect>
                     <x>245</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -1251,7 +1120,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>165</x>
-                    <y>425</y>
+                    <y>385</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -1302,7 +1171,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>156</x>
-                    <y>388</y>
+                    <y>348</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -1359,7 +1228,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>156</x>
-                    <y>376</y>
+                    <y>336</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -1395,7 +1264,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>156</x>
-                    <y>398</y>
+                    <y>358</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -1432,7 +1301,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>167</x>
-                    <y>401</y>
+                    <y>361</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -1489,7 +1358,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>155</x>
-                    <y>355</y>
+                    <y>315</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -1529,7 +1398,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>157</x>
-                    <y>357</y>
+                    <y>317</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -1588,7 +1457,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>165</x>
-                    <y>360</y>
+                    <y>320</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -1601,7 +1470,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>286</x>
-                    <y>422</y>
+                    <y>382</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -1637,7 +1506,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>286</x>
-                    <y>453</y>
+                    <y>413</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -1666,11 +1535,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_6">
+        <widget class="caMessageButton" name="caMessageButton_5">
             <property name="geometry">
                 <rect>
                     <x>288</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -1709,7 +1578,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>314</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -1756,11 +1625,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_7">
+        <widget class="caMessageButton" name="caMessageButton_6">
             <property name="geometry">
                 <rect>
                     <x>375</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -1799,7 +1668,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>295</x>
-                    <y>425</y>
+                    <y>385</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -1850,7 +1719,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>286</x>
-                    <y>388</y>
+                    <y>348</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -1907,7 +1776,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>286</x>
-                    <y>376</y>
+                    <y>336</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -1943,7 +1812,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>286</x>
-                    <y>398</y>
+                    <y>358</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -1980,7 +1849,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>297</x>
-                    <y>401</y>
+                    <y>361</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -2037,7 +1906,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>285</x>
-                    <y>355</y>
+                    <y>315</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -2077,7 +1946,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>287</x>
-                    <y>357</y>
+                    <y>317</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -2136,7 +2005,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>295</x>
-                    <y>360</y>
+                    <y>320</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -2149,7 +2018,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>416</x>
-                    <y>422</y>
+                    <y>382</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -2185,7 +2054,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>416</x>
-                    <y>453</y>
+                    <y>413</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -2214,11 +2083,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_8">
+        <widget class="caMessageButton" name="caMessageButton_7">
             <property name="geometry">
                 <rect>
                     <x>418</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -2257,7 +2126,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>444</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -2304,11 +2173,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_9">
+        <widget class="caMessageButton" name="caMessageButton_8">
             <property name="geometry">
                 <rect>
                     <x>505</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -2347,7 +2216,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>425</x>
-                    <y>425</y>
+                    <y>385</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -2398,7 +2267,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>416</x>
-                    <y>388</y>
+                    <y>348</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -2455,7 +2324,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>416</x>
-                    <y>376</y>
+                    <y>336</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -2491,7 +2360,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>416</x>
-                    <y>398</y>
+                    <y>358</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -2528,7 +2397,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>427</x>
-                    <y>401</y>
+                    <y>361</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -2585,7 +2454,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>415</x>
-                    <y>355</y>
+                    <y>315</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -2625,7 +2494,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>417</x>
-                    <y>357</y>
+                    <y>317</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -2684,7 +2553,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>425</x>
-                    <y>360</y>
+                    <y>320</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -2697,7 +2566,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>546</x>
-                    <y>422</y>
+                    <y>382</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -2733,7 +2602,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>546</x>
-                    <y>453</y>
+                    <y>413</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -2762,11 +2631,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_10">
+        <widget class="caMessageButton" name="caMessageButton_9">
             <property name="geometry">
                 <rect>
                     <x>548</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -2805,7 +2674,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>574</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -2852,11 +2721,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_11">
+        <widget class="caMessageButton" name="caMessageButton_10">
             <property name="geometry">
                 <rect>
                     <x>635</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -2895,7 +2764,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>555</x>
-                    <y>425</y>
+                    <y>385</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -2946,7 +2815,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>546</x>
-                    <y>388</y>
+                    <y>348</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -3003,7 +2872,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>546</x>
-                    <y>376</y>
+                    <y>336</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -3039,7 +2908,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>546</x>
-                    <y>398</y>
+                    <y>358</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -3076,7 +2945,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>557</x>
-                    <y>401</y>
+                    <y>361</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -3133,7 +3002,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>545</x>
-                    <y>355</y>
+                    <y>315</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -3173,7 +3042,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>547</x>
-                    <y>357</y>
+                    <y>317</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -3232,7 +3101,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>555</x>
-                    <y>360</y>
+                    <y>320</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -3245,7 +3114,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>676</x>
-                    <y>422</y>
+                    <y>382</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -3281,7 +3150,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>676</x>
-                    <y>453</y>
+                    <y>413</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -3310,11 +3179,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_12">
+        <widget class="caMessageButton" name="caMessageButton_11">
             <property name="geometry">
                 <rect>
                     <x>678</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -3353,7 +3222,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>704</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -3400,11 +3269,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_13">
+        <widget class="caMessageButton" name="caMessageButton_12">
             <property name="geometry">
                 <rect>
                     <x>765</x>
-                    <y>455</y>
+                    <y>415</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -3443,7 +3312,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>685</x>
-                    <y>425</y>
+                    <y>385</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -3494,7 +3363,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>676</x>
-                    <y>388</y>
+                    <y>348</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -3551,7 +3420,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>676</x>
-                    <y>376</y>
+                    <y>336</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -3587,7 +3456,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>676</x>
-                    <y>398</y>
+                    <y>358</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -3624,7 +3493,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>687</x>
-                    <y>401</y>
+                    <y>361</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -3681,7 +3550,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>675</x>
-                    <y>355</y>
+                    <y>315</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -3721,7 +3590,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>677</x>
-                    <y>357</y>
+                    <y>317</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -3780,7 +3649,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>685</x>
-                    <y>360</y>
+                    <y>320</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -3790,7 +3659,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>50</x>
-                    <y>550</y>
+                    <y>505</y>
                     <width>80</width>
                     <height>20</height>
                 </rect>
@@ -3826,7 +3695,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>26</x>
-                    <y>687</y>
+                    <y>602</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -3862,7 +3731,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>26</x>
-                    <y>718</y>
+                    <y>633</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -3891,11 +3760,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_14">
+        <widget class="caMessageButton" name="caMessageButton_13">
             <property name="geometry">
                 <rect>
                     <x>140</x>
-                    <y>550</y>
+                    <y>505</y>
                     <width>50</width>
                     <height>20</height>
                 </rect>
@@ -3930,11 +3799,11 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_15">
+        <widget class="caMessageButton" name="caMessageButton_14">
             <property name="geometry">
                 <rect>
                     <x>28</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -3973,7 +3842,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>54</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -4020,11 +3889,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_16">
+        <widget class="caMessageButton" name="caMessageButton_15">
             <property name="geometry">
                 <rect>
                     <x>115</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -4063,7 +3932,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>690</y>
+                    <y>605</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -4114,7 +3983,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>26</x>
-                    <y>653</y>
+                    <y>568</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -4171,7 +4040,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>26</x>
-                    <y>641</y>
+                    <y>556</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -4207,7 +4076,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>26</x>
-                    <y>663</y>
+                    <y>578</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -4244,7 +4113,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>37</x>
-                    <y>666</y>
+                    <y>581</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -4301,7 +4170,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>620</y>
+                    <y>535</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -4361,7 +4230,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>20</x>
-                    <y>550</y>
+                    <y>505</y>
                     <width>30</width>
                     <height>20</height>
                 </rect>
@@ -4397,7 +4266,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>20</x>
-                    <y>515</y>
+                    <y>470</y>
                     <width>150</width>
                     <height>20</height>
                 </rect>
@@ -4413,9 +4282,9 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>10</x>
-                    <y>510</y>
+                    <y>465</y>
                     <width>800</width>
-                    <height>250</height>
+                    <height>200</height>
                 </rect>
             </property>
             <property name="lineSize">
@@ -4446,45 +4315,6 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_17">
-            <property name="geometry">
-                <rect>
-                    <x>25</x>
-                    <y>585</y>
-                    <width>50</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Control:ResetPoseCmd.PROC</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>115</red>
-                    <green>223</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>RESET</string>
-            </property>
-            <property name="pressMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
         <widget class="caGraphics" name="caRectangle_44">
             <property name="form">
                 <enum>caGraphics::Rectangle</enum>
@@ -4492,7 +4322,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>27</x>
-                    <y>622</y>
+                    <y>537</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -4551,7 +4381,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>35</x>
-                    <y>625</y>
+                    <y>540</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -4564,7 +4394,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>156</x>
-                    <y>687</y>
+                    <y>602</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -4600,7 +4430,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>156</x>
-                    <y>718</y>
+                    <y>633</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -4629,11 +4459,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_18">
+        <widget class="caMessageButton" name="caMessageButton_16">
             <property name="geometry">
                 <rect>
                     <x>158</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -4672,7 +4502,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>184</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -4719,11 +4549,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_19">
+        <widget class="caMessageButton" name="caMessageButton_17">
             <property name="geometry">
                 <rect>
                     <x>245</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -4762,7 +4592,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>165</x>
-                    <y>690</y>
+                    <y>605</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -4813,7 +4643,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>156</x>
-                    <y>653</y>
+                    <y>568</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -4870,7 +4700,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>156</x>
-                    <y>641</y>
+                    <y>556</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -4906,7 +4736,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>156</x>
-                    <y>663</y>
+                    <y>578</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -4943,7 +4773,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>167</x>
-                    <y>666</y>
+                    <y>581</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -5000,7 +4830,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>155</x>
-                    <y>620</y>
+                    <y>535</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -5040,7 +4870,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>157</x>
-                    <y>622</y>
+                    <y>537</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -5099,7 +4929,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>165</x>
-                    <y>625</y>
+                    <y>540</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -5112,7 +4942,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>286</x>
-                    <y>687</y>
+                    <y>602</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -5148,7 +4978,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>286</x>
-                    <y>718</y>
+                    <y>633</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -5177,11 +5007,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_20">
+        <widget class="caMessageButton" name="caMessageButton_18">
             <property name="geometry">
                 <rect>
                     <x>288</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -5220,7 +5050,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>314</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -5267,11 +5097,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_21">
+        <widget class="caMessageButton" name="caMessageButton_19">
             <property name="geometry">
                 <rect>
                     <x>375</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -5310,7 +5140,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>295</x>
-                    <y>690</y>
+                    <y>605</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -5361,7 +5191,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>286</x>
-                    <y>653</y>
+                    <y>568</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -5418,7 +5248,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>286</x>
-                    <y>641</y>
+                    <y>556</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -5454,7 +5284,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>286</x>
-                    <y>663</y>
+                    <y>578</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -5491,7 +5321,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>297</x>
-                    <y>666</y>
+                    <y>581</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -5548,7 +5378,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>285</x>
-                    <y>620</y>
+                    <y>535</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -5588,7 +5418,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>287</x>
-                    <y>622</y>
+                    <y>537</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -5647,7 +5477,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>295</x>
-                    <y>625</y>
+                    <y>540</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -5660,7 +5490,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>416</x>
-                    <y>687</y>
+                    <y>602</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -5696,7 +5526,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>416</x>
-                    <y>718</y>
+                    <y>633</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -5725,11 +5555,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_22">
+        <widget class="caMessageButton" name="caMessageButton_20">
             <property name="geometry">
                 <rect>
                     <x>418</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -5768,7 +5598,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>444</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -5815,11 +5645,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_23">
+        <widget class="caMessageButton" name="caMessageButton_21">
             <property name="geometry">
                 <rect>
                     <x>505</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -5858,7 +5688,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>425</x>
-                    <y>690</y>
+                    <y>605</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -5909,7 +5739,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>416</x>
-                    <y>653</y>
+                    <y>568</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -5966,7 +5796,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>416</x>
-                    <y>641</y>
+                    <y>556</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -6002,7 +5832,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>416</x>
-                    <y>663</y>
+                    <y>578</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -6039,7 +5869,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>427</x>
-                    <y>666</y>
+                    <y>581</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -6096,7 +5926,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>415</x>
-                    <y>620</y>
+                    <y>535</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -6136,7 +5966,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>417</x>
-                    <y>622</y>
+                    <y>537</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -6195,7 +6025,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>425</x>
-                    <y>625</y>
+                    <y>540</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -6208,7 +6038,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>546</x>
-                    <y>687</y>
+                    <y>602</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -6244,7 +6074,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>546</x>
-                    <y>718</y>
+                    <y>633</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -6273,11 +6103,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_24">
+        <widget class="caMessageButton" name="caMessageButton_22">
             <property name="geometry">
                 <rect>
                     <x>548</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -6316,7 +6146,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>574</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -6363,11 +6193,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_25">
+        <widget class="caMessageButton" name="caMessageButton_23">
             <property name="geometry">
                 <rect>
                     <x>635</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -6406,7 +6236,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>555</x>
-                    <y>690</y>
+                    <y>605</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -6457,7 +6287,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>546</x>
-                    <y>653</y>
+                    <y>568</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -6514,7 +6344,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>546</x>
-                    <y>641</y>
+                    <y>556</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -6550,7 +6380,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>546</x>
-                    <y>663</y>
+                    <y>578</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -6587,7 +6417,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>557</x>
-                    <y>666</y>
+                    <y>581</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -6644,7 +6474,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>545</x>
-                    <y>620</y>
+                    <y>535</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -6684,7 +6514,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>547</x>
-                    <y>622</y>
+                    <y>537</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -6743,7 +6573,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>555</x>
-                    <y>625</y>
+                    <y>540</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
@@ -6756,7 +6586,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>676</x>
-                    <y>687</y>
+                    <y>602</y>
                     <width>116</width>
                     <height>31</height>
                 </rect>
@@ -6792,7 +6622,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>676</x>
-                    <y>718</y>
+                    <y>633</y>
                     <width>116</width>
                     <height>25</height>
                 </rect>
@@ -6821,11 +6651,11 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_26">
+        <widget class="caMessageButton" name="caMessageButton_24">
             <property name="geometry">
                 <rect>
                     <x>678</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -6864,7 +6694,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>704</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -6911,11 +6741,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_27">
+        <widget class="caMessageButton" name="caMessageButton_25">
             <property name="geometry">
                 <rect>
                     <x>765</x>
-                    <y>720</y>
+                    <y>635</y>
                     <width>25</width>
                     <height>20</height>
                 </rect>
@@ -6954,7 +6784,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>685</x>
-                    <y>690</y>
+                    <y>605</y>
                     <width>98</width>
                     <height>25</height>
                 </rect>
@@ -7005,7 +6835,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>676</x>
-                    <y>653</y>
+                    <y>568</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -7062,7 +6892,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>676</x>
-                    <y>641</y>
+                    <y>556</y>
                     <width>116</width>
                     <height>12</height>
                 </rect>
@@ -7098,7 +6928,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>676</x>
-                    <y>663</y>
+                    <y>578</y>
                     <width>116</width>
                     <height>26</height>
                 </rect>
@@ -7135,7 +6965,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>687</x>
-                    <y>666</y>
+                    <y>581</y>
                     <width>94</width>
                     <height>17</height>
                 </rect>
@@ -7192,7 +7022,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>675</x>
-                    <y>620</y>
+                    <y>535</y>
                     <width>118</width>
                     <height>125</height>
                 </rect>
@@ -7232,7 +7062,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>677</x>
-                    <y>622</y>
+                    <y>537</y>
                     <width>114</width>
                     <height>19</height>
                 </rect>
@@ -7291,13 +7121,13 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>685</x>
-                    <y>625</y>
+                    <y>540</y>
                     <width>100</width>
                     <height>15</height>
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_28">
+        <widget class="caMessageButton" name="caMessageButton_26">
             <property name="geometry">
                 <rect>
                     <x>10</x>
@@ -7336,7 +7166,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_29">
+        <widget class="caMessageButton" name="caMessageButton_27">
             <property name="geometry">
                 <rect>
                     <x>105</x>
@@ -7375,7 +7205,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_30">
+        <widget class="caMessageButton" name="caMessageButton_28">
             <property name="geometry">
                 <rect>
                     <x>10</x>
@@ -7414,7 +7244,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_31">
+        <widget class="caMessageButton" name="caMessageButton_29">
             <property name="geometry">
                 <rect>
                     <x>105</x>
@@ -7543,7 +7373,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_32">
+        <widget class="caMessageButton" name="caMessageButton_30">
             <property name="geometry">
                 <rect>
                     <x>205</x>
@@ -7582,11 +7412,11 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_33">
+        <widget class="caMessageButton" name="caMessageButton_31">
             <property name="geometry">
                 <rect>
                     <x>200</x>
-                    <y>550</y>
+                    <y>505</y>
                     <width>50</width>
                     <height>20</height>
                 </rect>
@@ -7804,7 +7634,7 @@ caMenu{
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_34">
+        <widget class="caMessageButton" name="caMessageButton_32">
             <property name="geometry">
                 <rect>
                     <x>310</x>
@@ -8552,85 +8382,83 @@ caMenu{
         <zorder>caTextEntry_1</zorder>
         <zorder>caLineEdit_0</zorder>
         <zorder>caLineEdit_1</zorder>
-        <zorder>caMessageButton_3</zorder>
         <zorder>caSlider_0</zorder>
-        <zorder>caMessageButton_4</zorder>
+        <zorder>caMessageButton_3</zorder>
         <zorder>caTextEntry_2</zorder>
-        <zorder>caMessageButton_5</zorder>
+        <zorder>caMessageButton_4</zorder>
         <zorder>caTextEntry_3</zorder>
         <zorder>caLineEdit_2</zorder>
         <zorder>caLineEdit_3</zorder>
-        <zorder>caMessageButton_6</zorder>
+        <zorder>caMessageButton_5</zorder>
         <zorder>caTextEntry_4</zorder>
-        <zorder>caMessageButton_7</zorder>
+        <zorder>caMessageButton_6</zorder>
         <zorder>caTextEntry_5</zorder>
         <zorder>caLineEdit_4</zorder>
         <zorder>caLineEdit_5</zorder>
-        <zorder>caMessageButton_8</zorder>
+        <zorder>caMessageButton_7</zorder>
         <zorder>caTextEntry_6</zorder>
-        <zorder>caMessageButton_9</zorder>
+        <zorder>caMessageButton_8</zorder>
         <zorder>caTextEntry_7</zorder>
         <zorder>caLineEdit_6</zorder>
         <zorder>caLineEdit_7</zorder>
-        <zorder>caMessageButton_10</zorder>
+        <zorder>caMessageButton_9</zorder>
         <zorder>caTextEntry_8</zorder>
-        <zorder>caMessageButton_11</zorder>
+        <zorder>caMessageButton_10</zorder>
         <zorder>caTextEntry_9</zorder>
         <zorder>caLineEdit_8</zorder>
         <zorder>caLineEdit_9</zorder>
-        <zorder>caMessageButton_12</zorder>
+        <zorder>caMessageButton_11</zorder>
         <zorder>caTextEntry_10</zorder>
-        <zorder>caMessageButton_13</zorder>
+        <zorder>caMessageButton_12</zorder>
         <zorder>caTextEntry_11</zorder>
         <zorder>caLineEdit_10</zorder>
         <zorder>caLineEdit_11</zorder>
         <zorder>caChoice_1</zorder>
+        <zorder>caMessageButton_13</zorder>
         <zorder>caMessageButton_14</zorder>
-        <zorder>caMessageButton_15</zorder>
         <zorder>caTextEntry_12</zorder>
-        <zorder>caMessageButton_16</zorder>
+        <zorder>caMessageButton_15</zorder>
         <zorder>caTextEntry_13</zorder>
         <zorder>caLineEdit_12</zorder>
         <zorder>caLineEdit_13</zorder>
-        <zorder>caMessageButton_17</zorder>
-        <zorder>caMessageButton_18</zorder>
+        <zorder>caMessageButton_16</zorder>
         <zorder>caTextEntry_14</zorder>
-        <zorder>caMessageButton_19</zorder>
+        <zorder>caMessageButton_17</zorder>
         <zorder>caTextEntry_15</zorder>
         <zorder>caLineEdit_14</zorder>
         <zorder>caLineEdit_15</zorder>
-        <zorder>caMessageButton_20</zorder>
+        <zorder>caMessageButton_18</zorder>
         <zorder>caTextEntry_16</zorder>
-        <zorder>caMessageButton_21</zorder>
+        <zorder>caMessageButton_19</zorder>
         <zorder>caTextEntry_17</zorder>
         <zorder>caLineEdit_16</zorder>
         <zorder>caLineEdit_17</zorder>
-        <zorder>caMessageButton_22</zorder>
+        <zorder>caMessageButton_20</zorder>
         <zorder>caTextEntry_18</zorder>
-        <zorder>caMessageButton_23</zorder>
+        <zorder>caMessageButton_21</zorder>
         <zorder>caTextEntry_19</zorder>
         <zorder>caLineEdit_18</zorder>
         <zorder>caLineEdit_19</zorder>
-        <zorder>caMessageButton_24</zorder>
+        <zorder>caMessageButton_22</zorder>
         <zorder>caTextEntry_20</zorder>
-        <zorder>caMessageButton_25</zorder>
+        <zorder>caMessageButton_23</zorder>
         <zorder>caTextEntry_21</zorder>
         <zorder>caLineEdit_20</zorder>
         <zorder>caLineEdit_21</zorder>
-        <zorder>caMessageButton_26</zorder>
+        <zorder>caMessageButton_24</zorder>
         <zorder>caTextEntry_22</zorder>
-        <zorder>caMessageButton_27</zorder>
+        <zorder>caMessageButton_25</zorder>
         <zorder>caTextEntry_23</zorder>
         <zorder>caLineEdit_22</zorder>
         <zorder>caLineEdit_23</zorder>
+        <zorder>caMessageButton_26</zorder>
+        <zorder>caMessageButton_27</zorder>
         <zorder>caMessageButton_28</zorder>
         <zorder>caMessageButton_29</zorder>
         <zorder>caMessageButton_30</zorder>
         <zorder>caMessageButton_31</zorder>
-        <zorder>caMessageButton_32</zorder>
-        <zorder>caMessageButton_33</zorder>
         <zorder>caChoice_2</zorder>
-        <zorder>caMessageButton_34</zorder>
+        <zorder>caMessageButton_32</zorder>
         <zorder>caTextEntry_24</zorder>
         <zorder>caTextEntry_25</zorder>
         <zorder>caTextEntry_26</zorder>

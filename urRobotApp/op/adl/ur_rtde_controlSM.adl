@@ -166,21 +166,6 @@ rectangle {
 		width=2
 	}
 }
-"message button" {
-	object {
-		x=260
-		y=295
-		width=50
-		height=20
-	}
-	control {
-		chan="$(P)Control:ResetJCmd.PROC"
-		clr=14
-		bclr=51
-	}
-	label="Reset"
-	press_msg="1"
-}
 text {
 	object {
 		x=5
@@ -290,21 +275,6 @@ rectangle {
 		fill="outline"
 		width=2
 	}
-}
-"message button" {
-	object {
-		x=260
-		y=585
-		width=50
-		height=20
-	}
-	control {
-		chan="$(P)Control:ResetPoseCmd.PROC"
-		clr=14
-		bclr=51
-	}
-	label="Reset"
-	press_msg="1"
 }
 "message button" {
 	object {
@@ -527,7 +497,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M1).DESC"
+		chan="$(P)SM:J1.DESC"
 		clr=54
 		bclr=0
 	}
@@ -548,7 +518,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M1).DMOV"
+		chan="$(P)SM:J1.DMOV"
 	}
 }
 rectangle {
@@ -564,7 +534,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M1).LVIO"
+		chan="$(P)SM:J1.LVIO"
 	}
 }
 rectangle {
@@ -580,7 +550,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M1)_able.VAL"
+		chan="$(P)SM:J1_able.VAL"
 	}
 }
 rectangle {
@@ -608,7 +578,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M1).DMOV"
+		chan="$(P)SM:J1.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -626,7 +596,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M1).SET"
+		chan="$(P)SM:J1.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -654,7 +624,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M1):scanParms.GO"
+		chan="$(P)SM:J1:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -693,7 +663,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M1):scanParms.LOAD"
+		chan="$(P)SM:J1:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -708,7 +678,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M1).STOP"
+		chan="$(P)SM:J1.STOP"
 		clr=31
 		bclr=20
 	}
@@ -725,27 +695,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M1)"
+		args="P=$(P),M=SM:J1"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M1)"
+		args="P=$(P),M=SM:J1"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M1)"
+		args="P=$(P),M=SM:J1"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M1)"
+		args="P=$(P),M=SM:J1"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M1),PV=$(M1)"
+		args="P=$(P),Q=SM:J1,PV=SM:J1"
 	}
 	clr=14
 	bclr=51
@@ -771,7 +741,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M1).TWR"
+		chan="$(P)SM:J1.TWR"
 		clr=14
 		bclr=51
 	}
@@ -786,7 +756,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M1).TWV"
+		chan="$(P)SM:J1.TWV"
 		clr=14
 		bclr=51
 	}
@@ -801,7 +771,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M1).TWF"
+		chan="$(P)SM:J1.TWF"
 		clr=14
 		bclr=51
 	}
@@ -816,7 +786,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M1).VAL"
+		chan="$(P)SM:J1.VAL"
 		clr=14
 		bclr=51
 	}
@@ -835,7 +805,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M1).LLS"
+		chan="$(P)SM:J1.LLS"
 	}
 }
 rectangle {
@@ -850,7 +820,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M1).HLS"
+		chan="$(P)SM:J1.HLS"
 	}
 }
 "text update" {
@@ -861,7 +831,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M1).EGU"
+		chan="$(P)SM:J1.EGU"
 		clr=54
 		bclr=3
 	}
@@ -892,7 +862,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M1))"
+	textix="($(P)SM:J1)"
 	align="horiz. centered"
 }
 rectangle {
@@ -909,7 +879,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M1).SET"
+		chan="$(P)SM:J1.SET"
 	}
 }
 rectangle {
@@ -926,7 +896,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M1).SET"
+		chan="$(P)SM:J1.SET"
 	}
 }
 "text update" {
@@ -937,7 +907,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M1).RBV"
+		chan="$(P)SM:J1.RBV"
 		clr=54
 		bclr=3
 	}
@@ -958,7 +928,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M1).LVIO"
+		chan="$(P)SM:J1.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -978,7 +948,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M1)_able.VAL"
+		chan="$(P)SM:J1_able.VAL"
 	}
 }
 "text update" {
@@ -989,7 +959,7 @@ rectangle {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M2).DESC"
+		chan="$(P)SM:J2.DESC"
 		clr=54
 		bclr=0
 	}
@@ -1010,7 +980,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M2).DMOV"
+		chan="$(P)SM:J2.DMOV"
 	}
 }
 rectangle {
@@ -1026,7 +996,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M2).LVIO"
+		chan="$(P)SM:J2.LVIO"
 	}
 }
 rectangle {
@@ -1042,7 +1012,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M2)_able.VAL"
+		chan="$(P)SM:J2_able.VAL"
 	}
 }
 rectangle {
@@ -1070,7 +1040,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M2).DMOV"
+		chan="$(P)SM:J2.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -1088,7 +1058,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M2).SET"
+		chan="$(P)SM:J2.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -1116,7 +1086,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M2):scanParms.GO"
+		chan="$(P)SM:J2:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -1155,7 +1125,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M2):scanParms.LOAD"
+		chan="$(P)SM:J2:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -1170,7 +1140,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M2).STOP"
+		chan="$(P)SM:J2.STOP"
 		clr=31
 		bclr=20
 	}
@@ -1187,27 +1157,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M2)"
+		args="P=$(P),M=SM:J2"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M2)"
+		args="P=$(P),M=SM:J2"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M2)"
+		args="P=$(P),M=SM:J2"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M2)"
+		args="P=$(P),M=SM:J2"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M2),PV=$(M2)"
+		args="P=$(P),Q=SM:J2,PV=SM:J2"
 	}
 	clr=14
 	bclr=51
@@ -1233,7 +1203,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M2).TWR"
+		chan="$(P)SM:J2.TWR"
 		clr=14
 		bclr=51
 	}
@@ -1248,7 +1218,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M2).TWV"
+		chan="$(P)SM:J2.TWV"
 		clr=14
 		bclr=51
 	}
@@ -1263,7 +1233,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M2).TWF"
+		chan="$(P)SM:J2.TWF"
 		clr=14
 		bclr=51
 	}
@@ -1278,7 +1248,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M2).VAL"
+		chan="$(P)SM:J2.VAL"
 		clr=14
 		bclr=51
 	}
@@ -1297,7 +1267,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M2).LLS"
+		chan="$(P)SM:J2.LLS"
 	}
 }
 rectangle {
@@ -1312,7 +1282,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M2).HLS"
+		chan="$(P)SM:J2.HLS"
 	}
 }
 "text update" {
@@ -1323,7 +1293,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M2).EGU"
+		chan="$(P)SM:J2.EGU"
 		clr=54
 		bclr=3
 	}
@@ -1354,7 +1324,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M2))"
+	textix="($(P)SM:J2)"
 	align="horiz. centered"
 }
 rectangle {
@@ -1371,7 +1341,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M2).SET"
+		chan="$(P)SM:J2.SET"
 	}
 }
 rectangle {
@@ -1388,7 +1358,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M2).SET"
+		chan="$(P)SM:J2.SET"
 	}
 }
 "text update" {
@@ -1399,7 +1369,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M2).RBV"
+		chan="$(P)SM:J2.RBV"
 		clr=54
 		bclr=3
 	}
@@ -1420,7 +1390,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M2).LVIO"
+		chan="$(P)SM:J2.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -1440,7 +1410,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M2)_able.VAL"
+		chan="$(P)SM:J2_able.VAL"
 	}
 }
 "text update" {
@@ -1451,7 +1421,7 @@ rectangle {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M3).DESC"
+		chan="$(P)SM:J3.DESC"
 		clr=54
 		bclr=0
 	}
@@ -1472,7 +1442,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M3).DMOV"
+		chan="$(P)SM:J3.DMOV"
 	}
 }
 rectangle {
@@ -1488,7 +1458,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M3).LVIO"
+		chan="$(P)SM:J3.LVIO"
 	}
 }
 rectangle {
@@ -1504,7 +1474,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M3)_able.VAL"
+		chan="$(P)SM:J3_able.VAL"
 	}
 }
 rectangle {
@@ -1532,7 +1502,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M3).DMOV"
+		chan="$(P)SM:J3.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -1550,7 +1520,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M3).SET"
+		chan="$(P)SM:J3.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -1578,7 +1548,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M3):scanParms.GO"
+		chan="$(P)SM:J3:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -1617,7 +1587,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M3):scanParms.LOAD"
+		chan="$(P)SM:J3:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -1632,7 +1602,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M3).STOP"
+		chan="$(P)SM:J3.STOP"
 		clr=31
 		bclr=20
 	}
@@ -1649,27 +1619,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M3)"
+		args="P=$(P),M=SM:J3"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M3)"
+		args="P=$(P),M=SM:J3"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M3)"
+		args="P=$(P),M=SM:J3"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M3)"
+		args="P=$(P),M=SM:J3"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M3),PV=$(M3)"
+		args="P=$(P),Q=SM:J3,PV=SM:J3"
 	}
 	clr=14
 	bclr=51
@@ -1695,7 +1665,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M3).TWR"
+		chan="$(P)SM:J3.TWR"
 		clr=14
 		bclr=51
 	}
@@ -1710,7 +1680,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M3).TWV"
+		chan="$(P)SM:J3.TWV"
 		clr=14
 		bclr=51
 	}
@@ -1725,7 +1695,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M3).TWF"
+		chan="$(P)SM:J3.TWF"
 		clr=14
 		bclr=51
 	}
@@ -1740,7 +1710,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M3).VAL"
+		chan="$(P)SM:J3.VAL"
 		clr=14
 		bclr=51
 	}
@@ -1759,7 +1729,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M3).LLS"
+		chan="$(P)SM:J3.LLS"
 	}
 }
 rectangle {
@@ -1774,7 +1744,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M3).HLS"
+		chan="$(P)SM:J3.HLS"
 	}
 }
 "text update" {
@@ -1785,7 +1755,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M3).EGU"
+		chan="$(P)SM:J3.EGU"
 		clr=54
 		bclr=3
 	}
@@ -1816,7 +1786,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M3))"
+	textix="($(P)SM:J3)"
 	align="horiz. centered"
 }
 rectangle {
@@ -1833,7 +1803,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M3).SET"
+		chan="$(P)SM:J3.SET"
 	}
 }
 rectangle {
@@ -1850,7 +1820,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M3).SET"
+		chan="$(P)SM:J3.SET"
 	}
 }
 "text update" {
@@ -1861,7 +1831,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M3).RBV"
+		chan="$(P)SM:J3.RBV"
 		clr=54
 		bclr=3
 	}
@@ -1882,7 +1852,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M3).LVIO"
+		chan="$(P)SM:J3.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -1902,7 +1872,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M3)_able.VAL"
+		chan="$(P)SM:J3_able.VAL"
 	}
 }
 "text update" {
@@ -1913,7 +1883,7 @@ rectangle {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M4).DESC"
+		chan="$(P)SM:J4.DESC"
 		clr=54
 		bclr=0
 	}
@@ -1934,7 +1904,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M4).DMOV"
+		chan="$(P)SM:J4.DMOV"
 	}
 }
 rectangle {
@@ -1950,7 +1920,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M4).LVIO"
+		chan="$(P)SM:J4.LVIO"
 	}
 }
 rectangle {
@@ -1966,7 +1936,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M4)_able.VAL"
+		chan="$(P)SM:J4_able.VAL"
 	}
 }
 rectangle {
@@ -1994,7 +1964,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M4).DMOV"
+		chan="$(P)SM:J4.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -2012,7 +1982,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M4).SET"
+		chan="$(P)SM:J4.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -2040,7 +2010,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M4):scanParms.GO"
+		chan="$(P)SM:J4:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -2079,7 +2049,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M4):scanParms.LOAD"
+		chan="$(P)SM:J4:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -2094,7 +2064,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M4).STOP"
+		chan="$(P)SM:J4.STOP"
 		clr=31
 		bclr=20
 	}
@@ -2111,27 +2081,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M4)"
+		args="P=$(P),M=SM:J4"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M4)"
+		args="P=$(P),M=SM:J4"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M4)"
+		args="P=$(P),M=SM:J4"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M4)"
+		args="P=$(P),M=SM:J4"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M4),PV=$(M4)"
+		args="P=$(P),Q=SM:J4,PV=SM:J4"
 	}
 	clr=14
 	bclr=51
@@ -2157,7 +2127,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M4).TWR"
+		chan="$(P)SM:J4.TWR"
 		clr=14
 		bclr=51
 	}
@@ -2172,7 +2142,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M4).TWV"
+		chan="$(P)SM:J4.TWV"
 		clr=14
 		bclr=51
 	}
@@ -2187,7 +2157,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M4).TWF"
+		chan="$(P)SM:J4.TWF"
 		clr=14
 		bclr=51
 	}
@@ -2202,7 +2172,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M4).VAL"
+		chan="$(P)SM:J4.VAL"
 		clr=14
 		bclr=51
 	}
@@ -2221,7 +2191,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M4).LLS"
+		chan="$(P)SM:J4.LLS"
 	}
 }
 rectangle {
@@ -2236,7 +2206,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M4).HLS"
+		chan="$(P)SM:J4.HLS"
 	}
 }
 "text update" {
@@ -2247,7 +2217,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M4).EGU"
+		chan="$(P)SM:J4.EGU"
 		clr=54
 		bclr=3
 	}
@@ -2278,7 +2248,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M4))"
+	textix="($(P)SM:J4)"
 	align="horiz. centered"
 }
 rectangle {
@@ -2295,7 +2265,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M4).SET"
+		chan="$(P)SM:J4.SET"
 	}
 }
 rectangle {
@@ -2312,7 +2282,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M4).SET"
+		chan="$(P)SM:J4.SET"
 	}
 }
 "text update" {
@@ -2323,7 +2293,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M4).RBV"
+		chan="$(P)SM:J4.RBV"
 		clr=54
 		bclr=3
 	}
@@ -2344,7 +2314,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M4).LVIO"
+		chan="$(P)SM:J4.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -2364,7 +2334,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M4)_able.VAL"
+		chan="$(P)SM:J4_able.VAL"
 	}
 }
 "text update" {
@@ -2375,7 +2345,7 @@ rectangle {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M5).DESC"
+		chan="$(P)SM:J5.DESC"
 		clr=54
 		bclr=0
 	}
@@ -2396,7 +2366,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M5).DMOV"
+		chan="$(P)SM:J5.DMOV"
 	}
 }
 rectangle {
@@ -2412,7 +2382,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M5).LVIO"
+		chan="$(P)SM:J5.LVIO"
 	}
 }
 rectangle {
@@ -2428,7 +2398,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M5)_able.VAL"
+		chan="$(P)SM:J5_able.VAL"
 	}
 }
 rectangle {
@@ -2456,7 +2426,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M5).DMOV"
+		chan="$(P)SM:J5.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -2474,7 +2444,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M5).SET"
+		chan="$(P)SM:J5.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -2502,7 +2472,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M5):scanParms.GO"
+		chan="$(P)SM:J5:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -2541,7 +2511,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M5):scanParms.LOAD"
+		chan="$(P)SM:J5:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -2556,7 +2526,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M5).STOP"
+		chan="$(P)SM:J5.STOP"
 		clr=31
 		bclr=20
 	}
@@ -2573,27 +2543,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M5)"
+		args="P=$(P),M=SM:J5"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M5)"
+		args="P=$(P),M=SM:J5"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M5)"
+		args="P=$(P),M=SM:J5"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M5)"
+		args="P=$(P),M=SM:J5"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M5),PV=$(M5)"
+		args="P=$(P),Q=SM:J5,PV=SM:J5"
 	}
 	clr=14
 	bclr=51
@@ -2619,7 +2589,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M5).TWR"
+		chan="$(P)SM:J5.TWR"
 		clr=14
 		bclr=51
 	}
@@ -2634,7 +2604,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M5).TWV"
+		chan="$(P)SM:J5.TWV"
 		clr=14
 		bclr=51
 	}
@@ -2649,7 +2619,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M5).TWF"
+		chan="$(P)SM:J5.TWF"
 		clr=14
 		bclr=51
 	}
@@ -2664,7 +2634,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M5).VAL"
+		chan="$(P)SM:J5.VAL"
 		clr=14
 		bclr=51
 	}
@@ -2683,7 +2653,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M5).LLS"
+		chan="$(P)SM:J5.LLS"
 	}
 }
 rectangle {
@@ -2698,7 +2668,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M5).HLS"
+		chan="$(P)SM:J5.HLS"
 	}
 }
 "text update" {
@@ -2709,7 +2679,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M5).EGU"
+		chan="$(P)SM:J5.EGU"
 		clr=54
 		bclr=3
 	}
@@ -2740,7 +2710,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M5))"
+	textix="($(P)SM:J5)"
 	align="horiz. centered"
 }
 rectangle {
@@ -2757,7 +2727,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M5).SET"
+		chan="$(P)SM:J5.SET"
 	}
 }
 rectangle {
@@ -2774,7 +2744,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M5).SET"
+		chan="$(P)SM:J5.SET"
 	}
 }
 "text update" {
@@ -2785,7 +2755,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M5).RBV"
+		chan="$(P)SM:J5.RBV"
 		clr=54
 		bclr=3
 	}
@@ -2806,7 +2776,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M5).LVIO"
+		chan="$(P)SM:J5.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -2826,7 +2796,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M5)_able.VAL"
+		chan="$(P)SM:J5_able.VAL"
 	}
 }
 "text update" {
@@ -2837,7 +2807,7 @@ rectangle {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M6).DESC"
+		chan="$(P)SM:J6.DESC"
 		clr=54
 		bclr=0
 	}
@@ -2858,7 +2828,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M6).DMOV"
+		chan="$(P)SM:J6.DMOV"
 	}
 }
 rectangle {
@@ -2874,7 +2844,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M6).LVIO"
+		chan="$(P)SM:J6.LVIO"
 	}
 }
 rectangle {
@@ -2890,7 +2860,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M6)_able.VAL"
+		chan="$(P)SM:J6_able.VAL"
 	}
 }
 rectangle {
@@ -2918,7 +2888,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M6).DMOV"
+		chan="$(P)SM:J6.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -2936,7 +2906,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M6).SET"
+		chan="$(P)SM:J6.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -2964,7 +2934,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M6):scanParms.GO"
+		chan="$(P)SM:J6:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -3003,7 +2973,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M6):scanParms.LOAD"
+		chan="$(P)SM:J6:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -3018,7 +2988,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M6).STOP"
+		chan="$(P)SM:J6.STOP"
 		clr=31
 		bclr=20
 	}
@@ -3035,27 +3005,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M6)"
+		args="P=$(P),M=SM:J6"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M6)"
+		args="P=$(P),M=SM:J6"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M6)"
+		args="P=$(P),M=SM:J6"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M6)"
+		args="P=$(P),M=SM:J6"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M6),PV=$(M6)"
+		args="P=$(P),Q=SM:J6,PV=SM:J6"
 	}
 	clr=14
 	bclr=51
@@ -3081,7 +3051,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M6).TWR"
+		chan="$(P)SM:J6.TWR"
 		clr=14
 		bclr=51
 	}
@@ -3096,7 +3066,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M6).TWV"
+		chan="$(P)SM:J6.TWV"
 		clr=14
 		bclr=51
 	}
@@ -3111,7 +3081,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M6).TWF"
+		chan="$(P)SM:J6.TWF"
 		clr=14
 		bclr=51
 	}
@@ -3126,7 +3096,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M6).VAL"
+		chan="$(P)SM:J6.VAL"
 		clr=14
 		bclr=51
 	}
@@ -3145,7 +3115,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M6).LLS"
+		chan="$(P)SM:J6.LLS"
 	}
 }
 rectangle {
@@ -3160,7 +3130,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M6).HLS"
+		chan="$(P)SM:J6.HLS"
 	}
 }
 "text update" {
@@ -3171,7 +3141,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M6).EGU"
+		chan="$(P)SM:J6.EGU"
 		clr=54
 		bclr=3
 	}
@@ -3202,7 +3172,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M6))"
+	textix="($(P)SM:J6)"
 	align="horiz. centered"
 }
 rectangle {
@@ -3219,7 +3189,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M6).SET"
+		chan="$(P)SM:J6.SET"
 	}
 }
 rectangle {
@@ -3236,7 +3206,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M6).SET"
+		chan="$(P)SM:J6.SET"
 	}
 }
 "text update" {
@@ -3247,7 +3217,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M6).RBV"
+		chan="$(P)SM:J6.RBV"
 		clr=54
 		bclr=3
 	}
@@ -3268,7 +3238,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M6).LVIO"
+		chan="$(P)SM:J6.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -3288,7 +3258,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M6)_able.VAL"
+		chan="$(P)SM:J6_able.VAL"
 	}
 }
 polyline {
@@ -3379,7 +3349,7 @@ polyline {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M7).DESC"
+		chan="$(P)SM:X.DESC"
 		clr=54
 		bclr=0
 	}
@@ -3400,7 +3370,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M7).DMOV"
+		chan="$(P)SM:X.DMOV"
 	}
 }
 rectangle {
@@ -3416,7 +3386,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M7).LVIO"
+		chan="$(P)SM:X.LVIO"
 	}
 }
 rectangle {
@@ -3432,7 +3402,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M7)_able.VAL"
+		chan="$(P)SM:X_able.VAL"
 	}
 }
 rectangle {
@@ -3460,7 +3430,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M7).DMOV"
+		chan="$(P)SM:X.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -3478,7 +3448,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M7).SET"
+		chan="$(P)SM:X.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -3506,7 +3476,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M7):scanParms.GO"
+		chan="$(P)SM:X:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -3545,7 +3515,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M7):scanParms.LOAD"
+		chan="$(P)SM:X:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -3560,7 +3530,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M7).STOP"
+		chan="$(P)SM:X.STOP"
 		clr=31
 		bclr=20
 	}
@@ -3577,27 +3547,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M7)"
+		args="P=$(P),M=SM:X"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M7)"
+		args="P=$(P),M=SM:X"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M7)"
+		args="P=$(P),M=SM:X"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M7)"
+		args="P=$(P),M=SM:X"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M7),PV=$(M7)"
+		args="P=$(P),Q=SM:X,PV=SM:X"
 	}
 	clr=14
 	bclr=51
@@ -3623,7 +3593,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M7).TWR"
+		chan="$(P)SM:X.TWR"
 		clr=14
 		bclr=51
 	}
@@ -3638,7 +3608,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M7).TWV"
+		chan="$(P)SM:X.TWV"
 		clr=14
 		bclr=51
 	}
@@ -3653,7 +3623,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M7).TWF"
+		chan="$(P)SM:X.TWF"
 		clr=14
 		bclr=51
 	}
@@ -3668,7 +3638,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M7).VAL"
+		chan="$(P)SM:X.VAL"
 		clr=14
 		bclr=51
 	}
@@ -3687,7 +3657,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M7).LLS"
+		chan="$(P)SM:X.LLS"
 	}
 }
 rectangle {
@@ -3702,7 +3672,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M7).HLS"
+		chan="$(P)SM:X.HLS"
 	}
 }
 "text update" {
@@ -3713,7 +3683,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M7).EGU"
+		chan="$(P)SM:X.EGU"
 		clr=54
 		bclr=3
 	}
@@ -3744,7 +3714,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M7))"
+	textix="($(P)SM:X)"
 	align="horiz. centered"
 }
 rectangle {
@@ -3761,7 +3731,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M7).SET"
+		chan="$(P)SM:X.SET"
 	}
 }
 rectangle {
@@ -3778,7 +3748,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M7).SET"
+		chan="$(P)SM:X.SET"
 	}
 }
 "text update" {
@@ -3789,7 +3759,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M7).RBV"
+		chan="$(P)SM:X.RBV"
 		clr=54
 		bclr=3
 	}
@@ -3810,7 +3780,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M7).LVIO"
+		chan="$(P)SM:X.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -3830,7 +3800,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M7)_able.VAL"
+		chan="$(P)SM:X_able.VAL"
 	}
 }
 "text update" {
@@ -3841,7 +3811,7 @@ rectangle {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M8).DESC"
+		chan="$(P)SM:Y.DESC"
 		clr=54
 		bclr=0
 	}
@@ -3862,7 +3832,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M8).DMOV"
+		chan="$(P)SM:Y.DMOV"
 	}
 }
 rectangle {
@@ -3878,7 +3848,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M8).LVIO"
+		chan="$(P)SM:Y.LVIO"
 	}
 }
 rectangle {
@@ -3894,7 +3864,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M8)_able.VAL"
+		chan="$(P)SM:Y_able.VAL"
 	}
 }
 rectangle {
@@ -3922,7 +3892,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M8).DMOV"
+		chan="$(P)SM:Y.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -3940,7 +3910,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M8).SET"
+		chan="$(P)SM:Y.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -3968,7 +3938,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M8):scanParms.GO"
+		chan="$(P)SM:Y:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -4007,7 +3977,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M8):scanParms.LOAD"
+		chan="$(P)SM:Y:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -4022,7 +3992,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M8).STOP"
+		chan="$(P)SM:Y.STOP"
 		clr=31
 		bclr=20
 	}
@@ -4039,27 +4009,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M8)"
+		args="P=$(P),M=SM:Y"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M8)"
+		args="P=$(P),M=SM:Y"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M8)"
+		args="P=$(P),M=SM:Y"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M8)"
+		args="P=$(P),M=SM:Y"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M8),PV=$(M8)"
+		args="P=$(P),Q=SM:Y,PV=SM:Y"
 	}
 	clr=14
 	bclr=51
@@ -4085,7 +4055,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M8).TWR"
+		chan="$(P)SM:Y.TWR"
 		clr=14
 		bclr=51
 	}
@@ -4100,7 +4070,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M8).TWV"
+		chan="$(P)SM:Y.TWV"
 		clr=14
 		bclr=51
 	}
@@ -4115,7 +4085,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M8).TWF"
+		chan="$(P)SM:Y.TWF"
 		clr=14
 		bclr=51
 	}
@@ -4130,7 +4100,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M8).VAL"
+		chan="$(P)SM:Y.VAL"
 		clr=14
 		bclr=51
 	}
@@ -4149,7 +4119,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M8).LLS"
+		chan="$(P)SM:Y.LLS"
 	}
 }
 rectangle {
@@ -4164,7 +4134,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M8).HLS"
+		chan="$(P)SM:Y.HLS"
 	}
 }
 "text update" {
@@ -4175,7 +4145,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M8).EGU"
+		chan="$(P)SM:Y.EGU"
 		clr=54
 		bclr=3
 	}
@@ -4206,7 +4176,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M8))"
+	textix="($(P)SM:Y)"
 	align="horiz. centered"
 }
 rectangle {
@@ -4223,7 +4193,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M8).SET"
+		chan="$(P)SM:Y.SET"
 	}
 }
 rectangle {
@@ -4240,7 +4210,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M8).SET"
+		chan="$(P)SM:Y.SET"
 	}
 }
 "text update" {
@@ -4251,7 +4221,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M8).RBV"
+		chan="$(P)SM:Y.RBV"
 		clr=54
 		bclr=3
 	}
@@ -4272,7 +4242,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M8).LVIO"
+		chan="$(P)SM:Y.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -4292,7 +4262,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M8)_able.VAL"
+		chan="$(P)SM:Y_able.VAL"
 	}
 }
 "text update" {
@@ -4303,7 +4273,7 @@ rectangle {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M9).DESC"
+		chan="$(P)SM:Z.DESC"
 		clr=54
 		bclr=0
 	}
@@ -4324,7 +4294,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M9).DMOV"
+		chan="$(P)SM:Z.DMOV"
 	}
 }
 rectangle {
@@ -4340,7 +4310,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M9).LVIO"
+		chan="$(P)SM:Z.LVIO"
 	}
 }
 rectangle {
@@ -4356,7 +4326,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M9)_able.VAL"
+		chan="$(P)SM:Z_able.VAL"
 	}
 }
 rectangle {
@@ -4384,7 +4354,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M9).DMOV"
+		chan="$(P)SM:Z.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -4402,7 +4372,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M9).SET"
+		chan="$(P)SM:Z.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -4430,7 +4400,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M9):scanParms.GO"
+		chan="$(P)SM:Z:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -4469,7 +4439,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M9):scanParms.LOAD"
+		chan="$(P)SM:Z:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -4484,7 +4454,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M9).STOP"
+		chan="$(P)SM:Z.STOP"
 		clr=31
 		bclr=20
 	}
@@ -4501,27 +4471,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M9)"
+		args="P=$(P),M=SM:Z"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M9)"
+		args="P=$(P),M=SM:Z"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M9)"
+		args="P=$(P),M=SM:Z"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M9)"
+		args="P=$(P),M=SM:Z"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M9),PV=$(M9)"
+		args="P=$(P),Q=SM:Z,PV=SM:Z"
 	}
 	clr=14
 	bclr=51
@@ -4547,7 +4517,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M9).TWR"
+		chan="$(P)SM:Z.TWR"
 		clr=14
 		bclr=51
 	}
@@ -4562,7 +4532,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M9).TWV"
+		chan="$(P)SM:Z.TWV"
 		clr=14
 		bclr=51
 	}
@@ -4577,7 +4547,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M9).TWF"
+		chan="$(P)SM:Z.TWF"
 		clr=14
 		bclr=51
 	}
@@ -4592,7 +4562,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M9).VAL"
+		chan="$(P)SM:Z.VAL"
 		clr=14
 		bclr=51
 	}
@@ -4611,7 +4581,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M9).LLS"
+		chan="$(P)SM:Z.LLS"
 	}
 }
 rectangle {
@@ -4626,7 +4596,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M9).HLS"
+		chan="$(P)SM:Z.HLS"
 	}
 }
 "text update" {
@@ -4637,7 +4607,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M9).EGU"
+		chan="$(P)SM:Z.EGU"
 		clr=54
 		bclr=3
 	}
@@ -4668,7 +4638,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M9))"
+	textix="($(P)SM:Z)"
 	align="horiz. centered"
 }
 rectangle {
@@ -4685,7 +4655,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M9).SET"
+		chan="$(P)SM:Z.SET"
 	}
 }
 rectangle {
@@ -4702,7 +4672,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M9).SET"
+		chan="$(P)SM:Z.SET"
 	}
 }
 "text update" {
@@ -4713,7 +4683,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M9).RBV"
+		chan="$(P)SM:Z.RBV"
 		clr=54
 		bclr=3
 	}
@@ -4734,7 +4704,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M9).LVIO"
+		chan="$(P)SM:Z.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -4754,7 +4724,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M9)_able.VAL"
+		chan="$(P)SM:Z_able.VAL"
 	}
 }
 "text update" {
@@ -4765,7 +4735,7 @@ rectangle {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M10).DESC"
+		chan="$(P)SM:Roll.DESC"
 		clr=54
 		bclr=0
 	}
@@ -4786,7 +4756,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M10).DMOV"
+		chan="$(P)SM:Roll.DMOV"
 	}
 }
 rectangle {
@@ -4802,7 +4772,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M10).LVIO"
+		chan="$(P)SM:Roll.LVIO"
 	}
 }
 rectangle {
@@ -4818,7 +4788,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M10)_able.VAL"
+		chan="$(P)SM:Roll_able.VAL"
 	}
 }
 rectangle {
@@ -4846,7 +4816,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M10).DMOV"
+		chan="$(P)SM:Roll.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -4864,7 +4834,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M10).SET"
+		chan="$(P)SM:Roll.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -4892,7 +4862,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M10):scanParms.GO"
+		chan="$(P)SM:Roll:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -4931,7 +4901,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M10):scanParms.LOAD"
+		chan="$(P)SM:Roll:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -4946,7 +4916,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M10).STOP"
+		chan="$(P)SM:Roll.STOP"
 		clr=31
 		bclr=20
 	}
@@ -4963,27 +4933,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M10)"
+		args="P=$(P),M=SM:Roll"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M10)"
+		args="P=$(P),M=SM:Roll"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M10)"
+		args="P=$(P),M=SM:Roll"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M10)"
+		args="P=$(P),M=SM:Roll"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M10),PV=$(M10)"
+		args="P=$(P),Q=SM:Roll,PV=SM:Roll"
 	}
 	clr=14
 	bclr=51
@@ -5009,7 +4979,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M10).TWR"
+		chan="$(P)SM:Roll.TWR"
 		clr=14
 		bclr=51
 	}
@@ -5024,7 +4994,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M10).TWV"
+		chan="$(P)SM:Roll.TWV"
 		clr=14
 		bclr=51
 	}
@@ -5039,7 +5009,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M10).TWF"
+		chan="$(P)SM:Roll.TWF"
 		clr=14
 		bclr=51
 	}
@@ -5054,7 +5024,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M10).VAL"
+		chan="$(P)SM:Roll.VAL"
 		clr=14
 		bclr=51
 	}
@@ -5073,7 +5043,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M10).LLS"
+		chan="$(P)SM:Roll.LLS"
 	}
 }
 rectangle {
@@ -5088,7 +5058,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M10).HLS"
+		chan="$(P)SM:Roll.HLS"
 	}
 }
 "text update" {
@@ -5099,7 +5069,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M10).EGU"
+		chan="$(P)SM:Roll.EGU"
 		clr=54
 		bclr=3
 	}
@@ -5130,7 +5100,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M10))"
+	textix="($(P)SM:Roll)"
 	align="horiz. centered"
 }
 rectangle {
@@ -5147,7 +5117,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M10).SET"
+		chan="$(P)SM:Roll.SET"
 	}
 }
 rectangle {
@@ -5164,7 +5134,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M10).SET"
+		chan="$(P)SM:Roll.SET"
 	}
 }
 "text update" {
@@ -5175,7 +5145,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M10).RBV"
+		chan="$(P)SM:Roll.RBV"
 		clr=54
 		bclr=3
 	}
@@ -5196,7 +5166,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M10).LVIO"
+		chan="$(P)SM:Roll.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -5216,7 +5186,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M10)_able.VAL"
+		chan="$(P)SM:Roll_able.VAL"
 	}
 }
 "text update" {
@@ -5227,7 +5197,7 @@ rectangle {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M11).DESC"
+		chan="$(P)SM:Pitch.DESC"
 		clr=54
 		bclr=0
 	}
@@ -5248,7 +5218,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M11).DMOV"
+		chan="$(P)SM:Pitch.DMOV"
 	}
 }
 rectangle {
@@ -5264,7 +5234,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M11).LVIO"
+		chan="$(P)SM:Pitch.LVIO"
 	}
 }
 rectangle {
@@ -5280,7 +5250,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M11)_able.VAL"
+		chan="$(P)SM:Pitch_able.VAL"
 	}
 }
 rectangle {
@@ -5308,7 +5278,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M11).DMOV"
+		chan="$(P)SM:Pitch.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -5326,7 +5296,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M11).SET"
+		chan="$(P)SM:Pitch.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -5354,7 +5324,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M11):scanParms.GO"
+		chan="$(P)SM:Pitch:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -5393,7 +5363,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M11):scanParms.LOAD"
+		chan="$(P)SM:Pitch:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -5408,7 +5378,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M11).STOP"
+		chan="$(P)SM:Pitch.STOP"
 		clr=31
 		bclr=20
 	}
@@ -5425,27 +5395,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M11)"
+		args="P=$(P),M=SM:Pitch"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M11)"
+		args="P=$(P),M=SM:Pitch"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M11)"
+		args="P=$(P),M=SM:Pitch"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M11)"
+		args="P=$(P),M=SM:Pitch"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M11),PV=$(M11)"
+		args="P=$(P),Q=SM:Pitch,PV=SM:Pitch"
 	}
 	clr=14
 	bclr=51
@@ -5471,7 +5441,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M11).TWR"
+		chan="$(P)SM:Pitch.TWR"
 		clr=14
 		bclr=51
 	}
@@ -5486,7 +5456,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M11).TWV"
+		chan="$(P)SM:Pitch.TWV"
 		clr=14
 		bclr=51
 	}
@@ -5501,7 +5471,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M11).TWF"
+		chan="$(P)SM:Pitch.TWF"
 		clr=14
 		bclr=51
 	}
@@ -5516,7 +5486,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M11).VAL"
+		chan="$(P)SM:Pitch.VAL"
 		clr=14
 		bclr=51
 	}
@@ -5535,7 +5505,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M11).LLS"
+		chan="$(P)SM:Pitch.LLS"
 	}
 }
 rectangle {
@@ -5550,7 +5520,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M11).HLS"
+		chan="$(P)SM:Pitch.HLS"
 	}
 }
 "text update" {
@@ -5561,7 +5531,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M11).EGU"
+		chan="$(P)SM:Pitch.EGU"
 		clr=54
 		bclr=3
 	}
@@ -5592,7 +5562,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M11))"
+	textix="($(P)SM:Pitch)"
 	align="horiz. centered"
 }
 rectangle {
@@ -5609,7 +5579,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M11).SET"
+		chan="$(P)SM:Pitch.SET"
 	}
 }
 rectangle {
@@ -5626,7 +5596,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M11).SET"
+		chan="$(P)SM:Pitch.SET"
 	}
 }
 "text update" {
@@ -5637,7 +5607,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M11).RBV"
+		chan="$(P)SM:Pitch.RBV"
 		clr=54
 		bclr=3
 	}
@@ -5658,7 +5628,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M11).LVIO"
+		chan="$(P)SM:Pitch.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -5678,7 +5648,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M11)_able.VAL"
+		chan="$(P)SM:Pitch_able.VAL"
 	}
 }
 "text update" {
@@ -5689,7 +5659,7 @@ rectangle {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(M12).DESC"
+		chan="$(P)SM:Yaw.DESC"
 		clr=54
 		bclr=0
 	}
@@ -5710,7 +5680,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M12).DMOV"
+		chan="$(P)SM:Yaw.DMOV"
 	}
 }
 rectangle {
@@ -5726,7 +5696,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M12).LVIO"
+		chan="$(P)SM:Yaw.LVIO"
 	}
 }
 rectangle {
@@ -5742,7 +5712,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M12)_able.VAL"
+		chan="$(P)SM:Yaw_able.VAL"
 	}
 }
 rectangle {
@@ -5770,7 +5740,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(P)$(M12).DMOV"
+		chan="$(P)SM:Yaw.DMOV"
 	}
 	textix="Moving"
 	align="horiz. centered"
@@ -5788,7 +5758,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M12).SET"
+		chan="$(P)SM:Yaw.SET"
 	}
 	textix="Calibrate"
 	align="horiz. centered"
@@ -5816,7 +5786,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M12):scanParms.GO"
+		chan="$(P)SM:Yaw:scanParms.GO"
 		clr=14
 		bclr=51
 	}
@@ -5855,7 +5825,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M12):scanParms.LOAD"
+		chan="$(P)SM:Yaw:scanParms.LOAD"
 		clr=14
 		bclr=51
 	}
@@ -5870,7 +5840,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M12).STOP"
+		chan="$(P)SM:Yaw.STOP"
 		clr=31
 		bclr=20
 	}
@@ -5887,27 +5857,27 @@ text {
 	display[0] {
 		label="Help"
 		name="motorx_help.adl"
-		args="P=$(P),M=$(M12)"
+		args="P=$(P),M=SM:Yaw"
 	}
 	display[1] {
 		label="More"
 		name="motorx_more.adl"
-		args="P=$(P),M=$(M12)"
+		args="P=$(P),M=SM:Yaw"
 	}
 	display[2] {
 		label="Setup"
 		name="motorx_setup.adl"
-		args="P=$(P),M=$(M12)"
+		args="P=$(P),M=SM:Yaw"
 	}
 	display[3] {
 		label="All"
 		name="motorx_all.adl"
-		args="P=$(P),M=$(M12)"
+		args="P=$(P),M=SM:Yaw"
 	}
 	display[4] {
 		label="Setup scan parameters"
 		name="scanParms.adl"
-		args="P=$(P),Q=$(M12),PV=$(M12)"
+		args="P=$(P),Q=SM:Yaw,PV=SM:Yaw"
 	}
 	clr=14
 	bclr=51
@@ -5933,7 +5903,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M12).TWR"
+		chan="$(P)SM:Yaw.TWR"
 		clr=14
 		bclr=51
 	}
@@ -5948,7 +5918,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(M12).TWV"
+		chan="$(P)SM:Yaw.TWV"
 		clr=14
 		bclr=51
 	}
@@ -5963,7 +5933,7 @@ text {
 		height=36
 	}
 	control {
-		chan="$(P)$(M12).TWF"
+		chan="$(P)SM:Yaw.TWF"
 		clr=14
 		bclr=51
 	}
@@ -5978,7 +5948,7 @@ text {
 		height=25
 	}
 	control {
-		chan="$(P)$(M12).VAL"
+		chan="$(P)SM:Yaw.VAL"
 		clr=14
 		bclr=51
 	}
@@ -5997,7 +5967,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M12).LLS"
+		chan="$(P)SM:Yaw.LLS"
 	}
 }
 rectangle {
@@ -6012,7 +5982,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M12).HLS"
+		chan="$(P)SM:Yaw.HLS"
 	}
 }
 "text update" {
@@ -6023,7 +5993,7 @@ rectangle {
 		height=12
 	}
 	monitor {
-		chan="$(P)$(M12).EGU"
+		chan="$(P)SM:Yaw.EGU"
 		clr=54
 		bclr=3
 	}
@@ -6054,7 +6024,7 @@ text {
 		clr=0
 		fill="outline"
 	}
-	textix="($(P)$(M12))"
+	textix="($(P)SM:Yaw)"
 	align="horiz. centered"
 }
 rectangle {
@@ -6071,7 +6041,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M12).SET"
+		chan="$(P)SM:Yaw.SET"
 	}
 }
 rectangle {
@@ -6088,7 +6058,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M12).SET"
+		chan="$(P)SM:Yaw.SET"
 	}
 }
 "text update" {
@@ -6099,7 +6069,7 @@ rectangle {
 		height=17
 	}
 	monitor {
-		chan="$(P)$(M12).RBV"
+		chan="$(P)SM:Yaw.RBV"
 		clr=54
 		bclr=3
 	}
@@ -6120,7 +6090,7 @@ text {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M12).LVIO"
+		chan="$(P)SM:Yaw.LVIO"
 	}
 	textix="Soft limit"
 	align="horiz. centered"
@@ -6140,7 +6110,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(M12)_able.VAL"
+		chan="$(P)SM:Yaw_able.VAL"
 	}
 }
 polyline {
