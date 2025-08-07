@@ -123,9 +123,9 @@
     <name>Action Button</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)Control:ResetJCmd.PROC</pv_name>
+        <pv_name>$(P)Control:sync_joint_cmd.PROC</pv_name>
         <value>1</value>
-        <description>$(P)Control:ResetJCmd.PROC</description>
+        <description>$(P)Control:sync_joint_cmd.PROC</description>
       </action>
     </actions>
     <text>Reset</text>
@@ -174,9 +174,9 @@
     <name>Action Button_44</name>
     <actions>
       <action type="write_pv">
-        <pv_name>$(P)Control:ResetPoseCmd.PROC</pv_name>
+        <pv_name>$(P)Control:sync_pose_cmd.PROC</pv_name>
         <value>1</value>
-        <description>$(P)Control:ResetPoseCmd.PROC</description>
+        <description>$(P)Control:sync_pose_cmd.PROC</description>
       </action>
     </actions>
     <text>Reset</text>

@@ -70,7 +70,7 @@ It also has a button to enable/disable teach (freedrive) mode.
 <img src="./assets/GUIs/ui/urRobot_control.png" alt="ui-control" width="600">
 
 Although the GUI may look similar to typical EPICS motor screens, the robot's joint are *not* true EPICS motors.
-The first thing to note is the "RESET" buttons, which write to the `$(P)Control:ResetJCmd` and `$(P)Control:ResetPoseCmd`
+The first thing to note is the "RESET" buttons, which write to the `$(P)Control:sync_joint_cmd` and `$(P)Control:sync_pose_cmd`
 PVs respectively. When these PVs process they store the current measured values in the commanded values, similiar to
 EPICS motor record behaivor after motion completes. Before tweaking joint or TCP values, clicking RESET is a good idea.
 
@@ -246,7 +246,7 @@ def wait_motion():
 caput(f"{PREFIX}Control:AutoMoveJ", 0)
 
 # Set commanded joint positions to current position
-caput(f"{PREFIX}Control:ResetJCmd", 1)
+caput(f"{PREFIX}Control:sync_joint_cmd", 1)
 # the above is the same as doing the following:
 #  caput(f"{PREFIX}Control:J1Cmd", joint_angles[0])
 #  caput(f"{PREFIX}Control:J2Cmd", joint_angles[1])

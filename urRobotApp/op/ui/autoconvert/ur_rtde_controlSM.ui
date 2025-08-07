@@ -327,45 +327,6 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_1">
-            <property name="geometry">
-                <rect>
-                    <x>260</x>
-                    <y>295</y>
-                    <width>50</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Control:ResetJCmd.PROC</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>115</red>
-                    <green>223</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Reset</string>
-            </property>
-            <property name="pressMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
         <widget class="caLabel" name="caLabel_2">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
@@ -531,7 +492,7 @@ caMenu{
                 <enum>caChoice::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_2">
+        <widget class="caMessageButton" name="caMessageButton_1">
             <property name="geometry">
                 <rect>
                     <x>140</x>
@@ -682,46 +643,7 @@ caMenu{
                 <enum>Solid</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_3">
-            <property name="geometry">
-                <rect>
-                    <x>260</x>
-                    <y>585</y>
-                    <width>50</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Control:ResetPoseCmd.PROC</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>115</red>
-                    <green>223</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Reset</string>
-            </property>
-            <property name="pressMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
-        <widget class="caMessageButton" name="caMessageButton_4">
+        <widget class="caMessageButton" name="caMessageButton_2">
             <property name="geometry">
                 <rect>
                     <x>10</x>
@@ -760,7 +682,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_5">
+        <widget class="caMessageButton" name="caMessageButton_3">
             <property name="geometry">
                 <rect>
                     <x>105</x>
@@ -799,7 +721,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_6">
+        <widget class="caMessageButton" name="caMessageButton_4">
             <property name="geometry">
                 <rect>
                     <x>10</x>
@@ -838,7 +760,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_7">
+        <widget class="caMessageButton" name="caMessageButton_5">
             <property name="geometry">
                 <rect>
                     <x>105</x>
@@ -967,7 +889,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_8">
+        <widget class="caMessageButton" name="caMessageButton_6">
             <property name="geometry">
                 <rect>
                     <x>205</x>
@@ -1006,7 +928,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_9">
+        <widget class="caMessageButton" name="caMessageButton_7">
             <property name="geometry">
                 <rect>
                     <x>200</x>
@@ -1228,7 +1150,7 @@ caMenu{
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_10">
+        <widget class="caMessageButton" name="caMessageButton_8">
             <property name="geometry">
                 <rect>
                     <x>305</x>
@@ -1567,7 +1489,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_11">
+        <widget class="caMessageButton" name="caMessageButton_9">
             <property name="geometry">
                 <rect>
                     <x>94</x>
@@ -1606,7 +1528,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_12">
+        <widget class="caMessageButton" name="caMessageButton_10">
             <property name="geometry">
                 <rect>
                     <x>72</x>
@@ -1714,7 +1636,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_13">
+        <widget class="caMessageButton" name="caMessageButton_11">
             <property name="geometry">
                 <rect>
                     <x>50</x>
@@ -1753,7 +1675,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_14">
+        <widget class="caMessageButton" name="caMessageButton_12">
             <property name="geometry">
                 <rect>
                     <x>80</x>
@@ -1867,7 +1789,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_15">
+        <widget class="caMessageButton" name="caMessageButton_13">
             <property name="geometry">
                 <rect>
                     <x>22</x>
@@ -1957,7 +1879,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_16">
+        <widget class="caMessageButton" name="caMessageButton_14">
             <property name="geometry">
                 <rect>
                     <x>109</x>
@@ -2785,7 +2707,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_17">
+        <widget class="caMessageButton" name="caMessageButton_15">
             <property name="geometry">
                 <rect>
                     <x>214</x>
@@ -2824,7 +2746,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_18">
+        <widget class="caMessageButton" name="caMessageButton_16">
             <property name="geometry">
                 <rect>
                     <x>192</x>
@@ -2932,7 +2854,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_19">
+        <widget class="caMessageButton" name="caMessageButton_17">
             <property name="geometry">
                 <rect>
                     <x>170</x>
@@ -2971,7 +2893,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_20">
+        <widget class="caMessageButton" name="caMessageButton_18">
             <property name="geometry">
                 <rect>
                     <x>200</x>
@@ -3085,7 +3007,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_21">
+        <widget class="caMessageButton" name="caMessageButton_19">
             <property name="geometry">
                 <rect>
                     <x>142</x>
@@ -3175,7 +3097,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_22">
+        <widget class="caMessageButton" name="caMessageButton_20">
             <property name="geometry">
                 <rect>
                     <x>229</x>
@@ -4003,7 +3925,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_23">
+        <widget class="caMessageButton" name="caMessageButton_21">
             <property name="geometry">
                 <rect>
                     <x>334</x>
@@ -4042,7 +3964,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_24">
+        <widget class="caMessageButton" name="caMessageButton_22">
             <property name="geometry">
                 <rect>
                     <x>312</x>
@@ -4150,7 +4072,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_25">
+        <widget class="caMessageButton" name="caMessageButton_23">
             <property name="geometry">
                 <rect>
                     <x>290</x>
@@ -4189,7 +4111,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_26">
+        <widget class="caMessageButton" name="caMessageButton_24">
             <property name="geometry">
                 <rect>
                     <x>320</x>
@@ -4303,7 +4225,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_27">
+        <widget class="caMessageButton" name="caMessageButton_25">
             <property name="geometry">
                 <rect>
                     <x>262</x>
@@ -4393,7 +4315,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_28">
+        <widget class="caMessageButton" name="caMessageButton_26">
             <property name="geometry">
                 <rect>
                     <x>349</x>
@@ -5221,7 +5143,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_29">
+        <widget class="caMessageButton" name="caMessageButton_27">
             <property name="geometry">
                 <rect>
                     <x>454</x>
@@ -5260,7 +5182,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_30">
+        <widget class="caMessageButton" name="caMessageButton_28">
             <property name="geometry">
                 <rect>
                     <x>432</x>
@@ -5368,7 +5290,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_31">
+        <widget class="caMessageButton" name="caMessageButton_29">
             <property name="geometry">
                 <rect>
                     <x>410</x>
@@ -5407,7 +5329,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_32">
+        <widget class="caMessageButton" name="caMessageButton_30">
             <property name="geometry">
                 <rect>
                     <x>440</x>
@@ -5521,7 +5443,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_33">
+        <widget class="caMessageButton" name="caMessageButton_31">
             <property name="geometry">
                 <rect>
                     <x>382</x>
@@ -5611,7 +5533,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_34">
+        <widget class="caMessageButton" name="caMessageButton_32">
             <property name="geometry">
                 <rect>
                     <x>469</x>
@@ -6439,7 +6361,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_35">
+        <widget class="caMessageButton" name="caMessageButton_33">
             <property name="geometry">
                 <rect>
                     <x>574</x>
@@ -6478,7 +6400,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_36">
+        <widget class="caMessageButton" name="caMessageButton_34">
             <property name="geometry">
                 <rect>
                     <x>552</x>
@@ -6586,7 +6508,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_37">
+        <widget class="caMessageButton" name="caMessageButton_35">
             <property name="geometry">
                 <rect>
                     <x>530</x>
@@ -6625,7 +6547,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_38">
+        <widget class="caMessageButton" name="caMessageButton_36">
             <property name="geometry">
                 <rect>
                     <x>560</x>
@@ -6739,7 +6661,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_39">
+        <widget class="caMessageButton" name="caMessageButton_37">
             <property name="geometry">
                 <rect>
                     <x>502</x>
@@ -6829,7 +6751,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_40">
+        <widget class="caMessageButton" name="caMessageButton_38">
             <property name="geometry">
                 <rect>
                     <x>589</x>
@@ -7657,7 +7579,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_41">
+        <widget class="caMessageButton" name="caMessageButton_39">
             <property name="geometry">
                 <rect>
                     <x>694</x>
@@ -7696,7 +7618,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_42">
+        <widget class="caMessageButton" name="caMessageButton_40">
             <property name="geometry">
                 <rect>
                     <x>672</x>
@@ -7804,7 +7726,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_43">
+        <widget class="caMessageButton" name="caMessageButton_41">
             <property name="geometry">
                 <rect>
                     <x>650</x>
@@ -7843,7 +7765,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_44">
+        <widget class="caMessageButton" name="caMessageButton_42">
             <property name="geometry">
                 <rect>
                     <x>680</x>
@@ -7957,7 +7879,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_45">
+        <widget class="caMessageButton" name="caMessageButton_43">
             <property name="geometry">
                 <rect>
                     <x>622</x>
@@ -8047,7 +7969,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_46">
+        <widget class="caMessageButton" name="caMessageButton_44">
             <property name="geometry">
                 <rect>
                     <x>709</x>
@@ -9055,7 +8977,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_47">
+        <widget class="caMessageButton" name="caMessageButton_45">
             <property name="geometry">
                 <rect>
                     <x>94</x>
@@ -9094,7 +9016,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_48">
+        <widget class="caMessageButton" name="caMessageButton_46">
             <property name="geometry">
                 <rect>
                     <x>72</x>
@@ -9202,7 +9124,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_49">
+        <widget class="caMessageButton" name="caMessageButton_47">
             <property name="geometry">
                 <rect>
                     <x>50</x>
@@ -9241,7 +9163,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_50">
+        <widget class="caMessageButton" name="caMessageButton_48">
             <property name="geometry">
                 <rect>
                     <x>80</x>
@@ -9355,7 +9277,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_51">
+        <widget class="caMessageButton" name="caMessageButton_49">
             <property name="geometry">
                 <rect>
                     <x>22</x>
@@ -9445,7 +9367,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_52">
+        <widget class="caMessageButton" name="caMessageButton_50">
             <property name="geometry">
                 <rect>
                     <x>109</x>
@@ -10273,7 +10195,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_53">
+        <widget class="caMessageButton" name="caMessageButton_51">
             <property name="geometry">
                 <rect>
                     <x>214</x>
@@ -10312,7 +10234,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_54">
+        <widget class="caMessageButton" name="caMessageButton_52">
             <property name="geometry">
                 <rect>
                     <x>192</x>
@@ -10420,7 +10342,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_55">
+        <widget class="caMessageButton" name="caMessageButton_53">
             <property name="geometry">
                 <rect>
                     <x>170</x>
@@ -10459,7 +10381,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_56">
+        <widget class="caMessageButton" name="caMessageButton_54">
             <property name="geometry">
                 <rect>
                     <x>200</x>
@@ -10573,7 +10495,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_57">
+        <widget class="caMessageButton" name="caMessageButton_55">
             <property name="geometry">
                 <rect>
                     <x>142</x>
@@ -10663,7 +10585,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_58">
+        <widget class="caMessageButton" name="caMessageButton_56">
             <property name="geometry">
                 <rect>
                     <x>229</x>
@@ -11491,7 +11413,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_59">
+        <widget class="caMessageButton" name="caMessageButton_57">
             <property name="geometry">
                 <rect>
                     <x>334</x>
@@ -11530,7 +11452,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_60">
+        <widget class="caMessageButton" name="caMessageButton_58">
             <property name="geometry">
                 <rect>
                     <x>312</x>
@@ -11638,7 +11560,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_61">
+        <widget class="caMessageButton" name="caMessageButton_59">
             <property name="geometry">
                 <rect>
                     <x>290</x>
@@ -11677,7 +11599,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_62">
+        <widget class="caMessageButton" name="caMessageButton_60">
             <property name="geometry">
                 <rect>
                     <x>320</x>
@@ -11791,7 +11713,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_63">
+        <widget class="caMessageButton" name="caMessageButton_61">
             <property name="geometry">
                 <rect>
                     <x>262</x>
@@ -11881,7 +11803,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_64">
+        <widget class="caMessageButton" name="caMessageButton_62">
             <property name="geometry">
                 <rect>
                     <x>349</x>
@@ -12709,7 +12631,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_65">
+        <widget class="caMessageButton" name="caMessageButton_63">
             <property name="geometry">
                 <rect>
                     <x>454</x>
@@ -12748,7 +12670,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_66">
+        <widget class="caMessageButton" name="caMessageButton_64">
             <property name="geometry">
                 <rect>
                     <x>432</x>
@@ -12856,7 +12778,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_67">
+        <widget class="caMessageButton" name="caMessageButton_65">
             <property name="geometry">
                 <rect>
                     <x>410</x>
@@ -12895,7 +12817,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_68">
+        <widget class="caMessageButton" name="caMessageButton_66">
             <property name="geometry">
                 <rect>
                     <x>440</x>
@@ -13009,7 +12931,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_69">
+        <widget class="caMessageButton" name="caMessageButton_67">
             <property name="geometry">
                 <rect>
                     <x>382</x>
@@ -13099,7 +13021,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_70">
+        <widget class="caMessageButton" name="caMessageButton_68">
             <property name="geometry">
                 <rect>
                     <x>469</x>
@@ -13927,7 +13849,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_71">
+        <widget class="caMessageButton" name="caMessageButton_69">
             <property name="geometry">
                 <rect>
                     <x>574</x>
@@ -13966,7 +13888,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_72">
+        <widget class="caMessageButton" name="caMessageButton_70">
             <property name="geometry">
                 <rect>
                     <x>552</x>
@@ -14074,7 +13996,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_73">
+        <widget class="caMessageButton" name="caMessageButton_71">
             <property name="geometry">
                 <rect>
                     <x>530</x>
@@ -14113,7 +14035,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_74">
+        <widget class="caMessageButton" name="caMessageButton_72">
             <property name="geometry">
                 <rect>
                     <x>560</x>
@@ -14227,7 +14149,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_75">
+        <widget class="caMessageButton" name="caMessageButton_73">
             <property name="geometry">
                 <rect>
                     <x>502</x>
@@ -14317,7 +14239,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_76">
+        <widget class="caMessageButton" name="caMessageButton_74">
             <property name="geometry">
                 <rect>
                     <x>589</x>
@@ -15145,7 +15067,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_77">
+        <widget class="caMessageButton" name="caMessageButton_75">
             <property name="geometry">
                 <rect>
                     <x>694</x>
@@ -15184,7 +15106,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_78">
+        <widget class="caMessageButton" name="caMessageButton_76">
             <property name="geometry">
                 <rect>
                     <x>672</x>
@@ -15292,7 +15214,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_79">
+        <widget class="caMessageButton" name="caMessageButton_77">
             <property name="geometry">
                 <rect>
                     <x>650</x>
@@ -15331,7 +15253,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_80">
+        <widget class="caMessageButton" name="caMessageButton_78">
             <property name="geometry">
                 <rect>
                     <x>680</x>
@@ -15445,7 +15367,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_81">
+        <widget class="caMessageButton" name="caMessageButton_79">
             <property name="geometry">
                 <rect>
                     <x>622</x>
@@ -15535,7 +15457,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_82">
+        <widget class="caMessageButton" name="caMessageButton_80">
             <property name="geometry">
                 <rect>
                     <x>709</x>
@@ -17076,160 +16998,158 @@ caMenu{
         <zorder>caLabel_89</zorder>
         <zorder>caChoice_0</zorder>
         <zorder>caMessageButton_0</zorder>
-        <zorder>caMessageButton_1</zorder>
         <zorder>caSlider_0</zorder>
         <zorder>caChoice_1</zorder>
+        <zorder>caMessageButton_1</zorder>
         <zorder>caMessageButton_2</zorder>
         <zorder>caMessageButton_3</zorder>
         <zorder>caMessageButton_4</zorder>
         <zorder>caMessageButton_5</zorder>
         <zorder>caMessageButton_6</zorder>
         <zorder>caMessageButton_7</zorder>
-        <zorder>caMessageButton_8</zorder>
-        <zorder>caMessageButton_9</zorder>
         <zorder>caChoice_2</zorder>
-        <zorder>caMessageButton_10</zorder>
+        <zorder>caMessageButton_8</zorder>
         <zorder>caLineEdit_0</zorder>
+        <zorder>caMessageButton_9</zorder>
+        <zorder>caMessageButton_10</zorder>
         <zorder>caMessageButton_11</zorder>
         <zorder>caMessageButton_12</zorder>
-        <zorder>caMessageButton_13</zorder>
-        <zorder>caMessageButton_14</zorder>
         <zorder>caRelatedDisplay_0</zorder>
-        <zorder>caMessageButton_15</zorder>
+        <zorder>caMessageButton_13</zorder>
         <zorder>caTextEntry_0</zorder>
-        <zorder>caMessageButton_16</zorder>
+        <zorder>caMessageButton_14</zorder>
         <zorder>caTextEntry_1</zorder>
         <zorder>caLineEdit_1</zorder>
         <zorder>caLineEdit_2</zorder>
         <zorder>caLineEdit_3</zorder>
+        <zorder>caMessageButton_15</zorder>
+        <zorder>caMessageButton_16</zorder>
         <zorder>caMessageButton_17</zorder>
         <zorder>caMessageButton_18</zorder>
-        <zorder>caMessageButton_19</zorder>
-        <zorder>caMessageButton_20</zorder>
         <zorder>caRelatedDisplay_1</zorder>
-        <zorder>caMessageButton_21</zorder>
+        <zorder>caMessageButton_19</zorder>
         <zorder>caTextEntry_2</zorder>
-        <zorder>caMessageButton_22</zorder>
+        <zorder>caMessageButton_20</zorder>
         <zorder>caTextEntry_3</zorder>
         <zorder>caLineEdit_4</zorder>
         <zorder>caLineEdit_5</zorder>
         <zorder>caLineEdit_6</zorder>
+        <zorder>caMessageButton_21</zorder>
+        <zorder>caMessageButton_22</zorder>
         <zorder>caMessageButton_23</zorder>
         <zorder>caMessageButton_24</zorder>
-        <zorder>caMessageButton_25</zorder>
-        <zorder>caMessageButton_26</zorder>
         <zorder>caRelatedDisplay_2</zorder>
-        <zorder>caMessageButton_27</zorder>
+        <zorder>caMessageButton_25</zorder>
         <zorder>caTextEntry_4</zorder>
-        <zorder>caMessageButton_28</zorder>
+        <zorder>caMessageButton_26</zorder>
         <zorder>caTextEntry_5</zorder>
         <zorder>caLineEdit_7</zorder>
         <zorder>caLineEdit_8</zorder>
         <zorder>caLineEdit_9</zorder>
+        <zorder>caMessageButton_27</zorder>
+        <zorder>caMessageButton_28</zorder>
         <zorder>caMessageButton_29</zorder>
         <zorder>caMessageButton_30</zorder>
-        <zorder>caMessageButton_31</zorder>
-        <zorder>caMessageButton_32</zorder>
         <zorder>caRelatedDisplay_3</zorder>
-        <zorder>caMessageButton_33</zorder>
+        <zorder>caMessageButton_31</zorder>
         <zorder>caTextEntry_6</zorder>
-        <zorder>caMessageButton_34</zorder>
+        <zorder>caMessageButton_32</zorder>
         <zorder>caTextEntry_7</zorder>
         <zorder>caLineEdit_10</zorder>
         <zorder>caLineEdit_11</zorder>
         <zorder>caLineEdit_12</zorder>
+        <zorder>caMessageButton_33</zorder>
+        <zorder>caMessageButton_34</zorder>
         <zorder>caMessageButton_35</zorder>
         <zorder>caMessageButton_36</zorder>
-        <zorder>caMessageButton_37</zorder>
-        <zorder>caMessageButton_38</zorder>
         <zorder>caRelatedDisplay_4</zorder>
-        <zorder>caMessageButton_39</zorder>
+        <zorder>caMessageButton_37</zorder>
         <zorder>caTextEntry_8</zorder>
-        <zorder>caMessageButton_40</zorder>
+        <zorder>caMessageButton_38</zorder>
         <zorder>caTextEntry_9</zorder>
         <zorder>caLineEdit_13</zorder>
         <zorder>caLineEdit_14</zorder>
         <zorder>caLineEdit_15</zorder>
+        <zorder>caMessageButton_39</zorder>
+        <zorder>caMessageButton_40</zorder>
         <zorder>caMessageButton_41</zorder>
         <zorder>caMessageButton_42</zorder>
-        <zorder>caMessageButton_43</zorder>
-        <zorder>caMessageButton_44</zorder>
         <zorder>caRelatedDisplay_5</zorder>
-        <zorder>caMessageButton_45</zorder>
+        <zorder>caMessageButton_43</zorder>
         <zorder>caTextEntry_10</zorder>
-        <zorder>caMessageButton_46</zorder>
+        <zorder>caMessageButton_44</zorder>
         <zorder>caTextEntry_11</zorder>
         <zorder>caLineEdit_16</zorder>
         <zorder>caLineEdit_17</zorder>
         <zorder>caLineEdit_18</zorder>
+        <zorder>caMessageButton_45</zorder>
+        <zorder>caMessageButton_46</zorder>
         <zorder>caMessageButton_47</zorder>
         <zorder>caMessageButton_48</zorder>
-        <zorder>caMessageButton_49</zorder>
-        <zorder>caMessageButton_50</zorder>
         <zorder>caRelatedDisplay_6</zorder>
-        <zorder>caMessageButton_51</zorder>
+        <zorder>caMessageButton_49</zorder>
         <zorder>caTextEntry_12</zorder>
-        <zorder>caMessageButton_52</zorder>
+        <zorder>caMessageButton_50</zorder>
         <zorder>caTextEntry_13</zorder>
         <zorder>caLineEdit_19</zorder>
         <zorder>caLineEdit_20</zorder>
         <zorder>caLineEdit_21</zorder>
+        <zorder>caMessageButton_51</zorder>
+        <zorder>caMessageButton_52</zorder>
         <zorder>caMessageButton_53</zorder>
         <zorder>caMessageButton_54</zorder>
-        <zorder>caMessageButton_55</zorder>
-        <zorder>caMessageButton_56</zorder>
         <zorder>caRelatedDisplay_7</zorder>
-        <zorder>caMessageButton_57</zorder>
+        <zorder>caMessageButton_55</zorder>
         <zorder>caTextEntry_14</zorder>
-        <zorder>caMessageButton_58</zorder>
+        <zorder>caMessageButton_56</zorder>
         <zorder>caTextEntry_15</zorder>
         <zorder>caLineEdit_22</zorder>
         <zorder>caLineEdit_23</zorder>
         <zorder>caLineEdit_24</zorder>
+        <zorder>caMessageButton_57</zorder>
+        <zorder>caMessageButton_58</zorder>
         <zorder>caMessageButton_59</zorder>
         <zorder>caMessageButton_60</zorder>
-        <zorder>caMessageButton_61</zorder>
-        <zorder>caMessageButton_62</zorder>
         <zorder>caRelatedDisplay_8</zorder>
-        <zorder>caMessageButton_63</zorder>
+        <zorder>caMessageButton_61</zorder>
         <zorder>caTextEntry_16</zorder>
-        <zorder>caMessageButton_64</zorder>
+        <zorder>caMessageButton_62</zorder>
         <zorder>caTextEntry_17</zorder>
         <zorder>caLineEdit_25</zorder>
         <zorder>caLineEdit_26</zorder>
         <zorder>caLineEdit_27</zorder>
+        <zorder>caMessageButton_63</zorder>
+        <zorder>caMessageButton_64</zorder>
         <zorder>caMessageButton_65</zorder>
         <zorder>caMessageButton_66</zorder>
-        <zorder>caMessageButton_67</zorder>
-        <zorder>caMessageButton_68</zorder>
         <zorder>caRelatedDisplay_9</zorder>
-        <zorder>caMessageButton_69</zorder>
+        <zorder>caMessageButton_67</zorder>
         <zorder>caTextEntry_18</zorder>
-        <zorder>caMessageButton_70</zorder>
+        <zorder>caMessageButton_68</zorder>
         <zorder>caTextEntry_19</zorder>
         <zorder>caLineEdit_28</zorder>
         <zorder>caLineEdit_29</zorder>
         <zorder>caLineEdit_30</zorder>
+        <zorder>caMessageButton_69</zorder>
+        <zorder>caMessageButton_70</zorder>
         <zorder>caMessageButton_71</zorder>
         <zorder>caMessageButton_72</zorder>
-        <zorder>caMessageButton_73</zorder>
-        <zorder>caMessageButton_74</zorder>
         <zorder>caRelatedDisplay_10</zorder>
-        <zorder>caMessageButton_75</zorder>
+        <zorder>caMessageButton_73</zorder>
         <zorder>caTextEntry_20</zorder>
-        <zorder>caMessageButton_76</zorder>
+        <zorder>caMessageButton_74</zorder>
         <zorder>caTextEntry_21</zorder>
         <zorder>caLineEdit_31</zorder>
         <zorder>caLineEdit_32</zorder>
         <zorder>caLineEdit_33</zorder>
+        <zorder>caMessageButton_75</zorder>
+        <zorder>caMessageButton_76</zorder>
         <zorder>caMessageButton_77</zorder>
         <zorder>caMessageButton_78</zorder>
-        <zorder>caMessageButton_79</zorder>
-        <zorder>caMessageButton_80</zorder>
         <zorder>caRelatedDisplay_11</zorder>
-        <zorder>caMessageButton_81</zorder>
+        <zorder>caMessageButton_79</zorder>
         <zorder>caTextEntry_22</zorder>
-        <zorder>caMessageButton_82</zorder>
+        <zorder>caMessageButton_80</zorder>
         <zorder>caTextEntry_23</zorder>
         <zorder>caLineEdit_34</zorder>
         <zorder>caLineEdit_35</zorder>

@@ -166,21 +166,6 @@ rectangle {
 		width=2
 	}
 }
-"message button" {
-	object {
-		x=260
-		y=295
-		width=50
-		height=20
-	}
-	control {
-		chan="$(P)Control:ResetJCmd.PROC"
-		clr=14
-		bclr=51
-	}
-	label="Reset"
-	press_msg="1"
-}
 text {
 	object {
 		x=5
@@ -290,21 +275,6 @@ rectangle {
 		fill="outline"
 		width=2
 	}
-}
-"message button" {
-	object {
-		x=260
-		y=585
-		width=50
-		height=20
-	}
-	control {
-		chan="$(P)Control:ResetPoseCmd.PROC"
-		clr=14
-		bclr=51
-	}
-	label="Reset"
-	press_msg="1"
 }
 "message button" {
 	object {

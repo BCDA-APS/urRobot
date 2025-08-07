@@ -33,14 +33,19 @@ ifdef ASYN
   $(PROD_NAME)_LIBS := asyn $($(PROD_NAME)_LIBS)
 endif
 
-ifdef URROBOT
-  $(DBD_NAME)_DBD += urRobotSupport.dbd
-  $(PROD_NAME)_LIBS := urRobot $($(PROD_NAME)_LIBS)
-endif
-
 ifdef LUA
   $(DBD_NAME)_DBD += luaSupport.dbd
   $(PROD_NAME)_LIBS := lua $($(PROD_NAME)_LIBS)
+endif
+
+ifdef CALC
+  $(DBD_NAME)_DBD += calcSupport.dbd
+  $(PROD_NAME)_LIBS := calc $($(PROD_NAME)_LIBS)
+endif
+
+ifdef URROBOT
+  $(DBD_NAME)_DBD += urRobotSupport.dbd
+  $(PROD_NAME)_LIBS := urRobot $($(PROD_NAME)_LIBS)
 endif
 
 $(PROD_NAME)_LIBS += $(EPICS_BASE_IOC_LIBS)
