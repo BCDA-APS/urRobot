@@ -92,8 +92,4 @@ $(P)$(SM)CalcFrwd.IVOA
 $(P)$(SM)CalcFrwd.IVOV
 $(P)$(SM)CalcFrwd.OUT
 $(P)$(SM)CalcFrwd.FLNK
-$(P)$(SM)CalcRevsInput.AA
-$(P)$(SM)CalcFrwdOutput.AA
-$(P)$(SM)CalcMoveInput.AA
 $(P)$(SM)MoveLogic.VAL
-$(P)$(SM)CalcStopOutput.AA
