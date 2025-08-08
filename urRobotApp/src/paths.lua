@@ -1,6 +1,26 @@
 -- NOTE: IOC must add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH
 epics = require("epics")
 
+function wait_busy(busy_pv)
+    if timeout == nil then
+        timeout = 300.0 -- seconds
+    end
+
+    -- Wait to finish
+    t0 = os.time()
+    while true do
+        local elap = (os.time() - t0)
+        if (elap >= timeout) then
+            print("Error: Timeout exceeded waiting for process to complete")
+            break
+        end
+        busy = epics.get(busy_pv)
+        if busy == 0 then
+            break
+        end
+    end
+end
+
 -- Waits for a process to complete
 -- The process status is specified by the value of 'done_pv'
 -- which is 1 when the process is done, and 0 when the process is not done
@@ -47,6 +67,7 @@ function path_go(args)
 
     local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
     local path_stop_pv = string.format("%sPath%d:Stop", args.prefix, args.N)
+    local path_busy_pv = string.format("%sPath%d:Busy", args.prefix, args.N)
     local sync_joint_disa_pv = string.format("%sControl:sync_joint_cmd.DISA", args.prefix)
     local sync_pose_disa_pv = string.format("%sControl:sync_pose_cmd.DISA", args.prefix)
 
@@ -99,7 +120,11 @@ function path_go(args)
             print(string.format("Moving to waypoint %s...", wp))
             move_pv = string.format("%s:move%s.PROC", wp, wp_type)
             epics.put(move_pv, 1)
-            wait_process(done_pv)
+            epics.put(path_busy_pv, 1)
+            print("Waiting busy...")
+            wait_busy(path_busy_pv)
+            print("...Done!")
+            -- wait_process(done_pv)
 
             -- Restore original action
             if wp_action ~= 0 then -- TODO: check this works, was 3?

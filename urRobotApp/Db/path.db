@@ -10,6 +10,19 @@ record(luascript, "$(P)Path$(N):Go") {
     field(SYNC, "Async")
 }
 
+record(busy,"$(P)Path$(N):Busy") {
+    field(DESC, "Path$(N) in progress")
+}
+
+record(calcout, "$(P)Path$(N):clear_busy") {
+    field(INPA, "$(P)Control:AsyncMoveDone.RVAL CP")
+    field(CALC, "A=1")
+    field(OCAL, "0")
+    field(DOPT, "Use OCAL")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)Path$(N):Busy PP")
+}
+
 record(bo, "$(P)Path$(N):Stop") {
     field(DESC, "Stops motion and aborts path")
     field(VAL, 0)
