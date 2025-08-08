@@ -222,6 +222,19 @@ record(seq, "$(P)WaypointL:$(N):Reset")
     field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
 }
 
+record(busy,"$(P)WaypointL:$(N):Busy") {
+    field(DESC, "Busy moving to WaypointL:$(N)")
+}
+
+record(calcout, "$(P)WaypointL:$(N):clear_busy") {
+    field(INPA, "$(P)Control:AsyncMoveDone.RVAL CP")
+    field(CALC, "A=1")
+    field(OCAL, "0")
+    field(DOPT, "Use OCAL")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)WaypointL:$(N):Busy PP")
+}
+
 record(bo, "$(P)WaypointL:$(N):moveL")
 {
     field(FLNK, "$(P)WaypointL:$(N):moveL_IfEnabled.PROC")
@@ -254,7 +267,10 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq1")
     field(LNK5, "$(P)Control:PosePitchCmd PP")
     field(DOL6, "$(P)WaypointL:$(N):Yaw")
     field(LNK6, "$(P)Control:PoseYawCmd PP")
-    
+
+    field(DOL7, "1")
+    field(LNK7, "$(P)WaypointL:$(N):Busy PP")
+
     field(FLNK, "$(P)WaypointL:$(N):moveL_seq2.PROC")
 }
 
@@ -263,7 +279,7 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq2")
     # Set to asynchronous motion
     field(DOL0, "1")
     field(LNK0, "$(P)Control:Asynchronous")
-    
+
     # set speed, accel, blend, gripper action
     field(DOL1, "$(P)WaypointL:$(N):Speed")
     field(LNK1, "$(P)Control:LinearSpeed PP")
@@ -275,7 +291,7 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq2")
     # field(LNK4, "$(P)Control:WaypointGripperAction PP")
     field(DOL4, "1")
     field(LNK4, "$(P)WaypointL:$(N):CopyActionLink.PROC")
-    
+
     # Do the move
     field(FLNK, "$(P)Control:waypoint_moveL.PROC")
 }

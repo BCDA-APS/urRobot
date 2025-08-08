@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=1132
-		y=1099
+		x=1122
+		y=1022
 		width=470
 		height=335
 	}
@@ -87,6 +87,156 @@ display {
 		1a7309,
 	}
 }
+oval {
+	object {
+		x=75
+		y=305
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP10):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=280
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP9):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=255
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP8):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=230
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP7):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=205
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP6):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=180
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP5):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=155
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP4):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=130
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP3):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=105
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP2):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=80
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP1):Reached"
+	}
+}
 rectangle {
 	object {
 		x=0
@@ -109,6 +259,21 @@ text {
 		clr=0
 	}
 	textix="$(TITLE) Waypoints"
+}
+oval {
+	object {
+		x=75
+		y=80
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP1):Busy"
+	}
 }
 oval {
 	object {
@@ -194,21 +359,6 @@ text {
 	label="Set"
 	press_msg="1"
 }
-oval {
-	object {
-		x=75
-		y=80
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP1):Reached"
-	}
-}
 "text entry" {
 	object {
 		x=165
@@ -238,6 +388,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=105
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP2):Busy"
+	}
 }
 oval {
 	object {
@@ -323,21 +488,6 @@ text {
 	label="Set"
 	press_msg="1"
 }
-oval {
-	object {
-		x=75
-		y=105
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP2):Reached"
-	}
-}
 "text entry" {
 	object {
 		x=165
@@ -367,6 +517,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=130
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP3):Busy"
+	}
 }
 oval {
 	object {
@@ -452,21 +617,6 @@ text {
 	label="Set"
 	press_msg="1"
 }
-oval {
-	object {
-		x=75
-		y=130
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP3):Reached"
-	}
-}
 "text entry" {
 	object {
 		x=165
@@ -496,6 +646,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=155
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP4):Busy"
+	}
 }
 oval {
 	object {
@@ -581,21 +746,6 @@ text {
 	label="Set"
 	press_msg="1"
 }
-oval {
-	object {
-		x=75
-		y=155
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP4):Reached"
-	}
-}
 "text entry" {
 	object {
 		x=165
@@ -625,6 +775,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=180
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP5):Busy"
+	}
 }
 oval {
 	object {
@@ -710,21 +875,6 @@ text {
 	label="Set"
 	press_msg="1"
 }
-oval {
-	object {
-		x=75
-		y=180
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP5):Reached"
-	}
-}
 "text entry" {
 	object {
 		x=165
@@ -754,6 +904,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=205
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP6):Busy"
+	}
 }
 oval {
 	object {
@@ -839,21 +1004,6 @@ text {
 	label="Set"
 	press_msg="1"
 }
-oval {
-	object {
-		x=75
-		y=205
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP6):Reached"
-	}
-}
 "text entry" {
 	object {
 		x=165
@@ -883,6 +1033,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=230
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP7):Busy"
+	}
 }
 oval {
 	object {
@@ -968,21 +1133,6 @@ text {
 	label="Set"
 	press_msg="1"
 }
-oval {
-	object {
-		x=75
-		y=230
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP7):Reached"
-	}
-}
 "text entry" {
 	object {
 		x=165
@@ -1012,6 +1162,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=255
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP8):Busy"
+	}
 }
 oval {
 	object {
@@ -1097,21 +1262,6 @@ text {
 	label="Set"
 	press_msg="1"
 }
-oval {
-	object {
-		x=75
-		y=255
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP8):Reached"
-	}
-}
 "text entry" {
 	object {
 		x=165
@@ -1141,6 +1291,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=280
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP9):Busy"
+	}
 }
 oval {
 	object {
@@ -1226,21 +1391,6 @@ text {
 	label="Set"
 	press_msg="1"
 }
-oval {
-	object {
-		x=75
-		y=280
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP9):Reached"
-	}
-}
 "text entry" {
 	object {
 		x=165
@@ -1270,6 +1420,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=305
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP10):Busy"
+	}
 }
 oval {
 	object {
@@ -1354,21 +1519,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=305
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP10):Reached"
-	}
 }
 "text entry" {
 	object {

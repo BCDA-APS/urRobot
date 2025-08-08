@@ -6,7 +6,6 @@ function wait_busy(busy_pv)
         timeout = 300.0 -- seconds
     end
 
-    -- Wait to finish
     t0 = os.time()
     while true do
         local elap = (os.time() - t0)
@@ -21,53 +20,11 @@ function wait_busy(busy_pv)
     end
 end
 
--- Waits for a process to complete
--- The process status is specified by the value of 'done_pv'
--- which is 1 when the process is done, and 0 when the process is not done
--- The timeout to wait for is given in seconds
-function wait_process(done_pv, start_timeout, finish_timeout)
-    if start_timeout == nil then
-        start_timeout = 5.0 -- seconds
-    end
-    if finish_timeout == nil then
-        finish_timeout = 300.0 -- seconds
-    end
-
-    -- wait to start
-    local t0 = os.time()
-    while true do
-        local elap = (os.time() - t0)
-        if (elap >= start_timeout) then
-            print("Error: Timeout exceeded waiting to start process")
-            break
-        end
-        done = epics.get(done_pv)
-        if done == 0 then
-            break
-        end
-    end
-
-    -- Wait to finish
-    t0 = os.time()
-    while true do
-        local elap = (os.time() - t0)
-        if (elap >= finish_timeout) then
-            print("Error: Timeout exceeded waiting for process to complete")
-            break
-        end
-        done = epics.get(done_pv)
-        if done == 1 then
-            break
-        end
-    end
-end
-
 -- Moves robot through all enabled points along path
 function path_go(args)
 
     local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
     local path_stop_pv = string.format("%sPath%d:Stop", args.prefix, args.N)
-    local path_busy_pv = string.format("%sPath%d:Busy", args.prefix, args.N)
     local sync_joint_disa_pv = string.format("%sControl:sync_joint_cmd.DISA", args.prefix)
     local sync_pose_disa_pv = string.format("%sControl:sync_pose_cmd.DISA", args.prefix)
 
@@ -105,7 +62,7 @@ function path_go(args)
             local action_opt_val_pv
             local set_action_opt_lnk0_pv
             local set_action_opt_proc_pv
-            if wp_action ~= 0 then -- TODO: check this works, was 3?
+            if wp_action ~= 0 then
                 action_pv = string.format("%s:ActionOpt", wp)
                 wp_action0 = math.floor(epics.get(action_pv))
                 action_opt_val_pv = string.format("%sPath%d:%d:action_opt_val", args.prefix, args.N, i)
@@ -119,12 +76,10 @@ function path_go(args)
             -- Move to waypoint and wait for motion and action to finish
             print(string.format("Moving to waypoint %s...", wp))
             move_pv = string.format("%s:move%s.PROC", wp, wp_type)
+            wp_busy_pv = string.format("%s:Busy", wp)
             epics.put(move_pv, 1)
-            epics.put(path_busy_pv, 1)
-            print("Waiting busy...")
-            wait_busy(path_busy_pv)
-            print("...Done!")
-            -- wait_process(done_pv)
+            epics.put(wp_busy_pv, 1)
+            wait_busy(wp_busy_pv)
 
             -- Restore original action
             if wp_action ~= 0 then -- TODO: check this works, was 3?
