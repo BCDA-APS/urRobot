@@ -143,8 +143,10 @@ load many waypoints in your IOC startup script with a subtitutions file (`urRobo
 then define them at runtime. `.req` files for autosave are provided in `urRobotApp/Db/`.
 Looking at the above Cartesian Waypoint display, from left to right on each line you have the following:
 - Waypoint number for quick reference (call it `$(N)`) which ranges from 1-10 in this example.
-- Enable(1)/Disable(0) toggle (`$(P)WaypointL:$(N):Enabled`)
-- Indicator for when the waypoint is reached (`$(P)WaypointL:$(N):Reached`)
+- Enable(ON)/Disable(OFF) toggle (`$(P)WaypointL:$(N):Enabled`)
+- Indicator for when the waypoint is reached (`$(P)WaypointL:$(N):Reached`=1) or when the robot is en-route to the waypoint
+(`$(P)WaypointL:$(N):Busy`=1). Green means the robot is at the waypoint, yellow means it is on the way to the waypoint,
+otherwise it will be gray.
 - "Set" button to save the current robot configuration to the waypoint (`$(P)WaypointL:$(N):Reset`)
 - Related display to view and edit the waypoint coordinates and dynamics.
 - A string description of the waypoint (`$(P)WaypointL:$(N)`)
@@ -234,8 +236,9 @@ joint 6 (wrist) +10deg, then -10deg back to where it started.
 ```python
 from epics import caget, caput
 
-PREFIX = "bcur:" # replace with your IOC prefix
+PREFIX = "MyPrefix:" # replace with your IOC prefix
 
+# quick hack to wait for motion to start and complete
 def wait_motion():
     '''block execution until commanded motion finishes'''
     while True:
@@ -249,16 +252,6 @@ def wait_motion():
 # when enabled, changing commanded values will automatically move
 # when disabled, you need to call moveJ to trigger the move
 caput(f"{PREFIX}Control:AutoMoveJ", 0)
-
-# Set commanded joint positions to current position
-caput(f"{PREFIX}Control:sync_joint_cmd", 1)
-# the above is the same as doing the following:
-#  caput(f"{PREFIX}Control:J1Cmd", joint_angles[0])
-#  caput(f"{PREFIX}Control:J2Cmd", joint_angles[1])
-#  caput(f"{PREFIX}Control:J3Cmd", joint_angles[2])
-#  caput(f"{PREFIX}Control:J4Cmd", joint_angles[3])
-#  caput(f"{PREFIX}Control:J5Cmd", joint_angles[4])
-#  caput(f"{PREFIX}Control:J6Cmd", joint_angles[5])
 
 # Move J6 +20deg
 print("Moving Joint 6 +10deg...")
