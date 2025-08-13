@@ -16,7 +16,8 @@ nav_order: 2
 
 **Supported Operating Systems**
 
-- Red Hat Enterprise Linux (RHEL) 9
+- Linux (x86-64) - tested on Red Hat Enterprise Linux (RHEL) 9. Other distributions may
+work but have not been tested
 
 
 **Dependencies**

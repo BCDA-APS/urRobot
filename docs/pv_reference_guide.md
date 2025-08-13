@@ -316,6 +316,7 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | WaypointJ:$(N):Blend    | ao     | Blend when moving to waypoint     |
 | WaypointJ:$(N):Reached    | luascript     | 1 when robot is at waypoint otherwise 0     |
 | WaypointJ:$(N):Reset    | seq     | Sets waypoint to the current location     |
+| WaypointJ:$(N):Busy    | busy     | 1 when robot is en-route to waypoint, otherwise 0   |
 | WaypointJ:$(N):moveJ    | bo     | Executes a moveJ to the waypoint if waypoint is enabled    |
 
 ***
@@ -342,6 +343,7 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | WaypointL:$(N):Blend    | ao     | Blend when moving to waypoint     |
 | WaypointL:$(N):Reached    | luascript     | 1 when robot is at waypoint otherwise 0     |
 | WaypointL:$(N):Reset    | seq     | Sets waypoint to the current location     |
+| WaypointL:$(N):Busy    | busy     | 1 when robot is en-route to waypoint, otherwise 0   |
 | WaypointL:$(N):moveL    | bo     | Executes a moveL to the waypoint if waypoint is enabled    |
 
 ***
