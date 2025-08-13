@@ -60,6 +60,11 @@ record(ai, "$(P)Path$(N):$(K):Reached") {
     field(DESC, "1 if robot at waypoint, else 0")
 }
 
+# INP link to Waypoint:Busy set by get_wp_info func
+record(ai, "$(P)Path$(N):$(K):Busy") {
+    field(DESC, "1 if busy moving to waypoint, else 0")
+}
+
 # NOTE: lua epics.put directly to ActionOpt PV throws mutex error,
 # probably because of logic in waypoint databases, which is why we
 # need to do the following
