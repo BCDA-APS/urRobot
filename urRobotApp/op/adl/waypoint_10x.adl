@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=1132
-		y=1099
+		x=1112
+		y=1014
 		width=470
 		height=335
 	}
@@ -87,6 +87,156 @@ display {
 		1a7309,
 	}
 }
+oval {
+	object {
+		x=75
+		y=305
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP10):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=280
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP9):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=255
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP8):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=230
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP7):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=205
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP6):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=180
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP5):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=155
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP4):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=130
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP3):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=105
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP2):Reached"
+	}
+}
+oval {
+	object {
+		x=75
+		y=80
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=5
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP1):Reached"
+	}
+}
 rectangle {
 	object {
 		x=0
@@ -109,6 +259,21 @@ text {
 		clr=0
 	}
 	textix="$(TITLE) Waypoints"
+}
+oval {
+	object {
+		x=75
+		y=80
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP1):Busy"
+	}
 }
 oval {
 	object {
@@ -153,18 +318,6 @@ menu {
 	clr=0
 	bclr=18
 }
-text {
-	object {
-		x=5
-		y=80
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(WP1)."
-}
 "choice button" {
 	object {
 		x=30
@@ -193,21 +346,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=80
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP1):Reached"
-	}
 }
 "text entry" {
 	object {
@@ -238,6 +376,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=105
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP2):Busy"
+	}
 }
 oval {
 	object {
@@ -282,18 +435,40 @@ menu {
 	clr=0
 	bclr=18
 }
+
 text {
-	object {
-		x=5
-		y=105
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(WP2)."
+    object {
+        x=5
+        y=105
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=14
+    }
+    "dynamic attribute" {
+        vis="if zero"
+        chan="$(P)Waypoint$(T):$(WP2):Enabled"
+    }
+    textix="$(WP2)."
 }
+text {
+    object {
+        x=5
+        y=105
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=60
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Waypoint$(T):$(WP2):Enabled"
+    }
+    textix="$(WP2)."
+}
+
 "choice button" {
 	object {
 		x=30
@@ -322,21 +497,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=105
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP2):Reached"
-	}
 }
 "text entry" {
 	object {
@@ -367,6 +527,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=130
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP3):Busy"
+	}
 }
 oval {
 	object {
@@ -411,18 +586,40 @@ menu {
 	clr=0
 	bclr=18
 }
+
 text {
-	object {
-		x=5
-		y=130
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(WP3)."
+    object {
+        x=5
+        y=130
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=14
+    }
+    "dynamic attribute" {
+        vis="if zero"
+        chan="$(P)Waypoint$(T):$(WP3):Enabled"
+    }
+    textix="$(WP3)."
 }
+text {
+    object {
+        x=5
+        y=130
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=60
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Waypoint$(T):$(WP3):Enabled"
+    }
+    textix="$(WP3)."
+}
+
 "choice button" {
 	object {
 		x=30
@@ -451,21 +648,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=130
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP3):Reached"
-	}
 }
 "text entry" {
 	object {
@@ -496,6 +678,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=155
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP4):Busy"
+	}
 }
 oval {
 	object {
@@ -540,18 +737,40 @@ menu {
 	clr=0
 	bclr=18
 }
+
 text {
-	object {
-		x=5
-		y=155
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(WP4)."
+    object {
+        x=5
+        y=155
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=14
+    }
+    "dynamic attribute" {
+        vis="if zero"
+        chan="$(P)Waypoint$(T):$(WP4):Enabled"
+    }
+    textix="$(WP4)."
 }
+text {
+    object {
+        x=5
+        y=155
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=60
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Waypoint$(T):$(WP4):Enabled"
+    }
+    textix="$(WP4)."
+}
+
 "choice button" {
 	object {
 		x=30
@@ -580,21 +799,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=155
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP4):Reached"
-	}
 }
 "text entry" {
 	object {
@@ -625,6 +829,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=180
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP5):Busy"
+	}
 }
 oval {
 	object {
@@ -669,18 +888,40 @@ menu {
 	clr=0
 	bclr=18
 }
+
 text {
-	object {
-		x=5
-		y=180
-		width=25
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(WP5)."
+    object {
+        x=5
+        y=180
+        width=25
+        height=20
+    }
+    "basic attribute" {
+        clr=14
+    }
+    "dynamic attribute" {
+        vis="if zero"
+        chan="$(P)Waypoint$(T):$(WP5):Enabled"
+    }
+    textix="$(WP5)."
 }
+text {
+    object {
+        x=5
+        y=180
+        width=25
+        height=20
+    }
+    "basic attribute" {
+        clr=60
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Waypoint$(T):$(WP5):Enabled"
+    }
+    textix="$(WP5)."
+}
+
 "choice button" {
 	object {
 		x=30
@@ -709,21 +950,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=180
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP5):Reached"
-	}
 }
 "text entry" {
 	object {
@@ -754,6 +980,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=205
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP6):Busy"
+	}
 }
 oval {
 	object {
@@ -798,18 +1039,40 @@ menu {
 	clr=0
 	bclr=18
 }
+
 text {
-	object {
-		x=5
-		y=205
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(WP6)."
+    object {
+        x=5
+        y=205
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=14
+    }
+    "dynamic attribute" {
+        vis="if zero"
+        chan="$(P)Waypoint$(T):$(WP6):Enabled"
+    }
+    textix="$(WP6)."
 }
+text {
+    object {
+        x=5
+        y=205
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=60
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Waypoint$(T):$(WP6):Enabled"
+    }
+    textix="$(WP6)."
+}
+
 "choice button" {
 	object {
 		x=30
@@ -838,21 +1101,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=205
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP6):Reached"
-	}
 }
 "text entry" {
 	object {
@@ -883,6 +1131,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=230
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP7):Busy"
+	}
 }
 oval {
 	object {
@@ -927,18 +1190,40 @@ menu {
 	clr=0
 	bclr=18
 }
+
 text {
-	object {
-		x=5
-		y=230
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(WP7)."
+    object {
+        x=5
+        y=230
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=14
+    }
+    "dynamic attribute" {
+        vis="if zero"
+        chan="$(P)Waypoint$(T):$(WP7):Enabled"
+    }
+    textix="$(WP7)."
 }
+text {
+    object {
+        x=5
+        y=230
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=60
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Waypoint$(T):$(WP7):Enabled"
+    }
+    textix="$(WP7)."
+}
+
 "choice button" {
 	object {
 		x=30
@@ -967,21 +1252,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=230
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP7):Reached"
-	}
 }
 "text entry" {
 	object {
@@ -1012,6 +1282,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=255
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP8):Busy"
+	}
 }
 oval {
 	object {
@@ -1056,18 +1341,40 @@ menu {
 	clr=0
 	bclr=18
 }
+
 text {
-	object {
-		x=5
-		y=255
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(WP8)."
+    object {
+        x=5
+        y=255
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=14
+    }
+    "dynamic attribute" {
+        vis="if zero"
+        chan="$(P)Waypoint$(T):$(WP8):Enabled"
+    }
+    textix="$(WP8)."
 }
+text {
+    object {
+        x=5
+        y=255
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=60
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Waypoint$(T):$(WP8):Enabled"
+    }
+    textix="$(WP8)."
+}
+
 "choice button" {
 	object {
 		x=30
@@ -1096,21 +1403,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=255
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP8):Reached"
-	}
 }
 "text entry" {
 	object {
@@ -1141,6 +1433,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=280
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP9):Busy"
+	}
 }
 oval {
 	object {
@@ -1185,18 +1492,40 @@ menu {
 	clr=0
 	bclr=18
 }
+
 text {
-	object {
-		x=5
-		y=280
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(WP9)."
+    object {
+        x=5
+        y=280
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=14
+    }
+    "dynamic attribute" {
+        vis="if zero"
+        chan="$(P)Waypoint$(T):$(WP9):Enabled"
+    }
+    textix="$(WP9)."
 }
+text {
+    object {
+        x=5
+        y=280
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=60
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Waypoint$(T):$(WP9):Enabled"
+    }
+    textix="$(WP9)."
+}
+
 "choice button" {
 	object {
 		x=30
@@ -1225,21 +1554,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=280
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP9):Reached"
-	}
 }
 "text entry" {
 	object {
@@ -1270,6 +1584,21 @@ oval {
 	}
 	label="Go"
 	press_msg="1"
+}
+oval {
+	object {
+		x=75
+		y=305
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=31
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP10):Busy"
+	}
 }
 oval {
 	object {
@@ -1314,18 +1643,40 @@ menu {
 	clr=0
 	bclr=18
 }
+
 text {
-	object {
-		x=5
-		y=305
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(WP10)."
+    object {
+        x=5
+        y=305
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=14
+    }
+    "dynamic attribute" {
+        vis="if zero"
+        chan="$(P)Waypoint$(T):$(WP10):Enabled"
+    }
+    textix="$(WP10)."
 }
+text {
+    object {
+        x=5
+        y=305
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=60
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Waypoint$(T):$(WP10):Enabled"
+    }
+    textix="$(WP10)."
+}
+
 "choice button" {
 	object {
 		x=30
@@ -1354,21 +1705,6 @@ text {
 	}
 	label="Set"
 	press_msg="1"
-}
-oval {
-	object {
-		x=75
-		y=305
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Waypoint$(T):$(WP10):Reached"
-	}
 }
 "text entry" {
 	object {
@@ -1670,4 +2006,36 @@ text {
 	}
 	textix="Description"
 	align="horiz. centered"
+}
+text {
+	object {
+		x=5
+		y=80
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP1):Enabled"
+	}
+	textix="$(WP1)."
+}
+text {
+	object {
+		x=5
+		y=80
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=60
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP1):Enabled"
+	}
+	textix="$(WP1)."
 }

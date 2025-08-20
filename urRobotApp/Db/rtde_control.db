@@ -114,8 +114,8 @@ record(fanout, "$(P)Control:Stop")
 
 record(fanout, "$(P)Control:reset_both_cmd")
 {
-    field(LNK0, "$(P)Control:ResetJCmd")
-    field(LNK1, "$(P)Control:ResetPoseCmd")
+    field(LNK0, "$(P)Control:sync_joint_cmd")
+    field(LNK1, "$(P)Control:sync_pose_cmd")
 }
 
 record(calcout, "$(P)Control:reset_after_async_move") {
@@ -281,9 +281,9 @@ record(calcout, "$(P)Control:auto_reset_j_cmd")
     field(INPA, "$(P)Control:Steady.VAL CP NMS")
     field(CALC, "A")
     field(OOPT, "Transition To Non-zero")
-    field(OUT, "$(P)Control:ResetJCmd.PROC")
+    field(OUT, "$(P)Control:sync_joint_cmd.PROC")
 }
-record(sseq, "$(P)Control:ResetJCmd")
+record(sseq, "$(P)Control:sync_joint_cmd")
 {
     field(PINI, 0)
 
@@ -736,9 +736,9 @@ record(calcout, "$(P)Control:auto_reset_pose_cmd")
     field(INPA, "$(P)Control:Steady.VAL CP NMS")
     field(CALC, "A")
     field(OOPT, "Transition To Non-zero")
-    field(OUT, "$(P)Control:ResetPoseCmd.PROC")
+    field(OUT, "$(P)Control:sync_pose_cmd.PROC")
 }
-record(sseq, "$(P)Control:ResetPoseCmd")
+record(sseq, "$(P)Control:sync_pose_cmd")
 {
     field(PINI, 0)
 
@@ -778,7 +778,7 @@ record(sseq, "$(P)Control:ResetPoseCmd")
 
 record(ao, "$(P)Control:PoseXCmd")
 {
-    field(DESC, "Commanded TCP X")
+    field(DESC, "X")
     field(DTYP, "asynFloat64")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POSE_X_CMD")
     field(EGU, "mm")

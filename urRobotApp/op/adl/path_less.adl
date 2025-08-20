@@ -1280,6 +1280,22 @@ oval {
 	}
 }
 oval {
+    object {
+        x=80
+        y=100
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=31
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Path$(N):2:Busy"
+    }
+}
+
+oval {
 	object {
 		x=80
 		y=125
@@ -1309,6 +1325,22 @@ oval {
 		chan="$(P)Path$(N):3:Reached"
 	}
 }
+oval {
+    object {
+        x=80
+        y=125
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=31
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Path$(N):3:Busy"
+    }
+}
+
 oval {
 	object {
 		x=80
@@ -1340,6 +1372,22 @@ oval {
 	}
 }
 oval {
+    object {
+        x=80
+        y=150
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=31
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Path$(N):4:Busy"
+    }
+}
+
+oval {
 	object {
 		x=80
 		y=175
@@ -1369,6 +1417,22 @@ oval {
 		chan="$(P)Path$(N):5:Reached"
 	}
 }
+oval {
+    object {
+        x=80
+        y=175
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=31
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Path$(N):5:Busy"
+    }
+}
+
 oval {
 	object {
 		x=80
@@ -1400,6 +1464,22 @@ oval {
 	}
 }
 oval {
+    object {
+        x=80
+        y=200
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=31
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Path$(N):6:Busy"
+    }
+}
+
+oval {
 	object {
 		x=80
 		y=225
@@ -1429,6 +1509,22 @@ oval {
 		chan="$(P)Path$(N):7:Reached"
 	}
 }
+oval {
+    object {
+        x=80
+        y=225
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=31
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Path$(N):7:Busy"
+    }
+}
+
 oval {
 	object {
 		x=80
@@ -1460,6 +1556,22 @@ oval {
 	}
 }
 oval {
+    object {
+        x=80
+        y=250
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=31
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Path$(N):8:Busy"
+    }
+}
+
+oval {
 	object {
 		x=80
 		y=275
@@ -1489,6 +1601,22 @@ oval {
 		chan="$(P)Path$(N):9:Reached"
 	}
 }
+oval {
+    object {
+        x=80
+        y=275
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=31
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Path$(N):9:Busy"
+    }
+}
+
 oval {
 	object {
 		x=80
@@ -1520,6 +1648,22 @@ oval {
 	}
 }
 oval {
+    object {
+        x=80
+        y=300
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=31
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Path$(N):10:Busy"
+    }
+}
+
+oval {
 	object {
 		x=80
 		y=75
@@ -1549,6 +1693,22 @@ oval {
 		chan="$(P)Path$(N):1:Reached"
 	}
 }
+oval {
+    object {
+        x=80
+        y=75
+        width=20
+        height=20
+    }
+    "basic attribute" {
+        clr=31
+    }
+    "dynamic attribute" {
+        vis="if not zero"
+        chan="$(P)Path$(N):1:Busy"
+    }
+}
+
 "related display" {
 	object {
 		x=490

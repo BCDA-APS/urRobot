@@ -16,7 +16,8 @@ nav_order: 2
 
 **Supported Operating Systems**
 
-- Red Hat Enterprise Linux (RHEL) 9
+- Linux (x86-64) - tested on Red Hat Enterprise Linux (RHEL) 9. Other distributions may
+work but have not been tested
 
 
 **Dependencies**
@@ -119,6 +120,5 @@ If something went wrong, you will see messages in the console (beginning with "[
 most common problems are an incorrect IP address or the robot not being powered on and breaks releases (if using RTDE control
 interface).
 
-**6\.** To start the provided GUIs, copy the example scripts of your choosing to the top level directory of your IOC.
-For example, to start caQtDM, use `urRobot/iocs/urExample/start_caQtDM_urRobot`. If you are not at the APS, you will most likely
-need to adjust the paths to the caQtDM, MEDM, and Phoebus executables in these scripts.
+**6\.** To start the provided GUIs, use the provided `urRobot/iocs/urExample/start_urRobot` script.
+You may need to adjust the paths to the caQtDM, MEDM, and Phoebus executables in this script.

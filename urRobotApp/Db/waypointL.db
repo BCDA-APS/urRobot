@@ -8,8 +8,8 @@ record(stringout, "$(P)WaypointL:$(N)")
 record(bo, "$(P)WaypointL:$(N):Enabled")
 {
     field(VAL, 0)
-    field(ZNAM, "0")
-    field(ONAM, "1")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
 }
 
 record(bo, "$(P)WaypointL:$(N):SetEnabled")
@@ -191,12 +191,12 @@ record(stringin, "$(P)WaypointL:$(N):ActionDesc")
 
 # 1 if robot is at waypoint within tolerance, otherwise 0
 record(luascript, "$(P)WaypointL:$(N):Reached") {
-    field(INPA, "$(P)Receive:TCP_X CP")
-    field(INPB, "$(P)Receive:TCP_Y CP")
-    field(INPC, "$(P)Receive:TCP_Z CP")
-    field(INPD, "$(P)Receive:TCP_Roll CP")
-    field(INPE, "$(P)Receive:TCP_Pitch CP")
-    field(INPF, "$(P)Receive:TCP_Yaw CP")
+    field(INPA, "$(P)Receive:PoseX CP")
+    field(INPB, "$(P)Receive:PoseY CP")
+    field(INPC, "$(P)Receive:PoseZ CP")
+    field(INPD, "$(P)Receive:PoseRoll CP")
+    field(INPE, "$(P)Receive:PosePitch CP")
+    field(INPF, "$(P)Receive:PoseYaw CP")
     field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)', N=$(N)})")
     field(PREC, 0)
     field(VAL, 0)
@@ -207,19 +207,32 @@ record(luascript, "$(P)WaypointL:$(N):Reached") {
 record(seq, "$(P)WaypointL:$(N):Reset")
 {
     # Sets waypoint joint angles to the current measured angles
-    field(DOL0, "$(P)Receive:TCP_X")
+    field(DOL0, "$(P)Receive:PoseX")
     field(LNK0, "$(P)WaypointL:$(N):X PP")
-    field(DOL1, "$(P)Receive:TCP_Y")
+    field(DOL1, "$(P)Receive:PoseY")
     field(LNK1, "$(P)WaypointL:$(N):Y PP")
-    field(DOL2, "$(P)Receive:TCP_Z")
+    field(DOL2, "$(P)Receive:PoseZ")
     field(LNK2, "$(P)WaypointL:$(N):Z PP")
-    field(DOL3, "$(P)Receive:TCP_Roll")
+    field(DOL3, "$(P)Receive:PoseRoll")
     field(LNK3, "$(P)WaypointL:$(N):Roll PP")
-    field(DOL4, "$(P)Receive:TCP_Pitch")
+    field(DOL4, "$(P)Receive:PosePitch")
     field(LNK4, "$(P)WaypointL:$(N):Pitch PP")
-    field(DOL5, "$(P)Receive:TCP_Yaw")
+    field(DOL5, "$(P)Receive:PoseYaw")
     field(LNK5, "$(P)WaypointL:$(N):Yaw PP")
     field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
+}
+
+record(busy,"$(P)WaypointL:$(N):Busy") {
+    field(DESC, "Busy moving to WaypointL:$(N)")
+}
+
+record(calcout, "$(P)WaypointL:$(N):clear_busy") {
+    field(INPA, "$(P)Control:AsyncMoveDone.RVAL CP")
+    field(CALC, "A=1")
+    field(OCAL, "0")
+    field(DOPT, "Use OCAL")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)WaypointL:$(N):Busy PP")
 }
 
 record(bo, "$(P)WaypointL:$(N):moveL")
@@ -254,7 +267,10 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq1")
     field(LNK5, "$(P)Control:PosePitchCmd PP")
     field(DOL6, "$(P)WaypointL:$(N):Yaw")
     field(LNK6, "$(P)Control:PoseYawCmd PP")
-    
+
+    field(DOL7, "1")
+    field(LNK7, "$(P)WaypointL:$(N):Busy PP")
+
     field(FLNK, "$(P)WaypointL:$(N):moveL_seq2.PROC")
 }
 
@@ -263,7 +279,7 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq2")
     # Set to asynchronous motion
     field(DOL0, "1")
     field(LNK0, "$(P)Control:Asynchronous")
-    
+
     # set speed, accel, blend, gripper action
     field(DOL1, "$(P)WaypointL:$(N):Speed")
     field(LNK1, "$(P)Control:LinearSpeed PP")
@@ -275,7 +291,7 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq2")
     # field(LNK4, "$(P)Control:WaypointGripperAction PP")
     field(DOL4, "1")
     field(LNK4, "$(P)WaypointL:$(N):CopyActionLink.PROC")
-    
+
     # Do the move
     field(FLNK, "$(P)Control:waypoint_moveL.PROC")
 }

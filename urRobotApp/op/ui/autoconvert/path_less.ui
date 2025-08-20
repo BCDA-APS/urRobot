@@ -3348,16 +3348,16 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>125</y>
+                    <y>100</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
                 </color>
             </property>
             <property name="fillstyle">
@@ -3365,19 +3365,19 @@ caMenu{
             </property>
             <property name="lineColor">
                 <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
                 </color>
             </property>
             <property name="linestyle">
                 <enum>Solid</enum>
             </property>
             <property name="visibility">
-                <enum>caGraphics::IfZero</enum>
+                <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)Path$(N):3:Reached</string>
+                <string>$(P)Path$(N):2:Busy</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caGraphics_5">
@@ -3394,6 +3394,45 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):3:Reached</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_6">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>125</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
                     <red>0</red>
                     <green>216</green>
                     <blue>0</blue>
@@ -3419,45 +3458,6 @@ caMenu{
                 <string>$(P)Path$(N):3:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_6">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>80</x>
-                    <y>150</y>
-                    <width>20</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="fillstyle">
-                <enum>Filled</enum>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-            <property name="visibility">
-                <enum>caGraphics::IfZero</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N):4:Reached</string>
-            </property>
-        </widget>
         <widget class="caGraphics" name="caGraphics_7">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
@@ -3465,16 +3465,16 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>150</y>
+                    <y>125</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>0</red>
-                    <green>216</green>
-                    <blue>0</blue>
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
                 </color>
             </property>
             <property name="fillstyle">
@@ -3482,9 +3482,9 @@ caMenu{
             </property>
             <property name="lineColor">
                 <color alpha="255">
-                    <red>0</red>
-                    <green>216</green>
-                    <blue>0</blue>
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
                 </color>
             </property>
             <property name="linestyle">
@@ -3494,7 +3494,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)Path$(N):4:Reached</string>
+                <string>$(P)Path$(N):3:Busy</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caGraphics_8">
@@ -3504,7 +3504,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>175</y>
+                    <y>150</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3533,7 +3533,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)Path$(N):5:Reached</string>
+                <string>$(P)Path$(N):4:Reached</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caGraphics_9">
@@ -3543,6 +3543,123 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
+                    <y>150</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):4:Reached</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_10">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>150</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):4:Busy</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_11">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>175</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):5:Reached</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_12">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
                     <y>175</y>
                     <width>20</width>
                     <height>20</height>
@@ -3575,123 +3692,6 @@ caMenu{
                 <string>$(P)Path$(N):5:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_10">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>80</x>
-                    <y>200</y>
-                    <width>20</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="fillstyle">
-                <enum>Filled</enum>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-            <property name="visibility">
-                <enum>caGraphics::IfZero</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N):6:Reached</string>
-            </property>
-        </widget>
-        <widget class="caGraphics" name="caGraphics_11">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>80</x>
-                    <y>200</y>
-                    <width>20</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>216</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="fillstyle">
-                <enum>Filled</enum>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>216</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-            <property name="visibility">
-                <enum>caGraphics::IfNotZero</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N):6:Reached</string>
-            </property>
-        </widget>
-        <widget class="caGraphics" name="caGraphics_12">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>80</x>
-                    <y>225</y>
-                    <width>20</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="fillstyle">
-                <enum>Filled</enum>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-            <property name="visibility">
-                <enum>caGraphics::IfZero</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N):7:Reached</string>
-            </property>
-        </widget>
         <widget class="caGraphics" name="caGraphics_13">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
@@ -3699,16 +3699,16 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>225</y>
+                    <y>175</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>0</red>
-                    <green>216</green>
-                    <blue>0</blue>
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
                 </color>
             </property>
             <property name="fillstyle">
@@ -3716,9 +3716,9 @@ caMenu{
             </property>
             <property name="lineColor">
                 <color alpha="255">
-                    <red>0</red>
-                    <green>216</green>
-                    <blue>0</blue>
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
                 </color>
             </property>
             <property name="linestyle">
@@ -3728,7 +3728,7 @@ caMenu{
                 <enum>caGraphics::IfNotZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)Path$(N):7:Reached</string>
+                <string>$(P)Path$(N):5:Busy</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caGraphics_14">
@@ -3738,7 +3738,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>250</y>
+                    <y>200</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3767,7 +3767,7 @@ caMenu{
                 <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)Path$(N):8:Reached</string>
+                <string>$(P)Path$(N):6:Reached</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caGraphics_15">
@@ -3777,6 +3777,240 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
+                    <y>200</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):6:Reached</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_16">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>200</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):6:Busy</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_17">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>225</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):7:Reached</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_18">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>225</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>216</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):7:Reached</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_19">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>225</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):7:Busy</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_20">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>250</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):8:Reached</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_21">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
                     <y>250</y>
                     <width>20</width>
                     <height>20</height>
@@ -3809,7 +4043,46 @@ caMenu{
                 <string>$(P)Path$(N):8:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_16">
+        <widget class="caGraphics" name="caGraphics_22">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>250</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):8:Busy</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_23">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -3848,7 +4121,7 @@ caMenu{
                 <string>$(P)Path$(N):9:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_17">
+        <widget class="caGraphics" name="caGraphics_24">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -3887,7 +4160,46 @@ caMenu{
                 <string>$(P)Path$(N):9:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_18">
+        <widget class="caGraphics" name="caGraphics_25">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>275</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):9:Busy</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_26">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -3926,7 +4238,7 @@ caMenu{
                 <string>$(P)Path$(N):10:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_19">
+        <widget class="caGraphics" name="caGraphics_27">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -3965,7 +4277,46 @@ caMenu{
                 <string>$(P)Path$(N):10:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_20">
+        <widget class="caGraphics" name="caGraphics_28">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>300</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):10:Busy</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_29">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -4004,7 +4355,7 @@ caMenu{
                 <string>$(P)Path$(N):1:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_21">
+        <widget class="caGraphics" name="caGraphics_30">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -4041,6 +4392,45 @@ caMenu{
             </property>
             <property name="channel">
                 <string>$(P)Path$(N):1:Reached</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_31">
+            <property name="form">
+                <enum>caGraphics::Circle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>80</x>
+                    <y>75</y>
+                    <width>20</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>249</red>
+                    <green>218</green>
+                    <blue>60</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N):1:Busy</string>
             </property>
         </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_0">
@@ -4844,6 +5234,16 @@ caMenu{
         <zorder>caGraphics_19</zorder>
         <zorder>caGraphics_20</zorder>
         <zorder>caGraphics_21</zorder>
+        <zorder>caGraphics_22</zorder>
+        <zorder>caGraphics_23</zorder>
+        <zorder>caGraphics_24</zorder>
+        <zorder>caGraphics_25</zorder>
+        <zorder>caGraphics_26</zorder>
+        <zorder>caGraphics_27</zorder>
+        <zorder>caGraphics_28</zorder>
+        <zorder>caGraphics_29</zorder>
+        <zorder>caGraphics_30</zorder>
+        <zorder>caGraphics_31</zorder>
         <zorder>caLabel_26</zorder>
         <zorder>caChoice_0</zorder>
         <zorder>caMenu_0</zorder>

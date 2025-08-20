@@ -69,16 +69,21 @@ It also has a button to enable/disable teach (freedrive) mode.
 
 <img src="./assets/GUIs/ui/urRobot_control.png" alt="ui-control" width="600">
 
-Although the GUI may look similar to typical EPICS motor screens, the robot's joint are *not* true EPICS motors.
-The first thing to note is the "RESET" buttons, which write to the `$(P)Control:ResetJCmd` and `$(P)Control:ResetPoseCmd`
-PVs respectively. When these PVs process they store the current measured values in the commanded values, similiar to
-EPICS motor record behaivor after motion completes. Before tweaking joint or TCP values, clicking RESET is a good idea.
+Although the default control GUI may look similar to typical EPICS motor screens, the robot's joint are *not* true EPICS motors.
+The x, y, z, roll, pitch, and yaw motors are virtual axes and moving them will move one or more joint motors. The joint motors
+themselves are independent of each other, however motion of any joint motor will affect the position of the tool. To reconcile
+this and reduce the likelyhood of accidentally commanding motion you didn't indend, every time motion completes, the command values
+are automatically set to the current readback values, similar to an EPICS motor record. Since many EPICS users are accustomed to
+the benefits of the motor record, a substitutions file is provided (urRobotApp/Db/ur_soft_motors.substitutions") which loads
+12 soft motor records for the 6 joints and 6 tool coordinates. Additionally a version f the control GUI is provided for the soft
+motors (urRobotApp/op/adl/ur_rtde_controlSM.adl).
 
 The "Go" toggles (which write to the `$(P)Control:AutoMoveJ` or `$(P)Control:AutoMoveL` PVs) are similar to the Go/Move
 options in the EPICS motor record. For example, to move Joint 1 to -75deg, if "Go" is set to "No" (`$(P)Control:AutoMoveJ`=0),
 then you must set Joint 1 to -75deg and click "Move" (`$(P)Control:moveJ`). If "Go" is set to "Yes" (`$(P)Control:AutoMoveJ`=1),
 the robot will begin moving as soon as the commanded values change, so typing -75 in the box for Joint 1 and clicking enter will
-start the robot moving. The same goes for the Cartesian moves.
+start the robot moving. The same goes for the Cartesian moves. Note that the "Move" buttons tell the robot to move to the current
+joint or cartesian configuration defined by all 6 of the respective target values (J1Cmd, J2cmd... or PoseXCmd, PoseYCmd...).
 
 
 ## Robotiq Gripper
@@ -138,8 +143,10 @@ load many waypoints in your IOC startup script with a subtitutions file (`urRobo
 then define them at runtime. `.req` files for autosave are provided in `urRobotApp/Db/`.
 Looking at the above Cartesian Waypoint display, from left to right on each line you have the following:
 - Waypoint number for quick reference (call it `$(N)`) which ranges from 1-10 in this example.
-- Enable(1)/Disable(0) toggle (`$(P)WaypointL:$(N):Enabled`)
-- Indicator for when the waypoint is reached (`$(P)WaypointL:$(N):Reached`)
+- Enable(ON)/Disable(OFF) toggle (`$(P)WaypointL:$(N):Enabled`)
+- Indicator for when the waypoint is reached (`$(P)WaypointL:$(N):Reached`=1) or when the robot is en-route to the waypoint
+(`$(P)WaypointL:$(N):Busy`=1). Green means the robot is at the waypoint, yellow means it is on the way to the waypoint,
+otherwise it will be gray.
 - "Set" button to save the current robot configuration to the waypoint (`$(P)WaypointL:$(N):Reset`)
 - Related display to view and edit the waypoint coordinates and dynamics.
 - A string description of the waypoint (`$(P)WaypointL:$(N)`)
@@ -229,8 +236,9 @@ joint 6 (wrist) +10deg, then -10deg back to where it started.
 ```python
 from epics import caget, caput
 
-PREFIX = "bcur:" # replace with your IOC prefix
+PREFIX = "MyPrefix:" # replace with your IOC prefix
 
+# quick hack to wait for motion to start and complete
 def wait_motion():
     '''block execution until commanded motion finishes'''
     while True:
@@ -244,16 +252,6 @@ def wait_motion():
 # when enabled, changing commanded values will automatically move
 # when disabled, you need to call moveJ to trigger the move
 caput(f"{PREFIX}Control:AutoMoveJ", 0)
-
-# Set commanded joint positions to current position
-caput(f"{PREFIX}Control:ResetJCmd", 1)
-# the above is the same as doing the following:
-#  caput(f"{PREFIX}Control:J1Cmd", joint_angles[0])
-#  caput(f"{PREFIX}Control:J2Cmd", joint_angles[1])
-#  caput(f"{PREFIX}Control:J3Cmd", joint_angles[2])
-#  caput(f"{PREFIX}Control:J4Cmd", joint_angles[3])
-#  caput(f"{PREFIX}Control:J5Cmd", joint_angles[4])
-#  caput(f"{PREFIX}Control:J6Cmd", joint_angles[5])
 
 # Move J6 +20deg
 print("Moving Joint 6 +10deg...")

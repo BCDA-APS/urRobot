@@ -70,7 +70,7 @@ controller, as well as the ability to adjust the speed slider.
 
 ### Waypoints
 Cartesian (linear in tool space) and joint space waypoints in can be defined using the provided `waypointJ.db`
-and `waypointL.db` databased. It is often most useful to load many waypoints using a substitutions file
+and `waypointL.db` databases. It is often most useful to load many waypoints using a substitutions file
 and configure the waypoints later at runtime. An example substitutions file can be found
 at `urRobotApp/iocsh/waypoints.substitutions`.
 
