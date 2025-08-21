@@ -29,14 +29,14 @@ bool URDashboard::try_connect() {
     return connected;
 }
 
-URDashboard::URDashboard(const char *asyn_port_name, const char *robot_ip)
+URDashboard::URDashboard(const char *asyn_port_name, const char *robot_ip, double poll_period)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask | asynInt32ArrayMask,
                      asynInt32Mask | asynFloat64Mask | asynOctetMask | asynInt32ArrayMask,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
                      0, 0),
-      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), poll_time_(DEFAULT_POLL_TIME) {
+      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), poll_period_(poll_period) {
 
     // create asyn parameters
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
@@ -102,7 +102,7 @@ void URDashboard::poll() {
 
         callParamCallbacks();
         unlock();
-        epicsThreadSleep(poll_time_);
+        epicsThreadSleep(poll_period_);
     }
 }
 
@@ -194,18 +194,19 @@ asynStatus URDashboard::writeOctet(asynUser *pasynUser, const char *value, size_
     return status;
 }
 // register function for iocsh
-extern "C" int URDashboardConfig(const char *asyn_port_name, const char *robot_ip) {
-    URDashboard *pURDashboard = new URDashboard(asyn_port_name, robot_ip);
+extern "C" int URDashboardConfig(const char *asyn_port_name, const char *robot_ip, double poll_period) {
+    URDashboard *pURDashboard = new URDashboard(asyn_port_name, robot_ip, poll_period);
     (void)pURDashboard;
     return (asynSuccess);
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
-static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
-static const iocshFuncDef urRobotFuncDef = {"URDashboardConfig", 2, urRobotArgs};
+static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
+static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
+static const iocshFuncDef urRobotFuncDef = {"URDashboardConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { URDashboardConfig(args[0].sval, args[1].sval); }
+static void urRobotCallFunc(const iocshArgBuf *args) { URDashboardConfig(args[0].sval, args[1].sval, args[2].dval); }
 
 void URDashboardRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 

@@ -60,7 +60,6 @@ static constexpr char TEACH_MODE_STRING[] = "TEACH_MODE";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
-static constexpr double POLL_PERIOD = 0.02; // 50Hz
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
@@ -68,7 +67,7 @@ enum class AsyncRunning : int {False, Cartesian, Joint};
 
 class RTDEControl : public asynPortDriver {
   public:
-    RTDEControl(const char *asyn_port_name, const char *robot_port_name);
+    RTDEControl(const char *asyn_port_name, const char *robot_port_name, double poll_period);
     virtual void poll(void);
     virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
@@ -79,6 +78,7 @@ class RTDEControl : public asynPortDriver {
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
 
     const std::string robot_ip_ = "0.0.0.0";
+    const double poll_period_ = 0.0;
     bool try_connect();
 
     // Commanded joint angles

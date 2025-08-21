@@ -40,7 +40,7 @@ bool RTDEReceive::try_connect() {
 static constexpr int NUM_JOINTS = 6;
 static constexpr int ASYN_ADDR = 0;
 
-RTDEReceive::RTDEReceive(const char *asyn_port_name, const char *robot_ip)
+RTDEReceive::RTDEReceive(const char *asyn_port_name, const char *robot_ip, const double poll_period)
     : asynPortDriver(
           asyn_port_name, MAX_CONTROLLERS,
           asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask | asynFloat64ArrayMask |
@@ -48,7 +48,7 @@ RTDEReceive::RTDEReceive(const char *asyn_port_name, const char *robot_ip)
           asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynInt32ArrayMask,
           ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
           0, 0),
-      rtde_receive_(nullptr), robot_ip_(robot_ip) {
+      rtde_receive_(nullptr), robot_ip_(robot_ip), poll_period_(poll_period) {
 
     createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
     createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
@@ -202,7 +202,7 @@ void RTDEReceive::poll() {
 
         callParamCallbacks();
         unlock();
-        epicsThreadSleep(POLL_PERIOD);
+        epicsThreadSleep(poll_period_);
     }
 }
 
@@ -250,18 +250,19 @@ skip:
 }
 
 // register function for iocsh
-extern "C" int RTDEReceiveConfig(const char *asyn_port_name, const char *robot_ip) {
-    RTDEReceive *pRTDEReceive = new RTDEReceive(asyn_port_name, robot_ip);
+extern "C" int RTDEReceiveConfig(const char *asyn_port_name, const char *robot_ip, double poll_period) {
+    RTDEReceive *pRTDEReceive = new RTDEReceive(asyn_port_name, robot_ip, poll_period);
     (void)pRTDEReceive;
     return (asynSuccess);
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
-static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
-static const iocshFuncDef urRobotFuncDef = {"RTDEReceiveConfig", 2, urRobotArgs};
+static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
+static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
+static const iocshFuncDef urRobotFuncDef = {"RTDEReceiveConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { RTDEReceiveConfig(args[0].sval, args[1].sval); }
+static void urRobotCallFunc(const iocshArgBuf *args) { RTDEReceiveConfig(args[0].sval, args[1].sval, args[2].dval); }
 
 void RTDEReceiveRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 

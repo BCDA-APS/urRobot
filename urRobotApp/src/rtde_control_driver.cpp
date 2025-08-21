@@ -77,7 +77,7 @@ static void poll_thread_C(void *pPvt) {
     pRTDEControl->poll();
 }
 
-RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
+RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip, double poll_period)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
                          asynFloat64ArrayMask | asynInt32ArrayMask,
@@ -86,7 +86,7 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK,
                      1, // ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1
                      0, 0),
-      rtde_control_(nullptr), rtde_receive_(nullptr), robot_ip_(robot_ip) {
+      rtde_control_(nullptr), rtde_receive_(nullptr), robot_ip_(robot_ip), poll_period_(poll_period) {
 
     createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
     createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
@@ -134,7 +134,7 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip)
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
-    
+
     // tries connecting to the control and receive servers on the robot controller
     try_connect();
 
@@ -237,7 +237,7 @@ void RTDEControl::poll() {
 
         callParamCallbacks();
         unlock();
-        epicsThreadSleep(POLL_PERIOD);
+        epicsThreadSleep(poll_period_);
     }
 }
 
@@ -255,7 +255,7 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         {poseXCmdIndex_, 0},    {poseYCmdIndex_, 1},     {poseZCmdIndex_, 2},
         {poseRollCmdIndex_, 3}, {posePitchCmdIndex_, 4}, {poseYawCmdIndex_, 5},
     };
-    
+
     static std::map<int, int> tcp_offset_map = {
         {tcpOffsetXIndex_, 0},    {tcpOffsetYIndex_, 1},     {tcpOffsetZIndex_, 2},
         {tcpOffsetRollIndex_, 3}, {tcpOffsetPitchIndex_, 4}, {tcpOffsetYawIndex_, 5},
@@ -497,18 +497,19 @@ skip:
 }
 
 // register function for iocsh
-extern "C" int RTDEControlConfig(const char *asyn_port_name, const char *robot_ip) {
-    RTDEControl *pRTDEControl = new RTDEControl(asyn_port_name, robot_ip);
+extern "C" int RTDEControlConfig(const char *asyn_port_name, const char *robot_ip, double poll_period) {
+    RTDEControl *pRTDEControl = new RTDEControl(asyn_port_name, robot_ip, poll_period);
     (void)pRTDEControl;
     return (asynSuccess);
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
-static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
-static const iocshFuncDef urRobotFuncDef = {"RTDEControlConfig", 2, urRobotArgs};
+static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
+static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
+static const iocshFuncDef urRobotFuncDef = {"RTDEControlConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { RTDEControlConfig(args[0].sval, args[1].sval); }
+static void urRobotCallFunc(const iocshArgBuf *args) { RTDEControlConfig(args[0].sval, args[1].sval, args[2].dval); }
 
 void RTDEControlRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 

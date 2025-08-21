@@ -33,12 +33,11 @@ static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
-static constexpr double POLL_PERIOD = 0.10; // seconds
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class RTDEInOut : public asynPortDriver {
   public:
-    RTDEInOut(const char *asyn_port_name, const char *robot_port_name);
+    RTDEInOut(const char *asyn_port_name, const char *robot_port_name, double poll_period);
     virtual void poll(void);
     virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
@@ -46,6 +45,7 @@ class RTDEInOut : public asynPortDriver {
   private:
     std::unique_ptr<ur_rtde::RTDEIOInterface> rtde_io_;
     const std::string robot_ip_ = "";
+    const double poll_period_ = 0.0;
     bool try_connect();
 
   protected:

@@ -31,7 +31,7 @@ bool RTDEInOut::try_connect() {
     return connected;
 }
 
-RTDEInOut::RTDEInOut(const char *asyn_port_name, const char *robot_ip)
+RTDEInOut::RTDEInOut(const char *asyn_port_name, const char *robot_ip, double poll_period)
     : asynPortDriver(
           asyn_port_name, MAX_CONTROLLERS,
           asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask | asynFloat64ArrayMask |
@@ -39,7 +39,7 @@ RTDEInOut::RTDEInOut(const char *asyn_port_name, const char *robot_ip)
           asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynInt32ArrayMask,
           ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
           0, 0),
-      rtde_io_(nullptr), robot_ip_(robot_ip) {
+      rtde_io_(nullptr), robot_ip_(robot_ip), poll_period_(poll_period) {
 
     // RTDE IO
     createParam(SPEED_SLIDER_STRING, asynParamFloat64, &speedSliderIndex_);
@@ -78,10 +78,9 @@ RTDEInOut::RTDEInOut(const char *asyn_port_name, const char *robot_ip)
 void RTDEInOut::poll() {
     while (true) {
         lock();
-
         callParamCallbacks();
         unlock();
-        epicsThreadSleep(POLL_PERIOD);
+        epicsThreadSleep(poll_period_);
     }
 }
 
@@ -214,18 +213,19 @@ asynStatus RTDEInOut::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 }
 
 // register function for iocsh
-extern "C" int RTDEInOutConfig(const char *asyn_port_name, const char *robot_ip) {
-    RTDEInOut *pRTDEInOut = new RTDEInOut(asyn_port_name, robot_ip);
+extern "C" int RTDEInOutConfig(const char *asyn_port_name, const char *robot_ip, double poll_period) {
+    RTDEInOut *pRTDEInOut = new RTDEInOut(asyn_port_name, robot_ip, poll_period);
     (void)pRTDEInOut;
     return (asynSuccess);
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
-static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
-static const iocshFuncDef urRobotFuncDef = {"RTDEInOutConfig", 2, urRobotArgs};
+static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
+static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
+static const iocshFuncDef urRobotFuncDef = {"RTDEInOutConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { RTDEInOutConfig(args[0].sval, args[1].sval); }
+static void urRobotCallFunc(const iocshArgBuf *args) { RTDEInOutConfig(args[0].sval, args[1].sval, args[2].dval); }
 
 void RTDEInOutRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 

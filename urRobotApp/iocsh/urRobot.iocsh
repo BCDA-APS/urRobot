@@ -5,16 +5,28 @@
 #-
 #- IP       	    	- IP address of the robot
 #-
+#- DASH_POLL    	- Optional: Polling period for dashboard interface
+#-	      	      	  Default: 0.1 sec
+#-
 #- DASH_INSTANCE    	- Optional: Name of asyn port to create for the UR Dashboard server
 #-	      	      	  Default: asyn_dash
 #-
-#- RTDE_RECV_INSTANCE   - Optional: Name of asyn port to create for the UR RTDE receive interface
+#- RECV_POLL    	- Optional: Polling period for RTDE Receive interface
+#-	      	      	  Default: 0.02 sec
+#-
+#- RECV_INSTANCE   	- Optional: Name of asyn port to create for the UR RTDE receive interface
 #-		      	  Default: asyn_rtde_recv
 #-
-#- RTDE_IO_INSTANCE   	- Optional: Name of asyn port to create for the UR RTDE I/O interface
+#- IO_POLL    		- Optional: Polling period for RTDE I/O interface
+#-	      	      	  Default: 0.1 sec
+#-
+#- IO_INSTANCE   	- Optional: Name of asyn port to create for the UR RTDE I/O interface
 #-		      	  Default: asyn_rtde_io
 #-
-#- RTDE_CTRL_INSTANCE   - Optional: Name of asyn port to create for the UR RTDE control interface
+#- CTRL_POLL    	- Optional: Polling period for RTDE Control interface
+#-	      	      	  Default: 0.02 sec
+#-
+#- CTRL_INSTANCE   	- Optional: Name of asyn port to create for the UR RTDE control interface
 #-		      	  Default: asyn_rtde_ctrl
 #-
 #- GRIPPER_INSTANCE   	- Optional: Name of asyn port to create for the UR Gripper
@@ -22,25 +34,25 @@
 #- ###################################################
 
 # Set up UR Dashboard server
-URDashboardConfig("$(DASH_INSTANCE=asyn_dash)", "$(IP)")
+URDashboardConfig("$(DASH_INSTANCE=asyn_dash)", "$(IP)", "$(DASH_POLL=0.1)")
 dbLoadRecords("$(URROBOT)/db/dashboard.db", "P=$(PREFIX), PORT=$(DASH_INSTANCE=asyn_dash), ADDR=0")
 
 # Set up UR RTDE Receive interface
-RTDEReceiveConfig("$(RTDE_RECV_INSTANCE=asyn_rtde_recv)", "$(IP)")
-dbLoadRecords("$(URROBOT)/db/rtde_receive.db", "P=$(PREFIX), PORT=$(RTDE_RECV_INSTANCE=asyn_rtde_recv), ADDR=0")
+RTDEReceiveConfig("$(RECV_INSTANCE=asyn_rtde_recv)", "$(IP)", "$(RECV_POLL=0.02)")
+dbLoadRecords("$(URROBOT)/db/rtde_receive.db", "P=$(PREFIX), PORT=$(RECV_INSTANCE=asyn_rtde_recv), ADDR=0")
 
 # Set up UR RTDE I/O interface
-RTDEInOutConfig("$(RTDE_IO_INSTANCE=asyn_rtde_io)", "$(IP)")
-dbLoadRecords("$(URROBOT)/db/rtde_io.db", "P=$(PREFIX), PORT=$(RTDE_IO_INSTANCE=asyn_rtde_io), ADDR=0")
+RTDEInOutConfig("$(IO_INSTANCE=asyn_rtde_io)", "$(IP)", "$(IO_POLL=0.1)")
+dbLoadRecords("$(URROBOT)/db/rtde_io.db", "P=$(PREFIX), PORT=$(IO_INSTANCE=asyn_rtde_io), ADDR=0")
 
 # Set up UR RTDE Control interface
-RTDEControlConfig("$(RTDE_CTRL_INSTANCE=asyn_rtde_ctrl)", "$(IP)")
-dbLoadRecords("$(URROBOT)/db/rtde_control.db", "P=$(PREFIX), PORT=$(RTDE_CTRL_INSTANCE=asyn_rtde_ctrl), ADDR=0")
+RTDEControlConfig("$(CTRL_INSTANCE=asyn_rtde_ctrl)", "$(IP)", "$(CTRL_POLL=0.02)")
+dbLoadRecords("$(URROBOT)/db/rtde_control.db", "P=$(PREFIX), PORT=$(CTRL_INSTANCE=asyn_rtde_ctrl), ADDR=0")
 
 # Set up Robotiq Gripper
 # Optionally can specify MIN_POS and MAX_POS which define the closed/open positions
 # and AUTO_ACTIVATE (YES/NO) which will activate the gripper if the robot is on after IOC init
-URGripperConfig("$(GRIPPER_INSTANCE=asyn_gripper)", "$(IP)")
+URGripperConfig("$(GRIPPER_INSTANCE=asyn_gripper)", "$(IP)", "$(GRIPPER_POLL=0.02)")
 dbLoadRecords("$(URROBOT)/db/robotiq_gripper.db", "P=$(PREFIX), MIN_POS=3, MAX_POS=248, AUTO_ACTIVATE=YES, PORT=$(GRIPPER_INSTANCE=asyn_gripper), ADDR=0")
 
 # Add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH for waypoint functionality

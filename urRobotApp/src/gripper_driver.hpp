@@ -30,12 +30,11 @@ static constexpr char IS_CALIBRATED_STRING[] = "IS_CALIBRATED";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
-static constexpr double POLL_PERIOD = 0.02; // 50Hz
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class URGripper : public asynPortDriver {
   public:
-    URGripper(const char *asyn_port_name, const char *robot_port_name);
+    URGripper(const char *asyn_port_name, const char *robot_port_name, double poll_period);
     virtual void poll(void);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
@@ -44,6 +43,7 @@ class URGripper : public asynPortDriver {
     std::unique_ptr<ur_rtde::RobotiqGripper> gripper_;
     std::unique_ptr<ur_rtde::DashboardClient> ur_dashboard_;
     const std::string robot_ip_ = "";
+    const double poll_period_ = 0.0;
     bool try_connect();
     bool robot_on_ = false;
 

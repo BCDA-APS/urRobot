@@ -37,7 +37,7 @@ static void poll_thread_C(void *pPvt) {
     pGripper->poll();
 }
 
-URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
+URGripper::URGripper(const char *asyn_port_name, const char *robot_ip, double poll_period)
     : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
                      asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
                          asynFloat64ArrayMask | asynInt32ArrayMask,
@@ -47,7 +47,7 @@ URGripper::URGripper(const char *asyn_port_name, const char *robot_ip)
                      1, // ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1
                      0, 0),
       gripper_(std::make_unique<ur_rtde::RobotiqGripper>(robot_ip)),
-      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), robot_ip_(robot_ip) {
+      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), robot_ip_(robot_ip), poll_period_(poll_period) {
 
     createParam(CONNECT_STRING, asynParamInt32, &connectIndex_);
     createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
@@ -133,7 +133,7 @@ void URGripper::poll() {
         }
         callParamCallbacks();
         unlock();
-        epicsThreadSleep(POLL_PERIOD);
+        epicsThreadSleep(poll_period_);
     }
 }
 
@@ -267,18 +267,19 @@ skip:
 }
 
 // register function for iocsh
-extern "C" int URGripperConfig(const char *asyn_port_name, const char *robot_ip) {
-    URGripper *pURGripper = new URGripper(asyn_port_name, robot_ip);
+extern "C" int URGripperConfig(const char *asyn_port_name, const char *robot_ip, double poll_period) {
+    URGripper *pURGripper = new URGripper(asyn_port_name, robot_ip, poll_period);
     (void)pURGripper;
     return (asynSuccess);
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
-static const iocshArg *const urRobotArgs[2] = {&urRobotArg0, &urRobotArg1};
-static const iocshFuncDef urRobotFuncDef = {"URGripperConfig", 2, urRobotArgs};
+static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
+static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
+static const iocshFuncDef urRobotFuncDef = {"URGripperConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { URGripperConfig(args[0].sval, args[1].sval); }
+static void urRobotCallFunc(const iocshArgBuf *args) { URGripperConfig(args[0].sval, args[1].sval, args[2].dval); }
 
 void URGripperRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 

@@ -45,18 +45,18 @@ static constexpr char ACTUAL_JOINT_VOLTAGES_STRING[] = "ACTUAL_JOINT_VOLTAGES";
 static constexpr char RUNTIME_STATE_STRING[] = "RUNTIME_STATE";
 
 constexpr int MAX_CONTROLLERS = 1;
-constexpr double POLL_PERIOD = 0.10; // seconds
 constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class RTDEReceive : public asynPortDriver {
   public:
-    RTDEReceive(const char *asyn_port_name, const char *robot_port_name);
+    RTDEReceive(const char *asyn_port_name, const char *robot_port_name, double poll_period);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     virtual void poll(void);
 
   private:
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
     const std::string robot_ip_ = "";
+    const double poll_period_ = 0.0;
     bool try_connect();
 
   protected:

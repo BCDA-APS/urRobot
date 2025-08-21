@@ -33,12 +33,11 @@ static constexpr char IS_PROGRAM_SAVED[] = "IS_PROGRAM_SAVED";
 static constexpr char IS_IN_REMOTE_CONTROL[] = "IS_IN_REMOTE_CONTROL";
 
 constexpr int MAX_CONTROLLERS = 1;
-constexpr double DEFAULT_POLL_TIME = 0.10; // seconds
 constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class URDashboard : public asynPortDriver {
   public:
-    URDashboard(const char *asyn_port_name, const char *robot_port_name);
+    URDashboard(const char *asyn_port_name, const char *robot_port_name, double poll_period);
     virtual void poll(void);
     virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
     virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars,
@@ -46,7 +45,7 @@ class URDashboard : public asynPortDriver {
 
   private:
     std::unique_ptr<ur_rtde::DashboardClient> ur_dashboard_;
-    double poll_time_;
+    double poll_period_;
     bool try_connect();
 
   protected:
