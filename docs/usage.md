@@ -75,7 +75,7 @@ themselves are independent of each other, however motion of any joint motor will
 this and reduce the likelyhood of accidentally commanding motion you didn't indend, every time motion completes, the command values
 are automatically set to the current readback values, similar to an EPICS motor record. Since many EPICS users are accustomed to
 the benefits of the motor record, a substitutions file is provided (urRobotApp/Db/ur_soft_motors.substitutions") which loads
-12 soft motor records for the 6 joints and 6 tool coordinates. Additionally a version f the control GUI is provided for the soft
+12 soft motor records for the 6 joints and 6 tool coordinates. Additionally a version of the control GUI is provided for the soft
 motors (urRobotApp/op/adl/ur_rtde_controlSM.adl).
 
 The "Go" toggles (which write to the `$(P)Control:AutoMoveJ` or `$(P)Control:AutoMoveL` PVs) are similar to the Go/Move
@@ -253,7 +253,7 @@ def wait_motion():
 # when disabled, you need to call moveJ to trigger the move
 caput(f"{PREFIX}Control:AutoMoveJ", 0)
 
-# Move J6 +20deg
+# Move J6 +10deg
 print("Moving Joint 6 +10deg...")
 joint_angles = caget(f"{PREFIX}Receive:ActualJointPositions")
 caput(f"{PREFIX}Control:J6Cmd", joint_angles[5]+10)
