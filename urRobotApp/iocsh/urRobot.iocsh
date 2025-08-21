@@ -29,6 +29,9 @@
 #- CTRL_INSTANCE   	- Optional: Name of asyn port to create for the UR RTDE control interface
 #-		      	  Default: asyn_rtde_ctrl
 #-
+#- GRIPPER_POLL    	- Optional: Polling period for gripper interface
+#-	      	      	  Default: 0.02 sec
+#-
 #- GRIPPER_INSTANCE   	- Optional: Name of asyn port to create for the UR Gripper
 #-		      	  Default: asyn_gripper
 #- ###################################################
