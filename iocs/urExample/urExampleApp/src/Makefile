@@ -38,6 +38,11 @@ ifdef MOTOR
   $(PROD_NAME)_LIBS := motor softMotor $($(PROD_NAME)_LIBS)
 endif
 
+ifdef BUSY
+  $(DBD_NAME)_DBD += busySupport.dbd
+  $(PROD_NAME)_LIBS := busy $($(PROD_NAME)_LIBS)
+endif
+
 # ifdef MOTOR
   # $(DBD_NAME)_DBD += motorSupport.dbd devAcsMotor.dbd devAerotech.dbd
   # $(DBD_NAME)_DBD += devAttocube.dbd devFaulhaberMotor.dbd devImsMotor.dbd
