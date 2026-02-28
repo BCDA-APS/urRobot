@@ -12,11 +12,10 @@ iocurExampleLinux_registerRecordDeviceDriver(pdbbase)
 scanOnceSetQueueSize(2000)
 
 # Load urRobot iocsh script with the IP address for your robot
-iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.1.100")
+iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "IP=164.54.1.100")
 
 # Optionally load support for waypoints and paths
-# dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX)")
-# dbLoadTemplate("paths.substitutions", "P=$(PREFIX)")
+# iocshLoad("$(URROBOT)/iocsh/paths.iocsh")
 
 # if you'd like to control the robot axes with soft motors:
 # dbLoadTemplate("$(URROBOT)/db/ur_soft_motor.substitutions", "P=$(PREFIX)")
