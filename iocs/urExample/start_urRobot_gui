@@ -1,0 +1,40 @@
+#!/bin/bash
+# A script to start the urRobot screens with either MEDM or caQtDM.
+
+# cd to this script's directory
+script_dir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
+cd "$script_dir" || exit
+
+# Define paths to display manager binaries
+CAQTDM=/APSshare/bin/caQtDM
+MEDM=/APSshare/epics/extensions/bin/linux-x86_64/medm
+
+# Display manager to use
+DM="${1:-caqtdm}"
+
+# Path to the URROBOT support module
+URROBOT_PATH=$(realpath "../../")
+
+# IOC prefix
+PREFIX="urExample:"
+
+# some screens are used from the calc module
+CALC=/APSshare/epics/synApps_6_3/support/calc-R3-7-5
+
+####################################################
+
+if [[ $DM == "caqtdm" ]]; then
+    export UI_DIR=${URROBOT_PATH}/urRobotApp/op/ui
+    export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${UI_DIR}
+    export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${UI_DIR}/autoconvert
+    export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${CALC}/calcApp/op/ui
+    export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${CALC}/calcApp/op/ui/autoconvert/
+    ${CAQTDM} -style plastique -noMsg -macro "P=${PREFIX}" "urRobot.ui" &
+elif [[ $DM == "medm" ]]; then
+    export ADL_DIR=${URROBOT_PATH}/urRobotApp/op/adl
+    export EPICS_DISPLAY_PATH=${ADL_DIR}
+    export EPICS_DISPLAY_PATH=${ADL_DIR}:${CALC}/calcApp/op/adl
+    ${MEDM} -macro "P=${PREFIX}" -x "urRobot.adl" &
+else
+    echo "Display manager must be either medm or caqtdm"
+fi

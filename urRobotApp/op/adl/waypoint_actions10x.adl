@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=375
-		y=567
-		width=325
-		height=220
+		x=322
+		y=770
+		width=230
+		height=240
 	}
 	clr=14
 	bclr=4
@@ -89,168 +89,24 @@ display {
 }
 "related display" {
 	object {
-		x=245
+		x=140
 		y=15
-		width=40
+		width=50
 		height=20
 	}
 	display[0] {
+		label="Action sequence"
+		name="yySseq.adl"
+		args="P=$(P),S=ActionSseq1"
+	}
+	display[1] {
+		label="Done calc"
 		name="userCalcOut.adl"
 		args="P=$(P),C=ActionDoneCalc1"
 	}
 	clr=0
 	bclr=63
-	label="-calc"
-}
-"text entry" {
-	object {
-		x=140
-		y=15
-		width=101
-		height=20
-	}
-	control {
-		chan="$(P)ActionLink1.FLNK"
-		clr=14
-		bclr=40
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=140
-		y=35
-		width=101
-		height=20
-	}
-	control {
-		chan="$(P)ActionLink2.FLNK"
-		clr=14
-		bclr=40
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=140
-		y=55
-		width=101
-		height=20
-	}
-	control {
-		chan="$(P)ActionLink3.FLNK"
-		clr=14
-		bclr=40
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=140
-		y=74
-		width=101
-		height=20
-	}
-	control {
-		chan="$(P)ActionLink4.FLNK"
-		clr=14
-		bclr=40
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=140
-		y=94
-		width=101
-		height=20
-	}
-	control {
-		chan="$(P)ActionLink5.FLNK"
-		clr=14
-		bclr=40
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=140
-		y=114
-		width=101
-		height=20
-	}
-	control {
-		chan="$(P)ActionLink6.FLNK"
-		clr=14
-		bclr=40
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=140
-		y=134
-		width=101
-		height=20
-	}
-	control {
-		chan="$(P)ActionLink7.FLNK"
-		clr=14
-		bclr=40
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=140
-		y=154
-		width=101
-		height=20
-	}
-	control {
-		chan="$(P)ActionLink8.FLNK"
-		clr=14
-		bclr=40
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=140
-		y=174
-		width=101
-		height=20
-	}
-	control {
-		chan="$(P)ActionLink9.FLNK"
-		clr=14
-		bclr=40
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=140
-		y=193
-		width=101
-		height=20
-	}
-	control {
-		chan="$(P)ActionLink10.FLNK"
-		clr=14
-		bclr=40
-	}
-	limits {
-	}
+	label="-config"
 }
 "text entry" {
 	object {
@@ -404,138 +260,192 @@ display {
 }
 "related display" {
 	object {
-		x=245
+		x=140
 		y=35
-		width=40
+		width=50
 		height=20
 	}
 	display[0] {
+		label="Action sequence"
+		name="yySseq.adl"
+		args="P=$(P),S=ActionSseq2"
+	}
+	display[1] {
+		label="Done calc"
 		name="userCalcOut.adl"
 		args="P=$(P),C=ActionDoneCalc2"
 	}
 	clr=0
 	bclr=63
-	label="-calc"
+	label="-config"
 }
 "related display" {
 	object {
-		x=245
+		x=140
 		y=55
-		width=40
+		width=50
 		height=20
 	}
 	display[0] {
+		label="Action sequence"
+		name="yySseq.adl"
+		args="P=$(P),S=ActionSseq3"
+	}
+	display[1] {
+		label="Done calc"
 		name="userCalcOut.adl"
 		args="P=$(P),C=ActionDoneCalc3"
 	}
 	clr=0
 	bclr=63
-	label="-calc"
+	label="-config"
 }
 "related display" {
 	object {
-		x=245
-		y=74
-		width=40
+		x=140
+		y=75
+		width=50
 		height=20
 	}
 	display[0] {
+		label="Action sequence"
+		name="yySseq.adl"
+		args="P=$(P),S=ActionSseq4"
+	}
+	display[1] {
+		label="Done calc"
 		name="userCalcOut.adl"
 		args="P=$(P),C=ActionDoneCalc4"
 	}
 	clr=0
 	bclr=63
-	label="-calc"
+	label="-config"
 }
 "related display" {
 	object {
-		x=245
-		y=94
-		width=40
+		x=140
+		y=95
+		width=50
 		height=20
 	}
 	display[0] {
+		label="Action sequence"
+		name="yySseq.adl"
+		args="P=$(P),S=ActionSseq5"
+	}
+	display[1] {
+		label="Done calc"
 		name="userCalcOut.adl"
 		args="P=$(P),C=ActionDoneCalc5"
 	}
 	clr=0
 	bclr=63
-	label="-calc"
+	label="-config"
 }
 "related display" {
 	object {
-		x=245
-		y=114
-		width=40
+		x=140
+		y=115
+		width=50
 		height=20
 	}
 	display[0] {
+		label="Action sequence"
+		name="yySseq.adl"
+		args="P=$(P),S=ActionSseq6"
+	}
+	display[1] {
+		label="Done calc"
 		name="userCalcOut.adl"
 		args="P=$(P),C=ActionDoneCalc6"
 	}
 	clr=0
 	bclr=63
-	label="-calc"
+	label="-config"
 }
 "related display" {
 	object {
-		x=245
-		y=134
-		width=40
+		x=140
+		y=135
+		width=50
 		height=20
 	}
 	display[0] {
+		label="Action sequence"
+		name="yySseq.adl"
+		args="P=$(P),S=ActionSseq7"
+	}
+	display[1] {
+		label="Done calc"
 		name="userCalcOut.adl"
 		args="P=$(P),C=ActionDoneCalc7"
 	}
 	clr=0
 	bclr=63
-	label="-calc"
+	label="-config"
 }
 "related display" {
 	object {
-		x=245
-		y=154
-		width=40
+		x=140
+		y=155
+		width=50
 		height=20
 	}
 	display[0] {
+		label="Action sequence"
+		name="yySseq.adl"
+		args="P=$(P),S=ActionSseq8"
+	}
+	display[1] {
+		label="Done calc"
 		name="userCalcOut.adl"
 		args="P=$(P),C=ActionDoneCalc8"
 	}
 	clr=0
 	bclr=63
-	label="-calc"
+	label="-config"
 }
 "related display" {
 	object {
-		x=245
-		y=174
-		width=40
+		x=140
+		y=175
+		width=50
 		height=20
 	}
 	display[0] {
+		label="Action sequence"
+		name="yySseq.adl"
+		args="P=$(P),S=ActionSseq9"
+	}
+	display[1] {
+		label="Done calc"
 		name="userCalcOut.adl"
 		args="P=$(P),C=ActionDoneCalc9"
 	}
 	clr=0
 	bclr=63
-	label="-calc"
+	label="-config"
 }
 "related display" {
 	object {
-		x=245
-		y=193
-		width=40
+		x=140
+		y=195
+		width=50
 		height=20
 	}
 	display[0] {
+		label="Action sequence"
+		name="yySseq.adl"
+		args="P=$(P),S=ActionSseq10"
+	}
+	display[1] {
+		label="Done calc"
 		name="userCalcOut.adl"
 		args="P=$(P),C=ActionDoneCalc10"
 	}
 	clr=0
 	bclr=63
-	label="-calc"
+	label="-config"
 }
 text {
 	object {
@@ -680,22 +590,9 @@ text {
 	textix="Description"
 	align="horiz. centered"
 }
-text {
-	object {
-		x=140
-		y=5
-		width=100
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Action Link"
-	align="horiz. centered"
-}
 "message button" {
 	object {
-		x=290
+		x=195
 		y=15
 		width=30
 		height=20
@@ -710,7 +607,7 @@ text {
 }
 "message button" {
 	object {
-		x=290
+		x=195
 		y=35
 		width=30
 		height=20
@@ -725,7 +622,7 @@ text {
 }
 "message button" {
 	object {
-		x=290
+		x=195
 		y=55
 		width=30
 		height=20
@@ -740,7 +637,7 @@ text {
 }
 "message button" {
 	object {
-		x=290
+		x=195
 		y=75
 		width=30
 		height=20
@@ -755,7 +652,7 @@ text {
 }
 "message button" {
 	object {
-		x=290
+		x=195
 		y=95
 		width=30
 		height=20
@@ -770,7 +667,7 @@ text {
 }
 "message button" {
 	object {
-		x=290
+		x=195
 		y=115
 		width=30
 		height=20
@@ -785,7 +682,7 @@ text {
 }
 "message button" {
 	object {
-		x=290
+		x=195
 		y=135
 		width=30
 		height=20
@@ -800,7 +697,7 @@ text {
 }
 "message button" {
 	object {
-		x=290
+		x=195
 		y=155
 		width=30
 		height=20
@@ -815,7 +712,7 @@ text {
 }
 "message button" {
 	object {
-		x=290
+		x=195
 		y=175
 		width=30
 		height=20
@@ -830,7 +727,7 @@ text {
 }
 "message button" {
 	object {
-		x=290
+		x=195
 		y=195
 		width=30
 		height=20
@@ -842,4 +739,20 @@ text {
 	}
 	label="Run"
 	release_msg="1"
+}
+"related display" {
+	object {
+		x=140
+		y=215
+		width=85
+		height=20
+	}
+	display[0] {
+		label="editSseq"
+		name="editSseq.adl"
+		args="P=$(P),Q=ActionES:"
+	}
+	clr=0
+	bclr=17
+	label="-editSeq"
 }

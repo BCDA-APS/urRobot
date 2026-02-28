@@ -4,10 +4,10 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>375</x>
-            <y>567</y>
-            <width>325</width>
-            <height>220</height>
+            <x>322</x>
+            <y>770</y>
+            <width>230</width>
+            <height>240</height>
         </rect>
     </property>
     <property name="styleSheet">
@@ -113,9 +113,9 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_0">
             <property name="geometry">
                 <rect>
-                    <x>245</x>
+                    <x>140</x>
                     <y>15</y>
-                    <width>40</width>
+                    <width>50</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -134,535 +134,25 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-calc</string>
+                <string>-config</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string></string>
+                <string>Action sequence;Done calc</string>
             </property>
             <property name="files">
-                <string>userCalcOut.adl</string>
+                <string>yySseq.adl;userCalcOut.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),C=ActionDoneCalc1</string>
+                <string>P=$(P),S=ActionSseq1;P=$(P),C=ActionDoneCalc1</string>
             </property>
             <property name="removeParent">
-                <string>false</string>
+                <string>false;false</string>
             </property>
         </widget>
         <widget class="caTextEntry" name="caTextEntry_0">
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>15</y>
-                    <width>101</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)ActionLink1.FLNK</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>164</red>
-                    <green>170</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-        </widget>
-        <widget class="caTextEntry" name="caTextEntry_1">
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>35</y>
-                    <width>101</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)ActionLink2.FLNK</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>164</red>
-                    <green>170</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-        </widget>
-        <widget class="caTextEntry" name="caTextEntry_2">
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>55</y>
-                    <width>101</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)ActionLink3.FLNK</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>164</red>
-                    <green>170</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-        </widget>
-        <widget class="caTextEntry" name="caTextEntry_3">
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>74</y>
-                    <width>101</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)ActionLink4.FLNK</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>164</red>
-                    <green>170</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-        </widget>
-        <widget class="caTextEntry" name="caTextEntry_4">
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>94</y>
-                    <width>101</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)ActionLink5.FLNK</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>164</red>
-                    <green>170</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-        </widget>
-        <widget class="caTextEntry" name="caTextEntry_5">
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>114</y>
-                    <width>101</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)ActionLink6.FLNK</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>164</red>
-                    <green>170</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-        </widget>
-        <widget class="caTextEntry" name="caTextEntry_6">
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>134</y>
-                    <width>101</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)ActionLink7.FLNK</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>164</red>
-                    <green>170</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-        </widget>
-        <widget class="caTextEntry" name="caTextEntry_7">
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>154</y>
-                    <width>101</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)ActionLink8.FLNK</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>164</red>
-                    <green>170</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-        </widget>
-        <widget class="caTextEntry" name="caTextEntry_8">
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>174</y>
-                    <width>101</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)ActionLink9.FLNK</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>164</red>
-                    <green>170</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-        </widget>
-        <widget class="caTextEntry" name="caTextEntry_9">
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>193</y>
-                    <width>101</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)ActionLink10.FLNK</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>164</red>
-                    <green>170</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-        </widget>
-        <widget class="caTextEntry" name="caTextEntry_10">
             <property name="geometry">
                 <rect>
                     <x>35</x>
@@ -713,7 +203,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caTextEntry" name="caTextEntry_11">
+        <widget class="caTextEntry" name="caTextEntry_1">
             <property name="geometry">
                 <rect>
                     <x>35</x>
@@ -764,7 +254,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caTextEntry" name="caTextEntry_12">
+        <widget class="caTextEntry" name="caTextEntry_2">
             <property name="geometry">
                 <rect>
                     <x>35</x>
@@ -815,7 +305,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caTextEntry" name="caTextEntry_13">
+        <widget class="caTextEntry" name="caTextEntry_3">
             <property name="geometry">
                 <rect>
                     <x>35</x>
@@ -866,7 +356,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caTextEntry" name="caTextEntry_14">
+        <widget class="caTextEntry" name="caTextEntry_4">
             <property name="geometry">
                 <rect>
                     <x>35</x>
@@ -917,7 +407,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caTextEntry" name="caTextEntry_15">
+        <widget class="caTextEntry" name="caTextEntry_5">
             <property name="geometry">
                 <rect>
                     <x>35</x>
@@ -968,7 +458,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caTextEntry" name="caTextEntry_16">
+        <widget class="caTextEntry" name="caTextEntry_6">
             <property name="geometry">
                 <rect>
                     <x>35</x>
@@ -1019,7 +509,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caTextEntry" name="caTextEntry_17">
+        <widget class="caTextEntry" name="caTextEntry_7">
             <property name="geometry">
                 <rect>
                     <x>35</x>
@@ -1070,7 +560,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caTextEntry" name="caTextEntry_18">
+        <widget class="caTextEntry" name="caTextEntry_8">
             <property name="geometry">
                 <rect>
                     <x>35</x>
@@ -1121,7 +611,7 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caTextEntry" name="caTextEntry_19">
+        <widget class="caTextEntry" name="caTextEntry_9">
             <property name="geometry">
                 <rect>
                     <x>35</x>
@@ -1175,9 +665,9 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_1">
             <property name="geometry">
                 <rect>
-                    <x>245</x>
+                    <x>140</x>
                     <y>35</y>
-                    <width>40</width>
+                    <width>50</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1196,30 +686,30 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-calc</string>
+                <string>-config</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string></string>
+                <string>Action sequence;Done calc</string>
             </property>
             <property name="files">
-                <string>userCalcOut.adl</string>
+                <string>yySseq.adl;userCalcOut.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),C=ActionDoneCalc2</string>
+                <string>P=$(P),S=ActionSseq2;P=$(P),C=ActionDoneCalc2</string>
             </property>
             <property name="removeParent">
-                <string>false</string>
+                <string>false;false</string>
             </property>
         </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_2">
             <property name="geometry">
                 <rect>
-                    <x>245</x>
+                    <x>140</x>
                     <y>55</y>
-                    <width>40</width>
+                    <width>50</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1238,30 +728,30 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-calc</string>
+                <string>-config</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string></string>
+                <string>Action sequence;Done calc</string>
             </property>
             <property name="files">
-                <string>userCalcOut.adl</string>
+                <string>yySseq.adl;userCalcOut.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),C=ActionDoneCalc3</string>
+                <string>P=$(P),S=ActionSseq3;P=$(P),C=ActionDoneCalc3</string>
             </property>
             <property name="removeParent">
-                <string>false</string>
+                <string>false;false</string>
             </property>
         </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_3">
             <property name="geometry">
                 <rect>
-                    <x>245</x>
-                    <y>74</y>
-                    <width>40</width>
+                    <x>140</x>
+                    <y>75</y>
+                    <width>50</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1280,30 +770,30 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-calc</string>
+                <string>-config</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string></string>
+                <string>Action sequence;Done calc</string>
             </property>
             <property name="files">
-                <string>userCalcOut.adl</string>
+                <string>yySseq.adl;userCalcOut.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),C=ActionDoneCalc4</string>
+                <string>P=$(P),S=ActionSseq4;P=$(P),C=ActionDoneCalc4</string>
             </property>
             <property name="removeParent">
-                <string>false</string>
+                <string>false;false</string>
             </property>
         </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_4">
             <property name="geometry">
                 <rect>
-                    <x>245</x>
-                    <y>94</y>
-                    <width>40</width>
+                    <x>140</x>
+                    <y>95</y>
+                    <width>50</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1322,30 +812,30 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-calc</string>
+                <string>-config</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string></string>
+                <string>Action sequence;Done calc</string>
             </property>
             <property name="files">
-                <string>userCalcOut.adl</string>
+                <string>yySseq.adl;userCalcOut.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),C=ActionDoneCalc5</string>
+                <string>P=$(P),S=ActionSseq5;P=$(P),C=ActionDoneCalc5</string>
             </property>
             <property name="removeParent">
-                <string>false</string>
+                <string>false;false</string>
             </property>
         </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_5">
             <property name="geometry">
                 <rect>
-                    <x>245</x>
-                    <y>114</y>
-                    <width>40</width>
+                    <x>140</x>
+                    <y>115</y>
+                    <width>50</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1364,30 +854,30 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-calc</string>
+                <string>-config</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string></string>
+                <string>Action sequence;Done calc</string>
             </property>
             <property name="files">
-                <string>userCalcOut.adl</string>
+                <string>yySseq.adl;userCalcOut.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),C=ActionDoneCalc6</string>
+                <string>P=$(P),S=ActionSseq6;P=$(P),C=ActionDoneCalc6</string>
             </property>
             <property name="removeParent">
-                <string>false</string>
+                <string>false;false</string>
             </property>
         </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_6">
             <property name="geometry">
                 <rect>
-                    <x>245</x>
-                    <y>134</y>
-                    <width>40</width>
+                    <x>140</x>
+                    <y>135</y>
+                    <width>50</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1406,30 +896,30 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-calc</string>
+                <string>-config</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string></string>
+                <string>Action sequence;Done calc</string>
             </property>
             <property name="files">
-                <string>userCalcOut.adl</string>
+                <string>yySseq.adl;userCalcOut.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),C=ActionDoneCalc7</string>
+                <string>P=$(P),S=ActionSseq7;P=$(P),C=ActionDoneCalc7</string>
             </property>
             <property name="removeParent">
-                <string>false</string>
+                <string>false;false</string>
             </property>
         </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_7">
             <property name="geometry">
                 <rect>
-                    <x>245</x>
-                    <y>154</y>
-                    <width>40</width>
+                    <x>140</x>
+                    <y>155</y>
+                    <width>50</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1448,30 +938,30 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-calc</string>
+                <string>-config</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string></string>
+                <string>Action sequence;Done calc</string>
             </property>
             <property name="files">
-                <string>userCalcOut.adl</string>
+                <string>yySseq.adl;userCalcOut.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),C=ActionDoneCalc8</string>
+                <string>P=$(P),S=ActionSseq8;P=$(P),C=ActionDoneCalc8</string>
             </property>
             <property name="removeParent">
-                <string>false</string>
+                <string>false;false</string>
             </property>
         </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_8">
             <property name="geometry">
                 <rect>
-                    <x>245</x>
-                    <y>174</y>
-                    <width>40</width>
+                    <x>140</x>
+                    <y>175</y>
+                    <width>50</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1490,30 +980,30 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-calc</string>
+                <string>-config</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string></string>
+                <string>Action sequence;Done calc</string>
             </property>
             <property name="files">
-                <string>userCalcOut.adl</string>
+                <string>yySseq.adl;userCalcOut.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),C=ActionDoneCalc9</string>
+                <string>P=$(P),S=ActionSseq9;P=$(P),C=ActionDoneCalc9</string>
             </property>
             <property name="removeParent">
-                <string>false</string>
+                <string>false;false</string>
             </property>
         </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_9">
             <property name="geometry">
                 <rect>
-                    <x>245</x>
-                    <y>193</y>
-                    <width>40</width>
+                    <x>140</x>
+                    <y>195</y>
+                    <width>50</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1532,22 +1022,22 @@ caMenu{
                 </color>
             </property>
             <property name="label">
-                <string>-calc</string>
+                <string>-config</string>
             </property>
             <property name="stackingMode">
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string></string>
+                <string>Action sequence;Done calc</string>
             </property>
             <property name="files">
-                <string>userCalcOut.adl</string>
+                <string>yySseq.adl;userCalcOut.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),C=ActionDoneCalc10</string>
+                <string>P=$(P),S=ActionSseq10;P=$(P),C=ActionDoneCalc10</string>
             </property>
             <property name="removeParent">
-                <string>false</string>
+                <string>false;false</string>
             </property>
         </widget>
         <widget class="caLabel" name="caLabel_0">
@@ -1946,46 +1436,10 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_11">
-            <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="text">
-                <string>Action Link</string>
-            </property>
-            <property name="fontScaleMode">
-                <enum>ESimpleLabel::WidthAndHeight</enum>
-            </property>
-            <property name="alignment">
-                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>5</y>
-                    <width>100</width>
-                    <height>10</height>
-                </rect>
-            </property>
-        </widget>
         <widget class="caMessageButton" name="caMessageButton_0">
             <property name="geometry">
                 <rect>
-                    <x>290</x>
+                    <x>195</x>
                     <y>15</y>
                     <width>30</width>
                     <height>20</height>
@@ -2024,7 +1478,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_1">
             <property name="geometry">
                 <rect>
-                    <x>290</x>
+                    <x>195</x>
                     <y>35</y>
                     <width>30</width>
                     <height>20</height>
@@ -2063,7 +1517,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_2">
             <property name="geometry">
                 <rect>
-                    <x>290</x>
+                    <x>195</x>
                     <y>55</y>
                     <width>30</width>
                     <height>20</height>
@@ -2102,7 +1556,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_3">
             <property name="geometry">
                 <rect>
-                    <x>290</x>
+                    <x>195</x>
                     <y>75</y>
                     <width>30</width>
                     <height>20</height>
@@ -2141,7 +1595,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_4">
             <property name="geometry">
                 <rect>
-                    <x>290</x>
+                    <x>195</x>
                     <y>95</y>
                     <width>30</width>
                     <height>20</height>
@@ -2180,7 +1634,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_5">
             <property name="geometry">
                 <rect>
-                    <x>290</x>
+                    <x>195</x>
                     <y>115</y>
                     <width>30</width>
                     <height>20</height>
@@ -2219,7 +1673,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_6">
             <property name="geometry">
                 <rect>
-                    <x>290</x>
+                    <x>195</x>
                     <y>135</y>
                     <width>30</width>
                     <height>20</height>
@@ -2258,7 +1712,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_7">
             <property name="geometry">
                 <rect>
-                    <x>290</x>
+                    <x>195</x>
                     <y>155</y>
                     <width>30</width>
                     <height>20</height>
@@ -2297,7 +1751,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_8">
             <property name="geometry">
                 <rect>
-                    <x>290</x>
+                    <x>195</x>
                     <y>175</y>
                     <width>30</width>
                     <height>20</height>
@@ -2336,7 +1790,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_9">
             <property name="geometry">
                 <rect>
-                    <x>290</x>
+                    <x>195</x>
                     <y>195</y>
                     <width>30</width>
                     <height>20</height>
@@ -2372,6 +1826,48 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_10">
+            <property name="geometry">
+                <rect>
+                    <x>140</x>
+                    <y>215</y>
+                    <width>85</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>51</red>
+                    <green>153</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="label">
+                <string>-editSeq</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Menu</enum>
+            </property>
+            <property name="labels">
+                <string>editSseq</string>
+            </property>
+            <property name="files">
+                <string>editSseq.adl</string>
+            </property>
+            <property name="args">
+                <string>P=$(P),Q=ActionES:</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+        </widget>
         <zorder>caLabel_0</zorder>
         <zorder>caLabel_1</zorder>
         <zorder>caLabel_2</zorder>
@@ -2383,7 +1879,6 @@ caMenu{
         <zorder>caLabel_8</zorder>
         <zorder>caLabel_9</zorder>
         <zorder>caLabel_10</zorder>
-        <zorder>caLabel_11</zorder>
         <zorder>caRelatedDisplay_0</zorder>
         <zorder>caTextEntry_0</zorder>
         <zorder>caTextEntry_1</zorder>
@@ -2395,16 +1890,6 @@ caMenu{
         <zorder>caTextEntry_7</zorder>
         <zorder>caTextEntry_8</zorder>
         <zorder>caTextEntry_9</zorder>
-        <zorder>caTextEntry_10</zorder>
-        <zorder>caTextEntry_11</zorder>
-        <zorder>caTextEntry_12</zorder>
-        <zorder>caTextEntry_13</zorder>
-        <zorder>caTextEntry_14</zorder>
-        <zorder>caTextEntry_15</zorder>
-        <zorder>caTextEntry_16</zorder>
-        <zorder>caTextEntry_17</zorder>
-        <zorder>caTextEntry_18</zorder>
-        <zorder>caTextEntry_19</zorder>
         <zorder>caRelatedDisplay_1</zorder>
         <zorder>caRelatedDisplay_2</zorder>
         <zorder>caRelatedDisplay_3</zorder>
@@ -2424,6 +1909,7 @@ caMenu{
         <zorder>caMessageButton_7</zorder>
         <zorder>caMessageButton_8</zorder>
         <zorder>caMessageButton_9</zorder>
+        <zorder>caRelatedDisplay_10</zorder>
     </widget>
 </widget>
 </ui>

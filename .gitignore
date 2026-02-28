@@ -23,6 +23,7 @@ compile_commands.json
 .cache/
 *.local
 .loglogin
+.iocsh-history*
 
 # Jekyll build artifacts
 _site/

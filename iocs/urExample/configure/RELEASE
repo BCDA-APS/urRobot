@@ -3,12 +3,16 @@
 # top directory each time this file is changed.
 ##############################################################################
 
-# include the urRobot support and its RELEASE file
 URROBOT = $(TOP)/../..
--include $(URROBOT)/configure/RELEASE.local
 
-# optionally include motor if you'd like to use soft motors
-MOTOR = /APSshare/epics/synApps_6_3/support/motor-R7-3-1
+# ASYN =
+# CALC =
+# LUA =
+# STD =
+# BUSY =
+
+# optionall include motor if you'd like to use softMotors
+# MOTOR =
 
 # These lines allow developers to override these RELEASE settings
 # without having to modify this file directly.

@@ -1,0 +1,20 @@
+#- ###################################################
+#- PREFIX      - IOC Prefix
+#-
+#- WP_SUBS     - Optional: Path to waypoints substitutions file
+#-               Default: $(URROBOT)/db/waypoints.substitutions
+#-
+#- PATH_SUBS   - Optional: Path to paths substitutions file
+#-               Default: $(URROBOT)/db/paths.substitutions
+#- ###################################################
+
+# Load waypoint and path databases
+dbLoadTemplate("$(WP_SUBS=$(URROBOT)/db/waypoints.substitutions)", "P=$(PREFIX)")
+dbLoadTemplate("$(PATH_SUBS=$(URROBOT)/db/paths.substitutions)", "P=$(PREFIX)")
+
+# Functionality to edit sseq records for actions
+dbLoadRecords("$(CALC)/db/editSseq.db", "P=$(PREFIX),Q=ActionES:")
+doAfterIocInit("seq &editSseq, 'P=$(PREFIX),Q=ActionES:'")
+
+# Add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH for waypoint functionality
+epicsEnvSet("LUA_SCRIPT_PATH", "$(LUA_SCRIPT_PATH=):$(URROBOT)/urRobotApp/src")
