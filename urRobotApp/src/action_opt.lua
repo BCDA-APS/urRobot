@@ -16,6 +16,7 @@ function select(args)
 
     -- 0 means no waypoint action
     if action_opt_val == 0 then
+        epics.put(action_link_FLNK, " ")
         epics.put(action_done_calc_CALC, "1")
     else
         epics.put(action_done_calc_CALC, "A")
