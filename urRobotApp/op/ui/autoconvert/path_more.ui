@@ -4,8 +4,8 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>562</x>
-            <y>518</y>
+            <x>205</x>
+            <y>883</y>
             <width>545</width>
             <height>825</height>
         </rect>
@@ -8759,17 +8759,17 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>45</x>
-                    <y>35</y>
-                    <width>15</width>
-                    <height>15</height>
+                    <x>80</x>
+                    <y>100</y>
+                    <width>20</width>
+                    <height>20</height>
                 </rect>
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>82</red>
-                    <green>218</green>
-                    <blue>59</blue>
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
                 </color>
             </property>
             <property name="fillstyle">
@@ -8777,55 +8777,19 @@ caMenu{
             </property>
             <property name="lineColor">
                 <color alpha="255">
-                    <red>82</red>
-                    <green>218</green>
-                    <blue>59</blue>
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
                 </color>
             </property>
             <property name="linestyle">
                 <enum>Solid</enum>
             </property>
             <property name="visibility">
-                <enum>caGraphics::IfNotZero</enum>
+                <enum>caGraphics::IfZero</enum>
             </property>
             <property name="channel">
-                <string>$(P)Control:AsyncMoveDone</string>
-            </property>
-        </widget>
-        <widget class="caLabel" name="caLabel_64">
-            <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="text">
-                <string>Done:</string>
-            </property>
-            <property name="fontScaleMode">
-                <enum>ESimpleLabel::WidthAndHeight</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>5</x>
-                    <y>35</y>
-                    <width>50</width>
-                    <height>15</height>
-                </rect>
-            </property>
-            <property name="alignment">
-                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+                <string>$(P)Path$(N):2:Reached</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caGraphics_1">
@@ -8834,84 +8798,6 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>45</x>
-                    <y>35</y>
-                    <width>15</width>
-                    <height>15</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="fillstyle">
-                <enum>Filled</enum>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-            <property name="visibility">
-                <enum>caGraphics::IfZero</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Control:AsyncMoveDone</string>
-            </property>
-        </widget>
-        <widget class="caGraphics" name="caGraphics_2">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>80</x>
-                    <y>100</y>
-                    <width>20</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="fillstyle">
-                <enum>Filled</enum>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-            <property name="visibility">
-                <enum>caGraphics::IfZero</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N):2:Reached</string>
-            </property>
-        </widget>
-        <widget class="caGraphics" name="caGraphics_3">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
                     <x>80</x>
                     <y>100</y>
                     <width>20</width>
@@ -8945,7 +8831,7 @@ caMenu{
                 <string>$(P)Path$(N):2:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_4">
+        <widget class="caGraphics" name="caGraphics_2">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -8984,7 +8870,7 @@ caMenu{
                 <string>$(P)Path$(N):2:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_5">
+        <widget class="caGraphics" name="caGraphics_3">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9023,7 +8909,7 @@ caMenu{
                 <string>$(P)Path$(N):3:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_6">
+        <widget class="caGraphics" name="caGraphics_4">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9062,7 +8948,7 @@ caMenu{
                 <string>$(P)Path$(N):3:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_7">
+        <widget class="caGraphics" name="caGraphics_5">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9101,7 +8987,7 @@ caMenu{
                 <string>$(P)Path$(N):3:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_8">
+        <widget class="caGraphics" name="caGraphics_6">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9140,7 +9026,7 @@ caMenu{
                 <string>$(P)Path$(N):4:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_9">
+        <widget class="caGraphics" name="caGraphics_7">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9179,7 +9065,7 @@ caMenu{
                 <string>$(P)Path$(N):4:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_10">
+        <widget class="caGraphics" name="caGraphics_8">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9218,7 +9104,7 @@ caMenu{
                 <string>$(P)Path$(N):4:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_11">
+        <widget class="caGraphics" name="caGraphics_9">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9257,7 +9143,7 @@ caMenu{
                 <string>$(P)Path$(N):5:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_12">
+        <widget class="caGraphics" name="caGraphics_10">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9296,7 +9182,7 @@ caMenu{
                 <string>$(P)Path$(N):5:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_13">
+        <widget class="caGraphics" name="caGraphics_11">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9335,7 +9221,7 @@ caMenu{
                 <string>$(P)Path$(N):5:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_14">
+        <widget class="caGraphics" name="caGraphics_12">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9374,7 +9260,7 @@ caMenu{
                 <string>$(P)Path$(N):6:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_15">
+        <widget class="caGraphics" name="caGraphics_13">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9413,7 +9299,7 @@ caMenu{
                 <string>$(P)Path$(N):6:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_16">
+        <widget class="caGraphics" name="caGraphics_14">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9452,7 +9338,7 @@ caMenu{
                 <string>$(P)Path$(N):6:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_17">
+        <widget class="caGraphics" name="caGraphics_15">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9491,7 +9377,7 @@ caMenu{
                 <string>$(P)Path$(N):7:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_18">
+        <widget class="caGraphics" name="caGraphics_16">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9530,7 +9416,7 @@ caMenu{
                 <string>$(P)Path$(N):7:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_19">
+        <widget class="caGraphics" name="caGraphics_17">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9569,7 +9455,7 @@ caMenu{
                 <string>$(P)Path$(N):7:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_20">
+        <widget class="caGraphics" name="caGraphics_18">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9608,7 +9494,7 @@ caMenu{
                 <string>$(P)Path$(N):8:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_21">
+        <widget class="caGraphics" name="caGraphics_19">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9647,7 +9533,7 @@ caMenu{
                 <string>$(P)Path$(N):8:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_22">
+        <widget class="caGraphics" name="caGraphics_20">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9686,7 +9572,7 @@ caMenu{
                 <string>$(P)Path$(N):8:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_23">
+        <widget class="caGraphics" name="caGraphics_21">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9725,7 +9611,7 @@ caMenu{
                 <string>$(P)Path$(N):9:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_24">
+        <widget class="caGraphics" name="caGraphics_22">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9764,7 +9650,7 @@ caMenu{
                 <string>$(P)Path$(N):9:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_25">
+        <widget class="caGraphics" name="caGraphics_23">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9803,7 +9689,7 @@ caMenu{
                 <string>$(P)Path$(N):9:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_26">
+        <widget class="caGraphics" name="caGraphics_24">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9842,7 +9728,7 @@ caMenu{
                 <string>$(P)Path$(N):10:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_27">
+        <widget class="caGraphics" name="caGraphics_25">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9881,7 +9767,7 @@ caMenu{
                 <string>$(P)Path$(N):10:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_28">
+        <widget class="caGraphics" name="caGraphics_26">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9920,7 +9806,7 @@ caMenu{
                 <string>$(P)Path$(N):10:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_29">
+        <widget class="caGraphics" name="caGraphics_27">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9959,7 +9845,7 @@ caMenu{
                 <string>$(P)Path$(N):11:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_30">
+        <widget class="caGraphics" name="caGraphics_28">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -9998,7 +9884,7 @@ caMenu{
                 <string>$(P)Path$(N):11:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_31">
+        <widget class="caGraphics" name="caGraphics_29">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10037,7 +9923,7 @@ caMenu{
                 <string>$(P)Path$(N):11:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_32">
+        <widget class="caGraphics" name="caGraphics_30">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10076,7 +9962,7 @@ caMenu{
                 <string>$(P)Path$(N):12:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_33">
+        <widget class="caGraphics" name="caGraphics_31">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10115,7 +10001,7 @@ caMenu{
                 <string>$(P)Path$(N):12:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_34">
+        <widget class="caGraphics" name="caGraphics_32">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10154,7 +10040,7 @@ caMenu{
                 <string>$(P)Path$(N):12:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_35">
+        <widget class="caGraphics" name="caGraphics_33">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10193,7 +10079,7 @@ caMenu{
                 <string>$(P)Path$(N):13:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_36">
+        <widget class="caGraphics" name="caGraphics_34">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10232,7 +10118,7 @@ caMenu{
                 <string>$(P)Path$(N):13:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_37">
+        <widget class="caGraphics" name="caGraphics_35">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10271,7 +10157,7 @@ caMenu{
                 <string>$(P)Path$(N):13:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_38">
+        <widget class="caGraphics" name="caGraphics_36">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10310,7 +10196,7 @@ caMenu{
                 <string>$(P)Path$(N):14:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_39">
+        <widget class="caGraphics" name="caGraphics_37">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10349,7 +10235,7 @@ caMenu{
                 <string>$(P)Path$(N):14:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_40">
+        <widget class="caGraphics" name="caGraphics_38">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10388,7 +10274,7 @@ caMenu{
                 <string>$(P)Path$(N):14:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_41">
+        <widget class="caGraphics" name="caGraphics_39">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10427,7 +10313,7 @@ caMenu{
                 <string>$(P)Path$(N):15:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_42">
+        <widget class="caGraphics" name="caGraphics_40">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10466,7 +10352,7 @@ caMenu{
                 <string>$(P)Path$(N):15:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_43">
+        <widget class="caGraphics" name="caGraphics_41">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10505,7 +10391,7 @@ caMenu{
                 <string>$(P)Path$(N):15:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_44">
+        <widget class="caGraphics" name="caGraphics_42">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10544,7 +10430,7 @@ caMenu{
                 <string>$(P)Path$(N):16:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_45">
+        <widget class="caGraphics" name="caGraphics_43">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10583,7 +10469,7 @@ caMenu{
                 <string>$(P)Path$(N):16:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_46">
+        <widget class="caGraphics" name="caGraphics_44">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10622,7 +10508,7 @@ caMenu{
                 <string>$(P)Path$(N):16:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_47">
+        <widget class="caGraphics" name="caGraphics_45">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10661,7 +10547,7 @@ caMenu{
                 <string>$(P)Path$(N):17:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_48">
+        <widget class="caGraphics" name="caGraphics_46">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10700,7 +10586,7 @@ caMenu{
                 <string>$(P)Path$(N):17:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_49">
+        <widget class="caGraphics" name="caGraphics_47">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10739,7 +10625,7 @@ caMenu{
                 <string>$(P)Path$(N):17:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_50">
+        <widget class="caGraphics" name="caGraphics_48">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10778,7 +10664,7 @@ caMenu{
                 <string>$(P)Path$(N):18:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_51">
+        <widget class="caGraphics" name="caGraphics_49">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10817,7 +10703,7 @@ caMenu{
                 <string>$(P)Path$(N):18:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_52">
+        <widget class="caGraphics" name="caGraphics_50">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10856,7 +10742,7 @@ caMenu{
                 <string>$(P)Path$(N):18:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_53">
+        <widget class="caGraphics" name="caGraphics_51">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10895,7 +10781,7 @@ caMenu{
                 <string>$(P)Path$(N):19:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_54">
+        <widget class="caGraphics" name="caGraphics_52">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10934,7 +10820,7 @@ caMenu{
                 <string>$(P)Path$(N):19:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_55">
+        <widget class="caGraphics" name="caGraphics_53">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -10973,7 +10859,7 @@ caMenu{
                 <string>$(P)Path$(N):19:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_56">
+        <widget class="caGraphics" name="caGraphics_54">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11012,7 +10898,7 @@ caMenu{
                 <string>$(P)Path$(N):20:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_57">
+        <widget class="caGraphics" name="caGraphics_55">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11051,7 +10937,7 @@ caMenu{
                 <string>$(P)Path$(N):20:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_58">
+        <widget class="caGraphics" name="caGraphics_56">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11090,7 +10976,7 @@ caMenu{
                 <string>$(P)Path$(N):20:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_59">
+        <widget class="caGraphics" name="caGraphics_57">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11129,7 +11015,7 @@ caMenu{
                 <string>$(P)Path$(N):21:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_60">
+        <widget class="caGraphics" name="caGraphics_58">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11168,7 +11054,7 @@ caMenu{
                 <string>$(P)Path$(N):21:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_61">
+        <widget class="caGraphics" name="caGraphics_59">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11207,7 +11093,7 @@ caMenu{
                 <string>$(P)Path$(N):21:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_62">
+        <widget class="caGraphics" name="caGraphics_60">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11246,7 +11132,7 @@ caMenu{
                 <string>$(P)Path$(N):22:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_63">
+        <widget class="caGraphics" name="caGraphics_61">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11285,7 +11171,7 @@ caMenu{
                 <string>$(P)Path$(N):22:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_64">
+        <widget class="caGraphics" name="caGraphics_62">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11324,7 +11210,7 @@ caMenu{
                 <string>$(P)Path$(N):22:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_65">
+        <widget class="caGraphics" name="caGraphics_63">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11363,7 +11249,7 @@ caMenu{
                 <string>$(P)Path$(N):23:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_66">
+        <widget class="caGraphics" name="caGraphics_64">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11402,7 +11288,7 @@ caMenu{
                 <string>$(P)Path$(N):23:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_67">
+        <widget class="caGraphics" name="caGraphics_65">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11441,7 +11327,7 @@ caMenu{
                 <string>$(P)Path$(N):23:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_68">
+        <widget class="caGraphics" name="caGraphics_66">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11480,7 +11366,7 @@ caMenu{
                 <string>$(P)Path$(N):24:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_69">
+        <widget class="caGraphics" name="caGraphics_67">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11519,7 +11405,7 @@ caMenu{
                 <string>$(P)Path$(N):24:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_70">
+        <widget class="caGraphics" name="caGraphics_68">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11558,7 +11444,7 @@ caMenu{
                 <string>$(P)Path$(N):24:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_71">
+        <widget class="caGraphics" name="caGraphics_69">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11597,7 +11483,7 @@ caMenu{
                 <string>$(P)Path$(N):25:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_72">
+        <widget class="caGraphics" name="caGraphics_70">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11636,7 +11522,7 @@ caMenu{
                 <string>$(P)Path$(N):25:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_73">
+        <widget class="caGraphics" name="caGraphics_71">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11675,7 +11561,7 @@ caMenu{
                 <string>$(P)Path$(N):25:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_74">
+        <widget class="caGraphics" name="caGraphics_72">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11714,7 +11600,7 @@ caMenu{
                 <string>$(P)Path$(N):26:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_75">
+        <widget class="caGraphics" name="caGraphics_73">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11753,7 +11639,7 @@ caMenu{
                 <string>$(P)Path$(N):26:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_76">
+        <widget class="caGraphics" name="caGraphics_74">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11792,7 +11678,7 @@ caMenu{
                 <string>$(P)Path$(N):26:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_77">
+        <widget class="caGraphics" name="caGraphics_75">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11831,7 +11717,7 @@ caMenu{
                 <string>$(P)Path$(N):27:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_78">
+        <widget class="caGraphics" name="caGraphics_76">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11870,7 +11756,7 @@ caMenu{
                 <string>$(P)Path$(N):27:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_79">
+        <widget class="caGraphics" name="caGraphics_77">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11909,7 +11795,7 @@ caMenu{
                 <string>$(P)Path$(N):27:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_80">
+        <widget class="caGraphics" name="caGraphics_78">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11948,7 +11834,7 @@ caMenu{
                 <string>$(P)Path$(N):28:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_81">
+        <widget class="caGraphics" name="caGraphics_79">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -11987,7 +11873,7 @@ caMenu{
                 <string>$(P)Path$(N):28:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_82">
+        <widget class="caGraphics" name="caGraphics_80">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -12026,7 +11912,7 @@ caMenu{
                 <string>$(P)Path$(N):28:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_83">
+        <widget class="caGraphics" name="caGraphics_81">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -12065,7 +11951,7 @@ caMenu{
                 <string>$(P)Path$(N):29:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_84">
+        <widget class="caGraphics" name="caGraphics_82">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -12104,7 +11990,7 @@ caMenu{
                 <string>$(P)Path$(N):29:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_85">
+        <widget class="caGraphics" name="caGraphics_83">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -12143,7 +12029,7 @@ caMenu{
                 <string>$(P)Path$(N):29:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_86">
+        <widget class="caGraphics" name="caGraphics_84">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -12182,7 +12068,7 @@ caMenu{
                 <string>$(P)Path$(N):30:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_87">
+        <widget class="caGraphics" name="caGraphics_85">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -12221,7 +12107,7 @@ caMenu{
                 <string>$(P)Path$(N):30:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_88">
+        <widget class="caGraphics" name="caGraphics_86">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -12260,7 +12146,7 @@ caMenu{
                 <string>$(P)Path$(N):30:Busy</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_89">
+        <widget class="caGraphics" name="caGraphics_87">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -12299,7 +12185,7 @@ caMenu{
                 <string>$(P)Path$(N):1:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_90">
+        <widget class="caGraphics" name="caGraphics_88">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -12338,7 +12224,7 @@ caMenu{
                 <string>$(P)Path$(N):1:Reached</string>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_91">
+        <widget class="caGraphics" name="caGraphics_89">
             <property name="form">
                 <enum>caGraphics::Circle</enum>
             </property>
@@ -12419,60 +12305,6 @@ caMenu{
                 <string>true</string>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_30">
-            <property name="geometry">
-                <rect>
-                    <x>5</x>
-                    <y>0</y>
-                    <width>150</width>
-                    <height>25</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>caLineEdit::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N)</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>187</red>
-                    <green>187</green>
-                    <blue>187</blue>
-                </color>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="limitsMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="precisionMode">
-                <enum>caLineEdit::Channel</enum>
-            </property>
-            <property name="minValue">
-                <double>0.0</double>
-            </property>
-            <property name="maxValue">
-                <double>1.0</double>
-            </property>
-            <property name="alignment">
-                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="formatType">
-                <enum>decimal</enum>
-            </property>
-            <property name="colorMode">
-                <enum>caLineEdit::Static</enum>
-            </property>
-        </widget>
         <widget class="caMessageButton" name="caMessageButton_1">
             <property name="geometry">
                 <rect>
@@ -12512,7 +12344,7 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_31">
+        <widget class="caLineEdit" name="caLineEdit_30">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -12566,7 +12398,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_32">
+        <widget class="caLineEdit" name="caLineEdit_31">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -12620,7 +12452,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_33">
+        <widget class="caLineEdit" name="caLineEdit_32">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -12674,7 +12506,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_34">
+        <widget class="caLineEdit" name="caLineEdit_33">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -12728,7 +12560,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_35">
+        <widget class="caLineEdit" name="caLineEdit_34">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -12782,7 +12614,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_36">
+        <widget class="caLineEdit" name="caLineEdit_35">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -12836,7 +12668,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_37">
+        <widget class="caLineEdit" name="caLineEdit_36">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -12890,7 +12722,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_38">
+        <widget class="caLineEdit" name="caLineEdit_37">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -12944,7 +12776,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_39">
+        <widget class="caLineEdit" name="caLineEdit_38">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -12998,7 +12830,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_40">
+        <widget class="caLineEdit" name="caLineEdit_39">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13052,7 +12884,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_41">
+        <widget class="caLineEdit" name="caLineEdit_40">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13106,7 +12938,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_42">
+        <widget class="caLineEdit" name="caLineEdit_41">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13160,7 +12992,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_43">
+        <widget class="caLineEdit" name="caLineEdit_42">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13214,7 +13046,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_44">
+        <widget class="caLineEdit" name="caLineEdit_43">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13268,7 +13100,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_45">
+        <widget class="caLineEdit" name="caLineEdit_44">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13322,7 +13154,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_46">
+        <widget class="caLineEdit" name="caLineEdit_45">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13376,7 +13208,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_47">
+        <widget class="caLineEdit" name="caLineEdit_46">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13430,7 +13262,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_48">
+        <widget class="caLineEdit" name="caLineEdit_47">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13484,7 +13316,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_49">
+        <widget class="caLineEdit" name="caLineEdit_48">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13538,7 +13370,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_50">
+        <widget class="caLineEdit" name="caLineEdit_49">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13592,7 +13424,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_51">
+        <widget class="caLineEdit" name="caLineEdit_50">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13646,7 +13478,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_52">
+        <widget class="caLineEdit" name="caLineEdit_51">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13700,7 +13532,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_53">
+        <widget class="caLineEdit" name="caLineEdit_52">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13754,7 +13586,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_54">
+        <widget class="caLineEdit" name="caLineEdit_53">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13808,7 +13640,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_55">
+        <widget class="caLineEdit" name="caLineEdit_54">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13862,7 +13694,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_56">
+        <widget class="caLineEdit" name="caLineEdit_55">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13916,7 +13748,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_57">
+        <widget class="caLineEdit" name="caLineEdit_56">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -13970,7 +13802,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_58">
+        <widget class="caLineEdit" name="caLineEdit_57">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -14024,7 +13856,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_59">
+        <widget class="caLineEdit" name="caLineEdit_58">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -14078,7 +13910,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLineEdit" name="caLineEdit_60">
+        <widget class="caLineEdit" name="caLineEdit_59">
             <property name="geometry">
                 <rect>
                     <x>415</x>
@@ -14132,7 +13964,7 @@ caMenu{
                 <enum>caLineEdit::Static</enum>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_65">
+        <widget class="caLabel" name="caLabel_64">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -14168,7 +14000,7 @@ caMenu{
                 </rect>
             </property>
         </widget>
-        <widget class="caLabel" name="caLabel_66">
+        <widget class="caLabel" name="caLabel_65">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
@@ -14246,6 +14078,141 @@ caMenu{
                 <string>false</string>
             </property>
         </widget>
+        <widget class="caTextEntry" name="caTextEntry_30">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>200</width>
+                    <height>25</height>
+                </rect>
+            </property>
+            <property name="fontScaleMode">
+                <enum>caLineEdit::WidthAndHeight</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Path$(N)</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>218</red>
+                    <green>218</green>
+                    <blue>218</blue>
+                </color>
+            </property>
+            <property name="limitsMode">
+                <enum>caLineEdit::Channel</enum>
+            </property>
+            <property name="limitsMode">
+                <enum>caLineEdit::Channel</enum>
+            </property>
+            <property name="precisionMode">
+                <enum>caLineEdit::Channel</enum>
+            </property>
+            <property name="minValue">
+                <double>0.0</double>
+            </property>
+            <property name="maxValue">
+                <double>1.0</double>
+            </property>
+            <property name="colorMode">
+                <enum>caLineEdit::Static</enum>
+            </property>
+            <property name="formatType">
+                <enum>decimal</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_66">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>251</red>
+                    <green>243</green>
+                    <blue>74</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>251</red>
+                    <green>243</green>
+                    <blue>74</blue>
+                </color>
+            </property>
+            <property name="visibility">
+                <enum>caLabel::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Control:AsyncMoveDone</string>
+            </property>
+            <property name="text">
+                <string>Moving</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>30</y>
+                    <width>60</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_67">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="visibility">
+                <enum>caLabel::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Control:AsyncMoveDone</string>
+            </property>
+            <property name="text">
+                <string>Done</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>30</y>
+                    <width>60</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
         <zorder>caLabel_0</zorder>
         <zorder>caLabel_1</zorder>
         <zorder>caLabel_2</zorder>
@@ -14311,7 +14278,6 @@ caMenu{
         <zorder>caLabel_62</zorder>
         <zorder>caLabel_63</zorder>
         <zorder>caGraphics_0</zorder>
-        <zorder>caLabel_64</zorder>
         <zorder>caGraphics_1</zorder>
         <zorder>caGraphics_2</zorder>
         <zorder>caGraphics_3</zorder>
@@ -14401,10 +14367,10 @@ caMenu{
         <zorder>caGraphics_87</zorder>
         <zorder>caGraphics_88</zorder>
         <zorder>caGraphics_89</zorder>
-        <zorder>caGraphics_90</zorder>
-        <zorder>caGraphics_91</zorder>
+        <zorder>caLabel_64</zorder>
         <zorder>caLabel_65</zorder>
         <zorder>caLabel_66</zorder>
+        <zorder>caLabel_67</zorder>
         <zorder>caChoice_0</zorder>
         <zorder>caMenu_0</zorder>
         <zorder>caMenu_1</zorder>
@@ -14557,8 +14523,8 @@ caMenu{
         <zorder>caLineEdit_29</zorder>
         <zorder>caMessageButton_0</zorder>
         <zorder>caRelatedDisplay_0</zorder>
-        <zorder>caLineEdit_30</zorder>
         <zorder>caMessageButton_1</zorder>
+        <zorder>caLineEdit_30</zorder>
         <zorder>caLineEdit_31</zorder>
         <zorder>caLineEdit_32</zorder>
         <zorder>caLineEdit_33</zorder>
@@ -14588,8 +14554,8 @@ caMenu{
         <zorder>caLineEdit_57</zorder>
         <zorder>caLineEdit_58</zorder>
         <zorder>caLineEdit_59</zorder>
-        <zorder>caLineEdit_60</zorder>
         <zorder>caRelatedDisplay_1</zorder>
+        <zorder>caTextEntry_30</zorder>
     </widget>
 </widget>
 </ui>

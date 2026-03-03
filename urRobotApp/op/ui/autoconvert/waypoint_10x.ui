@@ -4,10 +4,10 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>1112</x>
-            <y>1014</y>
-            <width>470</width>
-            <height>335</height>
+            <x>839</x>
+            <y>1053</y>
+            <width>469</width>
+            <height>333</height>
         </rect>
     </property>
     <property name="styleSheet">
@@ -509,14 +509,14 @@ caMenu{
                     <x>0</x>
                     <y>0</y>
                     <width>600</width>
-                    <height>40</height>
+                    <height>30</height>
                 </rect>
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>10</red>
-                    <green>0</green>
-                    <blue>184</blue>
+                    <red>39</red>
+                    <green>84</green>
+                    <blue>141</blue>
                 </color>
             </property>
             <property name="fillstyle">
@@ -524,9 +524,9 @@ caMenu{
             </property>
             <property name="lineColor">
                 <color alpha="255">
-                    <red>10</red>
-                    <green>0</green>
-                    <blue>184</blue>
+                    <red>39</red>
+                    <green>84</green>
+                    <blue>141</blue>
                 </color>
             </property>
             <property name="linestyle">
@@ -561,8 +561,8 @@ caMenu{
                 <rect>
                     <x>5</x>
                     <y>5</y>
-                    <width>300</width>
-                    <height>30</height>
+                    <width>200</width>
+                    <height>20</height>
                 </rect>
             </property>
             <property name="alignment">
@@ -650,7 +650,7 @@ caMenu{
         <widget class="caMenu" name="caMenu_0">
             <property name="geometry">
                 <rect>
-                    <x>311</x>
+                    <x>286</x>
                     <y>80</y>
                     <width>40</width>
                     <height>20</height>
@@ -680,7 +680,7 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_0">
             <property name="geometry">
                 <rect>
-                    <x>140</x>
+                    <x>330</x>
                     <y>80</y>
                     <width>20</width>
                     <height>20</height>
@@ -791,7 +791,7 @@ caMenu{
         <widget class="caTextEntry" name="caTextEntry_0">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
+                    <x>140</x>
                     <y>80</y>
                     <width>100</width>
                     <height>20</height>
@@ -842,7 +842,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_1">
             <property name="geometry">
                 <rect>
-                    <x>270</x>
+                    <x>245</x>
                     <y>80</y>
                     <width>35</width>
                     <height>20</height>
@@ -959,7 +959,7 @@ caMenu{
         <widget class="caMenu" name="caMenu_1">
             <property name="geometry">
                 <rect>
-                    <x>310</x>
+                    <x>285</x>
                     <y>105</y>
                     <width>40</width>
                     <height>20</height>
@@ -989,7 +989,7 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_1">
             <property name="geometry">
                 <rect>
-                    <x>140</x>
+                    <x>330</x>
                     <y>105</y>
                     <width>20</width>
                     <height>20</height>
@@ -1073,16 +1073,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="visibility">
@@ -1184,7 +1184,7 @@ caMenu{
         <widget class="caTextEntry" name="caTextEntry_1">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
+                    <x>140</x>
                     <y>105</y>
                     <width>100</width>
                     <height>20</height>
@@ -1235,7 +1235,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_3">
             <property name="geometry">
                 <rect>
-                    <x>270</x>
+                    <x>245</x>
                     <y>105</y>
                     <width>35</width>
                     <height>20</height>
@@ -1352,7 +1352,7 @@ caMenu{
         <widget class="caMenu" name="caMenu_2">
             <property name="geometry">
                 <rect>
-                    <x>310</x>
+                    <x>285</x>
                     <y>130</y>
                     <width>40</width>
                     <height>20</height>
@@ -1382,7 +1382,7 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_2">
             <property name="geometry">
                 <rect>
-                    <x>140</x>
+                    <x>330</x>
                     <y>130</y>
                     <width>20</width>
                     <height>20</height>
@@ -1466,16 +1466,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="visibility">
@@ -1577,7 +1577,7 @@ caMenu{
         <widget class="caTextEntry" name="caTextEntry_2">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
+                    <x>140</x>
                     <y>130</y>
                     <width>100</width>
                     <height>20</height>
@@ -1628,7 +1628,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_5">
             <property name="geometry">
                 <rect>
-                    <x>270</x>
+                    <x>245</x>
                     <y>130</y>
                     <width>35</width>
                     <height>20</height>
@@ -1745,7 +1745,7 @@ caMenu{
         <widget class="caMenu" name="caMenu_3">
             <property name="geometry">
                 <rect>
-                    <x>310</x>
+                    <x>285</x>
                     <y>155</y>
                     <width>40</width>
                     <height>20</height>
@@ -1775,7 +1775,7 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_3">
             <property name="geometry">
                 <rect>
-                    <x>140</x>
+                    <x>330</x>
                     <y>155</y>
                     <width>20</width>
                     <height>20</height>
@@ -1859,16 +1859,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="visibility">
@@ -1970,7 +1970,7 @@ caMenu{
         <widget class="caTextEntry" name="caTextEntry_3">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
+                    <x>140</x>
                     <y>155</y>
                     <width>100</width>
                     <height>20</height>
@@ -2021,7 +2021,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_7">
             <property name="geometry">
                 <rect>
-                    <x>270</x>
+                    <x>245</x>
                     <y>155</y>
                     <width>35</width>
                     <height>20</height>
@@ -2138,7 +2138,7 @@ caMenu{
         <widget class="caMenu" name="caMenu_4">
             <property name="geometry">
                 <rect>
-                    <x>310</x>
+                    <x>285</x>
                     <y>180</y>
                     <width>40</width>
                     <height>20</height>
@@ -2168,7 +2168,7 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_4">
             <property name="geometry">
                 <rect>
-                    <x>140</x>
+                    <x>330</x>
                     <y>180</y>
                     <width>20</width>
                     <height>20</height>
@@ -2252,16 +2252,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="visibility">
@@ -2363,7 +2363,7 @@ caMenu{
         <widget class="caTextEntry" name="caTextEntry_4">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
+                    <x>140</x>
                     <y>180</y>
                     <width>100</width>
                     <height>20</height>
@@ -2414,7 +2414,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_9">
             <property name="geometry">
                 <rect>
-                    <x>270</x>
+                    <x>245</x>
                     <y>180</y>
                     <width>35</width>
                     <height>20</height>
@@ -2531,7 +2531,7 @@ caMenu{
         <widget class="caMenu" name="caMenu_5">
             <property name="geometry">
                 <rect>
-                    <x>310</x>
+                    <x>285</x>
                     <y>205</y>
                     <width>40</width>
                     <height>20</height>
@@ -2561,7 +2561,7 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_5">
             <property name="geometry">
                 <rect>
-                    <x>140</x>
+                    <x>330</x>
                     <y>205</y>
                     <width>20</width>
                     <height>20</height>
@@ -2645,16 +2645,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="visibility">
@@ -2756,7 +2756,7 @@ caMenu{
         <widget class="caTextEntry" name="caTextEntry_5">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
+                    <x>140</x>
                     <y>205</y>
                     <width>100</width>
                     <height>20</height>
@@ -2807,7 +2807,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_11">
             <property name="geometry">
                 <rect>
-                    <x>270</x>
+                    <x>245</x>
                     <y>205</y>
                     <width>35</width>
                     <height>20</height>
@@ -2924,7 +2924,7 @@ caMenu{
         <widget class="caMenu" name="caMenu_6">
             <property name="geometry">
                 <rect>
-                    <x>310</x>
+                    <x>285</x>
                     <y>230</y>
                     <width>40</width>
                     <height>20</height>
@@ -2954,7 +2954,7 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_6">
             <property name="geometry">
                 <rect>
-                    <x>140</x>
+                    <x>330</x>
                     <y>230</y>
                     <width>20</width>
                     <height>20</height>
@@ -3038,16 +3038,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="visibility">
@@ -3149,7 +3149,7 @@ caMenu{
         <widget class="caTextEntry" name="caTextEntry_6">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
+                    <x>140</x>
                     <y>230</y>
                     <width>100</width>
                     <height>20</height>
@@ -3200,7 +3200,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_13">
             <property name="geometry">
                 <rect>
-                    <x>270</x>
+                    <x>245</x>
                     <y>230</y>
                     <width>35</width>
                     <height>20</height>
@@ -3317,7 +3317,7 @@ caMenu{
         <widget class="caMenu" name="caMenu_7">
             <property name="geometry">
                 <rect>
-                    <x>310</x>
+                    <x>285</x>
                     <y>255</y>
                     <width>40</width>
                     <height>20</height>
@@ -3347,7 +3347,7 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_7">
             <property name="geometry">
                 <rect>
-                    <x>140</x>
+                    <x>330</x>
                     <y>255</y>
                     <width>20</width>
                     <height>20</height>
@@ -3431,16 +3431,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="visibility">
@@ -3542,7 +3542,7 @@ caMenu{
         <widget class="caTextEntry" name="caTextEntry_7">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
+                    <x>140</x>
                     <y>255</y>
                     <width>100</width>
                     <height>20</height>
@@ -3593,7 +3593,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_15">
             <property name="geometry">
                 <rect>
-                    <x>270</x>
+                    <x>245</x>
                     <y>255</y>
                     <width>35</width>
                     <height>20</height>
@@ -3710,7 +3710,7 @@ caMenu{
         <widget class="caMenu" name="caMenu_8">
             <property name="geometry">
                 <rect>
-                    <x>310</x>
+                    <x>285</x>
                     <y>280</y>
                     <width>40</width>
                     <height>20</height>
@@ -3740,7 +3740,7 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_8">
             <property name="geometry">
                 <rect>
-                    <x>140</x>
+                    <x>330</x>
                     <y>280</y>
                     <width>20</width>
                     <height>20</height>
@@ -3824,16 +3824,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="visibility">
@@ -3935,7 +3935,7 @@ caMenu{
         <widget class="caTextEntry" name="caTextEntry_8">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
+                    <x>140</x>
                     <y>280</y>
                     <width>100</width>
                     <height>20</height>
@@ -3986,7 +3986,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_17">
             <property name="geometry">
                 <rect>
-                    <x>270</x>
+                    <x>245</x>
                     <y>280</y>
                     <width>35</width>
                     <height>20</height>
@@ -4103,7 +4103,7 @@ caMenu{
         <widget class="caMenu" name="caMenu_9">
             <property name="geometry">
                 <rect>
-                    <x>310</x>
+                    <x>285</x>
                     <y>305</y>
                     <width>40</width>
                     <height>20</height>
@@ -4133,7 +4133,7 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_9">
             <property name="geometry">
                 <rect>
-                    <x>140</x>
+                    <x>330</x>
                     <y>305</y>
                     <width>20</width>
                     <height>20</height>
@@ -4217,16 +4217,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="visibility">
@@ -4328,7 +4328,7 @@ caMenu{
         <widget class="caTextEntry" name="caTextEntry_9">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
+                    <x>140</x>
                     <y>305</y>
                     <width>100</width>
                     <height>20</height>
@@ -4379,7 +4379,7 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_19">
             <property name="geometry">
                 <rect>
-                    <x>270</x>
+                    <x>245</x>
                     <y>305</y>
                     <width>35</width>
                     <height>20</height>
@@ -4597,7 +4597,7 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>170</x>
+                    <x>145</x>
                     <y>65</y>
                     <width>100</width>
                     <height>10</height>
@@ -4633,7 +4633,7 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>310</x>
+                    <x>285</x>
                     <y>65</y>
                     <width>40</width>
                     <height>10</height>
@@ -4643,8 +4643,8 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_10">
             <property name="geometry">
                 <rect>
-                    <x>380</x>
-                    <y>10</y>
+                    <x>385</x>
+                    <y>5</y>
                     <width>75</width>
                     <height>20</height>
                 </rect>
@@ -4685,7 +4685,7 @@ caMenu{
         <widget class="caLineEdit" name="caLineEdit_0">
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>80</y>
                     <width>100</width>
                     <height>20</height>
@@ -4739,7 +4739,7 @@ caMenu{
         <widget class="caLineEdit" name="caLineEdit_1">
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>105</y>
                     <width>100</width>
                     <height>20</height>
@@ -4793,7 +4793,7 @@ caMenu{
         <widget class="caLineEdit" name="caLineEdit_2">
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>130</y>
                     <width>100</width>
                     <height>20</height>
@@ -4847,7 +4847,7 @@ caMenu{
         <widget class="caLineEdit" name="caLineEdit_3">
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>155</y>
                     <width>100</width>
                     <height>20</height>
@@ -4901,7 +4901,7 @@ caMenu{
         <widget class="caLineEdit" name="caLineEdit_4">
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>180</y>
                     <width>100</width>
                     <height>20</height>
@@ -4955,7 +4955,7 @@ caMenu{
         <widget class="caLineEdit" name="caLineEdit_5">
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>205</y>
                     <width>100</width>
                     <height>20</height>
@@ -5009,7 +5009,7 @@ caMenu{
         <widget class="caLineEdit" name="caLineEdit_6">
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>230</y>
                     <width>100</width>
                     <height>20</height>
@@ -5063,7 +5063,7 @@ caMenu{
         <widget class="caLineEdit" name="caLineEdit_7">
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>255</y>
                     <width>100</width>
                     <height>20</height>
@@ -5117,7 +5117,7 @@ caMenu{
         <widget class="caLineEdit" name="caLineEdit_8">
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>280</y>
                     <width>100</width>
                     <height>20</height>
@@ -5171,7 +5171,7 @@ caMenu{
         <widget class="caLineEdit" name="caLineEdit_9">
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>305</y>
                     <width>100</width>
                     <height>20</height>
@@ -5251,7 +5251,7 @@ caMenu{
             </property>
             <property name="geometry">
                 <rect>
-                    <x>355</x>
+                    <x>360</x>
                     <y>65</y>
                     <width>100</width>
                     <height>10</height>
@@ -5306,16 +5306,16 @@ caMenu{
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>115</red>
-                    <green>255</green>
-                    <blue>107</blue>
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
                 </color>
             </property>
             <property name="visibility">

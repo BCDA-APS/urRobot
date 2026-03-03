@@ -119,14 +119,14 @@ caMenu{
                     <x>0</x>
                     <y>0</y>
                     <width>600</width>
-                    <height>40</height>
+                    <height>30</height>
                 </rect>
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>10</red>
-                    <green>0</green>
-                    <blue>184</blue>
+                    <red>39</red>
+                    <green>84</green>
+                    <blue>141</blue>
                 </color>
             </property>
             <property name="fillstyle">
@@ -134,9 +134,9 @@ caMenu{
             </property>
             <property name="lineColor">
                 <color alpha="255">
-                    <red>10</red>
-                    <green>0</green>
-                    <blue>184</blue>
+                    <red>39</red>
+                    <green>84</green>
+                    <blue>141</blue>
                 </color>
             </property>
             <property name="linestyle">
@@ -171,8 +171,8 @@ caMenu{
                 <rect>
                     <x>5</x>
                     <y>5</y>
-                    <width>240</width>
-                    <height>30</height>
+                    <width>150</width>
+                    <height>20</height>
                 </rect>
             </property>
             <property name="alignment">

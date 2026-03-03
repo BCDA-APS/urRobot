@@ -1,12 +1,12 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/dashboard.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/dashboard.adl"
 	version=030111
 }
 display {
 	object {
-		x=737
-		y=703
+		x=849
+		y=877
 		width=535
 		height=605
 	}
@@ -92,10 +92,10 @@ rectangle {
 		x=0
 		y=0
 		width=600
-		height=40
+		height=30
 	}
 	"basic attribute" {
-		clr=54
+		clr=29
 	}
 }
 "message button" {
@@ -313,8 +313,8 @@ text {
 	object {
 		x=5
 		y=5
-		width=317
-		height=30
+		width=150
+		height=20
 	}
 	"basic attribute" {
 		clr=0

@@ -4,10 +4,10 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>1091</x>
-            <y>607</y>
-            <width>235</width>
-            <height>170</height>
+            <x>943</x>
+            <y>978</y>
+            <width>230</width>
+            <height>160</height>
         </rect>
     </property>
     <property name="styleSheet">
@@ -119,14 +119,14 @@ caMenu{
                     <x>0</x>
                     <y>0</y>
                     <width>400</width>
-                    <height>40</height>
+                    <height>30</height>
                 </rect>
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>10</red>
-                    <green>0</green>
-                    <blue>184</blue>
+                    <red>39</red>
+                    <green>84</green>
+                    <blue>141</blue>
                 </color>
             </property>
             <property name="fillstyle">
@@ -134,9 +134,9 @@ caMenu{
             </property>
             <property name="lineColor">
                 <color alpha="255">
-                    <red>10</red>
-                    <green>0</green>
-                    <blue>184</blue>
+                    <red>39</red>
+                    <green>84</green>
+                    <blue>141</blue>
                 </color>
             </property>
             <property name="linestyle">
@@ -146,8 +146,8 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_0">
             <property name="geometry">
                 <rect>
-                    <x>12</x>
-                    <y>45</y>
+                    <x>10</x>
+                    <y>35</y>
                     <width>100</width>
                     <height>25</height>
                 </rect>
@@ -188,8 +188,8 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_1">
             <property name="geometry">
                 <rect>
-                    <x>12</x>
-                    <y>75</y>
+                    <x>10</x>
+                    <y>65</y>
                     <width>100</width>
                     <height>25</height>
                 </rect>
@@ -230,8 +230,8 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_2">
             <property name="geometry">
                 <rect>
-                    <x>12</x>
-                    <y>105</y>
+                    <x>10</x>
+                    <y>95</y>
                     <width>100</width>
                     <height>25</height>
                 </rect>
@@ -272,8 +272,8 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_3">
             <property name="geometry">
                 <rect>
-                    <x>12</x>
-                    <y>135</y>
+                    <x>10</x>
+                    <y>125</y>
                     <width>100</width>
                     <height>25</height>
                 </rect>
@@ -314,8 +314,8 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_4">
             <property name="geometry">
                 <rect>
-                    <x>122</x>
-                    <y>45</y>
+                    <x>120</x>
+                    <y>35</y>
                     <width>100</width>
                     <height>25</height>
                 </rect>
@@ -356,8 +356,8 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_5">
             <property name="geometry">
                 <rect>
-                    <x>122</x>
-                    <y>75</y>
+                    <x>120</x>
+                    <y>65</y>
                     <width>100</width>
                     <height>25</height>
                 </rect>
@@ -398,8 +398,8 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_6">
             <property name="geometry">
                 <rect>
-                    <x>122</x>
-                    <y>135</y>
+                    <x>120</x>
+                    <y>125</y>
                     <width>100</width>
                     <height>25</height>
                 </rect>
@@ -466,7 +466,7 @@ caMenu{
                     <x>5</x>
                     <y>5</y>
                     <width>200</width>
-                    <height>30</height>
+                    <height>20</height>
                 </rect>
             </property>
             <property name="alignment">
@@ -476,8 +476,8 @@ caMenu{
         <widget class="caRelatedDisplay" name="caRelatedDisplay_7">
             <property name="geometry">
                 <rect>
-                    <x>122</x>
-                    <y>105</y>
+                    <x>120</x>
+                    <y>95</y>
                     <width>100</width>
                     <height>25</height>
                 </rect>

@@ -1,14 +1,14 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/waypoint_10x.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/waypoint_10x.adl"
 	version=030111
 }
 display {
 	object {
-		x=1112
-		y=1014
-		width=470
-		height=335
+		x=839
+		y=1053
+		width=469
+		height=333
 	}
 	clr=14
 	bclr=4
@@ -242,18 +242,18 @@ rectangle {
 		x=0
 		y=0
 		width=600
-		height=40
+		height=30
 	}
 	"basic attribute" {
-		clr=54
+		clr=29
 	}
 }
 text {
 	object {
 		x=5
 		y=5
-		width=300
-		height=30
+		width=200
+		height=20
 	}
 	"basic attribute" {
 		clr=0
@@ -292,7 +292,7 @@ oval {
 }
 menu {
 	object {
-		x=311
+		x=286
 		y=80
 		width=40
 		height=20
@@ -305,7 +305,7 @@ menu {
 }
 "related display" {
 	object {
-		x=140
+		x=330
 		y=80
 		width=20
 		height=20
@@ -349,7 +349,7 @@ menu {
 }
 "text entry" {
 	object {
-		x=165
+		x=140
 		y=80
 		width=100
 		height=20
@@ -364,7 +364,7 @@ menu {
 }
 "message button" {
 	object {
-		x=270
+		x=245
 		y=80
 		width=35
 		height=20
@@ -409,7 +409,7 @@ oval {
 }
 menu {
 	object {
-		x=310
+		x=285
 		y=105
 		width=40
 		height=20
@@ -422,7 +422,7 @@ menu {
 }
 "related display" {
 	object {
-		x=140
+		x=330
 		y=105
 		width=20
 		height=20
@@ -435,40 +435,38 @@ menu {
 	clr=0
 	bclr=18
 }
-
 text {
-    object {
-        x=5
-        y=105
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=14
-    }
-    "dynamic attribute" {
-        vis="if zero"
-        chan="$(P)Waypoint$(T):$(WP2):Enabled"
-    }
-    textix="$(WP2)."
+	object {
+		x=5
+		y=105
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP2):Enabled"
+	}
+	textix="$(WP2)."
 }
 text {
-    object {
-        x=5
-        y=105
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=60
-    }
-    "dynamic attribute" {
-        vis="if not zero"
-        chan="$(P)Waypoint$(T):$(WP2):Enabled"
-    }
-    textix="$(WP2)."
+	object {
+		x=5
+		y=105
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP2):Enabled"
+	}
+	textix="$(WP2)."
 }
-
 "choice button" {
 	object {
 		x=30
@@ -500,7 +498,7 @@ text {
 }
 "text entry" {
 	object {
-		x=165
+		x=140
 		y=105
 		width=100
 		height=20
@@ -515,7 +513,7 @@ text {
 }
 "message button" {
 	object {
-		x=270
+		x=245
 		y=105
 		width=35
 		height=20
@@ -560,7 +558,7 @@ oval {
 }
 menu {
 	object {
-		x=310
+		x=285
 		y=130
 		width=40
 		height=20
@@ -573,7 +571,7 @@ menu {
 }
 "related display" {
 	object {
-		x=140
+		x=330
 		y=130
 		width=20
 		height=20
@@ -586,40 +584,38 @@ menu {
 	clr=0
 	bclr=18
 }
-
 text {
-    object {
-        x=5
-        y=130
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=14
-    }
-    "dynamic attribute" {
-        vis="if zero"
-        chan="$(P)Waypoint$(T):$(WP3):Enabled"
-    }
-    textix="$(WP3)."
+	object {
+		x=5
+		y=130
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP3):Enabled"
+	}
+	textix="$(WP3)."
 }
 text {
-    object {
-        x=5
-        y=130
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=60
-    }
-    "dynamic attribute" {
-        vis="if not zero"
-        chan="$(P)Waypoint$(T):$(WP3):Enabled"
-    }
-    textix="$(WP3)."
+	object {
+		x=5
+		y=130
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP3):Enabled"
+	}
+	textix="$(WP3)."
 }
-
 "choice button" {
 	object {
 		x=30
@@ -651,7 +647,7 @@ text {
 }
 "text entry" {
 	object {
-		x=165
+		x=140
 		y=130
 		width=100
 		height=20
@@ -666,7 +662,7 @@ text {
 }
 "message button" {
 	object {
-		x=270
+		x=245
 		y=130
 		width=35
 		height=20
@@ -711,7 +707,7 @@ oval {
 }
 menu {
 	object {
-		x=310
+		x=285
 		y=155
 		width=40
 		height=20
@@ -724,7 +720,7 @@ menu {
 }
 "related display" {
 	object {
-		x=140
+		x=330
 		y=155
 		width=20
 		height=20
@@ -737,40 +733,38 @@ menu {
 	clr=0
 	bclr=18
 }
-
 text {
-    object {
-        x=5
-        y=155
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=14
-    }
-    "dynamic attribute" {
-        vis="if zero"
-        chan="$(P)Waypoint$(T):$(WP4):Enabled"
-    }
-    textix="$(WP4)."
+	object {
+		x=5
+		y=155
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP4):Enabled"
+	}
+	textix="$(WP4)."
 }
 text {
-    object {
-        x=5
-        y=155
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=60
-    }
-    "dynamic attribute" {
-        vis="if not zero"
-        chan="$(P)Waypoint$(T):$(WP4):Enabled"
-    }
-    textix="$(WP4)."
+	object {
+		x=5
+		y=155
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP4):Enabled"
+	}
+	textix="$(WP4)."
 }
-
 "choice button" {
 	object {
 		x=30
@@ -802,7 +796,7 @@ text {
 }
 "text entry" {
 	object {
-		x=165
+		x=140
 		y=155
 		width=100
 		height=20
@@ -817,7 +811,7 @@ text {
 }
 "message button" {
 	object {
-		x=270
+		x=245
 		y=155
 		width=35
 		height=20
@@ -862,7 +856,7 @@ oval {
 }
 menu {
 	object {
-		x=310
+		x=285
 		y=180
 		width=40
 		height=20
@@ -875,7 +869,7 @@ menu {
 }
 "related display" {
 	object {
-		x=140
+		x=330
 		y=180
 		width=20
 		height=20
@@ -888,40 +882,38 @@ menu {
 	clr=0
 	bclr=18
 }
-
 text {
-    object {
-        x=5
-        y=180
-        width=25
-        height=20
-    }
-    "basic attribute" {
-        clr=14
-    }
-    "dynamic attribute" {
-        vis="if zero"
-        chan="$(P)Waypoint$(T):$(WP5):Enabled"
-    }
-    textix="$(WP5)."
+	object {
+		x=5
+		y=180
+		width=25
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP5):Enabled"
+	}
+	textix="$(WP5)."
 }
 text {
-    object {
-        x=5
-        y=180
-        width=25
-        height=20
-    }
-    "basic attribute" {
-        clr=60
-    }
-    "dynamic attribute" {
-        vis="if not zero"
-        chan="$(P)Waypoint$(T):$(WP5):Enabled"
-    }
-    textix="$(WP5)."
+	object {
+		x=5
+		y=180
+		width=25
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP5):Enabled"
+	}
+	textix="$(WP5)."
 }
-
 "choice button" {
 	object {
 		x=30
@@ -953,7 +945,7 @@ text {
 }
 "text entry" {
 	object {
-		x=165
+		x=140
 		y=180
 		width=100
 		height=20
@@ -968,7 +960,7 @@ text {
 }
 "message button" {
 	object {
-		x=270
+		x=245
 		y=180
 		width=35
 		height=20
@@ -1013,7 +1005,7 @@ oval {
 }
 menu {
 	object {
-		x=310
+		x=285
 		y=205
 		width=40
 		height=20
@@ -1026,7 +1018,7 @@ menu {
 }
 "related display" {
 	object {
-		x=140
+		x=330
 		y=205
 		width=20
 		height=20
@@ -1039,40 +1031,38 @@ menu {
 	clr=0
 	bclr=18
 }
-
 text {
-    object {
-        x=5
-        y=205
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=14
-    }
-    "dynamic attribute" {
-        vis="if zero"
-        chan="$(P)Waypoint$(T):$(WP6):Enabled"
-    }
-    textix="$(WP6)."
+	object {
+		x=5
+		y=205
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP6):Enabled"
+	}
+	textix="$(WP6)."
 }
 text {
-    object {
-        x=5
-        y=205
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=60
-    }
-    "dynamic attribute" {
-        vis="if not zero"
-        chan="$(P)Waypoint$(T):$(WP6):Enabled"
-    }
-    textix="$(WP6)."
+	object {
+		x=5
+		y=205
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP6):Enabled"
+	}
+	textix="$(WP6)."
 }
-
 "choice button" {
 	object {
 		x=30
@@ -1104,7 +1094,7 @@ text {
 }
 "text entry" {
 	object {
-		x=165
+		x=140
 		y=205
 		width=100
 		height=20
@@ -1119,7 +1109,7 @@ text {
 }
 "message button" {
 	object {
-		x=270
+		x=245
 		y=205
 		width=35
 		height=20
@@ -1164,7 +1154,7 @@ oval {
 }
 menu {
 	object {
-		x=310
+		x=285
 		y=230
 		width=40
 		height=20
@@ -1177,7 +1167,7 @@ menu {
 }
 "related display" {
 	object {
-		x=140
+		x=330
 		y=230
 		width=20
 		height=20
@@ -1190,40 +1180,38 @@ menu {
 	clr=0
 	bclr=18
 }
-
 text {
-    object {
-        x=5
-        y=230
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=14
-    }
-    "dynamic attribute" {
-        vis="if zero"
-        chan="$(P)Waypoint$(T):$(WP7):Enabled"
-    }
-    textix="$(WP7)."
+	object {
+		x=5
+		y=230
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP7):Enabled"
+	}
+	textix="$(WP7)."
 }
 text {
-    object {
-        x=5
-        y=230
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=60
-    }
-    "dynamic attribute" {
-        vis="if not zero"
-        chan="$(P)Waypoint$(T):$(WP7):Enabled"
-    }
-    textix="$(WP7)."
+	object {
+		x=5
+		y=230
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP7):Enabled"
+	}
+	textix="$(WP7)."
 }
-
 "choice button" {
 	object {
 		x=30
@@ -1255,7 +1243,7 @@ text {
 }
 "text entry" {
 	object {
-		x=165
+		x=140
 		y=230
 		width=100
 		height=20
@@ -1270,7 +1258,7 @@ text {
 }
 "message button" {
 	object {
-		x=270
+		x=245
 		y=230
 		width=35
 		height=20
@@ -1315,7 +1303,7 @@ oval {
 }
 menu {
 	object {
-		x=310
+		x=285
 		y=255
 		width=40
 		height=20
@@ -1328,7 +1316,7 @@ menu {
 }
 "related display" {
 	object {
-		x=140
+		x=330
 		y=255
 		width=20
 		height=20
@@ -1341,40 +1329,38 @@ menu {
 	clr=0
 	bclr=18
 }
-
 text {
-    object {
-        x=5
-        y=255
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=14
-    }
-    "dynamic attribute" {
-        vis="if zero"
-        chan="$(P)Waypoint$(T):$(WP8):Enabled"
-    }
-    textix="$(WP8)."
+	object {
+		x=5
+		y=255
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP8):Enabled"
+	}
+	textix="$(WP8)."
 }
 text {
-    object {
-        x=5
-        y=255
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=60
-    }
-    "dynamic attribute" {
-        vis="if not zero"
-        chan="$(P)Waypoint$(T):$(WP8):Enabled"
-    }
-    textix="$(WP8)."
+	object {
+		x=5
+		y=255
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP8):Enabled"
+	}
+	textix="$(WP8)."
 }
-
 "choice button" {
 	object {
 		x=30
@@ -1406,7 +1392,7 @@ text {
 }
 "text entry" {
 	object {
-		x=165
+		x=140
 		y=255
 		width=100
 		height=20
@@ -1421,7 +1407,7 @@ text {
 }
 "message button" {
 	object {
-		x=270
+		x=245
 		y=255
 		width=35
 		height=20
@@ -1466,7 +1452,7 @@ oval {
 }
 menu {
 	object {
-		x=310
+		x=285
 		y=280
 		width=40
 		height=20
@@ -1479,7 +1465,7 @@ menu {
 }
 "related display" {
 	object {
-		x=140
+		x=330
 		y=280
 		width=20
 		height=20
@@ -1492,40 +1478,38 @@ menu {
 	clr=0
 	bclr=18
 }
-
 text {
-    object {
-        x=5
-        y=280
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=14
-    }
-    "dynamic attribute" {
-        vis="if zero"
-        chan="$(P)Waypoint$(T):$(WP9):Enabled"
-    }
-    textix="$(WP9)."
+	object {
+		x=5
+		y=280
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP9):Enabled"
+	}
+	textix="$(WP9)."
 }
 text {
-    object {
-        x=5
-        y=280
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=60
-    }
-    "dynamic attribute" {
-        vis="if not zero"
-        chan="$(P)Waypoint$(T):$(WP9):Enabled"
-    }
-    textix="$(WP9)."
+	object {
+		x=5
+		y=280
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP9):Enabled"
+	}
+	textix="$(WP9)."
 }
-
 "choice button" {
 	object {
 		x=30
@@ -1557,7 +1541,7 @@ text {
 }
 "text entry" {
 	object {
-		x=165
+		x=140
 		y=280
 		width=100
 		height=20
@@ -1572,7 +1556,7 @@ text {
 }
 "message button" {
 	object {
-		x=270
+		x=245
 		y=280
 		width=35
 		height=20
@@ -1617,7 +1601,7 @@ oval {
 }
 menu {
 	object {
-		x=310
+		x=285
 		y=305
 		width=40
 		height=20
@@ -1630,7 +1614,7 @@ menu {
 }
 "related display" {
 	object {
-		x=140
+		x=330
 		y=305
 		width=20
 		height=20
@@ -1643,40 +1627,38 @@ menu {
 	clr=0
 	bclr=18
 }
-
 text {
-    object {
-        x=5
-        y=305
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=14
-    }
-    "dynamic attribute" {
-        vis="if zero"
-        chan="$(P)Waypoint$(T):$(WP10):Enabled"
-    }
-    textix="$(WP10)."
+	object {
+		x=5
+		y=305
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Waypoint$(T):$(WP10):Enabled"
+	}
+	textix="$(WP10)."
 }
 text {
-    object {
-        x=5
-        y=305
-        width=20
-        height=20
-    }
-    "basic attribute" {
-        clr=60
-    }
-    "dynamic attribute" {
-        vis="if not zero"
-        chan="$(P)Waypoint$(T):$(WP10):Enabled"
-    }
-    textix="$(WP10)."
+	object {
+		x=5
+		y=305
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Waypoint$(T):$(WP10):Enabled"
+	}
+	textix="$(WP10)."
 }
-
 "choice button" {
 	object {
 		x=30
@@ -1708,7 +1690,7 @@ text {
 }
 "text entry" {
 	object {
-		x=165
+		x=140
 		y=305
 		width=100
 		height=20
@@ -1723,7 +1705,7 @@ text {
 }
 "message button" {
 	object {
-		x=270
+		x=245
 		y=305
 		width=35
 		height=20
@@ -1795,7 +1777,7 @@ oval {
 }
 text {
 	object {
-		x=170
+		x=145
 		y=65
 		width=100
 		height=10
@@ -1808,7 +1790,7 @@ text {
 }
 text {
 	object {
-		x=310
+		x=285
 		y=65
 		width=40
 		height=10
@@ -1821,8 +1803,8 @@ text {
 }
 "related display" {
 	object {
-		x=380
-		y=10
+		x=385
+		y=5
 		width=75
 		height=20
 	}
@@ -1836,7 +1818,7 @@ text {
 }
 "text update" {
 	object {
-		x=355
+		x=360
 		y=80
 		width=100
 		height=20
@@ -1852,7 +1834,7 @@ text {
 }
 "text update" {
 	object {
-		x=355
+		x=360
 		y=105
 		width=100
 		height=20
@@ -1868,7 +1850,7 @@ text {
 }
 "text update" {
 	object {
-		x=355
+		x=360
 		y=130
 		width=100
 		height=20
@@ -1884,7 +1866,7 @@ text {
 }
 "text update" {
 	object {
-		x=355
+		x=360
 		y=155
 		width=100
 		height=20
@@ -1900,7 +1882,7 @@ text {
 }
 "text update" {
 	object {
-		x=355
+		x=360
 		y=180
 		width=100
 		height=20
@@ -1916,7 +1898,7 @@ text {
 }
 "text update" {
 	object {
-		x=355
+		x=360
 		y=205
 		width=100
 		height=20
@@ -1932,7 +1914,7 @@ text {
 }
 "text update" {
 	object {
-		x=355
+		x=360
 		y=230
 		width=100
 		height=20
@@ -1948,7 +1930,7 @@ text {
 }
 "text update" {
 	object {
-		x=355
+		x=360
 		y=255
 		width=100
 		height=20
@@ -1964,7 +1946,7 @@ text {
 }
 "text update" {
 	object {
-		x=355
+		x=360
 		y=280
 		width=100
 		height=20
@@ -1980,7 +1962,7 @@ text {
 }
 "text update" {
 	object {
-		x=355
+		x=360
 		y=305
 		width=100
 		height=20
@@ -1996,7 +1978,7 @@ text {
 }
 text {
 	object {
-		x=355
+		x=360
 		y=65
 		width=100
 		height=10
@@ -2031,7 +2013,7 @@ text {
 		height=20
 	}
 	"basic attribute" {
-		clr=60
+		clr=16
 	}
 	"dynamic attribute" {
 		vis="if not zero"

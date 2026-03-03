@@ -1,12 +1,12 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/topPaths5x.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/topPaths5x.adl"
 	version=030111
 }
 display {
 	object {
-		x=366
-		y=299
+		x=850
+		y=1032
 		width=210
 		height=125
 	}
@@ -312,47 +312,21 @@ display {
 	limits {
 	}
 }
-oval {
+text {
 	object {
-		x=50
+		x=5
 		y=0
-		width=15
-		height=15
+		width=60
+		height=20
 	}
 	"basic attribute" {
-		clr=61
+		clr=16
 	}
 	"dynamic attribute" {
 		vis="if not zero"
 		chan="$(P)Control:AsyncMoveDone"
 	}
-}
-text {
-	object {
-		x=5
-		y=0
-		width=50
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Done:"
-}
-oval {
-	object {
-		x=50
-		y=0
-		width=15
-		height=15
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Control:AsyncMoveDone"
-	}
+	textix="Done"
 }
 "message button" {
 	object {
@@ -428,4 +402,20 @@ oval {
 	}
 	label="Stop"
 	release_msg="1"
+}
+text {
+	object {
+		x=5
+		y=0
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=30
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Control:AsyncMoveDone"
+	}
+	textix="Moving"
 }

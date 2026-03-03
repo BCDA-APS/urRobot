@@ -92,18 +92,18 @@ rectangle {
 		x=0
 		y=0
 		width=600
-		height=40
+		height=30
 	}
 	"basic attribute" {
-		clr=54
+		clr=29
 	}
 }
 text {
 	object {
 		x=5
 		y=5
-		width=240
-		height=30
+		width=150
+		height=20
 	}
 	"basic attribute" {
 		clr=0

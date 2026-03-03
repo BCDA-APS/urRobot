@@ -35,8 +35,8 @@ record(mbbo, "$(P)Path$(N):$(K):ActionOverride") {
 # Enable/disable K'th waypoint in path N
 record(bo, "$(P)Path$(N):$(K):Enabled") {
     field(DESC, "1 if waypoint in path enabled, else 0")
-    field(ZNAM, "0")
-    field(ONAM, "1")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
     field(VAL, 0)
     field(FLNK, "$(P)Path$(N):$(K):get_wp_info.PROC")
 }

@@ -4,8 +4,8 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>366</x>
-            <y>299</y>
+            <x>850</x>
+            <y>1032</y>
             <width>210</width>
             <height>125</height>
         </rect>
@@ -770,65 +770,32 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caGraphics" name="caGraphics_0">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>50</x>
-                    <y>0</y>
-                    <width>15</width>
-                    <height>15</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>82</red>
-                    <green>218</green>
-                    <blue>59</blue>
-                </color>
-            </property>
-            <property name="fillstyle">
-                <enum>Filled</enum>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>82</red>
-                    <green>218</green>
-                    <blue>59</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-            <property name="visibility">
-                <enum>caGraphics::IfNotZero</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Control:AsyncMoveDone</string>
-            </property>
-        </widget>
         <widget class="caLabel" name="caLabel_0">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
             <property name="foreground">
                 <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
+                    <red>30</red>
+                    <green>187</green>
                     <blue>0</blue>
                 </color>
             </property>
             <property name="background">
                 <color alpha="0">
-                    <red>0</red>
-                    <green>0</green>
+                    <red>30</red>
+                    <green>187</green>
                     <blue>0</blue>
                 </color>
             </property>
+            <property name="visibility">
+                <enum>caLabel::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Control:AsyncMoveDone</string>
+            </property>
             <property name="text">
-                <string>Done:</string>
+                <string>Done</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -837,51 +804,12 @@ caMenu{
                 <rect>
                     <x>5</x>
                     <y>0</y>
-                    <width>50</width>
-                    <height>15</height>
+                    <width>60</width>
+                    <height>20</height>
                 </rect>
             </property>
             <property name="alignment">
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-        </widget>
-        <widget class="caGraphics" name="caGraphics_1">
-            <property name="form">
-                <enum>caGraphics::Circle</enum>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>50</x>
-                    <y>0</y>
-                    <width>15</width>
-                    <height>15</height>
-                </rect>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="fillstyle">
-                <enum>Filled</enum>
-            </property>
-            <property name="lineColor">
-                <color alpha="255">
-                    <red>174</red>
-                    <green>174</green>
-                    <blue>174</blue>
-                </color>
-            </property>
-            <property name="linestyle">
-                <enum>Solid</enum>
-            </property>
-            <property name="visibility">
-                <enum>caGraphics::IfZero</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Control:AsyncMoveDone</string>
             </property>
         </widget>
         <widget class="caMessageButton" name="caMessageButton_5">
@@ -1079,9 +1007,50 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <zorder>caGraphics_0</zorder>
+        <widget class="caLabel" name="caLabel_1">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>251</red>
+                    <green>243</green>
+                    <blue>74</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>251</red>
+                    <green>243</green>
+                    <blue>74</blue>
+                </color>
+            </property>
+            <property name="visibility">
+                <enum>caLabel::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)Control:AsyncMoveDone</string>
+            </property>
+            <property name="text">
+                <string>Moving</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>0</y>
+                    <width>60</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
         <zorder>caLabel_0</zorder>
-        <zorder>caGraphics_1</zorder>
+        <zorder>caLabel_1</zorder>
         <zorder>caMessageButton_0</zorder>
         <zorder>caMessageButton_1</zorder>
         <zorder>caMessageButton_2</zorder>

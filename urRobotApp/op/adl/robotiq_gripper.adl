@@ -1,14 +1,14 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/robotiq_gripper.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/robotiq_gripper.adl"
 	version=030111
 }
 display {
 	object {
-		x=381
-		y=943
+		x=874
+		y=1055
 		width=379
-		height=244
+		height=170
 	}
 	clr=14
 	bclr=4
@@ -92,16 +92,16 @@ rectangle {
 		x=-25
 		y=0
 		width=500
-		height=40
+		height=30
 	}
 	"basic attribute" {
-		clr=54
+		clr=29
 	}
 }
 "message button" {
 	object {
 		x=215
-		y=115
+		y=95
 		width=75
 		height=25
 	}
@@ -117,33 +117,18 @@ text {
 	object {
 		x=5
 		y=5
-		width=255
-		height=30
+		width=175
+		height=20
 	}
 	"basic attribute" {
 		clr=0
 	}
 	textix="Robotiq Gripper"
 }
-oval {
-	object {
-		x=125
-		y=90
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)RobotiqGripper:IsActive"
-	}
-}
 "text update" {
 	object {
 		x=215
-		y=85
+		y=65
 		width=150
 		height=20
 	}
@@ -159,7 +144,7 @@ oval {
 "message button" {
 	object {
 		x=295
-		y=115
+		y=95
 		width=75
 		height=25
 	}
@@ -174,7 +159,7 @@ oval {
 text {
 	object {
 		x=215
-		y=55
+		y=35
 		width=60
 		height=20
 	}
@@ -185,8 +170,8 @@ text {
 }
 text {
 	object {
-		x=275
-		y=55
+		x=280
+		y=35
 		width=60
 		height=20
 	}
@@ -201,8 +186,8 @@ text {
 }
 text {
 	object {
-		x=275
-		y=55
+		x=280
+		y=35
 		width=60
 		height=20
 	}
@@ -217,8 +202,8 @@ text {
 }
 "text update" {
 	object {
-		x=125
-		y=120
+		x=110
+		y=100
 		width=50
 		height=20
 	}
@@ -234,47 +219,8 @@ text {
 text {
 	object {
 		x=10
-		y=60
-		width=120
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Connection:"
-}
-text {
-	object {
-		x=10
-		y=90
-		width=75
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Active:"
-}
-oval {
-	object {
-		x=125
-		y=60
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=15
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)RobotiqGripper:Connected"
-	}
-}
-text {
-	object {
-		x=10
-		y=120
-		width=100
+		y=100
+		width=95
 		height=20
 	}
 	"basic attribute" {
@@ -285,7 +231,7 @@ text {
 "message button" {
 	object {
 		x=5
-		y=150
+		y=135
 		width=80
 		height=25
 	}
@@ -299,8 +245,8 @@ text {
 }
 "message button" {
 	object {
-		x=5
-		y=180
+		x=95
+		y=135
 		width=80
 		height=25
 	}
@@ -314,8 +260,8 @@ text {
 }
 "message button" {
 	object {
-		x=5
-		y=210
+		x=185
+		y=135
 		width=80
 		height=25
 	}
@@ -327,33 +273,67 @@ text {
 	label="Activate"
 	press_msg="1"
 }
-oval {
+text {
 	object {
-		x=125
-		y=60
-		width=20
+		x=10
+		y=40
+		width=125
 		height=20
 	}
 	"basic attribute" {
-		clr=5
+		clr=60
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)RobotiqGripper:Connected"
+	}
+	textix="Connected"
+}
+text {
+	object {
+		x=10
+		y=40
+		width=125
+		height=20
+	}
+	"basic attribute" {
+		clr=20
 	}
 	"dynamic attribute" {
 		vis="if zero"
 		chan="$(P)RobotiqGripper:Connected"
 	}
+	textix="Disconnected"
 }
-oval {
+text {
 	object {
-		x=125
-		y=90
-		width=20
+		x=10
+		y=70
+		width=100
 		height=20
 	}
 	"basic attribute" {
-		clr=5
+		clr=60
 	}
 	"dynamic attribute" {
-		vis="if zero"
+		vis="if not zero"
 		chan="$(P)RobotiqGripper:IsActive"
 	}
+	textix="Active"
+}
+text {
+	object {
+		x=10
+		y=70
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)RobotiqGripper:IsActive"
+	}
+	textix="Not Active"
 }
