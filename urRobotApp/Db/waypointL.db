@@ -66,14 +66,6 @@ record(ao, "$(P)WaypointL:$(N):Yaw")
     field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
 }
 
-record(bo, "$(P)WaypointL:$(N):Gripper")
-{
-    field(ZNAM, "OPEN")
-    field(ONAM, "CLOSED")
-    field(VAL, "$(GRIPPER=0)")
-    field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
-}
-
 record(ao, "$(P)WaypointL:$(N):Speed")
 {
     field(VAL, "$(SPEED=0.1)")
@@ -131,21 +123,10 @@ record(luascript, "$(P)WaypointL:$(N):CopyActionLink")
     field(CODE, "@copy_action_link.lua copy_action_link({P='$(P)',R='',T='L',N='$(N)'})")
 }
 
-record(mbbi, "$(P)WaypointL:$(N):ActionOpt")
+record(longout, "$(P)WaypointL:$(N):ActionOpt")
 {
     field(VAL, 0)
     field(PINI, 1)
-    field(ZRST, "None")
-    field(ONST, "1")
-    field(TWST, "2")
-    field(THST, "3")
-    field(FRST, "4")
-    field(FVST, "5")
-    field(SXST, "6")
-    field(SVST, "7")
-    field(EIST, "8")
-    field(NIST, "9")
-    field(TEST, "10")
     field(FLNK, "$(P)WaypointL:$(N):ActionOptSelect")
 }
 
@@ -272,8 +253,6 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq2")
     field(LNK2, "$(P)Control:LinearAcceleration PP")
     field(DOL3, "$(P)WaypointL:$(N):Blend")
     field(LNK3, "$(P)Control:LinearBlend PP")
-    # field(DOL4, "$(P)WaypointL:$(N):Gripper")
-    # field(LNK4, "$(P)Control:WaypointGripperAction PP")
     field(DOL4, "1")
     field(LNK4, "$(P)WaypointL:$(N):CopyActionLink.PROC")
 

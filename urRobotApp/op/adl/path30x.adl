@@ -1,12 +1,12 @@
 
 file {
-	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path_more.adl"
+	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path30x.adl"
 	version=030111
 }
 display {
 	object {
-		x=205
-		y=883
+		x=185
+		y=867
 		width=545
 		height=825
 	}
@@ -198,19 +198,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=75
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):1:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -228,7 +215,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=75
 		width=120
 		height=20
@@ -302,19 +289,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=100
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):2:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -332,7 +306,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=100
 		width=120
 		height=20
@@ -406,19 +380,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=125
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):3:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -436,7 +397,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=125
 		width=120
 		height=20
@@ -510,19 +471,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=150
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):4:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -540,7 +488,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=150
 		width=120
 		height=20
@@ -614,19 +562,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=175
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):5:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -644,7 +579,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=175
 		width=120
 		height=20
@@ -718,19 +653,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=200
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):6:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -748,7 +670,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=200
 		width=120
 		height=20
@@ -822,19 +744,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=225
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):7:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -852,7 +761,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=225
 		width=120
 		height=20
@@ -926,19 +835,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=250
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):8:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -956,7 +852,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=250
 		width=120
 		height=20
@@ -1030,19 +926,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=275
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):9:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -1060,7 +943,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=275
 		width=120
 		height=20
@@ -1134,19 +1017,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=300
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):10:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -1164,7 +1034,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=300
 		width=120
 		height=20
@@ -1238,19 +1108,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=325
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):11:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -1268,7 +1125,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=325
 		width=120
 		height=20
@@ -1342,19 +1199,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=350
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):12:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -1372,7 +1216,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=350
 		width=120
 		height=20
@@ -1446,19 +1290,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=375
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):13:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -1476,7 +1307,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=375
 		width=120
 		height=20
@@ -1550,19 +1381,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=400
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):14:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -1580,7 +1398,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=400
 		width=120
 		height=20
@@ -1654,19 +1472,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=425
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):15:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -1684,7 +1489,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=425
 		width=120
 		height=20
@@ -1758,19 +1563,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=450
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):16:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -1788,7 +1580,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=450
 		width=120
 		height=20
@@ -1862,19 +1654,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=475
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):17:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -1892,7 +1671,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=475
 		width=120
 		height=20
@@ -1966,19 +1745,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=500
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):18:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -1996,7 +1762,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=500
 		width=120
 		height=20
@@ -2070,19 +1836,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=525
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):19:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -2100,7 +1853,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=525
 		width=120
 		height=20
@@ -2174,19 +1927,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=550
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):20:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -2204,7 +1944,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=550
 		width=120
 		height=20
@@ -2278,19 +2018,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=575
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):21:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -2308,7 +2035,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=575
 		width=120
 		height=20
@@ -2382,19 +2109,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=600
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):22:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -2412,7 +2126,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=600
 		width=120
 		height=20
@@ -2486,19 +2200,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=625
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):23:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -2516,7 +2217,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=625
 		width=120
 		height=20
@@ -2590,19 +2291,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=650
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):24:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -2620,7 +2308,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=650
 		width=120
 		height=20
@@ -2694,19 +2382,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=675
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):25:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -2724,7 +2399,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=675
 		width=120
 		height=20
@@ -2798,19 +2473,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=700
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):26:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -2828,7 +2490,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=700
 		width=120
 		height=20
@@ -2902,19 +2564,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=725
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):27:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -2932,7 +2581,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=725
 		width=120
 		height=20
@@ -3006,19 +2655,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=750
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):28:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -3036,7 +2672,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=750
 		width=120
 		height=20
@@ -3110,19 +2746,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=775
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):29:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -3140,7 +2763,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=775
 		width=120
 		height=20
@@ -3214,19 +2837,6 @@ menu {
 		bclr=5
 	}
 }
-menu {
-	object {
-		x=221
-		y=800
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Path$(N):30:ActionOverride"
-		clr=14
-		bclr=5
-	}
-}
 "text entry" {
 	object {
 		x=175
@@ -3244,7 +2854,7 @@ menu {
 }
 "text update" {
 	object {
-		x=289
+		x=280
 		y=800
 		width=120
 		height=20
@@ -4632,7 +4242,7 @@ oval {
 		height=20
 	}
 	display[0] {
-		name="path_less.adl"
+		name="path10x.adl"
 		args="P=$(P),N=$(N)"
 		policy="replace display"
 	}
@@ -4657,7 +4267,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=75
 		width=120
 		height=20
@@ -4674,7 +4284,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=100
 		width=120
 		height=20
@@ -4691,7 +4301,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=125
 		width=120
 		height=20
@@ -4708,7 +4318,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=150
 		width=120
 		height=20
@@ -4725,7 +4335,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=175
 		width=120
 		height=20
@@ -4742,7 +4352,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=200
 		width=120
 		height=20
@@ -4759,7 +4369,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=225
 		width=120
 		height=20
@@ -4776,7 +4386,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=250
 		width=120
 		height=20
@@ -4793,7 +4403,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=275
 		width=120
 		height=20
@@ -4810,7 +4420,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=300
 		width=120
 		height=20
@@ -4827,7 +4437,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=325
 		width=120
 		height=20
@@ -4844,7 +4454,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=350
 		width=120
 		height=20
@@ -4861,7 +4471,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=375
 		width=120
 		height=20
@@ -4878,7 +4488,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=400
 		width=120
 		height=20
@@ -4895,7 +4505,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=425
 		width=120
 		height=20
@@ -4912,7 +4522,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=450
 		width=120
 		height=20
@@ -4929,7 +4539,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=475
 		width=120
 		height=20
@@ -4946,7 +4556,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=500
 		width=120
 		height=20
@@ -4963,7 +4573,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=525
 		width=120
 		height=20
@@ -4980,7 +4590,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=550
 		width=120
 		height=20
@@ -4997,7 +4607,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=575
 		width=120
 		height=20
@@ -5014,7 +4624,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=600
 		width=120
 		height=20
@@ -5031,7 +4641,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=625
 		width=120
 		height=20
@@ -5048,7 +4658,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=650
 		width=120
 		height=20
@@ -5065,7 +4675,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=675
 		width=120
 		height=20
@@ -5082,7 +4692,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=700
 		width=120
 		height=20
@@ -5099,7 +4709,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=725
 		width=120
 		height=20
@@ -5116,7 +4726,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=750
 		width=120
 		height=20
@@ -5133,7 +4743,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=775
 		width=120
 		height=20
@@ -5150,7 +4760,7 @@ oval {
 }
 "text update" {
 	object {
-		x=415
+		x=406
 		y=800
 		width=120
 		height=20
@@ -5165,36 +4775,10 @@ oval {
 	limits {
 	}
 }
-text {
-	object {
-		x=420
-		y=60
-		width=120
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Action Desc "
-	align="horiz. centered"
-}
-text {
-	object {
-		x=290
-		y=60
-		width=120
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Waypoint Desc"
-	align="horiz. centered"
-}
 "related display" {
 	object {
-		x=465
-		y=25
+		x=410
+		y=0
 		width=75
 		height=20
 	}
@@ -5252,4 +4836,519 @@ text {
 		chan="$(P)Control:AsyncMoveDone"
 	}
 	textix="Done"
+}
+text {
+	object {
+		x=175
+		y=50
+		width=40
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="WP"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=230
+		y=75
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):1:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=100
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):2:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=125
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):3:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=150
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):4:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=175
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):5:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=200
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):6:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=225
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):7:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=250
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):8:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=275
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):9:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=300
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):10:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=280
+		y=50
+		width=120
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Waypoint"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=280
+		y=60
+		width=120
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Description"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=405
+		y=50
+		width=120
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Action"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=405
+		y=60
+		width=120
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Description"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=230
+		y=550
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):20:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=525
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):19:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=500
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):18:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=475
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):17:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=450
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):16:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=425
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):15:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=400
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):14:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=375
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):13:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=350
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):12:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=325
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):11:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=800
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):30:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=775
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):29:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=750
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):28:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=725
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):27:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=700
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):26:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=675
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):25:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=650
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):24:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=625
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):23:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=600
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):22:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=230
+		y=575
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N):21:ActionOverride"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
 }

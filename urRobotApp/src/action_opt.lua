@@ -1,10 +1,5 @@
 epics = require("epics")
 
--- Sets the "dest" PV to the value of the "src" PV
-local function copy_pv(src, dest)
-    epics.put(string.format("%s", dest), epics.get(string.format("%s", src)))
-end
-
 function select(args)
     local action_opt_val = A
 
@@ -14,8 +9,8 @@ function select(args)
     local action_link_FLNK = string.format("%sWaypoint%s:%d:Action.FLNK", args.P, args.T, args.N)
     local action_link_N_FLNK = string.format("%sActionSseq%d.PROC", args.P, action_opt_val)
 
-    -- 0 means no waypoint action
     if action_opt_val == 0 then
+	-- 0 means no waypoint action
         epics.put(action_link_FLNK, " ")
         epics.put(action_done_calc_CALC, "1")
     else

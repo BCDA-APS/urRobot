@@ -1,14 +1,14 @@
 
 file {
-	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/topPaths5x.adl"
+	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path_top10x.adl"
 	version=030111
 }
 display {
 	object {
-		x=850
-		y=1032
+		x=420
+		y=1054
 		width=210
-		height=125
+		height=225
 	}
 	clr=14
 	bclr=4
@@ -170,7 +170,7 @@ display {
 		height=20
 	}
 	display[0] {
-		name="path_less.adl"
+		name="path10x.adl"
 		args="P=$(P),N=$(N1)"
 	}
 	clr=0
@@ -185,7 +185,7 @@ display {
 		height=20
 	}
 	display[0] {
-		name="path_less.adl"
+		name="path10x.adl"
 		args="P=$(P),N=$(N2)"
 	}
 	clr=0
@@ -200,7 +200,7 @@ display {
 		height=20
 	}
 	display[0] {
-		name="path_less.adl"
+		name="path10x.adl"
 		args="P=$(P),N=$(N3)"
 	}
 	clr=0
@@ -215,7 +215,7 @@ display {
 		height=20
 	}
 	display[0] {
-		name="path_less.adl"
+		name="path10x.adl"
 		args="P=$(P),N=$(N4)"
 	}
 	clr=0
@@ -230,7 +230,7 @@ display {
 		height=20
 	}
 	display[0] {
-		name="path_less.adl"
+		name="path10x.adl"
 		args="P=$(P),N=$(N5)"
 	}
 	clr=0
@@ -418,4 +418,304 @@ text {
 		chan="$(P)Control:AsyncMoveDone"
 	}
 	textix="Moving"
+}
+"related display" {
+	object {
+		x=5
+		y=120
+		width=20
+		height=20
+	}
+	display[0] {
+		name="path10x.adl"
+		args="P=$(P),N=$(N6)"
+	}
+	clr=0
+	bclr=63
+	label="-6"
+}
+"text entry" {
+	object {
+		x=25
+		y=120
+		width=100
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N6)"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=125
+		y=120
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N6):Go.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Go"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=164
+		y=120
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N6):Stop"
+		clr=30
+		bclr=20
+	}
+	label="Stop"
+	release_msg="1"
+}
+"related display" {
+	object {
+		x=5
+		y=140
+		width=20
+		height=20
+	}
+	display[0] {
+		name="path10x.adl"
+		args="P=$(P),N=$(N7)"
+	}
+	clr=0
+	bclr=63
+	label="-7"
+}
+"text entry" {
+	object {
+		x=25
+		y=140
+		width=100
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N7)"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=125
+		y=140
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N7):Go.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Go"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=164
+		y=140
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N7):Stop"
+		clr=30
+		bclr=20
+	}
+	label="Stop"
+	release_msg="1"
+}
+"related display" {
+	object {
+		x=5
+		y=160
+		width=20
+		height=20
+	}
+	display[0] {
+		name="path10x.adl"
+		args="P=$(P),N=$(N8)"
+	}
+	clr=0
+	bclr=63
+	label="-8"
+}
+"text entry" {
+	object {
+		x=25
+		y=160
+		width=100
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N8)"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=125
+		y=160
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N8):Go.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Go"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=164
+		y=160
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N8):Stop"
+		clr=30
+		bclr=20
+	}
+	label="Stop"
+	release_msg="1"
+}
+"related display" {
+	object {
+		x=5
+		y=180
+		width=20
+		height=20
+	}
+	display[0] {
+		name="path10x.adl"
+		args="P=$(P),N=$(N9)"
+	}
+	clr=0
+	bclr=63
+	label="-9"
+}
+"text entry" {
+	object {
+		x=25
+		y=180
+		width=100
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N9)"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=125
+		y=180
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N9):Go.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Go"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=164
+		y=180
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N9):Stop"
+		clr=30
+		bclr=20
+	}
+	label="Stop"
+	release_msg="1"
+}
+"related display" {
+	object {
+		x=5
+		y=200
+		width=20
+		height=20
+	}
+	display[0] {
+		name="path10x.adl"
+		args="P=$(P),N=$(N10)"
+	}
+	clr=0
+	bclr=63
+	label="-10"
+}
+"text entry" {
+	object {
+		x=25
+		y=200
+		width=100
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N10)"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=125
+		y=200
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N10):Go.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Go"
+	release_msg="1"
+}
+"message button" {
+	object {
+		x=164
+		y=200
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Path$(N10):Stop"
+		clr=30
+		bclr=20
+	}
+	label="Stop"
+	release_msg="1"
 }

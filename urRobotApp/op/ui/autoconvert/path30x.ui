@@ -11396,7 +11396,7 @@ caMenu{
                 <string></string>
             </property>
             <property name="files">
-                <string>path_less.adl</string>
+                <string>path10x.adl</string>
             </property>
             <property name="args">
                 <string>P=$(P),N=$(N)</string>

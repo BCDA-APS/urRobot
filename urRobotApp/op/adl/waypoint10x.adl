@@ -1,12 +1,12 @@
 
 file {
-	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/waypoint_10x.adl"
+	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/waypoint10x.adl"
 	version=030111
 }
 display {
 	object {
-		x=839
-		y=1053
+		x=447
+		y=1129
 		width=469
 		height=333
 	}
@@ -290,19 +290,6 @@ oval {
 		chan="$(P)Waypoint$(T):$(WP1):Reached"
 	}
 }
-menu {
-	object {
-		x=286
-		y=80
-		width=40
-		height=20
-	}
-	control {
-		chan="$(P)Waypoint$(T):$(WP1):ActionOpt"
-		clr=14
-		bclr=51
-	}
-}
 "related display" {
 	object {
 		x=330
@@ -407,7 +394,7 @@ oval {
 		chan="$(P)Waypoint$(T):$(WP2):Reached"
 	}
 }
-menu {
+"text entry" {
 	object {
 		x=285
 		y=105
@@ -418,6 +405,8 @@ menu {
 		chan="$(P)Waypoint$(T):$(WP2):ActionOpt"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "related display" {
@@ -556,7 +545,7 @@ oval {
 		chan="$(P)Waypoint$(T):$(WP3):Reached"
 	}
 }
-menu {
+"text entry" {
 	object {
 		x=285
 		y=130
@@ -567,6 +556,8 @@ menu {
 		chan="$(P)Waypoint$(T):$(WP3):ActionOpt"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "related display" {
@@ -705,7 +696,7 @@ oval {
 		chan="$(P)Waypoint$(T):$(WP4):Reached"
 	}
 }
-menu {
+"text entry" {
 	object {
 		x=285
 		y=155
@@ -716,6 +707,8 @@ menu {
 		chan="$(P)Waypoint$(T):$(WP4):ActionOpt"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "related display" {
@@ -854,7 +847,7 @@ oval {
 		chan="$(P)Waypoint$(T):$(WP5):Reached"
 	}
 }
-menu {
+"text entry" {
 	object {
 		x=285
 		y=180
@@ -865,6 +858,8 @@ menu {
 		chan="$(P)Waypoint$(T):$(WP5):ActionOpt"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "related display" {
@@ -1003,7 +998,7 @@ oval {
 		chan="$(P)Waypoint$(T):$(WP6):Reached"
 	}
 }
-menu {
+"text entry" {
 	object {
 		x=285
 		y=205
@@ -1014,6 +1009,8 @@ menu {
 		chan="$(P)Waypoint$(T):$(WP6):ActionOpt"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "related display" {
@@ -1152,7 +1149,7 @@ oval {
 		chan="$(P)Waypoint$(T):$(WP7):Reached"
 	}
 }
-menu {
+"text entry" {
 	object {
 		x=285
 		y=230
@@ -1163,6 +1160,8 @@ menu {
 		chan="$(P)Waypoint$(T):$(WP7):ActionOpt"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "related display" {
@@ -1301,7 +1300,7 @@ oval {
 		chan="$(P)Waypoint$(T):$(WP8):Reached"
 	}
 }
-menu {
+"text entry" {
 	object {
 		x=285
 		y=255
@@ -1312,6 +1311,8 @@ menu {
 		chan="$(P)Waypoint$(T):$(WP8):ActionOpt"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "related display" {
@@ -1450,7 +1451,7 @@ oval {
 		chan="$(P)Waypoint$(T):$(WP9):Reached"
 	}
 }
-menu {
+"text entry" {
 	object {
 		x=285
 		y=280
@@ -1461,6 +1462,8 @@ menu {
 		chan="$(P)Waypoint$(T):$(WP9):ActionOpt"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "related display" {
@@ -1599,7 +1602,7 @@ oval {
 		chan="$(P)Waypoint$(T):$(WP10):Reached"
 	}
 }
-menu {
+"text entry" {
 	object {
 		x=285
 		y=305
@@ -1610,6 +1613,8 @@ menu {
 		chan="$(P)Waypoint$(T):$(WP10):ActionOpt"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "related display" {
@@ -1718,52 +1723,10 @@ text {
 	label="Go"
 	press_msg="1"
 }
-oval {
-	object {
-		x=50
-		y=50
-		width=15
-		height=15
-	}
-	"basic attribute" {
-		clr=61
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Control:AsyncMoveDone"
-	}
-}
-text {
-	object {
-		x=5
-		y=50
-		width=50
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Done:"
-}
-oval {
-	object {
-		x=50
-		y=50
-		width=15
-		height=15
-	}
-	"basic attribute" {
-		clr=5
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Control:AsyncMoveDone"
-	}
-}
 "message button" {
 	object {
-		x=75
-		y=45
+		x=5
+		y=40
 		width=50
 		height=20
 	}
@@ -1777,7 +1740,7 @@ oval {
 }
 text {
 	object {
-		x=145
+		x=140
 		y=65
 		width=100
 		height=10
@@ -1791,7 +1754,7 @@ text {
 text {
 	object {
 		x=285
-		y=65
+		y=55
 		width=40
 		height=10
 	}
@@ -2020,4 +1983,90 @@ text {
 		chan="$(P)Waypoint$(T):$(WP1):Enabled"
 	}
 	textix="$(WP1)."
+}
+"text entry" {
+	object {
+		x=285
+		y=80
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)Waypoint$(T):$(WP1):ActionOpt"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=67
+		y=41
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=30
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Control:AsyncMoveDone"
+	}
+	textix="Moving"
+}
+text {
+	object {
+		x=67
+		y=41
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Control:AsyncMoveDone"
+	}
+	textix="Done"
+}
+text {
+	object {
+		x=285
+		y=65
+		width=40
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Number"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=140
+		y=55
+		width=100
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Waypoint"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=360
+		y=55
+		width=100
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Action"
+	align="horiz. centered"
 }
