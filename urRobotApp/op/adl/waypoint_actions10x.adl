@@ -116,7 +116,7 @@ display {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink1.DESC"
+		chan="$(P)ActionSseq1.DESC"
 		clr=14
 		bclr=51
 	}
@@ -131,7 +131,7 @@ display {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink2.DESC"
+		chan="$(P)ActionSseq2.DESC"
 		clr=14
 		bclr=51
 	}
@@ -146,7 +146,7 @@ display {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink3.DESC"
+		chan="$(P)ActionSseq3.DESC"
 		clr=14
 		bclr=51
 	}
@@ -161,7 +161,7 @@ display {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink4.DESC"
+		chan="$(P)ActionSseq4.DESC"
 		clr=14
 		bclr=51
 	}
@@ -176,7 +176,7 @@ display {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink5.DESC"
+		chan="$(P)ActionSseq5.DESC"
 		clr=14
 		bclr=51
 	}
@@ -191,7 +191,7 @@ display {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink6.DESC"
+		chan="$(P)ActionSseq6.DESC"
 		clr=14
 		bclr=51
 	}
@@ -206,7 +206,7 @@ display {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink7.DESC"
+		chan="$(P)ActionSseq7.DESC"
 		clr=14
 		bclr=51
 	}
@@ -221,7 +221,7 @@ display {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink8.DESC"
+		chan="$(P)ActionSseq8.DESC"
 		clr=14
 		bclr=51
 	}
@@ -236,7 +236,7 @@ display {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink9.DESC"
+		chan="$(P)ActionSseq9.DESC"
 		clr=14
 		bclr=51
 	}
@@ -251,7 +251,7 @@ display {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink10.DESC"
+		chan="$(P)ActionSseq10.DESC"
 		clr=14
 		bclr=51
 	}
@@ -598,7 +598,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink1.PROC"
+		chan="$(P)ActionSseq1.PROC"
 		clr=14
 		bclr=51
 	}
@@ -613,7 +613,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink2.PROC"
+		chan="$(P)ActionSseq2.PROC"
 		clr=14
 		bclr=51
 	}
@@ -628,7 +628,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink3.PROC"
+		chan="$(P)ActionSseq3.PROC"
 		clr=14
 		bclr=51
 	}
@@ -643,7 +643,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink4.PROC"
+		chan="$(P)ActionSseq4.PROC"
 		clr=14
 		bclr=51
 	}
@@ -658,7 +658,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink5.PROC"
+		chan="$(P)ActionSseq5.PROC"
 		clr=14
 		bclr=51
 	}
@@ -673,7 +673,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink6.PROC"
+		chan="$(P)ActionSseq6.PROC"
 		clr=14
 		bclr=51
 	}
@@ -688,7 +688,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink7.PROC"
+		chan="$(P)ActionSseq7.PROC"
 		clr=14
 		bclr=51
 	}
@@ -703,7 +703,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink8.PROC"
+		chan="$(P)ActionSseq8.PROC"
 		clr=14
 		bclr=51
 	}
@@ -718,7 +718,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink9.PROC"
+		chan="$(P)ActionSseq9.PROC"
 		clr=14
 		bclr=51
 	}
@@ -733,7 +733,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ActionLink10.PROC"
+		chan="$(P)ActionSseq10.PROC"
 		clr=14
 		bclr=51
 	}

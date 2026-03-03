@@ -1,99 +1,29 @@
-record(calcout, "$(P)ActionDoneCalc1") {
-    field(DESC, "Action1 done calc")
-}
-record(sseq, "$(P)ActionSseq1") {
-    field(DESC, "Action1 sseq")
-}
-record(bo, "$(P)ActionLink1"){
-    field(FLNK, "$(P)ActionSseq1.PROC")
-}
+record(calcout, "$(P)ActionDoneCalc1") {}
+record(sseq, "$(P)ActionSseq1") {}
 
-record(calcout, "$(P)ActionDoneCalc2") {
-    field(DESC, "Action2 done calc")
-}
-record(sseq, "$(P)ActionSseq2") {
-    field(DESC, "Action2 sseq")
-}
-record(bo, "$(P)ActionLink2"){
-    field(FLNK, "$(P)ActionSseq2.PROC")
-}
+record(calcout, "$(P)ActionDoneCalc2") {}
+record(sseq, "$(P)ActionSseq2") {}
 
-record(calcout, "$(P)ActionDoneCalc3") {
-    field(DESC, "Action2 done calc")
-}
-record(sseq, "$(P)ActionSseq3") {
-    field(DESC, "Action3 sseq")
-}
-record(bo, "$(P)ActionLink3"){
-    field(FLNK, "$(P)ActionSseq3.PROC")
-}
+record(calcout, "$(P)ActionDoneCalc3") {}
+record(sseq, "$(P)ActionSseq3") {}
 
-record(calcout, "$(P)ActionDoneCalc4") {
-    field(DESC, "Action4 done calc")
-}
-record(sseq, "$(P)ActionSseq4") {
-    field(DESC, "Action4 sseq")
-}
-record(bo, "$(P)ActionLink4"){
-    field(FLNK, "$(P)ActionSseq4.PROC")
-}
+record(calcout, "$(P)ActionDoneCalc4") {}
+record(sseq, "$(P)ActionSseq4") {}
 
-record(calcout, "$(P)ActionDoneCalc5") {
-    field(DESC, "Action5 done calc")
-}
-record(sseq, "$(P)ActionSseq5") {
-    field(DESC, "Action5 sseq")
-}
-record(bo, "$(P)ActionLink5"){
-    field(FLNK, "$(P)ActionSseq5.PROC")
-}
+record(calcout, "$(P)ActionDoneCalc5") {}
+record(sseq, "$(P)ActionSseq5") {}
 
-record(calcout, "$(P)ActionDoneCalc6") {
-    field(DESC, "Action6 done calc")
-}
-record(sseq, "$(P)ActionSseq6") {
-    field(DESC, "Action6 sseq")
-}
-record(bo, "$(P)ActionLink6"){
-    field(FLNK, "$(P)ActionSseq6.PROC")
-}
+record(calcout, "$(P)ActionDoneCalc6") {}
+record(sseq, "$(P)ActionSseq6") {}
 
-record(calcout, "$(P)ActionDoneCalc7") {
-    field(DESC, "Action7 done calc")
-}
-record(sseq, "$(P)ActionSseq7") {
-    field(DESC, "Action7 sseq")
-}
-record(bo, "$(P)ActionLink7"){
-    field(FLNK, "$(P)ActionSseq7.PROC")
-}
+record(calcout, "$(P)ActionDoneCalc7") {}
+record(sseq, "$(P)ActionSseq7") {}
 
-record(calcout, "$(P)ActionDoneCalc8") {
-    field(DESC, "Action8 done calc")
-}
-record(sseq, "$(P)ActionSseq8") {
-    field(DESC, "Action8 sseq")
-}
-record(bo, "$(P)ActionLink8"){
-    field(FLNK, "$(P)ActionSseq8.PROC")
-}
+record(calcout, "$(P)ActionDoneCalc8") {}
+record(sseq, "$(P)ActionSseq8") {}
 
-record(calcout, "$(P)ActionDoneCalc9") {
-    field(DESC, "Action9 done calc")
-}
-record(sseq, "$(P)ActionSseq9") {
-    field(DESC, "Action9 sseq")
-}
-record(bo, "$(P)ActionLink9"){
-    field(FLNK, "$(P)ActionSseq9.PROC")
-}
+record(calcout, "$(P)ActionDoneCalc9") {}
+record(sseq, "$(P)ActionSseq9") {}
 
-record(calcout, "$(P)ActionDoneCalc10") {
-    field(DESC, "Action10 done calc")
-}
-record(sseq, "$(P)ActionSseq10") {
-    field(DESC, "Action10 sseq")
-}
-record(bo, "$(P)ActionLink10"){
-    field(FLNK, "$(P)ActionSseq10.PROC")
-}
+record(calcout, "$(P)ActionDoneCalc10") {}
+record(sseq, "$(P)ActionSseq10") {}

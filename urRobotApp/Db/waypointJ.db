@@ -136,6 +136,7 @@ record(luascript, "$(P)WaypointJ:$(N):CopyActionLink")
 record(mbbi, "$(P)WaypointJ:$(N):ActionOpt")
 {
     field(VAL, 0)
+    field(PINI, 1)
     field(ZRST, "None")
     field(ONST, "1")
     field(TWST, "2")
@@ -150,22 +151,6 @@ record(mbbi, "$(P)WaypointJ:$(N):ActionOpt")
     field(FLNK, "$(P)WaypointJ:$(N):ActionOptSelect")
 }
 
-# processes ActionOptSelect when ActionLink's change
-record(calcout, "$(P)WaypointJ:$(N):link_trigger_select")
-{
-    field(INPA, "$(P)ActionLink1.FLNK CP")
-    field(INPB, "$(P)ActionLink2.FLNK CP")
-    field(INPC, "$(P)ActionLink3.FLNK CP")
-    field(INPD, "$(P)ActionLink4.FLNK CP")
-    field(INPE, "$(P)ActionLink5.FLNK CP")
-    field(INPF, "$(P)ActionLink6.FLNK CP")
-    field(INPG, "$(P)ActionLink7.FLNK CP")
-    field(INPH, "$(P)ActionLink8.FLNK CP")
-    field(INPI, "$(P)ActionLink9.FLNK CP")
-    field(INPJ, "$(P)ActionLink10.FLNK CP")
-    field(FLNK, "$(P)WaypointJ:$(N):ActionOptSelect.PROC")
-}
-
 record(luascript, "$(P)WaypointJ:$(N):ActionOptSelect")
 {
     field(INPA, "$(P)WaypointJ:$(N):ActionOpt")
@@ -175,7 +160,7 @@ record(luascript, "$(P)WaypointJ:$(N):ActionOptSelect")
 record(printf, "$(P)WaypointJ:$(N):format_desc_pv")
 {
     field(INP0, "$(P)WaypointJ:$(N):ActionOpt CP")
-    field(FMT, "$(P)ActionLink%d.DESC")
+    field(FMT, "$(P)ActionSseq%d.DESC")
 }
 
 record(luascript, "$(P)WaypointJ:$(N):get_action_desc")

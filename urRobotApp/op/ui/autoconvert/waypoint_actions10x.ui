@@ -165,7 +165,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink1.DESC</string>
+                <string>$(P)ActionSseq1.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -216,7 +216,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink2.DESC</string>
+                <string>$(P)ActionSseq2.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -267,7 +267,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink3.DESC</string>
+                <string>$(P)ActionSseq3.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -318,7 +318,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink4.DESC</string>
+                <string>$(P)ActionSseq4.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -369,7 +369,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink5.DESC</string>
+                <string>$(P)ActionSseq5.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -420,7 +420,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink6.DESC</string>
+                <string>$(P)ActionSseq6.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -471,7 +471,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink7.DESC</string>
+                <string>$(P)ActionSseq7.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -522,7 +522,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink8.DESC</string>
+                <string>$(P)ActionSseq8.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -573,7 +573,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink9.DESC</string>
+                <string>$(P)ActionSseq9.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -624,7 +624,7 @@ caMenu{
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink10.DESC</string>
+                <string>$(P)ActionSseq10.DESC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1449,7 +1449,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink1.PROC</string>
+                <string>$(P)ActionSseq1.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1488,7 +1488,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink2.PROC</string>
+                <string>$(P)ActionSseq2.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1527,7 +1527,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink3.PROC</string>
+                <string>$(P)ActionSseq3.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1566,7 +1566,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink4.PROC</string>
+                <string>$(P)ActionSseq4.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1605,7 +1605,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink5.PROC</string>
+                <string>$(P)ActionSseq5.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1644,7 +1644,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink6.PROC</string>
+                <string>$(P)ActionSseq6.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1683,7 +1683,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink7.PROC</string>
+                <string>$(P)ActionSseq7.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1722,7 +1722,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink8.PROC</string>
+                <string>$(P)ActionSseq8.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1761,7 +1761,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink9.PROC</string>
+                <string>$(P)ActionSseq9.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1800,7 +1800,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)ActionLink10.PROC</string>
+                <string>$(P)ActionSseq10.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

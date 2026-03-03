@@ -112,7 +112,7 @@ function get_wp_info(args)
         if override_action_num == 0 then
             action_desc = epics.get(string.format("%sWaypoint%s:%d:ActionDesc", args.prefix, wp_type, wp_num))
         else
-            action_desc = epics.get(string.format("%sActionLink%d.DESC", args.prefix, override_action_num))
+            action_desc = epics.get(string.format("%sActionSseq%d.DESC", args.prefix, override_action_num))
         end
         epics.put(string.format("%sPath%d:%d:ActionDesc", args.prefix, args.N, args.k), action_desc)
 
