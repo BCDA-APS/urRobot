@@ -1,20 +1,21 @@
-#- ###################################################
-#- PREFIX      - IOC Prefix
-#-
-#- WP_SUBS     - Optional: Path to waypoints substitutions file
-#-               Default: $(URROBOT)/db/waypoints.substitutions
-#-
-#- PATH_SUBS   - Optional: Path to paths substitutions file
-#-               Default: $(URROBOT)/db/paths.substitutions
-#- ###################################################
+#- #######################################################
+#- PREFIX     - IOC Prefix
+#- N_WP       - (Optional) Number of waypoints (of both types) to load
+#- N_ACTIONS  - (Optional) Number of waypoints actions to load
+#- N_PATH     - (Optional) Number of paths to load
+#- N_PATH_WP  - (Optional) Number of waypoints per path
+#- #######################################################
+
+# Add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH and LUA_PATH
+epicsEnvSet("LUA_SCRIPT_PATH", "$(LUA_SCRIPT_PATH=):$(URROBOT)/urRobotApp/src")
+epicsEnvSet("LUA_PATH", "$(URROBOT)/urRobotApp/src/?.lua;;")
 
 # Load waypoint and path databases
-dbLoadTemplate("$(WP_SUBS=$(URROBOT)/db/waypoints.substitutions)", "P=$(PREFIX)")
-dbLoadTemplate("$(PATH_SUBS=$(URROBOT)/db/paths.substitutions)", "P=$(PREFIX)")
+# See urRobotApp/src/loader.lua for details.
+luaCmd("require('loader').load_waypoints('$(PREFIX)',$(N_WP=30))")
+luaCmd("require('loader').load_waypoint_actions('$(PREFIX)',$(N_ACTIONS=10))")
+luaCmd("require('loader').load_paths('$(PREFIX)',$(N_PATH=10),$(N_PATH_WP=30))")
 
-# Functionality to edit sseq records for actions
+# Functionality to edit sseq records for waypoint actions
 dbLoadRecords("$(CALC)/db/editSseq.db", "P=$(PREFIX),Q=ActionES:")
 doAfterIocInit("seq &editSseq, 'P=$(PREFIX),Q=ActionES:'")
-
-# Add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH for waypoint functionality
-epicsEnvSet("LUA_SCRIPT_PATH", "$(LUA_SCRIPT_PATH=):$(URROBOT)/urRobotApp/src")

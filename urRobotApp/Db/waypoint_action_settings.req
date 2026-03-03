@@ -1,0 +1,2 @@
+file calcout_settings.req P=$(P)ActionDoneCalc$(N)
+file yySseq_settings.req P=$(P),S=ActionSseq$(N)

@@ -1,0 +1,2 @@
+record(calcout, "$(P)ActionDoneCalc$(N)") {}
+record(sseq, "$(P)ActionSseq$(N)") {}
