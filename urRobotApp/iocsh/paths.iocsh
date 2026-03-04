@@ -8,13 +8,11 @@
 
 # Add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH and LUA_PATH
 epicsEnvSet("LUA_SCRIPT_PATH", "$(LUA_SCRIPT_PATH=):$(URROBOT)/urRobotApp/src")
-epicsEnvSet("LUA_PATH", "$(URROBOT)/urRobotApp/src/?.lua;;")
 
 # Load waypoint and path databases
-# See urRobotApp/src/loader.lua for details.
-luaCmd("require('loader').load_waypoints('$(PREFIX)',$(N_WP=30))")
-luaCmd("require('loader').load_waypoint_actions('$(PREFIX)',$(N_ACTIONS=10))")
-luaCmd("require('loader').load_paths('$(PREFIX)',$(N_PATH=10),$(N_PATH_WP=30))")
+luash("$(URROBOT)/urRobotApp/iocsh/load_waypoints.lua", "P=$(PREFIX),N=$(N_WP=30)")
+luash("$(URROBOT)/urRobotApp/iocsh/load_actions.lua", "P=$(PREFIX),N=$(N_ACTIONS=10)")
+luash("$(URROBOT)/urRobotApp/iocsh/load_paths.lua", "P=$(PREFIX),N=$(N_PATH=10),K=$(N_PATH_WP=30)")
 
 # Functionality to edit sseq records for waypoint actions
 dbLoadRecords("$(CALC)/db/editSseq.db", "P=$(PREFIX),Q=ActionES:")
