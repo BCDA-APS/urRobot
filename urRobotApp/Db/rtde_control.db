@@ -106,10 +106,24 @@ record(bo, "$(P)Control:TeachMode")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TEACH_MODE")
 }
 
-record(fanout, "$(P)Control:Stop")
+record(bo, "$(P)Control:TriggerProtectiveStop")
 {
-    field(LNK0, "$(P)Control:stopL")
-    field(LNK1, "$(P)Control:reset_both_cmd")
+    field(DESC, "Triggers a protective stop")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TRIGGER_PROT_STOP")
+}
+
+record(bo, "$(P)Control:stop_path") {
+    field(DESC, "Stops all path motion when 1")
+    field(VAL, 0)
+}
+
+record(dfanout, "$(P)Control:Stop")
+{
+    field(DOL, 1)
+    field(OUTA, "$(P)Control:stopL.PROC")
+    field(OUTB, "$(P)Control:stop_path.VAL PP")
+    field(OUTC, "$(P)Control:reset_both_cmd.PROC")
 }
 
 record(fanout, "$(P)Control:reset_both_cmd")

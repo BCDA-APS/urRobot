@@ -9,15 +9,3 @@ record(luascript, "$(P)Path$(N):Go") {
     field(PREC, 0)
     field(SYNC, "Async")
 }
-
-record(bo, "$(P)Path$(N):Stop") {
-    field(DESC, "Stops motion and aborts path")
-    field(VAL, 0)
-}
-
-record(calcout, "$(P)Path$(N):trigger_stop_calc") {
-    field(INPA, "$(P)Path$(N):Stop.RVAL CP")
-    field(CALC, "A")
-    field(OOPT, "When Non-zero")
-    field(OUT, "$(P)Control:Stop.PROC")
-}

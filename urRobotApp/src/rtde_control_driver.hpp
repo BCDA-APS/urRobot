@@ -58,6 +58,8 @@ static constexpr char WAYPOINT_ACTION_DONE_STRING[] = "WAYPOINT_ACTION_DONE";
 
 static constexpr char TEACH_MODE_STRING[] = "TEACH_MODE";
 
+static constexpr char TRIGGER_PROT_STOP_STRING[] = "TRIGGER_PROT_STOP";
+
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
 static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
@@ -150,6 +152,7 @@ class RTDEControl : public asynPortDriver {
     int runWaypointActionIndex_;
     int waypointActionDoneIndex_;
     int teachModeIndex_;
+    int triggerProtStopIndex_;
 };
 
 #endif

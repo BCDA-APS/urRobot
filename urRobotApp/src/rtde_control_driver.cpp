@@ -131,6 +131,7 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip, doubl
     createParam(RUN_WAYPOINT_ACTION_STRING, asynParamInt32, &runWaypointActionIndex_);
     createParam(WAYPOINT_ACTION_DONE_STRING, asynParamInt32, &waypointActionDoneIndex_);
     createParam(TEACH_MODE_STRING, asynParamInt32, &teachModeIndex_);
+    createParam(TRIGGER_PROT_STOP_STRING, asynParamInt32, &triggerProtStopIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -444,6 +445,11 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     else if (function == stopCtrlScriptIndex_) {
         spdlog::debug("Stopping control script");
         rtde_control_->stopScript();
+    }
+
+    else if (function == triggerProtStopIndex_) {
+        spdlog::debug("Triggering protective stop");
+        rtde_control_->triggerProtectiveStop();
     }
 
     else if (function == teachModeIndex_) {

@@ -24,7 +24,7 @@ end
 function path_go(args)
 
     local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
-    local path_stop_pv = string.format("%sPath%d:Stop", args.prefix, args.N)
+    local path_stop_pv = string.format("%sControl:stop_path", args.prefix, args.N)
     local sync_joint_disa_pv = string.format("%sControl:sync_joint_cmd.DISA", args.prefix)
     local sync_pose_disa_pv = string.format("%sControl:sync_pose_cmd.DISA", args.prefix)
 
