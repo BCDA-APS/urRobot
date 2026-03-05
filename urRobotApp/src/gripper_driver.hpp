@@ -3,7 +3,6 @@
 #include "ur_rtde/robotiq_gripper.h"
 #include "ur_rtde/dashboard_client.h"
 
-static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
 
 class URGripper : public asynPortDriver {

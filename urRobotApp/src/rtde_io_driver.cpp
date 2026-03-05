@@ -1,10 +1,8 @@
 #include <epicsExport.h>
-#include <epicsThread.h>
 #include <iocsh.h>
 
 #include "rtde_io_driver.hpp"
 #include "spdlog/cfg/env.h"
-#include "spdlog/common.h"
 #include "spdlog/spdlog.h"
 
 bool RTDEInOut::try_connect() {

@@ -1,9 +1,7 @@
-#include <cstddef>
 #include <epicsExport.h>
 #include <epicsThread.h>
 #include <iocsh.h>
 
-#include "dashboard_client.h"
 #include "gripper_driver.hpp"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"

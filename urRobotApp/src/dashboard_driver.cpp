@@ -6,7 +6,6 @@
 #include "dashboard_driver.hpp"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
-#include "ur_rtde/dashboard_client.h"
 
 static void poll_thread_C(void *pPvt) {
     URDashboard *pURDashboard = (URDashboard *)pPvt;
