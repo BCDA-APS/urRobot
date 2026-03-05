@@ -17,9 +17,6 @@ iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "IP=164.54.1.100")
 # Optionally load support for waypoints and paths
 # iocshLoad("$(URROBOT)/iocsh/paths.iocsh")
 
-# if you'd like to control the robot axes with soft motors:
-# dbLoadTemplate("$(URROBOT)/db/ur_soft_motor.substitutions", "P=$(PREFIX)")
-
 ###############################################################################
 iocInit
 ###############################################################################

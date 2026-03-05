@@ -160,7 +160,6 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:Reconnect    | bo     | Tries reconnecting to the RTDE interface     |
 | Control:ReuploadControlScript    | bo     | Reuploads control script to controller     |
 | Control:StopControlScript    | bo     | Stops the control script     |
-| Control:Asynchronous    | bo     | If 1, moves will be asynchronous     |
 | Control:TeachMode   | bo     | Enables (1) / disables (0) teach (freedrive) mode |
 | Control:TriggerProtectiveStop   | bo     | Triggers a protective stop |
 | Control:Stop    | dfanout     | Stops any in-progress motion (moveJ or moveL) and aborts any running path |

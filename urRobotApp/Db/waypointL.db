@@ -242,19 +242,15 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq1")
 
 record(seq, "$(P)WaypointL:$(N):moveL_seq2")
 {
-    # Set to asynchronous motion
-    field(DOL0, "1")
-    field(LNK0, "$(P)Control:Asynchronous")
-
     # set speed, accel, blend, gripper action
-    field(DOL1, "$(P)WaypointL:$(N):Speed")
-    field(LNK1, "$(P)Control:LinearSpeed PP")
-    field(DOL2, "$(P)WaypointL:$(N):Acceleration")
-    field(LNK2, "$(P)Control:LinearAcceleration PP")
-    field(DOL3, "$(P)WaypointL:$(N):Blend")
-    field(LNK3, "$(P)Control:LinearBlend PP")
-    field(DOL4, "1")
-    field(LNK4, "$(P)WaypointL:$(N):CopyActionLink.PROC")
+    field(DOL0, "$(P)WaypointL:$(N):Speed")
+    field(LNK0, "$(P)Control:LinearSpeed PP")
+    field(DOL1, "$(P)WaypointL:$(N):Acceleration")
+    field(LNK1, "$(P)Control:LinearAcceleration PP")
+    field(DOL2, "$(P)WaypointL:$(N):Blend")
+    field(LNK2, "$(P)Control:LinearBlend PP")
+    field(DOL3, "1")
+    field(LNK3, "$(P)WaypointL:$(N):CopyActionLink.PROC")
 
     # Do the move
     field(FLNK, "$(P)Control:waypoint_moveL.PROC")

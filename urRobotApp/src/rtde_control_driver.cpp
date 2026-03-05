@@ -105,7 +105,6 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip, doubl
     createParam("LINEAR_SPEED", asynParamFloat64, &linearSpeedIndex_);
     createParam("LINEAR_ACCELERATION", asynParamFloat64, &linearAccelIndex_);
     createParam("LINEAR_BLEND", asynParamFloat64, &linearBlendIndex_);
-    createParam("ASYNC_MOVE", asynParamInt32, &asyncMoveIndex_);
     createParam("ASYNC_MOVE_DONE", asynParamInt32, &asyncMoveDoneIndex_);
     createParam("WAYPOINT_MOVEJ", asynParamInt32, &waypointMoveJIndex_);
     createParam("WAYPOINT_MOVEL", asynParamInt32, &waypointMoveLIndex_);
@@ -350,7 +349,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints_);
         if (safe) {
-            rtde_control_->moveJ(cmd_joints_, joint_speed_, joint_accel_, async_move_);
+            rtde_control_->moveJ(cmd_joints_, joint_speed_, joint_accel_, true);
         } else {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
@@ -370,7 +369,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
         bool safe = rtde_control_->isPoseWithinSafetyLimits(cmd_pose_);
         if (safe) {
-            rtde_control_->moveL(cmd_pose_, linear_speed_, linear_accel_, async_move_);
+            rtde_control_->moveL(cmd_pose_, linear_speed_, linear_accel_, true);
         } else {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
@@ -435,10 +434,6 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
             spdlog::debug("Disabling teach mode");
             rtde_control_->endTeachMode();
         }
-    }
-
-    else if (function == asyncMoveIndex_) {
-        async_move_ = value;
     }
 
 skip:

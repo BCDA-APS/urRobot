@@ -40,7 +40,6 @@ class RTDEControl : public asynPortDriver {
     double linear_blend_ = 0.0;  // m?
 
     // handle asynchronous motion through paths, etc.
-    bool async_move_ = true;
     AsyncRunning async_running_ = AsyncRunning::False;
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
     std::vector<double> waypoint_;
@@ -63,7 +62,6 @@ class RTDEControl : public asynPortDriver {
     int tcpOffsetIndex_;
     int reuploadCtrlScriptIndex_;
     int stopCtrlScriptIndex_;
-    int asyncMoveIndex_;
     int asyncMoveDoneIndex_;
     int jointSpeedIndex_;
     int jointAccelIndex_;

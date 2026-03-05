@@ -51,15 +51,6 @@ record(bo, "$(P)Control:StopControlScript")
 # Misc
 #======================
 
-record(bo, "$(P)Control:Asynchronous")
-{
-    field(DESC, "If 1, moves will be asynchronous")
-    field(DTYP, "asynInt32")
-    field(VAL, 1)
-    field(PINI, 1)
-    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ASYNC_MOVE")
-}
-
 record(bi, "$(P)Control:AsyncMoveDone")
 {
     field(DESC, "1 if asynchronous motion complete")
