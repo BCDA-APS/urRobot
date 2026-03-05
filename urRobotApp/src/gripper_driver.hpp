@@ -1,32 +1,9 @@
 #ifndef _GRIPPER_DRIVER_HPP_
 #define _GRIPPER_DRIVER_HPP_
 
+#include <asynPortDriver.h>
 #include "ur_rtde/robotiq_gripper.h"
 #include "ur_rtde/dashboard_client.h"
-#include <asynPortDriver.h>
-
-static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
-static constexpr char IS_OPEN_STRING[] = "IS_OPEN";
-static constexpr char IS_CLOSED_STRING[] = "IS_CLOSED";
-static constexpr char IS_STOPPED_INNER_STRING[] = "IS_STOPPED_INNER";
-static constexpr char IS_STOPPED_OUTER_STRING[] = "IS_STOPPED_OUTER";
-static constexpr char IS_ACTIVE_STRING[] = "IS_ACTIVE";
-static constexpr char CONNECT_STRING[] = "CONNECT";
-static constexpr char ACTIVATE_STRING[] = "ACTIVATE";
-static constexpr char OPEN_STRING[] = "OPEN";
-static constexpr char CLOSE_STRING[] = "CLOSE";
-static constexpr char AUTO_CALIBRATE_STRING[] = "AUTO_CALIBRATE";
-static constexpr char OPEN_POSITION_STRING[] = "OPEN_POSITION";
-static constexpr char CLOSED_POSITION_STRING[] = "CLOSED_POSITION";
-static constexpr char CURRENT_POSITION_STRING[] = "CURRENT_POSITION";
-static constexpr char SET_SPEED_STRING[] = "SET_SPEED";
-static constexpr char SET_FORCE_STRING[] = "SET_FORCE";
-static constexpr char MOVE_STATUS_STRING[] = "MOVE_STATUS";
-static constexpr char MIN_POSITION_STRING[] = "MIN_POSITION";
-static constexpr char MAX_POSITION_STRING[] = "MAX_POSITION";
-static constexpr char SET_POSITION_RANGE_STRING[] = "SET_POSITION_RANGE";
-static constexpr char POSITION_UNIT_STRING[] = "POSITION_UNIT";
-static constexpr char IS_CALIBRATED_STRING[] = "IS_CALIBRATED";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;

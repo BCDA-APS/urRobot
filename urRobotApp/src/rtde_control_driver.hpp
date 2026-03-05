@@ -5,60 +5,6 @@
 #include "ur_rtde/rtde_receive_interface.h"
 #include <asynPortDriver.h>
 
-static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
-static constexpr char RECONNECT_STRING[] = "RECONNECT";
-static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
-static constexpr char IS_STEADY_STRING[] = "IS_STEADY";
-
-static constexpr char ACTUAL_Q_STRING[] = "ACTUAL_Q";
-static constexpr char MOVEJ_STRING[] = "MOVEJ";
-static constexpr char STOPJ_STRING[] = "STOPJ";
-static constexpr char J1CMD_STRING[] = "J1CMD";
-static constexpr char J2CMD_STRING[] = "J2CMD";
-static constexpr char J3CMD_STRING[] = "J3CMD";
-static constexpr char J4CMD_STRING[] = "J4CMD";
-static constexpr char J5CMD_STRING[] = "J5CMD";
-static constexpr char J6CMD_STRING[] = "J6CMD";
-
-static constexpr char ACTUAL_TCP_POSE_STRING[] = "ACTUAL_TCP_POSE";
-static constexpr char MOVEL_STRING[] = "MOVEL";
-static constexpr char STOPL_STRING[] = "STOPL";
-static constexpr char POSE_X_CMD_STRING[] = "POSE_X_CMD";
-static constexpr char POSE_Y_CMD_STRING[] = "POSE_Y_CMD";
-static constexpr char POSE_Z_CMD_STRING[] = "POSE_Z_CMD";
-static constexpr char POSE_ROLL_CMD_STRING[] = "POSE_ROLL_CMD";
-static constexpr char POSE_PITCH_CMD_STRING[] = "POSE_PITCH_CMD";
-static constexpr char POSE_YAW_CMD_STRING[] = "POSE_YAW_CMD";
-
-static constexpr char TCP_OFFSET_X_STRING[] = "TCP_OFFSET_X";
-static constexpr char TCP_OFFSET_Y_STRING[] = "TCP_OFFSET_Y";
-static constexpr char TCP_OFFSET_Z_STRING[] = "TCP_OFFSET_Z";
-static constexpr char TCP_OFFSET_ROLL_STRING[] = "TCP_OFFSET_ROLL";
-static constexpr char TCP_OFFSET_PITCH_STRING[] = "TCP_OFFSET_PITCH";
-static constexpr char TCP_OFFSET_YAW_STRING[] = "TCP_OFFSET_YAW";
-
-static constexpr char REUPLOAD_CTRL_SCRIPT_STRING[] = "REUPLOAD_CONTROL_SCRIPT";
-static constexpr char STOP_CTRL_SCRIPT_STRING[] = "STOP_CONTROL_SCRIPT";
-
-static constexpr char ASYNC_MOVE_STRING[] = "ASYNC_MOVE";
-static constexpr char ASYNC_MOVE_DONE_STRING[] = "ASYNC_MOVE_DONE";
-
-static constexpr char JOINT_SPEED_STRING[] = "JOINT_SPEED";
-static constexpr char JOINT_ACCEL_STRING[] = "JOINT_ACCELERATION";
-static constexpr char JOINT_BLEND_STRING[] = "JOINT_BLEND";
-
-static constexpr char LINEAR_SPEED_STRING[] = "LINEAR_SPEED";
-static constexpr char LINEAR_ACCEL_STRING[] = "LINEAR_ACCELERATION";
-static constexpr char LINEAR_BLEND_STRING[] = "LINEAR_BLEND";
-
-static constexpr char WAYPOINT_MOVEJ_STRING[] = "WAYPOINT_MOVEJ";
-static constexpr char WAYPOINT_MOVEL_STRING[] = "WAYPOINT_MOVEL";
-static constexpr char RUN_WAYPOINT_ACTION_STRING[] = "RUN_WAYPOINT_ACTION";
-static constexpr char WAYPOINT_ACTION_DONE_STRING[] = "WAYPOINT_ACTION_DONE";
-
-static constexpr char TEACH_MODE_STRING[] = "TEACH_MODE";
-
-static constexpr char TRIGGER_PROT_STOP_STRING[] = "TRIGGER_PROT_STOP";
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;

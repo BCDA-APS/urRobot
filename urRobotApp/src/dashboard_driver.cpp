@@ -39,32 +39,32 @@ URDashboard::URDashboard(const char *asyn_port_name, const char *robot_ip, doubl
       ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), poll_period_(poll_period) {
 
     // create asyn parameters
-    createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
-    createParam(LOAD_URP_STRING, asynParamOctet, &loadURPIndex_);
-    createParam(PLAY_STRING, asynParamInt32, &playIndex_);
-    createParam(STOP_STRING, asynParamInt32, &stopIndex_);
-    createParam(PAUSE_STRING, asynParamInt32, &pauseIndex_);
-    createParam(CONNECT_STRING, asynParamInt32, &connectIndex_);
-    createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
-    createParam(SHUTDOWN_STRING, asynParamInt32, &shutdownIndex_);
-    createParam(IS_RUNNING_STRING, asynParamInt32, &isRunningIndex_);
-    createParam(CLOSE_POPUP_STRING, asynParamInt32, &closePopupIndex_);
-    createParam(POPUP_STRING, asynParamOctet, &popupIndex_);
-    createParam(CLOSE_SAFETY_POPUP_STRING, asynParamInt32, &closeSafetyPopupIndex_);
-    createParam(POWER_ON_STRING, asynParamInt32, &powerOnIndex_);
-    createParam(POWER_OFF_STRING, asynParamInt32, &powerOffIndex_);
-    createParam(BRAKE_RELEASE_STRING, asynParamInt32, &brakeReleaseIndex_);
-    createParam(UNLOCK_PROTECTIVE_STOP_STRING, asynParamInt32, &unlockProtectiveStopIndex_);
-    createParam(RESTART_SAFETY_STRING, asynParamInt32, &restartSafetyIndex_);
-    createParam(POLYSCOPE_VERSION_STRING, asynParamOctet, &polyscopeVersionIndex_);
-    createParam(SERIAL_NUMBER_STRING, asynParamOctet, &serialNumberIndex_);
-    createParam(ROBOT_MODE_STRING, asynParamOctet, &robotModeIndex_);
-    createParam(PROGRAM_STATE_STRING, asynParamOctet, &programStateIndex_);
-    createParam(ROBOT_MODEL_STRING, asynParamOctet, &robotModelIndex_);
-    createParam(LOADED_PROGRAM_STRING, asynParamOctet, &loadedProgramIndex_);
-    createParam(SAFETY_STATUS, asynParamOctet, &safetyStatusIndex_);
-    createParam(IS_PROGRAM_SAVED, asynParamInt32, &isProgramSavedIndex_);
-    createParam(IS_IN_REMOTE_CONTROL, asynParamInt32, &isInRemoteControlIndex_);
+    createParam("IS_CONNECTED", asynParamInt32, &isConnectedIndex_);
+    createParam("LOAD_URP", asynParamOctet, &loadURPIndex_);
+    createParam("PLAY", asynParamInt32, &playIndex_);
+    createParam("STOP", asynParamInt32, &stopIndex_);
+    createParam("PAUSE", asynParamInt32, &pauseIndex_);
+    createParam("CONNECT", asynParamInt32, &connectIndex_);
+    createParam("DISCONNECT", asynParamInt32, &disconnectIndex_);
+    createParam("SHUTDOWN", asynParamInt32, &shutdownIndex_);
+    createParam("IS_RUNNING", asynParamInt32, &isRunningIndex_);
+    createParam("CLOSE_POPUP", asynParamInt32, &closePopupIndex_);
+    createParam("POPUP", asynParamOctet, &popupIndex_);
+    createParam("CLOSE_SAFETY_POPUP", asynParamInt32, &closeSafetyPopupIndex_);
+    createParam("POWER_ON", asynParamInt32, &powerOnIndex_);
+    createParam("POWER_OFF", asynParamInt32, &powerOffIndex_);
+    createParam("BRAKE_RELEASE", asynParamInt32, &brakeReleaseIndex_);
+    createParam("UNLOCK_PROTECTIVE_STOP", asynParamInt32, &unlockProtectiveStopIndex_);
+    createParam("RESTART_SAFETY", asynParamInt32, &restartSafetyIndex_);
+    createParam("POLYSCOPE_VERSION", asynParamOctet, &polyscopeVersionIndex_);
+    createParam("SERIAL_NUMBER", asynParamOctet, &serialNumberIndex_);
+    createParam("ROBOT_MODE", asynParamOctet, &robotModeIndex_);
+    createParam("PROGRAM_STATE", asynParamOctet, &programStateIndex_);
+    createParam("ROBOT_MODEL", asynParamOctet, &robotModelIndex_);
+    createParam("LOADED_PROGRAM", asynParamOctet, &loadedProgramIndex_);
+    createParam("SAFETY_STATUS", asynParamOctet, &safetyStatusIndex_);
+    createParam("IS_PROGRAM_SAVED", asynParamInt32, &isProgramSavedIndex_);
+    createParam("IS_IN_REMOTE_CONTROL", asynParamInt32, &isInRemoteControlIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -206,7 +206,9 @@ static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
 static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"URDashboardConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { URDashboardConfig(args[0].sval, args[1].sval, args[2].dval); }
+static void urRobotCallFunc(const iocshArgBuf *args) {
+    URDashboardConfig(args[0].sval, args[1].sval, args[2].dval);
+}
 
 void URDashboardRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 

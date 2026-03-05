@@ -47,34 +47,31 @@ URGripper::URGripper(const char *asyn_port_name, const char *robot_ip, double po
                      1, // ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1
                      0, 0),
       gripper_(std::make_unique<ur_rtde::RobotiqGripper>(robot_ip)),
-      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), robot_ip_(robot_ip), poll_period_(poll_period) {
+      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), robot_ip_(robot_ip),
+      poll_period_(poll_period) {
 
-    createParam(CONNECT_STRING, asynParamInt32, &connectIndex_);
-    createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
-    createParam(IS_OPEN_STRING, asynParamInt32, &isOpenIndex_);
-    createParam(IS_CLOSED_STRING, asynParamInt32, &isClosedIndex_);
-
-    createParam(IS_STOPPED_INNER_STRING, asynParamInt32, &isStoppedInnerIndex_);
-    createParam(IS_STOPPED_OUTER_STRING, asynParamInt32, &isStoppedOuterIndex_);
-
-    createParam(IS_ACTIVE_STRING, asynParamInt32, &isActiveIndex_);
-    createParam(ACTIVATE_STRING, asynParamInt32, &activateIndex_);
-    createParam(OPEN_STRING, asynParamInt32, &openIndex_);
-    createParam(CLOSE_STRING, asynParamInt32, &closeIndex_);
-    createParam(SET_SPEED_STRING, asynParamFloat64, &setSpeedIndex_);
-    createParam(SET_FORCE_STRING, asynParamFloat64, &setForceIndex_);
-    createParam(AUTO_CALIBRATE_STRING, asynParamInt32, &autoCalibrateIndex_);
-    createParam(OPEN_POSITION_STRING, asynParamFloat64, &openPositionIndex_);
-    createParam(CLOSED_POSITION_STRING, asynParamFloat64, &closedPositionIndex_);
-    createParam(CURRENT_POSITION_STRING, asynParamFloat64, &currentPositionIndex_);
-    createParam(MOVE_STATUS_STRING, asynParamInt32, &moveStatusIndex_);
-
-    createParam(SET_POSITION_RANGE_STRING, asynParamInt32, &setPositionRangeIndex_);
-    createParam(MIN_POSITION_STRING, asynParamInt32, &minPositionIndex_);
-    createParam(MAX_POSITION_STRING, asynParamInt32, &maxPositionIndex_);
-
-    createParam(POSITION_UNIT_STRING, asynParamInt32, &positionUnitIndex_);
-    createParam(IS_CALIBRATED_STRING, asynParamInt32, &isCalibratedIndex_);
+    createParam("CONNECT", asynParamInt32, &connectIndex_);
+    createParam("IS_CONNECTED", asynParamInt32, &isConnectedIndex_);
+    createParam("IS_OPEN", asynParamInt32, &isOpenIndex_);
+    createParam("IS_CLOSED", asynParamInt32, &isClosedIndex_);
+    createParam("IS_STOPPED_INNER", asynParamInt32, &isStoppedInnerIndex_);
+    createParam("IS_STOPPED_OUTER", asynParamInt32, &isStoppedOuterIndex_);
+    createParam("IS_ACTIVE", asynParamInt32, &isActiveIndex_);
+    createParam("ACTIVATE", asynParamInt32, &activateIndex_);
+    createParam("OPEN", asynParamInt32, &openIndex_);
+    createParam("CLOSE", asynParamInt32, &closeIndex_);
+    createParam("SET_SPEED", asynParamFloat64, &setSpeedIndex_);
+    createParam("SET_FORCE", asynParamFloat64, &setForceIndex_);
+    createParam("AUTO_CALIBRATE", asynParamInt32, &autoCalibrateIndex_);
+    createParam("OPEN_POSITION", asynParamFloat64, &openPositionIndex_);
+    createParam("CLOSED_POSITION", asynParamFloat64, &closedPositionIndex_);
+    createParam("CURRENT_POSITION", asynParamFloat64, &currentPositionIndex_);
+    createParam("MOVE_STATUS", asynParamInt32, &moveStatusIndex_);
+    createParam("SET_POSITION_RANGE", asynParamInt32, &setPositionRangeIndex_);
+    createParam("MIN_POSITION", asynParamInt32, &minPositionIndex_);
+    createParam("MAX_POSITION", asynParamInt32, &maxPositionIndex_);
+    createParam("POSITION_UNIT", asynParamInt32, &positionUnitIndex_);
+    createParam("IS_CALIBRATED", asynParamInt32, &isCalibratedIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -112,18 +109,18 @@ void URGripper::poll() {
                 ur_rtde::RobotiqGripper::eObjectStatus move_status = gripper_->objectDetectionStatus();
                 setIntegerParam(moveStatusIndex_, move_status);
                 switch (move_status) {
-                    case ur_rtde::RobotiqGripper::eObjectStatus::STOPPED_INNER_OBJECT:
-                        setIntegerParam(isStoppedInnerIndex_, 1);
-                        setIntegerParam(isStoppedOuterIndex_, 0);
-                        break;
-                    case ur_rtde::RobotiqGripper::eObjectStatus::STOPPED_OUTER_OBJECT:
-                        setIntegerParam(isStoppedInnerIndex_, 0);
-                        setIntegerParam(isStoppedOuterIndex_, 1);
-                        break;
-                    default:
-                        setIntegerParam(isStoppedInnerIndex_, 0);
-                        setIntegerParam(isStoppedOuterIndex_, 0);
-                        break;
+                case ur_rtde::RobotiqGripper::eObjectStatus::STOPPED_INNER_OBJECT:
+                    setIntegerParam(isStoppedInnerIndex_, 1);
+                    setIntegerParam(isStoppedOuterIndex_, 0);
+                    break;
+                case ur_rtde::RobotiqGripper::eObjectStatus::STOPPED_OUTER_OBJECT:
+                    setIntegerParam(isStoppedInnerIndex_, 0);
+                    setIntegerParam(isStoppedOuterIndex_, 1);
+                    break;
+                default:
+                    setIntegerParam(isStoppedInnerIndex_, 0);
+                    setIntegerParam(isStoppedOuterIndex_, 0);
+                    break;
                 }
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
@@ -279,7 +276,9 @@ static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
 static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"URGripperConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { URGripperConfig(args[0].sval, args[1].sval, args[2].dval); }
+static void urRobotCallFunc(const iocshArgBuf *args) {
+    URGripperConfig(args[0].sval, args[1].sval, args[2].dval);
+}
 
 void URGripperRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 

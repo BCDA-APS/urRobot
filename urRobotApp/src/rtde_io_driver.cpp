@@ -42,29 +42,29 @@ RTDEInOut::RTDEInOut(const char *asyn_port_name, const char *robot_ip, double po
       rtde_io_(nullptr), robot_ip_(robot_ip), poll_period_(poll_period) {
 
     // RTDE IO
-    createParam(SPEED_SLIDER_STRING, asynParamFloat64, &speedSliderIndex_);
-    createParam(SET_STANDARD_DOUT0_STRING, asynParamInt32, &setStandardDOUT0Index_);
-    createParam(SET_STANDARD_DOUT1_STRING, asynParamInt32, &setStandardDOUT1Index_);
-    createParam(SET_STANDARD_DOUT2_STRING, asynParamInt32, &setStandardDOUT2Index_);
-    createParam(SET_STANDARD_DOUT3_STRING, asynParamInt32, &setStandardDOUT3Index_);
-    createParam(SET_STANDARD_DOUT4_STRING, asynParamInt32, &setStandardDOUT4Index_);
-    createParam(SET_STANDARD_DOUT5_STRING, asynParamInt32, &setStandardDOUT5Index_);
-    createParam(SET_STANDARD_DOUT6_STRING, asynParamInt32, &setStandardDOUT6Index_);
-    createParam(SET_STANDARD_DOUT7_STRING, asynParamInt32, &setStandardDOUT7Index_);
-    createParam(SET_CONFIG_DOUT0_STRING, asynParamInt32, &setConfigDOUT0Index_);
-    createParam(SET_CONFIG_DOUT1_STRING, asynParamInt32, &setConfigDOUT1Index_);
-    createParam(SET_CONFIG_DOUT2_STRING, asynParamInt32, &setConfigDOUT2Index_);
-    createParam(SET_CONFIG_DOUT3_STRING, asynParamInt32, &setConfigDOUT3Index_);
-    createParam(SET_CONFIG_DOUT4_STRING, asynParamInt32, &setConfigDOUT4Index_);
-    createParam(SET_CONFIG_DOUT5_STRING, asynParamInt32, &setConfigDOUT5Index_);
-    createParam(SET_CONFIG_DOUT6_STRING, asynParamInt32, &setConfigDOUT6Index_);
-    createParam(SET_CONFIG_DOUT7_STRING, asynParamInt32, &setConfigDOUT7Index_);
-    createParam(SET_TOOL_DOUT0_STRING, asynParamInt32, &setToolDOUT0Index_);
-    createParam(SET_TOOL_DOUT1_STRING, asynParamInt32, &setToolDOUT1Index_);
-    createParam(SET_VOLTAGE_AOUT0_STRING, asynParamFloat64, &setVoltageAOUT0Index_);
-    createParam(SET_VOLTAGE_AOUT1_STRING, asynParamFloat64, &setVoltageAOUT1Index_);
-    createParam(SET_CURRENT_AOUT0_STRING, asynParamFloat64, &setCurrentAOUT0Index_);
-    createParam(SET_CURRENT_AOUT1_STRING, asynParamFloat64, &setCurrentAOUT1Index_);
+    createParam("SPEED_SLIDER", asynParamFloat64, &speedSliderIndex_);
+    createParam("SET_STANDARD_DIGITAL_OUT0", asynParamInt32, &setStandardDOUT0Index_);
+    createParam("SET_STANDARD_DIGITAL_OUT1", asynParamInt32, &setStandardDOUT1Index_);
+    createParam("SET_STANDARD_DIGITAL_OUT2", asynParamInt32, &setStandardDOUT2Index_);
+    createParam("SET_STANDARD_DIGITAL_OUT3", asynParamInt32, &setStandardDOUT3Index_);
+    createParam("SET_STANDARD_DIGITAL_OUT4", asynParamInt32, &setStandardDOUT4Index_);
+    createParam("SET_STANDARD_DIGITAL_OUT5", asynParamInt32, &setStandardDOUT5Index_);
+    createParam("SET_STANDARD_DIGITAL_OUT6", asynParamInt32, &setStandardDOUT6Index_);
+    createParam("SET_STANDARD_DIGITAL_OUT7", asynParamInt32, &setStandardDOUT7Index_);
+    createParam("SET_CONFIG_DIGITAL_OUT0", asynParamInt32, &setConfigDOUT0Index_);
+    createParam("SET_CONFIG_DIGITAL_OUT1", asynParamInt32, &setConfigDOUT1Index_);
+    createParam("SET_CONFIG_DIGITAL_OUT2", asynParamInt32, &setConfigDOUT2Index_);
+    createParam("SET_CONFIG_DIGITAL_OUT3", asynParamInt32, &setConfigDOUT3Index_);
+    createParam("SET_CONFIG_DIGITAL_OUT4", asynParamInt32, &setConfigDOUT4Index_);
+    createParam("SET_CONFIG_DIGITAL_OUT5", asynParamInt32, &setConfigDOUT5Index_);
+    createParam("SET_CONFIG_DIGITAL_OUT6", asynParamInt32, &setConfigDOUT6Index_);
+    createParam("SET_CONFIG_DIGITAL_OUT7", asynParamInt32, &setConfigDOUT7Index_);
+    createParam("SET_TOOL_DIGITAL_OUT0", asynParamInt32, &setToolDOUT0Index_);
+    createParam("SET_TOOL_DIGITAL_OUT1", asynParamInt32, &setToolDOUT1Index_);
+    createParam("SET_VOLTAGE_ANALOG_OUT0", asynParamFloat64, &setVoltageAOUT0Index_);
+    createParam("SET_VOLTAGE_ANALOG_OUT1", asynParamFloat64, &setVoltageAOUT1Index_);
+    createParam("SET_CURRENT_ANALOG_OUT0", asynParamFloat64, &setCurrentAOUT0Index_);
+    createParam("SET_CURRENT_ANALOG_OUT1", asynParamFloat64, &setCurrentAOUT1Index_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -131,12 +131,6 @@ asynStatus RTDEInOut::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
     bool comm_ok = true;
-
-    if (function == reconnectIndex_) {
-        comm_ok = try_connect();
-    } else if (function == disconnectIndex_) {
-        rtde_io_->disconnect();
-    }
 
     if (rtde_io_ == nullptr) {
         spdlog::error("RTDE IO interface not initialized");
@@ -225,7 +219,9 @@ static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
 static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"RTDEInOutConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { RTDEInOutConfig(args[0].sval, args[1].sval, args[2].dval); }
+static void urRobotCallFunc(const iocshArgBuf *args) {
+    RTDEInOutConfig(args[0].sval, args[1].sval, args[2].dval);
+}
 
 void RTDEInOutRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 

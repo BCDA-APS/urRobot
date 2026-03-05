@@ -1,35 +1,8 @@
 #ifndef _RTDE_CONTROL_DRIVER_HPP_
 #define _RTDE_CONTROL_DRIVER_HPP_
 
-#include "ur_rtde/rtde_io_interface.h"
 #include <asynPortDriver.h>
-
-// RTDE IO Interface
-static constexpr char SPEED_SLIDER_STRING[] = "SPEED_SLIDER";
-static constexpr char SET_STANDARD_DOUT0_STRING[] = "SET_STANDARD_DIGITAL_OUT0";
-static constexpr char SET_STANDARD_DOUT1_STRING[] = "SET_STANDARD_DIGITAL_OUT1";
-static constexpr char SET_STANDARD_DOUT2_STRING[] = "SET_STANDARD_DIGITAL_OUT2";
-static constexpr char SET_STANDARD_DOUT3_STRING[] = "SET_STANDARD_DIGITAL_OUT3";
-static constexpr char SET_STANDARD_DOUT4_STRING[] = "SET_STANDARD_DIGITAL_OUT4";
-static constexpr char SET_STANDARD_DOUT5_STRING[] = "SET_STANDARD_DIGITAL_OUT5";
-static constexpr char SET_STANDARD_DOUT6_STRING[] = "SET_STANDARD_DIGITAL_OUT6";
-static constexpr char SET_STANDARD_DOUT7_STRING[] = "SET_STANDARD_DIGITAL_OUT7";
-static constexpr char SET_CONFIG_DOUT0_STRING[] = "SET_CONFIG_DIGITAL_OUT0";
-static constexpr char SET_CONFIG_DOUT1_STRING[] = "SET_CONFIG_DIGITAL_OUT1";
-static constexpr char SET_CONFIG_DOUT2_STRING[] = "SET_CONFIG_DIGITAL_OUT2";
-static constexpr char SET_CONFIG_DOUT3_STRING[] = "SET_CONFIG_DIGITAL_OUT3";
-static constexpr char SET_CONFIG_DOUT4_STRING[] = "SET_CONFIG_DIGITAL_OUT4";
-static constexpr char SET_CONFIG_DOUT5_STRING[] = "SET_CONFIG_DIGITAL_OUT5";
-static constexpr char SET_CONFIG_DOUT6_STRING[] = "SET_CONFIG_DIGITAL_OUT6";
-static constexpr char SET_CONFIG_DOUT7_STRING[] = "SET_CONFIG_DIGITAL_OUT7";
-static constexpr char SET_TOOL_DOUT0_STRING[] = "SET_TOOL_DIGITAL_OUT0";
-static constexpr char SET_TOOL_DOUT1_STRING[] = "SET_TOOL_DIGITAL_OUT1";
-static constexpr char SET_VOLTAGE_AOUT0_STRING[] = "SET_VOLTAGE_ANALOG_OUT0";
-static constexpr char SET_VOLTAGE_AOUT1_STRING[] = "SET_VOLTAGE_ANALOG_OUT1";
-static constexpr char SET_CURRENT_AOUT0_STRING[] = "SET_CURRENT_ANALOG_OUT0";
-static constexpr char SET_CURRENT_AOUT1_STRING[] = "SET_CURRENT_ANALOG_OUT1";
-static constexpr char RECONNECT_STRING[] = "RECONNECT";
-static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
+#include "ur_rtde/rtde_io_interface.h"
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
@@ -75,9 +48,6 @@ class RTDEInOut : public asynPortDriver {
     int setVoltageAOUT1Index_;
     int setCurrentAOUT0Index_;
     int setCurrentAOUT1Index_;
-    int reconnectIndex_;
-    int disconnectIndex_;
-
 };
 
 #endif

@@ -4,33 +4,6 @@
 #include "ur_rtde/dashboard_client.h"
 #include <asynPortDriver.h>
 
-// Dashboard interface
-static constexpr char IS_CONNECTED_STRING[] = "IS_CONNECTED";
-static constexpr char CLOSE_POPUP_STRING[] = "CLOSE_POPUP";
-static constexpr char POPUP_STRING[] = "POPUP";
-static constexpr char LOAD_URP_STRING[] = "LOAD_URP";
-static constexpr char PLAY_STRING[] = "PLAY";
-static constexpr char STOP_STRING[] = "STOP";
-static constexpr char PAUSE_STRING[] = "PAUSE";
-static constexpr char CONNECT_STRING[] = "CONNECT";
-static constexpr char DISCONNECT_STRING[] = "DISCONNECT";
-static constexpr char SHUTDOWN_STRING[] = "SHUTDOWN";
-static constexpr char IS_RUNNING_STRING[] = "IS_RUNNING";
-static constexpr char CLOSE_SAFETY_POPUP_STRING[] = "CLOSE_SAFETY_POPUP";
-static constexpr char POWER_ON_STRING[] = "POWER_ON";
-static constexpr char POWER_OFF_STRING[] = "POWER_OFF";
-static constexpr char BRAKE_RELEASE_STRING[] = "BRAKE_RELEASE";
-static constexpr char UNLOCK_PROTECTIVE_STOP_STRING[] = "UNLOCK_PROTECTIVE_STOP";
-static constexpr char RESTART_SAFETY_STRING[] = "RESTART_SAFETY";
-static constexpr char POLYSCOPE_VERSION_STRING[] = "POLYSCOPE_VERSION";
-static constexpr char SERIAL_NUMBER_STRING[] = "SERIAL_NUMBER";
-static constexpr char ROBOT_MODE_STRING[] = "ROBOT_MODE";
-static constexpr char PROGRAM_STATE_STRING[] = "PROGRAM_STATE";
-static constexpr char ROBOT_MODEL_STRING[] = "ROBOT_MODEL";
-static constexpr char LOADED_PROGRAM_STRING[] = "LOADED_PROGRAM";
-static constexpr char SAFETY_STATUS[] = "SAFETY_STATUS";
-static constexpr char IS_PROGRAM_SAVED[] = "IS_PROGRAM_SAVED";
-static constexpr char IS_IN_REMOTE_CONTROL[] = "IS_IN_REMOTE_CONTROL";
 
 constexpr int MAX_CONTROLLERS = 1;
 constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;

@@ -50,44 +50,44 @@ RTDEReceive::RTDEReceive(const char *asyn_port_name, const char *robot_ip, const
           0, 0),
       rtde_receive_(nullptr), robot_ip_(robot_ip), poll_period_(poll_period) {
 
-    createParam(DISCONNECT_STRING, asynParamInt32, &disconnectIndex_);
-    createParam(RECONNECT_STRING, asynParamInt32, &reconnectIndex_);
-    createParam(IS_CONNECTED_STRING, asynParamInt32, &isConnectedIndex_);
-    createParam(RUNTIME_STATE_STRING, asynParamInt32, &runtimeStateIndex_);
-    createParam(ROBOT_MODE_STRING, asynParamInt32, &robotModeIndex_);
-    createParam(SAFETY_STATUS_BITS_STRING, asynParamInt32, &safetyStatusBitsIndex_);
-    createParam(CONTROLLER_TIMESTAMP_STRING, asynParamFloat64, &controllerTimestampIndex_);
-    createParam(STD_ANALOG_INPUT0_STRING, asynParamFloat64, &stdAnalogInput0Index_);
-    createParam(STD_ANALOG_INPUT1_STRING, asynParamFloat64, &stdAnalogInput1Index_);
-    createParam(STD_ANALOG_OUTPUT0_STRING, asynParamFloat64, &stdAnalogOutput0Index_);
-    createParam(STD_ANALOG_OUTPUT1_STRING, asynParamFloat64, &stdAnalogOutput1Index_);
-    createParam(ACTUAL_JOINT_POS_STRING, asynParamFloat64Array, &actualJointPosIndex_);
-    createParam(DIGITAL_INPUT_BITS_STRING, asynParamInt32, &digitalInputBitsIndex_);
-    createParam(DIGITAL_OUTPUT_BITS_STRING, asynParamInt32, &digitalOutputBitsIndex_);
-    createParam(ACTUAL_JOINT_VEL_STRING, asynParamFloat64Array, &actualJointVelIndex_);
-    createParam(ACTUAL_JOINT_CURRENTS_STRING, asynParamFloat64Array, &actualJointCurrentsIndex_);
-    createParam(JOINT_CONTROL_CURRENTS_STRING, asynParamFloat64Array, &jointControlCurrentsIndex_);
-    createParam(ACTUAL_TCP_POSE_STRING, asynParamFloat64Array, &actualTCPPoseIndex_);
-    createParam(ACTUAL_TCP_SPEED_STRING, asynParamFloat64Array, &actualTCPSpeedIndex_);
-    createParam(ACTUAL_TCP_FORCE_STRING, asynParamFloat64Array, &actualTCPForceIndex_);
-    createParam(SAFETY_MODE_STRING, asynParamInt32, &safetyModeIndex_);
-    createParam(JOINT_MODES_STRING, asynParamInt32Array, &jointModesIndex_);
-    createParam(ACTUAL_TOOL_ACCEL_STRING, asynParamFloat64Array, &actualToolAccelIndex_);
-    createParam(TARGET_JOINT_POS_STRING, asynParamFloat64Array, &targetJointPosIndex_);
-    createParam(TARGET_JOINT_VEL_STRING, asynParamFloat64Array, &targetJointVelIndex_);
-    createParam(TARGET_JOINT_ACCEL_STRING, asynParamFloat64Array, &targetJointAccelIndex_);
-    createParam(TARGET_JOINT_CURRENTS_STRING, asynParamFloat64Array, &targetJointCurrentsIndex_);
-    createParam(TARGET_JOINT_MOMENTS_STRING, asynParamFloat64Array, &targetJointMomentsIndex_);
-    createParam(TARGET_TCP_POSE_STRING, asynParamFloat64Array, &targetTCPPoseIndex_);
-    createParam(TARGET_TCP_SPEED_STRING, asynParamFloat64Array, &targetTCPSpeedIndex_);
-    createParam(JOINT_TEMPERATURES_STRING, asynParamFloat64Array, &jointTemperaturesIndex_);
-    createParam(SPEED_SCALING_STRING, asynParamFloat64, &speedScalingIndex_);
-    createParam(TARGET_SPEED_FRACTION_STRING, asynParamFloat64, &targetSpeedFractionIndex_);
-    createParam(ACTUAL_MOMENTUM_STRING, asynParamFloat64, &actualMomentumIndex_);
-    createParam(ACTUAL_MAIN_VOLTAGE_STRING, asynParamFloat64, &actualMainVoltageIndex_);
-    createParam(ACTUAL_ROBOT_VOLTAGE_STRING, asynParamFloat64, &actualRobotVoltageIndex_);
-    createParam(ACTUAL_ROBOT_CURRENT_STRING, asynParamFloat64, &actualRobotCurrentIndex_);
-    createParam(ACTUAL_JOINT_VOLTAGES_STRING, asynParamFloat64Array, &actualJointVoltagesIndex_);
+    createParam("DISCONNECT", asynParamInt32, &disconnectIndex_);
+    createParam("RECONNECT", asynParamInt32, &reconnectIndex_);
+    createParam("IS_CONNECTED", asynParamInt32, &isConnectedIndex_);
+    createParam("RUNTIME_STATE", asynParamInt32, &runtimeStateIndex_);
+    createParam("ROBOT_MODE", asynParamInt32, &robotModeIndex_);
+    createParam("SAFETY_STATUS_BITS", asynParamInt32, &safetyStatusBitsIndex_);
+    createParam("CONTROLLER_TIMESTAMP", asynParamFloat64, &controllerTimestampIndex_);
+    createParam("STD_ANALOG_INPUT0", asynParamFloat64, &stdAnalogInput0Index_);
+    createParam("STD_ANALOG_INPUT1", asynParamFloat64, &stdAnalogInput1Index_);
+    createParam("STD_ANALOG_OUTPUT0", asynParamFloat64, &stdAnalogOutput0Index_);
+    createParam("STD_ANALOG_OUTPUT1", asynParamFloat64, &stdAnalogOutput1Index_);
+    createParam("ACTUAL_JOINT_POSITIONS", asynParamFloat64Array, &actualJointPosIndex_);
+    createParam("DIGITAL_INPUT_BITS", asynParamInt32, &digitalInputBitsIndex_);
+    createParam("DIGITAL_OUTPUT_BITS", asynParamInt32, &digitalOutputBitsIndex_);
+    createParam("ACTUAL_JOINT_VELOCITIES", asynParamFloat64Array, &actualJointVelIndex_);
+    createParam("ACTUAL_JOINT_CURRENTS", asynParamFloat64Array, &actualJointCurrentsIndex_);
+    createParam("JOINT_CONTROL_CURRENTS", asynParamFloat64Array, &jointControlCurrentsIndex_);
+    createParam("ACTUAL_TCP_POSE", asynParamFloat64Array, &actualTCPPoseIndex_);
+    createParam("ACTUAL_TCP_SPEED", asynParamFloat64Array, &actualTCPSpeedIndex_);
+    createParam("ACTUAL_TCP_FORCE", asynParamFloat64Array, &actualTCPForceIndex_);
+    createParam("SAFETY_MODE", asynParamInt32, &safetyModeIndex_);
+    createParam("JOINT_MODES", asynParamInt32Array, &jointModesIndex_);
+    createParam("ACTUAL_TOOL_ACCEL", asynParamFloat64Array, &actualToolAccelIndex_);
+    createParam("TARGET_JOINT_POSITIONS", asynParamFloat64Array, &targetJointPosIndex_);
+    createParam("TARGET_JOINT_VELOCITIES", asynParamFloat64Array, &targetJointVelIndex_);
+    createParam("TARGET_JOINT_ACCELERATIONS", asynParamFloat64Array, &targetJointAccelIndex_);
+    createParam("TARGET_JOINT_CURRENTS", asynParamFloat64Array, &targetJointCurrentsIndex_);
+    createParam("TARGET_JOINT_MOMENTS", asynParamFloat64Array, &targetJointMomentsIndex_);
+    createParam("TARGET_TCP_POSE", asynParamFloat64Array, &targetTCPPoseIndex_);
+    createParam("TARGET_TCP_SPEED", asynParamFloat64Array, &targetTCPSpeedIndex_);
+    createParam("JOINT_TEMPERATURES", asynParamFloat64Array, &jointTemperaturesIndex_);
+    createParam("SPEED_SCALING", asynParamFloat64, &speedScalingIndex_);
+    createParam("TARGET_SPEED_FRACTION", asynParamFloat64, &targetSpeedFractionIndex_);
+    createParam("ACTUAL_MOMENTUM", asynParamFloat64, &actualMomentumIndex_);
+    createParam("ACTUAL_MAIN_VOLTAGE", asynParamFloat64, &actualMainVoltageIndex_);
+    createParam("ACTUAL_ROBOT_VOLTAGE", asynParamFloat64, &actualRobotVoltageIndex_);
+    createParam("ACTUAL_ROBOT_CURRENT", asynParamFloat64, &actualRobotCurrentIndex_);
+    createParam("ACTUAL_JOINT_VOLTAGES", asynParamFloat64Array, &actualJointVoltagesIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -262,7 +262,9 @@ static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
 static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"RTDEReceiveConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { RTDEReceiveConfig(args[0].sval, args[1].sval, args[2].dval); }
+static void urRobotCallFunc(const iocshArgBuf *args) {
+    RTDEReceiveConfig(args[0].sval, args[1].sval, args[2].dval);
+}
 
 void RTDEReceiveRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 
