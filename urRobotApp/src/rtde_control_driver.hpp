@@ -42,6 +42,7 @@ class RTDEControl : public asynPortDriver {
     // handle asynchronous motion through paths, etc.
     AsyncRunning async_running_ = AsyncRunning::False;
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
+    std::string traj_file_path_;
     std::vector<double> waypoint_;
 
   protected:
@@ -75,4 +76,7 @@ class RTDEControl : public asynPortDriver {
     int waypointActionDoneIndex_;
     int teachModeIndex_;
     int triggerProtStopIndex_;
+    int trajFileIndex_;
+    int trajTypeIndex_;
+    int trajMoveIndex_;
 };

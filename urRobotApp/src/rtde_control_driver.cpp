@@ -4,11 +4,16 @@
 #include <iocsh.h>
 #include <sstream>
 #include <stdexcept>
+#include <optional>
 
 #include "rtde_control_driver.hpp"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
+
+using OptTrajectory = std::optional<std::vector<std::vector<double>>>;
+constexpr size_t TRAJ_ROW_SIZE = 9; // 6 positions, speed, accel, blend
+OptTrajectory read_traj_file(const std::string& filepath);
 
 bool RTDEControl::try_connect() {
     // RTDE class construction automatically tries connecting.
@@ -112,6 +117,9 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip, doubl
     createParam("WAYPOINT_ACTION_DONE", asynParamInt32, &waypointActionDoneIndex_);
     createParam("TEACH_MODE", asynParamInt32, &teachModeIndex_);
     createParam("TRIGGER_PROT_STOP", asynParamInt32, &triggerProtStopIndex_);
+    createParam("TRAJ_FILE", asynParamOctet, &trajFileIndex_);
+    createParam("TRAJ_TYPE", asynParamInt32, &trajTypeIndex_);
+    createParam("TRAJ_MOVE", asynParamInt32, &trajMoveIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -407,6 +415,19 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         }
     }
 
+    else if (function == trajMoveIndex_) {
+        if (auto traj = read_traj_file(traj_file_path_); traj) {
+            for (auto& row : *traj) {
+                for (double v : row) {
+                    std::cout << v << " ";
+                }
+                std::cout << "\n";
+            }
+        } else {
+            spdlog::error("Error reading trajectory file\n");
+        }
+    }
+
     else if (function == waypointActionDoneIndex_) {
         setIntegerParam(waypointActionDoneIndex_, value);
     }
@@ -447,7 +468,7 @@ skip:
 }
 
 asynStatus RTDEControl::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual) {
-    // int function = pasynUser->reason;
+    int function = pasynUser->reason;
     bool comm_ok = true;
 
     if (rtde_control_ == nullptr) {
@@ -462,7 +483,13 @@ asynStatus RTDEControl::writeOctet(asynUser *pasynUser, const char *value, size_
         goto skip;
     }
 
+    if (function == trajFileIndex_) {
+        spdlog::debug("Setting trajectory file: {}", value);
+        traj_file_path_ = value;
+    }
+
 skip:
+    *nActual = strlen(value);
     callParamCallbacks();
     if (comm_ok) {
         return asynSuccess;
@@ -493,4 +520,48 @@ void RTDEControlRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc)
 
 extern "C" {
 epicsExportRegistrar(RTDEControlRegister);
+}
+
+OptTrajectory read_traj_file(const std::string& filepath) {
+
+    constexpr char COMMENT_CHAR = '#';
+
+    std::ifstream fs(filepath);
+    if (!fs.is_open()) {
+        return std::nullopt;
+    }
+
+    std::string line;
+    std::vector<std::vector<double>> out;
+
+    while (std::getline(fs, line)) {
+        if (line.size() > 0) {
+            if (line[0] != COMMENT_CHAR) {
+
+                // trim whitespace
+                auto i0 = line.find_first_not_of(" \t");
+                if (i0 == std::string::npos) continue; // skip empty lines
+                auto i1 = line.find_last_not_of(' ');
+                auto line_trim = line.substr(i0, i1-i0+1);
+
+                // parse the line
+                std::stringstream ss(line_trim);
+                std::string token;
+                std::vector<double> row;
+                while (std::getline(ss, token, ',')) {
+                    try {
+                        row.push_back(std::stod(token));
+                    } catch (...) {
+                        return std::nullopt;
+                    }
+                }
+                if (row.size() != TRAJ_ROW_SIZE) {
+                    return std::nullopt;
+                }
+                out.push_back(row);
+            }
+        }
+    }
+
+    return out;
 }

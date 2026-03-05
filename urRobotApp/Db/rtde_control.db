@@ -135,11 +135,22 @@ record(fanout, "$(P)Control:reset_both_cmd")
     field(LNK1, "$(P)Control:sync_pose_cmd")
 }
 
-record(calcout, "$(P)Control:reset_after_async_move") {
+record(calcout, "$(P)Control:reset_after_async_move")
+{
     field(INPA, "$(P)Control:AsyncMoveDone CP")
     field(CALC, "A")
     field(OOPT, "Transition To Non-zero")
     field(OUT, "$(P)Control:reset_both_cmd.PROC")
+}
+
+record(lso, "$(P)Control:TrajFile") {
+    field(DTYP, "asynOctetWrite")
+    field(OUT, "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TRAJ_FILE")
+}
+
+record(bo, "$(P)Control:TrajMove") {
+    field(DTYP, "asynInt32")
+    field(OUT, "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TRAJ_MOVE")
 }
 
 #======================
