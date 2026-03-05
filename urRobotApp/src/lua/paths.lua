@@ -1,4 +1,4 @@
--- NOTE: IOC must add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH
+-- NOTE: IOC must add $(URROBOT)/urRobotApp/src/lua to LUA_SCRIPT_PATH
 epics = require("epics")
 
 function wait_busy(busy_pv, path_stop_pv, safety_pv)
