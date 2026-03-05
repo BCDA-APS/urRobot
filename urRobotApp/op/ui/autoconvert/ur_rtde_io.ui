@@ -831,7 +831,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetStandardDigitalOut0</string>
+                <string>$(P)IO:SetStandardDO0</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -861,7 +861,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetStandardDigitalOut1</string>
+                <string>$(P)IO:SetStandardDO1</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -891,7 +891,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetStandardDigitalOut2</string>
+                <string>$(P)IO:SetStandardDO2</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -921,7 +921,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetStandardDigitalOut3</string>
+                <string>$(P)IO:SetStandardDO3</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -951,7 +951,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetStandardDigitalOut4</string>
+                <string>$(P)IO:SetStandardDO4</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -981,7 +981,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetStandardDigitalOut5</string>
+                <string>$(P)IO:SetStandardDO5</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1011,7 +1011,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetStandardDigitalOut6</string>
+                <string>$(P)IO:SetStandardDO6</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1041,7 +1041,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetStandardDigitalOut7</string>
+                <string>$(P)IO:SetStandardDO7</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1071,7 +1071,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetConfigurableDigitalOut0</string>
+                <string>$(P)IO:SetConfigurableDO0</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1101,7 +1101,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetConfigurableDigitalOut1</string>
+                <string>$(P)IO:SetConfigurableDO1</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1131,7 +1131,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetConfigurableDigitalOut2</string>
+                <string>$(P)IO:SetConfigurableDO2</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1161,7 +1161,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetConfigurableDigitalOut3</string>
+                <string>$(P)IO:SetConfigurableDO3</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1191,7 +1191,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetConfigurableDigitalOut4</string>
+                <string>$(P)IO:SetConfigurableDO4</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1221,7 +1221,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetConfigurableDigitalOut5</string>
+                <string>$(P)IO:SetConfigurableDO5</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1251,7 +1251,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetConfigurableDigitalOut6</string>
+                <string>$(P)IO:SetConfigurableDO6</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1281,7 +1281,7 @@ caMenu{
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)IO:SetConfigurableDigitalOut7</string>
+                <string>$(P)IO:SetConfigurableDO7</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

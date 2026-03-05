@@ -342,7 +342,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetStandardDigitalOut0"
+		chan="$(P)IO:SetStandardDO0"
 		clr=14
 		bclr=51
 	}
@@ -355,7 +355,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetStandardDigitalOut1"
+		chan="$(P)IO:SetStandardDO1"
 		clr=14
 		bclr=51
 	}
@@ -368,7 +368,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetStandardDigitalOut2"
+		chan="$(P)IO:SetStandardDO2"
 		clr=14
 		bclr=51
 	}
@@ -381,7 +381,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetStandardDigitalOut3"
+		chan="$(P)IO:SetStandardDO3"
 		clr=14
 		bclr=51
 	}
@@ -394,7 +394,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetStandardDigitalOut4"
+		chan="$(P)IO:SetStandardDO4"
 		clr=14
 		bclr=51
 	}
@@ -407,7 +407,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetStandardDigitalOut5"
+		chan="$(P)IO:SetStandardDO5"
 		clr=14
 		bclr=51
 	}
@@ -420,7 +420,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetStandardDigitalOut6"
+		chan="$(P)IO:SetStandardDO6"
 		clr=14
 		bclr=51
 	}
@@ -433,7 +433,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetStandardDigitalOut7"
+		chan="$(P)IO:SetStandardDO7"
 		clr=14
 		bclr=51
 	}
@@ -446,7 +446,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetConfigurableDigitalOut0"
+		chan="$(P)IO:SetConfigurableDO0"
 		clr=14
 		bclr=51
 	}
@@ -459,7 +459,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetConfigurableDigitalOut1"
+		chan="$(P)IO:SetConfigurableDO1"
 		clr=14
 		bclr=51
 	}
@@ -472,7 +472,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetConfigurableDigitalOut2"
+		chan="$(P)IO:SetConfigurableDO2"
 		clr=14
 		bclr=51
 	}
@@ -485,7 +485,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetConfigurableDigitalOut3"
+		chan="$(P)IO:SetConfigurableDO3"
 		clr=14
 		bclr=51
 	}
@@ -498,7 +498,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetConfigurableDigitalOut4"
+		chan="$(P)IO:SetConfigurableDO4"
 		clr=14
 		bclr=51
 	}
@@ -511,7 +511,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetConfigurableDigitalOut5"
+		chan="$(P)IO:SetConfigurableDO5"
 		clr=14
 		bclr=51
 	}
@@ -524,7 +524,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetConfigurableDigitalOut6"
+		chan="$(P)IO:SetConfigurableDO6"
 		clr=14
 		bclr=51
 	}
@@ -537,7 +537,7 @@ text {
 		height=30
 	}
 	control {
-		chan="$(P)IO:SetConfigurableDigitalOut7"
+		chan="$(P)IO:SetConfigurableDO7"
 		clr=14
 		bclr=51
 	}

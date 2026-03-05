@@ -6,203 +6,204 @@ record(ao, "$(P)IO:SpeedSlider")
     field(VAL, "0.5")
     field(DRVH, "1.0")
     field(DRVL, "0.0")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SPEED_SLIDER")
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))SPEED_SLIDER")
 }
 
-record(ao, "$(P)IO:SetVoltageAnalogOut0")
-{
-    field(DESC, "Analog output voltage 0")
-    field(DTYP, "asynFloat64")
-    field(DRVH, "1.0")
-    field(DRVL, "0.0")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT0")
-}
-
-record(ao, "$(P)IO:SetVoltageAnalogOut1")
-{
-    field(DESC, "Analog output voltage 1")
-    field(DTYP, "asynFloat64")
-    field(DRVH, "1.0")
-    field(DRVL, "0.0")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT1")
-}
-
-record(ao, "$(P)IO:SetCurrentAnalogOut0")
-{
-    field(DESC, "Analog output current 0")
-    field(DTYP, "asynFloat64")
-    field(DRVH, "1.0")
-    field(DRVL, "0.0")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CURRENT_ANALOG_OUT0")
-}
-
-record(ao, "$(P)IO:SetCurrentAnalogOut1")
-{
-    field(DESC, "Analog output current 1")
-    field(DTYP, "asynFloat64")
-    field(DRVH, "1.0")
-    field(DRVL, "0.0")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CURRENT_ANALOG_OUT1")
-}
-
-record(bo, "$(P)IO:SetStandardDigitalOut0")
+record(bo, "$(P)IO:SetStandardDO0")
 {
     field(DESC, "Standard digital output 0")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT0")
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetStandardDigitalOut1")
+record(bo, "$(P)IO:SetStandardDO1")
 {
     field(DESC, "Standard digital output 1")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT1")
+    field(OUT,  "@asyn($(PORT),1,$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetStandardDigitalOut2")
+record(bo, "$(P)IO:SetStandardDO2")
 {
     field(DESC, "Standard digital output 2")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT2")
+    field(OUT,  "@asyn($(PORT),2,$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetStandardDigitalOut3")
+record(bo, "$(P)IO:SetStandardDO3")
 {
     field(DESC, "Standard digital output 3")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT3")
+    field(OUT,  "@asyn($(PORT),3,$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetStandardDigitalOut4")
+record(bo, "$(P)IO:SetStandardDO4")
 {
     field(DESC, "Standard digital output 4")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT4")
+    field(OUT,  "@asyn($(PORT),4,$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetStandardDigitalOut5")
+record(bo, "$(P)IO:SetStandardDO5")
 {
     field(DESC, "Standard digital output 5")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT5")
+    field(OUT,  "@asyn($(PORT),5,$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetStandardDigitalOut6")
+record(bo, "$(P)IO:SetStandardDO6")
 {
     field(DESC, "Standard digital output 6")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT6")
+    field(OUT,  "@asyn($(PORT),6,$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetStandardDigitalOut7")
+record(bo, "$(P)IO:SetStandardDO7")
 {
     field(DESC, "Standard digital output 7")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT7")
+    field(OUT,  "@asyn($(PORT),7,$(TIMEOUT=1))SET_STANDARD_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetConfigurableDigitalOut0")
+record(bo, "$(P)IO:SetConfigurableDO0")
 {
     field(DESC, "Configurable digital output 0")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT0")
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetConfigurableDigitalOut1")
+record(bo, "$(P)IO:SetConfigurableDO1")
 {
     field(DESC, "Configurable digital output 1")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT1")
+    field(OUT,  "@asyn($(PORT),1,$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetConfigurableDigitalOut2")
+record(bo, "$(P)IO:SetConfigurableDO2")
 {
     field(DESC, "Configurable digital output 2")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT2")
+    field(OUT,  "@asyn($(PORT),2,$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetConfigurableDigitalOut3")
+record(bo, "$(P)IO:SetConfigurableDO3")
 {
     field(DESC, "Configurable digital output 3")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT3")
+    field(OUT,  "@asyn($(PORT),3,$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetConfigurableDigitalOut4")
+record(bo, "$(P)IO:SetConfigurableDO4")
 {
     field(DESC, "Configurable digital output 4")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT4")
+    field(OUT,  "@asyn($(PORT),4,$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetConfigurableDigitalOut5")
+record(bo, "$(P)IO:SetConfigurableDO5")
 {
     field(DESC, "Configurable digital output 5")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT5")
+    field(OUT,  "@asyn($(PORT),5,$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetConfigurableDigitalOut6")
+record(bo, "$(P)IO:SetConfigurableDO6")
 {
     field(DESC, "Configurable digital output 6")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT6")
+    field(OUT,  "@asyn($(PORT),6,$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetConfigurableDigitalOut7")
+record(bo, "$(P)IO:SetConfigurableDO7")
 {
     field(DESC, "Configurable digital output 7")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT7")
+    field(OUT,  "@asyn($(PORT),7,$(TIMEOUT=1))SET_CONFIG_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetToolDigitalOut0")
+record(bo, "$(P)IO:SetToolDO0")
 {
     field(DESC, "Tool digital output 0")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_TOOL_DIGITAL_OUT0")
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))SET_TOOL_DIGITAL_OUT")
 }
 
-record(bo, "$(P)IO:SetToolDigitalOut1")
+record(bo, "$(P)IO:SetToolDO1")
 {
     field(DESC, "Tool digital output 1")
     field(ZNAM,"LO")
     field(ONAM,"HI")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SET_TOOL_DIGITAL_OUT1")
+    field(OUT,  "@asyn($(PORT),1,$(TIMEOUT=1))SET_TOOL_DIGITAL_OUT")
 }
+
+record(ao, "$(P)IO:SetVoltageAO0")
+{
+    field(DESC, "Analog output voltage 0")
+    field(DTYP, "asynFloat64")
+    field(DRVH, "1.0")
+    field(DRVL, "0.0")
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT")
+}
+
+record(ao, "$(P)IO:SetVoltageAO1")
+{
+    field(DESC, "Analog output voltage 1")
+    field(DTYP, "asynFloat64")
+    field(DRVH, "1.0")
+    field(DRVL, "0.0")
+    field(OUT,  "@asyn($(PORT),1,$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT")
+}
+
+record(ao, "$(P)IO:SetCurrentAO0")
+{
+    field(DESC, "Analog output current 0")
+    field(DTYP, "asynFloat64")
+    field(DRVH, "1.0")
+    field(DRVL, "0.0")
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))SET_CURRENT_ANALOG_OUT")
+}
+
+record(ao, "$(P)IO:SetCurrentAO1")
+{
+    field(DESC, "Analog output current 1")
+    field(DTYP, "asynFloat64")
+    field(DRVH, "1.0")
+    field(DRVL, "0.0")
+    field(OUT,  "@asyn($(PORT),1,$(TIMEOUT=1))SET_CURRENT_ANALOG_OUT")
+}
+

@@ -7,7 +7,6 @@
 
 static constexpr int NUM_JOINTS = 6;
 static constexpr int MAX_CONTROLLERS = 1;
-static constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class URGripper : public asynPortDriver {
   public:

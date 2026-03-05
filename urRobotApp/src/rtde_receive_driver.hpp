@@ -5,7 +5,6 @@
 #include "ur_rtde/rtde_receive_interface.h"
 
 constexpr int MAX_CONTROLLERS = 1;
-constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class RTDEReceive : public asynPortDriver {
   public:

@@ -7,11 +7,6 @@
 #include "spdlog/common.h"
 #include "spdlog/spdlog.h"
 
-static void poll_thread_C(void *pPvt) {
-    RTDEInOut *pRTDEInOut = (RTDEInOut *)pPvt;
-    pRTDEInOut->poll();
-}
-
 bool RTDEInOut::try_connect() {
     // We assume if there is no error, IO interface is connected
     // because the RTDEIOInterface class has no isConnected() method
@@ -31,57 +26,27 @@ bool RTDEInOut::try_connect() {
     return connected;
 }
 
+constexpr int MAX_ADDR = 8;
+constexpr int ASYN_INTERFACE_MASK = asynInt32Mask | asynFloat64Mask | asynDrvUserMask;
+constexpr int ASYN_INTERRUPT_MASK = asynInt32Mask | asynFloat64Mask;
+
 RTDEInOut::RTDEInOut(const char *asyn_port_name, const char *robot_ip, double poll_period)
-    : asynPortDriver(
-          asyn_port_name, MAX_CONTROLLERS,
-          asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask | asynFloat64ArrayMask |
-              asynInt32ArrayMask,
-          asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynInt32ArrayMask,
-          ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
-          0, 0),
-      rtde_io_(nullptr), robot_ip_(robot_ip), poll_period_(poll_period) {
+    : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
+                     ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
+      rtde_io_(nullptr), robot_ip_(robot_ip) {
 
     // RTDE IO
     createParam("SPEED_SLIDER", asynParamFloat64, &speedSliderIndex_);
-    createParam("SET_STANDARD_DIGITAL_OUT0", asynParamInt32, &setStandardDOUT0Index_);
-    createParam("SET_STANDARD_DIGITAL_OUT1", asynParamInt32, &setStandardDOUT1Index_);
-    createParam("SET_STANDARD_DIGITAL_OUT2", asynParamInt32, &setStandardDOUT2Index_);
-    createParam("SET_STANDARD_DIGITAL_OUT3", asynParamInt32, &setStandardDOUT3Index_);
-    createParam("SET_STANDARD_DIGITAL_OUT4", asynParamInt32, &setStandardDOUT4Index_);
-    createParam("SET_STANDARD_DIGITAL_OUT5", asynParamInt32, &setStandardDOUT5Index_);
-    createParam("SET_STANDARD_DIGITAL_OUT6", asynParamInt32, &setStandardDOUT6Index_);
-    createParam("SET_STANDARD_DIGITAL_OUT7", asynParamInt32, &setStandardDOUT7Index_);
-    createParam("SET_CONFIG_DIGITAL_OUT0", asynParamInt32, &setConfigDOUT0Index_);
-    createParam("SET_CONFIG_DIGITAL_OUT1", asynParamInt32, &setConfigDOUT1Index_);
-    createParam("SET_CONFIG_DIGITAL_OUT2", asynParamInt32, &setConfigDOUT2Index_);
-    createParam("SET_CONFIG_DIGITAL_OUT3", asynParamInt32, &setConfigDOUT3Index_);
-    createParam("SET_CONFIG_DIGITAL_OUT4", asynParamInt32, &setConfigDOUT4Index_);
-    createParam("SET_CONFIG_DIGITAL_OUT5", asynParamInt32, &setConfigDOUT5Index_);
-    createParam("SET_CONFIG_DIGITAL_OUT6", asynParamInt32, &setConfigDOUT6Index_);
-    createParam("SET_CONFIG_DIGITAL_OUT7", asynParamInt32, &setConfigDOUT7Index_);
-    createParam("SET_TOOL_DIGITAL_OUT0", asynParamInt32, &setToolDOUT0Index_);
-    createParam("SET_TOOL_DIGITAL_OUT1", asynParamInt32, &setToolDOUT1Index_);
-    createParam("SET_VOLTAGE_ANALOG_OUT0", asynParamFloat64, &setVoltageAOUT0Index_);
-    createParam("SET_VOLTAGE_ANALOG_OUT1", asynParamFloat64, &setVoltageAOUT1Index_);
-    createParam("SET_CURRENT_ANALOG_OUT0", asynParamFloat64, &setCurrentAOUT0Index_);
-    createParam("SET_CURRENT_ANALOG_OUT1", asynParamFloat64, &setCurrentAOUT1Index_);
+    createParam("SET_STANDARD_DIGITAL_OUT", asynParamInt32, &setStandardDOUTIndex_);
+    createParam("SET_CONFIG_DIGITAL_OUT", asynParamInt32, &setConfigDOUTIndex_);
+    createParam("SET_TOOL_DIGITAL_OUT", asynParamInt32, &setToolDOUTIndex_);
+    createParam("SET_VOLTAGE_ANALOG_OUT", asynParamFloat64, &setVoltageAOUTIndex_);
+    createParam("SET_CURRENT_ANALOG_OUT", asynParamFloat64, &setCurrentAOUTIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
 
     try_connect();
-
-    epicsThreadCreate("RTDEInOutPoller", epicsThreadPriorityLow,
-                      epicsThreadGetStackSize(epicsThreadStackMedium), (EPICSTHREADFUNC)poll_thread_C, this);
-}
-
-void RTDEInOut::poll() {
-    while (true) {
-        lock();
-        callParamCallbacks();
-        unlock();
-        epicsThreadSleep(poll_period_);
-    }
 }
 
 asynStatus RTDEInOut::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
@@ -92,10 +57,11 @@ asynStatus RTDEInOut::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     if (rtde_io_ == nullptr) {
         spdlog::error("RTDE IO interface not initialized");
         comm_ok = false;
-        goto skip;
+        return asynError;
     }
 
-    // RTDEIOInterface has no isConnected field for us to check
+    int addr = 0;
+    getAddress(pasynUser, &addr);
 
     if (function == speedSliderIndex_) {
         if ((static_cast<int>(value * 1000) % 10) == 0) {
@@ -103,21 +69,14 @@ asynStatus RTDEInOut::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
             spdlog::debug("Setting speed slider to {:.2f}", value);
         }
         comm_ok = rtde_io_->setSpeedSlider(value);
-    } else if (function == setVoltageAOUT0Index_) {
-        spdlog::debug("Setting analog output voltage 0 to {}", value);
-        comm_ok = rtde_io_->setAnalogOutputVoltage(0, value);
-    } else if (function == setVoltageAOUT1Index_) {
-        spdlog::debug("Setting analog output voltage 1 to {}", value);
-        comm_ok = rtde_io_->setAnalogOutputVoltage(1, value);
-    } else if (function == setCurrentAOUT0Index_) {
-        spdlog::debug("Setting analog output current 0 to {}", value);
-        comm_ok = rtde_io_->setAnalogOutputCurrent(0, value);
-    } else if (function == setCurrentAOUT1Index_) {
-        spdlog::debug("Setting analog output current 1 to {}", value);
-        comm_ok = rtde_io_->setAnalogOutputCurrent(1, value);
+    } else if (function == setVoltageAOUTIndex_) {
+        spdlog::debug("Setting analog output voltage {} to {}", addr, value);
+        comm_ok = rtde_io_->setAnalogOutputVoltage(addr, value);
+    } else if (function == setCurrentAOUTIndex_) {
+        spdlog::debug("Setting analog output current {} to {}", addr, value);
+        comm_ok = rtde_io_->setAnalogOutputCurrent(addr, value);
     }
 
-skip:
     callParamCallbacks();
     if (comm_ok) {
         return asynSuccess;
@@ -137,64 +96,18 @@ asynStatus RTDEInOut::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         return asynError;
     }
 
-    if (function == setStandardDOUT0Index_) {
-        spdlog::debug("Setting standard digital output 0 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setStandardDigitalOut(0, static_cast<bool>(value));
-    } else if (function == setStandardDOUT1Index_) {
-        spdlog::debug("Setting standard digital output 1 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setStandardDigitalOut(1, static_cast<bool>(value));
-    } else if (function == setStandardDOUT2Index_) {
-        spdlog::debug("Setting standard digital output 2 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setStandardDigitalOut(2, static_cast<bool>(value));
-    } else if (function == setStandardDOUT3Index_) {
-        spdlog::debug("Setting standard digital output 3 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setStandardDigitalOut(3, static_cast<bool>(value));
-    } else if (function == setStandardDOUT4Index_) {
-        spdlog::debug("Setting standard digital output 4 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setStandardDigitalOut(4, static_cast<bool>(value));
-    } else if (function == setStandardDOUT5Index_) {
-        spdlog::debug("Setting standard digital output 5 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setStandardDigitalOut(5, static_cast<bool>(value));
-    } else if (function == setStandardDOUT6Index_) {
-        spdlog::debug("Setting standard digital output 6 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setStandardDigitalOut(6, static_cast<bool>(value));
-    } else if (function == setStandardDOUT7Index_) {
-        spdlog::debug("Setting standard digital output 7 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setStandardDigitalOut(7, static_cast<bool>(value));
-    }
+    int addr = 0;
+    getAddress(pasynUser, &addr);
 
-    else if (function == setConfigDOUT0Index_) {
-        spdlog::debug("Setting configurable digital output 0 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setConfigurableDigitalOut(0, static_cast<bool>(value));
-    } else if (function == setConfigDOUT1Index_) {
-        spdlog::debug("Setting configurable digital output 1 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setConfigurableDigitalOut(1, static_cast<bool>(value));
-    } else if (function == setConfigDOUT2Index_) {
-        spdlog::debug("Setting configurable digital output 2 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setConfigurableDigitalOut(2, static_cast<bool>(value));
-    } else if (function == setConfigDOUT3Index_) {
-        spdlog::debug("Setting configurable digital output 3 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setConfigurableDigitalOut(3, static_cast<bool>(value));
-    } else if (function == setConfigDOUT4Index_) {
-        spdlog::debug("Setting configurable digital output 4 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setConfigurableDigitalOut(4, static_cast<bool>(value));
-    } else if (function == setConfigDOUT5Index_) {
-        spdlog::debug("Setting configurable digital output 5 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setConfigurableDigitalOut(5, static_cast<bool>(value));
-    } else if (function == setConfigDOUT6Index_) {
-        spdlog::debug("Setting configurable digital output 6 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setConfigurableDigitalOut(6, static_cast<bool>(value));
-    } else if (function == setConfigDOUT7Index_) {
-        spdlog::debug("Setting configurable digital output 7 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setConfigurableDigitalOut(7, static_cast<bool>(value));
-    }
-
-    else if (function == setToolDOUT0Index_) {
-        spdlog::debug("Setting tool digital output 0 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setToolDigitalOut(0, static_cast<bool>(value));
-    } else if (function == setToolDOUT1Index_) {
-        spdlog::debug("Setting tool digital output 1 {}", value == 1 ? "high" : "low");
-        comm_ok = rtde_io_->setToolDigitalOut(1, static_cast<bool>(value));
+    if (function == setStandardDOUTIndex_) {
+        spdlog::debug("Setting standard digital output {} {}", addr, value == 1 ? "high" : "low");
+        comm_ok = rtde_io_->setStandardDigitalOut(addr, static_cast<bool>(value));
+    } else if (function == setConfigDOUTIndex_) {
+        spdlog::debug("Setting configurable digital output {} {}", addr, value == 1 ? "high" : "low");
+        comm_ok = rtde_io_->setConfigurableDigitalOut(addr, static_cast<bool>(value));
+    } else if (function == setToolDOUTIndex_) {
+        spdlog::debug("Setting tool digital output {} {}", addr, value == 1 ? "high" : "low");
+        comm_ok = rtde_io_->setToolDigitalOut(addr, static_cast<bool>(value));
     }
 
     callParamCallbacks();

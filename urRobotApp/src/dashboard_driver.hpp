@@ -6,7 +6,6 @@
 
 
 constexpr int MAX_CONTROLLERS = 1;
-constexpr double DEFAULT_CONTROLLER_TIMEOUT = 1.0;
 
 class URDashboard : public asynPortDriver {
   public:
