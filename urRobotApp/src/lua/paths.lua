@@ -78,9 +78,12 @@ function path_go(args)
             print(string.format("Moving to waypoint %s...", wp))
             local move_pv = string.format("%s:move%s.PROC", wp, wp_type)
             local wp_busy_pv = string.format("%s:Busy", wp)
+            local path_busy_pv = string.format("%sPath%d:%d:Busy", args.prefix, args.N, i)
+            epics.put(path_busy_pv, 1)
             epics.put(move_pv, 1)
             epics.put(wp_busy_pv, 1)
             wait_busy(wp_busy_pv, path_stop_pv, safety_pv)
+            epics.put(path_busy_pv, 0)
 
             -- Restore original action
             if wp_action ~= 0 then -- TODO: check this works, was 3?
@@ -119,11 +122,8 @@ function get_wp_info(args)
 
         local wp_pv = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
         local reached_inp_pv = string.format("%sPath%d:%d:Reached.INP",args.prefix,args.N,args.k)
-        local busy_inp_pv = string.format("%sPath%d:%d:Busy.INP",args.prefix,args.N,args.k)
         local wp_reached_pv = string.format("%s:Reached CP",wp_pv)
-        local wp_busy_pv = string.format("%s:Busy CP",wp_pv)
         epics.put(reached_inp_pv, wp_reached_pv) -- set link to Waypoint:Reached PV
-        epics.put(busy_inp_pv, wp_busy_pv) -- set link to Waypoint:Busy PV
         return epics.get(wp_pv)
     else
         epics.put(string.format("%sPath%d:%d:ActionDesc", args.prefix, args.N, args.k), "")

@@ -49,7 +49,7 @@ record(ai, "$(P)Path$(N):$(K):Reached") {
     field(DESC, "1 if robot at waypoint, else 0")
 }
 
-# INP link to Waypoint:Busy set by get_wp_info func
+# Written directly by path_go() in paths.lua when this path is being executed
 record(ai, "$(P)Path$(N):$(K):Busy") {
     field(DESC, "1 if busy moving to waypoint, else 0")
 }
