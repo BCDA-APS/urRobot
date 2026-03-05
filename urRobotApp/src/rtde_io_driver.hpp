@@ -1,6 +1,4 @@
-#ifndef _RTDE_IO_DRIVER_HPP_
-#define _RTDE_IO_DRIVER_HPP_
-
+#pragma once
 #include <asynPortDriver.h>
 #include "ur_rtde/rtde_io_interface.h"
 
@@ -27,5 +25,3 @@ class RTDEInOut : public asynPortDriver {
     int setVoltageAOUTIndex_;
     int setCurrentAOUTIndex_;
 };
-
-#endif

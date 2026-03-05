@@ -1,6 +1,4 @@
-#ifndef _DASHBOARD_DRIVER_HPP_
-#define _DASHBOARD_DRIVER_HPP_
-
+#pragma once
 #include "ur_rtde/dashboard_client.h"
 #include <asynPortDriver.h>
 
@@ -49,5 +47,3 @@ class URDashboard : public asynPortDriver {
     int isProgramSavedIndex_;
     int isInRemoteControlIndex_;
 };
-
-#endif

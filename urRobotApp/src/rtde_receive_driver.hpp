@@ -1,6 +1,4 @@
-#ifndef _RTDE_RECEIVE_DRIVER_HPP_
-#define _RTDE_RECEIVE_DRIVER_HPP_
-
+#pragma once
 #include <asynPortDriver.h>
 #include "ur_rtde/rtde_receive_interface.h"
 
@@ -61,5 +59,3 @@ class RTDEReceive : public asynPortDriver {
     int reconnectIndex_;
 
 };
-
-#endif

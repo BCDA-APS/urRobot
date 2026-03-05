@@ -1,6 +1,4 @@
-#ifndef _RTDE_CONTROL_DRIVER_HPP_
-#define _RTDE_CONTROL_DRIVER_HPP_
-
+#pragma once
 #include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/rtde_receive_interface.h"
 #include <asynPortDriver.h>
@@ -99,5 +97,3 @@ class RTDEControl : public asynPortDriver {
     int teachModeIndex_;
     int triggerProtStopIndex_;
 };
-
-#endif

@@ -1,6 +1,4 @@
-#ifndef _GRIPPER_DRIVER_HPP_
-#define _GRIPPER_DRIVER_HPP_
-
+#pragma once
 #include <asynPortDriver.h>
 #include "ur_rtde/robotiq_gripper.h"
 #include "ur_rtde/dashboard_client.h"
@@ -49,5 +47,3 @@ class URGripper : public asynPortDriver {
     int positionUnitIndex_;
     int isCalibratedIndex_;
 };
-
-#endif
