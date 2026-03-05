@@ -118,6 +118,18 @@ record(bo, "$(P)Control:stop_path") {
     field(VAL, 0)
 }
 
+record(calcout, "$(P)Control:calc_stop_on_safety") {
+    field(INPA, "$(P)Receive:SafetyStatusBits CP")
+    field(CALC, "A=1")
+    field(OOPT, "Transition To Zero")
+    field(OUT, "$(P)Control:stop_on_safety.PROC")
+}
+
+record(fanout, "$(P)Control:stop_on_safety") {
+    field(LNK0, "$(P)Control:Stop")
+    field(LNK1, "$(P)Dashboard:Stop")
+}
+
 record(dfanout, "$(P)Control:Stop")
 {
     field(DOL, 1)

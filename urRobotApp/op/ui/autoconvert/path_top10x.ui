@@ -4,10 +4,10 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>410</x>
-            <y>1046</y>
-            <width>210</width>
-            <height>260</height>
+            <x>3827</x>
+            <y>1162</y>
+            <width>170</width>
+            <height>265</height>
         </rect>
     </property>
     <property name="styleSheet">
@@ -114,7 +114,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>125</x>
-                    <y>55</y>
+                    <y>60</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -153,7 +153,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>125</x>
-                    <y>75</y>
+                    <y>81</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -192,7 +192,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>125</x>
-                    <y>95</y>
+                    <y>101</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -231,7 +231,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>125</x>
-                    <y>115</y>
+                    <y>121</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -270,7 +270,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>125</x>
-                    <y>135</y>
+                    <y>141</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -309,7 +309,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>55</y>
+                    <y>60</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -351,7 +351,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>75</y>
+                    <y>81</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -393,7 +393,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>95</y>
+                    <y>101</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -435,7 +435,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>115</y>
+                    <y>121</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -477,7 +477,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>135</y>
+                    <y>141</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -519,7 +519,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>55</y>
+                    <y>60</y>
                     <width>101</width>
                     <height>20</height>
                 </rect>
@@ -570,7 +570,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>75</y>
+                    <y>81</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -621,7 +621,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>95</y>
+                    <y>101</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -672,7 +672,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>115</y>
+                    <y>121</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -723,7 +723,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>135</y>
+                    <y>141</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -815,8 +815,8 @@ caMenu{
         <widget class="caMessageButton" name="caMessageButton_5">
             <property name="geometry">
                 <rect>
-                    <x>165</x>
-                    <y>55</y>
+                    <x>125</x>
+                    <y>35</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -825,163 +825,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Path$(N1):Stop</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>251</red>
-                    <green>243</green>
-                    <blue>74</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Stop</string>
-            </property>
-            <property name="releaseMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
-        <widget class="caMessageButton" name="caMessageButton_6">
-            <property name="geometry">
-                <rect>
-                    <x>165</x>
-                    <y>75</y>
-                    <width>40</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N2):Stop</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>251</red>
-                    <green>243</green>
-                    <blue>74</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Stop</string>
-            </property>
-            <property name="releaseMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
-        <widget class="caMessageButton" name="caMessageButton_7">
-            <property name="geometry">
-                <rect>
-                    <x>165</x>
-                    <y>95</y>
-                    <width>40</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N3):Stop</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>251</red>
-                    <green>243</green>
-                    <blue>74</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Stop</string>
-            </property>
-            <property name="releaseMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
-        <widget class="caMessageButton" name="caMessageButton_8">
-            <property name="geometry">
-                <rect>
-                    <x>165</x>
-                    <y>115</y>
-                    <width>40</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N4):Stop</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>251</red>
-                    <green>243</green>
-                    <blue>74</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Stop</string>
-            </property>
-            <property name="releaseMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
-        <widget class="caMessageButton" name="caMessageButton_9">
-            <property name="geometry">
-                <rect>
-                    <x>164</x>
-                    <y>135</y>
-                    <width>40</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N5):Stop</string>
+                <string>$(P)Control:Stop.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1053,7 +897,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>155</y>
+                    <y>161</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1095,7 +939,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>155</y>
+                    <y>161</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -1142,11 +986,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_10">
+        <widget class="caMessageButton" name="caMessageButton_6">
             <property name="geometry">
                 <rect>
                     <x>125</x>
-                    <y>155</y>
+                    <y>161</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1181,50 +1025,11 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_11">
-            <property name="geometry">
-                <rect>
-                    <x>164</x>
-                    <y>155</y>
-                    <width>40</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N6):Stop</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>251</red>
-                    <green>243</green>
-                    <blue>74</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Stop</string>
-            </property>
-            <property name="releaseMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_6">
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>175</y>
+                    <y>181</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1266,7 +1071,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>175</y>
+                    <y>181</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -1313,11 +1118,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_12">
+        <widget class="caMessageButton" name="caMessageButton_7">
             <property name="geometry">
                 <rect>
                     <x>125</x>
-                    <y>175</y>
+                    <y>181</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1352,50 +1157,11 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_13">
-            <property name="geometry">
-                <rect>
-                    <x>164</x>
-                    <y>175</y>
-                    <width>40</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N7):Stop</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>251</red>
-                    <green>243</green>
-                    <blue>74</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Stop</string>
-            </property>
-            <property name="releaseMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_7">
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>195</y>
+                    <y>202</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1437,7 +1203,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>195</y>
+                    <y>202</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -1484,11 +1250,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_14">
+        <widget class="caMessageButton" name="caMessageButton_8">
             <property name="geometry">
                 <rect>
                     <x>125</x>
-                    <y>195</y>
+                    <y>202</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1523,50 +1289,11 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_15">
-            <property name="geometry">
-                <rect>
-                    <x>164</x>
-                    <y>195</y>
-                    <width>40</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N8):Stop</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>251</red>
-                    <green>243</green>
-                    <blue>74</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Stop</string>
-            </property>
-            <property name="releaseMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_8">
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>215</y>
+                    <y>222</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1608,7 +1335,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>215</y>
+                    <y>222</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -1655,11 +1382,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_16">
+        <widget class="caMessageButton" name="caMessageButton_9">
             <property name="geometry">
                 <rect>
                     <x>125</x>
-                    <y>215</y>
+                    <y>222</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1694,50 +1421,11 @@ caMenu{
                 <enum>caMessageButton::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_17">
-            <property name="geometry">
-                <rect>
-                    <x>164</x>
-                    <y>215</y>
-                    <width>40</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N9):Stop</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>251</red>
-                    <green>243</green>
-                    <blue>74</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Stop</string>
-            </property>
-            <property name="releaseMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_9">
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>235</y>
+                    <y>242</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1779,7 +1467,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>25</x>
-                    <y>235</y>
+                    <y>242</y>
                     <width>100</width>
                     <height>20</height>
                 </rect>
@@ -1826,11 +1514,11 @@ caMenu{
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_18">
+        <widget class="caMessageButton" name="caMessageButton_10">
             <property name="geometry">
                 <rect>
                     <x>125</x>
-                    <y>235</y>
+                    <y>242</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1857,45 +1545,6 @@ caMenu{
             </property>
             <property name="label">
                 <string>Go</string>
-            </property>
-            <property name="releaseMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
-        <widget class="caMessageButton" name="caMessageButton_19">
-            <property name="geometry">
-                <rect>
-                    <x>164</x>
-                    <y>235</y>
-                    <width>40</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)Path$(N10):Stop</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>251</red>
-                    <green>243</green>
-                    <blue>74</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Stop</string>
             </property>
             <property name="releaseMessage">
                 <string>1</string>
@@ -1993,30 +1642,21 @@ caMenu{
         <zorder>caTextEntry_3</zorder>
         <zorder>caTextEntry_4</zorder>
         <zorder>caMessageButton_5</zorder>
-        <zorder>caMessageButton_6</zorder>
-        <zorder>caMessageButton_7</zorder>
-        <zorder>caMessageButton_8</zorder>
-        <zorder>caMessageButton_9</zorder>
         <zorder>caRelatedDisplay_5</zorder>
         <zorder>caTextEntry_5</zorder>
-        <zorder>caMessageButton_10</zorder>
-        <zorder>caMessageButton_11</zorder>
+        <zorder>caMessageButton_6</zorder>
         <zorder>caRelatedDisplay_6</zorder>
         <zorder>caTextEntry_6</zorder>
-        <zorder>caMessageButton_12</zorder>
-        <zorder>caMessageButton_13</zorder>
+        <zorder>caMessageButton_7</zorder>
         <zorder>caRelatedDisplay_7</zorder>
         <zorder>caTextEntry_7</zorder>
-        <zorder>caMessageButton_14</zorder>
-        <zorder>caMessageButton_15</zorder>
+        <zorder>caMessageButton_8</zorder>
         <zorder>caRelatedDisplay_8</zorder>
         <zorder>caTextEntry_8</zorder>
-        <zorder>caMessageButton_16</zorder>
-        <zorder>caMessageButton_17</zorder>
+        <zorder>caMessageButton_9</zorder>
         <zorder>caRelatedDisplay_9</zorder>
         <zorder>caTextEntry_9</zorder>
-        <zorder>caMessageButton_18</zorder>
-        <zorder>caMessageButton_19</zorder>
+        <zorder>caMessageButton_10</zorder>
     </widget>
 </widget>
 </ui>

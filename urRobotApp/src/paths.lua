@@ -1,7 +1,7 @@
 -- NOTE: IOC must add $(URROBOT)/urRobotApp/src to LUA_SCRIPT_PATH
 epics = require("epics")
 
-function wait_busy(busy_pv)
+function wait_busy(busy_pv, path_stop_pv, safety_pv)
     if timeout == nil then
         timeout = 300.0 -- seconds
     end
@@ -13,8 +13,9 @@ function wait_busy(busy_pv)
             print("Error: Timeout exceeded waiting for process to complete")
             break
         end
-        busy = epics.get(busy_pv)
-        if busy == 0 then
+        if epics.get(busy_pv) == 0 then break end
+        if safety_pv and epics.get(safety_pv) ~= 1 then
+            epics.put(path_stop_pv, 1)
             break
         end
     end
@@ -23,8 +24,8 @@ end
 -- Moves robot through all enabled points along path
 function path_go(args)
 
-    local done_pv = string.format("%sControl:AsyncMoveDone.RVAL", args.prefix)
     local path_stop_pv = string.format("%sControl:stop_path", args.prefix, args.N)
+    local safety_pv = string.format("%sReceive:SafetyStatusBits", args.prefix)
     local sync_joint_disa_pv = string.format("%sControl:sync_joint_cmd.DISA", args.prefix)
     local sync_pose_disa_pv = string.format("%sControl:sync_pose_cmd.DISA", args.prefix)
 
@@ -75,11 +76,11 @@ function path_go(args)
 
             -- Move to waypoint and wait for motion and action to finish
             print(string.format("Moving to waypoint %s...", wp))
-            move_pv = string.format("%s:move%s.PROC", wp, wp_type)
-            wp_busy_pv = string.format("%s:Busy", wp)
+            local move_pv = string.format("%s:move%s.PROC", wp, wp_type)
+            local wp_busy_pv = string.format("%s:Busy", wp)
             epics.put(move_pv, 1)
             epics.put(wp_busy_pv, 1)
-            wait_busy(wp_busy_pv)
+            wait_busy(wp_busy_pv, path_stop_pv, safety_pv)
 
             -- Restore original action
             if wp_action ~= 0 then -- TODO: check this works, was 3?

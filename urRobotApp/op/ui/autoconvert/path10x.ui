@@ -4038,7 +4038,7 @@ caMenu{
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)Path$(N):Stop</string>
+                <string>$(P)Control:Stop.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

@@ -149,7 +149,7 @@ void RTDEControl::poll() {
     while (true) {
         lock();
 
-        if (rtde_control_ != nullptr) {
+        if (rtde_control_) {
             if (rtde_control_->isConnected()) {
                 setIntegerParam(isConnectedIndex_, 1);
                 setIntegerParam(isSteadyIndex_, rtde_control_->isSteady());
@@ -170,9 +170,10 @@ void RTDEControl::poll() {
                 }
                 doCallbacksFloat64Array(pose_vec.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
 
+                uint32_t safety_bits = rtde_receive_->getSafetyStatusBits();
+
                 if (async_running_ != AsyncRunning::False) {
                     if (async_status_ == AsyncMotionStatus::Done) {
-                        // std::vector<double> waypoint = this->waypoint_;
                         std::stringstream ss;
                         ss << "Moving to waypoint: ";
                         for (const auto &i : waypoint_) {
@@ -199,8 +200,7 @@ void RTDEControl::poll() {
                                 async_status_ = AsyncMotionStatus::WaitingMotion;
                                 setIntegerParam(asyncMoveDoneIndex_, 0);
                             } else {
-                                spdlog::warn(
-                                    "Requested TCP pose not within safety limits. No action taken.");
+                                spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
                                 async_status_ = AsyncMotionStatus::Done;
                                 async_running_ = AsyncRunning::False;
                             }
@@ -209,11 +209,18 @@ void RTDEControl::poll() {
                         if (async_status_ == AsyncMotionStatus::WaitingMotion) {
                             auto op_status = rtde_control_->getAsyncOperationProgressEx();
                             if (not op_status.isAsyncOperationRunning()) {
-                                spdlog::debug("Waypoint reached. Starting action...");
-                                run_action_val = 1 ^ run_action_val; // ensures the action PV link is processed
-                                setIntegerParam(waypointActionDoneIndex_, 0);
-                                setIntegerParam(runWaypointActionIndex_, run_action_val);
-                                async_status_ = AsyncMotionStatus::WaitingAction;
+                                if (safety_bits != 1) {
+                                    async_status_ = AsyncMotionStatus::Done;
+                                    async_running_ = AsyncRunning::False;
+                                    setIntegerParam(asyncMoveDoneIndex_, 1);
+                                } else {
+                                    spdlog::debug("Waypoint reached. Starting action...");
+                                    run_action_val =
+                                        1 ^ run_action_val; // ensures the action PV link is processed
+                                    setIntegerParam(waypointActionDoneIndex_, 0);
+                                    setIntegerParam(runWaypointActionIndex_, run_action_val);
+                                    async_status_ = AsyncMotionStatus::WaitingAction;
+                                }
                             }
                         } else if (async_status_ == AsyncMotionStatus::WaitingAction) {
                             int done = 0;
@@ -234,7 +241,6 @@ void RTDEControl::poll() {
         } else {
             setIntegerParam(isConnectedIndex_, 0);
         }
-
 
         callParamCallbacks();
         unlock();
@@ -515,7 +521,9 @@ static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
 static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"RTDEControlConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) { RTDEControlConfig(args[0].sval, args[1].sval, args[2].dval); }
+static void urRobotCallFunc(const iocshArgBuf *args) {
+    RTDEControlConfig(args[0].sval, args[1].sval, args[2].dval);
+}
 
 void RTDEControlRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
 

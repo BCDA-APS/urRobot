@@ -1538,7 +1538,7 @@ oval {
 		height=20
 	}
 	control {
-		chan="$(P)Path$(N):Stop"
+		chan="$(P)Control:Stop.PROC"
 		clr=30
 		bclr=20
 	}
