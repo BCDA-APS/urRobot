@@ -3,10 +3,6 @@
 #include "ur_rtde/rtde_receive_interface.h"
 #include <asynPortDriver.h>
 
-
-static constexpr int NUM_JOINTS = 6;
-static constexpr int MAX_CONTROLLERS = 1;
-
 enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
 enum class AsyncRunning : int {False, Cartesian, Joint};
 
@@ -57,29 +53,14 @@ class RTDEControl : public asynPortDriver {
     int isConnectedIndex_;
     int isSteadyIndex_;
     int actualQIndex_;
+    int actualTCPPoseIndex_;
     int moveJIndex_;
     int stopJIndex_;
-    int j1CmdIndex_;
-    int j2CmdIndex_;
-    int j3CmdIndex_;
-    int j4CmdIndex_;
-    int j5CmdIndex_;
-    int j6CmdIndex_;
-    int actualTCPPoseIndex_;
     int moveLIndex_;
     int stopLIndex_;
-    int poseXCmdIndex_;
-    int poseYCmdIndex_;
-    int poseZCmdIndex_;
-    int poseRollCmdIndex_;
-    int posePitchCmdIndex_;
-    int poseYawCmdIndex_;
-    int tcpOffsetXIndex_;
-    int tcpOffsetYIndex_;
-    int tcpOffsetZIndex_;
-    int tcpOffsetRollIndex_;
-    int tcpOffsetPitchIndex_;
-    int tcpOffsetYawIndex_;
+    int jointCmdIndex_;
+    int poseCmdIndex_;
+    int tcpOffsetIndex_;
     int reuploadCtrlScriptIndex_;
     int stopCtrlScriptIndex_;
     int asyncMoveIndex_;

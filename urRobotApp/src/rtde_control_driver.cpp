@@ -9,7 +9,6 @@
 
 #include "rtde_control_driver.hpp"
 #include "rtde_control_interface.h"
-#include "rtde_io_driver.hpp"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
@@ -77,15 +76,15 @@ static void poll_thread_C(void *pPvt) {
     pRTDEControl->poll();
 }
 
+constexpr int NUM_JOINTS = 6;
+constexpr int MAX_ADDR = NUM_JOINTS;
+constexpr int ASYN_INTERFACE_MASK =
+    asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynDrvUserMask;
+constexpr int ASYN_INTERRUPT_MASK = asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask;
+
 RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip, double poll_period)
-    : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
-                     asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask |
-                         asynFloat64ArrayMask | asynInt32ArrayMask,
-                     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask |
-                         asynInt32ArrayMask,
-                     ASYN_MULTIDEVICE | ASYN_CANBLOCK,
-                     1, // ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1
-                     0, 0),
+    : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
+                     ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
       rtde_control_(nullptr), rtde_receive_(nullptr), robot_ip_(robot_ip), poll_period_(poll_period) {
 
     createParam("DISCONNECT", asynParamInt32, &disconnectIndex_);
@@ -95,27 +94,12 @@ RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip, doubl
     createParam("MOVEJ", asynParamInt32, &moveJIndex_);
     createParam("STOPJ", asynParamInt32, &stopJIndex_);
     createParam("ACTUAL_Q", asynParamFloat64Array, &actualQIndex_);
-    createParam("J1CMD", asynParamFloat64, &j1CmdIndex_);
-    createParam("J2CMD", asynParamFloat64, &j2CmdIndex_);
-    createParam("J3CMD", asynParamFloat64, &j3CmdIndex_);
-    createParam("J4CMD", asynParamFloat64, &j4CmdIndex_);
-    createParam("J5CMD", asynParamFloat64, &j5CmdIndex_);
-    createParam("J6CMD", asynParamFloat64, &j6CmdIndex_);
+    createParam("JOINT_CMD", asynParamFloat64, &jointCmdIndex_);
     createParam("MOVEL", asynParamInt32, &moveLIndex_);
     createParam("STOPL", asynParamInt32, &stopLIndex_);
     createParam("ACTUAL_TCP_POSE", asynParamFloat64Array, &actualTCPPoseIndex_);
-    createParam("POSE_X_CMD", asynParamFloat64, &poseXCmdIndex_);
-    createParam("POSE_Y_CMD", asynParamFloat64, &poseYCmdIndex_);
-    createParam("POSE_Z_CMD", asynParamFloat64, &poseZCmdIndex_);
-    createParam("POSE_ROLL_CMD", asynParamFloat64, &poseRollCmdIndex_);
-    createParam("POSE_PITCH_CMD", asynParamFloat64, &posePitchCmdIndex_);
-    createParam("POSE_YAW_CMD", asynParamFloat64, &poseYawCmdIndex_);
-    createParam("TCP_OFFSET_X", asynParamFloat64, &tcpOffsetXIndex_);
-    createParam("TCP_OFFSET_Y", asynParamFloat64, &tcpOffsetYIndex_);
-    createParam("TCP_OFFSET_Z", asynParamFloat64, &tcpOffsetZIndex_);
-    createParam("TCP_OFFSET_ROLL", asynParamFloat64, &tcpOffsetRollIndex_);
-    createParam("TCP_OFFSET_PITCH", asynParamFloat64, &tcpOffsetPitchIndex_);
-    createParam("TCP_OFFSET_YAW", asynParamFloat64, &tcpOffsetYawIndex_);
+    createParam("POSE_CMD", asynParamFloat64, &poseCmdIndex_);
+    createParam("TCP_OFFSET", asynParamFloat64, &tcpOffsetIndex_);
     createParam("REUPLOAD_CONTROL_SCRIPT", asynParamInt32, &reuploadCtrlScriptIndex_);
     createParam("STOP_CONTROL_SCRIPT", asynParamInt32, &stopCtrlScriptIndex_);
     createParam("JOINT_SPEED", asynParamFloat64, &jointSpeedIndex_);
@@ -253,20 +237,13 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     int function = pasynUser->reason;
     bool comm_ok = true;
 
-    static std::map<int, int> joint_cmd_map = {
-        {j1CmdIndex_, 0}, {j2CmdIndex_, 1}, {j3CmdIndex_, 2},
-        {j4CmdIndex_, 3}, {j5CmdIndex_, 4}, {j6CmdIndex_, 5},
-    };
+    int addr = 0;
+    getAddress(pasynUser, &addr);
 
-    static std::map<int, int> pose_cmd_map = {
-        {poseXCmdIndex_, 0},    {poseYCmdIndex_, 1},     {poseZCmdIndex_, 2},
-        {poseRollCmdIndex_, 3}, {posePitchCmdIndex_, 4}, {poseYawCmdIndex_, 5},
-    };
-
-    static std::map<int, int> tcp_offset_map = {
-        {tcpOffsetXIndex_, 0},    {tcpOffsetYIndex_, 1},     {tcpOffsetZIndex_, 2},
-        {tcpOffsetRollIndex_, 3}, {tcpOffsetPitchIndex_, 4}, {tcpOffsetYawIndex_, 5},
-    };
+    // static std::map<int, int> tcp_offset_map = {
+    // {tcpOffsetXIndex_, 0},    {tcpOffsetYIndex_, 1},     {tcpOffsetZIndex_, 2},
+    // {tcpOffsetRollIndex_, 3}, {tcpOffsetPitchIndex_, 4}, {tcpOffsetYawIndex_, 5},
+    // };
 
     if (rtde_control_ == nullptr) {
         spdlog::error("RTDE Control interface not initialized");
@@ -280,27 +257,22 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         goto skip;
     }
 
-    // When commanded joint angles change, update the values
-    if (joint_cmd_map.count(function) > 0) {
+    if (function == jointCmdIndex_) {
         // convert commanded joint angles to radians
         const double val = value * M_PI / 180.0;
-        this->cmd_joints_.at(joint_cmd_map.at(function)) = val;
+        this->cmd_joints_.at(addr) = val;
     }
 
-    // When commanded TCP pose values change, update the values
-    else if (pose_cmd_map.count(function) > 0) {
+    else if (function == poseCmdIndex_) {
         // convert commanded x,y,z to meters and roll, pitch, yaw to radians
-        int ind = pose_cmd_map.at(function);
-        const double val = (ind >= 3) ? (value * M_PI / 180.0) : (value / 1000.0);
-        this->cmd_pose_.at(ind) = val;
+        const double val = (addr >= 3) ? (value * M_PI / 180.0) : (value / 1000.0);
+        this->cmd_pose_.at(addr) = val;
     }
 
-    // When commanded TCP offset values change, update the values
-    else if (tcp_offset_map.count(function) > 0) {
+    else if (function == tcpOffsetIndex_) {
         // convert commanded x,y,z from mm to meters. Assume roll, pitch, yaw is radians
-        const int ind = tcp_offset_map.at(function);
-        const double val = (ind >= 3) ? value : (value / 1000.0);
-        this->tcp_offset_.at(ind) = val;
+        const double val = (addr >= 3) ? value : (value / 1000.0);
+        this->tcp_offset_.at(addr) = val;
         std::stringstream ss;
         ss << "Setting TCP offset to ";
         for (const auto &i : tcp_offset_) {
