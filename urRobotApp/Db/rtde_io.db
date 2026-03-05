@@ -177,6 +177,7 @@ record(ao, "$(P)IO:SetVoltageAO0")
     field(DTYP, "asynFloat64")
     field(DRVH, "1.0")
     field(DRVL, "0.0")
+    field(PREC, 1)
     field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT")
 }
 
@@ -186,6 +187,7 @@ record(ao, "$(P)IO:SetVoltageAO1")
     field(DTYP, "asynFloat64")
     field(DRVH, "1.0")
     field(DRVL, "0.0")
+    field(PREC, 1)
     field(OUT,  "@asyn($(PORT),1,$(TIMEOUT=1))SET_VOLTAGE_ANALOG_OUT")
 }
 
@@ -195,6 +197,7 @@ record(ao, "$(P)IO:SetCurrentAO0")
     field(DTYP, "asynFloat64")
     field(DRVH, "1.0")
     field(DRVL, "0.0")
+    field(PREC, 1)
     field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))SET_CURRENT_ANALOG_OUT")
 }
 
@@ -204,6 +207,7 @@ record(ao, "$(P)IO:SetCurrentAO1")
     field(DTYP, "asynFloat64")
     field(DRVH, "1.0")
     field(DRVL, "0.0")
+    field(PREC, 1)
     field(OUT,  "@asyn($(PORT),1,$(TIMEOUT=1))SET_CURRENT_ANALOG_OUT")
 }
 
