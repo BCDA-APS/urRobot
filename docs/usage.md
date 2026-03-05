@@ -73,11 +73,7 @@ Although the default control GUI may look similar to typical EPICS motor screens
 The x, y, z, roll, pitch, and yaw motors are virtual axes and moving them will move one or more joint motors. The joint motors
 themselves are independent of each other, however motion of any joint motor will affect the position of the tool. To reconcile
 this and reduce the likelyhood of accidentally commanding motion you didn't indend, every time motion completes, the command values
-are automatically set to the current readback values, similar to an EPICS motor record. Since many EPICS users are accustomed to
-the benefits of the motor record, a substitutions file is provided (urRobotApp/Db/ur_soft_motors.substitutions") which loads
-12 soft motor records for the 6 joints and 6 tool coordinates. Additionally a version of the control GUI is provided for the soft
-motors (urRobotApp/op/adl/ur_rtde_controlSM.adl).
-
+are automatically set to the current readback values, similar to an EPICS motor record.
 The "Go" toggles (which write to the `$(P)Control:AutoMoveJ` or `$(P)Control:AutoMoveL` PVs) are similar to the Go/Move
 options in the EPICS motor record. For example, to move Joint 1 to -75deg, if "Go" is set to "No" (`$(P)Control:AutoMoveJ`=0),
 then you must set Joint 1 to -75deg and click "Move" (`$(P)Control:moveJ`). If "Go" is set to "Yes" (`$(P)Control:AutoMoveJ`=1),
@@ -85,6 +81,20 @@ the robot will begin moving as soon as the commanded values change, so typing -7
 start the robot moving. The same goes for the Cartesian moves. Note that the "Move" buttons tell the robot to move to the current
 joint or cartesian configuration defined by all 6 of the respective target values (J1Cmd, J2cmd... or PoseXCmd, PoseYCmd...).
 
+
+### Safety Event Handling
+
+When a safety event occurs (protective stop, safeguard stop, emergency stop, etc.), the
+`$(P)Receive:SafetyStatusBits` PV will change from its normal value of `1` to a non-`1` value.
+The driver detects this and automatically aborts any in-progress motion. Additionally, a calcout
+record monitors `SafetyStatusBits` and triggers `$(P)Control:Stop` (which stops any in-progress
+motion and aborts any running path) and `$(P)Dashboard:Stop` (which stops the UR program at the
+controller level) when a safety event is detected.
+
+Once the safety event is cleared (e.g. the protective stop is unlocked via the teach pendant or
+`$(P)Dashboard:UnlockProtectiveStop`), the robot will remain idle. Use
+`$(P)Control:ReuploadControlScript` to reconnect the RTDE control interface before commanding
+further motion.
 
 ## Robotiq Gripper
 
@@ -139,7 +149,7 @@ Two screens are provided for defining joint or Cartesian waypoints:
 </div>
 
 A single waypoint is defined by an instance of `waypointL.db` or `waypointJ.db`. It is typically most useful to
-load many waypoints in your IOC startup script with a subtitutions file (`urRobotApp/iocsh/waypoints.substitutions`),
+load many waypoints in your IOC startup script via `paths.iocsh`,
 then define them at runtime. `.req` files for autosave are provided in `urRobotApp/Db/`.
 Looking at the above Cartesian Waypoint display, from left to right on each line you have the following:
 - Waypoint number for quick reference (call it `$(N)`) which ranges from 1-10 in this example.
@@ -154,8 +164,8 @@ otherwise it will be gray.
     - Before motion is attempted, the driver checks that the robot will remain within safety limits throughout the move.
     If the move will break the safety limits, it will not be attempted and a message saying so will be printed in the IOC console.
     The move will also not be started if another move is currently in progress.
-- Waypoint action selection menu (`$(P)WaypointL:$(N):ActionOpt`) which is used to select the action to perform after
-the robot reaches the waypoint. Waypoint actions are discussed in greater detail in the next section.
+- Waypoint action number (`$(P)WaypointL:$(N):ActionOpt`) which selects the action to perform after
+the robot reaches the waypoint (0 = no action, N = ActionSseqN). Waypoint actions are discussed in greater detail in the next section.
 - String description of the selected waypoint action
 - At the top of the display there is a indicator to signal when a motion is done (`$(P)Control:AsyncMoveDone`) and a stop
 button to stop a move in progress.
@@ -164,33 +174,45 @@ button to stop a move in progress.
 ### Waypoint Actions
 
 Each waypoint has an associated action which is executed automatically after the robot reaches the waypoint.
-Each action is defined by an EPICS forward link together with a calcout record that determines when
-the action is done (1=done, 0=not done). There are 10 configurable waypoint actions which are
-defined in `waypoint_actions10.db`. All ten actions can be overwritten, however the first two come
-pre-configured for opening and closing the Robotiq gripper, which many users may find useful.
+Each action `N` is defined by two records that the user configures:
 
-The below screen is used to configure the waypoint actions. Each waypoint action should
-be given an EPICS link to process and optionally a string description of the action. Then, by selection the
-green "calc" buttons, you can define the conditions under which the action is considered to be finished.
+- **`$(P)ActionSseqN`** — an sseq record defining the steps the action performs (e.g., open a gripper,
+  send a trigger signal, move an auxiliary axis). This record is processed automatically when the robot
+  arrives at a waypoint that has action `N` selected.
+- **`$(P)ActionDoneCalcN`** — a calcout record that signals when the action is complete. Its output
+  should be `1` when the action is done and `0` while it is still running. The path execution engine
+  waits for this record to output `1` before moving on to the next waypoint.
+
+Any number of actions can be defined by loading instances of `waypoint_action.db` with different
+values of `N`.
+
+To assign an action to a waypoint, set the `ActionOpt` field on the waypoint (e.g.
+`$(P)WaypointJ:$(N):ActionOpt`) to the desired action number, or `0` for no action.
+When `ActionOpt` changes, the internal `action_opt.lua` script automatically connects the selected
+action's sseq and calcout records to that waypoint.
+
+The sseq records can be configured at runtime using the `editSseq` GUI (provided by the CALC module's
+`editSseq.db`, loaded by `paths.iocsh`).
 
 <img src="./assets/GUIs/ui/urRobot_actions.png" alt="ui-waypoint_actions" width="400">
-<img src="./assets/GUIs/ui/urRobot_action1_calcout.png" alt="ui-waypoint_action1_calc" width="400">
 
-The "Run" button processes the action link. When developing a new custom waypoint action, to ensure the
-calcout record properly determines when the action is completed, it is useful to use the "Run" button
-and verify that the calcout record's value is 0 when the action is running, and 1 when it completes.
-The calcout logic is crucial for motion along a path (discussed in the next section) since the value
-of the calcout record is used to determine when to move on to the next point.
+**Example:** To create a custom action that opens a gripper and waits for it to finish:
+
+1. Configure `$(P)ActionSseq1` to write to the gripper open PV (e.g. `$(P)RobotiqGripper:Open`).
+2. Configure `$(P)ActionDoneCalc1` to monitor the gripper's `IsOpen` PV:
+   set `INPA = $(P)RobotiqGripper:IsOpen CP` and `CALC = A`.
+3. On the desired waypoint, set `ActionOpt = 1`.
+
+The first two actions come pre-configured for opening (`ActionSseq1`) and closing (`ActionSseq2`)
+the Robotiq gripper, which many users may find useful out of the box.
 
 ## Paths
 
 After you have defined some waypoints, the provided path support allows you to define and save sequences
 of waypoints for the robot to follow. Each path is comprised of a number of `path_waypoint.db` instances
-and a `path.db` instance. It is useful to load several empty paths in your IOC startup script with a
-subtitutions file. The example substitutions file  (`urRobotApp/iocsh/paths.substitutions`) loads 5 paths
-with 30 possible waypoints each.
+and a `path.db` instance. Waypoints, actions, and paths are all loaded via `paths.iocsh`.
 
-After selecting "Paths" from the main menu, you will get the topPaths5x screen:
+After selecting "Paths" from the main menu, you will get the path_top10x screen:
 
 <img src="./assets/GUIs/ui/urRobot_paths_top.png" alt="ui-path-top" width="300">
 
@@ -198,7 +220,7 @@ From this screen you can give a string description of the path and execute and s
 "Go" and "Stop" buttons. If you select the green path number button on the left you will get the following
 screen which lets you define the path:
 
-<img src="./assets/GUIs/ui/urRobot_path1_less.png" alt="ui-path1-less" width="500">
+<img src="./assets/GUIs/ui/urRobot_path.png" alt="ui-path1-less" width="500">
 
 Looking at the above screen for Path `$(N)` which we have named "A to B", each line (1-10 on this screen)
 defines a waypoint along the path. This path in particular uses some predefined waypoints to create a pick

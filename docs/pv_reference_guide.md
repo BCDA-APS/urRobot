@@ -94,25 +94,25 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Receive:ActualTCPPose    | waveform     | Actual TCP pose (x,y,z,r,p,y)     |
 | Receive:ActualTCPSpeed    | waveform     | Actual TCP speed     |
 | Receive:ActualTCPForce    | waveform     | Actual TCP force     |
-| Receive:Joint1    | subArray (double)     | Joint 1 position  |
-| Receive:Joint2    | subArray (double)     | Joint 2 position  |
-| Receive:Joint3    | subArray (double)     | Joint 3 position  |
-| Receive:Joint4    | subArray (double)     | Joint 4 position  |
-| Receive:Joint5    | subArray (double)     | Joint 5 position  |
-| Receive:Joint6    | subArray (double)     | Joint 6 position  |
-| Receive:PoseX    | subArray (double)     | X TCP Pose position  |
-| Receive:PoseY    | subArray (double)     | Y TCP Pose position  |
-| Receive:PoseZ    | subArray (double)     | Z TCP Pose position  |
-| Receive:PoseRoll    | subArray (double)     | Roll TCP Pose position  |
-| Receive:PosePitch    | subArray (double)     | Pitch TCP Pose position  |
-| Receive:PoseYaw    | subArray (double)     | Yaw TCP Pose position  |
+| Receive:Joint1    | subArray     | Joint 1 position (deg)  |
+| Receive:Joint2    | subArray     | Joint 2 position (deg)  |
+| Receive:Joint3    | subArray     | Joint 3 position (deg)  |
+| Receive:Joint4    | subArray     | Joint 4 position (deg)  |
+| Receive:Joint5    | subArray     | Joint 5 position (deg)  |
+| Receive:Joint6    | subArray     | Joint 6 position (deg)  |
+| Receive:PoseX    | subArray     | TCP X position (mm)  |
+| Receive:PoseY    | subArray     | TCP Y position (mm)  |
+| Receive:PoseZ    | subArray     | TCP Z position (mm)  |
+| Receive:PoseRoll    | subArray     | TCP roll (deg)  |
+| Receive:PosePitch    | subArray     | TCP pitch (deg)  |
+| Receive:PoseYaw    | subArray     | TCP yaw (deg)  |
 | Receive:JointModes    | waveform     | Joint control modes     |
 | Receive:ActualToolAccelerometer    | waveform     | Tool accelerometer (X,Y,Z)     |
 | Receive:TargetJointPositions    | waveform     | Target joint positions     |
 | Receive:TargetJointVelocities    | waveform     | Target joint speeds     |
 | Receive:TargetJointAccelerations    | waveform     | Target joint accelerations     |
 | Receive:TargetJointCurrents    | waveform     | Target joint currents     |
-| Receive:TargetJointMoments    | waveform     | Target joint currents     |
+| Receive:TargetJointMoments    | waveform     | Target joint moments     |
 | Receive:TargetTCPPose    | waveform     | Target TCP pose (x,y,z,r,p,y)     |
 | Receive:TargetTCPSpeed    | waveform     | Target TCP speed     |
 | Receive:JointTemperatures    | waveform     | Joint temperatures in celsius     |
@@ -136,21 +136,21 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 |-------------- | -------------- | -------------- |
 | Control:Connected    | bi     | RTDE Control connection status     |
 | Control:Steady    | bi     | 1 if robot is fully at rest     |
-| Control:ActualQ    | waveform     | Actual joint positions     |
-| Control:AsyncMoveDone   | bi     | 1 if motion and waypoint action complete else 0 |
-| Control:ActualQ_index0    | subArray     | Actual joint 1 angle     |
-| Control:ActualQ_index1    | subArray     | actual joint 2 angle     |
-| Control:ActualQ_index2    | subArray     | Actual joint 3 angle     |
-| Control:ActualQ_index3    | subArray     | Actual joint 4 angle     |
-| Control:ActualQ_index4    | subArray     | actual joint 5 angle     |
-| Control:ActualQ_index5    | subArray     | Actual joint 6 angle     |
-| Control:ActualTCPPose    | waveform     | Actual TCP Pose     |
-| Control:pose_index0    | subArray     | X component of TCP pose     |
-| Control:pose_index1    | subArray     | Y component of TCP pose     |
-| Control:pose_index2    | subArray     | Z component of TCP pose     |
-| Control:pose_index3    | subArray     | Roll component of TCP pose     |
-| Control:pose_index4    | subArray     | Pitch component of TCP pose     |
-| Control:pose_index5    | subArray     | Yaw component of TCP pose     |
+| Control:AsyncMoveDone   | bi     | 1 if async motion and waypoint action are complete, else 0 |
+| Control:ActualQ    | waveform     | Actual joint positions (deg)     |
+| Control:ActualQ_index0    | subArray     | Joint 1 angle (deg)     |
+| Control:ActualQ_index1    | subArray     | Joint 2 angle (deg)     |
+| Control:ActualQ_index2    | subArray     | Joint 3 angle (deg)     |
+| Control:ActualQ_index3    | subArray     | Joint 4 angle (deg)     |
+| Control:ActualQ_index4    | subArray     | Joint 5 angle (deg)     |
+| Control:ActualQ_index5    | subArray     | Joint 6 angle (deg)     |
+| Control:ActualTCPPose    | waveform     | Actual TCP pose (x mm, y mm, z mm, roll deg, pitch deg, yaw deg)     |
+| Control:pose_index0    | subArray     | TCP X (mm)     |
+| Control:pose_index1    | subArray     | TCP Y (mm)     |
+| Control:pose_index2    | subArray     | TCP Z (mm)     |
+| Control:pose_index3    | subArray     | TCP roll (deg)     |
+| Control:pose_index4    | subArray     | TCP pitch (deg)     |
+| Control:pose_index5    | subArray     | TCP yaw (deg)     |
 
 ***Outputs***
 
@@ -161,68 +161,75 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:ReuploadControlScript    | bo     | Reuploads control script to controller     |
 | Control:StopControlScript    | bo     | Stops the control script     |
 | Control:Asynchronous    | bo     | If 1, moves will be asynchronous     |
-| Control:WaypointActionDoneCalc   | calcout     | Defines when waypoint action is considered done |
-| Control:WaypointActionDone   | bo     | 1 when waypoint action is done else 0 |
-| Control:TeachMode   | bo     | Enables/disables teach (freedrive) mode |
-| Control:Stop    | bo     | Stops motion from moveJ and moveL when written to 1 |
-| Control:moveJ    | bo     | Calls moveJ for the commanded joint angles J1Cmd-J6Cmd     |
-| Control:JointSpeed    | ao     | Joint speeds for moveJ     |
-| Control:JointAcceleration    | ao     | Joint accelerations for moveJ     |
-| Control:stopJ    | bo     | Stops motion from moveJ only if asynchronous=True     |
-| Control:AutoMoveJ    | bo     | If 1, moveJ runs when JxCmd changes     |
-| Control:J1Cmd    | ao     | Commanded angle(deg) for joint 1     |
+| Control:TeachMode   | bo     | Enables (1) / disables (0) teach (freedrive) mode |
+| Control:TriggerProtectiveStop   | bo     | Triggers a protective stop |
+| Control:Stop    | dfanout     | Stops any in-progress motion (moveJ or moveL) and aborts any running path |
+| Control:moveJ    | bo     | Executes moveJ to the commanded joint angles J1Cmd–J6Cmd     |
+| Control:JointSpeed    | ao     | Speed for moveJ (rad/s)     |
+| Control:JointAcceleration    | ao     | Acceleration for moveJ (rad/s²)     |
+| Control:JointBlend    | ao     | Blend radius for moveJ (m)     |
+| Control:stopJ    | bo     | Stops an in-progress asynchronous moveJ     |
+| Control:AutoMoveJ    | bo     | If 1, moveJ runs automatically when any JxCmd changes     |
+| Control:J1Cmd    | ao     | Commanded angle for joint 1 (deg)     |
 | Control:J1TweakVal    | ao     | Joint 1 tweak step size     |
-| Control:J1TweakFwd    | bo     | Tweak joint 1 forward     |
-| Control:J1TweakRev    | bo     | Tweak joint 1 backward     |
-| Control:J1TweakCalcFwd    | calcout     | Tweak joint 1 forwards by J1TweakVal     |
-| Control:J1TweakCalcRev    | calcout     | Tweak joint 1 backwards by J1TweakVal     |
-| Control:J2Cmd    | ao     | Commanded angle(deg) for joint 2     |
+| Control:J1TweakFwd    | bo     | Tweak joint 1 forward by J1TweakVal     |
+| Control:J1TweakRev    | bo     | Tweak joint 1 backward by J1TweakVal     |
+| Control:J2Cmd    | ao     | Commanded angle for joint 2 (deg)     |
 | Control:J2TweakVal    | ao     | Joint 2 tweak step size     |
 | Control:J2TweakFwd    | bo     | Tweak joint 2 forward by J2TweakVal     |
 | Control:J2TweakRev    | bo     | Tweak joint 2 backward by J2TweakVal     |
-| Control:J3Cmd    | ao     | Commanded angle(deg) for joint 3     |
+| Control:J3Cmd    | ao     | Commanded angle for joint 3 (deg)     |
 | Control:J3TweakVal    | ao     | Joint 3 tweak step size     |
 | Control:J3TweakFwd    | bo     | Tweak joint 3 forward by J3TweakVal     |
 | Control:J3TweakRev    | bo     | Tweak joint 3 backward by J3TweakVal     |
-| Control:J4Cmd    | ao     | Commanded angle(deg) for joint 4     |
+| Control:J4Cmd    | ao     | Commanded angle for joint 4 (deg)     |
 | Control:J4TweakVal    | ao     | Joint 4 tweak step size     |
 | Control:J4TweakFwd    | bo     | Tweak joint 4 forward by J4TweakVal     |
 | Control:J4TweakRev    | bo     | Tweak joint 4 backward by J4TweakVal     |
-| Control:J5Cmd    | ao     | Commanded angle(deg) for joint 5     |
+| Control:J5Cmd    | ao     | Commanded angle for joint 5 (deg)     |
 | Control:J5TweakVal    | ao     | Joint 5 tweak step size     |
 | Control:J5TweakFwd    | bo     | Tweak joint 5 forward by J5TweakVal     |
 | Control:J5TweakRev    | bo     | Tweak joint 5 backward by J5TweakVal     |
-| Control:J6Cmd    | ao     | Commanded angle(deg) for joint 6     |
+| Control:J6Cmd    | ao     | Commanded angle for joint 6 (deg)     |
 | Control:J6TweakVal    | ao     | Joint 6 tweak step size     |
 | Control:J6TweakFwd    | bo     | Tweak joint 6 forward by J6TweakVal     |
 | Control:J6TweakRev    | bo     | Tweak joint 6 backward by J6TweakVal     |
-| Control:moveL    | bo     | Move to TCP pose linearly     |
-| Control:stopL    | bo     | Stops motion from moveL only if asynchronous=True     |
-| Control:AutoMoveL    | bo     | If 1, moveL runs when PoseCmd changes     |
-| Control:PoseXCmd    | ao     | Commanded TCP X     |
-| Control:PoseXTweakVal    | ao     | X TCP pose tweak step size     |
-| Control:PoseXTweakFwd    | bo     | Tweak X TCP pose forward     |
-| Control:PoseXTweakRev    | bo     | Tweak X TCP pose backward     |
-| Control:PoseYCmd    | ao     | Commanded TCP Y     |
-| Control:PoseYTweakVal    | ao     | Y TCP pose tweak step size     |
-| Control:PoseYTweakFwd    | bo     | Tweak Y TCP pose forward     |
-| Control:PoseYTweakRev    | bo     | Tweak Y TCP pose backward     |
-| Control:PoseZCmd    | ao     | Commanded TCP Z     |
-| Control:PoseZTweakVal    | ao     | TCP Z tweak step size     |
+| Control:moveL    | bo     | Executes moveL to the commanded TCP pose     |
+| Control:LinearSpeed    | ao     | Speed for moveL (m/s)     |
+| Control:LinearAcceleration    | ao     | Acceleration for moveL (m/s²)     |
+| Control:LinearBlend    | ao     | Blend radius for moveL (m)     |
+| Control:stopL    | bo     | Stops an in-progress asynchronous moveL     |
+| Control:AutoMoveL    | bo     | If 1, moveL runs automatically when any PoseCmd changes     |
+| Control:PoseXCmd    | ao     | Commanded TCP X (mm)     |
+| Control:PoseXTweakVal    | ao     | X tweak step size     |
+| Control:PoseXTweakFwd    | bo     | Tweak TCP X forward     |
+| Control:PoseXTweakRev    | bo     | Tweak TCP X backward     |
+| Control:PoseYCmd    | ao     | Commanded TCP Y (mm)     |
+| Control:PoseYTweakVal    | ao     | Y tweak step size     |
+| Control:PoseYTweakFwd    | bo     | Tweak TCP Y forward     |
+| Control:PoseYTweakRev    | bo     | Tweak TCP Y backward     |
+| Control:PoseZCmd    | ao     | Commanded TCP Z (mm)     |
+| Control:PoseZTweakVal    | ao     | Z tweak step size     |
 | Control:PoseZTweakFwd    | bo     | Tweak TCP Z forward     |
 | Control:PoseZTweakRev    | bo     | Tweak TCP Z backward     |
-| Control:PoseRollCmd    | ao     | Commanded TCP roll     |
-| Control:PoseRollTweakVal    | ao     | TCP roll tweak step size     |
+| Control:PoseRollCmd    | ao     | Commanded TCP roll (deg)     |
+| Control:PoseRollTweakVal    | ao     | Roll tweak step size     |
 | Control:PoseRollTweakFwd    | bo     | Tweak TCP roll forward     |
 | Control:PoseRollTweakRev    | bo     | Tweak TCP roll backward     |
-| Control:PosePitchCmd    | ao     | Commanded TCP pitch     |
-| Control:PosePitchTweakVal    | ao     | TCP pitch tweak step size     |
+| Control:PosePitchCmd    | ao     | Commanded TCP pitch (deg)     |
+| Control:PosePitchTweakVal    | ao     | Pitch tweak step size     |
 | Control:PosePitchTweakFwd    | bo     | Tweak TCP pitch forward     |
 | Control:PosePitchTweakRev    | bo     | Tweak TCP pitch backward     |
-| Control:PoseYawCmd    | ao     | Commanded TCP yaw     |
-| Control:PoseYawTweakVal    | ao     | TCP yaw tweak step size     |
+| Control:PoseYawCmd    | ao     | Commanded TCP yaw (deg)     |
+| Control:PoseYawTweakVal    | ao     | Yaw tweak step size     |
 | Control:PoseYawTweakFwd    | bo     | Tweak TCP yaw forward     |
 | Control:PoseYawTweakRev    | bo     | Tweak TCP yaw backward     |
+| Control:TCPOffset_X    | ao     | TCP offset X (mm)     |
+| Control:TCPOffset_Y    | ao     | TCP offset Y (mm)     |
+| Control:TCPOffset_Z    | ao     | TCP offset Z (mm)     |
+| Control:TCPOffset_Roll    | ao     | TCP offset roll (rad)     |
+| Control:TCPOffset_Pitch    | ao     | TCP offset pitch (rad)     |
+| Control:TCPOffset_Yaw    | ao     | TCP offset yaw (rad)     |
 
 ***
 
@@ -233,28 +240,28 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Record  | Type   | Description   |
 |-------------- | -------------- | -------------- |
 | IO:SpeedSlider    | ao     | Number between 0 and 1 to set the speed between 0% and 100% of the maximum speed     |
-| IO:SetVoltageAnalogOut0    | ao     | Analog output voltage 0     |
-| IO:SetVoltageAnalogOut1    | ao     | Analog output voltage 1     |
-| IO:SetCurrentAnalogOut0    | ao     | Analog output current 0     |
-| IO:SetCurrentAnalogOut1    | ao     | Analog output current 1     |
-| IO:SetStandardDigitalOut0    | bo     | Standard digital output 0     |
-| IO:SetStandardDigitalOut1    | bo     | Standard digital output 1     |
-| IO:SetStandardDigitalOut2    | bo     | Standard digital output 2     |
-| IO:SetStandardDigitalOut3    | bo     | Standard digital output 3     |
-| IO:SetStandardDigitalOut4    | bo     | Standard digital output 4     |
-| IO:SetStandardDigitalOut5    | bo     | Standard digital output 5     |
-| IO:SetStandardDigitalOut6    | bo     | Standard digital output 6     |
-| IO:SetStandardDigitalOut7    | bo     | Standard digital output 7     |
-| IO:SetConfigurableDigitalOut0    | bo     | Configurable digital output 0     |
-| IO:SetConfigurableDigitalOut1    | bo     | Configurable digital output 1     |
-| IO:SetConfigurableDigitalOut2    | bo     | Configurable digital output 2     |
-| IO:SetConfigurableDigitalOut3    | bo     | Configurable digital output 3     |
-| IO:SetConfigurableDigitalOut4    | bo     | Configurable digital output 4     |
-| IO:SetConfigurableDigitalOut5    | bo     | Configurable digital output 5     |
-| IO:SetConfigurableDigitalOut6    | bo     | Configurable digital output 6     |
-| IO:SetConfigurableDigitalOut7    | bo     | Configurable digital output 7     |
-| IO:SetToolDigitalOut0    | bo     | Tool digital output 0     |
-| IO:SetToolDigitalOut1    | bo     | Tool digital output 1     |
+| IO:SetVoltageAO0    | ao     | Analog output voltage 0     |
+| IO:SetVoltageAO1    | ao     | Analog output voltage 1     |
+| IO:SetCurrentAO0    | ao     | Analog output current 0     |
+| IO:SetCurrentAO1    | ao     | Analog output current 1     |
+| IO:SetStandardDO0    | bo     | Standard digital output 0     |
+| IO:SetStandardDO1    | bo     | Standard digital output 1     |
+| IO:SetStandardDO2    | bo     | Standard digital output 2     |
+| IO:SetStandardDO3    | bo     | Standard digital output 3     |
+| IO:SetStandardDO4    | bo     | Standard digital output 4     |
+| IO:SetStandardDO5    | bo     | Standard digital output 5     |
+| IO:SetStandardDO6    | bo     | Standard digital output 6     |
+| IO:SetStandardDO7    | bo     | Standard digital output 7     |
+| IO:SetConfigurableDO0    | bo     | Configurable digital output 0     |
+| IO:SetConfigurableDO1    | bo     | Configurable digital output 1     |
+| IO:SetConfigurableDO2    | bo     | Configurable digital output 2     |
+| IO:SetConfigurableDO3    | bo     | Configurable digital output 3     |
+| IO:SetConfigurableDO4    | bo     | Configurable digital output 4     |
+| IO:SetConfigurableDO5    | bo     | Configurable digital output 5     |
+| IO:SetConfigurableDO6    | bo     | Configurable digital output 6     |
+| IO:SetConfigurableDO7    | bo     | Configurable digital output 7     |
+| IO:SetToolDO0    | bo     | Tool digital output 0     |
+| IO:SetToolDO1    | bo     | Tool digital output 1     |
 
 ***
 
@@ -272,8 +279,8 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | RobotiqGripper:CurrentPosition    | ai     | Current position of gripper  |
 | RobotiqGripper:OpenPosition    | ai     | Open position of gripper     |
 | RobotiqGripper:ClosedPosition    | ai     | Closed position of gripper     |
-| RobotiqGripper:MoveStatus    | mbbi     | Enum strings (from MoveStatusRaw) for gripper motion status |
-| RobotiqGripper:MoveStatusRaw    | longin     | Integer representing the gripper motion status (see MoveStatus) |
+| RobotiqGripper:MoveStatus    | mbbi     | Enum strings for gripper motion status |
+| RobotiqGripper:MoveStatusRaw    | longin     | Integer representing the gripper motion status |
 
 ***Outputs***
 
@@ -284,7 +291,7 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | RobotiqGripper:AutoCalibrate    | bo     | Calibrates open/close positions     |
 | RobotiqGripper:Open    | bo     | Opens Robotiq gripper     |
 | RobotiqGripper:Close    | bo     | Closes Robotiq gripper     |
-| RobotiqGripper:SetPositionRange    | bo     | Sets min/max posititions     |
+| RobotiqGripper:SetPositionRange    | bo     | Sets min/max positions     |
 | RobotiqGripper:SetSpeed    | ao     | Default gripper speed     |
 | RobotiqGripper:SetForce    | ao     | Default gripper force     |
 | RobotiqGripper:PositionUnit    | mbbo     | Enum strings for position units  |
@@ -301,23 +308,27 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Record  | Type   | Description   |
 |-------------- | -------------- | -------------- |
 | WaypointJ:$(N)    | stringout     | Waypoint name     |
-| WaypointJ:$(N):Enabled    | bo     | 1 if waypoint is enabled otherwise 0     |
-| WaypointJ:$(N):SetEnabled    | bo     | Sets WaypointJ:$(N):Enabled to 1     |
+| WaypointJ:$(N):Enabled    | bo     | 1 if waypoint is enabled, otherwise 0     |
 | WaypointJ:$(N):J1    | ao     | Joint 1 angle for waypoint (deg)    |
 | WaypointJ:$(N):J2    | ao     | Joint 2 angle for waypoint (deg)    |
 | WaypointJ:$(N):J3    | ao     | Joint 3 angle for waypoint (deg)    |
 | WaypointJ:$(N):J4    | ao     | Joint 4 angle for waypoint (deg)    |
 | WaypointJ:$(N):J5    | ao     | Joint 5 angle for waypoint (deg)    |
 | WaypointJ:$(N):J6    | ao     | Joint 6 angle for waypoint (deg)    |
-| WaypointJ:$(N):Action    | bo     | Used to define FLNK that points to waypoint action PV     |
-| WaypointJ:$(N):ActionOpt    | mbbo     | Enum of available waypoint actions |
-| WaypointJ:$(N):Speed    | ao     | Speed when moving to waypoint     |
-| WaypointJ:$(N):Acceleration    | ao     | Acceleration when moving to waypoint     |
-| WaypointJ:$(N):Blend    | ao     | Blend when moving to waypoint     |
-| WaypointJ:$(N):Reached    | luascript     | 1 when robot is at waypoint otherwise 0     |
-| WaypointJ:$(N):Reset    | seq     | Sets waypoint to the current location     |
+| WaypointJ:$(N):ActionOpt    | longout     | Selects the waypoint action (0 = none, N = ActionSseqN) |
+| WaypointJ:$(N):Speed    | ao     | Speed when moving to waypoint (rad/s)     |
+| WaypointJ:$(N):Acceleration    | ao     | Acceleration when moving to waypoint (rad/s²)     |
+| WaypointJ:$(N):Blend    | ao     | Blend radius when moving to waypoint (m)     |
+| WaypointJ:$(N):Reset    | seq     | Sets waypoint to the current robot configuration     |
+| WaypointJ:$(N):moveJ    | bo     | Executes a moveJ to the waypoint if the waypoint is enabled    |
+
+***Inputs***
+
+| Record  | Type   | Description   |
+|-------------- | -------------- | -------------- |
+| WaypointJ:$(N):Reached    | luascript     | 1 when robot is at waypoint, otherwise 0     |
 | WaypointJ:$(N):Busy    | busy     | 1 when robot is en-route to waypoint, otherwise 0   |
-| WaypointJ:$(N):moveJ    | bo     | Executes a moveJ to the waypoint if waypoint is enabled    |
+| WaypointJ:$(N):ActionDesc    | stringin     | Description of the selected action     |
 
 ***
 
@@ -328,23 +339,27 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Record  | Type   | Description   |
 |-------------- | -------------- | -------------- |
 | WaypointL:$(N)    | stringout     | Waypoint name     |
-| WaypointL:$(N):Enabled    | bo     | 1 if waypoint is enabled otherwise 0     |
-| WaypointL:$(N):SetEnabled    | bo     | Sets WaypointL:$(N):Enabled to 1     |
-| WaypointL:$(N):X    | ao     | X position of waypoint     |
-| WaypointL:$(N):Y    | ao     | Y position of waypoint     |
-| WaypointL:$(N):Z    | ao     | Z position of waypoint     |
+| WaypointL:$(N):Enabled    | bo     | 1 if waypoint is enabled, otherwise 0     |
+| WaypointL:$(N):X    | ao     | X position of waypoint (mm)     |
+| WaypointL:$(N):Y    | ao     | Y position of waypoint (mm)     |
+| WaypointL:$(N):Z    | ao     | Z position of waypoint (mm)     |
 | WaypointL:$(N):Roll    | ao     | Roll angle of waypoint (deg)    |
 | WaypointL:$(N):Pitch    | ao     | Pitch angle of waypoint (deg)   |
 | WaypointL:$(N):Yaw    | ao     | Yaw angle of waypoint (deg)    |
-| WaypointL:$(N):Action    | bo     | Used to define FLNK that points to waypoint action PV     |
-| WaypointL:$(N):ActionOpt    | mbbo     | Enum of available waypoint actions |
-| WaypointL:$(N):Speed    | ao     | Speed when moving to waypoint     |
-| WaypointL:$(N):Acceleration    | ao     | Acceleration when moving to waypoint     |
-| WaypointL:$(N):Blend    | ao     | Blend when moving to waypoint     |
-| WaypointL:$(N):Reached    | luascript     | 1 when robot is at waypoint otherwise 0     |
-| WaypointL:$(N):Reset    | seq     | Sets waypoint to the current location     |
+| WaypointL:$(N):ActionOpt    | longout     | Selects the waypoint action (0 = none, N = ActionSseqN) |
+| WaypointL:$(N):Speed    | ao     | Speed when moving to waypoint (m/s)     |
+| WaypointL:$(N):Acceleration    | ao     | Acceleration when moving to waypoint (m/s²)     |
+| WaypointL:$(N):Blend    | ao     | Blend radius when moving to waypoint (m)     |
+| WaypointL:$(N):Reset    | seq     | Sets waypoint to the current robot configuration     |
+| WaypointL:$(N):moveL    | bo     | Executes a moveL to the waypoint if the waypoint is enabled    |
+
+***Inputs***
+
+| Record  | Type   | Description   |
+|-------------- | -------------- | -------------- |
+| WaypointL:$(N):Reached    | luascript     | 1 when robot is at waypoint, otherwise 0     |
 | WaypointL:$(N):Busy    | busy     | 1 when robot is en-route to waypoint, otherwise 0   |
-| WaypointL:$(N):moveL    | bo     | Executes a moveL to the waypoint if waypoint is enabled    |
+| WaypointL:$(N):ActionDesc    | stringin     | Description of the selected action     |
 
 ***
 
@@ -356,7 +371,6 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 |-------------- | -------------- | -------------- |
 | Path$(N)    | stringout     | Description of path     |
 | Path$(N):Go    | luascript     | Executes path     |
-| Path$(N):Stop    | bo     | Stops motion and aborts path     |
 
 ***
 
@@ -366,32 +380,27 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 
 | Record  | Type   | Description   |
 |-------------- | -------------- | -------------- |
-| Path$(N):$(K):Type    | mbbo     | Type of waypoint for waypoint in path     |
-| Path$(N):$(K):Number    | longout     | Waypoint number for waypoint in path     |
-| Path$(N):$(K):ActionOverride    | mbbo     | Action override for waypoint in path     |
-| Path$(N):$(K):Enabled    | bo     | 1 if waypoint in path enabled, else 0     |
+| Path$(N):$(K):Type    | mbbo     | Waypoint type: Linear (waypointL) or Joint (waypointJ)     |
+| Path$(N):$(K):Number    | longout     | Waypoint number     |
+| Path$(N):$(K):ActionOverride    | longout     | Overrides the waypoint's action for this path point (0 = use waypoint's action)     |
+| Path$(N):$(K):Enabled    | bo     | 1 if this path point is enabled, else 0     |
 
 ***Inputs***
 
 | Record  | Type   | Description   |
 |-------------- | -------------- | -------------- |
-| Path$(N):$(K):Reached    | ai     | 1 if robot at waypoint, else 0     |
-| Path$(N):$(K):Desc    | stringin     | Description of waypoint in path     |
-| Path$(N):$(K):ActionDesc    | stringin     | Description of waypoint action for waypoint in path     |
+| Path$(N):$(K):Reached    | ai     | 1 if robot is at this waypoint, else 0     |
+| Path$(N):$(K):Busy    | ai     | 1 if robot is moving to this waypoint, else 0     |
+| Path$(N):$(K):Desc    | stringin     | Description of the selected waypoint     |
+| Path$(N):$(K):ActionDesc    | stringout     | Description of the selected waypoint action     |
 
 ***
 
-## waypoint_actions10.db
+## waypoint_action.db
 
-***Outputs***
-
-*Note:* there are 10 copies of the below records but they are ommited here for brevity
-(e.g. ActionLink1-ActionLink10)
+Each instance of `waypoint_action.db` defines one waypoint action identified by `$(N)`.
 
 | Record  | Type   | Description   |
 |-------------- | -------------- | -------------- |
-| ActionDoneCalc1    | calcout     | 1 if action completed, else 0     |
-| ActionLink1    | bo     | Stores the .FLNK to process the action     |
-
-<!-- record(calcout, "$(P)ActionDoneCalc1") {} -->
-<!-- record(bo, "$(P)ActionLink1"){} -->
+| ActionSseq$(N)    | sseq     | Sequence of steps the action performs. Processed automatically when the robot reaches a waypoint with this action selected.     |
+| ActionDoneCalc$(N)    | calcout     | Signals when the action is complete. Configure so that the output is 1 when done and 0 while running.     |

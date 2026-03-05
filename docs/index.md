@@ -63,19 +63,3 @@ The RTDE Control Interface provides functions for moving the robot including:
 
 The RTDE I/O interface provides functions for reading and writing to the digital and analog I/O pins on the robot
 controller, as well as the ability to adjust the speed slider.
-
-
-
-## Additional Features
-
-### Waypoints
-Cartesian (linear in tool space) and joint space waypoints in can be defined using the provided `waypointJ.db`
-and `waypointL.db` databases. It is often most useful to load many waypoints using a substitutions file
-and configure the waypoints later at runtime. An example substitutions file can be found
-at `urRobotApp/iocsh/waypoints.substitutions`.
-
-
-### Paths
-Paths of waypoints can be defined using the provided `path.db` and `path_waypoint.db` databases. Like waypoints, it is
-often useful to load several paths with a number of possible points using a substitutions file. An example can be found
-at `urRobotApp/iocsh/paths.substitutions`.

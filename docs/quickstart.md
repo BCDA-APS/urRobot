@@ -71,16 +71,22 @@ endif
 iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=127.0.0.1")
 ```
 
-**4\.** If you would like to add support for waypoints and paths, load the associated substitions files:
+**4\.** If you would like to add support for waypoints and paths, load `paths.iocsh`. Waypoints and
+paths require the `lua` module (for luascript records) and the `calc` module (for sseq records),
+both of which are included in synApps. Both must be defined in `configure/RELEASE`.
 
 ```
 # file: iocBoot/iocxxx/st.cmd.Linux
-dbLoadTemplate("$(URROBOT)/iocsh/waypoints.substitutions", "P=$(PREFIX)")
-dbLoadTemplate("$(URROBOT)/iocsh/paths.substitutions", "P=$(PREFIX)")
+iocshLoad("$(URROBOT)/iocsh/paths.iocsh", "PREFIX=$(PREFIX)")
 ```
 
-If you want to load only specific interfaces to the robot controller, you should copy the `urRobot.iocsh` file
-to your IOC and modify it as needed. The same goes for the waypoints and paths substitutions files.
+The number of waypoints, actions, and paths loaded can be controlled with optional macros:
+`N_WP` (default 30), `N_ACTIONS` (default 10), `N_PATH` (default 10), `N_PATH_WP` (default 30).
+
+For advanced use, you can copy `urRobot.iocsh` to your IOC and load only the specific interfaces
+you need. Note that the RTDE Control interface depends on both the Dashboard and RTDE Receive
+interfaces being active, but other interfaces (Dashboard, Receive, I/O, Gripper) can be loaded
+independently.
 
 **5\.** Before starting the IOC, using the teach pendant, make sure the robot is powered on, breaks released, in Automatic mode,
 and in Remote Control mode. Note, if you are not using the RTDE control interface, all you need to do is make sure the robot
@@ -89,36 +95,29 @@ controller is powered on.
 At this point you should be able to start the IOC. If all went well,
 your IOC console should report messages (beginning with "[info]") saying each interface to the robot was successfully connected:
 ```bash
-# ### urRobot.iocsh ###
+# Load robot support with waypoint and path support
+iocshLoad("urRobot.iocsh", "PREFIX=bcur:, IP=164.54.104.148")
 # Set up UR Dashboard server
-URDashboardConfig("asyn_dash", "164.54.104.148")
-[2024-10-07 14:53:57.008] [info] Connected to UR Dashboard server
-dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/dashboard.db", "P=bcur:, R=, PORT=asyn_dash, ADDR=0")
+URDashboardConfig("asyn_dash", "164.54.104.148", "0.1")
+[2026-03-05 12:46:05.750] [info] Connected to UR Dashboard server
+dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/dashboard.db", "P=bcur:, PORT=asyn_dash, ADDR=0")
 # Set up UR RTDE Receive interface
-RTDEReceiveConfig("asyn_rtde_recv", "164.54.104.148")
-[2024-10-07 14:53:57.562] [info] Connected to UR RTDE Receive interface
-dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_receive.db", "P=bcur:, R=, PORT=asyn_rtde_recv, ADDR=0")
+RTDEReceiveConfig("asyn_rtde_recv", "164.54.104.148", "0.02")
+[2026-03-05 12:46:06.331] [info] Connected to UR RTDE Receive interface
+dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_receive.db", "P=bcur:, PORT=asyn_rtde_recv, ADDR=0")
 # Set up UR RTDE I/O interface
-RTDEInOutConfig("asyn_rtde_io", "164.54.104.148")
-[2024-10-07 14:53:58.356] [info] Connected to UR RTDE IO interface
-dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_io.db", "P=bcur:, R=, PORT=asyn_rtde_io, ADDR=0")
+RTDEInOutConfig("asyn_rtde_io", "164.54.104.148", "0.1")
+[2026-03-05 12:46:07.134] [info] Connected to UR RTDE IO interface
+dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_io.db", "P=bcur:, PORT=asyn_rtde_io, ADDR=0")
 # Set up UR RTDE Control interface
-RTDEControlConfig("asyn_rtde_ctrl", "164.54.104.148")
-[2024-10-07 14:53:59.623] [info] Connected to UR RTDE Control interface
-dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_control.db", "P=bcur:, R=, PORT=asyn_rtde_ctrl, ADDR=0")
-# Set up Robotiq Gripper
-URGripperConfig("asyn_gripper", "164.54.104.148")
-[2024-10-07 14:53:59.647] [info] Connected to gripper
-dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/robotiq_gripper.db", "P=bcur:, R=, MIN_POS=3, MAX_POS=248, AUTO_ACTIVATE=YES, PORT=asyn_gripper, ADDR=0")
-# add URROBOT/urRobotApp/src to LUA_SCRIPT_PATH for waypoint functionality
-epicsEnvSet("LUA_SCRIPT_PATH", "lua_scripts:/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/src")
-dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX)")
-dbLoadTemplate("paths.substitutions", "P=$(PREFIX)")
+RTDEControlConfig("asyn_rtde_ctrl", "164.54.104.148", "0.02")
+[2026-03-05 12:46:08.405] [info] Connected to UR RTDE Control interface
+dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_control.db", "P=bcur:, PORT=asyn_rtde_ctrl, ADDR=0")
 ```
 
 If something went wrong, you will see messages in the console (beginning with "[error]") which should explain the issue. The
 most common problems are an incorrect IP address or the robot not being powered on and breaks releases (if using RTDE control
 interface).
 
-**6\.** To start the provided GUIs, use the provided `urRobot/iocs/urExample/start_urRobot` script.
-You may need to adjust the paths to the caQtDM, MEDM, and Phoebus executables in this script.
+**6\.** To start the provided GUIs, use the example `urRobot/iocs/urExample/start_urRobot_gui` script.
+You may need to adjust the paths to the display manager executables in this script.
