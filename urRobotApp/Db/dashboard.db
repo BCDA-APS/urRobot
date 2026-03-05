@@ -2,7 +2,7 @@ record(bi, "$(P)Dashboard:Connected")
 {
     field(DESC, "Connection status")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_CONNECTED")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))IS_CONNECTED")
     field(VAL, 0)
     field(SCAN, "I/O Intr")
 }
@@ -10,7 +10,7 @@ record(bi, "$(P)Dashboard:Connected")
 record(bi, "$(P)Dashboard:IsProgramSaved")
 {
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_PROGRAM_SAVED")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))IS_PROGRAM_SAVED")
     field(VAL, 0)
     field(SCAN, "I/O Intr")
 }
@@ -18,7 +18,7 @@ record(bi, "$(P)Dashboard:IsProgramSaved")
 record(bi, "$(P)Dashboard:IsInRemoteControl")
 {
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_IN_REMOTE_CONTROL")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))IS_IN_REMOTE_CONTROL")
     field(VAL, 0)
     field(SCAN, "I/O Intr")
 }
@@ -27,7 +27,7 @@ record(bi, "$(P)Dashboard:Running")
 {
     field(DESC, "Program runnning status")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))IS_RUNNING")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))IS_RUNNING")
     field(VAL, 0)
     field(SCAN, "I/O Intr")
 }
@@ -36,98 +36,98 @@ record(bo, "$(P)Dashboard:Play")
 {
     field(DESC, "Play program")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PLAY")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))PLAY")
 }
 
 record(bo, "$(P)Dashboard:Stop")
 {
     field(DESC, "Stop program")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))STOP")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))STOP")
 }
 
 record(bo, "$(P)Dashboard:Pause")
 {
     field(DESC, "Pause program")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PAUSE")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))PAUSE")
 }
 
 record(bo, "$(P)Dashboard:Connect")
 {
     field(DESC, "Connects to dashboard server")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CONNECT")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))CONNECT")
 }
 
 record(bo, "$(P)Dashboard:Disconnect")
 {
     field(DESC, "Closes connection")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))DISCONNECT")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))DISCONNECT")
 }
 
 record(bo, "$(P)Dashboard:Shutdown")
 {
     field(DESC, "Shuts down robot and controller")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SHUTDOWN")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))SHUTDOWN")
 }
 
 record(bo, "$(P)Dashboard:ClosePopup")
 {
     field(DESC, "Close popup")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE_POPUP")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))CLOSE_POPUP")
 }
 
 record(bo, "$(P)Dashboard:CloseSafetyPopup")
 {
     field(DESC, "Close safety popup")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))CLOSE_SAFETY_POPUP")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))CLOSE_SAFETY_POPUP")
 }
 
 record(bo, "$(P)Dashboard:PowerOn")
 {
     field(DESC, "Powers on the robot")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POWER_ON")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POWER_ON")
 }
 
 record(bo, "$(P)Dashboard:PowerOff")
 {
     field(DESC, "Powers off the robot")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POWER_OFF")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POWER_OFF")
 }
 
 record(bo, "$(P)Dashboard:BrakeRelease")
 {
     field(DESC, "Release breaks")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))BRAKE_RELEASE")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))BRAKE_RELEASE")
 }
 
 record(bo, "$(P)Dashboard:UnlockProtectiveStop")
 {
     field(DESC, "Unlocks protective stop")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))UNLOCK_PROTECTIVE_STOP")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))UNLOCK_PROTECTIVE_STOP")
 }
 
 record(bo, "$(P)Dashboard:RestartSafety")
 {
     field(DESC, "Restarts safety, power off robot")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))RESTART_SAFETY")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))RESTART_SAFETY")
 }
 
 record(stringin, "$(P)Dashboard:PolyscopeVersion")
 {
     field(DESC, "Polyscope version")
     field(DTYP, "asynOctetRead")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POLYSCOPE_VERSION")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POLYSCOPE_VERSION")
     field(SCAN, "I/O Intr")
 }
 
@@ -135,7 +135,7 @@ record(stringin, "$(P)Dashboard:SerialNumber")
 {
     field(DESC, "Serial number")
     field(DTYP, "asynOctetRead")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SERIAL_NUMBER")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))SERIAL_NUMBER")
     field(SCAN, "I/O Intr")
 }
 
@@ -143,7 +143,7 @@ record(stringin, "$(P)Dashboard:ProgramState")
 {
     field(DESC, "Program state")
     field(DTYP, "asynOctetRead")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))PROGRAM_STATE")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))PROGRAM_STATE")
     field(SCAN, "I/O Intr")
 }
 
@@ -151,7 +151,7 @@ record(stringin, "$(P)Dashboard:RobotMode")
 {
     field(DESC, "Robot mode")
     field(DTYP, "asynOctetRead")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ROBOT_MODE")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ROBOT_MODE")
     field(SCAN, "I/O Intr")
 }
 
@@ -159,7 +159,7 @@ record(stringin, "$(P)Dashboard:RobotModel")
 {
     field(DESC, "Robot model")
     field(DTYP, "asynOctetRead")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))ROBOT_MODEL")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ROBOT_MODEL")
     field(SCAN, "I/O Intr")
 }
 
@@ -167,7 +167,7 @@ record(stringin, "$(P)Dashboard:LoadedProgram")
 {
     field(DESC, "Loaded program")
     field(DTYP, "asynOctetRead")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LOADED_PROGRAM")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))LOADED_PROGRAM")
     field(SCAN, "I/O Intr")
 }
 
@@ -175,7 +175,7 @@ record(stringin, "$(P)Dashboard:SafetyStatus")
 {
     field(DESC, "Safety status")
     field(DTYP, "asynOctetRead")
-    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))SAFETY_STATUS")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))SAFETY_STATUS")
     field(SCAN, "I/O Intr")
 }
 
@@ -183,12 +183,12 @@ record(stringout, "$(P)Dashboard:Popup")
 {
     field(DESC, "Popup message")
     field(DTYP, "asynOctetWrite")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))POPUP")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))POPUP")
 }
 
 record(stringout, "$(P)Dashboard:LoadURP")
 {
     field(DESC, "Loads a URP program")
     field(DTYP, "asynOctetWrite")
-    field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT=1))LOAD_URP")
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))LOAD_URP")
 }
