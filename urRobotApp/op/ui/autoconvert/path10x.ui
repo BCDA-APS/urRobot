@@ -4,8 +4,8 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>457</x>
-            <y>1254</y>
+            <x>219</x>
+            <y>890</y>
             <width>545</width>
             <height>325</height>
         </rect>
@@ -4722,7 +4722,7 @@ caMenu{
                 <string>$(P)Control:AsyncMoveDone</string>
             </property>
             <property name="text">
-                <string>Moving</string>
+                <string>Running</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -4731,7 +4731,7 @@ caMenu{
                 <rect>
                     <x>5</x>
                     <y>30</y>
-                    <width>60</width>
+                    <width>80</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -4773,7 +4773,7 @@ caMenu{
                 <rect>
                     <x>5</x>
                     <y>30</y>
-                    <width>60</width>
+                    <width>80</width>
                     <height>20</height>
                 </rect>
             </property>

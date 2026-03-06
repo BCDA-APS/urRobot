@@ -1,12 +1,12 @@
 
 file {
-	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/ur_rtde_control.adl"
+	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/ur_rtde_control.adl"
 	version=030111
 }
 display {
 	object {
-		x=208
-		y=963
+		x=224
+		y=459
 		width=825
 		height=690
 	}
@@ -85,6 +85,19 @@ display {
 		3cb420,
 		289315,
 		1a7309,
+	}
+}
+rectangle {
+	object {
+		x=10
+		y=245
+		width=800
+		height=200
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
 	}
 }
 rectangle {
@@ -306,19 +319,6 @@ text {
 		fill="outline"
 	}
 	textix="Joint Move"
-}
-rectangle {
-	object {
-		x=10
-		y=245
-		width=800
-		height=200
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-		width=2
-	}
 }
 text {
 	object {
@@ -2564,55 +2564,11 @@ text {
 	label="Move"
 	press_msg="1"
 }
-text {
-	object {
-		x=390
-		y=205
-		width=75
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	textix="Steady:"
-	align="horiz. right"
-}
-oval {
-	object {
-		x=470
-		y=205
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=61
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Control:Steady"
-	}
-}
-oval {
-	object {
-		x=470
-		y=205
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=6
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Control:Steady"
-	}
-}
 "choice button" {
 	object {
-		x=255
+		x=215
 		y=85
-		width=80
+		width=100
 		height=20
 	}
 	control {
@@ -2624,7 +2580,7 @@ oval {
 }
 text {
 	object {
-		x=240
+		x=215
 		y=65
 		width=100
 		height=15
@@ -2951,4 +2907,38 @@ text {
 		chan="$(P)Receive:RuntimeState"
 	}
 	textix="RESUMING"
+}
+text {
+	object {
+		x=390
+		y=195
+		width=120
+		height=30
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Control:Moving"
+	}
+	textix="Moving"
+}
+rectangle {
+	object {
+		x=10
+		y=242
+		width=800
+		height=425
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=5
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Control:Moving"
+	}
 }

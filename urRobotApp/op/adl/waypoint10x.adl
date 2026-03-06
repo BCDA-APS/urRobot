@@ -1,12 +1,12 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/waypoint10x.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/waypoint10x.adl"
 	version=030111
 }
 display {
 	object {
-		x=447
-		y=1129
+		x=504
+		y=513
 		width=469
 		height=333
 	}
@@ -2001,38 +2001,6 @@ text {
 }
 text {
 	object {
-		x=67
-		y=41
-		width=60
-		height=20
-	}
-	"basic attribute" {
-		clr=30
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Control:AsyncMoveDone"
-	}
-	textix="Moving"
-}
-text {
-	object {
-		x=67
-		y=41
-		width=60
-		height=20
-	}
-	"basic attribute" {
-		clr=16
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Control:AsyncMoveDone"
-	}
-	textix="Done"
-}
-text {
-	object {
 		x=285
 		y=65
 		width=40
@@ -2069,4 +2037,36 @@ text {
 	}
 	textix="Action"
 	align="horiz. centered"
+}
+text {
+	object {
+		x=65
+		y=40
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Control:AsyncMoveDone"
+	}
+	textix="Done"
+}
+text {
+	object {
+		x=65
+		y=40
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=30
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Control:AsyncMoveDone"
+	}
+	textix="Running"
 }

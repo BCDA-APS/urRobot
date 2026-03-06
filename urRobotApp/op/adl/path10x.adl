@@ -1,12 +1,12 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path10x.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path10x.adl"
 	version=030111
 }
 display {
 	object {
-		x=457
-		y=1254
+		x=219
+		y=890
 		width=545
 		height=325
 	}
@@ -1749,7 +1749,7 @@ text {
 	object {
 		x=5
 		y=30
-		width=60
+		width=80
 		height=20
 	}
 	"basic attribute" {
@@ -1759,13 +1759,13 @@ text {
 		vis="if zero"
 		chan="$(P)Control:AsyncMoveDone"
 	}
-	textix="Moving"
+	textix="Running"
 }
 text {
 	object {
 		x=5
 		y=30
-		width=60
+		width=80
 		height=20
 	}
 	"basic attribute" {

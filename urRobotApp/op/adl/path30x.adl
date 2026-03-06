@@ -1,12 +1,12 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path30x.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path30x.adl"
 	version=030111
 }
 display {
 	object {
-		x=185
-		y=867
+		x=736
+		y=358
 		width=545
 		height=825
 	}
@@ -4807,38 +4807,6 @@ oval {
 }
 text {
 	object {
-		x=5
-		y=30
-		width=60
-		height=20
-	}
-	"basic attribute" {
-		clr=30
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)Control:AsyncMoveDone"
-	}
-	textix="Moving"
-}
-text {
-	object {
-		x=5
-		y=30
-		width=60
-		height=20
-	}
-	"basic attribute" {
-		clr=16
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)Control:AsyncMoveDone"
-	}
-	textix="Done"
-}
-text {
-	object {
 		x=175
 		y=50
 		width=40
@@ -5351,4 +5319,36 @@ text {
 	}
 	limits {
 	}
+}
+text {
+	object {
+		x=5
+		y=30
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=30
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)Control:AsyncMoveDone"
+	}
+	textix="Running"
+}
+text {
+	object {
+		x=5
+		y=30
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)Control:AsyncMoveDone"
+	}
+	textix="Done"
 }
