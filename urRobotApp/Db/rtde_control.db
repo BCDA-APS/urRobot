@@ -63,8 +63,8 @@ record(bi, "$(P)Control:AsyncMoveDone")
 record(calcout, "$(P)Control:moving_calc") {
     field(INPA, "$(P)Control:Steady.VAL CP")
     field(INPB, "$(P)Control:AsyncMoveDone.VAL CP")
-    field(INPC, "$(P)Receive:SafetyStatusBits CP")
-    field(CALC, "(!A || !B) && (C=1)")
+    field(INPC, "$(P)Receive:RuntimeState.VAL CP")
+    field(CALC, "(!A || !B) && (C=2)")
 }
 
 record(bi, "$(P)Control:Moving") {

@@ -2,16 +2,14 @@
 #include "ur_rtde/dashboard_client.h"
 #include <asynPortDriver.h>
 
-
 constexpr int MAX_CONTROLLERS = 1;
 
 class URDashboard : public asynPortDriver {
   public:
-    URDashboard(const char *asyn_port_name, const char *robot_port_name, double poll_period);
-    virtual void poll(void);
-    virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
-    virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars,
-                                  size_t *nActual);
+    URDashboard(const char* asyn_port_name, const char* robot_port_name, double poll_period);
+    void poll(void);
+    asynStatus writeInt32(asynUser* pasynUser, epicsInt32 value) override;
+    asynStatus writeOctet(asynUser* pasynUser, const char* value, size_t maxChars, size_t* nActual) override;
 
   private:
     std::unique_ptr<ur_rtde::DashboardClient> ur_dashboard_;
@@ -19,7 +17,7 @@ class URDashboard : public asynPortDriver {
     bool try_connect();
 
   protected:
-    asynUser *pasynUserURRobot_;
+    asynUser* pasynUserURRobot_;
     int isConnectedIndex_;
     int closePopupIndex_;
     int popupIndex_;

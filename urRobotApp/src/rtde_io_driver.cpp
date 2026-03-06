@@ -14,7 +14,7 @@ bool RTDEInOut::try_connect() {
             rtde_io_ = std::make_unique<ur_rtde::RTDEIOInterface>(robot_ip_);
             spdlog::info("Connected to UR RTDE IO interface");
             connected = true;
-        } catch (const std::exception &e) {
+        } catch (const std::exception& e) {
             spdlog::error("Failed to connected to UR RTDE I/O interface\n{}", e.what());
         }
     } else {
@@ -28,7 +28,7 @@ constexpr int MAX_ADDR = 8;
 constexpr int ASYN_INTERFACE_MASK = asynInt32Mask | asynFloat64Mask | asynDrvUserMask;
 constexpr int ASYN_INTERRUPT_MASK = asynInt32Mask | asynFloat64Mask;
 
-RTDEInOut::RTDEInOut(const char *asyn_port_name, const char *robot_ip, double poll_period)
+RTDEInOut::RTDEInOut(const char* asyn_port_name, const char* robot_ip, double poll_period)
     : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
       rtde_io_(nullptr), robot_ip_(robot_ip) {
@@ -47,7 +47,7 @@ RTDEInOut::RTDEInOut(const char *asyn_port_name, const char *robot_ip, double po
     try_connect();
 }
 
-asynStatus RTDEInOut::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
+asynStatus RTDEInOut::writeFloat64(asynUser* pasynUser, epicsFloat64 value) {
 
     int function = pasynUser->reason;
     bool comm_ok = true;
@@ -84,7 +84,7 @@ asynStatus RTDEInOut::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     }
 }
 
-asynStatus RTDEInOut::writeInt32(asynUser *pasynUser, epicsInt32 value) {
+asynStatus RTDEInOut::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
     bool comm_ok = true;
@@ -118,19 +118,18 @@ asynStatus RTDEInOut::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 }
 
 // register function for iocsh
-extern "C" int RTDEInOutConfig(const char *asyn_port_name, const char *robot_ip, double poll_period) {
-    RTDEInOut *pRTDEInOut = new RTDEInOut(asyn_port_name, robot_ip, poll_period);
-    (void)pRTDEInOut;
-    return (asynSuccess);
+extern "C" int RTDEInOutConfig(const char* asyn_port_name, const char* robot_ip, double poll_period) {
+    new RTDEInOut(asyn_port_name, robot_ip, poll_period);
+    return asynSuccess;
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
 static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
-static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
+static const iocshArg* const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"RTDEInOutConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) {
+static void urRobotCallFunc(const iocshArgBuf* args) {
     RTDEInOutConfig(args[0].sval, args[1].sval, args[2].dval);
 }
 

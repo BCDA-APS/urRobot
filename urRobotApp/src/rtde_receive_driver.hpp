@@ -1,14 +1,12 @@
 #pragma once
-#include <asynPortDriver.h>
 #include "ur_rtde/rtde_receive_interface.h"
-
-constexpr int MAX_CONTROLLERS = 1;
+#include <asynPortDriver.h>
 
 class RTDEReceive : public asynPortDriver {
   public:
-    RTDEReceive(const char *asyn_port_name, const char *robot_port_name, double poll_period);
-    virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
-    virtual void poll(void);
+    RTDEReceive(const char* asyn_port_name, const char* robot_port_name, double poll_period);
+    asynStatus writeInt32(asynUser* pasynUser, epicsInt32 value) override;
+    void poll(void);
 
   private:
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
@@ -17,7 +15,7 @@ class RTDEReceive : public asynPortDriver {
     bool try_connect();
 
   protected:
-    asynUser *pasynUserURRobot_;
+    asynUser* pasynUserURRobot_;
 
     int isConnectedIndex_;
     int safetyStatusBitsIndex_;
@@ -57,5 +55,4 @@ class RTDEReceive : public asynPortDriver {
     int actualJointVoltagesIndex_;
     int disconnectIndex_;
     int reconnectIndex_;
-
 };

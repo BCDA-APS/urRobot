@@ -4,6 +4,7 @@ IndentWidth: 4
 ---
 Language: Cpp
 DerivePointerAlignment: false
-PointerAlignment: Right
-ReferenceAlignment: Right
+PointerAlignment: Left
+ReferenceAlignment: Left
+AlwaysBreakTemplateDeclarations: Yes
 ColumnLimit: 110

@@ -1,16 +1,14 @@
 #pragma once
-#include <asynPortDriver.h>
-#include "ur_rtde/robotiq_gripper.h"
 #include "ur_rtde/dashboard_client.h"
-
-static constexpr int MAX_CONTROLLERS = 1;
+#include "ur_rtde/robotiq_gripper.h"
+#include <asynPortDriver.h>
 
 class URGripper : public asynPortDriver {
   public:
-    URGripper(const char *asyn_port_name, const char *robot_port_name, double poll_period);
-    virtual void poll(void);
-    virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
-    virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
+    URGripper(const char* asyn_port_name, const char* robot_port_name, double poll_period);
+    void poll(void);
+    asynStatus writeInt32(asynUser* pasynUser, epicsInt32 value) override;
+    asynStatus writeFloat64(asynUser* pasynUser, epicsFloat64 value) override;
 
   private:
     std::unique_ptr<ur_rtde::RobotiqGripper> gripper_;
@@ -21,7 +19,7 @@ class URGripper : public asynPortDriver {
     bool robot_on_ = false;
 
   protected:
-    asynUser *pasynUserURRobot_;
+    asynUser* pasynUserURRobot_;
 
     int isConnectedIndex_;
     int isOpenIndex_;

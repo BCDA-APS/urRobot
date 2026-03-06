@@ -7,13 +7,12 @@
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 
-static void poll_thread_C(void *pPvt) {
-    URDashboard *pURDashboard = (URDashboard *)pPvt;
+static void poll_thread_C(void* pPvt) {
+    URDashboard* pURDashboard = (URDashboard*)pPvt;
     pURDashboard->poll();
 }
 
 // wraps the ur_dashboard_->connect() function to fail gracefully
-// TODO: check nullptr?
 bool URDashboard::try_connect() {
     bool connected = false;
     try {
@@ -22,19 +21,19 @@ bool URDashboard::try_connect() {
             spdlog::info("Connected to UR Dashboard server");
             connected = true;
         }
-    } catch (const std::exception &e) {
+    } catch (const std::exception& e) {
         spdlog::error(e.what());
     }
     return connected;
 }
 
-URDashboard::URDashboard(const char *asyn_port_name, const char *robot_ip, double poll_period)
-    : asynPortDriver(asyn_port_name, MAX_CONTROLLERS,
-                     asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask | asynInt32ArrayMask,
-                     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynInt32ArrayMask,
-                     ASYN_MULTIDEVICE | ASYN_CANBLOCK,
-                     1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
-                     0, 0),
+constexpr int MAX_ADDR = 1;
+constexpr int ASYN_INTERFACE_MASK = asynInt32Mask | asynOctetMask | asynDrvUserMask;
+constexpr int ASYN_INTERRUPT_MASK = asynInt32Mask | asynOctetMask;
+
+URDashboard::URDashboard(const char* asyn_port_name, const char* robot_ip, double poll_period)
+    : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
+                     ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
       ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), poll_period_(poll_period) {
 
     // create asyn parameters
@@ -105,7 +104,7 @@ void URDashboard::poll() {
     }
 }
 
-asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
+asynStatus URDashboard::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
     bool comm_ok = true;
@@ -114,7 +113,7 @@ asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         spdlog::debug("Playing loaded program");
         try {
             ur_dashboard_->play();
-        } catch (const std::exception &e) {
+        } catch (const std::exception& e) {
             spdlog::error("{}", e.what());
             comm_ok = false;
         }
@@ -122,7 +121,7 @@ asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         spdlog::debug("Stopping current program");
         try {
             ur_dashboard_->stop();
-        } catch (const std::exception &e) {
+        } catch (const std::exception& e) {
             spdlog::error("{}", e.what());
             comm_ok = false;
         }
@@ -130,7 +129,7 @@ asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         spdlog::debug("Pausing current program");
         try {
             ur_dashboard_->pause();
-        } catch (const std::exception &e) {
+        } catch (const std::exception& e) {
             spdlog::error("{}", e.what());
             comm_ok = false;
         }
@@ -170,19 +169,17 @@ asynStatus URDashboard::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     return comm_ok ? asynSuccess : asynError;
 }
 
-asynStatus URDashboard::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual) {
+asynStatus URDashboard::writeOctet(asynUser* pasynUser, const char* value, size_t maxChars, size_t* nActual) {
     int function = pasynUser->reason;
     asynStatus status = asynSuccess;
     if (function == popupIndex_) {
-        std::stringstream ss;
         spdlog::debug("Popup text: {}", value);
         ur_dashboard_->popup(value);
     } else if (function == loadURPIndex_) {
-        std::stringstream ss;
         spdlog::debug("Loading program {}", value);
         try {
             ur_dashboard_->loadURP(value);
-        } catch (const std::exception &e) {
+        } catch (const std::exception& e) {
             spdlog::error("{}", e.what());
             status = asynError;
         }
@@ -193,19 +190,18 @@ asynStatus URDashboard::writeOctet(asynUser *pasynUser, const char *value, size_
     return status;
 }
 // register function for iocsh
-extern "C" int URDashboardConfig(const char *asyn_port_name, const char *robot_ip, double poll_period) {
-    URDashboard *pURDashboard = new URDashboard(asyn_port_name, robot_ip, poll_period);
-    (void)pURDashboard;
-    return (asynSuccess);
+extern "C" int URDashboardConfig(const char* asyn_port_name, const char* robot_ip, double poll_period) {
+    new URDashboard(asyn_port_name, robot_ip, poll_period);
+    return asynSuccess;
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
 static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
-static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
+static const iocshArg* const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"URDashboardConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) {
+static void urRobotCallFunc(const iocshArgBuf* args) {
     URDashboardConfig(args[0].sval, args[1].sval, args[2].dval);
 }
 

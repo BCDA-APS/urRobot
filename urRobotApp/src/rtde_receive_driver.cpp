@@ -6,8 +6,8 @@
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 
-static void poll_thread_C(void *pPvt) {
-    RTDEReceive *pRTDEReceive = (RTDEReceive *)pPvt;
+static void poll_thread_C(void* pPvt) {
+    RTDEReceive* pRTDEReceive = (RTDEReceive*)pPvt;
     pRTDEReceive->poll();
 }
 
@@ -23,7 +23,7 @@ bool RTDEReceive::try_connect() {
                     connected = true;
                 }
             }
-        } catch (const std::exception &e) {
+        } catch (const std::exception& e) {
             spdlog::error("Failed to connected to UR RTDE Receive interface\n{}", e.what());
             connected = false;
         }
@@ -37,17 +37,16 @@ bool RTDEReceive::try_connect() {
     return connected;
 }
 
-static constexpr int NUM_JOINTS = 6;
-static constexpr int ASYN_ADDR = 0;
+constexpr int NUM_JOINTS = 6;
+constexpr int MAX_ADDR = 1;
+constexpr int ASYN_INTERFACE_MASK =
+    asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynFloat64ArrayMask | asynInt32ArrayMask;
+constexpr int ASYN_INTERRUPT_MASK =
+    asynInt32Mask | asynFloat64Mask | asynFloat64ArrayMask | asynInt32ArrayMask;
 
-RTDEReceive::RTDEReceive(const char *asyn_port_name, const char *robot_ip, const double poll_period)
-    : asynPortDriver(
-          asyn_port_name, MAX_CONTROLLERS,
-          asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynOctetMask | asynFloat64ArrayMask |
-              asynInt32ArrayMask,
-          asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynInt32ArrayMask,
-          ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=1, autoConnect=1 */
-          0, 0),
+RTDEReceive::RTDEReceive(const char* asyn_port_name, const char* robot_ip, const double poll_period)
+    : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
+                     ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
       rtde_receive_(nullptr), robot_ip_(robot_ip), poll_period_(poll_period) {
 
     createParam("DISCONNECT", asynParamInt32, &disconnectIndex_);
@@ -129,68 +128,61 @@ void RTDEReceive::poll() {
                 setDoubleParam(actualRobotCurrentIndex_, rtde_receive_->getActualRobotCurrent());
 
                 joint_modes_vec = rtde_receive_->getJointMode();
-                doCallbacksInt32Array(joint_modes_vec.data(), NUM_JOINTS, jointModesIndex_, ASYN_ADDR);
+                doCallbacksInt32Array(joint_modes_vec.data(), NUM_JOINTS, jointModesIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualToolAccelerometer();
-                doCallbacksFloat64Array(vec_f64.data(), 3, actualToolAccelIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), 3, actualToolAccelIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualQ();
-                for (double &j : vec_f64) { // convert to degrees
-                    j = j * 180.0 / M_PI;
-                }
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, ASYN_ADDR);
+                for (double& j : vec_f64) j *= 180.0 / M_PI; // convert to degrees
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualTCPPose();
-                for (size_t i = 0; i < vec_f64.size(); i++) {
-                    if (i <= 2) {
-                        vec_f64.at(i) = vec_f64.at(i) * 1000.0; // convert m -> mm
-                    } else {
-                        vec_f64.at(i) = vec_f64.at(i) * 180.0 / M_PI; // convert rad -> deg
-                    }
-                }
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseIndex_, ASYN_ADDR);
+                for (size_t i = 0; i < 3; i++) vec_f64[i] *= 1000.0; // m->mm
+                for (size_t i = 3; i < 6; i++) vec_f64[i] *= 180/M_PI; // rad->deg
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualQd();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVelIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVelIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualCurrent();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointCurrentsIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointCurrentsIndex_, 0);
 
                 vec_f64 = rtde_receive_->getJointControlOutput();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointControlCurrentsIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointControlCurrentsIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualTCPSpeed();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPSpeedIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPSpeedIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualTCPForce();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPForceIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPForceIndex_, 0);
 
                 vec_f64 = rtde_receive_->getTargetQ();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointPosIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointPosIndex_, 0);
 
                 vec_f64 = rtde_receive_->getTargetQd();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointVelIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointVelIndex_, 0);
 
                 vec_f64 = rtde_receive_->getTargetQdd();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointAccelIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointAccelIndex_, 0);
 
                 vec_f64 = rtde_receive_->getTargetCurrent();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointCurrentsIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointCurrentsIndex_, 0);
 
                 vec_f64 = rtde_receive_->getTargetMoment();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointMomentsIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointMomentsIndex_, 0);
 
                 vec_f64 = rtde_receive_->getTargetTCPPose();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetTCPPoseIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetTCPPoseIndex_, 0);
 
                 vec_f64 = rtde_receive_->getTargetTCPSpeed();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetTCPSpeedIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetTCPSpeedIndex_, 0);
 
                 vec_f64 = rtde_receive_->getJointTemperatures();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointTemperaturesIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointTemperaturesIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualJointVoltage();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVoltagesIndex_, ASYN_ADDR);
+                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVoltagesIndex_, 0);
 
             } else {
                 setIntegerParam(isConnectedIndex_, 0);
@@ -206,7 +198,7 @@ void RTDEReceive::poll() {
     }
 }
 
-asynStatus RTDEReceive::writeInt32(asynUser *pasynUser, epicsInt32 value) {
+asynStatus RTDEReceive::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
     bool comm_ok = true;
@@ -250,19 +242,18 @@ skip:
 }
 
 // register function for iocsh
-extern "C" int RTDEReceiveConfig(const char *asyn_port_name, const char *robot_ip, double poll_period) {
-    RTDEReceive *pRTDEReceive = new RTDEReceive(asyn_port_name, robot_ip, poll_period);
-    (void)pRTDEReceive;
-    return (asynSuccess);
+extern "C" int RTDEReceiveConfig(const char* asyn_port_name, const char* robot_ip, double poll_period) {
+    new RTDEReceive(asyn_port_name, robot_ip, poll_period);
+    return asynSuccess;
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
 static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
-static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
+static const iocshArg* const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"RTDEReceiveConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) {
+static void urRobotCallFunc(const iocshArgBuf* args) {
     RTDEReceiveConfig(args[0].sval, args[1].sval, args[2].dval);
 }
 

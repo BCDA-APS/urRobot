@@ -458,9 +458,8 @@ skip:
 
 // register function for iocsh
 extern "C" int RTDEControlConfig(const char* asyn_port_name, const char* robot_ip, double poll_period) {
-    RTDEControl* pRTDEControl = new RTDEControl(asyn_port_name, robot_ip, poll_period);
-    (void)pRTDEControl;
-    return (asynSuccess);
+    new RTDEControl(asyn_port_name, robot_ip, poll_period);
+    return asynSuccess;
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
