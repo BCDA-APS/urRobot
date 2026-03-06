@@ -9,6 +9,7 @@
 #include "rtde_control_driver.hpp"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ranges.h"
 #include "ur_rtde/dashboard_client.h"
 
 using OptTrajectory = std::optional<std::vector<std::vector<double>>>;
@@ -137,94 +138,59 @@ void RTDEControl::poll() {
     while (true) {
         lock();
 
-        if (rtde_control_) {
-            if (rtde_control_->isConnected()) {
-                setIntegerParam(isConnectedIndex_, 1);
-                setIntegerParam(isSteadyIndex_, rtde_control_->isSteady());
+        if (rtde_control_ and rtde_control_->isConnected()) {
+            setIntegerParam(isConnectedIndex_, 1);
+            setIntegerParam(isSteadyIndex_, rtde_control_->isSteady());
 
-                std::vector<double> jvec = rtde_receive_->getActualQ();
-                for (double &j : jvec) {
-                    j = j * 180.0 / M_PI; // convert rad -> deg
+            std::vector<double> jvec = rtde_receive_->getActualQ();
+            for (double &j : jvec) {
+                j = j * 180.0 / M_PI; // convert rad -> deg
+            }
+            doCallbacksFloat64Array(jvec.data(), NUM_JOINTS, actualQIndex_, 0);
+
+            std::vector<double> pose_vec = rtde_receive_->getActualTCPPose();
+            for (size_t i = 0; i < pose_vec.size(); i++) {
+                if (i <= 2) {
+                    pose_vec.at(i) = pose_vec.at(i) * 1000.0; // convert m -> mm
+                } else {
+                    pose_vec.at(i) = pose_vec.at(i) * 180.0 / M_PI; // convert rad -> deg
                 }
-                doCallbacksFloat64Array(jvec.data(), NUM_JOINTS, actualQIndex_, 0);
+            }
+            doCallbacksFloat64Array(pose_vec.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
 
-                std::vector<double> pose_vec = rtde_receive_->getActualTCPPose();
-                for (size_t i = 0; i < pose_vec.size(); i++) {
-                    if (i <= 2) {
-                        pose_vec.at(i) = pose_vec.at(i) * 1000.0; // convert m -> mm
-                    } else {
-                        pose_vec.at(i) = pose_vec.at(i) * 180.0 / M_PI; // convert rad -> deg
-                    }
-                }
-                doCallbacksFloat64Array(pose_vec.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
+            uint32_t safety_bits = rtde_receive_->getSafetyStatusBits();
 
-                uint32_t safety_bits = rtde_receive_->getSafetyStatusBits();
-
-                if (async_running_ != AsyncRunning::False) {
-                    if (async_status_ == AsyncMotionStatus::Done) {
-                        std::stringstream ss;
-                        ss << "Moving to waypoint: ";
-                        for (const auto &i : waypoint_) {
-                            ss << i << ", ";
-                        }
-                        spdlog::debug("{}", ss.str());
-
-                        if (async_running_ == AsyncRunning::Joint) {
-                            if (rtde_control_->isJointsWithinSafetyLimits(
-                                    {waypoint_.begin(), waypoint_.end() - 3})) {
-                                rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint_}, true);
-                                async_status_ = AsyncMotionStatus::WaitingMotion;
-                                setIntegerParam(asyncMoveDoneIndex_, 0);
-                            } else {
-                                spdlog::warn(
-                                    "Requested joint angles not within safety limits. No action taken.");
+            if (async_motion_func_) {
+                if (async_status_ == AsyncMotionStatus::Done) {
+                    async_motion_func_();
+                } else { // async motion task in progress
+                    if (async_status_ == AsyncMotionStatus::WaitingMotion) {
+                        auto op_status = rtde_control_->getAsyncOperationProgressEx();
+                        if (!op_status.isAsyncOperationRunning()) {
+                            if (safety_bits != 1) {
                                 async_status_ = AsyncMotionStatus::Done;
-                                async_running_ = AsyncRunning::False;
-                            }
-                        } else if (async_running_ == AsyncRunning::Cartesian) {
-                            if (rtde_control_->isPoseWithinSafetyLimits(
-                                    {waypoint_.begin(), waypoint_.end() - 3})) {
-                                rtde_control_->moveL(std::vector<std::vector<double>>{waypoint_}, true);
-                                async_status_ = AsyncMotionStatus::WaitingMotion;
-                                setIntegerParam(asyncMoveDoneIndex_, 0);
-                            } else {
-                                spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
-                                async_status_ = AsyncMotionStatus::Done;
-                                async_running_ = AsyncRunning::False;
-                            }
-                        }
-                    } else {
-                        if (async_status_ == AsyncMotionStatus::WaitingMotion) {
-                            auto op_status = rtde_control_->getAsyncOperationProgressEx();
-                            if (not op_status.isAsyncOperationRunning()) {
-                                if (safety_bits != 1) {
-                                    async_status_ = AsyncMotionStatus::Done;
-                                    async_running_ = AsyncRunning::False;
-                                    setIntegerParam(asyncMoveDoneIndex_, 1);
-                                } else {
-                                    spdlog::debug("Waypoint reached. Starting action...");
-                                    run_action_val =
-                                        1 ^ run_action_val; // ensures the action PV link is processed
-                                    setIntegerParam(waypointActionDoneIndex_, 0);
-                                    setIntegerParam(runWaypointActionIndex_, run_action_val);
-                                    async_status_ = AsyncMotionStatus::WaitingAction;
-                                }
-                            }
-                        } else if (async_status_ == AsyncMotionStatus::WaitingAction) {
-                            int done = 0;
-                            getIntegerParam(waypointActionDoneIndex_, &done);
-                            if (done) {
-                                spdlog::debug("Action done!");
-                                async_status_ = AsyncMotionStatus::Done;
-                                spdlog::debug("Asynchronous move done");
-                                async_running_ = AsyncRunning::False;
+                                async_motion_func_ = {};
                                 setIntegerParam(asyncMoveDoneIndex_, 1);
+                            } else {
+                                spdlog::debug("Waypoint reached. Starting action...");
+                                run_action_val = 1 ^ run_action_val; // ensures the action PV link is processed
+                                setIntegerParam(waypointActionDoneIndex_, 0);
+                                setIntegerParam(runWaypointActionIndex_, run_action_val);
+                                async_status_ = AsyncMotionStatus::WaitingAction;
                             }
+                        }
+                    } else if (async_status_ == AsyncMotionStatus::WaitingAction) {
+                        int done = 0;
+                        getIntegerParam(waypointActionDoneIndex_, &done);
+                        if (done) {
+                            spdlog::debug("Action done!");
+                            async_status_ = AsyncMotionStatus::Done;
+                            spdlog::debug("Asynchronous move done");
+                            async_motion_func_ = {};
+                            setIntegerParam(asyncMoveDoneIndex_, 1);
                         }
                     }
                 }
-            } else {
-                setIntegerParam(isConnectedIndex_, 0);
             }
         } else {
             setIntegerParam(isConnectedIndex_, 0);
@@ -243,11 +209,6 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
 
     int addr = 0;
     getAddress(pasynUser, &addr);
-
-    // static std::map<int, int> tcp_offset_map = {
-    // {tcpOffsetXIndex_, 0},    {tcpOffsetYIndex_, 1},     {tcpOffsetZIndex_, 2},
-    // {tcpOffsetRollIndex_, 3}, {tcpOffsetPitchIndex_, 4}, {tcpOffsetYawIndex_, 5},
-    // };
 
     if (rtde_control_ == nullptr) {
         spdlog::error("RTDE Control interface not initialized");
@@ -350,11 +311,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     }
 
     if (function == moveJIndex_) {
-
-        spdlog::info("moveJ({:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}, {:.4f}) rad", cmd_joints_.at(0),
-                     cmd_joints_.at(1), cmd_joints_.at(2), cmd_joints_.at(3), cmd_joints_.at(4),
-                     cmd_joints_.at(5));
-
+        spdlog::debug("moveJ({:.4f}) rad", fmt::join(cmd_joints_, ","));
         bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints_);
         if (safe) {
             rtde_control_->moveJ(cmd_joints_, joint_speed_, joint_accel_, true);
@@ -362,19 +319,15 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
     } else if (function == stopJIndex_) {
-        this->async_running_ = AsyncRunning::False;
+        async_motion_func_ = {};
         this->async_status_ = AsyncMotionStatus::Done;
         spdlog::debug("Stopping joint move");
         setIntegerParam(asyncMoveDoneIndex_, 1);
-        rtde_control_->stopJ(); // asynchronous=true
+        rtde_control_->stopJ(); // TODO: should this be async?
     }
 
     else if (function == moveLIndex_) {
-
-        spdlog::info("moveL({:.4f} m, {:.4f} m, {:.4f} m, {:.4f} rad , {:.4f} rad, {:.4f} rad)",
-                     cmd_pose_.at(0), cmd_pose_.at(1), cmd_pose_.at(2), cmd_pose_.at(3), cmd_pose_.at(4),
-                     cmd_pose_.at(5));
-
+        spdlog::debug("moveL({:.4f}) m,rad", fmt::join(cmd_pose_, ","));
         bool safe = rtde_control_->isPoseWithinSafetyLimits(cmd_pose_);
         if (safe) {
             rtde_control_->moveL(cmd_pose_, linear_speed_, linear_accel_, true);
@@ -382,50 +335,77 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
     } else if (function == stopLIndex_) {
-        this->async_running_ = AsyncRunning::False;
+        async_motion_func_ = {};
         this->async_status_ = AsyncMotionStatus::Done;
         setIntegerParam(asyncMoveDoneIndex_, 1);
         spdlog::debug("Stopping linear move");
-        rtde_control_->stopL();
+        rtde_control_->stopL(); // TODO: should this be async?
     }
 
     else if (function == waypointMoveJIndex_) {
-        if (async_running_ == AsyncRunning::False) {
+        if (!async_motion_func_) {
             this->waypoint_.clear();
             std::vector<double> wp = this->cmd_joints_;
             wp.push_back(this->joint_speed_);
             wp.push_back(this->joint_accel_);
             wp.push_back(this->joint_blend_);
             this->waypoint_ = wp;
-            this->async_running_ = AsyncRunning::Joint;
+            async_motion_func_ = [this]{
+                if (rtde_control_->isJointsWithinSafetyLimits({waypoint_.begin(), waypoint_.end() - 3})) {
+                    spdlog::debug("Moving to joint waypoint [{:.4f}] rad", fmt::join(waypoint_, ","));
+                    rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint_}, true);
+                    async_status_ = AsyncMotionStatus::WaitingMotion;
+                    setIntegerParam(asyncMoveDoneIndex_, 0);
+                } else {
+                    spdlog::warn("Requested joint angles not within safety limits. No action taken.");
+                    async_status_ = AsyncMotionStatus::Done;
+                    async_motion_func_ = {};
+                }
+            };
         } else {
-            spdlog::warn("Asynchronous motion in progress...please wait");
+            spdlog::warn("Asynchronous motion already in progress...please wait");
         }
     } else if (function == waypointMoveLIndex_) {
-        if (async_running_ == AsyncRunning::False) {
+        if (!async_motion_func_) {
             this->waypoint_.clear();
             std::vector<double> wp = this->cmd_pose_;
             wp.push_back(this->linear_speed_);
             wp.push_back(this->linear_accel_);
             wp.push_back(this->linear_blend_);
             this->waypoint_ = wp;
-            this->async_running_ = AsyncRunning::Cartesian;
+            async_motion_func_ = [this]{
+                if (rtde_control_->isPoseWithinSafetyLimits({waypoint_.begin(), waypoint_.end() - 3})) {
+                    spdlog::debug("Moving to cartesian waypoint [{:.4f}] m,rad", fmt::join(waypoint_, ","));
+                    rtde_control_->moveL(std::vector<std::vector<double>>{waypoint_}, true);
+                    async_status_ = AsyncMotionStatus::WaitingMotion;
+                    setIntegerParam(asyncMoveDoneIndex_, 0);
+                } else {
+                    spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
+                    async_status_ = AsyncMotionStatus::Done;
+                    async_motion_func_ = {};
+                }
+            };
         } else {
-            spdlog::warn("Asynchronous motion in progress...please wait");
+            spdlog::warn("Asynchronous motion already in progress...please wait");
         }
     }
 
     else if (function == trajMoveIndex_) {
-        if (auto traj = read_traj_file(traj_file_path_); traj) {
-            for (auto& row : *traj) {
-                for (double v : row) {
-                    std::cout << v << " ";
-                }
-                std::cout << "\n";
-            }
-        } else {
-            spdlog::error("Error reading trajectory file\n");
-        }
+        // if (async_running_ == AsyncRunning::False) {
+            // if (auto traj = read_traj_file(traj_file_path_); traj) {
+                // for (auto& row : *traj) {
+                    // for (double v : row) {
+                        // std::cout << v << " ";
+                    // }
+                    // std::cout << "\n";
+                // }
+                // async_running_ = AsyncRunning::Trajectory;
+            // } else {
+                // spdlog::error("Error reading trajectory file\n");
+            // }
+        // } else {
+            // spdlog::warn("Asynchronous motion already in progress...please wait");
+        // }
     }
 
     else if (function == waypointActionDoneIndex_) {

@@ -4,7 +4,6 @@
 #include <asynPortDriver.h>
 
 enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
-enum class AsyncRunning : int {False, Cartesian, Joint};
 
 class RTDEControl : public asynPortDriver {
   public:
@@ -40,10 +39,10 @@ class RTDEControl : public asynPortDriver {
     double linear_blend_ = 0.0;  // m?
 
     // handle asynchronous motion through paths, etc.
-    AsyncRunning async_running_ = AsyncRunning::False;
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
     std::string traj_file_path_;
     std::vector<double> waypoint_;
+    std::function<void()> async_motion_func_;
 
   protected:
     asynUser *pasynUserURRobot_;
