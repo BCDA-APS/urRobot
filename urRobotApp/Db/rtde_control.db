@@ -180,6 +180,13 @@ record(bo, "$(P)Control:TrajMove") {
     field(OUT, "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TRAJ_MOVE")
 }
 
+record(bo, "$(P)Control:TrajType") {
+    field(DTYP, "asynInt32")
+    field(OUT, "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TRAJ_TYPE")
+    field(ZNAM, "  Joint  ")
+    field(ONAM, "Cartesian")
+}
+
 #======================
 # Joint control
 #======================

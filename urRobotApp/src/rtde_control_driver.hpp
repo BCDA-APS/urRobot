@@ -4,6 +4,7 @@
 #include <asynPortDriver.h>
 
 enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
+enum class TrajectoryType : int { Joint, Cartesian };
 
 class RTDEControl : public asynPortDriver {
   public:
@@ -40,6 +41,7 @@ class RTDEControl : public asynPortDriver {
 
     // handle asynchronous motion through paths, etc.
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
+    TrajectoryType traj_type_ = TrajectoryType::Joint;
     std::string traj_file_path_;
     std::vector<double> waypoint_;
     std::function<void()> async_motion_func_;

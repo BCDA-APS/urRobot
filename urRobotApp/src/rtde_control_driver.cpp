@@ -367,22 +367,31 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         }
     }
 
+    else if (function == trajTypeIndex_) {
+        spdlog::debug("Setting trajectory to type {}", value ? "Cartesian" : "Joint");
+        traj_type_ = static_cast<TrajectoryType>(value);
+    }
+
     else if (function == trajMoveIndex_) {
-        // if (async_running_ == AsyncRunning::False) {
-        // if (auto traj = read_traj_file(traj_file_path_); traj) {
-        // for (auto& row : *traj) {
-        // for (double v : row) {
-        // std::cout << v << " ";
-        // }
-        // std::cout << "\n";
-        // }
-        // async_running_ = AsyncRunning::Trajectory;
-        // } else {
-        // spdlog::error("Error reading trajectory file\n");
-        // }
-        // } else {
-        // spdlog::warn("Asynchronous motion already in progress...please wait");
-        // }
+        if (!async_motion_func_) {
+            if (auto traj = read_traj_file(traj_file_path_); traj) {
+                spdlog::debug("Successfully read {}", traj_file_path_);
+                if (traj_type_ == TrajectoryType::Joint) {
+                    for (auto& row : *traj) {
+                        for (size_t i = 0; i < NUM_JOINTS; i++) row[i] *= M_PI/180.0; // deg->rad
+                        spdlog::debug("[{:.4f}] rad", fmt::join(row, ","));
+                    }
+                } else {
+                    for (auto& row : *traj) {
+                        for (size_t i = 0; i < 3; i++) row[i] /= 1000.0; // mm->m
+                        for (size_t i = 3; i < 6; i++) row[i] *= M_PI/180.0; // deg->rad
+                        spdlog::debug("[{:.4f}] m, rad", fmt::join(row, ","));
+                    }
+                }
+            } else {
+                spdlog::debug("Failed to read trajectory file: '{}'", traj_file_path_);
+            }
+        }
     }
 
     else if (function == waypointActionDoneIndex_) {
