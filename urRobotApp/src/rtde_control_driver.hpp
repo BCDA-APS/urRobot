@@ -7,11 +7,11 @@ enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
 
 class RTDEControl : public asynPortDriver {
   public:
-    RTDEControl(const char *asyn_port_name, const char *robot_port_name, double poll_period);
-    virtual void poll(void);
-    virtual asynStatus writeFloat64(asynUser *pasynUser, epicsFloat64 value);
-    virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
-    virtual asynStatus writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual);
+    RTDEControl(const char* asyn_port_name, const char* robot_port_name, double poll_period);
+    asynStatus writeFloat64(asynUser* pasynUser, epicsFloat64 value) override;
+    asynStatus writeInt32(asynUser* pasynUser, epicsInt32 value) override;
+    asynStatus writeOctet(asynUser* pasynUser, const char* value, size_t maxChars, size_t* nActual) override;
+    void poll(void);
 
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
@@ -45,7 +45,7 @@ class RTDEControl : public asynPortDriver {
     std::function<void()> async_motion_func_;
 
   protected:
-    asynUser *pasynUserURRobot_;
+    asynUser* pasynUserURRobot_;
 
     int disconnectIndex_;
     int reconnectIndex_;

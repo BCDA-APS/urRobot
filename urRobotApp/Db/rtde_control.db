@@ -60,6 +60,19 @@ record(bi, "$(P)Control:AsyncMoveDone")
     field(SCAN, "I/O Intr")
 }
 
+record(calcout, "$(P)Control:moving_calc") {
+    field(INPA, "$(P)Control:Steady.VAL CP")
+    field(INPB, "$(P)Control:AsyncMoveDone.VAL CP")
+    field(INPC, "$(P)Receive:SafetyStatusBits CP")
+    field(CALC, "(!A || !B) && (C=1)")
+}
+
+record(bi, "$(P)Control:Moving") {
+    field(INP, "$(P)Control:moving_calc.VAL CP")
+    field(ZNAM, "Done")
+    field(ONAM, "Moving")
+}
+
 record(bi, "$(P)Control:WaypointActionAsyn")
 {
     field(DTYP, "asynInt32")
@@ -126,10 +139,24 @@ record(dfanout, "$(P)Control:Stop")
     field(DOL, 1)
     field(OUTA, "$(P)Control:stopL.PROC")
     field(OUTB, "$(P)Control:stop_path.VAL PP")
-    field(OUTC, "$(P)Control:reset_both_cmd.PROC")
+    field(OUTC, "$(P)Control:sync_both_cmd.PROC")
 }
 
-record(fanout, "$(P)Control:reset_both_cmd")
+record(calcout, "$(P)Control:auto_sync_cmds") {
+    field(INPA, "$(P)Control:Steady.VAL CP NMS")
+    field(CALC, "A")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)Control:sync_both_cmd.PROC")
+}
+
+record(calcout, "$(P)Control:startup_sync_cmds") {
+    field(PINI, 1)
+    field(CALC, 1)
+    field(ODLY, 1.0)
+    field(OUT, "$(P)Control:sync_both_cmd.PROC PP")
+}
+
+record(fanout, "$(P)Control:sync_both_cmd")
 {
     field(LNK0, "$(P)Control:sync_joint_cmd")
     field(LNK1, "$(P)Control:sync_pose_cmd")
@@ -140,7 +167,7 @@ record(calcout, "$(P)Control:reset_after_async_move")
     field(INPA, "$(P)Control:AsyncMoveDone CP")
     field(CALC, "A")
     field(OOPT, "Transition To Non-zero")
-    field(OUT, "$(P)Control:reset_both_cmd.PROC")
+    field(OUT, "$(P)Control:sync_both_cmd.PROC")
 }
 
 record(lso, "$(P)Control:TrajFile") {
@@ -203,7 +230,7 @@ record(bo, "$(P)Control:stopJ")
     field(DESC, "Moves joints to commanded values")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))STOPJ")
-    field(FLNK, "$(P)Control:reset_both_cmd.PROC")
+    field(FLNK, "$(P)Control:sync_both_cmd.PROC")
 }
 
 record(bo, "$(P)Control:AutoMoveJ")
@@ -223,94 +250,6 @@ record(calcout, "$(P)Control:auto_moveJ_calc")
     field(OUT, "$(P)Control:moveJ.PROC")
 }
 
-# current joint positions for use interally with this database
-record(waveform, "$(P)Control:ActualQ")
-{
-    field(DESC, "Actual joint positions")
-    field(DTYP, "asynFloat64ArrayIn")
-    field(FTVL, "DOUBLE")
-    field(PINI, "1")
-    field(EGU, "deg")
-    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ACTUAL_Q")
-    field(NELM, 6)
-    field(FLNK, "$(P)Q_index_fanout.PROC")
-    field(SCAN, "I/O Intr")
-}
-
-record(fanout, "$(P)Q_index_fanout")
-{
-    field(LNK0, "$(P)Control:ActualQ_index0")
-    field(LNK1, "$(P)Control:ActualQ_index1")
-    field(LNK2, "$(P)Control:ActualQ_index2")
-    field(LNK3, "$(P)Control:ActualQ_index3")
-    field(LNK4, "$(P)Control:ActualQ_index4")
-    field(LNK5, "$(P)Control:ActualQ_index5")
-}
-
-# subArray to extract each element of ActualQ waveform
-record(subArray, "$(P)Control:ActualQ_index0")
-{
-    field(INP, "$(P)Control:ActualQ.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "0")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Control:ActualQ_index1")
-{
-    field(INP, "$(P)Control:ActualQ.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "1")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Control:ActualQ_index2")
-{
-    field(INP, "$(P)Control:ActualQ.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "2")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Control:ActualQ_index3")
-{
-    field(INP, "$(P)Control:ActualQ.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "3")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Control:ActualQ_index4")
-{
-    field(INP, "$(P)Control:ActualQ.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "4")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Control:ActualQ_index5")
-{
-    field(INP, "$(P)Control:ActualQ.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "5")
-    field(PREC, 4)
-}
-
-# resets commanded joint angles to the current measured angles
-record(calcout, "$(P)Control:auto_reset_j_cmd")
-{
-    field(INPA, "$(P)Control:Steady.VAL CP NMS")
-    field(CALC, "A")
-    field(OOPT, "Transition To Non-zero")
-    field(OUT, "$(P)Control:sync_joint_cmd.PROC")
-}
 record(sseq, "$(P)Control:sync_joint_cmd")
 {
     field(PINI, 0)
@@ -318,27 +257,27 @@ record(sseq, "$(P)Control:sync_joint_cmd")
     field(LNK1, "$(P)Control:auto_moveJ_calc.DISA CA")
     field(STR1, "1")
 
-    field(DOL2, "$(P)Control:ActualQ_index0")
+    field(DOL2, "$(P)Receive:Joint1")
     field(LNK2, "$(P)Control:J1Cmd CA")
     field(WAIT2, "After1")
 
-    field(DOL3, "$(P)Control:ActualQ_index1")
+    field(DOL3, "$(P)Receive:Joint2")
     field(LNK3, "$(P)Control:J2Cmd CA")
     field(WAIT3, "After1")
 
-    field(DOL4, "$(P)Control:ActualQ_index2")
+    field(DOL4, "$(P)Receive:Joint3")
     field(LNK4, "$(P)Control:J3Cmd CA")
     field(WAIT4, "After1")
 
-    field(DOL5, "$(P)Control:ActualQ_index3")
+    field(DOL5, "$(P)Receive:Joint4")
     field(LNK5, "$(P)Control:J4Cmd CA")
     field(WAIT5, "After1")
 
-    field(DOL6, "$(P)Control:ActualQ_index4")
+    field(DOL6, "$(P)Receive:Joint5")
     field(LNK6, "$(P)Control:J5Cmd CA")
     field(WAIT6, "After1")
 
-    field(DOL7, "$(P)Control:ActualQ_index5")
+    field(DOL7, "$(P)Receive:Joint6")
     field(LNK7, "$(P)Control:J6Cmd CA")
     field(WAIT7, "After1")
 
@@ -655,7 +594,7 @@ record(bo, "$(P)Control:stopL")
     field(DESC, "Stop linear move to TCP pose")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))STOPL")
-    field(FLNK, "$(P)Control:reset_both_cmd.PROC")
+    field(FLNK, "$(P)Control:sync_both_cmd.PROC")
 }
 
 record(bo, "$(P)Control:AutoMoveL")
@@ -675,97 +614,6 @@ record(calcout, "$(P)Control:auto_moveL_calc")
     field(OUT, "$(P)Control:moveL.PROC")
 }
 
-record(waveform, "$(P)Control:ActualTCPPose")
-{
-    field(DESC, "Actual TCP Pose")
-    field(DTYP, "asynFloat64ArrayIn")
-    field(FTVL, "DOUBLE")
-    field(PINI, "1")
-    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))ACTUAL_TCP_POSE")
-    field(NELM, 6)
-    field(FLNK, "$(P)pose_index_fanout.PROC")
-    field(SCAN, "I/O Intr")
-}
-
-record(fanout, "$(P)pose_index_fanout")
-{
-    field(LNK0, "$(P)Control:pose_index0")
-    field(LNK1, "$(P)Control:pose_index1")
-    field(LNK2, "$(P)Control:pose_index2")
-    field(LNK3, "$(P)Control:pose_index3")
-    field(LNK4, "$(P)Control:pose_index4")
-    field(LNK5, "$(P)Control:pose_index5")
-}
-
-# subArray to extract each element of ActualTCPPose waveform
-record(subArray, "$(P)Control:pose_index0")
-{
-    field(INP, "$(P)Control:ActualTCPPose.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "0")
-    field(EGU, "mm")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Control:pose_index1")
-{
-    field(INP, "$(P)Control:ActualTCPPose.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "1")
-    field(EGU, "mm")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Control:pose_index2")
-{
-    field(INP, "$(P)Control:ActualTCPPose.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "2")
-    field(EGU, "mm")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Control:pose_index3")
-{
-    field(INP, "$(P)Control:ActualTCPPose.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "3")
-    field(EGU, "deg")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Control:pose_index4")
-{
-    field(INP, "$(P)Control:ActualTCPPose.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "4")
-    field(EGU, "deg")
-    field(PREC, 4)
-}
-record(subArray, "$(P)Control:pose_index5")
-{
-    field(INP, "$(P)Control:ActualTCPPose.VAL")
-    field(FTVL, "DOUBLE")
-    field(MALM, "6")
-    field(NELM, "1")
-    field(INDX, "5")
-    field(EGU, "deg")
-    field(PREC, 4)
-}
-
-record(calcout, "$(P)Control:auto_reset_pose_cmd")
-{
-    field(INPA, "$(P)Control:Steady.VAL CP NMS")
-    field(CALC, "A")
-    field(OOPT, "Transition To Non-zero")
-    field(OUT, "$(P)Control:sync_pose_cmd.PROC")
-}
 record(sseq, "$(P)Control:sync_pose_cmd")
 {
     field(PINI, 0)
@@ -773,27 +621,27 @@ record(sseq, "$(P)Control:sync_pose_cmd")
     field(LNK1, "$(P)Control:auto_moveL_calc.DISA CA")
     field(STR1, "1")
 
-    field(DOL2, "$(P)Control:pose_index0")
+    field(DOL2, "$(P)Receive:PoseX")
     field(LNK2, "$(P)Control:PoseXCmd CA")
     field(WAIT2, "After1")
 
-    field(DOL3, "$(P)Control:pose_index1")
+    field(DOL3, "$(P)Receive:PoseY")
     field(LNK3, "$(P)Control:PoseYCmd CA")
     field(WAIT3, "After1")
 
-    field(DOL4, "$(P)Control:pose_index2")
+    field(DOL4, "$(P)Receive:PoseZ")
     field(LNK4, "$(P)Control:PoseZCmd CA")
     field(WAIT4, "After1")
 
-    field(DOL5, "$(P)Control:pose_index3")
+    field(DOL5, "$(P)Receive:PoseRoll")
     field(LNK5, "$(P)Control:PoseRollCmd CA")
     field(WAIT5, "After1")
 
-    field(DOL6, "$(P)Control:pose_index4")
+    field(DOL6, "$(P)Receive:PosePitch")
     field(LNK6, "$(P)Control:PosePitchCmd CA")
     field(WAIT6, "After1")
 
-    field(DOL7, "$(P)Control:pose_index5")
+    field(DOL7, "$(P)Receive:PoseYaw")
     field(LNK7, "$(P)Control:PoseYawCmd CA")
     field(WAIT7, "After1")
 

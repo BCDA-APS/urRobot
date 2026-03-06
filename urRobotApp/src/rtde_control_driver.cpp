@@ -2,18 +2,17 @@
 #include <epicsThread.h>
 #include <exception>
 #include <iocsh.h>
+#include <optional>
 #include <sstream>
 #include <stdexcept>
-#include <optional>
 
 #include "rtde_control_driver.hpp"
 #include "spdlog/cfg/env.h"
-#include "spdlog/spdlog.h"
 #include "spdlog/fmt/ranges.h"
+#include "spdlog/spdlog.h"
 #include "ur_rtde/dashboard_client.h"
 
 using OptTrajectory = std::optional<std::vector<std::vector<double>>>;
-constexpr size_t TRAJ_ROW_SIZE = 9; // 6 positions, speed, accel, blend
 OptTrajectory read_traj_file(const std::string& filepath);
 
 bool RTDEControl::try_connect() {
@@ -35,30 +34,30 @@ bool RTDEControl::try_connect() {
             connected = false;
             dash->disconnect();
         }
-    } catch (const std::exception &e) {
+    } catch (const std::exception& e) {
         spdlog::error("Caught exception: {}", e.what());
         spdlog::error("RTDE Control: Failed to connect to dashboard to check robot mode");
     }
 
     if (robot_running) {
-        if (rtde_control_ == nullptr) {
+        if (!rtde_control_) {
             try {
                 rtde_control_ = std::make_unique<ur_rtde::RTDEControlInterface>(robot_ip_);
-                if (rtde_control_ != nullptr) {
+                if (rtde_control_) {
                     if (rtde_control_->isConnected()) {
                         spdlog::info("Connected to UR RTDE Control interface");
                         connected = true;
 
                         // connect to RTDE Receive, only if already connected to RTDE Control
                         rtde_receive_ = std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip_);
-                        if (rtde_receive_ == nullptr) {
+                        if (!rtde_receive_) {
                             // this probably isn't possible
                             throw std::runtime_error(
                                 "Failed connecting to receive interface from RTDEControl class");
                         }
                     }
                 }
-            } catch (const std::exception &e) {
+            } catch (const std::exception& e) {
                 spdlog::error("Failed to connected to UR RTDE Control interface\n{}", e.what());
                 connected = false;
             }
@@ -74,8 +73,8 @@ bool RTDEControl::try_connect() {
     return connected;
 }
 
-static void poll_thread_C(void *pPvt) {
-    RTDEControl *pRTDEControl = (RTDEControl *)pPvt;
+static void poll_thread_C(void* pPvt) {
+    RTDEControl* pRTDEControl = (RTDEControl*)pPvt;
     pRTDEControl->poll();
 }
 
@@ -85,7 +84,7 @@ constexpr int ASYN_INTERFACE_MASK =
     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynDrvUserMask;
 constexpr int ASYN_INTERRUPT_MASK = asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask;
 
-RTDEControl::RTDEControl(const char *asyn_port_name, const char *robot_ip, double poll_period)
+RTDEControl::RTDEControl(const char* asyn_port_name, const char* robot_ip, double poll_period)
     : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
       rtde_control_(nullptr), rtde_receive_(nullptr), robot_ip_(robot_ip), poll_period_(poll_period) {
@@ -142,22 +141,7 @@ void RTDEControl::poll() {
             setIntegerParam(isConnectedIndex_, 1);
             setIntegerParam(isSteadyIndex_, rtde_control_->isSteady());
 
-            std::vector<double> jvec = rtde_receive_->getActualQ();
-            for (double &j : jvec) {
-                j = j * 180.0 / M_PI; // convert rad -> deg
-            }
-            doCallbacksFloat64Array(jvec.data(), NUM_JOINTS, actualQIndex_, 0);
-
-            std::vector<double> pose_vec = rtde_receive_->getActualTCPPose();
-            for (size_t i = 0; i < pose_vec.size(); i++) {
-                if (i <= 2) {
-                    pose_vec.at(i) = pose_vec.at(i) * 1000.0; // convert m -> mm
-                } else {
-                    pose_vec.at(i) = pose_vec.at(i) * 180.0 / M_PI; // convert rad -> deg
-                }
-            }
-            doCallbacksFloat64Array(pose_vec.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
-
+            // Get safety bits so we can abort motion in safety event
             uint32_t safety_bits = rtde_receive_->getSafetyStatusBits();
 
             if (async_motion_func_) {
@@ -173,7 +157,8 @@ void RTDEControl::poll() {
                                 setIntegerParam(asyncMoveDoneIndex_, 1);
                             } else {
                                 spdlog::debug("Waypoint reached. Starting action...");
-                                run_action_val = 1 ^ run_action_val; // ensures the action PV link is processed
+                                // ensures the action PV link is processed
+                                run_action_val = 1 ^ run_action_val;
                                 setIntegerParam(waypointActionDoneIndex_, 0);
                                 setIntegerParam(runWaypointActionIndex_, run_action_val);
                                 async_status_ = AsyncMotionStatus::WaitingAction;
@@ -183,9 +168,8 @@ void RTDEControl::poll() {
                         int done = 0;
                         getIntegerParam(waypointActionDoneIndex_, &done);
                         if (done) {
-                            spdlog::debug("Action done!");
+                            spdlog::debug("Waypoint action done");
                             async_status_ = AsyncMotionStatus::Done;
-                            spdlog::debug("Asynchronous move done");
                             async_motion_func_ = {};
                             setIntegerParam(asyncMoveDoneIndex_, 1);
                         }
@@ -202,7 +186,7 @@ void RTDEControl::poll() {
     }
 }
 
-asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
+asynStatus RTDEControl::writeFloat64(asynUser* pasynUser, epicsFloat64 value) {
 
     int function = pasynUser->reason;
     bool comm_ok = true;
@@ -210,7 +194,7 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
     int addr = 0;
     getAddress(pasynUser, &addr);
 
-    if (rtde_control_ == nullptr) {
+    if (!rtde_control_) {
         spdlog::error("RTDE Control interface not initialized");
         comm_ok = false;
         goto skip;
@@ -238,12 +222,7 @@ asynStatus RTDEControl::writeFloat64(asynUser *pasynUser, epicsFloat64 value) {
         // convert commanded x,y,z from mm to meters. Assume roll, pitch, yaw is radians
         const double val = (addr >= 3) ? value : (value / 1000.0);
         this->tcp_offset_.at(addr) = val;
-        std::stringstream ss;
-        ss << "Setting TCP offset to ";
-        for (const auto &i : tcp_offset_) {
-            ss << i << ", ";
-        }
-        spdlog::debug("{}", ss.str());
+        spdlog::debug("Setting TCP offset to [{:.4f}] m,rad", fmt::join(tcp_offset_, ","));
         rtde_control_->setTcp(this->tcp_offset_);
     }
 
@@ -280,7 +259,7 @@ skip:
     }
 }
 
-asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
+asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 
     int function = pasynUser->reason;
     bool comm_ok = true;
@@ -290,7 +269,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
         goto skip;
     }
 
-    if (rtde_control_ == nullptr) {
+    if (!rtde_control_) {
         spdlog::error("RTDE Control interface not initialized");
         comm_ok = false;
         goto skip;
@@ -304,7 +283,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     }
 
     // Check that it's connected before conntinuing
-    if (not rtde_control_->isConnected()) {
+    if (!rtde_control_->isConnected()) {
         spdlog::error("RTDE Control interface not connected");
         comm_ok = false;
         goto skip;
@@ -312,8 +291,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     if (function == moveJIndex_) {
         spdlog::debug("moveJ({:.4f}) rad", fmt::join(cmd_joints_, ","));
-        bool safe = rtde_control_->isJointsWithinSafetyLimits(cmd_joints_);
-        if (safe) {
+        if (rtde_control_->isJointsWithinSafetyLimits(cmd_joints_)) {
             rtde_control_->moveJ(cmd_joints_, joint_speed_, joint_accel_, true);
         } else {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
@@ -328,8 +306,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     else if (function == moveLIndex_) {
         spdlog::debug("moveL({:.4f}) m,rad", fmt::join(cmd_pose_, ","));
-        bool safe = rtde_control_->isPoseWithinSafetyLimits(cmd_pose_);
-        if (safe) {
+        if (rtde_control_->isPoseWithinSafetyLimits(cmd_pose_)) {
             rtde_control_->moveL(cmd_pose_, linear_speed_, linear_accel_, true);
         } else {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
@@ -350,7 +327,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
             wp.push_back(this->joint_accel_);
             wp.push_back(this->joint_blend_);
             this->waypoint_ = wp;
-            async_motion_func_ = [this]{
+            async_motion_func_ = [this] {
                 if (rtde_control_->isJointsWithinSafetyLimits({waypoint_.begin(), waypoint_.end() - 3})) {
                     spdlog::debug("Moving to joint waypoint [{:.4f}] rad", fmt::join(waypoint_, ","));
                     rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint_}, true);
@@ -373,7 +350,7 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
             wp.push_back(this->linear_accel_);
             wp.push_back(this->linear_blend_);
             this->waypoint_ = wp;
-            async_motion_func_ = [this]{
+            async_motion_func_ = [this] {
                 if (rtde_control_->isPoseWithinSafetyLimits({waypoint_.begin(), waypoint_.end() - 3})) {
                     spdlog::debug("Moving to cartesian waypoint [{:.4f}] m,rad", fmt::join(waypoint_, ","));
                     rtde_control_->moveL(std::vector<std::vector<double>>{waypoint_}, true);
@@ -392,19 +369,19 @@ asynStatus RTDEControl::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 
     else if (function == trajMoveIndex_) {
         // if (async_running_ == AsyncRunning::False) {
-            // if (auto traj = read_traj_file(traj_file_path_); traj) {
-                // for (auto& row : *traj) {
-                    // for (double v : row) {
-                        // std::cout << v << " ";
-                    // }
-                    // std::cout << "\n";
-                // }
-                // async_running_ = AsyncRunning::Trajectory;
-            // } else {
-                // spdlog::error("Error reading trajectory file\n");
-            // }
+        // if (auto traj = read_traj_file(traj_file_path_); traj) {
+        // for (auto& row : *traj) {
+        // for (double v : row) {
+        // std::cout << v << " ";
+        // }
+        // std::cout << "\n";
+        // }
+        // async_running_ = AsyncRunning::Trajectory;
         // } else {
-            // spdlog::warn("Asynchronous motion already in progress...please wait");
+        // spdlog::error("Error reading trajectory file\n");
+        // }
+        // } else {
+        // spdlog::warn("Asynchronous motion already in progress...please wait");
         // }
     }
 
@@ -447,11 +424,11 @@ skip:
     }
 }
 
-asynStatus RTDEControl::writeOctet(asynUser *pasynUser, const char *value, size_t maxChars, size_t *nActual) {
+asynStatus RTDEControl::writeOctet(asynUser* pasynUser, const char* value, size_t maxChars, size_t* nActual) {
     int function = pasynUser->reason;
     bool comm_ok = true;
 
-    if (rtde_control_ == nullptr) {
+    if (!rtde_control_) {
         spdlog::error("RTDE Control interface not initialized");
         comm_ok = false;
         goto skip;
@@ -480,8 +457,8 @@ skip:
 }
 
 // register function for iocsh
-extern "C" int RTDEControlConfig(const char *asyn_port_name, const char *robot_ip, double poll_period) {
-    RTDEControl *pRTDEControl = new RTDEControl(asyn_port_name, robot_ip, poll_period);
+extern "C" int RTDEControlConfig(const char* asyn_port_name, const char* robot_ip, double poll_period) {
+    RTDEControl* pRTDEControl = new RTDEControl(asyn_port_name, robot_ip, poll_period);
     (void)pRTDEControl;
     return (asynSuccess);
 }
@@ -489,10 +466,10 @@ extern "C" int RTDEControlConfig(const char *asyn_port_name, const char *robot_i
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
 static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
-static const iocshArg *const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
+static const iocshArg* const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"RTDEControlConfig", 3, urRobotArgs};
 
-static void urRobotCallFunc(const iocshArgBuf *args) {
+static void urRobotCallFunc(const iocshArgBuf* args) {
     RTDEControlConfig(args[0].sval, args[1].sval, args[2].dval);
 }
 
@@ -505,6 +482,7 @@ epicsExportRegistrar(RTDEControlRegister);
 OptTrajectory read_traj_file(const std::string& filepath) {
 
     constexpr char COMMENT_CHAR = '#';
+    constexpr size_t TRAJ_ROW_SIZE = 9; // 6 positions, speed, accel, blend
 
     std::ifstream fs(filepath);
     if (!fs.is_open()) {
@@ -520,9 +498,10 @@ OptTrajectory read_traj_file(const std::string& filepath) {
 
                 // trim whitespace
                 auto i0 = line.find_first_not_of(" \t");
-                if (i0 == std::string::npos) continue; // skip empty lines
+                if (i0 == std::string::npos)
+                    continue; // skip empty lines
                 auto i1 = line.find_last_not_of(' ');
-                auto line_trim = line.substr(i0, i1-i0+1);
+                auto line_trim = line.substr(i0, i1 - i0 + 1);
 
                 // parse the line
                 std::stringstream ss(line_trim);
