@@ -252,41 +252,26 @@ For point 1 in your path, you'd set the Type to "Linear", Number to 3, and Actio
 
 Some may find it useful to program the robot by interacting with the available PVs in a script.
 Below an example Python script using [PyEpics](https://github.com/pyepics/pyepics) is provided which demonstrates how to move
-joint 6 (wrist) +10deg, then -10deg back to where it started.
+all six joints by +1.0deg.
 
 
 ```python
 from epics import caget, caput
 
-PREFIX = "MyPrefix:" # replace with your IOC prefix
+# IOC prefix
+PREFIX = "MyIOC:"
 
-# quick hack to wait for motion to start and complete
-def wait_motion():
-    '''block execution until commanded motion finishes'''
-    while True:
-        if caget(f"{PREFIX}Control:Steady") == 0:
-            break
-    while True:
-        if caget(f"{PREFIX}Control:Steady") == 1:
-            break
+# disable AutoMoveJ so we need to trigger move PV to start the move
+caput(f"{PREFIX}Control:AutoMoveJ.VAL", 0)
 
-# Disable auto move
-# when enabled, changing commanded values will automatically move
-# when disabled, you need to call moveJ to trigger the move
-caput(f"{PREFIX}Control:AutoMoveJ", 0)
+# Get the current joint angles
+angles = caget(f"{PREFIX}Receive:ActualJointPositions.VAL")
 
-# Move J6 +10deg
-print("Moving Joint 6 +10deg...")
-joint_angles = caget(f"{PREFIX}Receive:ActualJointPositions")
-caput(f"{PREFIX}Control:J6Cmd", joint_angles[5]+10)
-caput(f"{PREFIX}Control:moveJ", 1)
-wait_motion()
+# Move all joints +1.0deg
+angles += 1.0;
+for i in range(len(angles)):
+    caput(f"{PREFIX}Control:J{i+1}Cmd.VAL", angles[i])
 
-# Move J6 back to where it started
-print("Moving Joint 6 -10deg...")
-joint_angles = caget(f"{PREFIX}Receive:ActualJointPositions")
-caput(f"{PREFIX}Control:J6Cmd", joint_angles[5]-10)
-caput(f"{PREFIX}Control:moveJ", 1)
-wait_motion()
-print("Done!")
+# Execute the move
+caput(f"{PREFIX}Control:moveJ.PROC", 1)
 ```
