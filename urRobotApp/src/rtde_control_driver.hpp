@@ -42,6 +42,7 @@ class RTDEControl : public asynPortDriver {
     // handle asynchronous motion through paths, etc.
     AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
     TrajectoryType traj_type_ = TrajectoryType::Joint;
+    bool waypoint_action_enabled_ = true;
     std::string traj_file_path_;
     std::vector<double> waypoint_;
     std::function<void()> async_motion_func_;

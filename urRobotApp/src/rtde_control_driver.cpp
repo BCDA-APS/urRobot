@@ -155,13 +155,17 @@ void RTDEControl::poll() {
                                 async_status_ = AsyncMotionStatus::Done;
                                 async_motion_func_ = {};
                                 setIntegerParam(asyncMoveDoneIndex_, 1);
-                            } else {
+                            } else if (waypoint_action_enabled_) {
                                 spdlog::debug("Waypoint reached. Starting action...");
                                 // ensures the action PV link is processed
                                 run_action_val = 1 ^ run_action_val;
                                 setIntegerParam(waypointActionDoneIndex_, 0);
                                 setIntegerParam(runWaypointActionIndex_, run_action_val);
                                 async_status_ = AsyncMotionStatus::WaitingAction;
+                            } else {
+                                async_status_ = AsyncMotionStatus::Done;
+                                async_motion_func_ = {};
+                                setIntegerParam(asyncMoveDoneIndex_, 1);
                             }
                         }
                     } else if (async_status_ == AsyncMotionStatus::WaitingAction) {
@@ -321,6 +325,7 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 
     else if (function == waypointMoveJIndex_) {
         if (!async_motion_func_) {
+            waypoint_action_enabled_ = true;
             this->waypoint_.clear();
             std::vector<double> wp = this->cmd_joints_;
             wp.push_back(this->joint_speed_);
@@ -344,6 +349,7 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         }
     } else if (function == waypointMoveLIndex_) {
         if (!async_motion_func_) {
+            waypoint_action_enabled_ = true;
             this->waypoint_.clear();
             std::vector<double> wp = this->cmd_pose_;
             wp.push_back(this->linear_speed_);
@@ -376,21 +382,37 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         if (!async_motion_func_) {
             if (auto traj = read_traj_file(traj_file_path_); traj) {
                 spdlog::debug("Successfully read {}", traj_file_path_);
+
+                auto trajectory = std::move(*traj);
+                waypoint_action_enabled_ = false;
+
                 if (traj_type_ == TrajectoryType::Joint) {
-                    for (auto& row : *traj) {
+                    for (auto& row : trajectory) {
                         for (size_t i = 0; i < NUM_JOINTS; i++) row[i] *= M_PI/180.0; // deg->rad
-                        spdlog::debug("[{:.4f}] rad", fmt::join(row, ","));
                     }
+                    spdlog::debug("Starting joint trajectory move");
+                    async_motion_func_ = [this, trajectory = std::move(trajectory)]{
+                        rtde_control_->moveJ(trajectory, true);
+                        async_status_ = AsyncMotionStatus::WaitingMotion;
+                        setIntegerParam(asyncMoveDoneIndex_, 0);
+                    };
                 } else {
-                    for (auto& row : *traj) {
+                    for (auto& row : trajectory) {
                         for (size_t i = 0; i < 3; i++) row[i] /= 1000.0; // mm->m
                         for (size_t i = 3; i < 6; i++) row[i] *= M_PI/180.0; // deg->rad
-                        spdlog::debug("[{:.4f}] m, rad", fmt::join(row, ","));
                     }
+                    spdlog::debug("Starting Cartesian trajectory move");
+                    async_motion_func_ = [this, trajectory = std::move(trajectory)]{
+                        rtde_control_->moveL(trajectory, true);
+                        async_status_ = AsyncMotionStatus::WaitingMotion;
+                        setIntegerParam(asyncMoveDoneIndex_, 0);
+                    };
                 }
             } else {
                 spdlog::debug("Failed to read trajectory file: '{}'", traj_file_path_);
             }
+        } else {
+            spdlog::warn("Asynchronous motion already in progress...please wait");
         }
     }
 
@@ -523,6 +545,7 @@ OptTrajectory read_traj_file(const std::string& filepath) {
                     }
                 }
                 if (row.size() != TRAJ_ROW_SIZE) {
+                    std::cerr << "Invalid .csv row length\n";
                     return std::nullopt;
                 }
                 out.push_back(row);
