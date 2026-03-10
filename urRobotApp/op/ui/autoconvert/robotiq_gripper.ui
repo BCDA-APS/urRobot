@@ -783,7 +783,7 @@ caMenu{
                 </color>
             </property>
             <property name="visibility">
-                <enum>caLabel::IfNotZero</enum>
+                <enum>caLabel::IfZero</enum>
             </property>
             <property name="channel">
                 <string>$(P)RobotiqGripper:IsActive</string>

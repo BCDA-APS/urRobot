@@ -332,7 +332,7 @@ text {
 		clr=20
 	}
 	"dynamic attribute" {
-		vis="if not zero"
+		vis="if zero"
 		chan="$(P)RobotiqGripper:IsActive"
 	}
 	textix="Not Active"
