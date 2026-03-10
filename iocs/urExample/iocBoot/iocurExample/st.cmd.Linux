@@ -11,6 +11,9 @@ iocurExampleLinux_registerRecordDeviceDriver(pdbbase)
 # Increasing setOnce queue fixes this.
 scanOnceSetQueueSize(2000)
 
+# Enables debugging messages from UR Robot support
+epicsEnvSet("SPDLOG_LEVEL","debug,mylogger=trace")
+
 # Load urRobot iocsh script with the IP address for your robot
 iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "IP=164.54.1.100")
 
