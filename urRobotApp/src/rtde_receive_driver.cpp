@@ -134,12 +134,15 @@ void RTDEReceive::poll() {
                 doCallbacksFloat64Array(vec_f64.data(), 3, actualToolAccelIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualQ();
-                for (double& j : vec_f64) j *= 180.0 / M_PI; // convert to degrees
+                for (double& j : vec_f64)
+                    j *= 180.0 / M_PI; // convert to degrees
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualTCPPose();
-                for (size_t i = 0; i < 3; i++) vec_f64[i] *= 1000.0; // m->mm
-                for (size_t i = 3; i < 6; i++) vec_f64[i] *= 180/M_PI; // rad->deg
+                for (size_t i = 0; i < 3; i++)
+                    vec_f64[i] *= 1000.0; // m->mm
+                for (size_t i = 3; i < 6; i++)
+                    vec_f64[i] *= 180 / M_PI; // rad->deg
                 doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
 
                 vec_f64 = rtde_receive_->getActualQd();

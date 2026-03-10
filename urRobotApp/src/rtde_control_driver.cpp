@@ -399,21 +399,24 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 
                 if (traj_type_ == TrajectoryType::Joint) {
                     for (auto& row : trajectory) {
-                        for (size_t i = 0; i < NUM_JOINTS; i++) row[i] *= M_PI/180.0; // deg->rad
+                        for (size_t i = 0; i < NUM_JOINTS; i++)
+                            row[i] *= M_PI / 180.0; // deg->rad
                     }
                     spdlog::debug("Starting joint trajectory move");
-                    async_motion_func_ = [this, trajectory = std::move(trajectory)]{
+                    async_motion_func_ = [this, trajectory = std::move(trajectory)] {
                         rtde_control_->moveJ(trajectory, true);
                         async_status_ = AsyncMotionStatus::WaitingMotion;
                         setIntegerParam(asyncMoveDoneIndex_, 0);
                     };
                 } else {
                     for (auto& row : trajectory) {
-                        for (size_t i = 0; i < 3; i++) row[i] /= 1000.0; // mm->m
-                        for (size_t i = 3; i < 6; i++) row[i] *= M_PI/180.0; // deg->rad
+                        for (size_t i = 0; i < 3; i++)
+                            row[i] /= 1000.0; // mm->m
+                        for (size_t i = 3; i < 6; i++)
+                            row[i] *= M_PI / 180.0; // deg->rad
                     }
                     spdlog::debug("Starting Cartesian trajectory move");
-                    async_motion_func_ = [this, trajectory = std::move(trajectory)]{
+                    async_motion_func_ = [this, trajectory = std::move(trajectory)] {
                         rtde_control_->moveL(trajectory, true);
                         async_status_ = AsyncMotionStatus::WaitingMotion;
                         setIntegerParam(asyncMoveDoneIndex_, 0);

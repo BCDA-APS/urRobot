@@ -10,13 +10,12 @@ function select(args)
     local action_link_N_FLNK = string.format("%sActionSseq%d.PROC", args.P, action_opt_val)
 
     if action_opt_val == 0 then
-	-- 0 means no waypoint action
+        -- 0 means no waypoint action
         epics.put(action_link_FLNK, " ")
         epics.put(action_done_calc_CALC, "1")
     else
         epics.put(action_done_calc_CALC, "A")
-	epics.put(action_link_FLNK, action_link_N_FLNK)
+        epics.put(action_link_FLNK, action_link_N_FLNK)
         epics.put(action_done_calc_INPA, action_done_calc_N_VAL)
     end
-
 end

@@ -1,22 +1,22 @@
+#include <iostream>
 #include <ur_rtde/robotiq_gripper.h>
 #include <ur_rtde/rtde_control_interface.h>
-#include <iostream>
 
+int main(int argc, char* argv[]) {
 
-int main(int argc, char *argv[]) {
-    
     if (argc != 2) {
         std::cout << "Please provide robot IP" << std::endl;
         return 1;
-    } 
-    
-    const char *robot_ip = argv[1];
-    
+    }
+
+    const char* robot_ip = argv[1];
+
     ur_rtde::RobotiqGripper gripper(robot_ip);
     try {
         gripper.connect();
-    } catch (const std::exception &e) {
-        std::cout << "Error connecting to gripper, check that IP address is correct" << std::endl << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << "Error connecting to gripper, check that IP address is correct" << std::endl
+                  << std::endl;
         return 1;
     }
     if (not gripper.isActive()) {
