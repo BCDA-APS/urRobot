@@ -326,16 +326,14 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     else if (function == waypointMoveJIndex_) {
         if (!async_motion_func_) {
             waypoint_action_enabled_ = true;
-            this->waypoint_.clear();
             std::vector<double> wp = this->cmd_joints_;
             wp.push_back(this->joint_speed_);
             wp.push_back(this->joint_accel_);
             wp.push_back(this->joint_blend_);
-            this->waypoint_ = wp;
-            async_motion_func_ = [this] {
-                if (rtde_control_->isJointsWithinSafetyLimits({waypoint_.begin(), waypoint_.end() - 3})) {
-                    spdlog::debug("Moving to joint waypoint [{:.4f}] rad", fmt::join(waypoint_, ","));
-                    rtde_control_->moveJ(std::vector<std::vector<double>>{waypoint_}, true);
+            async_motion_func_ = [this, wp = std::move(wp)] {
+                if (rtde_control_->isJointsWithinSafetyLimits({wp.begin(), wp.end() - 3})) {
+                    spdlog::debug("Moving to joint waypoint [{:.4f}] rad", fmt::join(wp, ","));
+                    rtde_control_->moveJ(std::vector<std::vector<double>>{wp}, true);
                     async_status_ = AsyncMotionStatus::WaitingMotion;
                     setIntegerParam(asyncMoveDoneIndex_, 0);
                 } else {
@@ -350,16 +348,14 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     } else if (function == waypointMoveLIndex_) {
         if (!async_motion_func_) {
             waypoint_action_enabled_ = true;
-            this->waypoint_.clear();
             std::vector<double> wp = this->cmd_pose_;
             wp.push_back(this->linear_speed_);
             wp.push_back(this->linear_accel_);
             wp.push_back(this->linear_blend_);
-            this->waypoint_ = wp;
-            async_motion_func_ = [this] {
-                if (rtde_control_->isPoseWithinSafetyLimits({waypoint_.begin(), waypoint_.end() - 3})) {
-                    spdlog::debug("Moving to cartesian waypoint [{:.4f}] m,rad", fmt::join(waypoint_, ","));
-                    rtde_control_->moveL(std::vector<std::vector<double>>{waypoint_}, true);
+            async_motion_func_ = [this, wp = std::move(wp)] {
+                if (rtde_control_->isPoseWithinSafetyLimits({wp.begin(), wp.end() - 3})) {
+                    spdlog::debug("Moving to cartesian waypoint [{:.4f}] m,rad", fmt::join(wp, ","));
+                    rtde_control_->moveL(std::vector<std::vector<double>>{wp}, true);
                     async_status_ = AsyncMotionStatus::WaitingMotion;
                     setIntegerParam(asyncMoveDoneIndex_, 0);
                 } else {
@@ -510,6 +506,10 @@ epicsExportRegistrar(RTDEControlRegister);
 }
 
 OptTrajectory read_traj_file(const std::string& filepath) {
+
+    // This is fast enough until number of lines in csv file become
+    // very large. A rough test showed it took ~5ms to parse a csv with 1000 lines.
+    // A csv with 25,000 line takes ~100ms to parse.
 
     constexpr char COMMENT_CHAR = '#';
     constexpr size_t TRAJ_ROW_SIZE = 9; // 6 positions, speed, accel, blend
