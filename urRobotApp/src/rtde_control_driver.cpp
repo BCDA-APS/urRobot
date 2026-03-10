@@ -152,6 +152,7 @@ void RTDEControl::poll() {
                         auto op_status = rtde_control_->getAsyncOperationProgressEx();
                         if (!op_status.isAsyncOperationRunning()) {
                             if (safety_bits != 1) {
+                                spdlog::debug("Asynchronous motion stopped due to safety.");
                                 async_status_ = AsyncMotionStatus::Done;
                                 async_motion_func_ = {};
                                 setIntegerParam(asyncMoveDoneIndex_, 1);
@@ -163,6 +164,7 @@ void RTDEControl::poll() {
                                 setIntegerParam(runWaypointActionIndex_, run_action_val);
                                 async_status_ = AsyncMotionStatus::WaitingAction;
                             } else {
+                                spdlog::debug("Trajectory motion complete.");
                                 async_status_ = AsyncMotionStatus::Done;
                                 async_motion_func_ = {};
                                 setIntegerParam(asyncMoveDoneIndex_, 1);
@@ -172,7 +174,7 @@ void RTDEControl::poll() {
                         int done = 0;
                         getIntegerParam(waypointActionDoneIndex_, &done);
                         if (done) {
-                            spdlog::debug("Waypoint action done");
+                            spdlog::debug("Waypoint action complete.");
                             async_status_ = AsyncMotionStatus::Done;
                             async_motion_func_ = {};
                             setIntegerParam(asyncMoveDoneIndex_, 1);
