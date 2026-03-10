@@ -18,3 +18,6 @@ $(P)Control:TCPOffset_Z.VAL
 $(P)Control:TCPOffset_Roll.VAL
 $(P)Control:TCPOffset_Pitch.VAL
 $(P)Control:TCPOffset_Yaw.VAL
+
+$(P)Control:TrajFile.VAL
+$(P)Control:TrajType.VAL
