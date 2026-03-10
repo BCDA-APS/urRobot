@@ -9,7 +9,7 @@ bool RTDEInOut::try_connect() {
     // We assume if there is no error, IO interface is connected
     // because the RTDEIOInterface class has no isConnected() method
     bool connected = false;
-    if (rtde_io_ == nullptr) {
+    if (!rtde_io_) {
         try {
             rtde_io_ = std::make_unique<ur_rtde::RTDEIOInterface>(robot_ip_);
             spdlog::info("Connected to UR RTDE IO interface");
@@ -20,6 +20,7 @@ bool RTDEInOut::try_connect() {
     } else {
         rtde_io_->reconnect();
         spdlog::info("Reconnecting to UR RTDE I/O interface");
+        connected = true;
     }
     return connected;
 }
@@ -112,7 +113,7 @@ asynStatus RTDEInOut::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     if (comm_ok) {
         return asynSuccess;
     } else {
-        spdlog::error("RTDE communincation error in RTDEInOut::writeInt32");
+        spdlog::error("RTDE communication error in RTDEInOut::writeInt32");
         return asynError;
     }
 }

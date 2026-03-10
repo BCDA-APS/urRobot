@@ -19,8 +19,6 @@ class URGripper : public asynPortDriver {
     bool robot_on_ = false;
 
   protected:
-    asynUser* pasynUserURRobot_;
-
     int isConnectedIndex_;
     int isOpenIndex_;
     int isClosedIndex_;

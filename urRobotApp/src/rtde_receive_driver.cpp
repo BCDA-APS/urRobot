@@ -31,7 +31,7 @@ bool RTDEReceive::try_connect() {
         if (not rtde_receive_->isConnected()) {
             spdlog::info("Reconnecting to UR RTDE Receive interface");
             rtde_receive_->reconnect();
-            connected = true; // HACK: check if reconnection worked here?
+            connected = rtde_receive_->isConnected(); // HACK: check if reconnection worked here?
         }
     }
     return connected;
@@ -204,7 +204,9 @@ asynStatus RTDEReceive::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     bool comm_ok = true;
 
     if (function == reconnectIndex_) {
+        lock();
         comm_ok = try_connect();
+        unlock();
         goto skip;
     }
 
@@ -216,12 +218,10 @@ asynStatus RTDEReceive::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 
     if (function == disconnectIndex_) {
         spdlog::info("Disconnecting from RTDE receive interface");
+        lock();
         rtde_receive_->disconnect();
-        if (not rtde_receive_->isConnected()) {
-            comm_ok = true;
-        } else {
-            comm_ok = false;
-        }
+        comm_ok = not rtde_receive_->isConnected();
+        unlock();
         goto skip;
     }
 
@@ -236,7 +236,7 @@ skip:
     if (comm_ok) {
         return asynSuccess;
     } else {
-        spdlog::error("Communincation error in RTDEReceive::writeInt32");
+        spdlog::error("Communication error in RTDEReceive::writeInt32");
         return asynError;
     }
 }

@@ -17,7 +17,6 @@ class URDashboard : public asynPortDriver {
     bool try_connect();
 
   protected:
-    asynUser* pasynUserURRobot_;
     int isConnectedIndex_;
     int closePopupIndex_;
     int popupIndex_;

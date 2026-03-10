@@ -12,6 +12,6 @@ pattern
 {"Y",          "mm",     "SM:Y",    "$(P)Control:PoseYCmd.VAL", "$(P)Receive:PoseY.VAL"}
 {"Z",          "mm",     "SM:Z",    "$(P)Control:PoseZCmd.VAL", "$(P)Receive:PoseZ.VAL"}
 {"Roll",      "deg",  "SM:Roll", "$(P)Control:PoseRollCmd.VAL", "$(P)Receive:PoseRoll.VAL"}
-{"Pitch",     "deg", "SM:Pitch", "$(P)Control:PosePitcCmd.VAL", "$(P)Receive:PosePitch.VAL"}
+{"Pitch",     "deg", "SM:Pitch", "$(P)Control:PosePitchCmd.VAL", "$(P)Receive:PosePitch.VAL"}
 {"Yaw",       "deg",   "SM:Yaw",  "$(P)Control:PoseYawCmd.VAL", "$(P)Receive:PoseYaw.VAL"}
 }

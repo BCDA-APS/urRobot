@@ -14,9 +14,6 @@ class RTDEInOut : public asynPortDriver {
     bool try_connect();
 
   protected:
-    asynUser* pasynUserURRobot_;
-
-    // rtde_io
     int speedSliderIndex_;
     int setStandardDOUTIndex_;
     int setConfigDOUTIndex_;

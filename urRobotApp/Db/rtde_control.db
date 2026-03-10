@@ -172,6 +172,7 @@ record(calcout, "$(P)Control:reset_after_async_move")
 
 record(lso, "$(P)Control:TrajFile") {
     field(DTYP, "asynOctetWrite")
+    field(PINI, 1)
     field(OUT, "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TRAJ_FILE")
     field(SIZV, 256)
 }

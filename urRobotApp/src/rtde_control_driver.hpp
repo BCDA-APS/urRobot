@@ -47,8 +47,6 @@ class RTDEControl : public asynPortDriver {
     std::function<void()> async_motion_func_;
 
   protected:
-    asynUser* pasynUserURRobot_;
-
     int disconnectIndex_;
     int reconnectIndex_;
     int isConnectedIndex_;

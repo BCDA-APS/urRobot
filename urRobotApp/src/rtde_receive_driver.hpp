@@ -15,8 +15,6 @@ class RTDEReceive : public asynPortDriver {
     bool try_connect();
 
   protected:
-    asynUser* pasynUserURRobot_;
-
     int isConnectedIndex_;
     int safetyStatusBitsIndex_;
     int runtimeStateIndex_;
