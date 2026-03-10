@@ -1,12 +1,12 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path_top10x.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/path_top10x.adl"
 	version=030111
 }
 display {
 	object {
-		x=3827
-		y=1162
+		x=1250
+		y=1119
 		width=170
 		height=265
 	}
@@ -606,4 +606,17 @@ text {
 		clr=0
 	}
 	textix="Paths"
+}
+text {
+	object {
+		x=65
+		y=5
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="$(P)"
+	align="horiz. right"
 }

@@ -771,11 +771,24 @@ text {
 	object {
 		x=0
 		y=5
-		width=200
+		width=100
 		height=20
 	}
 	"basic attribute" {
 		clr=0
 	}
-	textix="Waypoint Actions"
+	textix="Actions"
+}
+text {
+	object {
+		x=115
+		y=5
+		width=110
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="$(P)"
+	align="horiz. right"
 }

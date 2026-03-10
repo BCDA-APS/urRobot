@@ -337,3 +337,16 @@ text {
 	}
 	textix="Not Active"
 }
+text {
+	object {
+		x=220
+		y=5
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="$(P)"
+	align="horiz. right"
+}

@@ -4,8 +4,8 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>849</x>
-            <y>877</y>
+            <x>133</x>
+            <y>879</y>
             <width>535</width>
             <height>605</height>
         </rect>
@@ -1365,6 +1365,42 @@ caMenu{
                 <string>$(P)Dashboard:LoadURP</string>
             </property>
         </widget>
+        <widget class="caLabel" name="caLabel_3">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>$(P)</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>325</x>
+                    <y>5</y>
+                    <width>200</width>
+                    <height>20</height>
+                </rect>
+            </property>
+        </widget>
         <zorder>caRectangle_0</zorder>
         <zorder>caLabel_0</zorder>
         <zorder>caGraphics_0</zorder>
@@ -1377,6 +1413,7 @@ caMenu{
         <zorder>caRectangle_2</zorder>
         <zorder>caRectangle_3</zorder>
         <zorder>caRectangle_4</zorder>
+        <zorder>caLabel_3</zorder>
         <zorder>caMessageButton_0</zorder>
         <zorder>caMessageButton_1</zorder>
         <zorder>caMessageButton_2</zorder>

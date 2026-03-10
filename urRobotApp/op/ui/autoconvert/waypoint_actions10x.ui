@@ -1920,7 +1920,7 @@ caMenu{
                 </color>
             </property>
             <property name="text">
-                <string>Waypoint Actions</string>
+                <string>Actions</string>
             </property>
             <property name="fontScaleMode">
                 <enum>ESimpleLabel::WidthAndHeight</enum>
@@ -1929,12 +1929,48 @@ caMenu{
                 <rect>
                     <x>0</x>
                     <y>5</y>
-                    <width>200</width>
+                    <width>100</width>
                     <height>20</height>
                 </rect>
             </property>
             <property name="alignment">
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_12">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>$(P)</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>115</x>
+                    <y>5</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
             </property>
         </widget>
         <zorder>caLabel_0</zorder>
@@ -1950,6 +1986,7 @@ caMenu{
         <zorder>caLabel_10</zorder>
         <zorder>caRectangle_0</zorder>
         <zorder>caLabel_11</zorder>
+        <zorder>caLabel_12</zorder>
         <zorder>caRelatedDisplay_0</zorder>
         <zorder>caTextEntry_0</zorder>
         <zorder>caTextEntry_1</zorder>

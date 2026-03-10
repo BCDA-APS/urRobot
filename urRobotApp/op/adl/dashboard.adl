@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=849
-		y=877
+		x=133
+		y=879
 		width=535
 		height=605
 	}
@@ -536,4 +536,17 @@ rectangle {
 		vis="if zero"
 		chan="$(P)Dashboard:LoadURP"
 	}
+}
+text {
+	object {
+		x=325
+		y=5
+		width=200
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="$(P)"
+	align="horiz. right"
 }

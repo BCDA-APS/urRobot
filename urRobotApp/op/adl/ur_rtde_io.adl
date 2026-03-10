@@ -1,6 +1,6 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/ur_rtde_io.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/ur_rtde_io.adl"
 	version=030111
 }
 display {
@@ -673,4 +673,17 @@ text {
 	}
 	textix="AO1"
 	align="horiz. centered"
+}
+text {
+	object {
+		x=370
+		y=5
+		width=200
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="$(P)"
+	align="horiz. right"
 }

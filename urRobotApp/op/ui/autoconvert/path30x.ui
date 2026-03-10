@@ -4,10 +4,10 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>736</x>
-            <y>358</y>
-            <width>545</width>
-            <height>825</height>
+            <x>1143</x>
+            <y>819</y>
+            <width>550</width>
+            <height>870</height>
         </rect>
     </property>
     <property name="styleSheet">
@@ -110,6 +110,39 @@ caMenu{
 </string>
     </property>
     <widget class="QWidget" name="centralWidget">
+        <widget class="caGraphics" name="caRectangle_0">
+            <property name="form">
+                <enum>caGraphics::Rectangle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>600</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>39</red>
+                    <green>84</green>
+                    <blue>141</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>39</red>
+                    <green>84</green>
+                    <blue>141</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+        </widget>
         <widget class="caLabel" name="caLabel_0">
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
@@ -140,7 +173,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>105</x>
-                    <y>60</y>
+                    <y>100</y>
                     <width>60</width>
                     <height>10</height>
                 </rect>
@@ -176,7 +209,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>60</y>
+                    <y>100</y>
                     <width>40</width>
                     <height>10</height>
                 </rect>
@@ -212,7 +245,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>220</x>
-                    <y>50</y>
+                    <y>90</y>
                     <width>60</width>
                     <height>10</height>
                 </rect>
@@ -248,7 +281,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>220</x>
-                    <y>60</y>
+                    <y>100</y>
                     <width>60</width>
                     <height>10</height>
                 </rect>
@@ -287,7 +320,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -329,7 +362,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -342,7 +375,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -375,7 +408,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -405,7 +438,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -456,7 +489,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -539,7 +572,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -581,7 +614,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -594,7 +627,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -627,7 +660,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -657,7 +690,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -708,7 +741,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -791,7 +824,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -833,7 +866,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -846,7 +879,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -879,7 +912,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -909,7 +942,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -960,7 +993,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -1043,7 +1076,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1085,7 +1118,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1098,7 +1131,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1131,7 +1164,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -1161,7 +1194,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1212,7 +1245,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -1295,7 +1328,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1337,7 +1370,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1350,7 +1383,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1383,7 +1416,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -1413,7 +1446,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1464,7 +1497,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -1547,7 +1580,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1589,7 +1622,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1602,7 +1635,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1635,7 +1668,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -1665,7 +1698,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1716,7 +1749,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -1799,7 +1832,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1841,7 +1874,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -1854,7 +1887,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1887,7 +1920,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -1917,7 +1950,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -1968,7 +2001,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -2051,7 +2084,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2093,7 +2126,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2106,7 +2139,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2139,7 +2172,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -2169,7 +2202,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2220,7 +2253,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -2303,7 +2336,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2345,7 +2378,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2358,7 +2391,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2391,7 +2424,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -2421,7 +2454,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2472,7 +2505,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -2555,7 +2588,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2597,7 +2630,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2610,7 +2643,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2643,7 +2676,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -2673,7 +2706,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2724,7 +2757,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -2807,7 +2840,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2849,7 +2882,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -2862,7 +2895,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2895,7 +2928,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -2925,7 +2958,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -2976,7 +3009,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -3059,7 +3092,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3101,7 +3134,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3114,7 +3147,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3147,7 +3180,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -3177,7 +3210,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3228,7 +3261,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -3311,7 +3344,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3353,7 +3386,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3366,7 +3399,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3399,7 +3432,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -3429,7 +3462,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3480,7 +3513,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -3563,7 +3596,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3605,7 +3638,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3618,7 +3651,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3651,7 +3684,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -3681,7 +3714,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3732,7 +3765,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -3815,7 +3848,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3857,7 +3890,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -3870,7 +3903,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3903,7 +3936,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -3933,7 +3966,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -3984,7 +4017,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -4067,7 +4100,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -4109,7 +4142,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -4122,7 +4155,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -4155,7 +4188,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -4185,7 +4218,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -4236,7 +4269,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -4319,7 +4352,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -4361,7 +4394,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -4374,7 +4407,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -4407,7 +4440,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -4437,7 +4470,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -4488,7 +4521,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -4571,7 +4604,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -4613,7 +4646,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -4626,7 +4659,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -4659,7 +4692,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -4689,7 +4722,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -4740,7 +4773,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -4823,7 +4856,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -4865,7 +4898,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -4878,7 +4911,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -4911,7 +4944,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -4941,7 +4974,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -4992,7 +5025,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -5075,7 +5108,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -5117,7 +5150,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -5130,7 +5163,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -5163,7 +5196,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -5193,7 +5226,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -5244,7 +5277,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -5327,7 +5360,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -5369,7 +5402,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -5382,7 +5415,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -5415,7 +5448,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -5445,7 +5478,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -5496,7 +5529,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -5579,7 +5612,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -5621,7 +5654,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -5634,7 +5667,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -5667,7 +5700,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -5697,7 +5730,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -5748,7 +5781,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -5831,7 +5864,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -5873,7 +5906,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -5886,7 +5919,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -5919,7 +5952,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -5949,7 +5982,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -6000,7 +6033,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -6083,7 +6116,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -6125,7 +6158,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -6138,7 +6171,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -6171,7 +6204,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -6201,7 +6234,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -6252,7 +6285,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -6335,7 +6368,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -6377,7 +6410,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -6390,7 +6423,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -6423,7 +6456,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -6453,7 +6486,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -6504,7 +6537,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -6587,7 +6620,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -6629,7 +6662,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -6642,7 +6675,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -6675,7 +6708,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -6705,7 +6738,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -6756,7 +6789,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -6839,7 +6872,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -6881,7 +6914,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -6894,7 +6927,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -6927,7 +6960,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -6957,7 +6990,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -7008,7 +7041,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -7091,7 +7124,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -7133,7 +7166,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -7146,7 +7179,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -7179,7 +7212,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -7209,7 +7242,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -7260,7 +7293,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -7343,7 +7376,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -7385,7 +7418,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -7398,7 +7431,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -7431,7 +7464,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -7461,7 +7494,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -7512,7 +7545,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -7595,7 +7628,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -7637,7 +7670,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -7650,7 +7683,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>34</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -7683,7 +7716,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>107</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>60</width>
                     <height>20</height>
                 </rect>
@@ -7713,7 +7746,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -7764,7 +7797,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -7818,7 +7851,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>240</x>
-                    <y>10</y>
+                    <y>50</y>
                     <width>50</width>
                     <height>20</height>
                 </rect>
@@ -7860,7 +7893,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -7899,7 +7932,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -7938,7 +7971,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -7977,7 +8010,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8016,7 +8049,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8055,7 +8088,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8094,7 +8127,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8133,7 +8166,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8172,7 +8205,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8211,7 +8244,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8250,7 +8283,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8289,7 +8322,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8328,7 +8361,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8367,7 +8400,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8406,7 +8439,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8445,7 +8478,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8484,7 +8517,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8523,7 +8556,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8562,7 +8595,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8601,7 +8634,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8640,7 +8673,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8679,7 +8712,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8718,7 +8751,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8757,7 +8790,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8796,7 +8829,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8835,7 +8868,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8874,7 +8907,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8913,7 +8946,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8952,7 +8985,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -8991,7 +9024,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9030,7 +9063,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9069,7 +9102,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9108,7 +9141,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9147,7 +9180,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9186,7 +9219,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9225,7 +9258,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9264,7 +9297,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9303,7 +9336,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9342,7 +9375,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9381,7 +9414,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9420,7 +9453,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9459,7 +9492,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9498,7 +9531,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9537,7 +9570,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9576,7 +9609,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9615,7 +9648,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9654,7 +9687,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9693,7 +9726,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9732,7 +9765,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9771,7 +9804,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9810,7 +9843,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9849,7 +9882,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9888,7 +9921,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9927,7 +9960,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -9966,7 +9999,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10005,7 +10038,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10044,7 +10077,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10083,7 +10116,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10122,7 +10155,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10161,7 +10194,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10200,7 +10233,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10239,7 +10272,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10278,7 +10311,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10317,7 +10350,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10356,7 +10389,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10395,7 +10428,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10434,7 +10467,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10473,7 +10506,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10512,7 +10545,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10551,7 +10584,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10590,7 +10623,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10629,7 +10662,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10668,7 +10701,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10707,7 +10740,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10746,7 +10779,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10785,7 +10818,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10824,7 +10857,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10863,7 +10896,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10902,7 +10935,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10941,7 +10974,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -10980,7 +11013,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -11019,7 +11052,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -11058,7 +11091,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -11097,7 +11130,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -11136,7 +11169,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -11175,7 +11208,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -11214,7 +11247,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -11253,7 +11286,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -11292,7 +11325,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -11331,7 +11364,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>80</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>20</width>
                     <height>20</height>
                 </rect>
@@ -11367,7 +11400,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>490</x>
-                    <y>0</y>
+                    <y>40</y>
                     <width>50</width>
                     <height>20</height>
                 </rect>
@@ -11409,7 +11442,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>295</x>
-                    <y>10</y>
+                    <y>50</y>
                     <width>50</width>
                     <height>20</height>
                 </rect>
@@ -11448,7 +11481,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -11502,7 +11535,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -11556,7 +11589,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -11610,7 +11643,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -11664,7 +11697,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -11718,7 +11751,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -11772,7 +11805,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -11826,7 +11859,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -11880,7 +11913,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -11934,7 +11967,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -11988,7 +12021,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12042,7 +12075,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12096,7 +12129,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12150,7 +12183,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12204,7 +12237,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12258,7 +12291,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12312,7 +12345,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12366,7 +12399,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12420,7 +12453,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12474,7 +12507,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12528,7 +12561,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12582,7 +12615,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12636,7 +12669,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12690,7 +12723,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12744,7 +12777,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12798,7 +12831,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12852,7 +12885,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12906,7 +12939,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -12960,7 +12993,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -13014,7 +13047,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>406</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>120</width>
                     <height>20</height>
                 </rect>
@@ -13068,7 +13101,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>410</x>
-                    <y>0</y>
+                    <y>40</y>
                     <width>75</width>
                     <height>20</height>
                 </rect>
@@ -13110,7 +13143,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>0</x>
-                    <y>0</y>
+                    <y>40</y>
                     <width>200</width>
                     <height>25</height>
                 </rect>
@@ -13187,7 +13220,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>175</x>
-                    <y>50</y>
+                    <y>90</y>
                     <width>40</width>
                     <height>10</height>
                 </rect>
@@ -13197,7 +13230,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>75</y>
+                    <y>115</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13248,7 +13281,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>100</y>
+                    <y>140</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13299,7 +13332,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>125</y>
+                    <y>165</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13350,7 +13383,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>150</y>
+                    <y>190</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13401,7 +13434,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>175</y>
+                    <y>215</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13452,7 +13485,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>200</y>
+                    <y>240</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13503,7 +13536,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>225</y>
+                    <y>265</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13554,7 +13587,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>250</y>
+                    <y>290</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13605,7 +13638,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>275</y>
+                    <y>315</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13656,7 +13689,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>300</y>
+                    <y>340</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13733,7 +13766,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>50</y>
+                    <y>90</y>
                     <width>120</width>
                     <height>10</height>
                 </rect>
@@ -13769,7 +13802,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>280</x>
-                    <y>60</y>
+                    <y>100</y>
                     <width>120</width>
                     <height>10</height>
                 </rect>
@@ -13805,7 +13838,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>405</x>
-                    <y>50</y>
+                    <y>90</y>
                     <width>120</width>
                     <height>10</height>
                 </rect>
@@ -13841,7 +13874,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>405</x>
-                    <y>60</y>
+                    <y>100</y>
                     <width>120</width>
                     <height>10</height>
                 </rect>
@@ -13851,7 +13884,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>550</y>
+                    <y>590</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13902,7 +13935,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>525</y>
+                    <y>565</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -13953,7 +13986,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>500</y>
+                    <y>540</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14004,7 +14037,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>475</y>
+                    <y>515</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14055,7 +14088,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>450</y>
+                    <y>490</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14106,7 +14139,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>425</y>
+                    <y>465</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14157,7 +14190,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>400</y>
+                    <y>440</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14208,7 +14241,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>375</y>
+                    <y>415</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14259,7 +14292,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>350</y>
+                    <y>390</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14310,7 +14343,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>325</y>
+                    <y>365</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14361,7 +14394,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>800</y>
+                    <y>840</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14412,7 +14445,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>775</y>
+                    <y>815</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14463,7 +14496,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>750</y>
+                    <y>790</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14514,7 +14547,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>725</y>
+                    <y>765</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14565,7 +14598,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>700</y>
+                    <y>740</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14616,7 +14649,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>675</y>
+                    <y>715</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14667,7 +14700,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>650</y>
+                    <y>690</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14718,7 +14751,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>625</y>
+                    <y>665</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14769,7 +14802,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>600</y>
+                    <y>640</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14820,7 +14853,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>230</x>
-                    <y>575</y>
+                    <y>615</y>
                     <width>40</width>
                     <height>20</height>
                 </rect>
@@ -14900,7 +14933,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>30</y>
+                    <y>70</y>
                     <width>80</width>
                     <height>20</height>
                 </rect>
@@ -14942,7 +14975,7 @@ caMenu{
             <property name="geometry">
                 <rect>
                     <x>5</x>
-                    <y>30</y>
+                    <y>70</y>
                     <width>80</width>
                     <height>20</height>
                 </rect>
@@ -14951,6 +14984,79 @@ caMenu{
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
+        <widget class="caLabel" name="caLabel_71">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Paths</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>5</y>
+                    <width>150</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_72">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>$(P)</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignRight|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>340</x>
+                    <y>5</y>
+                    <width>200</width>
+                    <height>20</height>
+                </rect>
+            </property>
+        </widget>
+        <zorder>caRectangle_0</zorder>
         <zorder>caLabel_0</zorder>
         <zorder>caLabel_1</zorder>
         <zorder>caLabel_2</zorder>
@@ -15112,6 +15218,8 @@ caMenu{
         <zorder>caLabel_68</zorder>
         <zorder>caLabel_69</zorder>
         <zorder>caLabel_70</zorder>
+        <zorder>caLabel_71</zorder>
+        <zorder>caLabel_72</zorder>
         <zorder>caChoice_0</zorder>
         <zorder>caMenu_0</zorder>
         <zorder>caTextEntry_0</zorder>

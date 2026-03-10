@@ -1,12 +1,12 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/trajectory.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/trajectory.adl"
 	version=030111
 }
 display {
 	object {
-		x=589
-		y=1150
+		x=1267
+		y=1146
 		width=333
 		height=99
 	}
@@ -180,4 +180,17 @@ text {
 	}
 	label="STOP"
 	press_msg="1"
+}
+text {
+	object {
+		x=175
+		y=5
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="$(P)"
+	align="horiz. right"
 }

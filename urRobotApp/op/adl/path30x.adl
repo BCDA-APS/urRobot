@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=736
-		y=358
-		width=545
-		height=825
+		x=1143
+		y=819
+		width=550
+		height=870
 	}
 	clr=14
 	bclr=4
@@ -87,10 +87,21 @@ display {
 		1a7309,
 	}
 }
+rectangle {
+	object {
+		x=0
+		y=0
+		width=600
+		height=30
+	}
+	"basic attribute" {
+		clr=29
+	}
+}
 text {
 	object {
 		x=105
-		y=60
+		y=100
 		width=60
 		height=10
 	}
@@ -103,7 +114,7 @@ text {
 text {
 	object {
 		x=175
-		y=60
+		y=100
 		width=40
 		height=10
 	}
@@ -116,7 +127,7 @@ text {
 text {
 	object {
 		x=220
-		y=50
+		y=90
 		width=60
 		height=10
 	}
@@ -129,7 +140,7 @@ text {
 text {
 	object {
 		x=220
-		y=60
+		y=100
 		width=60
 		height=10
 	}
@@ -142,7 +153,7 @@ text {
 text {
 	object {
 		x=5
-		y=75
+		y=115
 		width=20
 		height=20
 	}
@@ -158,7 +169,7 @@ text {
 text {
 	object {
 		x=5
-		y=75
+		y=115
 		width=20
 		height=20
 	}
@@ -174,7 +185,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=75
+		y=115
 		width=40
 		height=20
 	}
@@ -188,7 +199,7 @@ text {
 menu {
 	object {
 		x=107
-		y=75
+		y=115
 		width=60
 		height=20
 	}
@@ -201,7 +212,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=75
+		y=115
 		width=40
 		height=20
 	}
@@ -216,7 +227,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=75
+		y=115
 		width=120
 		height=20
 	}
@@ -233,7 +244,7 @@ menu {
 text {
 	object {
 		x=5
-		y=100
+		y=140
 		width=20
 		height=20
 	}
@@ -249,7 +260,7 @@ text {
 text {
 	object {
 		x=5
-		y=100
+		y=140
 		width=20
 		height=20
 	}
@@ -265,7 +276,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=100
+		y=140
 		width=40
 		height=20
 	}
@@ -279,7 +290,7 @@ text {
 menu {
 	object {
 		x=107
-		y=100
+		y=140
 		width=60
 		height=20
 	}
@@ -292,7 +303,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=100
+		y=140
 		width=40
 		height=20
 	}
@@ -307,7 +318,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=100
+		y=140
 		width=120
 		height=20
 	}
@@ -324,7 +335,7 @@ menu {
 text {
 	object {
 		x=5
-		y=125
+		y=165
 		width=20
 		height=20
 	}
@@ -340,7 +351,7 @@ text {
 text {
 	object {
 		x=5
-		y=125
+		y=165
 		width=20
 		height=20
 	}
@@ -356,7 +367,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=125
+		y=165
 		width=40
 		height=20
 	}
@@ -370,7 +381,7 @@ text {
 menu {
 	object {
 		x=107
-		y=125
+		y=165
 		width=60
 		height=20
 	}
@@ -383,7 +394,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=125
+		y=165
 		width=40
 		height=20
 	}
@@ -398,7 +409,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=125
+		y=165
 		width=120
 		height=20
 	}
@@ -415,7 +426,7 @@ menu {
 text {
 	object {
 		x=5
-		y=150
+		y=190
 		width=20
 		height=20
 	}
@@ -431,7 +442,7 @@ text {
 text {
 	object {
 		x=5
-		y=150
+		y=190
 		width=20
 		height=20
 	}
@@ -447,7 +458,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=150
+		y=190
 		width=40
 		height=20
 	}
@@ -461,7 +472,7 @@ text {
 menu {
 	object {
 		x=107
-		y=150
+		y=190
 		width=60
 		height=20
 	}
@@ -474,7 +485,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=150
+		y=190
 		width=40
 		height=20
 	}
@@ -489,7 +500,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=150
+		y=190
 		width=120
 		height=20
 	}
@@ -506,7 +517,7 @@ menu {
 text {
 	object {
 		x=5
-		y=175
+		y=215
 		width=20
 		height=20
 	}
@@ -522,7 +533,7 @@ text {
 text {
 	object {
 		x=5
-		y=175
+		y=215
 		width=20
 		height=20
 	}
@@ -538,7 +549,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=175
+		y=215
 		width=40
 		height=20
 	}
@@ -552,7 +563,7 @@ text {
 menu {
 	object {
 		x=107
-		y=175
+		y=215
 		width=60
 		height=20
 	}
@@ -565,7 +576,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=175
+		y=215
 		width=40
 		height=20
 	}
@@ -580,7 +591,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=175
+		y=215
 		width=120
 		height=20
 	}
@@ -597,7 +608,7 @@ menu {
 text {
 	object {
 		x=5
-		y=200
+		y=240
 		width=20
 		height=20
 	}
@@ -613,7 +624,7 @@ text {
 text {
 	object {
 		x=5
-		y=200
+		y=240
 		width=20
 		height=20
 	}
@@ -629,7 +640,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=200
+		y=240
 		width=40
 		height=20
 	}
@@ -643,7 +654,7 @@ text {
 menu {
 	object {
 		x=107
-		y=200
+		y=240
 		width=60
 		height=20
 	}
@@ -656,7 +667,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=200
+		y=240
 		width=40
 		height=20
 	}
@@ -671,7 +682,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=200
+		y=240
 		width=120
 		height=20
 	}
@@ -688,7 +699,7 @@ menu {
 text {
 	object {
 		x=5
-		y=225
+		y=265
 		width=20
 		height=20
 	}
@@ -704,7 +715,7 @@ text {
 text {
 	object {
 		x=5
-		y=225
+		y=265
 		width=20
 		height=20
 	}
@@ -720,7 +731,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=225
+		y=265
 		width=40
 		height=20
 	}
@@ -734,7 +745,7 @@ text {
 menu {
 	object {
 		x=107
-		y=225
+		y=265
 		width=60
 		height=20
 	}
@@ -747,7 +758,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=225
+		y=265
 		width=40
 		height=20
 	}
@@ -762,7 +773,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=225
+		y=265
 		width=120
 		height=20
 	}
@@ -779,7 +790,7 @@ menu {
 text {
 	object {
 		x=5
-		y=250
+		y=290
 		width=20
 		height=20
 	}
@@ -795,7 +806,7 @@ text {
 text {
 	object {
 		x=5
-		y=250
+		y=290
 		width=20
 		height=20
 	}
@@ -811,7 +822,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=250
+		y=290
 		width=40
 		height=20
 	}
@@ -825,7 +836,7 @@ text {
 menu {
 	object {
 		x=107
-		y=250
+		y=290
 		width=60
 		height=20
 	}
@@ -838,7 +849,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=250
+		y=290
 		width=40
 		height=20
 	}
@@ -853,7 +864,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=250
+		y=290
 		width=120
 		height=20
 	}
@@ -870,7 +881,7 @@ menu {
 text {
 	object {
 		x=5
-		y=275
+		y=315
 		width=20
 		height=20
 	}
@@ -886,7 +897,7 @@ text {
 text {
 	object {
 		x=5
-		y=275
+		y=315
 		width=20
 		height=20
 	}
@@ -902,7 +913,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=275
+		y=315
 		width=40
 		height=20
 	}
@@ -916,7 +927,7 @@ text {
 menu {
 	object {
 		x=107
-		y=275
+		y=315
 		width=60
 		height=20
 	}
@@ -929,7 +940,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=275
+		y=315
 		width=40
 		height=20
 	}
@@ -944,7 +955,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=275
+		y=315
 		width=120
 		height=20
 	}
@@ -961,7 +972,7 @@ menu {
 text {
 	object {
 		x=5
-		y=300
+		y=340
 		width=20
 		height=20
 	}
@@ -977,7 +988,7 @@ text {
 text {
 	object {
 		x=5
-		y=300
+		y=340
 		width=20
 		height=20
 	}
@@ -993,7 +1004,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=300
+		y=340
 		width=40
 		height=20
 	}
@@ -1007,7 +1018,7 @@ text {
 menu {
 	object {
 		x=107
-		y=300
+		y=340
 		width=60
 		height=20
 	}
@@ -1020,7 +1031,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=300
+		y=340
 		width=40
 		height=20
 	}
@@ -1035,7 +1046,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=300
+		y=340
 		width=120
 		height=20
 	}
@@ -1052,7 +1063,7 @@ menu {
 text {
 	object {
 		x=5
-		y=325
+		y=365
 		width=20
 		height=20
 	}
@@ -1068,7 +1079,7 @@ text {
 text {
 	object {
 		x=5
-		y=325
+		y=365
 		width=20
 		height=20
 	}
@@ -1084,7 +1095,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=325
+		y=365
 		width=40
 		height=20
 	}
@@ -1098,7 +1109,7 @@ text {
 menu {
 	object {
 		x=107
-		y=325
+		y=365
 		width=60
 		height=20
 	}
@@ -1111,7 +1122,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=325
+		y=365
 		width=40
 		height=20
 	}
@@ -1126,7 +1137,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=325
+		y=365
 		width=120
 		height=20
 	}
@@ -1143,7 +1154,7 @@ menu {
 text {
 	object {
 		x=5
-		y=350
+		y=390
 		width=20
 		height=20
 	}
@@ -1159,7 +1170,7 @@ text {
 text {
 	object {
 		x=5
-		y=350
+		y=390
 		width=20
 		height=20
 	}
@@ -1175,7 +1186,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=350
+		y=390
 		width=40
 		height=20
 	}
@@ -1189,7 +1200,7 @@ text {
 menu {
 	object {
 		x=107
-		y=350
+		y=390
 		width=60
 		height=20
 	}
@@ -1202,7 +1213,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=350
+		y=390
 		width=40
 		height=20
 	}
@@ -1217,7 +1228,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=350
+		y=390
 		width=120
 		height=20
 	}
@@ -1234,7 +1245,7 @@ menu {
 text {
 	object {
 		x=5
-		y=375
+		y=415
 		width=20
 		height=20
 	}
@@ -1250,7 +1261,7 @@ text {
 text {
 	object {
 		x=5
-		y=375
+		y=415
 		width=20
 		height=20
 	}
@@ -1266,7 +1277,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=375
+		y=415
 		width=40
 		height=20
 	}
@@ -1280,7 +1291,7 @@ text {
 menu {
 	object {
 		x=107
-		y=375
+		y=415
 		width=60
 		height=20
 	}
@@ -1293,7 +1304,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=375
+		y=415
 		width=40
 		height=20
 	}
@@ -1308,7 +1319,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=375
+		y=415
 		width=120
 		height=20
 	}
@@ -1325,7 +1336,7 @@ menu {
 text {
 	object {
 		x=5
-		y=400
+		y=440
 		width=20
 		height=20
 	}
@@ -1341,7 +1352,7 @@ text {
 text {
 	object {
 		x=5
-		y=400
+		y=440
 		width=20
 		height=20
 	}
@@ -1357,7 +1368,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=400
+		y=440
 		width=40
 		height=20
 	}
@@ -1371,7 +1382,7 @@ text {
 menu {
 	object {
 		x=107
-		y=400
+		y=440
 		width=60
 		height=20
 	}
@@ -1384,7 +1395,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=400
+		y=440
 		width=40
 		height=20
 	}
@@ -1399,7 +1410,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=400
+		y=440
 		width=120
 		height=20
 	}
@@ -1416,7 +1427,7 @@ menu {
 text {
 	object {
 		x=5
-		y=425
+		y=465
 		width=20
 		height=20
 	}
@@ -1432,7 +1443,7 @@ text {
 text {
 	object {
 		x=5
-		y=425
+		y=465
 		width=20
 		height=20
 	}
@@ -1448,7 +1459,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=425
+		y=465
 		width=40
 		height=20
 	}
@@ -1462,7 +1473,7 @@ text {
 menu {
 	object {
 		x=107
-		y=425
+		y=465
 		width=60
 		height=20
 	}
@@ -1475,7 +1486,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=425
+		y=465
 		width=40
 		height=20
 	}
@@ -1490,7 +1501,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=425
+		y=465
 		width=120
 		height=20
 	}
@@ -1507,7 +1518,7 @@ menu {
 text {
 	object {
 		x=5
-		y=450
+		y=490
 		width=20
 		height=20
 	}
@@ -1523,7 +1534,7 @@ text {
 text {
 	object {
 		x=5
-		y=450
+		y=490
 		width=20
 		height=20
 	}
@@ -1539,7 +1550,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=450
+		y=490
 		width=40
 		height=20
 	}
@@ -1553,7 +1564,7 @@ text {
 menu {
 	object {
 		x=107
-		y=450
+		y=490
 		width=60
 		height=20
 	}
@@ -1566,7 +1577,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=450
+		y=490
 		width=40
 		height=20
 	}
@@ -1581,7 +1592,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=450
+		y=490
 		width=120
 		height=20
 	}
@@ -1598,7 +1609,7 @@ menu {
 text {
 	object {
 		x=5
-		y=475
+		y=515
 		width=20
 		height=20
 	}
@@ -1614,7 +1625,7 @@ text {
 text {
 	object {
 		x=5
-		y=475
+		y=515
 		width=20
 		height=20
 	}
@@ -1630,7 +1641,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=475
+		y=515
 		width=40
 		height=20
 	}
@@ -1644,7 +1655,7 @@ text {
 menu {
 	object {
 		x=107
-		y=475
+		y=515
 		width=60
 		height=20
 	}
@@ -1657,7 +1668,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=475
+		y=515
 		width=40
 		height=20
 	}
@@ -1672,7 +1683,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=475
+		y=515
 		width=120
 		height=20
 	}
@@ -1689,7 +1700,7 @@ menu {
 text {
 	object {
 		x=5
-		y=500
+		y=540
 		width=20
 		height=20
 	}
@@ -1705,7 +1716,7 @@ text {
 text {
 	object {
 		x=5
-		y=500
+		y=540
 		width=20
 		height=20
 	}
@@ -1721,7 +1732,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=500
+		y=540
 		width=40
 		height=20
 	}
@@ -1735,7 +1746,7 @@ text {
 menu {
 	object {
 		x=107
-		y=500
+		y=540
 		width=60
 		height=20
 	}
@@ -1748,7 +1759,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=500
+		y=540
 		width=40
 		height=20
 	}
@@ -1763,7 +1774,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=500
+		y=540
 		width=120
 		height=20
 	}
@@ -1780,7 +1791,7 @@ menu {
 text {
 	object {
 		x=5
-		y=525
+		y=565
 		width=20
 		height=20
 	}
@@ -1796,7 +1807,7 @@ text {
 text {
 	object {
 		x=5
-		y=525
+		y=565
 		width=20
 		height=20
 	}
@@ -1812,7 +1823,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=525
+		y=565
 		width=40
 		height=20
 	}
@@ -1826,7 +1837,7 @@ text {
 menu {
 	object {
 		x=107
-		y=525
+		y=565
 		width=60
 		height=20
 	}
@@ -1839,7 +1850,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=525
+		y=565
 		width=40
 		height=20
 	}
@@ -1854,7 +1865,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=525
+		y=565
 		width=120
 		height=20
 	}
@@ -1871,7 +1882,7 @@ menu {
 text {
 	object {
 		x=5
-		y=550
+		y=590
 		width=20
 		height=20
 	}
@@ -1887,7 +1898,7 @@ text {
 text {
 	object {
 		x=5
-		y=550
+		y=590
 		width=20
 		height=20
 	}
@@ -1903,7 +1914,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=550
+		y=590
 		width=40
 		height=20
 	}
@@ -1917,7 +1928,7 @@ text {
 menu {
 	object {
 		x=107
-		y=550
+		y=590
 		width=60
 		height=20
 	}
@@ -1930,7 +1941,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=550
+		y=590
 		width=40
 		height=20
 	}
@@ -1945,7 +1956,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=550
+		y=590
 		width=120
 		height=20
 	}
@@ -1962,7 +1973,7 @@ menu {
 text {
 	object {
 		x=5
-		y=575
+		y=615
 		width=20
 		height=20
 	}
@@ -1978,7 +1989,7 @@ text {
 text {
 	object {
 		x=5
-		y=575
+		y=615
 		width=20
 		height=20
 	}
@@ -1994,7 +2005,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=575
+		y=615
 		width=40
 		height=20
 	}
@@ -2008,7 +2019,7 @@ text {
 menu {
 	object {
 		x=107
-		y=575
+		y=615
 		width=60
 		height=20
 	}
@@ -2021,7 +2032,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=575
+		y=615
 		width=40
 		height=20
 	}
@@ -2036,7 +2047,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=575
+		y=615
 		width=120
 		height=20
 	}
@@ -2053,7 +2064,7 @@ menu {
 text {
 	object {
 		x=5
-		y=600
+		y=640
 		width=20
 		height=20
 	}
@@ -2069,7 +2080,7 @@ text {
 text {
 	object {
 		x=5
-		y=600
+		y=640
 		width=20
 		height=20
 	}
@@ -2085,7 +2096,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=600
+		y=640
 		width=40
 		height=20
 	}
@@ -2099,7 +2110,7 @@ text {
 menu {
 	object {
 		x=107
-		y=600
+		y=640
 		width=60
 		height=20
 	}
@@ -2112,7 +2123,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=600
+		y=640
 		width=40
 		height=20
 	}
@@ -2127,7 +2138,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=600
+		y=640
 		width=120
 		height=20
 	}
@@ -2144,7 +2155,7 @@ menu {
 text {
 	object {
 		x=5
-		y=625
+		y=665
 		width=20
 		height=20
 	}
@@ -2160,7 +2171,7 @@ text {
 text {
 	object {
 		x=5
-		y=625
+		y=665
 		width=20
 		height=20
 	}
@@ -2176,7 +2187,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=625
+		y=665
 		width=40
 		height=20
 	}
@@ -2190,7 +2201,7 @@ text {
 menu {
 	object {
 		x=107
-		y=625
+		y=665
 		width=60
 		height=20
 	}
@@ -2203,7 +2214,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=625
+		y=665
 		width=40
 		height=20
 	}
@@ -2218,7 +2229,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=625
+		y=665
 		width=120
 		height=20
 	}
@@ -2235,7 +2246,7 @@ menu {
 text {
 	object {
 		x=5
-		y=650
+		y=690
 		width=20
 		height=20
 	}
@@ -2251,7 +2262,7 @@ text {
 text {
 	object {
 		x=5
-		y=650
+		y=690
 		width=20
 		height=20
 	}
@@ -2267,7 +2278,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=650
+		y=690
 		width=40
 		height=20
 	}
@@ -2281,7 +2292,7 @@ text {
 menu {
 	object {
 		x=107
-		y=650
+		y=690
 		width=60
 		height=20
 	}
@@ -2294,7 +2305,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=650
+		y=690
 		width=40
 		height=20
 	}
@@ -2309,7 +2320,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=650
+		y=690
 		width=120
 		height=20
 	}
@@ -2326,7 +2337,7 @@ menu {
 text {
 	object {
 		x=5
-		y=675
+		y=715
 		width=20
 		height=20
 	}
@@ -2342,7 +2353,7 @@ text {
 text {
 	object {
 		x=5
-		y=675
+		y=715
 		width=20
 		height=20
 	}
@@ -2358,7 +2369,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=675
+		y=715
 		width=40
 		height=20
 	}
@@ -2372,7 +2383,7 @@ text {
 menu {
 	object {
 		x=107
-		y=675
+		y=715
 		width=60
 		height=20
 	}
@@ -2385,7 +2396,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=675
+		y=715
 		width=40
 		height=20
 	}
@@ -2400,7 +2411,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=675
+		y=715
 		width=120
 		height=20
 	}
@@ -2417,7 +2428,7 @@ menu {
 text {
 	object {
 		x=5
-		y=700
+		y=740
 		width=20
 		height=20
 	}
@@ -2433,7 +2444,7 @@ text {
 text {
 	object {
 		x=5
-		y=700
+		y=740
 		width=20
 		height=20
 	}
@@ -2449,7 +2460,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=700
+		y=740
 		width=40
 		height=20
 	}
@@ -2463,7 +2474,7 @@ text {
 menu {
 	object {
 		x=107
-		y=700
+		y=740
 		width=60
 		height=20
 	}
@@ -2476,7 +2487,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=700
+		y=740
 		width=40
 		height=20
 	}
@@ -2491,7 +2502,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=700
+		y=740
 		width=120
 		height=20
 	}
@@ -2508,7 +2519,7 @@ menu {
 text {
 	object {
 		x=5
-		y=725
+		y=765
 		width=20
 		height=20
 	}
@@ -2524,7 +2535,7 @@ text {
 text {
 	object {
 		x=5
-		y=725
+		y=765
 		width=20
 		height=20
 	}
@@ -2540,7 +2551,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=725
+		y=765
 		width=40
 		height=20
 	}
@@ -2554,7 +2565,7 @@ text {
 menu {
 	object {
 		x=107
-		y=725
+		y=765
 		width=60
 		height=20
 	}
@@ -2567,7 +2578,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=725
+		y=765
 		width=40
 		height=20
 	}
@@ -2582,7 +2593,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=725
+		y=765
 		width=120
 		height=20
 	}
@@ -2599,7 +2610,7 @@ menu {
 text {
 	object {
 		x=5
-		y=750
+		y=790
 		width=20
 		height=20
 	}
@@ -2615,7 +2626,7 @@ text {
 text {
 	object {
 		x=5
-		y=750
+		y=790
 		width=20
 		height=20
 	}
@@ -2631,7 +2642,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=750
+		y=790
 		width=40
 		height=20
 	}
@@ -2645,7 +2656,7 @@ text {
 menu {
 	object {
 		x=107
-		y=750
+		y=790
 		width=60
 		height=20
 	}
@@ -2658,7 +2669,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=750
+		y=790
 		width=40
 		height=20
 	}
@@ -2673,7 +2684,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=750
+		y=790
 		width=120
 		height=20
 	}
@@ -2690,7 +2701,7 @@ menu {
 text {
 	object {
 		x=5
-		y=775
+		y=815
 		width=20
 		height=20
 	}
@@ -2706,7 +2717,7 @@ text {
 text {
 	object {
 		x=5
-		y=775
+		y=815
 		width=20
 		height=20
 	}
@@ -2722,7 +2733,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=775
+		y=815
 		width=40
 		height=20
 	}
@@ -2736,7 +2747,7 @@ text {
 menu {
 	object {
 		x=107
-		y=775
+		y=815
 		width=60
 		height=20
 	}
@@ -2749,7 +2760,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=775
+		y=815
 		width=40
 		height=20
 	}
@@ -2764,7 +2775,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=775
+		y=815
 		width=120
 		height=20
 	}
@@ -2781,7 +2792,7 @@ menu {
 text {
 	object {
 		x=5
-		y=800
+		y=840
 		width=20
 		height=20
 	}
@@ -2797,7 +2808,7 @@ text {
 text {
 	object {
 		x=5
-		y=800
+		y=840
 		width=20
 		height=20
 	}
@@ -2813,7 +2824,7 @@ text {
 "choice button" {
 	object {
 		x=34
-		y=800
+		y=840
 		width=40
 		height=20
 	}
@@ -2827,7 +2838,7 @@ text {
 menu {
 	object {
 		x=107
-		y=800
+		y=840
 		width=60
 		height=20
 	}
@@ -2840,7 +2851,7 @@ menu {
 "text entry" {
 	object {
 		x=175
-		y=800
+		y=840
 		width=40
 		height=20
 	}
@@ -2855,7 +2866,7 @@ menu {
 "text update" {
 	object {
 		x=280
-		y=800
+		y=840
 		width=120
 		height=20
 	}
@@ -2872,7 +2883,7 @@ menu {
 "message button" {
 	object {
 		x=240
-		y=10
+		y=50
 		width=50
 		height=20
 	}
@@ -2887,7 +2898,7 @@ menu {
 oval {
 	object {
 		x=80
-		y=100
+		y=140
 		width=20
 		height=20
 	}
@@ -2902,7 +2913,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=100
+		y=140
 		width=20
 		height=20
 	}
@@ -2917,7 +2928,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=100
+		y=140
 		width=20
 		height=20
 	}
@@ -2932,7 +2943,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=125
+		y=165
 		width=20
 		height=20
 	}
@@ -2947,7 +2958,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=125
+		y=165
 		width=20
 		height=20
 	}
@@ -2962,7 +2973,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=125
+		y=165
 		width=20
 		height=20
 	}
@@ -2977,7 +2988,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=150
+		y=190
 		width=20
 		height=20
 	}
@@ -2992,7 +3003,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=150
+		y=190
 		width=20
 		height=20
 	}
@@ -3007,7 +3018,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=150
+		y=190
 		width=20
 		height=20
 	}
@@ -3022,7 +3033,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=175
+		y=215
 		width=20
 		height=20
 	}
@@ -3037,7 +3048,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=175
+		y=215
 		width=20
 		height=20
 	}
@@ -3052,7 +3063,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=175
+		y=215
 		width=20
 		height=20
 	}
@@ -3067,7 +3078,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=200
+		y=240
 		width=20
 		height=20
 	}
@@ -3082,7 +3093,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=200
+		y=240
 		width=20
 		height=20
 	}
@@ -3097,7 +3108,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=200
+		y=240
 		width=20
 		height=20
 	}
@@ -3112,7 +3123,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=225
+		y=265
 		width=20
 		height=20
 	}
@@ -3127,7 +3138,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=225
+		y=265
 		width=20
 		height=20
 	}
@@ -3142,7 +3153,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=225
+		y=265
 		width=20
 		height=20
 	}
@@ -3157,7 +3168,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=250
+		y=290
 		width=20
 		height=20
 	}
@@ -3172,7 +3183,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=250
+		y=290
 		width=20
 		height=20
 	}
@@ -3187,7 +3198,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=250
+		y=290
 		width=20
 		height=20
 	}
@@ -3202,7 +3213,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=275
+		y=315
 		width=20
 		height=20
 	}
@@ -3217,7 +3228,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=275
+		y=315
 		width=20
 		height=20
 	}
@@ -3232,7 +3243,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=275
+		y=315
 		width=20
 		height=20
 	}
@@ -3247,7 +3258,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=300
+		y=340
 		width=20
 		height=20
 	}
@@ -3262,7 +3273,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=300
+		y=340
 		width=20
 		height=20
 	}
@@ -3277,7 +3288,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=300
+		y=340
 		width=20
 		height=20
 	}
@@ -3292,7 +3303,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=325
+		y=365
 		width=20
 		height=20
 	}
@@ -3307,7 +3318,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=325
+		y=365
 		width=20
 		height=20
 	}
@@ -3322,7 +3333,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=325
+		y=365
 		width=20
 		height=20
 	}
@@ -3337,7 +3348,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=350
+		y=390
 		width=20
 		height=20
 	}
@@ -3352,7 +3363,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=350
+		y=390
 		width=20
 		height=20
 	}
@@ -3367,7 +3378,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=350
+		y=390
 		width=20
 		height=20
 	}
@@ -3382,7 +3393,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=375
+		y=415
 		width=20
 		height=20
 	}
@@ -3397,7 +3408,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=375
+		y=415
 		width=20
 		height=20
 	}
@@ -3412,7 +3423,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=375
+		y=415
 		width=20
 		height=20
 	}
@@ -3427,7 +3438,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=400
+		y=440
 		width=20
 		height=20
 	}
@@ -3442,7 +3453,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=400
+		y=440
 		width=20
 		height=20
 	}
@@ -3457,7 +3468,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=400
+		y=440
 		width=20
 		height=20
 	}
@@ -3472,7 +3483,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=425
+		y=465
 		width=20
 		height=20
 	}
@@ -3487,7 +3498,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=425
+		y=465
 		width=20
 		height=20
 	}
@@ -3502,7 +3513,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=425
+		y=465
 		width=20
 		height=20
 	}
@@ -3517,7 +3528,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=450
+		y=490
 		width=20
 		height=20
 	}
@@ -3532,7 +3543,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=450
+		y=490
 		width=20
 		height=20
 	}
@@ -3547,7 +3558,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=450
+		y=490
 		width=20
 		height=20
 	}
@@ -3562,7 +3573,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=475
+		y=515
 		width=20
 		height=20
 	}
@@ -3577,7 +3588,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=475
+		y=515
 		width=20
 		height=20
 	}
@@ -3592,7 +3603,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=475
+		y=515
 		width=20
 		height=20
 	}
@@ -3607,7 +3618,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=500
+		y=540
 		width=20
 		height=20
 	}
@@ -3622,7 +3633,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=500
+		y=540
 		width=20
 		height=20
 	}
@@ -3637,7 +3648,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=500
+		y=540
 		width=20
 		height=20
 	}
@@ -3652,7 +3663,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=525
+		y=565
 		width=20
 		height=20
 	}
@@ -3667,7 +3678,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=525
+		y=565
 		width=20
 		height=20
 	}
@@ -3682,7 +3693,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=525
+		y=565
 		width=20
 		height=20
 	}
@@ -3697,7 +3708,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=550
+		y=590
 		width=20
 		height=20
 	}
@@ -3712,7 +3723,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=550
+		y=590
 		width=20
 		height=20
 	}
@@ -3727,7 +3738,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=550
+		y=590
 		width=20
 		height=20
 	}
@@ -3742,7 +3753,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=575
+		y=615
 		width=20
 		height=20
 	}
@@ -3757,7 +3768,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=575
+		y=615
 		width=20
 		height=20
 	}
@@ -3772,7 +3783,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=575
+		y=615
 		width=20
 		height=20
 	}
@@ -3787,7 +3798,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=600
+		y=640
 		width=20
 		height=20
 	}
@@ -3802,7 +3813,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=600
+		y=640
 		width=20
 		height=20
 	}
@@ -3817,7 +3828,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=600
+		y=640
 		width=20
 		height=20
 	}
@@ -3832,7 +3843,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=625
+		y=665
 		width=20
 		height=20
 	}
@@ -3847,7 +3858,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=625
+		y=665
 		width=20
 		height=20
 	}
@@ -3862,7 +3873,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=625
+		y=665
 		width=20
 		height=20
 	}
@@ -3877,7 +3888,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=650
+		y=690
 		width=20
 		height=20
 	}
@@ -3892,7 +3903,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=650
+		y=690
 		width=20
 		height=20
 	}
@@ -3907,7 +3918,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=650
+		y=690
 		width=20
 		height=20
 	}
@@ -3922,7 +3933,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=675
+		y=715
 		width=20
 		height=20
 	}
@@ -3937,7 +3948,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=675
+		y=715
 		width=20
 		height=20
 	}
@@ -3952,7 +3963,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=675
+		y=715
 		width=20
 		height=20
 	}
@@ -3967,7 +3978,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=700
+		y=740
 		width=20
 		height=20
 	}
@@ -3982,7 +3993,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=700
+		y=740
 		width=20
 		height=20
 	}
@@ -3997,7 +4008,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=700
+		y=740
 		width=20
 		height=20
 	}
@@ -4012,7 +4023,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=725
+		y=765
 		width=20
 		height=20
 	}
@@ -4027,7 +4038,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=725
+		y=765
 		width=20
 		height=20
 	}
@@ -4042,7 +4053,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=725
+		y=765
 		width=20
 		height=20
 	}
@@ -4057,7 +4068,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=750
+		y=790
 		width=20
 		height=20
 	}
@@ -4072,7 +4083,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=750
+		y=790
 		width=20
 		height=20
 	}
@@ -4087,7 +4098,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=750
+		y=790
 		width=20
 		height=20
 	}
@@ -4102,7 +4113,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=775
+		y=815
 		width=20
 		height=20
 	}
@@ -4117,7 +4128,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=775
+		y=815
 		width=20
 		height=20
 	}
@@ -4132,7 +4143,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=775
+		y=815
 		width=20
 		height=20
 	}
@@ -4147,7 +4158,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=800
+		y=840
 		width=20
 		height=20
 	}
@@ -4162,7 +4173,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=800
+		y=840
 		width=20
 		height=20
 	}
@@ -4177,7 +4188,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=800
+		y=840
 		width=20
 		height=20
 	}
@@ -4192,7 +4203,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=75
+		y=115
 		width=20
 		height=20
 	}
@@ -4207,7 +4218,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=75
+		y=115
 		width=20
 		height=20
 	}
@@ -4222,7 +4233,7 @@ oval {
 oval {
 	object {
 		x=80
-		y=75
+		y=115
 		width=20
 		height=20
 	}
@@ -4237,7 +4248,7 @@ oval {
 "related display" {
 	object {
 		x=490
-		y=0
+		y=40
 		width=50
 		height=20
 	}
@@ -4253,7 +4264,7 @@ oval {
 "message button" {
 	object {
 		x=295
-		y=10
+		y=50
 		width=50
 		height=20
 	}
@@ -4268,7 +4279,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=75
+		y=115
 		width=120
 		height=20
 	}
@@ -4285,7 +4296,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=100
+		y=140
 		width=120
 		height=20
 	}
@@ -4302,7 +4313,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=125
+		y=165
 		width=120
 		height=20
 	}
@@ -4319,7 +4330,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=150
+		y=190
 		width=120
 		height=20
 	}
@@ -4336,7 +4347,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=175
+		y=215
 		width=120
 		height=20
 	}
@@ -4353,7 +4364,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=200
+		y=240
 		width=120
 		height=20
 	}
@@ -4370,7 +4381,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=225
+		y=265
 		width=120
 		height=20
 	}
@@ -4387,7 +4398,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=250
+		y=290
 		width=120
 		height=20
 	}
@@ -4404,7 +4415,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=275
+		y=315
 		width=120
 		height=20
 	}
@@ -4421,7 +4432,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=300
+		y=340
 		width=120
 		height=20
 	}
@@ -4438,7 +4449,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=325
+		y=365
 		width=120
 		height=20
 	}
@@ -4455,7 +4466,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=350
+		y=390
 		width=120
 		height=20
 	}
@@ -4472,7 +4483,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=375
+		y=415
 		width=120
 		height=20
 	}
@@ -4489,7 +4500,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=400
+		y=440
 		width=120
 		height=20
 	}
@@ -4506,7 +4517,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=425
+		y=465
 		width=120
 		height=20
 	}
@@ -4523,7 +4534,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=450
+		y=490
 		width=120
 		height=20
 	}
@@ -4540,7 +4551,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=475
+		y=515
 		width=120
 		height=20
 	}
@@ -4557,7 +4568,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=500
+		y=540
 		width=120
 		height=20
 	}
@@ -4574,7 +4585,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=525
+		y=565
 		width=120
 		height=20
 	}
@@ -4591,7 +4602,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=550
+		y=590
 		width=120
 		height=20
 	}
@@ -4608,7 +4619,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=575
+		y=615
 		width=120
 		height=20
 	}
@@ -4625,7 +4636,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=600
+		y=640
 		width=120
 		height=20
 	}
@@ -4642,7 +4653,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=625
+		y=665
 		width=120
 		height=20
 	}
@@ -4659,7 +4670,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=650
+		y=690
 		width=120
 		height=20
 	}
@@ -4676,7 +4687,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=675
+		y=715
 		width=120
 		height=20
 	}
@@ -4693,7 +4704,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=700
+		y=740
 		width=120
 		height=20
 	}
@@ -4710,7 +4721,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=725
+		y=765
 		width=120
 		height=20
 	}
@@ -4727,7 +4738,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=750
+		y=790
 		width=120
 		height=20
 	}
@@ -4744,7 +4755,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=775
+		y=815
 		width=120
 		height=20
 	}
@@ -4761,7 +4772,7 @@ oval {
 "text update" {
 	object {
 		x=406
-		y=800
+		y=840
 		width=120
 		height=20
 	}
@@ -4778,7 +4789,7 @@ oval {
 "related display" {
 	object {
 		x=410
-		y=0
+		y=40
 		width=75
 		height=20
 	}
@@ -4793,7 +4804,7 @@ oval {
 "text entry" {
 	object {
 		x=0
-		y=0
+		y=40
 		width=200
 		height=25
 	}
@@ -4808,7 +4819,7 @@ oval {
 text {
 	object {
 		x=175
-		y=50
+		y=90
 		width=40
 		height=10
 	}
@@ -4821,7 +4832,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=75
+		y=115
 		width=40
 		height=20
 	}
@@ -4836,7 +4847,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=100
+		y=140
 		width=40
 		height=20
 	}
@@ -4851,7 +4862,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=125
+		y=165
 		width=40
 		height=20
 	}
@@ -4866,7 +4877,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=150
+		y=190
 		width=40
 		height=20
 	}
@@ -4881,7 +4892,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=175
+		y=215
 		width=40
 		height=20
 	}
@@ -4896,7 +4907,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=200
+		y=240
 		width=40
 		height=20
 	}
@@ -4911,7 +4922,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=225
+		y=265
 		width=40
 		height=20
 	}
@@ -4926,7 +4937,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=250
+		y=290
 		width=40
 		height=20
 	}
@@ -4941,7 +4952,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=275
+		y=315
 		width=40
 		height=20
 	}
@@ -4956,7 +4967,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=300
+		y=340
 		width=40
 		height=20
 	}
@@ -4971,7 +4982,7 @@ text {
 text {
 	object {
 		x=280
-		y=50
+		y=90
 		width=120
 		height=10
 	}
@@ -4984,7 +4995,7 @@ text {
 text {
 	object {
 		x=280
-		y=60
+		y=100
 		width=120
 		height=10
 	}
@@ -4997,7 +5008,7 @@ text {
 text {
 	object {
 		x=405
-		y=50
+		y=90
 		width=120
 		height=10
 	}
@@ -5010,7 +5021,7 @@ text {
 text {
 	object {
 		x=405
-		y=60
+		y=100
 		width=120
 		height=10
 	}
@@ -5023,7 +5034,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=550
+		y=590
 		width=40
 		height=20
 	}
@@ -5038,7 +5049,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=525
+		y=565
 		width=40
 		height=20
 	}
@@ -5053,7 +5064,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=500
+		y=540
 		width=40
 		height=20
 	}
@@ -5068,7 +5079,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=475
+		y=515
 		width=40
 		height=20
 	}
@@ -5083,7 +5094,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=450
+		y=490
 		width=40
 		height=20
 	}
@@ -5098,7 +5109,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=425
+		y=465
 		width=40
 		height=20
 	}
@@ -5113,7 +5124,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=400
+		y=440
 		width=40
 		height=20
 	}
@@ -5128,7 +5139,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=375
+		y=415
 		width=40
 		height=20
 	}
@@ -5143,7 +5154,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=350
+		y=390
 		width=40
 		height=20
 	}
@@ -5158,7 +5169,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=325
+		y=365
 		width=40
 		height=20
 	}
@@ -5173,7 +5184,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=800
+		y=840
 		width=40
 		height=20
 	}
@@ -5188,7 +5199,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=775
+		y=815
 		width=40
 		height=20
 	}
@@ -5203,7 +5214,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=750
+		y=790
 		width=40
 		height=20
 	}
@@ -5218,7 +5229,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=725
+		y=765
 		width=40
 		height=20
 	}
@@ -5233,7 +5244,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=700
+		y=740
 		width=40
 		height=20
 	}
@@ -5248,7 +5259,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=675
+		y=715
 		width=40
 		height=20
 	}
@@ -5263,7 +5274,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=650
+		y=690
 		width=40
 		height=20
 	}
@@ -5278,7 +5289,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=625
+		y=665
 		width=40
 		height=20
 	}
@@ -5293,7 +5304,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=600
+		y=640
 		width=40
 		height=20
 	}
@@ -5308,7 +5319,7 @@ text {
 "text entry" {
 	object {
 		x=230
-		y=575
+		y=615
 		width=40
 		height=20
 	}
@@ -5323,7 +5334,7 @@ text {
 text {
 	object {
 		x=5
-		y=30
+		y=70
 		width=80
 		height=20
 	}
@@ -5339,7 +5350,7 @@ text {
 text {
 	object {
 		x=5
-		y=30
+		y=70
 		width=80
 		height=20
 	}
@@ -5351,4 +5362,29 @@ text {
 		chan="$(P)Control:AsyncMoveDone"
 	}
 	textix="Done"
+}
+text {
+	object {
+		x=5
+		y=5
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="Paths"
+}
+text {
+	object {
+		x=340
+		y=5
+		width=200
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="$(P)"
+	align="horiz. right"
 }

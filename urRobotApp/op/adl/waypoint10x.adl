@@ -2070,3 +2070,16 @@ text {
 	}
 	textix="Running"
 }
+text {
+	object {
+		x=250
+		y=5
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="$(P)"
+	align="horiz. right"
+}
