@@ -135,10 +135,7 @@ asynStatus URGripper::writeFloat64(asynUser* pasynUser, epicsFloat64 value) {
     bool comm_ok = true;
 
     // Check that robot is powered on
-    lock();
-    bool robot_on = robot_on_;
-    unlock();
-    if (not robot_on) {
+    if (not robot_on_) {
         spdlog::error("Robot must be powered on to use gripper");
         comm_ok = false;
         goto skip;
@@ -175,10 +172,7 @@ asynStatus URGripper::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     bool comm_ok = true;
 
     // Check that robot is powered on
-    lock();
-    bool robot_on = robot_on_;
-    unlock();
-    if (not robot_on) {
+    if (not robot_on_) {
         spdlog::error("Robot must be powered on to use gripper");
         comm_ok = false;
         goto skip;
@@ -186,9 +180,7 @@ asynStatus URGripper::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 
     if (function == connectIndex_) {
         spdlog::debug("Connecting to gripper");
-        lock();
         try_connect();
-        unlock();
     }
 
     // Check that gripper connected before continuing

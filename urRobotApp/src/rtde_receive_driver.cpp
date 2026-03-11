@@ -207,9 +207,7 @@ asynStatus RTDEReceive::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     bool comm_ok = true;
 
     if (function == reconnectIndex_) {
-        lock();
         comm_ok = try_connect();
-        unlock();
         goto skip;
     }
 
@@ -221,10 +219,8 @@ asynStatus RTDEReceive::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 
     if (function == disconnectIndex_) {
         spdlog::info("Disconnecting from RTDE receive interface");
-        lock();
         rtde_receive_->disconnect();
         comm_ok = not rtde_receive_->isConnected();
-        unlock();
         goto skip;
     }
 

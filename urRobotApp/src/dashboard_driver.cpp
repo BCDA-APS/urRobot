@@ -135,14 +135,10 @@ asynStatus URDashboard::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         }
     } else if (function == connectIndex_) {
         spdlog::debug("Connecting to dashboard server");
-        lock();
         try_connect();
-        unlock();
     } else if (function == disconnectIndex_) {
         spdlog::debug("Disconnecting from dashboard server");
-        lock();
         ur_dashboard_->disconnect();
-        unlock();
     } else if (function == shutdownIndex_) {
         spdlog::debug("Shutting down robot and controller");
         ur_dashboard_->shutdown();

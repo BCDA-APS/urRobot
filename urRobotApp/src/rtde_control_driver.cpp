@@ -271,9 +271,7 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     bool comm_ok = true;
 
     if (function == reconnectIndex_) {
-        lock();
         comm_ok = try_connect();
-        unlock();
         goto skip;
     }
 
@@ -284,11 +282,9 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     }
     if (function == disconnectIndex_) {
         spdlog::debug("Disconnecting from RTDE control interface");
-        lock();
         rtde_control_->disconnect();
         rtde_receive_->disconnect();
         comm_ok = not rtde_control_->isConnected() and not rtde_receive_->isConnected();
-        unlock();
         goto skip;
     }
 
@@ -307,11 +303,9 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
             spdlog::warn("Requested joint angles not within safety limits. No action taken.");
         }
     } else if (function == stopJIndex_) {
-        lock();
         async_motion_func_ = {};
         this->async_status_ = AsyncMotionStatus::Done;
         setIntegerParam(asyncMoveDoneIndex_, 1);
-        unlock();
         spdlog::debug("Stopping joint move");
         rtde_control_->stopJ();
     }
@@ -324,17 +318,14 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
             spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
         }
     } else if (function == stopLIndex_) {
-        lock();
         async_motion_func_ = {};
         this->async_status_ = AsyncMotionStatus::Done;
         setIntegerParam(asyncMoveDoneIndex_, 1);
-        unlock();
         spdlog::debug("Stopping linear move");
         rtde_control_->stopL();
     }
 
     else if (function == waypointMoveJIndex_) {
-        lock();
         if (!async_motion_func_) {
             waypoint_action_enabled_ = true;
             std::vector<double> wp = this->cmd_joints_;
@@ -356,9 +347,7 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         } else {
             spdlog::warn("Asynchronous motion already in progress...please wait");
         }
-        unlock();
     } else if (function == waypointMoveLIndex_) {
-        lock();
         if (!async_motion_func_) {
             waypoint_action_enabled_ = true;
             std::vector<double> wp = this->cmd_pose_;
@@ -380,7 +369,6 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         } else {
             spdlog::warn("Asynchronous motion already in progress...please wait");
         }
-        unlock();
     }
 
     else if (function == trajTypeIndex_) {
@@ -389,7 +377,6 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     }
 
     else if (function == trajMoveIndex_) {
-        lock();
         if (!async_motion_func_) {
             if (auto traj = read_traj_file(traj_file_path_); traj) {
                 spdlog::debug("Successfully read {}", traj_file_path_);
@@ -428,7 +415,6 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         } else {
             spdlog::warn("Asynchronous motion already in progress...please wait");
         }
-        unlock();
     }
 
     else if (function == waypointActionDoneIndex_) {
