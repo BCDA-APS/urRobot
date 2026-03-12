@@ -212,7 +212,7 @@ record(ao, "$(P)Control:JointSpeed")
     field(DESC, "Joint speeds for moveJ")
     field(DTYP, "asynFloat64")
     field(PREC, 2)
-    field(EGU, "rad/s")
+    field(EGU, "deg/s")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))JOINT_SPEED")
 }
 
@@ -221,7 +221,7 @@ record(ao, "$(P)Control:JointAcceleration")
     field(DESC, "Joint accelerations for moveJ")
     field(DTYP, "asynFloat64")
     field(PREC, 2)
-    field(EGU, "rad/s/s")
+    field(EGU, "deg/s/s")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))JOINT_ACCELERATION")
 }
 
@@ -230,7 +230,7 @@ record(ao, "$(P)Control:JointBlend")
     field(DESC, "Blend radius for joint paths")
     field(DTYP, "asynFloat64")
     field(PREC, 2)
-    field(EGU, "m")
+    field(EGU, "mm")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))JOINT_BLEND")
 }
 
@@ -576,7 +576,7 @@ record(ao, "$(P)Control:LinearSpeed")
     field(DESC, "Linear speed for moveL")
     field(DTYP, "asynFloat64")
     field(PREC, 3)
-    field(EGU, "m/s")
+    field(EGU, "mm/s")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))LINEAR_SPEED")
 }
 
@@ -585,7 +585,7 @@ record(ao, "$(P)Control:LinearAcceleration")
     field(DESC, "Linear acceleration for moveL")
     field(DTYP, "asynFloat64")
     field(PREC, 3)
-    field(EGU, "m/s/s")
+    field(EGU, "mm/s/s")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))LINEAR_ACCELERATION")
 }
 
@@ -594,7 +594,7 @@ record(ao, "$(P)Control:LinearBlend")
     field(DESC, "Linear blend for moveL paths")
     field(DTYP, "asynFloat64")
     field(PREC, 3)
-    field(EGU, "m")
+    field(EGU, "mm")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))LINEAR_BLEND")
 }
 

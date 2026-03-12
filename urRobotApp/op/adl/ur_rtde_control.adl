@@ -1,12 +1,12 @@
 
 file {
-	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/ur_rtde_control.adl"
+	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/ur_rtde_control.adl"
 	version=030111
 }
 display {
 	object {
-		x=705
-		y=912
+		x=695
+		y=904
 		width=825
 		height=690
 	}
@@ -2954,4 +2954,172 @@ text {
 	}
 	textix="$(P)"
 	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=590
+		y=500
+		width=60
+		height=20
+	}
+	control {
+		chan="$(P)Control:LinearSpeed.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=660
+		y=500
+		width=60
+		height=20
+	}
+	control {
+		chan="$(P)Control:LinearAcceleration.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=590
+		y=485
+		width=60
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Speed"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=660
+		y=485
+		width=60
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Accel"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=730
+		y=500
+		width=60
+		height=20
+	}
+	control {
+		chan="$(P)Control:LinearBlend.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=730
+		y=485
+		width=60
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Blend"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=590
+		y=280
+		width=60
+		height=20
+	}
+	control {
+		chan="$(P)Control:JointSpeed.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=660
+		y=280
+		width=60
+		height=20
+	}
+	control {
+		chan="$(P)Control:JointAcceleration.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=590
+		y=265
+		width=60
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Speed"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=660
+		y=265
+		width=60
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Accel"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=730
+		y=280
+		width=60
+		height=20
+	}
+	control {
+		chan="$(P)Control:JointBlend.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=730
+		y=265
+		width=60
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Blend"
+	align="horiz. centered"
 }

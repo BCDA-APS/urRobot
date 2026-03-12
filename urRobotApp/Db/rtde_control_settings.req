@@ -21,3 +21,11 @@ $(P)Control:TCPOffset_Yaw.VAL
 
 $(P)Control:TrajFile.VAL
 $(P)Control:TrajType.VAL
+
+$(P)Control:JointSpeed.VAL
+$(P)Control:JointAcceleration.VAL
+$(P)Control:JointBlend.VAL
+
+$(P)Control:LinearSpeed.VAL
+$(P)Control:LinearAcceleration.VAL
+$(P)Control:LinearBlend.VAL

@@ -68,17 +68,17 @@ record(ao, "$(P)WaypointJ:$(N):J6")
 
 record(ao, "$(P)WaypointJ:$(N):Speed")
 {
-    field(VAL, "$(SPEED=0.5)")
+    field(VAL, "$(SPEED=50.0)")
     field(PREC, 2)
-    field(EGU, "rad/s")
+    field(EGU, "deg/s")
     field(FLNK, "$(P)WaypointJ:$(N):SetEnabled.PROC")
 }
 
 record(ao, "$(P)WaypointJ:$(N):Acceleration")
 {
-    field(VAL, "$(ACCEL=1.0)")
+    field(VAL, "$(ACCEL=100.0)")
     field(PREC, 2)
-    field(EGU, "rad/s/s")
+    field(EGU, "deg/s/s")
     field(FLNK, "$(P)WaypointJ:$(N):SetEnabled.PROC")
 }
 
@@ -86,7 +86,7 @@ record(ao, "$(P)WaypointJ:$(N):Blend")
 {
     field(VAL, "$(BLEND=0.0)")
     field(PREC, 2)
-    field(EGU, "m")
+    field(EGU, "mm")
     field(FLNK, "$(P)WaypointJ:$(N):SetEnabled.PROC")
 }
 

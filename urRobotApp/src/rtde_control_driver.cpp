@@ -233,26 +233,28 @@ asynStatus RTDEControl::writeFloat64(asynUser* pasynUser, epicsFloat64 value) {
     }
 
     // Dynamics for joint moves (moveJ)
+    // convert from deg -> rad
     else if (function == jointSpeedIndex_) {
-        this->joint_speed_ = value;
+        this->joint_speed_ = value * M_PI / 180.0;
         spdlog::debug("Setting joint speed to {}", joint_speed_);
     } else if (function == jointAccelIndex_) {
-        this->joint_accel_ = value;
+        this->joint_accel_ = value * M_PI / 180.0;
         spdlog::debug("Setting joint acceleration to {}", joint_accel_);
     } else if (function == jointBlendIndex_) {
-        this->joint_blend_ = value;
+        this->joint_blend_ = value / 1000.0;
         spdlog::debug("Setting joint blend to {}", joint_blend_);
     }
 
     // Dynamics for linear moves (moveL)
+    // convert from m -> mm
     else if (function == linearSpeedIndex_) {
-        this->linear_speed_ = value;
+        this->linear_speed_ = value / 1000.0;
         spdlog::debug("Setting linear speed to {}", linear_speed_);
     } else if (function == linearAccelIndex_) {
-        this->linear_accel_ = value;
+        this->linear_accel_ = value / 1000.0;
         spdlog::debug("Setting linear acceleration to {}", linear_accel_);
     } else if (function == linearBlendIndex_) {
-        this->linear_blend_ = value;
+        this->linear_blend_ = value / 1000.0;
         spdlog::debug("Setting linear blend to {}", linear_blend_);
     }
 

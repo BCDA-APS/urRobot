@@ -104,92 +104,86 @@ void RTDEReceive::poll() {
     while (true) {
         lock();
 
-        if (rtde_receive_ != nullptr) {
+        if (rtde_receive_ && rtde_receive_->isConnected()) {
+            setIntegerParam(isConnectedIndex_, 1);
 
-            if (rtde_receive_->isConnected()) {
-                setIntegerParam(isConnectedIndex_, 1);
+            setDoubleParam(controllerTimestampIndex_, rtde_receive_->getTimestamp());
+            setIntegerParam(safetyStatusBitsIndex_, rtde_receive_->getSafetyStatusBits());
+            setIntegerParam(runtimeStateIndex_, rtde_receive_->getRuntimeState());
+            setIntegerParam(robotModeIndex_, rtde_receive_->getRobotMode());
+            setIntegerParam(safetyModeIndex_, rtde_receive_->getSafetyMode());
+            setIntegerParam(digitalInputBitsIndex_, rtde_receive_->getActualDigitalInputBits());
+            setIntegerParam(digitalOutputBitsIndex_, rtde_receive_->getActualDigitalOutputBits());
+            setDoubleParam(stdAnalogInput0Index_, rtde_receive_->getStandardAnalogInput0());
+            setDoubleParam(stdAnalogInput1Index_, rtde_receive_->getStandardAnalogInput1());
+            setDoubleParam(stdAnalogOutput0Index_, rtde_receive_->getStandardAnalogOutput0());
+            setDoubleParam(stdAnalogOutput1Index_, rtde_receive_->getStandardAnalogOutput1());
+            setDoubleParam(speedScalingIndex_, rtde_receive_->getSpeedScaling());
+            setDoubleParam(targetSpeedFractionIndex_, rtde_receive_->getTargetSpeedFraction());
+            setDoubleParam(actualMomentumIndex_, rtde_receive_->getActualMomentum());
+            setDoubleParam(actualMainVoltageIndex_, rtde_receive_->getActualMainVoltage());
+            setDoubleParam(actualRobotVoltageIndex_, rtde_receive_->getActualRobotVoltage());
+            setDoubleParam(actualRobotCurrentIndex_, rtde_receive_->getActualRobotCurrent());
 
-                setDoubleParam(controllerTimestampIndex_, rtde_receive_->getTimestamp());
-                setIntegerParam(safetyStatusBitsIndex_, rtde_receive_->getSafetyStatusBits());
-                setIntegerParam(runtimeStateIndex_, rtde_receive_->getRuntimeState());
-                setIntegerParam(robotModeIndex_, rtde_receive_->getRobotMode());
-                setIntegerParam(safetyModeIndex_, rtde_receive_->getSafetyMode());
-                setIntegerParam(digitalInputBitsIndex_, rtde_receive_->getActualDigitalInputBits());
-                setIntegerParam(digitalOutputBitsIndex_, rtde_receive_->getActualDigitalOutputBits());
-                setDoubleParam(stdAnalogInput0Index_, rtde_receive_->getStandardAnalogInput0());
-                setDoubleParam(stdAnalogInput1Index_, rtde_receive_->getStandardAnalogInput1());
-                setDoubleParam(stdAnalogOutput0Index_, rtde_receive_->getStandardAnalogOutput0());
-                setDoubleParam(stdAnalogOutput1Index_, rtde_receive_->getStandardAnalogOutput1());
-                setDoubleParam(speedScalingIndex_, rtde_receive_->getSpeedScaling());
-                setDoubleParam(targetSpeedFractionIndex_, rtde_receive_->getTargetSpeedFraction());
-                setDoubleParam(actualMomentumIndex_, rtde_receive_->getActualMomentum());
-                setDoubleParam(actualMainVoltageIndex_, rtde_receive_->getActualMainVoltage());
-                setDoubleParam(actualRobotVoltageIndex_, rtde_receive_->getActualRobotVoltage());
-                setDoubleParam(actualRobotCurrentIndex_, rtde_receive_->getActualRobotCurrent());
+            joint_modes_vec = rtde_receive_->getJointMode();
+            doCallbacksInt32Array(joint_modes_vec.data(), NUM_JOINTS, jointModesIndex_, 0);
 
-                joint_modes_vec = rtde_receive_->getJointMode();
-                doCallbacksInt32Array(joint_modes_vec.data(), NUM_JOINTS, jointModesIndex_, 0);
+            vec_f64 = rtde_receive_->getActualToolAccelerometer();
+            doCallbacksFloat64Array(vec_f64.data(), 3, actualToolAccelIndex_, 0);
 
-                vec_f64 = rtde_receive_->getActualToolAccelerometer();
-                doCallbacksFloat64Array(vec_f64.data(), 3, actualToolAccelIndex_, 0);
+            vec_f64 = rtde_receive_->getActualQ();
+            for (double& j : vec_f64)
+                j *= 180.0 / M_PI; // convert to degrees
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, 0);
 
-                vec_f64 = rtde_receive_->getActualQ();
-                for (double& j : vec_f64)
-                    j *= 180.0 / M_PI; // convert to degrees
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, 0);
+            vec_f64 = rtde_receive_->getActualTCPPose();
+            for (size_t i = 0; i < 3; i++)
+                vec_f64[i] *= 1000.0; // m->mm
+            for (size_t i = 3; i < 6; i++)
+                vec_f64[i] *= 180 / M_PI; // rad->deg
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
 
-                vec_f64 = rtde_receive_->getActualTCPPose();
-                for (size_t i = 0; i < 3; i++)
-                    vec_f64[i] *= 1000.0; // m->mm
-                for (size_t i = 3; i < 6; i++)
-                    vec_f64[i] *= 180 / M_PI; // rad->deg
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
+            vec_f64 = rtde_receive_->getActualQd();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVelIndex_, 0);
 
-                vec_f64 = rtde_receive_->getActualQd();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVelIndex_, 0);
+            vec_f64 = rtde_receive_->getActualCurrent();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointCurrentsIndex_, 0);
 
-                vec_f64 = rtde_receive_->getActualCurrent();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointCurrentsIndex_, 0);
+            vec_f64 = rtde_receive_->getJointControlOutput();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointControlCurrentsIndex_, 0);
 
-                vec_f64 = rtde_receive_->getJointControlOutput();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointControlCurrentsIndex_, 0);
+            vec_f64 = rtde_receive_->getActualTCPSpeed();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPSpeedIndex_, 0);
 
-                vec_f64 = rtde_receive_->getActualTCPSpeed();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPSpeedIndex_, 0);
+            vec_f64 = rtde_receive_->getActualTCPForce();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPForceIndex_, 0);
 
-                vec_f64 = rtde_receive_->getActualTCPForce();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPForceIndex_, 0);
+            vec_f64 = rtde_receive_->getTargetQ();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointPosIndex_, 0);
 
-                vec_f64 = rtde_receive_->getTargetQ();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointPosIndex_, 0);
+            vec_f64 = rtde_receive_->getTargetQd();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointVelIndex_, 0);
 
-                vec_f64 = rtde_receive_->getTargetQd();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointVelIndex_, 0);
+            vec_f64 = rtde_receive_->getTargetQdd();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointAccelIndex_, 0);
 
-                vec_f64 = rtde_receive_->getTargetQdd();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointAccelIndex_, 0);
+            vec_f64 = rtde_receive_->getTargetCurrent();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointCurrentsIndex_, 0);
 
-                vec_f64 = rtde_receive_->getTargetCurrent();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointCurrentsIndex_, 0);
+            vec_f64 = rtde_receive_->getTargetMoment();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointMomentsIndex_, 0);
 
-                vec_f64 = rtde_receive_->getTargetMoment();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetJointMomentsIndex_, 0);
+            vec_f64 = rtde_receive_->getTargetTCPPose();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetTCPPoseIndex_, 0);
 
-                vec_f64 = rtde_receive_->getTargetTCPPose();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetTCPPoseIndex_, 0);
+            vec_f64 = rtde_receive_->getTargetTCPSpeed();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetTCPSpeedIndex_, 0);
 
-                vec_f64 = rtde_receive_->getTargetTCPSpeed();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, targetTCPSpeedIndex_, 0);
+            vec_f64 = rtde_receive_->getJointTemperatures();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointTemperaturesIndex_, 0);
 
-                vec_f64 = rtde_receive_->getJointTemperatures();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, jointTemperaturesIndex_, 0);
-
-                vec_f64 = rtde_receive_->getActualJointVoltage();
-                doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVoltagesIndex_, 0);
-
-            } else {
-                setIntegerParam(isConnectedIndex_, 0);
-            }
+            vec_f64 = rtde_receive_->getActualJointVoltage();
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVoltagesIndex_, 0);
 
         } else {
             setIntegerParam(isConnectedIndex_, 0);
@@ -211,7 +205,7 @@ asynStatus RTDEReceive::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         goto skip;
     }
 
-    if (rtde_receive_ == nullptr) {
+    if (!rtde_receive_) {
         spdlog::error("RTDE Receive interface not initialized");
         comm_ok = false;
         goto skip;
