@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=695
-		y=904
+		x=685
+		y=896
 		width=825
 		height=690
 	}
@@ -2957,8 +2957,8 @@ text {
 }
 "text entry" {
 	object {
-		x=590
-		y=500
+		x=660
+		y=505
 		width=60
 		height=20
 	}
@@ -2972,8 +2972,8 @@ text {
 }
 "text entry" {
 	object {
-		x=660
-		y=500
+		x=730
+		y=505
 		width=60
 		height=20
 	}
@@ -2987,8 +2987,8 @@ text {
 }
 text {
 	object {
-		x=590
-		y=485
+		x=660
+		y=490
 		width=60
 		height=15
 	}
@@ -3000,8 +3000,8 @@ text {
 }
 text {
 	object {
-		x=660
-		y=485
+		x=730
+		y=490
 		width=60
 		height=15
 	}
@@ -3013,36 +3013,8 @@ text {
 }
 "text entry" {
 	object {
-		x=730
-		y=500
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Control:LinearBlend.VAL"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=730
-		y=485
-		width=60
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Blend"
-	align="horiz. centered"
-}
-"text entry" {
-	object {
-		x=590
-		y=280
+		x=660
+		y=285
 		width=60
 		height=20
 	}
@@ -3056,8 +3028,8 @@ text {
 }
 "text entry" {
 	object {
-		x=660
-		y=280
+		x=730
+		y=285
 		width=60
 		height=20
 	}
@@ -3071,8 +3043,8 @@ text {
 }
 text {
 	object {
-		x=590
-		y=265
+		x=660
+		y=270
 		width=60
 		height=15
 	}
@@ -3084,8 +3056,8 @@ text {
 }
 text {
 	object {
-		x=660
-		y=265
+		x=730
+		y=270
 		width=60
 		height=15
 	}
@@ -3093,33 +3065,5 @@ text {
 		clr=14
 	}
 	textix="Accel"
-	align="horiz. centered"
-}
-"text entry" {
-	object {
-		x=730
-		y=280
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)Control:JointBlend.VAL"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=730
-		y=265
-		width=60
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Blend"
 	align="horiz. centered"
 }
