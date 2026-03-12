@@ -1,10 +1,11 @@
 #pragma once
 #include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/rtde_receive_interface.h"
+#include <optional>
 #include <asynPortDriver.h>
 
 enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
-enum class TrajectoryType : int { Joint, Cartesian };
+enum class MotionType : int { Joint, Cartesian };
 
 class RTDEControl : public asynPortDriver {
   public:
@@ -34,17 +35,32 @@ class RTDEControl : public asynPortDriver {
     // Parameters for moveJ and moveL
     double joint_speed_ = 0.5;   // rad/s
     double joint_accel_ = 1.4;   // rad/s/s
-    double joint_blend_ = 0.0;   // m?
+    double joint_blend_ = 0.0;   // m
     double linear_speed_ = 0.05; // m/s
     double linear_accel_ = 0.5;  // m/s/s
-    double linear_blend_ = 0.0;  // m?
+    double linear_blend_ = 0.0;  // m
 
     // handle asynchronous motion through paths, etc.
-    AsyncMotionStatus async_status_ = AsyncMotionStatus::Done;
-    TrajectoryType traj_type_ = TrajectoryType::Joint;
-    bool waypoint_action_enabled_ = true;
+    AsyncMotionStatus motion_status_ = AsyncMotionStatus::Done;
+    MotionType traj_type_ = MotionType::Joint;
     std::string traj_file_path_;
-    std::function<void()> async_motion_func_;
+
+    struct MotionTask {
+        MotionType type;
+        bool action;
+    };
+    std::optional<MotionTask> pending_motion_;
+
+    void set_motion_done() {
+        motion_status_ = AsyncMotionStatus::Done;
+        setIntegerParam(asyncMoveDoneIndex_, 1);
+        pending_motion_.reset();
+    }
+
+    void set_motion_start() {
+        motion_status_ = AsyncMotionStatus::WaitingMotion;
+        setIntegerParam(asyncMoveDoneIndex_, 0);
+    }
 
   protected:
     int disconnectIndex_;
