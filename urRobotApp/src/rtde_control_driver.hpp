@@ -1,97 +1,138 @@
+/// @file rtde_control_driver.hpp
+/// @brief asynPortDriver for UR robot motion control via the ur_rtde library.
+///
+/// Provides moveJ/moveL commands, waypoint-based motion with optional actions,
+/// and CSV trajectory execution. Monitors async motion progress in a poll thread.
+
 #pragma once
 #include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/rtde_receive_interface.h"
 #include <optional>
 #include <asynPortDriver.h>
 
+/// State machine for tracking asynchronous motion progress in the poll thread.
+///   Done → WaitingMotion → WaitingAction → Done
+/// WaitingAction is only entered when the motion has an associated waypoint action.
 enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
+
+/// Whether a motion command targets joint space (moveJ) or Cartesian space (moveL).
 enum class MotionType : int { Joint, Cartesian };
 
+/// asynPortDriver that wraps ur_rtde::RTDEControlInterface for robot motion.
+///
+/// A background poll thread monitors async operation progress via
+/// getAsyncOperationProgressEx() and drives the AsyncMotionStatus state machine.
+/// Safety status bits are checked each poll cycle; active motion is aborted on
+/// any safety event.
 class RTDEControl : public asynPortDriver {
   public:
     RTDEControl(const char* asyn_port_name, const char* robot_port_name, double poll_period);
     asynStatus writeFloat64(asynUser* pasynUser, epicsFloat64 value) override;
     asynStatus writeInt32(asynUser* pasynUser, epicsInt32 value) override;
     asynStatus writeOctet(asynUser* pasynUser, const char* value, size_t maxChars, size_t* nActual) override;
+
+    /// Poll thread entry point. Runs forever, checking async motion status
+    /// and updating asyn parameters each cycle.
     void poll(void);
 
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
-    std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_;
+    std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_; ///< used for safety bit checks
 
     const std::string robot_ip_ = "0.0.0.0";
-    const double poll_period_ = 0.0;
+    const double poll_period_ = 0.0; ///< seconds between poll cycles
+
+    /// Check dashboard for RUNNING mode, then connect (or reconnect) RTDE interfaces.
     bool try_connect();
 
-    // Commanded joint angles
+    /// Commanded joint angles (radians)
     std::vector<double> cmd_joints_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
-    // Commanded end-effector pose (x,y,z,roll,pitch,yaw)
+    /// Commanded end-effector pose: x,y,z (meters), roll,pitch,yaw (radians)
     std::vector<double> cmd_pose_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
-    // TCP pose offset
+    /// TCP pose offset: x,y,z (meters), roll,pitch,yaw (radians)
     std::vector<double> tcp_offset_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
-    // Parameters for moveJ and moveL
-    double joint_speed_ = 0.5;   // rad/s
-    double joint_accel_ = 1.4;   // rad/s/s
-    double joint_blend_ = 0.0;   // m
-    double linear_speed_ = 0.05; // m/s
-    double linear_accel_ = 0.5;  // m/s/s
-    double linear_blend_ = 0.0;  // m
+    /// Dynamics for moveJ (all in rad/s, rad/s^2, meters)
+    double joint_speed_ = 0.5;
+    double joint_accel_ = 1.4;
+    double joint_blend_ = 0.0;
 
-    // handle asynchronous motion through paths, etc.
+    /// Dynamics for moveL (all in m/s, m/s^2, meters)
+    double linear_speed_ = 0.05;
+    double linear_accel_ = 0.5;
+    double linear_blend_ = 0.0;
+
+    /// --- Async motion state machine ---
+
     AsyncMotionStatus motion_status_ = AsyncMotionStatus::Done;
-    MotionType traj_type_ = MotionType::Joint;
-    std::string traj_file_path_;
 
+    /// A pending motion request, set by writeInt32 and consumed by the poll thread.
     struct MotionTask {
-        MotionType type;
-        bool action;
+        MotionType type;  ///< Joint or Cartesian
+        bool action;      ///< true if a waypoint action should run after the move
     };
     std::optional<MotionTask> pending_motion_;
 
-    void set_motion_done() {
+    /// Mark async motion as complete: set status to Done, signal asyncMoveDone=1,
+    /// and clear the pending motion task.
+    void set_motion_task_done() {
         motion_status_ = AsyncMotionStatus::Done;
         setIntegerParam(asyncMoveDoneIndex_, 1);
         pending_motion_.reset();
     }
 
-    void set_motion_start() {
-        motion_status_ = AsyncMotionStatus::WaitingMotion;
-        setIntegerParam(asyncMoveDoneIndex_, 0);
-    }
+    /// --- Trajectory (CSV file) motion ---
+
+    MotionType traj_type_ = MotionType::Joint;
+    std::string traj_file_path_;
 
   protected:
+    /// asyn parameter indices — each maps to a named parameter string registered
+    /// in the constructor via createParam(). See rtde_control.db for the
+    /// corresponding EPICS records.
+
+    /// Connection management
     int disconnectIndex_;
     int reconnectIndex_;
     int isConnectedIndex_;
     int isSteadyIndex_;
-    int actualQIndex_;
-    int actualTCPPoseIndex_;
+
+    /// Joint-space motion
     int moveJIndex_;
     int stopJIndex_;
-    int moveLIndex_;
-    int stopLIndex_;
-    int jointCmdIndex_;
-    int poseCmdIndex_;
-    int tcpOffsetIndex_;
-    int reuploadCtrlScriptIndex_;
-    int stopCtrlScriptIndex_;
-    int asyncMoveDoneIndex_;
+    int jointCmdIndex_;          ///< per-joint commanded angle (addr 0-5)
+    int actualQIndex_;           ///< actual joint angles (float64 array)
     int jointSpeedIndex_;
     int jointAccelIndex_;
     int jointBlendIndex_;
+
+    /// Cartesian-space motion
+    int moveLIndex_;
+    int stopLIndex_;
+    int poseCmdIndex_;           ///< per-axis commanded pose (addr 0-5)
+    int actualTCPPoseIndex_;     ///< actual TCP pose (float64 array)
+    int tcpOffsetIndex_;         ///< per-axis TCP offset (addr 0-5)
     int linearSpeedIndex_;
     int linearAccelIndex_;
     int linearBlendIndex_;
-    int waypointMoveJIndex_;
-    int waypointMoveLIndex_;
-    int runWaypointActionIndex_;
-    int waypointActionDoneIndex_;
-    int teachModeIndex_;
-    int triggerProtStopIndex_;
+
+    /// Async motion / waypoints
+    int asyncMoveDoneIndex_;     ///< 1 when no async motion in progress
+    int waypointMoveJIndex_;     ///< moveJ with post-move action
+    int waypointMoveLIndex_;     ///< moveL with post-move action
+    int runWaypointActionIndex_; ///< toggled to trigger waypoint action processing
+    int waypointActionDoneIndex_;///< set to 1 by action chain when action completes
+
+    /// Trajectory file motion
     int trajFileIndex_;
     int trajTypeIndex_;
     int trajMoveIndex_;
+
+    /// Script / safety
+    int reuploadCtrlScriptIndex_;
+    int stopCtrlScriptIndex_;
+    int teachModeIndex_;
+    int triggerProtStopIndex_;
 };
