@@ -1,44 +1,79 @@
+/// @file gripper_driver.hpp
+/// @brief asynPortDriver for Robotiq Hand-E gripper control via the ur_rtde library.
+///
+/// Provides open/close commands, speed and force settings, position read-back,
+/// auto-calibration, and configurable position units (device, normalized,
+/// percent, mm). A background poll thread monitors gripper state including
+/// object detection status. Requires the robot to be powered on (checks
+/// robot mode via a Dashboard Server connection).
+
 #pragma once
 #include "ur_rtde/dashboard_client.h"
 #include "ur_rtde/robotiq_gripper.h"
 #include <asynPortDriver.h>
 
+/// asynPortDriver that wraps ur_rtde::RobotiqGripper for Hand-E gripper control.
+///
+/// A background poll thread reads gripper state (position, open/closed,
+/// object detection) each cycle. Before any gripper operation, the driver
+/// verifies the robot is powered on by querying robot mode through a
+/// dedicated DashboardClient connection.
 class URGripper : public asynPortDriver {
   public:
     URGripper(const char* asyn_port_name, const char* robot_port_name, double poll_period);
+
+    /// Poll thread entry point. Runs forever, reading gripper status
+    /// and updating asyn parameters each cycle.
     void poll(void);
+
     asynStatus writeInt32(asynUser* pasynUser, epicsInt32 value) override;
     asynStatus writeFloat64(asynUser* pasynUser, epicsFloat64 value) override;
 
   private:
     std::unique_ptr<ur_rtde::RobotiqGripper> gripper_;
-    std::unique_ptr<ur_rtde::DashboardClient> ur_dashboard_;
+    std::unique_ptr<ur_rtde::DashboardClient> ur_dashboard_; ///< used to check robot power state
     const std::string robot_ip_ = "";
-    const double poll_period_ = 0.0;
+    const double poll_period_ = 0.0; ///< seconds between poll cycles
+
+    /// Verify robot is powered on, then connect to the gripper.
     bool try_connect();
-    bool robot_on_ = false;
+
+    bool robot_on_ = false; ///< cached robot power state from last poll
 
   protected:
-    int isConnectedIndex_;
-    int isOpenIndex_;
-    int isClosedIndex_;
-    int isStoppedInnerIndex_;
-    int isStoppedOuterIndex_;
-    int isActiveIndex_;
-    int connectIndex_;
-    int activateIndex_;
-    int openIndex_;
-    int closeIndex_;
-    int setSpeedIndex_;
-    int setForceIndex_;
-    int autoCalibrateIndex_;
-    int openPositionIndex_;
-    int closedPositionIndex_;
-    int currentPositionIndex_;
-    int moveStatusIndex_;
-    int minPositionIndex_;
-    int maxPositionIndex_;
-    int setPositionRangeIndex_;
-    int positionUnitIndex_;
-    int isCalibratedIndex_;
+    /// asyn parameter indices — each maps to a named parameter string registered
+    /// in the constructor via createParam(). See gripper.db for the
+    /// corresponding EPICS records.
+
+    /// Connection and activation
+    int isConnectedIndex_; ///< 1 when gripper connection is active
+    int connectIndex_;     ///< trigger gripper connect
+    int isActiveIndex_;    ///< 1 when gripper is activated
+    int activateIndex_;    ///< trigger gripper activation
+
+    /// Motion commands
+    int openIndex_;     ///< open the gripper
+    int closeIndex_;    ///< close the gripper
+    int setSpeedIndex_; ///< gripper speed (0–255 device units)
+    int setForceIndex_; ///< gripper force (0–255 device units)
+
+    /// Object detection status
+    int isOpenIndex_;         ///< 1 when gripper is fully open
+    int isClosedIndex_;       ///< 1 when gripper is fully closed
+    int isStoppedInnerIndex_; ///< 1 when stopped on inner object
+    int isStoppedOuterIndex_; ///< 1 when stopped on outer object
+    int moveStatusIndex_;     ///< raw eObjectStatus enum value
+
+    /// Position read-back and calibration
+    int openPositionIndex_;    ///< calibrated open position
+    int closedPositionIndex_;  ///< calibrated closed position
+    int currentPositionIndex_; ///< current gripper position
+    int autoCalibrateIndex_;   ///< trigger auto-calibration
+    int isCalibratedIndex_;    ///< 1 after successful calibration
+
+    /// Position range and units
+    int minPositionIndex_;      ///< min position for native range
+    int maxPositionIndex_;      ///< max position for native range
+    int setPositionRangeIndex_; ///< apply min/max as native position range
+    int positionUnitIndex_;     ///< position unit: 0=device, 1=normalized, 2=percent, 3=mm
 };

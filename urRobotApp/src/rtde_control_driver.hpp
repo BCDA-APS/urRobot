@@ -7,8 +7,8 @@
 #pragma once
 #include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/rtde_receive_interface.h"
-#include <optional>
 #include <asynPortDriver.h>
+#include <optional>
 
 /// State machine for tracking asynchronous motion progress in the poll thread.
 ///   Done → WaitingMotion → WaitingAction → Done
@@ -70,8 +70,8 @@ class RTDEControl : public asynPortDriver {
 
     /// A pending motion request, set by writeInt32 and consumed by the poll thread.
     struct MotionTask {
-        MotionType type;  ///< Joint or Cartesian
-        bool action;      ///< true if a waypoint action should run after the move
+        MotionType type; ///< Joint or Cartesian
+        bool action;     ///< true if a waypoint action should run after the move
     };
     std::optional<MotionTask> pending_motion_;
 
@@ -102,8 +102,8 @@ class RTDEControl : public asynPortDriver {
     /// Joint-space motion
     int moveJIndex_;
     int stopJIndex_;
-    int jointCmdIndex_;          ///< per-joint commanded angle (addr 0-5)
-    int actualQIndex_;           ///< actual joint angles (float64 array)
+    int jointCmdIndex_; ///< per-joint commanded angle (addr 0-5)
+    int actualQIndex_;  ///< actual joint angles (float64 array)
     int jointSpeedIndex_;
     int jointAccelIndex_;
     int jointBlendIndex_;
@@ -111,19 +111,19 @@ class RTDEControl : public asynPortDriver {
     /// Cartesian-space motion
     int moveLIndex_;
     int stopLIndex_;
-    int poseCmdIndex_;           ///< per-axis commanded pose (addr 0-5)
-    int actualTCPPoseIndex_;     ///< actual TCP pose (float64 array)
-    int tcpOffsetIndex_;         ///< per-axis TCP offset (addr 0-5)
+    int poseCmdIndex_;       ///< per-axis commanded pose (addr 0-5)
+    int actualTCPPoseIndex_; ///< actual TCP pose (float64 array)
+    int tcpOffsetIndex_;     ///< per-axis TCP offset (addr 0-5)
     int linearSpeedIndex_;
     int linearAccelIndex_;
     int linearBlendIndex_;
 
     /// Async motion / waypoints
-    int asyncMoveDoneIndex_;     ///< 1 when no async motion in progress
-    int waypointMoveJIndex_;     ///< moveJ with post-move action
-    int waypointMoveLIndex_;     ///< moveL with post-move action
-    int runWaypointActionIndex_; ///< toggled to trigger waypoint action processing
-    int waypointActionDoneIndex_;///< set to 1 by action chain when action completes
+    int asyncMoveDoneIndex_;      ///< 1 when no async motion in progress
+    int waypointMoveJIndex_;      ///< moveJ with post-move action
+    int waypointMoveLIndex_;      ///< moveL with post-move action
+    int runWaypointActionIndex_;  ///< toggled to trigger waypoint action processing
+    int waypointActionDoneIndex_; ///< set to 1 by action chain when action completes
 
     /// Trajectory file motion
     int trajFileIndex_;
