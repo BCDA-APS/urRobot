@@ -60,14 +60,16 @@ record(bi, "$(P)Control:AsyncMoveDone")
     field(SCAN, "I/O Intr")
 }
 
-record(calcout, "$(P)Control:moving_calc") {
+record(calcout, "$(P)Control:moving_calc")
+{
     field(INPA, "$(P)Control:Steady.VAL CP")
     field(INPB, "$(P)Control:AsyncMoveDone.VAL CP")
     field(INPC, "$(P)Receive:RuntimeState.VAL CP")
     field(CALC, "(!A || !B) && (C=2)")
 }
 
-record(bi, "$(P)Control:Moving") {
+record(bi, "$(P)Control:Moving")
+{
     field(INP, "$(P)Control:moving_calc.VAL CP")
     field(ZNAM, "Done")
     field(ONAM, "Moving")
@@ -117,19 +119,22 @@ record(bo, "$(P)Control:TriggerProtectiveStop")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TRIGGER_PROT_STOP")
 }
 
-record(bo, "$(P)Control:stop_path") {
+record(bo, "$(P)Control:stop_path")
+{
     field(DESC, "Stops all path motion when 1")
     field(VAL, 0)
 }
 
-record(calcout, "$(P)Control:calc_stop_on_safety") {
+record(calcout, "$(P)Control:calc_stop_on_safety")
+{
     field(INPA, "$(P)Receive:SafetyStatusBits CP")
     field(CALC, "A=1")
     field(OOPT, "Transition To Zero")
     field(OUT, "$(P)Control:stop_on_safety.PROC")
 }
 
-record(fanout, "$(P)Control:stop_on_safety") {
+record(fanout, "$(P)Control:stop_on_safety")
+{
     field(LNK0, "$(P)Control:Stop")
     field(LNK1, "$(P)Dashboard:Stop")
 }
@@ -142,14 +147,32 @@ record(dfanout, "$(P)Control:Stop")
     field(OUTC, "$(P)Control:sync_both_cmd.PROC")
 }
 
-record(calcout, "$(P)Control:auto_sync_cmds") {
+record(calcout, "$(P)Control:auto_sync_steady")
+{
     field(INPA, "$(P)Control:Steady.VAL CP NMS")
     field(CALC, "A")
     field(OOPT, "Transition To Non-zero")
     field(OUT, "$(P)Control:sync_both_cmd.PROC")
 }
 
-record(calcout, "$(P)Control:startup_sync_cmds") {
+record(calcout, "$(P)Control:auto_sync_automovej")
+{
+    field(INPA, "$(P)Control:AutoMoveJ.VAL CP NMS")
+    field(CALC, "A")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)Control:sync_joint_cmd.PROC")
+}
+
+record(calcout, "$(P)Control:auto_sync_automovel")
+{
+    field(INPA, "$(P)Control:AutoMoveL.VAL CP NMS")
+    field(CALC, "A")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "$(P)Control:sync_pose_cmd.PROC")
+}
+
+record(calcout, "$(P)Control:startup_sync_cmds")
+{
     field(PINI, 1)
     field(CALC, 1)
     field(ODLY, 1.0)
@@ -170,19 +193,22 @@ record(calcout, "$(P)Control:reset_after_async_move")
     field(OUT, "$(P)Control:sync_both_cmd.PROC")
 }
 
-record(lso, "$(P)Control:TrajFile") {
+record(lso, "$(P)Control:TrajFile")
+{
     field(DTYP, "asynOctetWrite")
     field(PINI, 1)
     field(OUT, "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TRAJ_FILE")
     field(SIZV, 256)
 }
 
-record(bo, "$(P)Control:TrajMove") {
+record(bo, "$(P)Control:TrajMove")
+{
     field(DTYP, "asynInt32")
     field(OUT, "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TRAJ_MOVE")
 }
 
-record(bo, "$(P)Control:TrajType") {
+record(bo, "$(P)Control:TrajType")
+{
     field(DTYP, "asynInt32")
     field(OUT, "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))TRAJ_TYPE")
     field(ZNAM, "  Joint  ")
