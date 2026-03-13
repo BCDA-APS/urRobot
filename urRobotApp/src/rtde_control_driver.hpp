@@ -67,6 +67,7 @@ class RTDEControl : public asynPortDriver {
     /// --- Async motion state machine ---
 
     AsyncMotionStatus motion_status_ = AsyncMotionStatus::Done;
+    bool waypoint_move_ = false; ///< if true, next moveJ/moveL will run waypoint action
 
     /// A pending motion request, set by writeInt32 and consumed by the poll thread.
     struct MotionTask {
@@ -120,8 +121,7 @@ class RTDEControl : public asynPortDriver {
 
     /// Async motion / waypoints
     int asyncMoveDoneIndex_;      ///< 1 when no async motion in progress
-    int waypointMoveJIndex_;      ///< moveJ with post-move action
-    int waypointMoveLIndex_;      ///< moveL with post-move action
+    int waypointMoveIndex_;       ///< if 1, moveJ/moveL will run waypoint action after motion
     int runWaypointActionIndex_;  ///< toggled to trigger waypoint action processing
     int waypointActionDoneIndex_; ///< set to 1 by action chain when action completes
 

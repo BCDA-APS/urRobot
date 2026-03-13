@@ -251,7 +251,9 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq2")
     field(LNK2, "$(P)Control:LinearBlend PP")
     field(DOL3, "1")
     field(LNK3, "$(P)WaypointL:$(N):CopyActionLink.PROC")
+    field(DOL4, "1")
+    field(LNK4, "$(P)Control:WaypointMove PP")
 
     # Do the move
-    field(FLNK, "$(P)Control:waypoint_moveL.PROC")
+    field(FLNK, "$(P)Control:moveL.PROC")
 }

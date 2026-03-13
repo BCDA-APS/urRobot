@@ -226,11 +226,15 @@ record(bo, "$(P)Control:moveJ")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))MOVEJ")
 }
 
-record(bo, "$(P)Control:waypoint_moveJ")
+record(bo, "$(P)Control:WaypointMove")
 {
-    field(DESC, "moveJ followed by gripper action")
+    # driver resets this to 0 automatically after each use
+    field(DESC, "If 1, moveJ/moveL will run action")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))WAYPOINT_MOVEJ")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
+    field(VAL, 0)
+    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))WAYPOINT_MOVE")
 }
 
 record(ao, "$(P)Control:JointSpeed")
@@ -593,12 +597,6 @@ record(bo, "$(P)Control:moveL")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))MOVEL")
 }
 
-record(bo, "$(P)Control:waypoint_moveL")
-{
-    field(DESC, "moveL followed by gripper action")
-    field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))WAYPOINT_MOVEL")
-}
 
 record(ao, "$(P)Control:LinearSpeed")
 {

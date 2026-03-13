@@ -111,8 +111,7 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* robot_ip, doubl
     createParam("LINEAR_ACCELERATION", asynParamFloat64, &linearAccelIndex_);
     createParam("LINEAR_BLEND", asynParamFloat64, &linearBlendIndex_);
     createParam("ASYNC_MOVE_DONE", asynParamInt32, &asyncMoveDoneIndex_);
-    createParam("WAYPOINT_MOVEJ", asynParamInt32, &waypointMoveJIndex_);
-    createParam("WAYPOINT_MOVEL", asynParamInt32, &waypointMoveLIndex_);
+    createParam("WAYPOINT_MOVE", asynParamInt32, &waypointMoveIndex_);
     createParam("RUN_WAYPOINT_ACTION", asynParamInt32, &runWaypointActionIndex_);
     createParam("WAYPOINT_ACTION_DONE", asynParamInt32, &waypointActionDoneIndex_);
     createParam("TEACH_MODE", asynParamInt32, &teachModeIndex_);
@@ -303,12 +302,12 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         goto skip;
     }
 
-    if (function == moveJIndex_ || function == waypointMoveJIndex_) {
+    if (function == moveJIndex_) {
         if (!pending_motion_) {
             spdlog::debug("moveJ({:.4f}) rad", fmt::join(cmd_joints_, ","));
             if (rtde_control_->isJointsWithinSafetyLimits(cmd_joints_)) {
-                const bool do_action = function == waypointMoveJIndex_;
-                pending_motion_ = MotionTask{MotionType::Joint, do_action};
+                pending_motion_ = MotionTask{MotionType::Joint, waypoint_move_};
+                waypoint_move_ = false;
                 setIntegerParam(asyncMoveDoneIndex_, 0);
             } else {
                 spdlog::warn("Requested joint angles not within safety limits. No action taken.");
@@ -318,12 +317,12 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         }
     }
 
-    else if (function == moveLIndex_ || function == waypointMoveLIndex_) {
+    else if (function == moveLIndex_) {
         if (!pending_motion_) {
             spdlog::debug("moveL({:.4f}) m,rad", fmt::join(cmd_pose_, ","));
             if (rtde_control_->isPoseWithinSafetyLimits(cmd_pose_)) {
-                const bool do_action = function == waypointMoveLIndex_;
-                pending_motion_ = MotionTask{MotionType::Cartesian, do_action};
+                pending_motion_ = MotionTask{MotionType::Cartesian, waypoint_move_};
+                waypoint_move_ = false;
                 setIntegerParam(asyncMoveDoneIndex_, 0);
             } else {
                 spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
@@ -331,6 +330,10 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         } else {
             spdlog::warn("Motion already in progress...please wait");
         }
+    }
+
+    else if (function == waypointMoveIndex_) {
+        waypoint_move_ = static_cast<bool>(value);
     }
 
     else if (function == stopJIndex_) {

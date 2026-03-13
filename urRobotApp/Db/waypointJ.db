@@ -252,7 +252,9 @@ record(seq, "$(P)WaypointJ:$(N):moveJ_seq2")
     field(LNK2, "$(P)Control:JointBlend PP")
     field(DOL3, "1")
     field(LNK3, "$(P)WaypointJ:$(N):CopyActionLink.PROC")
+    field(DOL4, "1")
+    field(LNK4, "$(P)Control:WaypointMove PP")
 
     # Do the move
-    field(FLNK, "$(P)Control:waypoint_moveJ.PROC")
+    field(FLNK, "$(P)Control:moveJ.PROC")
 }
