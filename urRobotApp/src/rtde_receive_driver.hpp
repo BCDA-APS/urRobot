@@ -61,7 +61,8 @@ class RTDEReceive : public asynPortDriver {
     int digitalOutputBitsIndex_;
 
     /// Actual joint state (float64 arrays, 6 elements each)
-    int actualJointPosIndex_; ///< degrees (converted from radians)
+    int actualJointPosArrIndex_; ///< degrees (converted from radians)
+    int actualJointPosIndex_;
     int actualJointVelIndex_;
     int actualJointCurrentsIndex_;
     int actualJointVoltagesIndex_;
@@ -77,7 +78,8 @@ class RTDEReceive : public asynPortDriver {
     int targetJointMomentsIndex_;
 
     /// Actual TCP state (float64 arrays; pose is 6 elements, accel is 3)
-    int actualTCPPoseIndex_; ///< x,y,z in mm, roll,pitch,yaw in deg (converted)
+    int actualTCPPoseArrIndex_; ///< x,y,z in mm, roll,pitch,yaw in deg (converted)
+    int actualTCPPoseIndex_;
     int actualTCPSpeedIndex_;
     int actualTCPForceIndex_;
     int actualToolAccelIndex_; ///< 3 elements (accelerometer)

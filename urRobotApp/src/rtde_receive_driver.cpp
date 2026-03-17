@@ -38,7 +38,7 @@ bool RTDEReceive::try_connect() {
 }
 
 constexpr int NUM_JOINTS = 6;
-constexpr int MAX_ADDR = 1;
+constexpr int MAX_ADDR = 6;
 constexpr int ASYN_INTERFACE_MASK =
     asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynFloat64ArrayMask | asynInt32ArrayMask;
 constexpr int ASYN_INTERRUPT_MASK =
@@ -60,13 +60,19 @@ RTDEReceive::RTDEReceive(const char* asyn_port_name, const char* robot_ip, const
     createParam("STD_ANALOG_INPUT1", asynParamFloat64, &stdAnalogInput1Index_);
     createParam("STD_ANALOG_OUTPUT0", asynParamFloat64, &stdAnalogOutput0Index_);
     createParam("STD_ANALOG_OUTPUT1", asynParamFloat64, &stdAnalogOutput1Index_);
-    createParam("ACTUAL_JOINT_POSITIONS", asynParamFloat64Array, &actualJointPosIndex_);
+    createParam("ACTUAL_JOINT_POS_ARR", asynParamFloat64Array, &actualJointPosArrIndex_);
+    for (int addr = 0; addr < MAX_ADDR; addr++) {
+        createParam(addr, "ACTUAL_JOINT_POS", asynParamFloat64, &actualJointPosIndex_);
+    }
+    createParam("ACTUAL_TCP_POSE_ARR", asynParamFloat64Array, &actualTCPPoseArrIndex_);
+    for (int addr = 0; addr < MAX_ADDR; addr++) {
+        createParam(addr, "ACTUAL_TCP_POSE", asynParamFloat64, &actualTCPPoseIndex_);
+    }
     createParam("DIGITAL_INPUT_BITS", asynParamInt32, &digitalInputBitsIndex_);
     createParam("DIGITAL_OUTPUT_BITS", asynParamInt32, &digitalOutputBitsIndex_);
     createParam("ACTUAL_JOINT_VELOCITIES", asynParamFloat64Array, &actualJointVelIndex_);
     createParam("ACTUAL_JOINT_CURRENTS", asynParamFloat64Array, &actualJointCurrentsIndex_);
     createParam("JOINT_CONTROL_CURRENTS", asynParamFloat64Array, &jointControlCurrentsIndex_);
-    createParam("ACTUAL_TCP_POSE", asynParamFloat64Array, &actualTCPPoseIndex_);
     createParam("ACTUAL_TCP_SPEED", asynParamFloat64Array, &actualTCPSpeedIndex_);
     createParam("ACTUAL_TCP_FORCE", asynParamFloat64Array, &actualTCPForceIndex_);
     createParam("SAFETY_MODE", asynParamInt32, &safetyModeIndex_);
@@ -132,16 +138,25 @@ void RTDEReceive::poll() {
             doCallbacksFloat64Array(vec_f64.data(), 3, actualToolAccelIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualQ();
-            for (double& j : vec_f64)
-                j *= 180.0 / M_PI; // convert to degrees
-            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosIndex_, 0);
+            for (size_t i = 0; i < vec_f64.size(); i++) {
+                auto& val = vec_f64[i];
+                val *= 180.0 / M_PI; // convert to degrees
+                setDoubleParam(i, actualJointPosIndex_, val);
+            }
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointPosArrIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualTCPPose();
-            for (size_t i = 0; i < 3; i++)
-                vec_f64[i] *= 1000.0; // m->mm
-            for (size_t i = 3; i < 6; i++)
-                vec_f64[i] *= 180 / M_PI; // rad->deg
-            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseIndex_, 0);
+            for (size_t i = 0; i < 3; i++) {
+                auto& val = vec_f64[i];
+                val *= 1000.0; // m->mm
+                setDoubleParam(i, actualTCPPoseIndex_, val);
+            }
+            for (size_t i = 3; i < 6; i++) {
+                auto& val = vec_f64[i];
+                val *= 180 / M_PI; // rad->deg
+                setDoubleParam(i, actualTCPPoseIndex_, val);
+            }
+            doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualTCPPoseArrIndex_, 0);
 
             vec_f64 = rtde_receive_->getActualQd();
             doCallbacksFloat64Array(vec_f64.data(), NUM_JOINTS, actualJointVelIndex_, 0);
@@ -189,7 +204,9 @@ void RTDEReceive::poll() {
             setIntegerParam(isConnectedIndex_, 0);
         }
 
-        callParamCallbacks();
+        for (int addr = 0; addr < MAX_ADDR; addr++) {
+            callParamCallbacks(addr);
+        }
         unlock();
         epicsThreadSleep(poll_period_);
     }
