@@ -84,18 +84,24 @@ URDashboard::URDashboard(const char* asyn_port_name, const char* robot_ip, doubl
 void URDashboard::poll() {
     while (true) {
         lock();
-
-        if (ur_dashboard_->isConnected()) {
-            setIntegerParam(isConnectedIndex_, 1);
-            setIntegerParam(isRunningIndex_, ur_dashboard_->running());
-            setStringParam(programStateIndex_, ur_dashboard_->programState());
-            setStringParam(robotModeIndex_, ur_dashboard_->robotmode());
-            setStringParam(loadedProgramIndex_, ur_dashboard_->getLoadedProgram());
-            setStringParam(safetyStatusIndex_, ur_dashboard_->safetystatus());
-            setIntegerParam(isProgramSavedIndex_, ur_dashboard_->isProgramSaved());
-            setIntegerParam(isInRemoteControlIndex_, ur_dashboard_->isInRemoteControl());
-        } else {
+        try {
+            if (ur_dashboard_ && ur_dashboard_->isConnected()) {
+                setIntegerParam(isConnectedIndex_, 1);
+                setIntegerParam(isRunningIndex_, ur_dashboard_->running());
+                setStringParam(programStateIndex_, ur_dashboard_->programState());
+                setStringParam(robotModeIndex_, ur_dashboard_->robotmode());
+                setStringParam(loadedProgramIndex_, ur_dashboard_->getLoadedProgram());
+                setStringParam(safetyStatusIndex_, ur_dashboard_->safetystatus());
+                setIntegerParam(isProgramSavedIndex_, ur_dashboard_->isProgramSaved());
+                setIntegerParam(isInRemoteControlIndex_, ur_dashboard_->isInRemoteControl());
+            } else {
+                setIntegerParam(isConnectedIndex_, 0);
+            }
+        } catch (const std::exception& e) {
+            spdlog::error("Caught exception in dashboard poller: {}", e.what());
             setIntegerParam(isConnectedIndex_, 0);
+            setIntegerParam(isInRemoteControlIndex_, 0);
+            ur_dashboard_->disconnect();
         }
 
         callParamCallbacks();
@@ -109,60 +115,62 @@ asynStatus URDashboard::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     int function = pasynUser->reason;
     bool comm_ok = true;
 
-    if (function == playIndex_) {
-        spdlog::debug("Playing loaded program");
-        try {
+    if (!ur_dashboard_->isConnected()) {
+        if (function == connectIndex_) {
+            spdlog::debug("Connecting to dashboard server");
+            try_connect();
+            callParamCallbacks();
+            return asynSuccess;
+        } else {
+            spdlog::debug("Dashboard is disconnected. No action taken");
+            return asynError;
+        }
+    }
+
+    try {
+        if (function == playIndex_) {
+            spdlog::debug("Playing loaded program");
             ur_dashboard_->play();
-        } catch (const std::exception& e) {
-            spdlog::error("{}", e.what());
-            comm_ok = false;
-        }
-    } else if (function == stopIndex_) {
-        spdlog::debug("Stopping current program");
-        try {
+        } else if (function == stopIndex_) {
+            spdlog::debug("Stopping current program");
             ur_dashboard_->stop();
-        } catch (const std::exception& e) {
-            spdlog::error("{}", e.what());
-            comm_ok = false;
-        }
-    } else if (function == pauseIndex_) {
-        spdlog::debug("Pausing current program");
-        try {
+        } else if (function == pauseIndex_) {
+            spdlog::debug("Pausing current program");
             ur_dashboard_->pause();
-        } catch (const std::exception& e) {
-            spdlog::error("{}", e.what());
-            comm_ok = false;
+        } else if (function == connectIndex_) {
+            spdlog::debug("Connecting to dashboard server");
+            try_connect();
+        } else if (function == disconnectIndex_) {
+            spdlog::debug("Disconnecting from dashboard server");
+            ur_dashboard_->disconnect();
+        } else if (function == shutdownIndex_) {
+            spdlog::debug("Shutting down robot and controller");
+            ur_dashboard_->shutdown();
+        } else if (function == closePopupIndex_) {
+            spdlog::debug("Closing popup");
+            ur_dashboard_->closePopup();
+        } else if (function == closeSafetyPopupIndex_) {
+            spdlog::debug("Closing safety popup");
+            ur_dashboard_->closeSafetyPopup();
+        } else if (function == powerOnIndex_) {
+            spdlog::debug("Powering on robot");
+            ur_dashboard_->powerOn();
+        } else if (function == powerOffIndex_) {
+            spdlog::debug("Powering off robot");
+            ur_dashboard_->powerOff();
+        } else if (function == brakeReleaseIndex_) {
+            spdlog::debug("Releasing brakes");
+            ur_dashboard_->brakeRelease();
+        } else if (function == unlockProtectiveStopIndex_) {
+            spdlog::debug("Unlocking protective stop");
+            ur_dashboard_->unlockProtectiveStop();
+        } else if (function == restartSafetyIndex_) {
+            spdlog::debug("Restarting safety configuration");
+            ur_dashboard_->restartSafety();
         }
-    } else if (function == connectIndex_) {
-        spdlog::debug("Connecting to dashboard server");
-        try_connect();
-    } else if (function == disconnectIndex_) {
-        spdlog::debug("Disconnecting from dashboard server");
-        ur_dashboard_->disconnect();
-    } else if (function == shutdownIndex_) {
-        spdlog::debug("Shutting down robot and controller");
-        ur_dashboard_->shutdown();
-    } else if (function == closePopupIndex_) {
-        spdlog::debug("Closing popup");
-        ur_dashboard_->closePopup();
-    } else if (function == closeSafetyPopupIndex_) {
-        spdlog::debug("Closing safety popup");
-        ur_dashboard_->closeSafetyPopup();
-    } else if (function == powerOnIndex_) {
-        spdlog::debug("Powering on robot");
-        ur_dashboard_->powerOn();
-    } else if (function == powerOffIndex_) {
-        spdlog::debug("Powering off robot");
-        ur_dashboard_->powerOff();
-    } else if (function == brakeReleaseIndex_) {
-        spdlog::debug("Releasing brakes");
-        ur_dashboard_->brakeRelease();
-    } else if (function == unlockProtectiveStopIndex_) {
-        spdlog::debug("Unlocking protective stop");
-        ur_dashboard_->unlockProtectiveStop();
-    } else if (function == restartSafetyIndex_) {
-        spdlog::debug("Restarting safety configuration");
-        ur_dashboard_->restartSafety();
+    } catch (const std::exception& e) {
+        spdlog::error("{}", e.what());
+        comm_ok = false;
     }
 
     callParamCallbacks();
@@ -172,20 +180,27 @@ asynStatus URDashboard::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 asynStatus URDashboard::writeOctet(asynUser* pasynUser, const char* value, size_t maxChars, size_t* nActual) {
     int function = pasynUser->reason;
     asynStatus status = asynSuccess;
-    if (function == popupIndex_) {
-        spdlog::debug("Popup text: {}", value);
-        ur_dashboard_->popup(value);
-    } else if (function == loadURPIndex_) {
-        spdlog::debug("Loading program {}", value);
-        try {
-            ur_dashboard_->loadURP(value);
-        } catch (const std::exception& e) {
-            spdlog::error("{}", e.what());
-            status = asynError;
-        }
-    }
 
     *nActual = strlen(value);
+
+    if (!ur_dashboard_->isConnected()) {
+        spdlog::debug("Dashboard is disconnected. No action taken");
+        return asynError;
+    }
+
+    try {
+        if (function == popupIndex_) {
+            spdlog::debug("Popup text: {}", value);
+            ur_dashboard_->popup(value);
+        } else if (function == loadURPIndex_) {
+            spdlog::debug("Loading program {}", value);
+            ur_dashboard_->loadURP(value);
+        }
+    } catch (const std::exception& e) {
+        spdlog::error("{}", e.what());
+        status = asynError;
+    }
+
     callParamCallbacks();
     return status;
 }

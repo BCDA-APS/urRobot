@@ -359,12 +359,20 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
 
     else if (function == reuploadCtrlScriptIndex_) {
         spdlog::debug("Reuploading control script");
-        rtde_control_->reuploadScript();
+        try {
+            rtde_control_->reuploadScript();
+        } catch (const std::exception& e) {
+            spdlog::error("Failed to reupload control script: {}", e.what());
+        }
     }
 
     else if (function == stopCtrlScriptIndex_) {
         spdlog::debug("Stopping control script");
-        rtde_control_->stopScript();
+        try {
+            rtde_control_->stopScript();
+        } catch (const std::exception& e) {
+            spdlog::error("Failed to stop control script: {}", e.what());
+        }
     }
 
     else if (function == triggerProtStopIndex_) {
