@@ -8,9 +8,9 @@
 
 #include "rtde_control_driver.hpp"
 #include "spdlog/cfg/env.h"
-#include "spdlog/fmt/ranges.h"
 #include "spdlog/spdlog.h"
-#include "ur_rtde/dashboard_client.h"
+#include "dashboard_driver.hpp"
+#include <asynOctetSyncIO.h>
 
 using OptTrajectory = std::optional<std::vector<std::vector<double>>>;
 OptTrajectory read_traj_file(const std::string& filepath);
@@ -19,24 +19,23 @@ bool RTDEControl::try_connect() {
     // RTDE class construction automatically tries connecting.
     // If this function hasn't been called or if connecting fails,
     // the rtde_control_ object will be a nullptr
-
     bool connected = false;
     bool robot_running = false;
-    try {
-        auto dash = std::make_unique<ur_rtde::DashboardClient>(robot_ip_);
-        dash->connect();
-        if (dash->robotmode() == "Robotmode: RUNNING") {
-            robot_running = true;
-        } else {
-            spdlog::error("Unable to connect to UR RTDE Control Interface: "
-                          "Ensure robot is on, in normal mode, and brakes released");
-            robot_running = false;
-            connected = false;
-            dash->disconnect();
-        }
-    } catch (const std::exception& e) {
-        spdlog::error("Caught exception: {}", e.what());
-        spdlog::error("RTDE Control: Failed to connect to dashboard to check robot mode");
+
+    char buffer[128];
+    size_t nbytesTransferred;
+    int eomReason;
+    asynStatus status = pasynOctetSyncIO->readOnce(dash_drv_name_.c_str(), 0, buffer, sizeof(buffer), 1.0,
+                               &nbytesTransferred, &eomReason, "ROBOT_MODE");
+    if (status != asynSuccess) { return connected; }
+
+    if (strcmp(buffer, "Robotmode: RUNNING") == 0) {
+        robot_running = true;
+    } else {
+        spdlog::error("Unable to connect to UR RTDE Control Interface: "
+                      "Ensure robot is on, in normal mode, and brakes released");
+        robot_running = false;
+        connected = false;
     }
 
     if (robot_running) {
@@ -62,11 +61,17 @@ bool RTDEControl::try_connect() {
                 connected = false;
             }
         } else {
-            if (not rtde_control_->isConnected()) {
-                spdlog::debug("Reconnecting to UR RTDE Control interface");
-                rtde_control_->reconnect();
-                rtde_receive_->reconnect();
-                connected = true;
+            try {
+                if (not rtde_control_->isConnected()) {
+                    spdlog::debug("Reconnecting to UR RTDE Control interface");
+                    rtde_control_->reconnect();
+                    rtde_receive_->reconnect();
+                    connected = true;
+                }
+            }
+            catch (const std::exception& e) {
+                spdlog::error("Failed to reconnect: {}", e.what());
+                connected = false;
             }
         }
     }
@@ -84,10 +89,10 @@ constexpr int ASYN_INTERFACE_MASK =
     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynDrvUserMask;
 constexpr int ASYN_INTERRUPT_MASK = asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask;
 
-RTDEControl::RTDEControl(const char* asyn_port_name, const char* robot_ip, double poll_period)
+RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, double poll_period)
     : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
-      rtde_control_(nullptr), rtde_receive_(nullptr), robot_ip_(robot_ip), poll_period_(poll_period) {
+      rtde_control_(nullptr), rtde_receive_(nullptr), dash_drv_name_(dash_drv_name), poll_period_(poll_period) {
 
     createParam("DISCONNECT", asynParamInt32, &disconnectIndex_);
     createParam("RECONNECT", asynParamInt32, &reconnectIndex_);
@@ -122,6 +127,13 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* robot_ip, doubl
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
+
+    URDashboard* dash = findDerivedAsynPortDriver<URDashboard>(dash_drv_name);
+    if (!dash) {
+        spdlog::error("Failed to find URDashboard asynPortDriver");
+        return;
+    }
+    robot_ip_ = dash->get_ip();
 
     // tries connecting to the control and receive servers on the robot controller
     try_connect();
@@ -433,13 +445,13 @@ skip:
 }
 
 // register function for iocsh
-extern "C" int RTDEControlConfig(const char* asyn_port_name, const char* robot_ip, double poll_period) {
-    new RTDEControl(asyn_port_name, robot_ip, poll_period);
+extern "C" int RTDEControlConfig(const char* asyn_port_name, const char* dash_drv_name, double poll_period) {
+    new RTDEControl(asyn_port_name, dash_drv_name, poll_period);
     return asynSuccess;
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
-static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
+static const iocshArg urRobotArg1 = {"Dashboard driver name", iocshArgString};
 static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
 static const iocshArg* const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"RTDEControlConfig", 3, urRobotArgs};

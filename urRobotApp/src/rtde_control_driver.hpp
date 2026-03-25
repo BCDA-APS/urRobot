@@ -39,7 +39,8 @@ class RTDEControl : public asynPortDriver {
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_; ///< used for safety bit checks
 
-    const std::string robot_ip_ = "0.0.0.0";
+    std::string robot_ip_ = "0.0.0.0";
+    std::string dash_drv_name_;
     const double poll_period_ = 0.0; ///< seconds between poll cycles
 
     /// Check dashboard for RUNNING mode, then connect (or reconnect) RTDE interfaces.

@@ -81,13 +81,12 @@ URGripper::URGripper(const char* asyn_port_name, const char* dash_drv_name, doub
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
 
-    if (drv_dashboard_) {
-        drv_dashboard_->findParam("ROBOT_MODE", &robotModeParamId_);
-        drv_dashboard_->findParam("IS_CONNECTED", &robotConnectedParamId_);
-    } else {
+    if (!drv_dashboard_) {
         spdlog::error("Failed to find URDashboard asynPortDriver");
         return;
     }
+    drv_dashboard_->findParam("ROBOT_MODE", &robotModeParamId_);
+    drv_dashboard_->findParam("IS_CONNECTED", &robotConnectedParamId_);
 
     gripper_ = std::make_unique<ur_rtde::RobotiqGripper>(drv_dashboard_->get_ip());
 
