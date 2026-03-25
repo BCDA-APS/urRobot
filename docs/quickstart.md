@@ -85,8 +85,8 @@ The number of waypoints, actions, and paths loaded can be controlled with option
 
 For advanced use, you can copy `urRobot.iocsh` to your IOC and load only the specific interfaces
 you need. Note that the RTDE Control interface depends on both the Dashboard and RTDE Receive
-interfaces being active, but other interfaces (Dashboard, Receive, I/O, Gripper) can be loaded
-independently.
+interfaces being active, and the Gripper interface depends on the Dashboard interface.
+The Dashboard, Receive, and I/O interfaces can be loaded independently.
 
 **5\.** Before starting the IOC, using the teach pendant, make sure the robot is powered on, breaks released, in Automatic mode,
 and in Remote Control mode. Note, if you are not using the RTDE control interface, all you need to do is make sure the robot
@@ -98,25 +98,29 @@ your IOC console should report messages (beginning with "[info]") saying each in
 # Load robot support with waypoint and path support
 iocshLoad("urRobot.iocsh", "PREFIX=bcur:, IP=164.54.104.148")
 # Set up UR Dashboard server
-URDashboardConfig("asyn_dash", "164.54.104.148", "0.1")
+URDashboardConfig("dash", "164.54.104.148", "0.1")
 [2026-03-05 12:46:05.750] [info] Connected to UR Dashboard server
-dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/dashboard.db", "P=bcur:, PORT=asyn_dash, ADDR=0")
+dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/dashboard.db", "P=bcur:, PORT=dash")
 # Set up UR RTDE Receive interface
-RTDEReceiveConfig("asyn_rtde_recv", "164.54.104.148", "0.02")
+RTDEReceiveConfig("rtde_recv", "164.54.104.148", "0.02")
 [2026-03-05 12:46:06.331] [info] Connected to UR RTDE Receive interface
-dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_receive.db", "P=bcur:, PORT=asyn_rtde_recv, ADDR=0")
+dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_receive.db", "P=bcur:, PORT=rtde_recv")
 # Set up UR RTDE I/O interface
-RTDEInOutConfig("asyn_rtde_io", "164.54.104.148", "0.1")
+RTDEInOutConfig("rtde_io", "164.54.104.148", "0.1")
 [2026-03-05 12:46:07.134] [info] Connected to UR RTDE IO interface
-dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_io.db", "P=bcur:, PORT=asyn_rtde_io, ADDR=0")
+dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_io.db", "P=bcur:, PORT=rtde_io")
 # Set up UR RTDE Control interface
-RTDEControlConfig("asyn_rtde_ctrl", "164.54.104.148", "0.02")
+RTDEControlConfig("rtde_ctrl", "dash", "rtde_recv", "0.02")
 [2026-03-05 12:46:08.405] [info] Connected to UR RTDE Control interface
-dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_control.db", "P=bcur:, PORT=asyn_rtde_ctrl, ADDR=0")
+dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/rtde_control.db", "P=bcur:, PORT=rtde_ctrl")
+# Set up Robotiq Gripper
+URGripperConfig("gripper", "dash", "0.02")
+[2026-03-05 12:46:09.012] [info] Connected to gripper
+dbLoadRecords("/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/db/robotiq_gripper.db", "P=bcur:, MIN_POS=3, MAX_POS=248, AUTO_ACTIVATE=YES, PORT=gripper")
 ```
 
 If something went wrong, you will see messages in the console (beginning with "[error]") which should explain the issue. The
-most common problems are an incorrect IP address or the robot not being powered on and breaks releases (if using RTDE control
+most common problems are an incorrect IP address or the robot not being powered on and brakes released (if using RTDE control
 interface).
 
 **6\.** To start the provided GUIs, use the example `urRobot/iocs/urExample/start_urRobot_gui` script.
