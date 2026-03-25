@@ -5,8 +5,8 @@
 /// and CSV trajectory execution. Monitors async motion progress in a poll thread.
 
 #pragma once
+#include "rtde_receive_driver.hpp"
 #include "ur_rtde/rtde_control_interface.h"
-#include "ur_rtde/rtde_receive_interface.h"
 #include <asynPortDriver.h>
 #include <optional>
 
@@ -26,7 +26,8 @@ enum class MotionType : int { Joint, Cartesian };
 /// any safety event.
 class RTDEControl : public asynPortDriver {
   public:
-    RTDEControl(const char* asyn_port_name, const char* robot_port_name, double poll_period);
+    RTDEControl(const char* asyn_port_name, const char* dash_drv_name, const char* recv_drv_name,
+                double poll_period);
     asynStatus writeFloat64(asynUser* pasynUser, epicsFloat64 value) override;
     asynStatus writeInt32(asynUser* pasynUser, epicsInt32 value) override;
     asynStatus writeOctet(asynUser* pasynUser, const char* value, size_t maxChars, size_t* nActual) override;
@@ -37,7 +38,8 @@ class RTDEControl : public asynPortDriver {
 
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
-    std::unique_ptr<ur_rtde::RTDEReceiveInterface> rtde_receive_; ///< used for safety bit checks
+    RTDEReceive* drv_receive_ = nullptr;
+    int safetyStatusBitsParamId_ = -1;
 
     std::string robot_ip_ = "0.0.0.0";
     std::string dash_drv_name_;

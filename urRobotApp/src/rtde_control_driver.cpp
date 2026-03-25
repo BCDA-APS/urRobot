@@ -10,6 +10,7 @@
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "dashboard_driver.hpp"
+#include "spdlog/fmt/ranges.h"
 #include <asynOctetSyncIO.h>
 
 using OptTrajectory = std::optional<std::vector<std::vector<double>>>;
@@ -42,19 +43,9 @@ bool RTDEControl::try_connect() {
         if (!rtde_control_) {
             try {
                 rtde_control_ = std::make_unique<ur_rtde::RTDEControlInterface>(robot_ip_);
-                if (rtde_control_) {
-                    if (rtde_control_->isConnected()) {
-                        spdlog::info("Connected to UR RTDE Control interface");
-                        connected = true;
-
-                        // connect to RTDE Receive, only if already connected to RTDE Control
-                        rtde_receive_ = std::make_unique<ur_rtde::RTDEReceiveInterface>(robot_ip_);
-                        if (!rtde_receive_) {
-                            // this probably isn't possible
-                            throw std::runtime_error(
-                                "Failed connecting to receive interface from RTDEControl class");
-                        }
-                    }
+                if (rtde_control_ && rtde_control_->isConnected()) {
+                    spdlog::info("Connected to UR RTDE Control interface");
+                    connected = true;
                 }
             } catch (const std::exception& e) {
                 spdlog::error("Failed to connected to UR RTDE Control interface\n{}", e.what());
@@ -65,7 +56,6 @@ bool RTDEControl::try_connect() {
                 if (not rtde_control_->isConnected()) {
                     spdlog::debug("Reconnecting to UR RTDE Control interface");
                     rtde_control_->reconnect();
-                    rtde_receive_->reconnect();
                     connected = true;
                 }
             }
@@ -89,10 +79,11 @@ constexpr int ASYN_INTERFACE_MASK =
     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynDrvUserMask;
 constexpr int ASYN_INTERRUPT_MASK = asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask;
 
-RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, double poll_period)
+RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, const char* recv_drv_name,
+                         double poll_period)
     : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
-      rtde_control_(nullptr), rtde_receive_(nullptr), dash_drv_name_(dash_drv_name), poll_period_(poll_period) {
+      rtde_control_(nullptr), dash_drv_name_(dash_drv_name), poll_period_(poll_period) {
 
     createParam("DISCONNECT", asynParamInt32, &disconnectIndex_);
     createParam("RECONNECT", asynParamInt32, &reconnectIndex_);
@@ -135,7 +126,14 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, 
     }
     robot_ip_ = dash->get_ip();
 
-    // tries connecting to the control and receive servers on the robot controller
+    drv_receive_ = findDerivedAsynPortDriver<RTDEReceive>(recv_drv_name);
+    if (!drv_receive_) {
+        spdlog::error("Failed to find RTDEReceive asynPortDriver");
+        return;
+    }
+    drv_receive_->findParam("SAFETY_STATUS_BITS", &safetyStatusBitsParamId_);
+
+    // tries connecting to the control server on the robot controller
     try_connect();
 
     epicsThreadCreate("RTDEControlPoller", epicsThreadPriorityLow,
@@ -152,8 +150,11 @@ void RTDEControl::poll() {
             setIntegerParam(isConnectedIndex_, 1);
             setIntegerParam(isSteadyIndex_, rtde_control_->isSteady());
 
-            // Get safety bits so we can abort motion in safety event
-            if (rtde_receive_->getSafetyStatusBits() != 1) {
+            int safetyBits = 1;
+            drv_receive_->lock();
+            drv_receive_->getIntegerParam(safetyStatusBitsParamId_, &safetyBits);
+            drv_receive_->unlock();
+            if (safetyBits != 1) {
                 if (pending_motion_) {
                     spdlog::debug("Motion stopped due to safety.");
                     set_motion_task_done();
@@ -302,8 +303,7 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     if (function == disconnectIndex_) {
         spdlog::debug("Disconnecting from RTDE control interface");
         rtde_control_->disconnect();
-        rtde_receive_->disconnect();
-        comm_ok = not rtde_control_->isConnected() and not rtde_receive_->isConnected();
+        comm_ok = not rtde_control_->isConnected();
         goto skip;
     }
 
@@ -445,19 +445,21 @@ skip:
 }
 
 // register function for iocsh
-extern "C" int RTDEControlConfig(const char* asyn_port_name, const char* dash_drv_name, double poll_period) {
-    new RTDEControl(asyn_port_name, dash_drv_name, poll_period);
+extern "C" int RTDEControlConfig(const char* asyn_port_name, const char* dash_drv_name,
+                                  const char* recv_drv_name, double poll_period) {
+    new RTDEControl(asyn_port_name, dash_drv_name, recv_drv_name, poll_period);
     return asynSuccess;
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
 static const iocshArg urRobotArg1 = {"Dashboard driver name", iocshArgString};
-static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
-static const iocshArg* const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
-static const iocshFuncDef urRobotFuncDef = {"RTDEControlConfig", 3, urRobotArgs};
+static const iocshArg urRobotArg2 = {"Receive driver name", iocshArgString};
+static const iocshArg urRobotArg3 = {"Poll period", iocshArgDouble};
+static const iocshArg* const urRobotArgs[4] = {&urRobotArg0, &urRobotArg1, &urRobotArg2, &urRobotArg3};
+static const iocshFuncDef urRobotFuncDef = {"RTDEControlConfig", 4, urRobotArgs};
 
 static void urRobotCallFunc(const iocshArgBuf* args) {
-    RTDEControlConfig(args[0].sval, args[1].sval, args[2].dval);
+    RTDEControlConfig(args[0].sval, args[1].sval, args[2].sval, args[3].dval);
 }
 
 void RTDEControlRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc); }
