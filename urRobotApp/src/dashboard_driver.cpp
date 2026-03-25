@@ -34,7 +34,8 @@ constexpr int ASYN_INTERRUPT_MASK = asynInt32Mask | asynOctetMask;
 URDashboard::URDashboard(const char* asyn_port_name, const char* robot_ip, double poll_period)
     : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
-      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), poll_period_(poll_period) {
+      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), poll_period_(poll_period),
+      robot_ip_(robot_ip) {
 
     // create asyn parameters
     createParam("IS_CONNECTED", asynParamInt32, &isConnectedIndex_);

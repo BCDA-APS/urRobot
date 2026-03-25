@@ -6,24 +6,35 @@
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 
+bool URGripper::robot_ready() const {
+    int connected = 0;
+    int on = 0;
+    if (drv_dashboard_) {
+        drv_dashboard_->lock();
+        drv_dashboard_->getIntegerParam(robotConnectedParamId_, &connected);
+        std::string robot_mode;
+        drv_dashboard_->getStringParam(robotModeParamId_, robot_mode);
+        if (robot_mode == "Robotmode: IDLE" or robot_mode == "Robotmode: RUNNING") {
+            on = true;
+        }
+        drv_dashboard_->unlock();
+    }
+    return on && connected;
+}
+
 bool URGripper::try_connect() {
     bool connected = false;
     try {
-        ur_dashboard_->connect();
-        const std::string robot_mode = ur_dashboard_->robotmode();
-        if (robot_mode == "Robotmode: IDLE" or robot_mode == "Robotmode: RUNNING") {
+        if (robot_ready()) {
             gripper_->connect();
             if (gripper_->isConnected()) {
                 spdlog::info("Connected to gripper");
                 connected = true;
             }
         } else {
-            spdlog::error("Unable to connect to gripper. Robot must be powered on.\nCurrent robot mode: {}",
-                          robot_mode);
+            spdlog::error("Unable to connect to gripper. Robot must be powered on.");
             connected = false;
-            robot_on_ = false;
         }
-
     } catch (const std::exception& e) {
         spdlog::error(e.what());
     }
@@ -39,12 +50,10 @@ constexpr int MAX_ADDR = 1;
 constexpr int ASYN_INTERFACE_MASK = asynInt32Mask | asynFloat64Mask | asynDrvUserMask;
 constexpr int ASYN_INTERRUPT_MASK = asynInt32Mask | asynFloat64Mask;
 
-URGripper::URGripper(const char* asyn_port_name, const char* robot_ip, double poll_period)
+URGripper::URGripper(const char* asyn_port_name, const char* dash_drv_name, double poll_period)
     : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
-      gripper_(std::make_unique<ur_rtde::RobotiqGripper>(robot_ip)),
-      ur_dashboard_(std::make_unique<ur_rtde::DashboardClient>(robot_ip)), robot_ip_(robot_ip),
-      poll_period_(poll_period) {
+      drv_dashboard_(findDerivedAsynPortDriver<URDashboard>(dash_drv_name)), poll_period_(poll_period) {
 
     createParam("CONNECT", asynParamInt32, &connectIndex_);
     createParam("IS_CONNECTED", asynParamInt32, &isConnectedIndex_);
@@ -72,6 +81,16 @@ URGripper::URGripper(const char* asyn_port_name, const char* robot_ip, double po
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
 
+    if (drv_dashboard_) {
+        drv_dashboard_->findParam("ROBOT_MODE", &robotModeParamId_);
+        drv_dashboard_->findParam("IS_CONNECTED", &robotConnectedParamId_);
+    } else {
+        spdlog::error("Failed to find URDashboard asynPortDriver");
+        return;
+    }
+
+    gripper_ = std::make_unique<ur_rtde::RobotiqGripper>(drv_dashboard_->get_ip());
+
     // attempt to connect to the gripper
     try_connect();
 
@@ -83,59 +102,37 @@ URGripper::URGripper(const char* asyn_port_name, const char* robot_ip, double po
 void URGripper::poll() {
     while (true) {
         lock();
-        try {
-            if (!ur_dashboard_->isConnected()) {
-                robot_on_ = false;
-                setIntegerParam(isConnectedIndex_, 0);
-            } else {
-                const std::string robot_mode = ur_dashboard_->robotmode();
-                if (robot_mode == "Robotmode: IDLE" or robot_mode == "Robotmode: RUNNING") {
-                    robot_on_ = true;
-                } else {
-                    robot_on_ = false;
-                    gripper_->disconnect(); // needed to prevent error when powering back on
-                }
 
-                if (robot_on_) {
-                    if (gripper_->isConnected()) {
-                        setIntegerParam(isConnectedIndex_, 1);
-                        setIntegerParam(isActiveIndex_, gripper_->isActive());
-                        setIntegerParam(isOpenIndex_, gripper_->isOpen());
-                        setIntegerParam(isClosedIndex_, gripper_->isClosed());
-                        setDoubleParam(currentPositionIndex_, gripper_->getCurrentPosition());
-                        setDoubleParam(openPositionIndex_, gripper_->getOpenPosition());
-                        setDoubleParam(closedPositionIndex_, gripper_->getClosedPosition());
+        if (robot_ready() && gripper_->isConnected()) {
+            setIntegerParam(isConnectedIndex_, 1);
+            setIntegerParam(isActiveIndex_, gripper_->isActive());
+            setIntegerParam(isOpenIndex_, gripper_->isOpen());
+            setIntegerParam(isClosedIndex_, gripper_->isClosed());
+            setDoubleParam(currentPositionIndex_, gripper_->getCurrentPosition());
+            setDoubleParam(openPositionIndex_, gripper_->getOpenPosition());
+            setDoubleParam(closedPositionIndex_, gripper_->getClosedPosition());
 
-                        ur_rtde::RobotiqGripper::eObjectStatus move_status = gripper_->objectDetectionStatus();
-                        setIntegerParam(moveStatusIndex_, move_status);
-                        switch (move_status) {
-                        case ur_rtde::RobotiqGripper::eObjectStatus::STOPPED_INNER_OBJECT:
-                            setIntegerParam(isStoppedInnerIndex_, 1);
-                            setIntegerParam(isStoppedOuterIndex_, 0);
-                            break;
-                        case ur_rtde::RobotiqGripper::eObjectStatus::STOPPED_OUTER_OBJECT:
-                            setIntegerParam(isStoppedInnerIndex_, 0);
-                            setIntegerParam(isStoppedOuterIndex_, 1);
-                            break;
-                        default:
-                            setIntegerParam(isStoppedInnerIndex_, 0);
-                            setIntegerParam(isStoppedOuterIndex_, 0);
-                            break;
-                        }
-                    } else {
-                        setIntegerParam(isConnectedIndex_, 0);
-                    }
-                } else {
-                    setIntegerParam(isConnectedIndex_, 0);
-                }
+            ur_rtde::RobotiqGripper::eObjectStatus move_status = gripper_->objectDetectionStatus();
+            setIntegerParam(moveStatusIndex_, move_status);
+            switch (move_status) {
+            case ur_rtde::RobotiqGripper::eObjectStatus::STOPPED_INNER_OBJECT:
+                setIntegerParam(isStoppedInnerIndex_, 1);
+                setIntegerParam(isStoppedOuterIndex_, 0);
+                break;
+            case ur_rtde::RobotiqGripper::eObjectStatus::STOPPED_OUTER_OBJECT:
+                setIntegerParam(isStoppedInnerIndex_, 0);
+                setIntegerParam(isStoppedOuterIndex_, 1);
+                break;
+            default:
+                setIntegerParam(isStoppedInnerIndex_, 0);
+                setIntegerParam(isStoppedOuterIndex_, 0);
+                break;
             }
-        } catch (const std::exception& e) {
-            spdlog::error("Caught exception in gripper poller: {}", e.what());
-            setIntegerParam(isConnectedIndex_, 0);
-            robot_on_ = false;
-            ur_dashboard_->disconnect();
+        } else {
             gripper_->disconnect();
+            setIntegerParam(isConnectedIndex_, 0);
         }
+
         callParamCallbacks();
         unlock();
         epicsThreadSleep(poll_period_);
@@ -147,8 +144,8 @@ asynStatus URGripper::writeFloat64(asynUser* pasynUser, epicsFloat64 value) {
     bool comm_ok = true;
 
     // Check that robot is powered on
-    if (not robot_on_) {
-        spdlog::error("Robot must be powered on to use gripper");
+    if (!robot_ready()) {
+        spdlog::error("Robot must be powered and dashboard connected on to use gripper");
         comm_ok = false;
         goto skip;
     }
@@ -178,7 +175,7 @@ skip:
     if (comm_ok) {
         return asynSuccess;
     } else {
-        spdlog::debug("Communication error in Gripper::writeFloat64");
+        spdlog::debug("Error in Gripper::writeFloat64");
         return asynError;
     }
 }
@@ -189,8 +186,8 @@ asynStatus URGripper::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     bool comm_ok = true;
 
     // Check that robot is powered on
-    if (not robot_on_) {
-        spdlog::error("Robot must be powered on to use gripper");
+    if (!robot_ready()) {
+        spdlog::error("Robot must be powered and dashboard connected on to use gripper");
         comm_ok = false;
         goto skip;
     }
@@ -276,19 +273,19 @@ skip:
     if (comm_ok) {
         return asynSuccess;
     } else {
-        spdlog::debug("Communication error in Gripper::writeInt32");
+        spdlog::debug("Error in Gripper::writeInt32");
         return asynError;
     }
 }
 
 // register function for iocsh
-extern "C" int URGripperConfig(const char* asyn_port_name, const char* robot_ip, double poll_period) {
-    new URGripper(asyn_port_name, robot_ip, poll_period);
+extern "C" int URGripperConfig(const char* asyn_port_name, const char* dash_drv_name, double poll_period) {
+    new URGripper(asyn_port_name, dash_drv_name, poll_period);
     return asynSuccess;
 }
 
 static const iocshArg urRobotArg0 = {"Asyn port name", iocshArgString};
-static const iocshArg urRobotArg1 = {"Robot IP address", iocshArgString};
+static const iocshArg urRobotArg1 = {"Dashboard driver name", iocshArgString};
 static const iocshArg urRobotArg2 = {"Poll period", iocshArgDouble};
 static const iocshArg* const urRobotArgs[3] = {&urRobotArg0, &urRobotArg1, &urRobotArg2};
 static const iocshFuncDef urRobotFuncDef = {"URGripperConfig", 3, urRobotArgs};

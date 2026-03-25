@@ -21,17 +21,20 @@ constexpr int MAX_CONTROLLERS = 1;
 class URDashboard : public asynPortDriver {
   public:
     URDashboard(const char* asyn_port_name, const char* robot_port_name, double poll_period);
+    asynStatus writeInt32(asynUser* pasynUser, epicsInt32 value) override;
+    asynStatus writeOctet(asynUser* pasynUser, const char* value, size_t maxChars, size_t* nActual) override;
 
     /// Poll thread entry point. Runs forever, reading dashboard status
     /// and updating asyn parameters each cycle.
     void poll(void);
 
-    asynStatus writeInt32(asynUser* pasynUser, epicsInt32 value) override;
-    asynStatus writeOctet(asynUser* pasynUser, const char* value, size_t maxChars, size_t* nActual) override;
+    /// Returns the IP address of the robot
+    std::string get_ip() { return robot_ip_; }
 
   private:
     std::unique_ptr<ur_rtde::DashboardClient> ur_dashboard_;
     double poll_period_; ///< seconds between poll cycles
+    std::string robot_ip_; ///< robot's IP address useful for other drivers
 
     /// Connect (or reconnect) to the Dashboard Server on the robot.
     bool try_connect();
@@ -65,7 +68,7 @@ class URDashboard : public asynPortDriver {
     int unlockProtectiveStopIndex_; ///< unlock a protective stop
     int restartSafetyIndex_;        ///< restart safety configuration
 
-    /// Read-back status (updated by poll thread)
+    /// Readback status (updated by poll thread)
     int isRunningIndex_;         ///< 1 when a program is running
     int polyscopeVersionIndex_;  ///< PolyScope version string (octet)
     int serialNumberIndex_;      ///< robot serial number (octet)
