@@ -2,7 +2,7 @@
 /// @brief asynPortDriver for UR robot motion control via the ur_rtde library.
 ///
 /// Provides moveJ/moveL commands, waypoint-based motion with optional actions,
-/// and CSV trajectory execution. Monitors async motion progress in a poll thread.
+/// and monitors async motion progress in a poll thread.
 
 #pragma once
 #include "rtde_receive_driver.hpp"
@@ -87,11 +87,6 @@ class RTDEControl : public asynPortDriver {
         pending_motion_.reset();
     }
 
-    /// --- Trajectory (CSV file) motion ---
-
-    MotionType traj_type_ = MotionType::Joint;
-    std::string traj_file_path_;
-
   protected:
     /// asyn parameter indices — each maps to a named parameter string registered
     /// in the constructor via createParam(). See rtde_control.db for the
@@ -127,11 +122,6 @@ class RTDEControl : public asynPortDriver {
     int waypointMoveIndex_;       ///< if 1, moveJ/moveL will run waypoint action after motion
     int runWaypointActionIndex_;  ///< toggled to trigger waypoint action processing
     int waypointActionDoneIndex_; ///< set to 1 by action chain when action completes
-
-    /// Trajectory file motion
-    int trajFileIndex_;
-    int trajTypeIndex_;
-    int trajMoveIndex_;
 
     /// Script / safety
     int reuploadCtrlScriptIndex_;

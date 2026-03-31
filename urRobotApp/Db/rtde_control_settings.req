@@ -19,9 +19,6 @@ $(P)Control:TCPOffset_Roll.VAL
 $(P)Control:TCPOffset_Pitch.VAL
 $(P)Control:TCPOffset_Yaw.VAL
 
-$(P)Control:TrajFile.VAL
-$(P)Control:TrajType.VAL
-
 $(P)Control:JointSpeed.VAL
 $(P)Control:JointAcceleration.VAL
 $(P)Control:JointBlend.VAL

@@ -503,16 +503,16 @@ caMenu{
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string>Waypoint Paths;Trajectory file</string>
+                <string>Waypoint Paths</string>
             </property>
             <property name="files">
-                <string>path_top10x.adl;trajectory.adl</string>
+                <string>path_top10x.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),N1=1,N2=2,N3=3,N4=4,N5=5,N6=6,N7=7,N8=8,N9=9,N10=10;P=$(P)</string>
+                <string>P=$(P),N1=1,N2=2,N3=3,N4=4,N5=5,N6=6,N7=7,N8=8,N9=9,N10=10</string>
             </property>
             <property name="removeParent">
-                <string>false;false</string>
+                <string>false</string>
             </property>
         </widget>
         <widget class="caLabel" name="caLabel_1">

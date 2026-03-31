@@ -3,8 +3,6 @@
 #include <exception>
 #include <iocsh.h>
 #include <optional>
-#include <sstream>
-#include <stdexcept>
 
 #include "rtde_control_driver.hpp"
 #include "spdlog/cfg/env.h"
@@ -12,9 +10,6 @@
 #include "dashboard_driver.hpp"
 #include "spdlog/fmt/ranges.h"
 #include <asynOctetSyncIO.h>
-
-using OptTrajectory = std::optional<std::vector<std::vector<double>>>;
-OptTrajectory read_traj_file(const std::string& filepath);
 
 bool RTDEControl::try_connect() {
     // RTDE class construction automatically tries connecting.
@@ -112,9 +107,6 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, 
     createParam("WAYPOINT_ACTION_DONE", asynParamInt32, &waypointActionDoneIndex_);
     createParam("TEACH_MODE", asynParamInt32, &teachModeIndex_);
     createParam("TRIGGER_PROT_STOP", asynParamInt32, &triggerProtStopIndex_);
-    createParam("TRAJ_FILE", asynParamOctet, &trajFileIndex_);
-    createParam("TRAJ_TYPE", asynParamInt32, &trajTypeIndex_);
-    createParam("TRAJ_MOVE", asynParamInt32, &trajMoveIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -360,11 +352,6 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         rtde_control_->stopL();
     }
 
-    else if (function == trajTypeIndex_) {
-        spdlog::debug("Setting trajectory to type {}", value ? "Cartesian" : "Joint");
-        traj_type_ = static_cast<MotionType>(value);
-    }
-
     else if (function == waypointActionDoneIndex_) {
         setIntegerParam(waypointActionDoneIndex_, value);
     }
@@ -428,11 +415,6 @@ asynStatus RTDEControl::writeOctet(asynUser* pasynUser, const char* value, size_
         goto skip;
     }
 
-    if (function == trajFileIndex_) {
-        spdlog::debug("Setting trajectory file: {}", value);
-        traj_file_path_ = value;
-    }
-
 skip:
     *nActual = strlen(value);
     callParamCallbacks();
@@ -466,55 +448,4 @@ void RTDEControlRegister(void) { iocshRegister(&urRobotFuncDef, urRobotCallFunc)
 
 extern "C" {
 epicsExportRegistrar(RTDEControlRegister);
-}
-
-OptTrajectory read_traj_file(const std::string& filepath) {
-
-    // This is fast enough until number of lines in csv file become
-    // very large. A rough test showed it took ~5ms to parse a csv with 1000 lines.
-    // A csv with 25,000 line takes ~100ms to parse.
-
-    constexpr char COMMENT_CHAR = '#';
-    constexpr size_t TRAJ_ROW_SIZE = 9; // 6 positions, speed, accel, blend
-
-    std::ifstream fs(filepath);
-    if (!fs.is_open()) {
-        return std::nullopt;
-    }
-
-    std::string line;
-    std::vector<std::vector<double>> out;
-
-    while (std::getline(fs, line)) {
-        if (line.size() > 0) {
-            if (line[0] != COMMENT_CHAR) {
-
-                // trim whitespace
-                auto i0 = line.find_first_not_of(" \t");
-                if (i0 == std::string::npos)
-                    continue; // skip empty lines
-                auto i1 = line.find_last_not_of(' ');
-                auto line_trim = line.substr(i0, i1 - i0 + 1);
-
-                // parse the line
-                std::stringstream ss(line_trim);
-                std::string token;
-                std::vector<double> row;
-                while (std::getline(ss, token, ',')) {
-                    try {
-                        row.push_back(std::stod(token));
-                    } catch (...) {
-                        return std::nullopt;
-                    }
-                }
-                if (row.size() != TRAJ_ROW_SIZE) {
-                    std::cerr << "Invalid .csv row length\n";
-                    return std::nullopt;
-                }
-                out.push_back(row);
-            }
-        }
-    }
-
-    return out;
 }

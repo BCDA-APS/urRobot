@@ -72,8 +72,8 @@ iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=127.0.0.1")
 ```
 
 **4\.** If you would like to add support for waypoints and paths, load `paths.iocsh`. Waypoints and
-paths require the `lua` module (for luascript records) and the `calc` module (for sseq records),
-both of which are included in synApps. Both must be defined in `configure/RELEASE`.
+paths require the `lua` module (for luascript records), the `calc` module (for sseq records),
+and the `seq` module (for editSseq), all of which are included in synApps. All must be defined in `configure/RELEASE`.
 
 ```
 # file: iocBoot/iocxxx/st.cmd.Linux
@@ -88,7 +88,7 @@ you need. Note that the RTDE Control interface depends on both the Dashboard and
 interfaces being active, and the Gripper interface depends on the Dashboard interface.
 The Dashboard, Receive, and I/O interfaces can be loaded independently.
 
-**5\.** Before starting the IOC, using the teach pendant, make sure the robot is powered on, breaks released, in Automatic mode,
+**5\.** Before starting the IOC, using the teach pendant, make sure the robot is powered on, brakes released, in Automatic mode,
 and in Remote Control mode. Note, if you are not using the RTDE control interface, all you need to do is make sure the robot
 controller is powered on.
 

@@ -249,11 +249,6 @@ text {
 		name="path_top10x.adl"
 		args="P=$(P),N1=1,N2=2,N3=3,N4=4,N5=5,N6=6,N7=7,N8=8,N9=9,N10=10"
 	}
-	display[1] {
-		label="Trajectory file"
-		name="trajectory.adl"
-		args="P=$(P)"
-	}
 	clr=0
 	bclr=17
 	label="-Paths"

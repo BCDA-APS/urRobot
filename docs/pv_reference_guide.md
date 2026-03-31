@@ -94,18 +94,18 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Receive:ActualTCPPose    | waveform     | Actual TCP pose (x,y,z,r,p,y)     |
 | Receive:ActualTCPSpeed    | waveform     | Actual TCP speed     |
 | Receive:ActualTCPForce    | waveform     | Actual TCP force     |
-| Receive:Joint1    | subArray     | Joint 1 position (deg)  |
-| Receive:Joint2    | subArray     | Joint 2 position (deg)  |
-| Receive:Joint3    | subArray     | Joint 3 position (deg)  |
-| Receive:Joint4    | subArray     | Joint 4 position (deg)  |
-| Receive:Joint5    | subArray     | Joint 5 position (deg)  |
-| Receive:Joint6    | subArray     | Joint 6 position (deg)  |
-| Receive:PoseX    | subArray     | TCP X position (mm)  |
-| Receive:PoseY    | subArray     | TCP Y position (mm)  |
-| Receive:PoseZ    | subArray     | TCP Z position (mm)  |
-| Receive:PoseRoll    | subArray     | TCP roll (deg)  |
-| Receive:PosePitch    | subArray     | TCP pitch (deg)  |
-| Receive:PoseYaw    | subArray     | TCP yaw (deg)  |
+| Receive:Joint1    | ai     | Joint 1 position (deg)  |
+| Receive:Joint2    | ai     | Joint 2 position (deg)  |
+| Receive:Joint3    | ai     | Joint 3 position (deg)  |
+| Receive:Joint4    | ai     | Joint 4 position (deg)  |
+| Receive:Joint5    | ai     | Joint 5 position (deg)  |
+| Receive:Joint6    | ai     | Joint 6 position (deg)  |
+| Receive:PoseX    | ai     | TCP X position (mm)  |
+| Receive:PoseY    | ai     | TCP Y position (mm)  |
+| Receive:PoseZ    | ai     | TCP Z position (mm)  |
+| Receive:PoseRoll    | ai     | TCP roll (deg)  |
+| Receive:PosePitch    | ai     | TCP pitch (deg)  |
+| Receive:PoseYaw    | ai     | TCP yaw (deg)  |
 | Receive:JointModes    | waveform     | Joint control modes     |
 | Receive:ActualToolAccelerometer    | waveform     | Tool accelerometer (X,Y,Z)     |
 | Receive:TargetJointPositions    | waveform     | Target joint positions     |
@@ -137,20 +137,7 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:Connected    | bi     | RTDE Control connection status     |
 | Control:Steady    | bi     | 1 if robot is fully at rest     |
 | Control:AsyncMoveDone   | bi     | 1 if async motion and waypoint action are complete, else 0 |
-| Control:ActualQ    | waveform     | Actual joint positions (deg)     |
-| Control:ActualQ_index0    | subArray     | Joint 1 angle (deg)     |
-| Control:ActualQ_index1    | subArray     | Joint 2 angle (deg)     |
-| Control:ActualQ_index2    | subArray     | Joint 3 angle (deg)     |
-| Control:ActualQ_index3    | subArray     | Joint 4 angle (deg)     |
-| Control:ActualQ_index4    | subArray     | Joint 5 angle (deg)     |
-| Control:ActualQ_index5    | subArray     | Joint 6 angle (deg)     |
-| Control:ActualTCPPose    | waveform     | Actual TCP pose (x mm, y mm, z mm, roll deg, pitch deg, yaw deg)     |
-| Control:pose_index0    | subArray     | TCP X (mm)     |
-| Control:pose_index1    | subArray     | TCP Y (mm)     |
-| Control:pose_index2    | subArray     | TCP Z (mm)     |
-| Control:pose_index3    | subArray     | TCP roll (deg)     |
-| Control:pose_index4    | subArray     | TCP pitch (deg)     |
-| Control:pose_index5    | subArray     | TCP yaw (deg)     |
+| Control:Moving    | bi     | 1 if robot is in motion, else 0     |
 
 ***Outputs***
 
@@ -164,9 +151,9 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:TriggerProtectiveStop   | bo     | Triggers a protective stop |
 | Control:Stop    | dfanout     | Stops any in-progress motion (moveJ or moveL) and aborts any running path |
 | Control:moveJ    | bo     | Executes moveJ to the commanded joint angles J1Cmd–J6Cmd     |
-| Control:JointSpeed    | ao     | Speed for moveJ (rad/s)     |
-| Control:JointAcceleration    | ao     | Acceleration for moveJ (rad/s²)     |
-| Control:JointBlend    | ao     | Blend radius for moveJ (m)     |
+| Control:JointSpeed    | ao     | Speed for moveJ (deg/s)     |
+| Control:JointAcceleration    | ao     | Acceleration for moveJ (deg/s/s)     |
+| Control:JointBlend    | ao     | Blend radius for moveJ (mm)     |
 | Control:stopJ    | bo     | Stops an in-progress asynchronous moveJ     |
 | Control:AutoMoveJ    | bo     | If 1, moveJ runs automatically when any JxCmd changes     |
 | Control:J1Cmd    | ao     | Commanded angle for joint 1 (deg)     |
@@ -194,9 +181,9 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | Control:J6TweakFwd    | bo     | Tweak joint 6 forward by J6TweakVal     |
 | Control:J6TweakRev    | bo     | Tweak joint 6 backward by J6TweakVal     |
 | Control:moveL    | bo     | Executes moveL to the commanded TCP pose     |
-| Control:LinearSpeed    | ao     | Speed for moveL (m/s)     |
-| Control:LinearAcceleration    | ao     | Acceleration for moveL (m/s²)     |
-| Control:LinearBlend    | ao     | Blend radius for moveL (m)     |
+| Control:LinearSpeed    | ao     | Speed for moveL (mm/s)     |
+| Control:LinearAcceleration    | ao     | Acceleration for moveL (mm/s/s)     |
+| Control:LinearBlend    | ao     | Blend radius for moveL (mm)     |
 | Control:stopL    | bo     | Stops an in-progress asynchronous moveL     |
 | Control:AutoMoveL    | bo     | If 1, moveL runs automatically when any PoseCmd changes     |
 | Control:PoseXCmd    | ao     | Commanded TCP X (mm)     |
@@ -275,6 +262,8 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | RobotiqGripper:IsActive    | bi     | Gripper active status     |
 | RobotiqGripper:IsOpen    | bi     | 1 if gripper open     |
 | RobotiqGripper:IsClosed    | bi     | 1 if gripper closed     |
+| RobotiqGripper:IsStoppedInner    | bi     | 1 if stopped on inner object     |
+| RobotiqGripper:IsStoppedOuter    | bi     | 1 if stopped on outer object     |
 | RobotiqGripper:CurrentPosition    | ai     | Current position of gripper  |
 | RobotiqGripper:OpenPosition    | ai     | Open position of gripper     |
 | RobotiqGripper:ClosedPosition    | ai     | Closed position of gripper     |
@@ -315,9 +304,9 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | WaypointJ:$(N):J5    | ao     | Joint 5 angle for waypoint (deg)    |
 | WaypointJ:$(N):J6    | ao     | Joint 6 angle for waypoint (deg)    |
 | WaypointJ:$(N):ActionOpt    | longout     | Selects the waypoint action (0 = none, N = ActionSseqN) |
-| WaypointJ:$(N):Speed    | ao     | Speed when moving to waypoint (rad/s)     |
-| WaypointJ:$(N):Acceleration    | ao     | Acceleration when moving to waypoint (rad/s²)     |
-| WaypointJ:$(N):Blend    | ao     | Blend radius when moving to waypoint (m)     |
+| WaypointJ:$(N):Speed    | ao     | Speed when moving to waypoint (deg/s)     |
+| WaypointJ:$(N):Acceleration    | ao     | Acceleration when moving to waypoint (deg/s/s)     |
+| WaypointJ:$(N):Blend    | ao     | Blend radius when moving to waypoint (mm)     |
 | WaypointJ:$(N):Reset    | seq     | Sets waypoint to the current robot configuration     |
 | WaypointJ:$(N):moveJ    | bo     | Executes a moveJ to the waypoint if the waypoint is enabled    |
 
@@ -346,9 +335,9 @@ robot controller, `caput Dashboard:Play 1` and `caput Dashboard:Play.PROC 1` (an
 | WaypointL:$(N):Pitch    | ao     | Pitch angle of waypoint (deg)   |
 | WaypointL:$(N):Yaw    | ao     | Yaw angle of waypoint (deg)    |
 | WaypointL:$(N):ActionOpt    | longout     | Selects the waypoint action (0 = none, N = ActionSseqN) |
-| WaypointL:$(N):Speed    | ao     | Speed when moving to waypoint (m/s)     |
-| WaypointL:$(N):Acceleration    | ao     | Acceleration when moving to waypoint (m/s²)     |
-| WaypointL:$(N):Blend    | ao     | Blend radius when moving to waypoint (m)     |
+| WaypointL:$(N):Speed    | ao     | Speed when moving to waypoint (mm/s)     |
+| WaypointL:$(N):Acceleration    | ao     | Acceleration when moving to waypoint (mm/s/s)     |
+| WaypointL:$(N):Blend    | ao     | Blend radius when moving to waypoint (mm)     |
 | WaypointL:$(N):Reset    | seq     | Sets waypoint to the current robot configuration     |
 | WaypointL:$(N):moveL    | bo     | Executes a moveL to the waypoint if the waypoint is enabled    |
 

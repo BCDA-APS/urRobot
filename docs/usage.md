@@ -16,9 +16,9 @@ If you haven't yet added the EPICS urRobot support to an IOC, please see
 the Quickstart page for instructions. After starting an IOC with the urRobot support
 included, you are ready to use your UR robot through EPICS.
 
-Most features of the robot are accessable through the provided GUIs using either
-MEDM, caQtDM, or CSS-Phoebus (still in development). To start the screens, a `start_urRobot` bash script is provided at
-`urRobot/iocs/urExample/start_urRobot`. Copy the script to the top level directory of your IOC and run it without any
+Most features of the robot are accessible through the provided GUIs using either
+MEDM, caQtDM, or CSS-Phoebus (still in development). To start the screens, a `start_urRobot_gui` bash script is provided at
+`urRobot/iocs/urExample/start_urRobot_gui`. Copy the script to the top level directory of your IOC and run it without any
 arguments to open the caQtDM screens, however optionally you can specify "medm" or "phoebus" as argument to the script
 to use either of those display managers. The below examples will show the caQtDM GUIs, however the MEDM and CSS-Phoebus
 versions are nearly identical. Users are encouraged to create their own GUIs in addition to the ones provided for more
@@ -33,7 +33,7 @@ the IOC. The easiest way is to add the following command to your your .bashrc: `
 
 ## Main Menu
 
-After running the `start_urRobot` script, you will be greeted with a menu which
+After running the `start_urRobot_gui` script, you will be greeted with a menu which
 contains links to all the other provided screens.
 
 <img src="./assets/GUIs/ui/urRobot_top.png" alt="ui-waypointJ" width="400">
