@@ -41,6 +41,7 @@ record(bo, "$(P)Control:Reconnect")
     field(DESC, "Tries reconnecting to the RTDE interface")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))RECONNECT")
+    field(FLNK, "$(P)IO:SpeedSlider.PROC")
 }
 
 record(bo, "$(P)Control:ReuploadControlScript")
