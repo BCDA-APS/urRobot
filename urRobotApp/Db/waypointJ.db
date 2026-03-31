@@ -253,7 +253,7 @@ record(seq, "$(P)WaypointJ:$(N):moveJ_seq2")
     field(DOL3, "1")
     field(LNK3, "$(P)WaypointJ:$(N):CopyActionLink.PROC")
     field(DOL4, "1")
-    field(LNK4, "$(P)Control:WaypointMove PP")
+    field(LNK4, "$(P)Control:waypoint_move PP")
 
     # Do the move
     field(FLNK, "$(P)Control:moveJ.PROC")

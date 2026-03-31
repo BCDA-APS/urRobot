@@ -237,7 +237,7 @@ record(bo, "$(P)Control:moveJ")
     field(OUT,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))MOVEJ")
 }
 
-record(bo, "$(P)Control:WaypointMove")
+record(bo, "$(P)Control:waypoint_move")
 {
     # driver resets this to 0 automatically after each use
     field(DESC, "If 1, moveJ/moveL will run action")
