@@ -10,6 +10,8 @@
 #include <asynPortDriver.h>
 #include <optional>
 
+using OptTrajectory = std::optional<std::vector<std::vector<double>>>;
+
 /// State machine for tracking asynchronous motion progress in the poll thread.
 ///   Done → WaitingMotion → WaitingAction → Done
 /// WaitingAction is only entered when the motion has an associated waypoint action.
@@ -76,6 +78,7 @@ class RTDEControl : public asynPortDriver {
     struct MotionTask {
         MotionType type; ///< Joint or Cartesian
         bool action;     ///< true if a waypoint action should run after the move
+        bool servo;      ///< true if this is a servo motion task
     };
     std::optional<MotionTask> pending_motion_;
 
@@ -89,8 +92,10 @@ class RTDEControl : public asynPortDriver {
 
     /// --- Trajectory (CSV file) motion ---
 
+    OptTrajectory traj_;
     MotionType traj_type_ = MotionType::Joint;
-    std::string traj_file_path_;
+    size_t traj_index_ = 0;
+    // std::string traj_file_path_;
 
   protected:
     /// asyn parameter indices — each maps to a named parameter string registered

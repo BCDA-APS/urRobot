@@ -13,7 +13,6 @@
 #include "spdlog/fmt/ranges.h"
 #include <asynOctetSyncIO.h>
 
-using OptTrajectory = std::optional<std::vector<std::vector<double>>>;
 OptTrajectory read_traj_file(const std::string& filepath);
 
 bool RTDEControl::try_connect() {
@@ -318,7 +317,7 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         if (!pending_motion_) {
             spdlog::debug("moveJ({:.4f}) rad", fmt::join(cmd_joints_, ","));
             if (rtde_control_->isJointsWithinSafetyLimits(cmd_joints_)) {
-                pending_motion_ = MotionTask{MotionType::Joint, waypoint_move_};
+                pending_motion_ = MotionTask{MotionType::Joint, waypoint_move_, false};
                 waypoint_move_ = false;
                 setIntegerParam(asyncMoveDoneIndex_, 0);
             } else {
@@ -333,11 +332,31 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         if (!pending_motion_) {
             spdlog::debug("moveL({:.4f}) m,rad", fmt::join(cmd_pose_, ","));
             if (rtde_control_->isPoseWithinSafetyLimits(cmd_pose_)) {
-                pending_motion_ = MotionTask{MotionType::Cartesian, waypoint_move_};
+                pending_motion_ = MotionTask{MotionType::Cartesian, waypoint_move_, false};
                 waypoint_move_ = false;
                 setIntegerParam(asyncMoveDoneIndex_, 0);
             } else {
                 spdlog::warn("Requested TCP pose not within safety limits. No action taken.");
+            }
+        } else {
+            spdlog::warn("Motion already in progress...please wait");
+        }
+    }
+
+    else if (function == trajMoveIndex_) {
+        if (!pending_motion_) {
+            if (traj_type_ == MotionType::Joint) {
+                spdlog::debug("Starting joint trajectory move");
+                spdlog::warn("Not implemented...no action taken");
+            } else if (traj_type_ == MotionType::Cartesian) {
+                spdlog::debug("Starting Cartesian trajectory move");
+                if (traj_) {
+                    pending_motion_ = MotionTask{MotionType::Cartesian, false, true};
+                    setIntegerParam(asyncMoveDoneIndex_, 0);
+                    traj_index_ = 0;
+                } else {
+                    spdlog::error("Trajectory not loaded.");
+                }
             }
         } else {
             spdlog::warn("Motion already in progress...please wait");
@@ -430,7 +449,8 @@ asynStatus RTDEControl::writeOctet(asynUser* pasynUser, const char* value, size_
 
     if (function == trajFileIndex_) {
         spdlog::debug("Setting trajectory file: {}", value);
-        traj_file_path_ = value;
+        // traj_file_path_ = value;
+        traj_ = read_traj_file(value);
     }
 
 skip:

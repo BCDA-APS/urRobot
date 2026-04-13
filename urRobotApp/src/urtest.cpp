@@ -13,34 +13,6 @@ constexpr double accel = 0.5;  // 50cm/s/s
 int main(int argc, char* argv[]) {
     RTDEControlInterface rtde_control(ROBOT_IP);
     RTDEReceiveInterface rtde_receive(ROBOT_IP);
-    std::vector<double> init_q = rtde_receive.getActualQ();
-
-    std::vector<double> target = rtde_receive.getActualTCPPose();
-    target[2] += inc;
-    rtde_control.moveL(target, speed, accel, false);
-
-    target = rtde_receive.getActualTCPPose();
-    target[2] -= inc;
-    rtde_control.moveL(target, 0.05, 0.5, false);
-
-    target = rtde_receive.getActualTCPPose();
-    target[0] += inc;
-    rtde_control.moveL(target, 0.05, 0.5, false);
-
-    target = rtde_receive.getActualTCPPose();
-    target[0] -= inc;
-    rtde_control.moveL(target, 0.05, 0.5, false);
-
-    target = rtde_receive.getActualTCPPose();
-    target[1] += inc;
-    rtde_control.moveL(target, 0.05, 0.5, false);
-
-    target = rtde_receive.getActualTCPPose();
-    target[1] -= inc;
-    rtde_control.moveL(target, 0.05, 0.5, false);
-
-    // Move to initial joint position with a regular moveJ
-    rtde_control.moveJ(init_q);
 
     // Stop the RTDE control script
     rtde_control.stopScript();
