@@ -164,6 +164,7 @@ record(luascript, "$(P)WaypointL:$(N):Reached") {
     field(INPE, "$(P)Receive:PosePitch CP")
     field(INPF, "$(P)Receive:PoseYaw CP")
     field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)', N=$(N)})")
+    field(OOPT, "On Change")
     field(PREC, 0)
     field(VAL, 0)
 }

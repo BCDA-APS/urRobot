@@ -165,6 +165,7 @@ record(luascript, "$(P)WaypointJ:$(N):Reached") {
     field(INPE, "$(P)Receive:Joint5 CP")
     field(INPF, "$(P)Receive:Joint6 CP")
     field(CODE, "@waypoints.lua waypointJ_reached({prefix='$(P)', N=$(N), tol=$(TOL=0.1)})")
+    field(OOPT, "On Change")
     field(PREC, 0)
     field(VAL, 0)
 }
