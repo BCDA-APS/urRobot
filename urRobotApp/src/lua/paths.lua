@@ -37,14 +37,14 @@ function path_go(args)
     epics.put(sync_pose_disa_pv, 1)
 
     epics.put(path_stop_pv, 0)
-    local stopped = 0
+    local stopped = false
 
     for i = 1,args.kmax do
 
         -- check if Path$(N):Stop is called
         local path_stop_val = epics.get(path_stop_pv)
         if path_stop_val == 1 then
-            stopped = 1
+            stopped = true
             break
         end
 
@@ -53,13 +53,12 @@ function path_go(args)
         local wp_num = epics.get(string.format("%sPath%d:%d:Number", args.prefix, args.N, i))
         local wp = string.format("%sWaypoint%s:%d", args.prefix, wp_type, wp_num)
         local wp_action = math.floor(epics.get(string.format("%sPath%d:%d:ActionOverride", args.prefix, args.N, i)))
-        local wp_enabled = epics.get(string.format("%sPath%d:%d:Enabled", args.prefix, args.N, i))
+        local wp_enabled = epics.get(string.format("%sPath%d:%d:Enabled", args.prefix, args.N, i)) ~= 0
         if (wp_num <= 0) then
-            wp_enabled = 0
+            wp_enabled = false
         end
 
-        if wp_enabled ~= 0 then
-
+        if wp_enabled then
             -- Apply action override
             local action_pv
             local wp_action0
@@ -88,7 +87,7 @@ function path_go(args)
             epics.put(path_busy_pv, 0)
 
             -- Restore original action
-            if wp_action ~= 0 then -- TODO: check this works, was 3?
+            if wp_action ~= 0 then
                 epics.put(action_opt_val_pv, wp_action0)
                 epics.put(set_action_opt_lnk0_pv, string.format("%s PP",action_pv))
                 epics.put(set_action_opt_proc_pv, 1) -- manually force processing
@@ -112,7 +111,6 @@ function get_wp_info(args)
     wp_type = (wp_type == 0.0) and "L" or "J"
     local wp_num = epics.get(string.format("%sPath%d:%d:Number", args.prefix, args.N, args.k))
     if wp_num > 0 then
-        local default_action_num = epics.get(string.format("%sWaypoint%s:%d:ActionOpt", args.prefix, wp_type, wp_num))
         local override_action_num = epics.get(string.format("%sPath%d:%d:ActionOverride", args.prefix, args.N, args.k))
         local action_desc
         if override_action_num == 0 then
