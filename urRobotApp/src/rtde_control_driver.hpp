@@ -40,6 +40,7 @@ class RTDEControl : public asynPortDriver {
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
     RTDEReceive* drv_receive_ = nullptr;
     int safetyStatusBitsParamId_ = -1;
+    int motion_done_count_ = 0;
 
     std::string robot_ip_ = "0.0.0.0";
     std::string dash_drv_name_;
@@ -84,6 +85,7 @@ class RTDEControl : public asynPortDriver {
     void set_motion_task_done() {
         motion_status_ = AsyncMotionStatus::Done;
         setIntegerParam(asyncMoveDoneIndex_, 1);
+        setIntegerParam(motionDoneCountIndex_, ++motion_done_count_);
         pending_motion_.reset();
     }
 
@@ -119,6 +121,7 @@ class RTDEControl : public asynPortDriver {
 
     /// Async motion / waypoints
     int asyncMoveDoneIndex_;      ///< 1 when no async motion in progress
+    int motionDoneCountIndex_;    ///< Counter for synchronization of path motion
     int waypointMoveIndex_;       ///< if 1, moveJ/moveL will run waypoint action after motion
     int runWaypointActionIndex_;  ///< toggled to trigger waypoint action processing
     int waypointActionDoneIndex_; ///< set to 1 by action chain when action completes

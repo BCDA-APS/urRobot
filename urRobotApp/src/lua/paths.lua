@@ -1,23 +1,26 @@
 -- NOTE: IOC must add $(URROBOT)/urRobotApp/src/lua to LUA_SCRIPT_PATH
 epics = require("epics")
+osi = require("osi")
+asyn = require("asyn")
 
-function wait_busy(busy_pv, path_stop_pv, safety_pv)
-    if timeout == nil then
-        timeout = 300.0 -- seconds
-    end
-
-    t0 = os.time()
+local function wait_motion_done(port, count_before, path_stop_pv, safety_pv)
+    local timeout = 300.0
+    local t0 = os.time()
     while true do
-        local elap = (os.time() - t0)
-        if (elap >= timeout) then
-            print("Error: Timeout exceeded waiting for process to complete")
+        local elap = os.time() - t0
+        if elap >= timeout then
+            print("Error: Timeout exceeded waiting for motion to complete")
             break
         end
-        if epics.get(busy_pv) == 0 then break end
+        if asyn.getIntegerParam(port, "MOTION_DONE_COUNT") ~= count_before then
+            break
+        end
+        if epics.get(path_stop_pv) == 1 then break end
         if safety_pv and epics.get(safety_pv) ~= 1 then
             epics.put(path_stop_pv, 1)
             break
         end
+        osi.sleep(0.01)
     end
 end
 
@@ -74,15 +77,14 @@ function path_go(args)
                 epics.put(set_action_opt_proc_pv, 1) -- manually force processing
             end
 
-            -- Move to waypoint and wait for motion and action to finish
+            -- Snapshot counter, trigger move, wait for counter to change
             print(string.format("Moving to waypoint %s...", wp))
             local move_pv = string.format("%s:move%s.PROC", wp, wp_type)
-            local wp_busy_pv = string.format("%s:Busy", wp)
             local path_busy_pv = string.format("%sPath%d:%d:Busy", args.prefix, args.N, i)
+            local count = asyn.getIntegerParam(args.port, "MOTION_DONE_COUNT")
             epics.put(path_busy_pv, 1)
             epics.put(move_pv, 1)
-            epics.put(wp_busy_pv, 1)
-            wait_busy(wp_busy_pv, path_stop_pv, safety_pv)
+            wait_motion_done(args.port, count, path_stop_pv, safety_pv)
             epics.put(path_busy_pv, 0)
 
             -- Restore original action

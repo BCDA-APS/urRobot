@@ -7,6 +7,6 @@ for n = 1, NPATHS do
     end
 end
 for n = 1, NPATHS do
-    local macros = string.format("P=%s,N=%d,KMAX=%d,DESC='Path %d'", P, n, KMAX, n)
+    local macros = string.format("P=%s,N=%d,KMAX=%d,DESC='Path %d',CTRL_PORT='%s'", P, n, KMAX, n, CTRL_PORT)
     dbLoadRecords("$(URROBOT)/urRobotApp/Db/path.db", macros)
 end

@@ -107,6 +107,7 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, 
     createParam("WAYPOINT_ACTION_DONE", asynParamInt32, &waypointActionDoneIndex_);
     createParam("TEACH_MODE", asynParamInt32, &teachModeIndex_);
     createParam("TRIGGER_PROT_STOP", asynParamInt32, &triggerProtStopIndex_);
+    createParam("MOTION_DONE_COUNT", asynParamInt32, &motionDoneCountIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
