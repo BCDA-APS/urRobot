@@ -143,11 +143,11 @@ void RTDEControl::poll() {
             setIntegerParam(isConnectedIndex_, 1);
             setIntegerParam(isSteadyIndex_, rtde_control_->isSteady());
 
-            int safetyBits = 1;
+            int safety_bits = 1;
             drv_receive_->lock();
-            drv_receive_->getIntegerParam(safetyStatusBitsParamId_, &safetyBits);
+            drv_receive_->getIntegerParam(safetyStatusBitsParamId_, &safety_bits);
             drv_receive_->unlock();
-            if (safetyBits != 1) {
+            if (safety_bits != 1) {
                 if (pending_motion_) {
                     spdlog::debug("Motion stopped due to safety.");
                     set_motion_task_done();

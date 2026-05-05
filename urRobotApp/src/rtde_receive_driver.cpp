@@ -37,8 +37,12 @@ bool RTDEReceive::try_connect() {
     return connected;
 }
 
+// Only lower 11 bits of safety status bits are used
+constexpr uint32_t SAFETY_STATUS_BITS_MASK = 0x7ff;
+
 constexpr int NUM_JOINTS = 6;
 constexpr int MAX_ADDR = 6;
+
 constexpr int ASYN_INTERFACE_MASK =
     asynInt32Mask | asynFloat64Mask | asynDrvUserMask | asynFloat64ArrayMask | asynInt32ArrayMask;
 constexpr int ASYN_INTERRUPT_MASK =
@@ -114,7 +118,7 @@ void RTDEReceive::poll() {
             setIntegerParam(isConnectedIndex_, 1);
 
             setDoubleParam(controllerTimestampIndex_, rtde_receive_->getTimestamp());
-            setIntegerParam(safetyStatusBitsIndex_, rtde_receive_->getSafetyStatusBits());
+            setIntegerParam(safetyStatusBitsIndex_, rtde_receive_->getSafetyStatusBits() & SAFETY_STATUS_BITS_MASK);
             setIntegerParam(runtimeStateIndex_, rtde_receive_->getRuntimeState());
             setIntegerParam(robotModeIndex_, rtde_receive_->getRobotMode());
             setIntegerParam(safetyModeIndex_, rtde_receive_->getSafetyMode());
