@@ -15,7 +15,7 @@
      </a>
 </p>
 
-EPICS support module for controlling Universal Robots e-series arms (UR3e, UR5e) via the [ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) library. Robot commands and status are mapped to EPICS PVs through asyn parameters.
+EPICS support module for controlling Universal Robots e-series arms (UR3e, UR5e
 
 ## Key Features
 - Dashboard control: power, brakes, program loading, popups
