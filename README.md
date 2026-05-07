@@ -21,7 +21,7 @@ EPICS support module for controlling Universal Robots e-series arms (UR3e, UR5e)
 ## Key Features
 - Access to large number of UR robot commands and status information
 - Control individual joints and end-effector position
-- Define joint or Cartesian space waypoints wtih associated waypoint actions in EPICS PVs
+- Define joint or Cartesian space waypoints with associated waypoint actions in EPICS PVs
 - Define paths to move through a series of waypoints
 - GUIs in MEDM, caQtDM, and CSS-Phoebus
 

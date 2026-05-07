@@ -15,10 +15,10 @@ scanOnceSetQueueSize(2000)
 epicsEnvSet("SPDLOG_LEVEL","debug,mylogger=trace")
 
 # Load urRobot iocsh script with the IP address for your robot
-iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "IP=164.54.1.100")
+iocshLoad("$(URROBOT)/urRobotApp/iocsh/urRobot.iocsh", "IP=164.54.1.100")
 
 # Optionally load support for waypoints and paths
-# iocshLoad("$(URROBOT)/iocsh/paths.iocsh")
+# iocshLoad("$(URROBOT)/urRobotApp/iocsh/paths.iocsh")
 
 ###############################################################################
 iocInit

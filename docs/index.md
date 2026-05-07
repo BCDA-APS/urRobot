@@ -4,7 +4,7 @@ title: Home
 nav_order: 1
 ---
 
-# EPICS urRobot
+# Universal Robots EPICS Support Module
 
 <img src="./assets/EPICS_Logo-192x192.png" alt="Image 1" width="150">
 <img src="./assets/1266x1776.webp" alt="Image 2" width="300">
@@ -16,7 +16,7 @@ Robots e-series robot arm. It works by mapping function calls in the
 ## Key Features
 - Access to large number of UR robot commands and status information
 - Control individual joints and end-effector position
-- Define joint or Cartesian space waypoints wtih associated waypoint actions in EPICS PVs
+- Define joint or Cartesian space waypoints with associated waypoint actions in EPICS PVs
 - Define paths to move through a series of waypoints
 - GUIs in CSS-Phoebus, MEDM, and caQtDM
 
@@ -25,7 +25,7 @@ The primary method for controlling Universal Robots remotely is through connecti
 to various servers hosted by the robot's controller. The `ur_rtde` library breaks up functionality
 into four specific clients, or *interfaces*. For maximum flexibility, each interface in the
 `ur_rtde` library can be loaded separately and each accepts multiple connections,
-except the RTDE Control interface which only support a single connection.
+except the RTDE Control interface which only supports a single connection.
 
 For more details on how to add the EPICS UR Robot support to an IOC, see [Quickstart]({{ site.baseurl }}/quickstart.html).
 
@@ -35,7 +35,7 @@ For more details on how to add the EPICS UR Robot support to an IOC, see [Quicks
 The dashboard interface provides basic functionality for interacting with the robot such as:
 - Loading, playing, pausing, and stopping URP programs that are saved in the controller
 - Turning the robot and controller power on/off
-- Releasing the breaks, closing popups, and restarting the safety configuration
+- Releasing the brakes, closing popups, and restarting the safety configuration
 - Basic status information such as the robot's mode, runtime state, and safety status
 
 
@@ -56,7 +56,7 @@ The RTDE Receive Interface provides in-depth status information on the robot inc
 
 The RTDE Control Interface provides functions for moving the robot including:
 - Moving individual joints to specified angles
-- Moving the end-effector a specified pose
+- Moving the end-effector to a specified pose
 
 
 ### RTDE I/O Interface

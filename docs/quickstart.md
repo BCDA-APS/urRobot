@@ -20,32 +20,40 @@ nav_order: 2
 work but have not been tested
 
 
-**Dependencies**
+**Library Dependencies**
 
 - EPICS Base
 - asyn
 - [ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) (included)
 
-This support module has been tested to work with EPICS base 7.0.4.1, and asyn R4-42 (synApps 6-2-1), and newer versions (synApps 6-3).
-The minimum required versions of base and asyn have not been tested.
+This library has been tested with synApps 6-2-1 (EPICS base 7.0.4.1, asyn R4-42), and synApps 6-3
+(EPICS Base 7.0.8, asyn R4-44-2). Other versions may work but have not been sufficiently tested.
 
 The `ur_rtde` library comes pre-built for the supported operating systems.
 See `urRobotApp/src/ur_rtde/release.txt` for the current included version of the `ur_rtde` library.
 
-If you need the EPICS `urRobot` support on another operating system, so long as you have EPICS base and asyn, you'll just
-need to build the `ur_rtde` library for your OS and replace the `ur_rtde` library files and headrs in urRobotApp/src.
+If you need to build the support for another operating system, build the `ur_rtde` library for your OS and replace the `ur_rtde` library files and headers in urRobotApp/src.
 Consult the `ur_rtde` library documentation on how to build it from source.
 
 **Build**
 
-- Once you have a working installation of EPICS base and asyn, clone or download [https://github.com/BCDA-APS/urRobot](https://github.com/BCDA-APS/urRobot)
-- Next, open configure/RELEASE in a text editor and correct the paths to `EPICS_BASE` and `ASYN` if necessary
-- Run `make` in the top level directory of the project
+1. Clone or download [https://github.com/BCDA-APS/urRobot](https://github.com/BCDA-APS/urRobot)
+2. Edit configure/RELEASE to correct the paths to `EPICS_BASE` and `ASYN`
+3. `make`
 
-## Adding UR Robot support to an IOC
+## Adding `urRobot` support to an IOC
+*See iocs/urExample for a complete example*
 
-After you have successfully built the urRobot support module, follow the steps below to add
-it to an IOC.
+**IOC Dependencies**
+
+IOCs using `urRobot` depend on these additional EPICS modules for full functionality:
+- asyn
+- calc
+- lua (optional) for waypoints/paths
+- std (optional) for waypoints/paths 
+- busy (optional) for waypoints/paths
+- motor (optional) for soft motor support
+
 
 **1\.** Add the path to the urRobot support in configure/RELEASE
 
@@ -68,16 +76,15 @@ endif
 
 ```
 # file: iocBoot/iocxxx/st.cmd.Linux
-iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=127.0.0.1")
+iocshLoad("$(URROBOT)/urRobotApp/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=127.0.0.1")
 ```
 
-**4\.** If you would like to add support for waypoints and paths, load `paths.iocsh`. Waypoints and
-paths require the `lua` module (for luascript records), the `calc` module (for sseq records),
-and the `seq` module (for editSseq), all of which are included in synApps. All must be defined in `configure/RELEASE`.
+**4\.** If you would like to add support for waypoints and paths, load `paths.iocsh`. Note the additional dependencies for waypoint
+and path functionality (lua, std, busy).
 
 ```
 # file: iocBoot/iocxxx/st.cmd.Linux
-iocshLoad("$(URROBOT)/iocsh/paths.iocsh", "PREFIX=$(PREFIX)")
+iocshLoad("$(URROBOT)/urRobotApp/iocsh/paths.iocsh", "PREFIX=$(PREFIX)")
 ```
 
 The number of waypoints, actions, and paths loaded can be controlled with optional macros:
