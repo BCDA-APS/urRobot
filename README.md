@@ -18,14 +18,11 @@
 EPICS support module for controlling Universal Robots e-series arms (UR3e, UR5e
 
 ## Key Features
-- Dashboard control: power, brakes, program loading, popups
-- Real-time joint positions, velocities, forces, temperatures, and safety status
-- Motion control: moveJ, moveL, speed/acceleration parameters
-- Digital and analog I/O, speed slider
-- Robotiq Hand-E gripper support
-- Joint-space and Cartesian-space waypoints with configurable actions
-- Path definitions for sequencing waypoints
-- GUIs for MEDM, caQtDM, and CSS-Phoebus
+- Access to large number of UR robot commands and status information
+- Control individual joints and end-effector position
+- Define joint or Cartesian space waypoints wtih associated waypoint actions in EPICS PVs
+- Define paths to move through a series of waypoints
+- GUIs in MEDM, caQtDM, and CSS-Phoebus
 
 ## Documentation
 Full build instructions, IOC integration, usage guides, and PV reference:
