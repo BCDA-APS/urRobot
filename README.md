@@ -1,5 +1,8 @@
 # Universal Robots EPICS Support Module
 <p align="center">
+     <a href="https://epics-controls.org/">
+     <img src="https://github.com/user-attachments/assets/2cbe5ed1-ba67-444c-84c9-5b67479bb15a" width="10%" />
+     </a>
      <a href="https://gitlab.com/sdurobotics/ur_rtde">
      <img src="https://github.com/user-attachments/assets/6f2e1e5c-58f9-46c8-9ad3-def3766d4f1f" width="10%" />
      </a>
