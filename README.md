@@ -1,7 +1,7 @@
 # UR Robot EPICS Support Module
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f392132a-d42c-4480-979c-898186cde3f5" width="45%" />
-  <img src="https://github.com/user-attachments/assets/2fdcda46-18fa-49d6-8db2-c14c2cf0f9ec" width="45%" />
+  <img src="https://github.com/user-attachments/assets/f392132a-d42c-4480-979c-898186cde3f5" width="40%" />
+  <img src="https://github.com/user-attachments/assets/2fdcda46-18fa-49d6-8db2-c14c2cf0f9ec" width="30%" />
 </p>
 
 
