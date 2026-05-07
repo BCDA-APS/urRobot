@@ -29,20 +29,9 @@ Robots e-series robot arm such as the UR3e and UR5e. It works by mapping functio
 - Path definitions for sequencing waypoints
 - GUIs for MEDM, caQtDM, and CSS-Phoebus
 
-## Requirements
-| Dependency | Version | Required |
-|------------|---------|----------|
-| EPICS Base | 7.0.4+  | Yes      |
-| asyn       | R4-42+  | Yes      |
-| lua        | synApps | No (waypoints/paths) |
-| calc       | synApps | No (waypoints/paths) |
-| std        | synApps | No (waypoints/paths) |
-| busy       | synApps | No (waypoints/paths) |
-The ur_rtde library (v1.5.7) ships pre-built for RHEL9 x86-64.
-
 ## Documentation
 Full build instructions, IOC integration, usage guides, and PV reference:
 **https://bcda-aps.github.io/urRobot/**
 
 ## License
-Copyright (c) 2025 UChicago Argonne, LLC. See [LICENSE](LICENSE) for details.
+Copyright (c) 2026 UChicago Argonne, LLC. See [LICENSE](LICENSE) for details.
