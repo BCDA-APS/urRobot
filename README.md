@@ -1,6 +1,7 @@
 # Universal Robots EPICS Support Module
 
 [![Latest Release](https://img.shields.io/github/v/tag/BCDA-APS/urRobot?label=release)](https://github.com/BCDA-APS/urRobot/releases)
+[![Documentation](https://img.shields.io/badge/docs-sphinx-blue)](https://bcda-aps.github.io/urRobot/)
 
 <p align="center">
      <a href="https://epics-controls.org/">
