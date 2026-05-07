@@ -1,7 +1,6 @@
 # Universal Robots EPICS Support Module
 
 [![Latest Release](https://img.shields.io/github/v/tag/BCDA-APS/urRobot?label=release)](https://github.com/BCDA-APS/urRobot/releases)
-[![License](https://img.shields.io/github/license/BCDA-APS/urRobot)](LICENSE)
 
 <p align="center">
      <a href="https://epics-controls.org/">
@@ -20,4 +19,30 @@ This support module provides an EPICS interface to control a Universal
 Robots e-series robot arm such as the UR3e and UR5e. It works by mapping function calls in the
 [ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) library to EPICS PVs through asyn parameters.
 
-[Documentation](https://bcda-aps.github.io/urRobot/)
+## Key Features
+- Dashboard control: power, brakes, program loading, popups
+- Real-time joint positions, velocities, forces, temperatures, and safety status
+- Motion control: moveJ, moveL, speed/acceleration parameters
+- Digital and analog I/O, speed slider
+- Robotiq Hand-E gripper support
+- Joint-space and Cartesian-space waypoints with configurable actions
+- Path definitions for sequencing waypoints
+- GUIs for MEDM, caQtDM, and CSS-Phoebus
+
+## Requirements
+| Dependency | Version | Required |
+|------------|---------|----------|
+| EPICS Base | 7.0.4+  | Yes      |
+| asyn       | R4-42+  | Yes      |
+| lua        | synApps | No (waypoints/paths) |
+| calc       | synApps | No (waypoints/paths) |
+| std        | synApps | No (waypoints/paths) |
+| busy       | synApps | No (waypoints/paths) |
+The ur_rtde library (v1.5.7) ships pre-built for RHEL9 x86-64.
+
+## Documentation
+Full build instructions, IOC integration, usage guides, and PV reference:
+**https://bcda-aps.github.io/urRobot/**
+
+## License
+Copyright (c) 2025 UChicago Argonne, LLC. See [LICENSE](LICENSE) for details.
