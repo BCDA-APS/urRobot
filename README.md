@@ -16,7 +16,7 @@
      </a>
 </p>
 
-EPICS support module for controlling Universal Robots e-series arms (UR3e, UR5e
+EPICS support module for controlling Universal Robots e-series arms (UR3e, UR5e)
 
 ## Key Features
 - Access to large number of UR robot commands and status information
