@@ -189,8 +189,14 @@ record(seq, "$(P)WaypointJ:$(N):Reset")
     field(LNK4, "$(P)WaypointJ:$(N):J5 PP")
     field(DOL5, "$(P)Receive:Joint6")
     field(LNK5, "$(P)WaypointJ:$(N):J6 PP")
+
     field(DOL6, "1")
-    field(LNK6, "$(P)WaypointJ:$(N):Reached.VAL PP")
+    field(LNK6, "$(P)waypoint_clear_reached.PROC")
+    field(DOL7, "$(N)")
+    field(LNK7, "$(P)waypoint_active_number.VAL PP")
+    field(DOL8, "J")
+    field(LNK8, "$(P)waypoint_active_type.VAL PP")
+
     field(FLNK, "$(P)WaypointJ:$(N):SetEnabled.PROC")
 }
 
@@ -247,7 +253,7 @@ record(seq, "$(P)WaypointJ:$(N):moveJ_seq1")
     field(LNK8, "$(P)waypoint_clear_reached.PROC")
     field(DOL9, "$(N)")
     field(LNK9, "$(P)waypoint_active_number.VAL PP")
-    field(DOLA, "L")
+    field(DOLA, "J")
     field(LNKA, "$(P)waypoint_active_type.VAL PP")
 
     field(FLNK, "$(P)WaypointJ:$(N):moveJ_seq2.PROC")

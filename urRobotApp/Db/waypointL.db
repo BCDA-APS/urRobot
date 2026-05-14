@@ -189,6 +189,14 @@ record(seq, "$(P)WaypointL:$(N):Reset")
     field(LNK4, "$(P)WaypointL:$(N):Pitch PP")
     field(DOL5, "$(P)Receive:PoseYaw")
     field(LNK5, "$(P)WaypointL:$(N):Yaw PP")
+
+    field(DOL6, "1")
+    field(LNK6, "$(P)waypoint_clear_reached.PROC")
+    field(DOL7, "$(N)")
+    field(LNK7, "$(P)waypoint_active_number.VAL PP")
+    field(DOL8, "L")
+    field(LNK8, "$(P)waypoint_active_type.VAL PP")
+
     field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
 }
 
@@ -245,7 +253,7 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq1")
     field(LNK8, "$(P)waypoint_clear_reached.PROC")
     field(DOL9, "$(N)")
     field(LNK9, "$(P)waypoint_active_number.VAL PP")
-    field(DOLA, "J")
+    field(DOLA, "L")
     field(LNKA, "$(P)waypoint_active_type.VAL PP")
 
     field(FLNK, "$(P)WaypointL:$(N):moveL_seq2.PROC")
