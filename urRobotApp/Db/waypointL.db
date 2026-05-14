@@ -155,20 +155,22 @@ record(stringin, "$(P)WaypointL:$(N):ActionDesc")
     field(INP, "$(P)WaypointL:$(N):get_action_desc.SVAL CP")
 }
 
-# 1 if robot is at waypoint within tolerance, otherwise 0
-record(luascript, "$(P)WaypointL:$(N):Reached") {
-    field(INPA, "$(P)Receive:PoseX")
-    field(INPB, "$(P)Receive:PoseY")
-    field(INPC, "$(P)Receive:PoseZ")
-    field(INPD, "$(P)Receive:PoseRoll")
-    field(INPE, "$(P)Receive:PosePitch")
-    field(INPF, "$(P)Receive:PoseYaw")
-    field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)', N=$(N)})")
-    field(SCAN, ".1 second")
-    field(OOPT, "On Change")
-    field(PREC, 0)
-    field(VAL, 0)
-}
+# # 1 if robot is at waypoint within tolerance, otherwise 0
+# record(luascript, "$(P)WaypointL:$(N):Reached") {
+    # field(INPA, "$(P)Receive:PoseX")
+    # field(INPB, "$(P)Receive:PoseY")
+    # field(INPC, "$(P)Receive:PoseZ")
+    # field(INPD, "$(P)Receive:PoseRoll")
+    # field(INPE, "$(P)Receive:PosePitch")
+    # field(INPF, "$(P)Receive:PoseYaw")
+    # field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)', N=$(N)})")
+    # field(SCAN, ".1 second")
+    # field(OOPT, "On Change")
+    # field(PREC, 0)
+    # field(VAL, 0)
+# }
+
+record(bi, "$(P)WaypointL:$(N):Reached") {}
 
 # stores DOLx.VAL in LNKx.VAL
 # Requires that RTDE Receive databases have been loaded
@@ -238,6 +240,13 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq1")
 
     field(DOL7, "1")
     field(LNK7, "$(P)WaypointL:$(N):Busy PP")
+
+    field(DOL8, "1")
+    field(LNK8, "$(P)waypoint_clear_reached.PROC")
+    field(DOL9, "$(N)")
+    field(LNK9, "$(P)waypoint_active_number.VAL PP")
+    field(DOLA, "J")
+    field(LNKA, "$(P)waypoint_active_type.VAL PP")
 
     field(FLNK, "$(P)WaypointL:$(N):moveL_seq2.PROC")
 }

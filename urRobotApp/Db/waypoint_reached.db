@@ -1,0 +1,41 @@
+record(bo, "$(P)waypoint_active_type")
+{
+    field(ZNAM, "J")
+    field(ONAM, "L")
+    field(VAL, 0)
+}
+
+record(longout, "$(P)waypoint_active_number")
+{
+    field(VAL, 0)
+}
+
+record(calcout, "$(P)trigger_reached_scan") {
+    field(INPA, "$(P)waypoint_active_number.VAL CP")
+    field(CALC, "A <= 0 ? 0 : 9")
+    field(OUT, "$(P)waypoint_active_reached.SCAN")
+}
+
+record(printf, "$(P)waypoint_reached_pv")
+{
+    field(INP0, "$(P)waypoint_active_type.VAL CP")
+    field(INP1, "$(P)waypoint_active_number.VAL CP")
+    field(FMT, "$(P)Waypoint%s:%d:Reached")
+}
+
+record(luascript, "$(P)waypoint_active_reached")
+{
+    field(INPA, "$(P)waypoint_active_type.VAL")
+    field(INPB, "$(P)waypoint_active_number.VAL")
+    field(INAA, "$(P)waypoint_reached_pv")
+    field(CODE, "@waypoints.lua active_reached({prefix='$(P)'})")
+    # field(SCAN, ".1 second")
+    field(OOPT, "On Change")
+}
+
+record(luascript, "$(P)waypoint_clear_reached")
+{
+    field(INPA, "$(P)waypoint_active_number.VAL")
+    field(INAA, "$(P)waypoint_reached_pv")
+    field(CODE, "@waypoints.lua clear_reached()")
+}
