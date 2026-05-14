@@ -29,7 +29,7 @@ record(luascript, "$(P)waypoint_active_reached")
     field(INPB, "$(P)waypoint_active_number.VAL")
     field(INAA, "$(P)waypoint_reached_pv")
     field(CODE, "@waypoints.lua active_reached({prefix='$(P)'})")
-    # field(SCAN, ".1 second")
+    field(SCAN, "Passive")
     field(OOPT, "On Change")
 }
 
