@@ -3,3 +3,4 @@ for n = 1, tonumber(N) do
     dbLoadRecords("$(URROBOT)/urRobotApp/Db/waypointJ.db", macros)
     dbLoadRecords("$(URROBOT)/urRobotApp/Db/waypointL.db", macros)
 end
+dbLoadRecords("$(URROBOT)/urRobotApp/Db/waypoint_reached.db", "P="..P)

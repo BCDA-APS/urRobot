@@ -156,19 +156,7 @@ record(stringin, "$(P)WaypointL:$(N):ActionDesc")
 }
 
 # 1 if robot is at waypoint within tolerance, otherwise 0
-record(luascript, "$(P)WaypointL:$(N):Reached") {
-    field(INPA, "$(P)Receive:PoseX")
-    field(INPB, "$(P)Receive:PoseY")
-    field(INPC, "$(P)Receive:PoseZ")
-    field(INPD, "$(P)Receive:PoseRoll")
-    field(INPE, "$(P)Receive:PosePitch")
-    field(INPF, "$(P)Receive:PoseYaw")
-    field(CODE, "@waypoints.lua waypointL_reached({prefix='$(P)', N=$(N)})")
-    field(SCAN, ".1 second")
-    field(OOPT, "On Change")
-    field(PREC, 0)
-    field(VAL, 0)
-}
+record(bi, "$(P)WaypointL:$(N):Reached") {}
 
 # stores DOLx.VAL in LNKx.VAL
 # Requires that RTDE Receive databases have been loaded
@@ -187,6 +175,14 @@ record(seq, "$(P)WaypointL:$(N):Reset")
     field(LNK4, "$(P)WaypointL:$(N):Pitch PP")
     field(DOL5, "$(P)Receive:PoseYaw")
     field(LNK5, "$(P)WaypointL:$(N):Yaw PP")
+
+    field(DOL6, 1)
+    field(LNK6, "$(P)waypoint_clear_reached.PROC")
+    field(DOL7, 1)
+    field(LNK7, "$(P)waypoint_active_type.VAL PP")
+    field(DOL8, "$(N)")
+    field(LNK8, "$(P)waypoint_active_number.VAL PP")
+
     field(FLNK, "$(P)WaypointL:$(N):SetEnabled.PROC")
 }
 
@@ -238,6 +234,13 @@ record(seq, "$(P)WaypointL:$(N):moveL_seq1")
 
     field(DOL7, "1")
     field(LNK7, "$(P)WaypointL:$(N):Busy PP")
+
+    field(DOL8, 1)
+    field(LNK8, "$(P)waypoint_clear_reached.PROC")
+    field(DOL9, 1)
+    field(LNK9, "$(P)waypoint_active_type.VAL PP")
+    field(DOLA, "$(N)")
+    field(LNKA, "$(P)waypoint_active_number.VAL PP")
 
     field(FLNK, "$(P)WaypointL:$(N):moveL_seq2.PROC")
 }
