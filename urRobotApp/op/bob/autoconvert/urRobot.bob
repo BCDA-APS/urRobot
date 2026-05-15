@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2026-05-15 10:20:46 by nmarks-->
+<display version="2.0.0">
+  <name>urRobot</name>
+  <x>943</x>
+  <y>978</y>
+  <width>230</width>
+  <height>160</height>
+  <background_color>
+    <color red="187" green="187" blue="187">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <width>400</width>
+    <height>30</height>
+    <line_color>
+      <color red="39" green="84" blue="141">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="39" green="84" blue="141">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #9</name>
+    <actions>
+      <action type="open_display">
+        <file>dashboard.opi</file>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>Dashboard</text>
+    <x>10</x>
+    <y>35</y>
+    <height>25</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #12</name>
+    <actions>
+      <action type="open_display">
+        <file>ur_rtde_receive.opi</file>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>Status</text>
+    <x>10</x>
+    <y>65</y>
+    <height>25</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #15</name>
+    <actions>
+      <action type="open_display">
+        <file>ur_rtde_io.opi</file>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>I/O</text>
+    <x>10</x>
+    <y>95</y>
+    <height>25</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #18</name>
+    <actions>
+      <action type="open_display">
+        <file>robotiq_gripper.opi</file>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>Gripper</text>
+    <x>10</x>
+    <y>125</y>
+    <height>25</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #21</name>
+    <actions>
+      <action type="open_display">
+        <file>waypoint10x.opi</file>
+        <macros>
+          <T>J</T>
+          <TITLE>Joint</TITLE>
+          <WP1>1</WP1>
+          <WP2>2</WP2>
+          <WP3>3</WP3>
+          <WP4>4</WP4>
+          <WP5>5</WP5>
+          <WP6>6</WP6>
+          <WP7>7</WP7>
+          <WP8>8</WP8>
+          <WP9>9</WP9>
+          <WP10>10</WP10>
+        </macros>
+        <target>tab</target>
+        <description>1-10</description>
+      </action>
+      <action type="open_display">
+        <file>waypoint10x.opi</file>
+        <macros>
+          <T>J</T>
+          <TITLE>Joint</TITLE>
+          <WP1>11</WP1>
+          <WP2>12</WP2>
+          <WP3>13</WP3>
+          <WP4>14</WP4>
+          <WP5>15</WP5>
+          <WP6>16</WP6>
+          <WP7>17</WP7>
+          <WP8>18</WP8>
+          <WP9>19</WP9>
+          <WP10>20</WP10>
+        </macros>
+        <target>tab</target>
+        <description>11-20</description>
+      </action>
+      <action type="open_display">
+        <file>waypoint10x.opi</file>
+        <macros>
+          <T>J</T>
+          <TITLE>Joint</TITLE>
+          <WP1>21</WP1>
+          <WP2>22</WP2>
+          <WP3>23</WP3>
+          <WP4>24</WP4>
+          <WP5>25</WP5>
+          <WP6>26</WP6>
+          <WP7>27</WP7>
+          <WP8>28</WP8>
+          <WP9>29</WP9>
+          <WP10>30</WP10>
+        </macros>
+        <target>tab</target>
+        <description>21-30</description>
+      </action>
+    </actions>
+    <text>WaypointsJ</text>
+    <x>120</x>
+    <y>35</y>
+    <height>25</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #26</name>
+    <actions>
+      <action type="open_display">
+        <file>waypoint10x.opi</file>
+        <macros>
+          <T>L</T>
+          <TITLE>Cartesian</TITLE>
+          <WP1>1</WP1>
+          <WP2>2</WP2>
+          <WP3>3</WP3>
+          <WP4>4</WP4>
+          <WP5>5</WP5>
+          <WP6>6</WP6>
+          <WP7>7</WP7>
+          <WP8>8</WP8>
+          <WP9>9</WP9>
+          <WP10>10</WP10>
+        </macros>
+        <target>tab</target>
+        <description>1-10</description>
+      </action>
+      <action type="open_display">
+        <file>waypoint10x.opi</file>
+        <macros>
+          <T>L</T>
+          <TITLE>Cartesian</TITLE>
+          <WP1>11</WP1>
+          <WP2>12</WP2>
+          <WP3>13</WP3>
+          <WP4>14</WP4>
+          <WP5>15</WP5>
+          <WP6>16</WP6>
+          <WP7>17</WP7>
+          <WP8>18</WP8>
+          <WP9>19</WP9>
+          <WP10>20</WP10>
+        </macros>
+        <target>tab</target>
+        <description>11-20</description>
+      </action>
+      <action type="open_display">
+        <file>waypoint10x.opi</file>
+        <macros>
+          <T>L</T>
+          <TITLE>Cartesian</TITLE>
+          <WP1>21</WP1>
+          <WP2>22</WP2>
+          <WP3>23</WP3>
+          <WP4>24</WP4>
+          <WP5>25</WP5>
+          <WP6>26</WP6>
+          <WP7>27</WP7>
+          <WP8>28</WP8>
+          <WP9>29</WP9>
+          <WP10>30</WP10>
+        </macros>
+        <target>tab</target>
+        <description>21-30</description>
+      </action>
+    </actions>
+    <text>WaypointsL</text>
+    <x>120</x>
+    <y>65</y>
+    <height>25</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #31</name>
+    <actions>
+      <action type="open_display">
+        <file>ur_rtde_control.opi</file>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>Control</text>
+    <x>120</x>
+    <y>125</y>
+    <height>25</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #34</name>
+    <text>UR Robot</text>
+    <x>5</x>
+    <y>5</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #37</name>
+    <actions>
+      <action type="open_display">
+        <file>path_top10x.opi</file>
+        <macros>
+          <N1>1</N1>
+          <N2>2</N2>
+          <N3>3</N3>
+          <N4>4</N4>
+          <N5>5</N5>
+          <N6>6</N6>
+          <N7>7</N7>
+          <N8>8</N8>
+          <N9>9</N9>
+          <N10>10</N10>
+        </macros>
+        <target>tab</target>
+        <description>Waypoint Paths</description>
+      </action>
+    </actions>
+    <text>Paths</text>
+    <x>120</x>
+    <y>95</y>
+    <height>25</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #40</name>
+    <text>$(P)</text>
+    <x>120</x>
+    <y>5</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+</display>
