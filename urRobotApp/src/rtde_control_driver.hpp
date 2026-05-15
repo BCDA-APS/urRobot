@@ -68,6 +68,9 @@ class RTDEControl : public asynPortDriver {
     double linear_accel_ = 0.5;
     double linear_blend_ = 0.0;
 
+    /// Custom URScript
+    std::string custom_script_path_;
+
     /// --- Async motion state machine ---
 
     AsyncMotionStatus motion_status_ = AsyncMotionStatus::Done;
@@ -131,4 +134,6 @@ class RTDEControl : public asynPortDriver {
     int stopCtrlScriptIndex_;
     int teachModeIndex_;
     int triggerProtStopIndex_;
+    int customScriptFileIndex_;
+    int runCustomScriptIndex_;
 };

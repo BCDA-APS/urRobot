@@ -3,12 +3,14 @@
 #include <exception>
 #include <iocsh.h>
 #include <optional>
+#include <fstream>
+#include <filesystem>
 
 #include "rtde_control_driver.hpp"
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "dashboard_driver.hpp"
-#include "spdlog/fmt/ranges.h"
+// #include "spdlog/fmt/ranges.h"
 #include <asynOctetSyncIO.h>
 
 bool RTDEControl::try_connect() {
@@ -108,6 +110,8 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, 
     createParam("TEACH_MODE", asynParamInt32, &teachModeIndex_);
     createParam("TRIGGER_PROT_STOP", asynParamInt32, &triggerProtStopIndex_);
     createParam("MOTION_DONE_COUNT", asynParamInt32, &motionDoneCountIndex_);
+    createParam("CUSTOM_SCRIPT_PATH", asynParamOctet, &customScriptFileIndex_);
+    createParam("RUN_CUSTOM_SCRIPT", asynParamInt32, &runCustomScriptIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -390,6 +394,24 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         }
     }
 
+    else if (function == runCustomScriptIndex_) {
+        std::ifstream fs(custom_script_path_);
+        if (!fs.is_open()) {
+            goto skip;
+        }
+
+        // Read entire file into a string
+        std::string script_str = std::string(
+            std::istreambuf_iterator<char>(fs),
+            std::istreambuf_iterator<char>()
+        );
+        // Works but blocks!
+        bool result = rtde_control_->sendCustomScriptFunction("custom_func", script_str);
+        if (!result) {
+            spdlog::error("Error in custom URScript");
+        }
+    }
+
 skip:
     callParamCallbacks();
     if (comm_ok) {
@@ -414,6 +436,18 @@ asynStatus RTDEControl::writeOctet(asynUser* pasynUser, const char* value, size_
         spdlog::error("RTDE Control interface not connected");
         comm_ok = false;
         goto skip;
+    }
+
+    if (function == customScriptFileIndex_) {
+        // Set the path, and read it every time in runCustomScriptIndex_.
+        // This could be imrpoved to only read if modified, but that is
+        // probably premature optimization
+        spdlog::debug("Reading custom script file: {}", value);
+        if (std::filesystem::exists(value)) {
+            custom_script_path_ = value;
+        } else {
+           spdlog::error("Failed to read custom script file: {}", value);
+        }
     }
 
 skip:

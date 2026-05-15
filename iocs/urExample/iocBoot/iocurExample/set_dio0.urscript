@@ -1,0 +1,5 @@
+set_standard_digital_out(1,True)
+sleep(1.0)
+set_standard_digital_out(3,True)
+sleep(1.0)
+set_standard_digital_out(5,True)

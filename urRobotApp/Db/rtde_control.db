@@ -1000,3 +1000,17 @@ record(ao, "$(P)Control:TCPOffset_Yaw")
     field(PREC, 4)
 }
 
+#======================
+# Custom URScripts
+#======================
+record(stringout, "$(P)Control:CustomScriptPath")
+{
+    field(DTYP, "asynOctetWrite")
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))CUSTOM_SCRIPT_PATH")
+}
+
+record(bo, "$(P)Control:RunCustomScript")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))RUN_CUSTOM_SCRIPT")
+}
