@@ -30,51 +30,18 @@ std::string wrap_script(const std::string& script) {
     std::stringstream ss(script);
     const std::string function_name = "custom_func";
     cmd_str += "def " + function_name + "():\n";
-    cmd_str += "\twrite_output_integer_register(0, 1)\n";
+    // cmd_str += "\twrite_output_integer_register(12, 1)\n";
 
     while (std::getline(ss, line)) {
         cmd_str += "\t" + line + "\n";
     }
 
     // Signal when motions are finished
-    cmd_str += "\twrite_output_integer_register(0, 2)\n";
+    // cmd_str += "\twrite_output_integer_register(12, 2)\n";
     cmd_str += "end\n";
 
     return cmd_str;
 }
-
-// bool RTDEControlInterface::sendCustomScript(const std::string &script)
-// {
-  // custom_script_running_ = true;
-  // // First stop the running RTDE control script
-  // stopScript();
-//
-  // auto start_time = std::chrono::high_resolution_clock::now();
-//
-  // // Send custom script function
-  // script_client_->sendScriptCommand(script);
-//
-  // while (getControlScriptState() != UR_CONTROLLER_DONE_WITH_CMD)
-  // {
-    // // Wait until the controller is done with command
-    // auto current_time = std::chrono::high_resolution_clock::now();
-    // auto duration = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count();
-    // if (duration > UR_PATH_EXECUTION_TIMEOUT)
-      // return false;
-    // // Sleep to avoid high CPU load
-    // std::this_thread::sleep_for(std::chrono::milliseconds(1));
-  // }
-//
-  // sendClearCommand();
-//
-  // // Re-upload RTDE script to the UR Controller
-  // script_client_->sendScript();
-//
-  // waitForProgramRunning();
-//
-  // custom_script_running_ = false;
-  // return true;
-// }
 
 int main(int argc, char* argv[]) {
     std::signal(SIGINT, signal_handler);
@@ -91,35 +58,46 @@ int main(int argc, char* argv[]) {
         // return EXIT_FAILURE;
     // }
     // std::cout << dash.polyscopeVersion() << std::endl;
+    std::this_thread::sleep_for(1s);
+    std::cout << "Robot status = " << ctrl.getRobotStatus() << std::endl;
 
+    // TODO: get from dashboard
     ScriptClient script_client(ROBOT_IP, 5, 14);
     script_client.connect();
 
-    auto script = wrap_script("set_standard_digital_out(1,True)\nsleep(3.0)\nset_standard_digital_out(2,True)\nsleep(3.0)\n");
+    auto script = wrap_script("set_standard_digital_out(1,False)\nsleep(3.0)\nset_standard_digital_out(2,False)\nsleep(3.0)\n");
+    std::cout << script << std::endl;
     ctrl.stopScript();
     script_client.sendScriptCommand(script);
 
     std::cout << "Running..." << std::endl;
-    // while (g_signal_caught == 0) {
-        // std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    // }
-    std::cout << "ctrl.isProgramRunning() = " << ctrl.isProgramRunning() << std::endl;
+    while (true) {
+        // TODO: Timeout
+        if (ctrl.isProgramRunning()) {
+            break;
+        }
+        std::this_thread::sleep_for(1ms);
+    }
+
     int count = 0;
-    while (recv.getOutputIntRegister(0) != UR_CONTROLLER_DONE_WITH_CMD) {
+    while (ctrl.isProgramRunning()) {
         std::cout << "Program running! " << ++count << std::endl;
         std::cout << "ctrl.isProgramRunning() = " << ctrl.isProgramRunning() << std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(100ms);
     }
     std::cout << "ctrl.isProgramRunning() = " << ctrl.isProgramRunning() << std::endl;
+    std::cout << "Done!\n" << std::endl;
 
-    std::cout << "Done!" << std::endl;
+    ctrl.reuploadScript();
+    std::this_thread::sleep_for(1s);
+    std::cout << "Robot status = " << ctrl.getRobotStatus() << std::endl;
 
     recv.disconnect();
     ctrl.stopScript();
     ctrl.disconnect();
     dash.disconnect();
 
-    std::cout << "\nProgram terminated via keyboard interrupt (Ctrl+C)" << std::endl;
+    std::cout << "Quiting\n" << std::endl;
 
     return 0;
 }
