@@ -10,7 +10,6 @@
 #include "spdlog/cfg/env.h"
 #include "spdlog/spdlog.h"
 #include "dashboard_driver.hpp"
-// #include "spdlog/fmt/ranges.h"
 #include <asynOctetSyncIO.h>
 
 bool RTDEControl::try_connect() {
@@ -65,6 +64,37 @@ bool RTDEControl::try_connect() {
     return connected;
 }
 
+std::pair<int, int> get_polyscope_version(URDashboard* dash) {
+    int major = 0;
+    int minor = 0;
+
+    char version_str[64];
+    int id;
+    dash->findParam("POLYSCOPE_VERSION", &id);
+    dash->lock();
+    dash->getStringParam(id, 64, version_str);
+    dash->unlock();
+
+    int parsed = std::sscanf(version_str, "%d.%d", &major, &minor);
+    if (parsed != 2) {
+        throw std::runtime_error("Failed to parse Polyscope version");
+    }
+    return {major, minor};
+}
+
+std::string wrap_script(const std::string& script) {
+    std::string cmd_str;
+    std::string line;
+    std::stringstream ss(script);
+    cmd_str += "def custom_func():\n";
+    while (std::getline(ss, line)) {
+        cmd_str += "\t" + line + "\n";
+    }
+    cmd_str += "\twrite_output_integer_register(12, read_output_integer_register(12)+1)\n";
+    cmd_str += "end\n";
+    return cmd_str;
+}
+
 static void poll_thread_C(void* pPvt) {
     RTDEControl* pRTDEControl = (RTDEControl*)pPvt;
     pRTDEControl->poll();
@@ -80,7 +110,7 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, 
                          double poll_period)
     : asynPortDriver(asyn_port_name, MAX_ADDR, ASYN_INTERFACE_MASK, ASYN_INTERRUPT_MASK,
                      ASYN_MULTIDEVICE | ASYN_CANBLOCK, 1, 0, 0),
-      rtde_control_(nullptr), dash_drv_name_(dash_drv_name), poll_period_(poll_period) {
+      rtde_control_(nullptr), script_client_(nullptr), dash_drv_name_(dash_drv_name), poll_period_(poll_period) {
 
     createParam("DISCONNECT", asynParamInt32, &disconnectIndex_);
     createParam("RECONNECT", asynParamInt32, &reconnectIndex_);
@@ -116,6 +146,7 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
 
+    // Get the controller's IP address from the dashboard driver
     URDashboard* dash = findDerivedAsynPortDriver<URDashboard>(dash_drv_name);
     if (!dash) {
         spdlog::error("Failed to find URDashboard asynPortDriver");
@@ -123,14 +154,21 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, 
     }
     robot_ip_ = dash->get_ip();
 
+    // Get the version of Polyscope and connect the script client
+    auto [major, minor] = get_polyscope_version(dash);
+    script_client_ = std::make_unique<ur_rtde::ScriptClient>(robot_ip_, major, minor);
+    script_client_->connect();
+
+    // Save the asyn parameter ID for the safety status bits from receive driver
     drv_receive_ = findDerivedAsynPortDriver<RTDEReceive>(recv_drv_name);
     if (!drv_receive_) {
         spdlog::error("Failed to find RTDEReceive asynPortDriver");
         return;
     }
     drv_receive_->findParam("SAFETY_STATUS_BITS", &safetyStatusBitsParamId_);
+    drv_receive_->findParam("OUTPUT_INTEGER_REG12", &outputIntRegId_);
 
-    // tries connecting to the control server on the robot controller
+    // Try connecting to the control server on the robot controller
     try_connect();
 
     epicsThreadCreate("RTDEControlPoller", epicsThreadPriorityLow,
@@ -161,6 +199,7 @@ void RTDEControl::poll() {
                 epicsThreadSleep(poll_period_);
                 continue;
             }
+
 
             if (pending_motion_) {
                 if (motion_status_ == AsyncMotionStatus::Done) {
@@ -194,6 +233,17 @@ void RTDEControl::poll() {
                             set_motion_task_done();
                         }
                     }
+                }
+            } else if (custom_script_running_) {
+                spdlog::debug("Custom script running!...");
+                int count = 0;
+                drv_receive_->lock();
+                drv_receive_->getIntegerParam(outputIntRegId_, &count);
+                drv_receive_->unlock();
+                if (custom_script_running_count_ != count) {
+                    custom_script_running_ = false;
+                    spdlog::debug("Custom script done!");
+                    rtde_control_->reuploadScript();
                 }
             }
 
@@ -232,7 +282,6 @@ asynStatus RTDEControl::writeFloat64(asynUser* pasynUser, epicsFloat64 value) {
         const double val = value * M_PI / 180.0;
         this->cmd_joints_.at(addr) = val;
     }
-
     else if (function == poseCmdIndex_) {
         // convert commanded x,y,z to meters and roll, pitch, yaw to radians
         const double val = (addr >= 3) ? (value * M_PI / 180.0) : (value / 1000.0);
@@ -395,6 +444,16 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
     }
 
     else if (function == runCustomScriptIndex_) {
+        if (pending_motion_) {
+            spdlog::warn("Motion task in progress. Cannot run script.");
+            goto skip;
+        }
+
+        if (!script_client_->isConnected()) {
+            spdlog::error("ScriptClient not connected!");
+            goto skip;
+        }
+
         std::ifstream fs(custom_script_path_);
         if (!fs.is_open()) {
             goto skip;
@@ -405,11 +464,12 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
             std::istreambuf_iterator<char>(fs),
             std::istreambuf_iterator<char>()
         );
-        // Works but blocks!
-        bool result = rtde_control_->sendCustomScriptFunction("custom_func", script_str);
-        if (!result) {
-            spdlog::error("Error in custom URScript");
-        }
+        rtde_control_->stopScript();
+        script_client_->sendScriptCommand(wrap_script(script_str));
+        custom_script_running_ = true;
+        drv_receive_->lock();
+        drv_receive_->getIntegerParam(outputIntRegId_, &custom_script_running_count_);
+        drv_receive_->unlock();
     }
 
 skip:

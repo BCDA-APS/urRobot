@@ -49,6 +49,7 @@ class RTDEReceive : public asynPortDriver {
     int robotModeIndex_;
     int safetyModeIndex_;
     int controllerTimestampIndex_;
+    int outputIntegerReg12Index_;
 
     /// Analog I/O (scalars)
     int stdAnalogInput0Index_;

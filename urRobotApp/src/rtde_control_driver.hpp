@@ -7,6 +7,7 @@
 #pragma once
 #include "rtde_receive_driver.hpp"
 #include "ur_rtde/rtde_control_interface.h"
+#include "ur_rtde/script_client.h"
 #include <asynPortDriver.h>
 #include <optional>
 
@@ -38,6 +39,7 @@ class RTDEControl : public asynPortDriver {
 
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
+    std::unique_ptr<ur_rtde::ScriptClient> script_client_;
     RTDEReceive* drv_receive_ = nullptr;
     int safetyStatusBitsParamId_ = -1;
     int motion_done_count_ = 0;
@@ -70,6 +72,9 @@ class RTDEControl : public asynPortDriver {
 
     /// Custom URScript
     std::string custom_script_path_;
+    int custom_script_running_count_ = 0;
+    int outputIntRegId_ = 0;
+    bool custom_script_running_ = false;
 
     /// --- Async motion state machine ---
 

@@ -97,6 +97,7 @@ RTDEReceive::RTDEReceive(const char* asyn_port_name, const char* robot_ip, const
     createParam("ACTUAL_ROBOT_VOLTAGE", asynParamFloat64, &actualRobotVoltageIndex_);
     createParam("ACTUAL_ROBOT_CURRENT", asynParamFloat64, &actualRobotCurrentIndex_);
     createParam("ACTUAL_JOINT_VOLTAGES", asynParamFloat64Array, &actualJointVoltagesIndex_);
+    createParam("OUTPUT_INTEGER_REG12", asynParamInt32, &outputIntegerReg12Index_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -134,6 +135,7 @@ void RTDEReceive::poll() {
             setDoubleParam(actualMainVoltageIndex_, rtde_receive_->getActualMainVoltage());
             setDoubleParam(actualRobotVoltageIndex_, rtde_receive_->getActualRobotVoltage());
             setDoubleParam(actualRobotCurrentIndex_, rtde_receive_->getActualRobotCurrent());
+            setIntegerParam(outputIntegerReg12Index_, rtde_receive_->getOutputIntRegister(12));
 
             joint_modes_vec = rtde_receive_->getJointMode();
             doCallbacksInt32Array(joint_modes_vec.data(), NUM_JOINTS, jointModesIndex_, 0);
