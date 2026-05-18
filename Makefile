@@ -5,6 +5,10 @@ DIRS := $(DIRS) $(filter-out $(DIRS), configure)
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *App))
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard iocBoot))
 
+ifeq ($(BUILD_IOCS), YES)
+ DIRS += $(wildcard iocs)
+endif
+
 define DIR_template
  $(1)_DEPEND_DIRS = configure
 endef
