@@ -1,0 +1,6 @@
+# Get the current joint positions
+q = get_actual_joint_positions()
+
+# Move the wrist joint by +90deg
+q[5] = q[5] + 1.57
+movej(q)

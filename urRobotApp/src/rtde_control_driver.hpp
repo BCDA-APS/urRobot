@@ -12,11 +12,11 @@
 #include <optional>
 
 /// State machine for tracking asynchronous motion progress in the poll thread.
-///   Done → WaitingMotion → WaitingAction → Done
+///   Done -> WaitingMotion -> WaitingAction -> Done
 /// WaitingAction is only entered when the motion has an associated waypoint action.
 enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
 
-/// Whether a motion command targets joint space (moveJ) or Cartesian space (moveL).
+/// Whether a motion command targets joint space (movej) or Cartesian space (movel).
 enum class MotionType : int { Joint, Cartesian };
 
 /// asynPortDriver that wraps ur_rtde::RTDEControlInterface for robot motion.
@@ -76,6 +76,12 @@ class RTDEControl : public asynPortDriver {
     int outputIntRegId_ = 0;
     bool custom_script_running_ = false;
 
+    /// Tests for completion of the custom script uploaded to the controller.
+    /// Upon finishing, reuploads the main RTDE Control script. Note that we
+    /// choose to block here until the control script is reuploaded for simplicty.
+    /// This typically takes around 100ms
+    void poll_custom_script();
+
     /// --- Async motion state machine ---
 
     AsyncMotionStatus motion_status_ = AsyncMotionStatus::Done;
@@ -98,10 +104,6 @@ class RTDEControl : public asynPortDriver {
     }
 
   protected:
-    /// asyn parameter indices — each maps to a named parameter string registered
-    /// in the constructor via createParam(). See rtde_control.db for the
-    /// corresponding EPICS records.
-
     /// Connection management
     int disconnectIndex_;
     int reconnectIndex_;
@@ -141,4 +143,5 @@ class RTDEControl : public asynPortDriver {
     int triggerProtStopIndex_;
     int customScriptFileIndex_;
     int runCustomScriptIndex_;
+    int customScriptRunningIndex_;
 };
