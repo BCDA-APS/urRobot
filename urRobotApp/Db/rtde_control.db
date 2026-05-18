@@ -1026,3 +1026,13 @@ record(bi, "$(P)Control:CustomScriptRunning")
     field(ONAM, "Running")
     field(SCAN, "I/O Intr")
 }
+
+record(bi, "$(P)Control:CustomScriptError")
+{
+    field(DESC, "0 if okay, 1 if script error")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))CUSTOM_SCRIPT_ERROR")
+    field(ZNAM, "Okay")
+    field(ONAM, "Error")
+    field(SCAN, "I/O Intr")
+}

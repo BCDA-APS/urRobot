@@ -73,13 +73,16 @@ class RTDEControl : public asynPortDriver {
     /// Custom URScript
     std::string custom_script_path_;
     int custom_script_running_count_ = 0;
+    std::chrono::time_point<std::chrono::steady_clock> custom_script_start_time_;
     int outputIntRegId_ = 0;
     bool custom_script_running_ = false;
 
     /// Tests for completion of the custom script uploaded to the controller.
     /// Upon finishing, reuploads the main RTDE Control script. Note that we
     /// choose to block here until the control script is reuploaded for simplicty.
-    /// This typically takes around 100ms
+    /// This typically takes around 100ms.
+    /// This will also set the CUSTOM_SCRIPT_ERROR asyn parameter. It is expected
+    /// callParamCallbacks will be called after calling poll_custom_script().
     void poll_custom_script();
 
     /// --- Async motion state machine ---
@@ -144,4 +147,5 @@ class RTDEControl : public asynPortDriver {
     int customScriptFileIndex_;
     int runCustomScriptIndex_;
     int customScriptRunningIndex_;
+    int customScriptErrorIndex_;
 };

@@ -103,21 +103,38 @@ void RTDEControl::poll_custom_script() {
     drv_receive_->lock();
     drv_receive_->getIntegerParam(outputIntRegId_, &count);
     drv_receive_->unlock();
-    if (custom_script_running_count_ != count) {
+
+    using namespace std::chrono_literals;
+    constexpr auto grace_period = 500ms;
+    auto elap = std::chrono::steady_clock::now() - custom_script_start_time_;
+
+    bool script_failed = false;
+    bool script_finished = custom_script_running_count_ != count;
+    if (elap >= grace_period && !script_finished) {
+        script_failed = !rtde_control_->isProgramRunning();
+    }
+
+    if (script_failed || script_finished) {
         custom_script_running_ = false;
         setIntegerParam(customScriptRunningIndex_, 0);
-        spdlog::debug("URScript: {} done", custom_script_path_);
-        rtde_control_->reuploadScript();
-        constexpr int timeout = 1;
-        auto start = std::chrono::steady_clock::now();
-        while (!rtde_control_->isProgramRunning()) {
-            auto elap =
-                std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start);
-            if (elap.count() >= timeout) {
-                spdlog::error("Timed out trying to reupload control script");
-                break;
+        if (script_failed) {
+            setIntegerParam(customScriptErrorIndex_, 1);
+            spdlog::error("URScript failed: {}", custom_script_path_);
+        } else {
+            spdlog::debug("URScript done: {}", custom_script_path_);
+            spdlog::debug("Reuploading RTDE control script");
+            rtde_control_->reuploadScript();
+            constexpr auto timeout = 1s;
+            auto start = std::chrono::steady_clock::now();
+            while (!rtde_control_->isProgramRunning()) {
+                auto elap =
+                    std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start);
+                if (elap >= timeout) {
+                    spdlog::error("Timed out trying to reupload control script");
+                    break;
+                }
+                epicsThreadSleep(0.01);
             }
-            epicsThreadSleep(0.01);
         }
     }
 }
@@ -171,6 +188,7 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, 
     createParam("CUSTOM_SCRIPT_PATH", asynParamOctet, &customScriptFileIndex_);
     createParam("RUN_CUSTOM_SCRIPT", asynParamInt32, &runCustomScriptIndex_);
     createParam("CUSTOM_SCRIPT_RUNNING", asynParamInt32, &customScriptRunningIndex_);
+    createParam("CUSTOM_SCRIPT_ERROR", asynParamInt32, &customScriptErrorIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -489,9 +507,11 @@ asynStatus RTDEControl::writeInt32(asynUser* pasynUser, epicsInt32 value) {
         std::string script_str =
             std::string(std::istreambuf_iterator<char>(fs), std::istreambuf_iterator<char>());
         spdlog::debug("Running custom URScript: {}", custom_script_path_);
+        setIntegerParam(customScriptErrorIndex_, 0);
         rtde_control_->stopScript();
         script_client_->sendScriptCommand(wrap_script(script_str));
         custom_script_running_ = true;
+        custom_script_start_time_ = std::chrono::steady_clock::now();
         setIntegerParam(customScriptRunningIndex_, 1);
         drv_receive_->lock();
         drv_receive_->getIntegerParam(outputIntRegId_, &custom_script_running_count_);
