@@ -549,8 +549,10 @@ asynStatus RTDEControl::writeOctet(asynUser* pasynUser, const char* value, size_
         if (std::filesystem::exists(value)) {
             custom_script_path_ = value;
             spdlog::debug("Successfully read URScript file: {}", value);
+            setIntegerParam(customScriptErrorIndex_, 0);
         } else {
             spdlog::error("Failed to read URScript file: {}", value);
+            setIntegerParam(customScriptErrorIndex_, 1);
         }
     }
 
