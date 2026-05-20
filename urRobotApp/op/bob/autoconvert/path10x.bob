@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-05-15 10:20:45 by nmarks-->
+<!--Saved on 2026-05-20 17:37:59 by nmarks-->
 <display version="2.0.0">
   <name>path10x</name>
   <x>694</x>
@@ -2484,7 +2484,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>text #483</name>
-    <text>Paths</text>
+    <text>Path $(N)</text>
     <x>5</x>
     <y>5</y>
     <width>150</width>

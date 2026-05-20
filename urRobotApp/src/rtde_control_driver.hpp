@@ -7,15 +7,16 @@
 #pragma once
 #include "rtde_receive_driver.hpp"
 #include "ur_rtde/rtde_control_interface.h"
+#include "ur_rtde/script_client.h"
 #include <asynPortDriver.h>
 #include <optional>
 
 /// State machine for tracking asynchronous motion progress in the poll thread.
-///   Done → WaitingMotion → WaitingAction → Done
+///   Done -> WaitingMotion -> WaitingAction -> Done
 /// WaitingAction is only entered when the motion has an associated waypoint action.
 enum class AsyncMotionStatus : int { WaitingMotion, WaitingAction, Done };
 
-/// Whether a motion command targets joint space (moveJ) or Cartesian space (moveL).
+/// Whether a motion command targets joint space (movej) or Cartesian space (movel).
 enum class MotionType : int { Joint, Cartesian };
 
 /// asynPortDriver that wraps ur_rtde::RTDEControlInterface for robot motion.
@@ -38,6 +39,7 @@ class RTDEControl : public asynPortDriver {
 
   private:
     std::unique_ptr<ur_rtde::RTDEControlInterface> rtde_control_;
+    std::unique_ptr<ur_rtde::ScriptClient> script_client_;
     RTDEReceive* drv_receive_ = nullptr;
     int safetyStatusBitsParamId_ = -1;
     int motion_done_count_ = 0;
@@ -68,6 +70,21 @@ class RTDEControl : public asynPortDriver {
     double linear_accel_ = 0.5;
     double linear_blend_ = 0.0;
 
+    /// Custom URScript
+    std::string custom_script_path_;
+    int custom_script_running_count_ = 0;
+    std::chrono::time_point<std::chrono::steady_clock> custom_script_start_time_;
+    int outputIntRegId_ = 0;
+    bool custom_script_running_ = false;
+
+    /// Tests for completion of the custom script uploaded to the controller.
+    /// Upon finishing, reuploads the main RTDE Control script. Note that we
+    /// choose to block here until the control script is reuploaded for simplicty.
+    /// This typically takes around 100ms.
+    /// This will also set the CUSTOM_SCRIPT_ERROR asyn parameter. It is expected
+    /// callParamCallbacks will be called after calling poll_custom_script().
+    void poll_custom_script();
+
     /// --- Async motion state machine ---
 
     AsyncMotionStatus motion_status_ = AsyncMotionStatus::Done;
@@ -90,10 +107,6 @@ class RTDEControl : public asynPortDriver {
     }
 
   protected:
-    /// asyn parameter indices — each maps to a named parameter string registered
-    /// in the constructor via createParam(). See rtde_control.db for the
-    /// corresponding EPICS records.
-
     /// Connection management
     int disconnectIndex_;
     int reconnectIndex_;
@@ -131,4 +144,9 @@ class RTDEControl : public asynPortDriver {
     int stopCtrlScriptIndex_;
     int teachModeIndex_;
     int triggerProtStopIndex_;
+    int customScriptFileIndex_;
+    int runCustomScriptIndex_;
+    int customScriptRunningIndex_;
+    int customScriptErrorIndex_;
+    int customScriptTimeoutIndex_;
 };

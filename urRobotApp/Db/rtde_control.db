@@ -1000,3 +1000,49 @@ record(ao, "$(P)Control:TCPOffset_Yaw")
     field(PREC, 4)
 }
 
+#======================
+# Custom URScripts
+#======================
+record(stringout, "$(P)Control:CustomScriptPath")
+{
+    field(DESC, "Path to URScript")
+    field(DTYP, "asynOctetWrite")
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))CUSTOM_SCRIPT_PATH")
+}
+
+record(bo, "$(P)Control:RunCustomScript")
+{
+    field(DESC, "Runs custom URScript on controller")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))RUN_CUSTOM_SCRIPT")
+}
+
+record(ao, "$(P)Control:CustomScriptTimeout")
+{
+    field(DESC, "Timeout for script to signal done")
+    field(DTYP, "asynFloat64")
+    field(VAL, 10.0)
+    field(EGU, "sec")
+    field(PINI, 1)
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))CUSTOM_SCRIPT_TIMEOUT")
+}
+
+record(bi, "$(P)Control:CustomScriptRunning")
+{
+    field(DESC, "1 if custom script running, else 0")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))CUSTOM_SCRIPT_RUNNING")
+    field(ZNAM, "Done")
+    field(ONAM, "Running")
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P)Control:CustomScriptError")
+{
+    field(DESC, "0 if okay, 1 if script error")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))CUSTOM_SCRIPT_ERROR")
+    field(ZNAM, "Okay")
+    field(ONAM, "Error")
+    field(SCAN, "I/O Intr")
+}
