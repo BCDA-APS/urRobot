@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=383
-		y=523
-		width=335
-		height=120
+		x=363
+		y=507
+		width=330
+		height=140
 	}
 	clr=14
 	bclr=4
@@ -135,8 +135,8 @@ display {
 text {
 	object {
 		x=10
-		y=90
-		width=245
+		y=93
+		width=249
 		height=20
 	}
 	"basic attribute" {
@@ -199,4 +199,32 @@ text {
 	}
 	label="Stop"
 	press_msg="1"
+}
+"text entry" {
+	object {
+		x=270
+		y=115
+		width=50
+		height=15
+	}
+	control {
+		chan="$(P)Control:CustomScriptTimeout.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=145
+		y=115
+		width=120
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Timeout(sec):"
+	align="horiz. right"
 }

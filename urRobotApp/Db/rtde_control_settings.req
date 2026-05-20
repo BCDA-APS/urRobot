@@ -26,3 +26,6 @@ $(P)Control:JointBlend.VAL
 $(P)Control:LinearSpeed.VAL
 $(P)Control:LinearAcceleration.VAL
 $(P)Control:LinearBlend.VAL
+
+$(P)Control:CustomScriptTimeout.VAL
+$(P)Control:CustomScriptPath.VAL

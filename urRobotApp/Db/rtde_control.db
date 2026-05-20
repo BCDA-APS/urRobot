@@ -1017,6 +1017,16 @@ record(bo, "$(P)Control:RunCustomScript")
     field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))RUN_CUSTOM_SCRIPT")
 }
 
+record(ao, "$(P)Control:CustomScriptTimeout")
+{
+    field(DESC, "Timeout for script to signal done")
+    field(DTYP, "asynFloat64")
+    field(VAL, 10.0)
+    field(EGU, "sec")
+    field(PINI, 1)
+    field(OUT,  "@asyn($(PORT),0,$(TIMEOUT=1))CUSTOM_SCRIPT_TIMEOUT")
+}
+
 record(bi, "$(P)Control:CustomScriptRunning")
 {
     field(DESC, "1 if custom script running, else 0")

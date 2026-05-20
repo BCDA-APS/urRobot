@@ -104,38 +104,36 @@ void RTDEControl::poll_custom_script() {
     drv_receive_->getIntegerParam(outputIntRegId_, &count);
     drv_receive_->unlock();
 
+    double script_timeout = 0.0;
+    getDoubleParam(customScriptTimeoutIndex_, &script_timeout);
+
     using namespace std::chrono_literals;
-    constexpr auto grace_period = 500ms;
     auto elap = std::chrono::steady_clock::now() - custom_script_start_time_;
-
-    bool script_failed = false;
     bool script_finished = custom_script_running_count_ != count;
-    if (elap >= grace_period && !script_finished) {
-        script_failed = !rtde_control_->isProgramRunning();
-    }
+    bool timed_out = (!script_finished && elap >= std::chrono::duration<double>(script_timeout));
 
-    if (script_failed || script_finished) {
+    if (script_finished) {
         custom_script_running_ = false;
         setIntegerParam(customScriptRunningIndex_, 0);
-        if (script_failed) {
-            setIntegerParam(customScriptErrorIndex_, 1);
-            spdlog::error("URScript failed: {}", custom_script_path_);
-        } else {
-            spdlog::debug("URScript done: {}", custom_script_path_);
-            spdlog::debug("Reuploading RTDE control script");
-            rtde_control_->reuploadScript();
-            constexpr auto timeout = 1s;
-            auto start = std::chrono::steady_clock::now();
-            while (!rtde_control_->isProgramRunning()) {
-                auto elap =
-                    std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start);
-                if (elap >= timeout) {
-                    spdlog::error("Timed out trying to reupload control script");
-                    break;
-                }
-                epicsThreadSleep(0.01);
+        spdlog::debug("URScript done: {}", custom_script_path_);
+        spdlog::debug("Reuploading RTDE control script");
+        rtde_control_->reuploadScript();
+        auto start = std::chrono::steady_clock::now();
+        constexpr auto reupload_timeout = 1s;
+        while (!rtde_control_->isProgramRunning()) {
+            auto elap =
+                std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start);
+            if (elap >= reupload_timeout) {
+                spdlog::error("Timed out trying to reupload control script");
+                break;
             }
+            epicsThreadSleep(0.01);
         }
+    } else if (timed_out) {
+        custom_script_running_ = false;
+        setIntegerParam(customScriptRunningIndex_, 0);
+        setIntegerParam(customScriptErrorIndex_, 1);
+        spdlog::error("URScript timed out: {}", custom_script_path_);
     }
 }
 
@@ -189,6 +187,7 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, 
     createParam("RUN_CUSTOM_SCRIPT", asynParamInt32, &runCustomScriptIndex_);
     createParam("CUSTOM_SCRIPT_RUNNING", asynParamInt32, &customScriptRunningIndex_);
     createParam("CUSTOM_SCRIPT_ERROR", asynParamInt32, &customScriptErrorIndex_);
+    createParam("CUSTOM_SCRIPT_TIMEOUT", asynParamFloat64, &customScriptTimeoutIndex_);
 
     // gets log level from SPDLOG_LEVEL environment variable
     spdlog::cfg::load_env_levels();
@@ -364,6 +363,10 @@ asynStatus RTDEControl::writeFloat64(asynUser* pasynUser, epicsFloat64 value) {
     } else if (function == linearBlendIndex_) {
         this->linear_blend_ = value / 1000.0;
         spdlog::debug("Setting linear blend to {:.4f}", linear_blend_);
+    }
+
+    else {
+        asynPortDriver::writeFloat64(pasynUser, value);
     }
 
 skip:

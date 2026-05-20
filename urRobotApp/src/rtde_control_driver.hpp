@@ -148,4 +148,5 @@ class RTDEControl : public asynPortDriver {
     int runCustomScriptIndex_;
     int customScriptRunningIndex_;
     int customScriptErrorIndex_;
+    int customScriptTimeoutIndex_;
 };
