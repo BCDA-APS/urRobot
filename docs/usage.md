@@ -248,9 +248,98 @@ point in your path to be WaypointL:3 and to make sure that the gripper is open.
 For point 1 in your path, you'd set the Type to "Linear", Number to 3, and Action Override to 1 (open gripper).
 
 
-## Scripting
+## Custom URScript
 
-Some may find it useful to program the robot by interacting with the available PVs in a script.
+The Custom URScript feature allows you to upload and run arbitrary URScript programs
+directly on the robot controller. This is useful for operations that are not covered
+by the built-in driver commands, such as custom force control routines, specialized
+I/O sequences, or complex motion patterns.
+
+
+When a custom script is executed, the driver:
+
+1. Stops the main RTDE control script on the robot.
+2. Uploads and runs the user's script, wrapped in a function that increments an
+   output register upon completion.
+3. Monitors the output register to detect when the script has finished.
+4. Re-uploads the main RTDE control script so normal motion commands can resume.
+
+While a custom script is running, normal motion commands (moveJ, moveL, etc.) are
+unavailable because the RTDE control script is not active on the robot.
+
+### Basic Usage
+
+1. **Set the script path**: Write the filename of your URScript to
+   `$(P)Control:CustomScriptPath`. The file must be accessible from the IOC's
+   working directory.
+2. **Run the script**:  Process `$(P)Control:RunCustomScript` to upload and execute
+   the script.
+3. **Monitor status**: `$(P)Control:CustomScriptRunning` indicates whether the
+   script is currently executing. `$(P)Control:CustomScriptError` indicates if an
+   error occurred (e.g. the script timed out).
+4. **Set the timeout**: `$(P)Control:CustomScriptTimeout` (default: 10 seconds)
+   defines how long the driver will wait for the script to signal completion before
+   declaring an error. Set this to a value longer than the expected script execution
+   time.
+
+The script file should contain plain URScript commands. For example, a script that
+rotates the 6th joint by -90 degrees:
+
+```
+q = get_actual_joint_positions()
+q[5] = q[5] - 1.57
+movej(q)
+```
+
+The driver automatically wraps the script in a function and appends a register
+increment to signal completion. Do not include your own `def`/`end` wrapper or
+register signaling.
+
+### Stopping a Running Script
+
+To stop a custom script while it is running, use `$(P)Dashboard:Stop` which stops
+the program at the controller level. After stopping, you will need to process
+`$(P)Control:ReuploadControlScript` to restore normal motion commands.
+
+### Error Handling
+
+If the script contains a syntax error or a runtime error, the robot controller will
+terminate it. Since the completion register is never incremented, the driver will
+eventually time out (per `$(P)Control:CustomScriptTimeout`) and set
+`$(P)Control:CustomScriptError` to 1.
+
+When a script error occurs, the driver does **not** automatically re-upload the
+RTDE control script. The user must manually process
+`$(P)Control:ReuploadControlScript` to restore normal operation. The error flag
+is cleared automatically when a new script is loaded or executed.
+
+### Using a Custom Script as a Waypoint Action
+
+Custom scripts can be used as waypoint actions so that a URScript runs automatically
+when the robot reaches a waypoint during path execution. This is configured by
+setting up an `ActionSseq` and `ActionDoneCalc` pair, similar to other waypoint
+actions.
+
+To configure action number `N` (e.g. `N=3`) to run a custom script:
+
+1. Set the script filename in `$(P)ActionSseq3.STR1` (e.g. `my_script.urscript`).
+2. Set `$(P)ActionSseq3.LNK1` to `$(P)Control:CustomScriptPath.VAL CA` so the
+   filename is written to the driver when the action runs.
+3. Set `$(P)ActionSseq3.DO2` to `1`.
+4. Set `$(P)ActionSseq3.LNK2` to `$(P)Control:RunCustomScript.PROC CA` to trigger
+   script execution.
+5. Set `$(P)ActionDoneCalc3.INPA` to `$(P)Control:CustomScriptRunning.VAL CP` so
+   the calcout monitors whether the script is still running.
+6. Set `$(P)ActionDoneCalc3.CALC` to `!A` so the action is considered done when the
+   script is no longer running.
+7. Optionally, set `$(P)ActionSseq3.DESC` to a description of the action.
+
+After configuring the action, assign it to a waypoint by setting the waypoint's
+`ActionOpt` to `N`, or use the action override field on a path waypoint.
+
+
+## Python Scripting
+
 Below an example Python script using [PyEpics](https://github.com/pyepics/pyepics) is provided which demonstrates how to move
 all six joints by +1.0deg.
 
@@ -275,3 +364,4 @@ for i in range(len(angles)):
 # Execute the move
 caput(f"{PREFIX}Control:moveJ.PROC", 1)
 ```
+
