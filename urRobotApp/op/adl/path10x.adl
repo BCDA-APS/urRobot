@@ -2026,5 +2026,5 @@ text {
 	"basic attribute" {
 		clr=0
 	}
-	textix="Paths"
+	textix="Path $(N)"
 }

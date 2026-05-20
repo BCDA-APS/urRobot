@@ -98,6 +98,7 @@ std::string wrap_script(const std::string& script) {
     return cmd_str;
 }
 
+// checks if custom URScript is done or timed out
 void RTDEControl::poll_custom_script() {
     int count = 0;
     drv_receive_->lock();

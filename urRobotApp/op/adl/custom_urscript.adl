@@ -1,14 +1,14 @@
 
 file {
-	name="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/custom_urscript.adl"
+	name="/xorApps/epics/synApps_6_3/support/urRobot/urRobotApp/op/adl/custom_urscript.adl"
 	version=030111
 }
 display {
 	object {
-		x=363
-		y=507
+		x=353
+		y=499
 		width=330
-		height=140
+		height=120
 	}
 	clr=14
 	bclr=4
@@ -136,7 +136,7 @@ text {
 	object {
 		x=10
 		y=93
-		width=249
+		width=55
 		height=20
 	}
 	"basic attribute" {
@@ -202,8 +202,8 @@ text {
 }
 "text entry" {
 	object {
-		x=270
-		y=115
+		x=210
+		y=95
 		width=50
 		height=15
 	}
@@ -217,8 +217,8 @@ text {
 }
 text {
 	object {
-		x=145
-		y=115
+		x=85
+		y=95
 		width=120
 		height=15
 	}
