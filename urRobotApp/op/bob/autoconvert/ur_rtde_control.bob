@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-05-15 10:20:46 by nmarks-->
+<!--Saved on 2026-05-20 17:38:00 by nmarks-->
 <display version="2.0.0">
   <name>ur_rtde_control</name>
-  <x>685</x>
-  <y>896</y>
-  <width>825</width>
-  <height>690</height>
+  <x>710</x>
+  <y>514</y>
+  <width>820</width>
+  <height>635</height>
   <background_color>
     <color red="187" green="187" blue="187">
     </color>
@@ -15,7 +15,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #6</name>
     <x>10</x>
-    <y>245</y>
+    <y>200</y>
     <width>800</width>
     <height>200</height>
     <line_width>2</line_width>
@@ -46,7 +46,7 @@
     <name>choice button #12</name>
     <pv_name>$(P)Control:AutoMoveJ</pv_name>
     <x>50</x>
-    <y>285</y>
+    <y>240</y>
     <width>80</width>
     <height>20</height>
     <background_color>
@@ -62,7 +62,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #15</name>
     <x>26</x>
-    <y>382</y>
+    <y>337</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -77,7 +77,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #18</name>
     <x>26</x>
-    <y>413</y>
+    <y>368</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -101,7 +101,7 @@
     <pv_name>$(P)Control:stopJ.PROC</pv_name>
     <text>STOP</text>
     <x>145</x>
-    <y>285</y>
+    <y>240</y>
     <width>50</width>
     <height>20</height>
     <foreground_color>
@@ -125,7 +125,7 @@
     <pv_name>$(P)Control:J1TweakRev</pv_name>
     <text>&lt;</text>
     <x>28</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -137,7 +137,7 @@
     <name>text entry #27</name>
     <pv_name>$(P)Control:J1TweakVal</pv_name>
     <x>54</x>
-    <y>415</y>
+    <y>370</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -163,7 +163,7 @@
     <pv_name>$(P)Control:J1TweakFwd</pv_name>
     <text>&gt;</text>
     <x>115</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -175,7 +175,7 @@
     <name>text entry #34</name>
     <pv_name>$(P)Control:J1Cmd.VAL</pv_name>
     <x>35</x>
-    <y>385</y>
+    <y>340</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -194,7 +194,7 @@
     <name>text update #38</name>
     <pv_name>$(P)Control:J1Cmd.EGU</pv_name>
     <x>26</x>
-    <y>348</y>
+    <y>303</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -217,7 +217,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #42</name>
     <x>26</x>
-    <y>336</y>
+    <y>291</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -232,7 +232,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #45</name>
     <x>26</x>
-    <y>358</y>
+    <y>313</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -250,7 +250,7 @@
     <name>text update #48</name>
     <pv_name>$(P)Receive:Joint1.VAL</pv_name>
     <x>37</x>
-    <y>361</y>
+    <y>316</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -273,7 +273,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #52</name>
     <x>25</x>
-    <y>315</y>
+    <y>270</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -291,7 +291,7 @@
     <name>text #55</name>
     <text>Go:</text>
     <x>20</x>
-    <y>285</y>
+    <y>240</y>
     <width>30</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -303,7 +303,7 @@
     <name>text #58</name>
     <text>Joint Move</text>
     <x>20</x>
-    <y>250</y>
+    <y>205</y>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -330,7 +330,7 @@
     <name>valuator #64</name>
     <pv_name>$(P)IO:SpeedSlider</pv_name>
     <x>10</x>
-    <y>200</y>
+    <y>155</y>
     <width>275</width>
     <height>25</height>
     <bar_length>1.0</bar_length>
@@ -339,7 +339,7 @@
     <name>text #68</name>
     <text>Speed</text>
     <x>115</x>
-    <y>180</y>
+    <y>135</y>
     <width>60</width>
     <height>15</height>
     <font>
@@ -351,7 +351,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #71</name>
     <x>27</x>
-    <y>317</y>
+    <y>272</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -367,7 +367,7 @@
     <name>text #74</name>
     <text>Joint 1</text>
     <x>35</x>
-    <y>320</y>
+    <y>275</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -382,7 +382,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #77</name>
     <x>156</x>
-    <y>382</y>
+    <y>337</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -397,7 +397,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #80</name>
     <x>156</x>
-    <y>413</y>
+    <y>368</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -421,7 +421,7 @@
     <pv_name>$(P)Control:J2TweakRev</pv_name>
     <text>&lt;</text>
     <x>158</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -433,7 +433,7 @@
     <name>text entry #86</name>
     <pv_name>$(P)Control:J2TweakVal</pv_name>
     <x>184</x>
-    <y>415</y>
+    <y>370</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -459,7 +459,7 @@
     <pv_name>$(P)Control:J2TweakFwd</pv_name>
     <text>&gt;</text>
     <x>245</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -471,7 +471,7 @@
     <name>text entry #93</name>
     <pv_name>$(P)Control:J2Cmd.VAL</pv_name>
     <x>165</x>
-    <y>385</y>
+    <y>340</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -490,7 +490,7 @@
     <name>text update #97</name>
     <pv_name>$(P)Control:J2Cmd.EGU</pv_name>
     <x>156</x>
-    <y>348</y>
+    <y>303</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -513,7 +513,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #101</name>
     <x>156</x>
-    <y>336</y>
+    <y>291</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -528,7 +528,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #104</name>
     <x>156</x>
-    <y>358</y>
+    <y>313</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -546,7 +546,7 @@
     <name>text update #107</name>
     <pv_name>$(P)Receive:Joint2.VAL</pv_name>
     <x>167</x>
-    <y>361</y>
+    <y>316</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -569,7 +569,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #111</name>
     <x>155</x>
-    <y>315</y>
+    <y>270</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -586,7 +586,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #114</name>
     <x>157</x>
-    <y>317</y>
+    <y>272</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -602,7 +602,7 @@
     <name>text #117</name>
     <text>Joint 2</text>
     <x>165</x>
-    <y>320</y>
+    <y>275</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -617,7 +617,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #120</name>
     <x>286</x>
-    <y>382</y>
+    <y>337</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -632,7 +632,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #123</name>
     <x>286</x>
-    <y>413</y>
+    <y>368</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -656,7 +656,7 @@
     <pv_name>$(P)Control:J3TweakRev</pv_name>
     <text>&lt;</text>
     <x>288</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -668,7 +668,7 @@
     <name>text entry #129</name>
     <pv_name>$(P)Control:J3TweakVal</pv_name>
     <x>314</x>
-    <y>415</y>
+    <y>370</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -694,7 +694,7 @@
     <pv_name>$(P)Control:J3TweakFwd</pv_name>
     <text>&gt;</text>
     <x>375</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -706,7 +706,7 @@
     <name>text entry #136</name>
     <pv_name>$(P)Control:J3Cmd.VAL</pv_name>
     <x>295</x>
-    <y>385</y>
+    <y>340</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -725,7 +725,7 @@
     <name>text update #140</name>
     <pv_name>$(P)Control:J3Cmd.EGU</pv_name>
     <x>286</x>
-    <y>348</y>
+    <y>303</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -748,7 +748,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #144</name>
     <x>286</x>
-    <y>336</y>
+    <y>291</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -763,7 +763,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #147</name>
     <x>286</x>
-    <y>358</y>
+    <y>313</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -781,7 +781,7 @@
     <name>text update #150</name>
     <pv_name>$(P)Receive:Joint3.VAL</pv_name>
     <x>297</x>
-    <y>361</y>
+    <y>316</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -804,7 +804,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #154</name>
     <x>285</x>
-    <y>315</y>
+    <y>270</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -821,7 +821,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #157</name>
     <x>287</x>
-    <y>317</y>
+    <y>272</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -837,7 +837,7 @@
     <name>text #160</name>
     <text>Joint 3</text>
     <x>295</x>
-    <y>320</y>
+    <y>275</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -852,7 +852,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #163</name>
     <x>416</x>
-    <y>382</y>
+    <y>337</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -867,7 +867,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #166</name>
     <x>416</x>
-    <y>413</y>
+    <y>368</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -891,7 +891,7 @@
     <pv_name>$(P)Control:J4TweakRev</pv_name>
     <text>&lt;</text>
     <x>418</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -903,7 +903,7 @@
     <name>text entry #172</name>
     <pv_name>$(P)Control:J4TweakVal</pv_name>
     <x>444</x>
-    <y>415</y>
+    <y>370</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -929,7 +929,7 @@
     <pv_name>$(P)Control:J4TweakFwd</pv_name>
     <text>&gt;</text>
     <x>505</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -941,7 +941,7 @@
     <name>text entry #179</name>
     <pv_name>$(P)Control:J4Cmd.VAL</pv_name>
     <x>425</x>
-    <y>385</y>
+    <y>340</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -960,7 +960,7 @@
     <name>text update #183</name>
     <pv_name>$(P)Control:J4Cmd.EGU</pv_name>
     <x>416</x>
-    <y>348</y>
+    <y>303</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -983,7 +983,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #187</name>
     <x>416</x>
-    <y>336</y>
+    <y>291</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -998,7 +998,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #190</name>
     <x>416</x>
-    <y>358</y>
+    <y>313</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -1016,7 +1016,7 @@
     <name>text update #193</name>
     <pv_name>$(P)Receive:Joint4.VAL</pv_name>
     <x>427</x>
-    <y>361</y>
+    <y>316</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -1039,7 +1039,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #197</name>
     <x>415</x>
-    <y>315</y>
+    <y>270</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -1056,7 +1056,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #200</name>
     <x>417</x>
-    <y>317</y>
+    <y>272</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -1072,7 +1072,7 @@
     <name>text #203</name>
     <text>Joint 4</text>
     <x>425</x>
-    <y>320</y>
+    <y>275</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1087,7 +1087,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #206</name>
     <x>546</x>
-    <y>382</y>
+    <y>337</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -1102,7 +1102,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #209</name>
     <x>546</x>
-    <y>413</y>
+    <y>368</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -1126,7 +1126,7 @@
     <pv_name>$(P)Control:J5TweakRev</pv_name>
     <text>&lt;</text>
     <x>548</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -1138,7 +1138,7 @@
     <name>text entry #215</name>
     <pv_name>$(P)Control:J5TweakVal</pv_name>
     <x>574</x>
-    <y>415</y>
+    <y>370</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1164,7 +1164,7 @@
     <pv_name>$(P)Control:J5TweakFwd</pv_name>
     <text>&gt;</text>
     <x>635</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -1176,7 +1176,7 @@
     <name>text entry #222</name>
     <pv_name>$(P)Control:J5Cmd.VAL</pv_name>
     <x>555</x>
-    <y>385</y>
+    <y>340</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -1195,7 +1195,7 @@
     <name>text update #226</name>
     <pv_name>$(P)Control:J5Cmd.EGU</pv_name>
     <x>546</x>
-    <y>348</y>
+    <y>303</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -1218,7 +1218,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #230</name>
     <x>546</x>
-    <y>336</y>
+    <y>291</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -1233,7 +1233,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #233</name>
     <x>546</x>
-    <y>358</y>
+    <y>313</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -1251,7 +1251,7 @@
     <name>text update #236</name>
     <pv_name>$(P)Receive:Joint5.VAL</pv_name>
     <x>557</x>
-    <y>361</y>
+    <y>316</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -1274,7 +1274,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #240</name>
     <x>545</x>
-    <y>315</y>
+    <y>270</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -1291,7 +1291,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #243</name>
     <x>547</x>
-    <y>317</y>
+    <y>272</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -1307,7 +1307,7 @@
     <name>text #246</name>
     <text>Joint 5</text>
     <x>555</x>
-    <y>320</y>
+    <y>275</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1322,7 +1322,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #249</name>
     <x>676</x>
-    <y>382</y>
+    <y>337</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -1337,7 +1337,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #252</name>
     <x>676</x>
-    <y>413</y>
+    <y>368</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -1361,7 +1361,7 @@
     <pv_name>$(P)Control:J6TweakRev</pv_name>
     <text>&lt;</text>
     <x>678</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -1373,7 +1373,7 @@
     <name>text entry #258</name>
     <pv_name>$(P)Control:J6TweakVal</pv_name>
     <x>704</x>
-    <y>415</y>
+    <y>370</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1399,7 +1399,7 @@
     <pv_name>$(P)Control:J6TweakFwd</pv_name>
     <text>&gt;</text>
     <x>765</x>
-    <y>415</y>
+    <y>370</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -1411,7 +1411,7 @@
     <name>text entry #265</name>
     <pv_name>$(P)Control:J6Cmd.VAL</pv_name>
     <x>685</x>
-    <y>385</y>
+    <y>340</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -1430,7 +1430,7 @@
     <name>text update #269</name>
     <pv_name>$(P)Control:J6Cmd.EGU</pv_name>
     <x>676</x>
-    <y>348</y>
+    <y>303</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -1453,7 +1453,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #273</name>
     <x>676</x>
-    <y>336</y>
+    <y>291</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -1468,7 +1468,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #276</name>
     <x>676</x>
-    <y>358</y>
+    <y>313</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -1486,7 +1486,7 @@
     <name>text update #279</name>
     <pv_name>$(P)Receive:Joint6.VAL</pv_name>
     <x>687</x>
-    <y>361</y>
+    <y>316</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -1509,7 +1509,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #283</name>
     <x>675</x>
-    <y>315</y>
+    <y>270</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -1526,7 +1526,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #286</name>
     <x>677</x>
-    <y>317</y>
+    <y>272</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -1542,7 +1542,7 @@
     <name>text #289</name>
     <text>Joint 6</text>
     <x>685</x>
-    <y>320</y>
+    <y>275</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1558,7 +1558,7 @@
     <name>choice button #292</name>
     <pv_name>$(P)Control:AutoMoveL</pv_name>
     <x>50</x>
-    <y>505</y>
+    <y>460</y>
     <width>80</width>
     <height>20</height>
     <background_color>
@@ -1574,7 +1574,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #295</name>
     <x>26</x>
-    <y>602</y>
+    <y>557</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -1589,7 +1589,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #298</name>
     <x>26</x>
-    <y>633</y>
+    <y>588</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -1613,7 +1613,7 @@
     <pv_name>$(P)Control:stopL.PROC</pv_name>
     <text>STOP</text>
     <x>140</x>
-    <y>505</y>
+    <y>460</y>
     <width>50</width>
     <height>20</height>
     <foreground_color>
@@ -1637,7 +1637,7 @@
     <pv_name>$(P)Control:PoseXTweakRev</pv_name>
     <text>&lt;</text>
     <x>28</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -1649,7 +1649,7 @@
     <name>text entry #307</name>
     <pv_name>$(P)Control:PoseXTweakVal</pv_name>
     <x>54</x>
-    <y>635</y>
+    <y>590</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1675,7 +1675,7 @@
     <pv_name>$(P)Control:PoseXTweakFwd</pv_name>
     <text>&gt;</text>
     <x>115</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -1687,7 +1687,7 @@
     <name>text entry #314</name>
     <pv_name>$(P)Control:PoseXCmd.VAL</pv_name>
     <x>35</x>
-    <y>605</y>
+    <y>560</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -1706,7 +1706,7 @@
     <name>text update #318</name>
     <pv_name>$(P)Control:PoseXCmd.EGU</pv_name>
     <x>26</x>
-    <y>568</y>
+    <y>523</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -1729,7 +1729,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #322</name>
     <x>26</x>
-    <y>556</y>
+    <y>511</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -1744,7 +1744,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #325</name>
     <x>26</x>
-    <y>578</y>
+    <y>533</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -1762,7 +1762,7 @@
     <name>text update #328</name>
     <pv_name>$(P)Receive:PoseX.VAL</pv_name>
     <x>37</x>
-    <y>581</y>
+    <y>536</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -1785,7 +1785,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #332</name>
     <x>25</x>
-    <y>535</y>
+    <y>490</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -1803,7 +1803,7 @@
     <name>text #335</name>
     <text>Go:</text>
     <x>20</x>
-    <y>505</y>
+    <y>460</y>
     <width>30</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1815,7 +1815,7 @@
     <name>text #338</name>
     <text>Cartesian Move</text>
     <x>20</x>
-    <y>470</y>
+    <y>425</y>
     <width>150</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1826,7 +1826,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #341</name>
     <x>10</x>
-    <y>465</y>
+    <y>420</y>
     <width>800</width>
     <height>200</height>
     <line_width>2</line_width>
@@ -1843,7 +1843,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #344</name>
     <x>27</x>
-    <y>537</y>
+    <y>492</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -1859,7 +1859,7 @@
     <name>text #347</name>
     <text>X</text>
     <x>35</x>
-    <y>540</y>
+    <y>495</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1874,7 +1874,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #350</name>
     <x>156</x>
-    <y>602</y>
+    <y>557</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -1889,7 +1889,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #353</name>
     <x>156</x>
-    <y>633</y>
+    <y>588</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -1913,7 +1913,7 @@
     <pv_name>$(P)Control:PoseYTweakRev</pv_name>
     <text>&lt;</text>
     <x>158</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -1925,7 +1925,7 @@
     <name>text entry #359</name>
     <pv_name>$(P)Control:PoseYTweakVal</pv_name>
     <x>184</x>
-    <y>635</y>
+    <y>590</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1951,7 +1951,7 @@
     <pv_name>$(P)Control:PoseYTweakFwd</pv_name>
     <text>&gt;</text>
     <x>245</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -1963,7 +1963,7 @@
     <name>text entry #366</name>
     <pv_name>$(P)Control:PoseYCmd.VAL</pv_name>
     <x>165</x>
-    <y>605</y>
+    <y>560</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -1982,7 +1982,7 @@
     <name>text update #370</name>
     <pv_name>$(P)Control:PoseYCmd.EGU</pv_name>
     <x>156</x>
-    <y>568</y>
+    <y>523</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -2005,7 +2005,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #374</name>
     <x>156</x>
-    <y>556</y>
+    <y>511</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -2020,7 +2020,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #377</name>
     <x>156</x>
-    <y>578</y>
+    <y>533</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -2038,7 +2038,7 @@
     <name>text update #380</name>
     <pv_name>$(P)Receive:PoseY.VAL</pv_name>
     <x>167</x>
-    <y>581</y>
+    <y>536</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -2061,7 +2061,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #384</name>
     <x>155</x>
-    <y>535</y>
+    <y>490</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -2078,7 +2078,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #387</name>
     <x>157</x>
-    <y>537</y>
+    <y>492</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -2094,7 +2094,7 @@
     <name>text #390</name>
     <text>Y</text>
     <x>165</x>
-    <y>540</y>
+    <y>495</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -2109,7 +2109,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #393</name>
     <x>286</x>
-    <y>602</y>
+    <y>557</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -2124,7 +2124,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #396</name>
     <x>286</x>
-    <y>633</y>
+    <y>588</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -2148,7 +2148,7 @@
     <pv_name>$(P)Control:PoseZTweakRev</pv_name>
     <text>&lt;</text>
     <x>288</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -2160,7 +2160,7 @@
     <name>text entry #402</name>
     <pv_name>$(P)Control:PoseZTweakVal</pv_name>
     <x>314</x>
-    <y>635</y>
+    <y>590</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -2186,7 +2186,7 @@
     <pv_name>$(P)Control:PoseZTweakFwd</pv_name>
     <text>&gt;</text>
     <x>375</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -2198,7 +2198,7 @@
     <name>text entry #409</name>
     <pv_name>$(P)Control:PoseZCmd.VAL</pv_name>
     <x>295</x>
-    <y>605</y>
+    <y>560</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -2217,7 +2217,7 @@
     <name>text update #413</name>
     <pv_name>$(P)Control:PoseZCmd.EGU</pv_name>
     <x>286</x>
-    <y>568</y>
+    <y>523</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -2240,7 +2240,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #417</name>
     <x>286</x>
-    <y>556</y>
+    <y>511</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -2255,7 +2255,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #420</name>
     <x>286</x>
-    <y>578</y>
+    <y>533</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -2273,7 +2273,7 @@
     <name>text update #423</name>
     <pv_name>$(P)Receive:PoseZ.VAL</pv_name>
     <x>297</x>
-    <y>581</y>
+    <y>536</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -2296,7 +2296,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #427</name>
     <x>285</x>
-    <y>535</y>
+    <y>490</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -2313,7 +2313,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #430</name>
     <x>287</x>
-    <y>537</y>
+    <y>492</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -2329,7 +2329,7 @@
     <name>text #433</name>
     <text>Z</text>
     <x>295</x>
-    <y>540</y>
+    <y>495</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -2344,7 +2344,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #436</name>
     <x>416</x>
-    <y>602</y>
+    <y>557</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -2359,7 +2359,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #439</name>
     <x>416</x>
-    <y>633</y>
+    <y>588</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -2383,7 +2383,7 @@
     <pv_name>$(P)Control:PoseRollTweakRev</pv_name>
     <text>&lt;</text>
     <x>418</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -2395,7 +2395,7 @@
     <name>text entry #445</name>
     <pv_name>$(P)Control:PoseRollTweakVal</pv_name>
     <x>444</x>
-    <y>635</y>
+    <y>590</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -2421,7 +2421,7 @@
     <pv_name>$(P)Control:PoseRollTweakFwd</pv_name>
     <text>&gt;</text>
     <x>505</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -2433,7 +2433,7 @@
     <name>text entry #452</name>
     <pv_name>$(P)Control:PoseRollCmd.VAL</pv_name>
     <x>425</x>
-    <y>605</y>
+    <y>560</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -2452,7 +2452,7 @@
     <name>text update #456</name>
     <pv_name>$(P)Control:PoseRollCmd.EGU</pv_name>
     <x>416</x>
-    <y>568</y>
+    <y>523</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -2475,7 +2475,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #460</name>
     <x>416</x>
-    <y>556</y>
+    <y>511</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -2490,7 +2490,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #463</name>
     <x>416</x>
-    <y>578</y>
+    <y>533</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -2508,7 +2508,7 @@
     <name>text update #466</name>
     <pv_name>$(P)Receive:PoseRoll.VAL</pv_name>
     <x>427</x>
-    <y>581</y>
+    <y>536</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -2531,7 +2531,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #470</name>
     <x>415</x>
-    <y>535</y>
+    <y>490</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -2548,7 +2548,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #473</name>
     <x>417</x>
-    <y>537</y>
+    <y>492</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -2564,7 +2564,7 @@
     <name>text #476</name>
     <text>Roll</text>
     <x>425</x>
-    <y>540</y>
+    <y>495</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -2579,7 +2579,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #479</name>
     <x>546</x>
-    <y>602</y>
+    <y>557</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -2594,7 +2594,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #482</name>
     <x>546</x>
-    <y>633</y>
+    <y>588</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -2618,7 +2618,7 @@
     <pv_name>$(P)Control:PosePitchTweakRev</pv_name>
     <text>&lt;</text>
     <x>548</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -2630,7 +2630,7 @@
     <name>text entry #488</name>
     <pv_name>$(P)Control:PosePitchTweakVal</pv_name>
     <x>574</x>
-    <y>635</y>
+    <y>590</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -2656,7 +2656,7 @@
     <pv_name>$(P)Control:PosePitchTweakFwd</pv_name>
     <text>&gt;</text>
     <x>635</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -2668,7 +2668,7 @@
     <name>text entry #495</name>
     <pv_name>$(P)Control:PosePitchCmd.VAL</pv_name>
     <x>555</x>
-    <y>605</y>
+    <y>560</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -2687,7 +2687,7 @@
     <name>text update #499</name>
     <pv_name>$(P)Control:PosePitchCmd.EGU</pv_name>
     <x>546</x>
-    <y>568</y>
+    <y>523</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -2710,7 +2710,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #503</name>
     <x>546</x>
-    <y>556</y>
+    <y>511</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -2725,7 +2725,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #506</name>
     <x>546</x>
-    <y>578</y>
+    <y>533</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -2743,7 +2743,7 @@
     <name>text update #509</name>
     <pv_name>$(P)Receive:PosePitch.VAL</pv_name>
     <x>557</x>
-    <y>581</y>
+    <y>536</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -2766,7 +2766,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #513</name>
     <x>545</x>
-    <y>535</y>
+    <y>490</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -2783,7 +2783,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #516</name>
     <x>547</x>
-    <y>537</y>
+    <y>492</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -2799,7 +2799,7 @@
     <name>text #519</name>
     <text>Pitch</text>
     <x>555</x>
-    <y>540</y>
+    <y>495</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -2814,7 +2814,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #522</name>
     <x>676</x>
-    <y>602</y>
+    <y>557</y>
     <width>116</width>
     <height>31</height>
     <line_color>
@@ -2829,7 +2829,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #525</name>
     <x>676</x>
-    <y>633</y>
+    <y>588</y>
     <width>116</width>
     <height>25</height>
     <line_color>
@@ -2853,7 +2853,7 @@
     <pv_name>$(P)Control:PoseYawTweakRev</pv_name>
     <text>&lt;</text>
     <x>678</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -2865,7 +2865,7 @@
     <name>text entry #531</name>
     <pv_name>$(P)Control:PoseYawTweakVal</pv_name>
     <x>704</x>
-    <y>635</y>
+    <y>590</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -2891,7 +2891,7 @@
     <pv_name>$(P)Control:PoseYawTweakFwd</pv_name>
     <text>&gt;</text>
     <x>765</x>
-    <y>635</y>
+    <y>590</y>
     <width>25</width>
     <height>20</height>
     <background_color>
@@ -2903,7 +2903,7 @@
     <name>text entry #538</name>
     <pv_name>$(P)Control:PoseYawCmd.VAL</pv_name>
     <x>685</x>
-    <y>605</y>
+    <y>560</y>
     <width>98</width>
     <height>25</height>
     <font>
@@ -2922,7 +2922,7 @@
     <name>text update #542</name>
     <pv_name>$(P)Control:PoseYawCmd.EGU</pv_name>
     <x>676</x>
-    <y>568</y>
+    <y>523</y>
     <width>116</width>
     <height>12</height>
     <font>
@@ -2945,7 +2945,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #546</name>
     <x>676</x>
-    <y>556</y>
+    <y>511</y>
     <width>116</width>
     <height>12</height>
     <line_color>
@@ -2960,7 +2960,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #549</name>
     <x>676</x>
-    <y>578</y>
+    <y>533</y>
     <width>116</width>
     <height>26</height>
     <line_width>2</line_width>
@@ -2978,7 +2978,7 @@
     <name>text update #552</name>
     <pv_name>$(P)Receive:PoseYaw.VAL</pv_name>
     <x>687</x>
-    <y>581</y>
+    <y>536</y>
     <width>94</width>
     <height>17</height>
     <font>
@@ -3001,7 +3001,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #556</name>
     <x>675</x>
-    <y>535</y>
+    <y>490</y>
     <width>118</width>
     <height>125</height>
     <line_width>2</line_width>
@@ -3018,7 +3018,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>rectangle #559</name>
     <x>677</x>
-    <y>537</y>
+    <y>492</y>
     <width>114</width>
     <height>19</height>
     <line_color>
@@ -3034,7 +3034,7 @@
     <name>text #562</name>
     <text>Yaw</text>
     <x>685</x>
-    <y>540</y>
+    <y>495</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -3188,7 +3188,7 @@
     <pv_name>$(P)Control:moveJ.PROC</pv_name>
     <text>Move</text>
     <x>205</x>
-    <y>285</y>
+    <y>240</y>
     <width>50</width>
     <height>20</height>
     <background_color>
@@ -3208,7 +3208,7 @@
     <pv_name>$(P)Control:moveL.PROC</pv_name>
     <text>Move</text>
     <x>200</x>
-    <y>505</y>
+    <y>460</y>
     <width>50</width>
     <height>20</height>
     <background_color>
@@ -3219,8 +3219,8 @@
   <widget type="choice" version="2.0.0">
     <name>choice button #591</name>
     <pv_name>$(P)Control:TeachMode</pv_name>
-    <x>215</x>
-    <y>85</y>
+    <x>210</x>
+    <y>65</y>
     <height>20</height>
     <background_color>
       <color red="115" green="223" blue="255">
@@ -3235,8 +3235,8 @@
   <widget type="label" version="2.0.0">
     <name>text #594</name>
     <text>Teach Mode:</text>
-    <x>215</x>
-    <y>65</y>
+    <x>210</x>
+    <y>45</y>
     <height>15</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -3256,7 +3256,7 @@
     <pv_name>$(P)Control:Stop.PROC</pv_name>
     <text>STOP</text>
     <x>310</x>
-    <y>200</y>
+    <y>155</y>
     <width>60</width>
     <height>25</height>
     <foreground_color>
@@ -3270,217 +3270,6 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>text #600</name>
-    <text>TCP Offset:</text>
-    <x>15</x>
-    <y>145</y>
-    <width>110</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <auto_size>true</auto_size>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>text entry #603</name>
-    <pv_name>$(P)Control:TCPOffset_X.VAL</pv_name>
-    <x>130</x>
-    <y>145</y>
-    <width>75</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <background_color>
-      <color red="115" green="223" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <show_units>false</show_units>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>text entry #607</name>
-    <pv_name>$(P)Control:TCPOffset_Y.VAL</pv_name>
-    <x>210</x>
-    <y>145</y>
-    <width>75</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <background_color>
-      <color red="115" green="223" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <show_units>false</show_units>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>text entry #611</name>
-    <pv_name>$(P)Control:TCPOffset_Z.VAL</pv_name>
-    <x>290</x>
-    <y>145</y>
-    <width>75</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <background_color>
-      <color red="115" green="223" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <show_units>false</show_units>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>text entry #615</name>
-    <pv_name>$(P)Control:TCPOffset_Roll.VAL</pv_name>
-    <x>370</x>
-    <y>145</y>
-    <width>75</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <background_color>
-      <color red="115" green="223" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <show_units>false</show_units>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>text entry #619</name>
-    <pv_name>$(P)Control:TCPOffset_Pitch.VAL</pv_name>
-    <x>450</x>
-    <y>145</y>
-    <width>75</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <background_color>
-      <color red="115" green="223" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <show_units>false</show_units>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>text entry #623</name>
-    <pv_name>$(P)Control:TCPOffset_Yaw.VAL</pv_name>
-    <x>530</x>
-    <y>145</y>
-    <width>75</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <background_color>
-      <color red="115" green="223" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <show_units>false</show_units>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #627</name>
-    <text>X</text>
-    <x>130</x>
-    <y>130</y>
-    <width>75</width>
-    <height>15</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #630</name>
-    <text>Y</text>
-    <x>210</x>
-    <y>130</y>
-    <width>75</width>
-    <height>15</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #633</name>
-    <text>Z</text>
-    <x>290</x>
-    <y>130</y>
-    <width>75</width>
-    <height>15</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #636</name>
-    <text>Roll</text>
-    <x>370</x>
-    <y>130</y>
-    <width>75</width>
-    <height>15</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #639</name>
-    <text>Pitch</text>
-    <x>450</x>
-    <y>130</y>
-    <width>75</width>
-    <height>15</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #642</name>
-    <text>Yaw</text>
-    <x>530</x>
-    <y>130</y>
-    <width>75</width>
-    <height>15</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <horizontal_alignment>1</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #645</name>
-    <text>mm,rad</text>
-    <x>610</x>
-    <y>150</y>
-    <width>65</width>
-    <height>15</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <auto_size>true</auto_size>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #648</name>
     <text>PAUSED</text>
     <x>10</x>
     <y>35</y>
@@ -3504,7 +3293,7 @@
     </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #652</name>
+    <name>text #604</name>
     <text>PLAYING</text>
     <x>10</x>
     <y>35</y>
@@ -3528,7 +3317,7 @@
     </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #656</name>
+    <name>text #608</name>
     <text>STOPPED</text>
     <x>10</x>
     <y>35</y>
@@ -3552,7 +3341,7 @@
     </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #660</name>
+    <name>text #612</name>
     <text>STOPPING</text>
     <x>10</x>
     <y>35</y>
@@ -3576,7 +3365,7 @@
     </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #664</name>
+    <name>text #616</name>
     <text>PAUSING</text>
     <x>10</x>
     <y>35</y>
@@ -3600,7 +3389,7 @@
     </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #668</name>
+    <name>text #620</name>
     <text>RESUMING</text>
     <x>10</x>
     <y>35</y>
@@ -3624,10 +3413,10 @@
     </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #672</name>
+    <name>text #624</name>
     <text>Moving</text>
     <x>390</x>
-    <y>195</y>
+    <y>150</y>
     <width>120</width>
     <height>30</height>
     <font>
@@ -3649,9 +3438,9 @@
     </rules>
   </widget>
   <widget type="rectangle" version="2.0.0">
-    <name>rectangle #676</name>
+    <name>rectangle #628</name>
     <x>10</x>
-    <y>242</y>
+    <y>197</y>
     <width>800</width>
     <height>425</height>
     <line_width>5</line_width>
@@ -3674,7 +3463,7 @@
     </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #680</name>
+    <name>text #632</name>
     <text>$(P)</text>
     <x>615</x>
     <y>5</y>
@@ -3690,10 +3479,10 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #683</name>
+    <name>text entry #635</name>
     <pv_name>$(P)Control:LinearSpeed.VAL</pv_name>
     <x>660</x>
-    <y>505</y>
+    <y>460</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -3708,10 +3497,10 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #687</name>
+    <name>text entry #639</name>
     <pv_name>$(P)Control:LinearAcceleration.VAL</pv_name>
     <x>730</x>
-    <y>505</y>
+    <y>460</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -3726,10 +3515,10 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #691</name>
+    <name>text #643</name>
     <text>Speed</text>
     <x>660</x>
-    <y>490</y>
+    <y>445</y>
     <width>60</width>
     <height>15</height>
     <font>
@@ -3739,10 +3528,10 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #694</name>
+    <name>text #646</name>
     <text>Accel</text>
     <x>730</x>
-    <y>490</y>
+    <y>445</y>
     <width>60</width>
     <height>15</height>
     <font>
@@ -3752,10 +3541,10 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #697</name>
+    <name>text entry #649</name>
     <pv_name>$(P)Control:JointSpeed.VAL</pv_name>
     <x>660</x>
-    <y>285</y>
+    <y>240</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -3770,10 +3559,10 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #701</name>
+    <name>text entry #653</name>
     <pv_name>$(P)Control:JointAcceleration.VAL</pv_name>
     <x>730</x>
-    <y>285</y>
+    <y>240</y>
     <width>60</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -3788,10 +3577,10 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #705</name>
+    <name>text #657</name>
     <text>Speed</text>
     <x>660</x>
-    <y>270</y>
+    <y>225</y>
     <width>60</width>
     <height>15</height>
     <font>
@@ -3801,10 +3590,10 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #708</name>
+    <name>text #660</name>
     <text>Accel</text>
     <x>730</x>
-    <y>270</y>
+    <y>225</y>
     <width>60</width>
     <height>15</height>
     <font>
@@ -3812,5 +3601,49 @@
       </font>
     </font>
     <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #663</name>
+    <actions>
+      <action type="open_display">
+        <file>custom_urscript.opi</file>
+        <target>tab</target>
+        <description>custom_urscript</description>
+      </action>
+    </actions>
+    <text>URScript</text>
+    <x>210</x>
+    <y>95</y>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="33" green="108" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #666</name>
+    <actions>
+      <action type="open_display">
+        <file>tcp_offset.opi</file>
+        <target>tab</target>
+        <description>tcp_offset</description>
+      </action>
+    </actions>
+    <text>TCP Offset</text>
+    <x>550</x>
+    <y>460</y>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="33" green="108" blue="0">
+      </color>
+    </background_color>
   </widget>
 </display>
