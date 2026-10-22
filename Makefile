@@ -6,6 +6,9 @@ DIRS := $(DIRS) $(filter-out $(DIRS), urRobotSupport)
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *App))
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard iocBoot))
 
+DIRS += tests
+tests_DEPEND_DIRS = urRobotApp
+
 ifeq ($(BUILD_IOCS), YES)
  DIRS += $(wildcard iocs)
 endif
