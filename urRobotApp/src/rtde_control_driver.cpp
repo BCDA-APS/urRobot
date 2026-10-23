@@ -1,5 +1,6 @@
 #include <atomic>
 #include <optional>
+#include <iterator>
 #include <utility>
 #include <limits>
 #include <algorithm>
@@ -184,7 +185,7 @@ static void servo_thread_C(void* pPvt) {
     pRTDEControl->servo_worker();
 }
 
-constexpr int NUM_JOINTS = 6;
+// constexpr int NUM_JOINTS = 6;
 constexpr int MAX_ADDR = NUM_JOINTS;
 constexpr int ASYN_INTERFACE_MASK =
     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynFloat64ArrayMask | asynDrvUserMask;
@@ -392,14 +393,23 @@ void RTDEControl::servo_worker() {
         constexpr double dt = 1.0 / 500.0;
         constexpr double lookahead_time = 0.1;
         constexpr double gain = 300.0;
-        for (const auto& joints : servo_trajectory_) {
-            if (servo_should_stop_.load(std::memory_order_relaxed)) {
-                break;
-            }
+
+        for (size_t step = 0;; ++step) {
+            const double time = step * dt;
+            auto joints = sample_trajectory(trajectory_, time);
             auto t_start = rtde_control_->initPeriod();
             rtde_control_->servoJ(joints, 0.0, 0.0, dt, lookahead_time, gain);
             rtde_control_->waitPeriod(t_start);
         }
+
+        // for (const auto& joints : servo_trajectory_) {
+            // if (servo_should_stop_.load(std::memory_order_relaxed)) {
+                // break;
+            // }
+            // auto t_start = rtde_control_->initPeriod();
+            // rtde_control_->servoJ(joints, 0.0, 0.0, dt, lookahead_time, gain);
+            // rtde_control_->waitPeriod(t_start);
+        // }
 
         rtde_control_->servoStop();
 
@@ -786,16 +796,19 @@ asynStatus RTDEControl::writeFloat64Array(asynUser* pasynUser, epicsFloat64* val
     }
 
     if (function == servoTrajIndex_) {
-        std::vector<std::vector<double>> trajectory;
-        trajectory.reserve(nElements / NUM_JOINTS);
-        for (size_t offset = 0; offset < nElements; offset += NUM_JOINTS) {
-            std::vector<double> joints(value + offset, value + offset + NUM_JOINTS);
-            for (auto& joint : joints) {
-                joint *= M_PI / 180.0;
-            }
-            trajectory.push_back(std::move(joints));
-        }
-        servo_trajectory_ = std::move(trajectory);
+        // std::vector<std::vector<double>> trajectory;
+        // trajectory.reserve(nElements / NUM_JOINTS);
+        // for (size_t offset = 0; offset < nElements; offset += NUM_JOINTS) {
+            // std::vector<double> joints(value + offset, value + offset + NUM_JOINTS);
+            // for (auto& joint : joints) {
+                // joint *= M_PI / 180.0;
+            // }
+            // trajectory.push_back(std::move(joints));
+        // }
+        // servo_trajectory_ = std::move(trajectory);
+
+        std::vector<double> sparse_points(value, value + nElements);
+        trajectory_ = build_trajectory(sparse_points);
         servo_state_ = ServoState::Loaded;
         setIntegerParam(servoStateIndex_, static_cast<int>(servo_state_));
         callParamCallbacks();

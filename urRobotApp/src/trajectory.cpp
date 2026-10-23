@@ -12,12 +12,15 @@ Trajectory build_trajectory(const std::vector<double>& values) {
     traj.points.reserve(trajectory_points.size());
 
     for (const auto& row : trajectory_points) {
-        std::array<double, NUM_JOINTS> pos;
-        std::array<double, NUM_JOINTS> vel;
-        std::array<double, NUM_JOINTS> acc;
-        std::copy(row.begin() + 1, row.begin() + 7, pos.begin());
-        std::copy(row.begin() + 7, row.begin() + 13, vel.begin());
-        std::copy(row.begin() + 13, row.begin() + 19, acc.begin());
+        // std::array<double, NUM_JOINTS> pos;
+        // std::array<double, NUM_JOINTS> vel;
+        // std::array<double, NUM_JOINTS> acc;
+        // std::copy(row.begin() + 1, row.begin() + 7, pos.begin());
+        // std::copy(row.begin() + 7, row.begin() + 13, vel.begin());
+        // std::copy(row.begin() + 13, row.begin() + 19, acc.begin());
+        std::vector<double> pos(row.begin() + 1, row.begin() + 7);
+        std::vector<double> vel(row.begin() + 7, row.begin() + 13);
+        std::vector<double> acc(row.begin() + 13, row.begin() + 19);
         traj.points.push_back(TrajectoryPoint{
             row[0],
             pos, vel, acc
@@ -40,15 +43,11 @@ Trajectory build_trajectory(const std::vector<double>& values) {
             coefficients[1] = duration * start.velocity[joint];
             coefficients[2] = 0.5 * duration * duration * start.acceleration[joint];
 
-            const double position_error =
-                end.position[joint] - (coefficients[0] + coefficients[1] + coefficients[2]);
-            const double velocity_error =
-                duration * end.velocity[joint] - (coefficients[1] + 2.0 * coefficients[2]);
-            const double acceleration_error =
-                duration * duration * end.acceleration[joint] - 2.0 * coefficients[2];
+            const double position_error = end.position[joint] - (coefficients[0] + coefficients[1] + coefficients[2]);
+            const double velocity_error = duration * end.velocity[joint] - (coefficients[1] + 2.0 * coefficients[2]);
+            const double acceleration_error = duration * duration * end.acceleration[joint] - 2.0 * coefficients[2];
 
-            coefficients[3] =
-                10.0 * position_error - 4.0 * velocity_error + 0.5 * acceleration_error;
+            coefficients[3] = 10.0 * position_error - 4.0 * velocity_error + 0.5 * acceleration_error;
             coefficients[4] = -15.0 * position_error + 7.0 * velocity_error - acceleration_error;
             coefficients[5] = 6.0 * position_error - 3.0 * velocity_error + 0.5 * acceleration_error;
         }
@@ -59,7 +58,7 @@ Trajectory build_trajectory(const std::vector<double>& values) {
     return traj;
 }
 
-std::array<double, NUM_JOINTS> sample_trajectory(const Trajectory& trajectory, double time) {
+std::vector<double> sample_trajectory(const Trajectory& trajectory, double time) {
 
     // If the time is at or before the first point in the trajectory,
     // just return the first point
@@ -87,7 +86,9 @@ std::array<double, NUM_JOINTS> sample_trajectory(const Trajectory& trajectory, d
     // This is needed because coefficients were calculated for normalized time.
     const double u = (time - segment->start_time) / (segment->end_time - segment->start_time);
 
-    std::array<double, NUM_JOINTS> positions{};
+    // std::array<double, NUM_JOINTS> positions{};
+    std::vector<double> positions{};
+    positions.reserve(NUM_JOINTS);
     for (size_t joint = 0; joint < NUM_JOINTS; ++joint) {
 
         // Gets the six quintic coefficients for the current joint.

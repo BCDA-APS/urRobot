@@ -14,6 +14,8 @@
 #include "ur_rtde/rtde_control_interface.h"
 #include "ur_rtde/script_client.h"
 
+#include "trajectory.hpp"
+
 /// State machine for tracking asynchronous motion progress in the poll thread.
 ///   Done -> WaitingMotion -> WaitingAction -> Done
 /// WaitingAction is only entered when the motion has an associated waypoint action.
@@ -123,7 +125,8 @@ class RTDEControl : public asynPortDriver {
     epicsEventId servo_event_ = nullptr;
     epicsThreadId servo_thread_id_ = nullptr;
     std::atomic<bool> servo_should_stop_{false};
-    std::vector<std::vector<double>> servo_trajectory_;
+    // std::vector<std::vector<double>> servo_trajectory_;
+    Trajectory trajectory_;
     enum class ServoState {
         Idle,
         Loaded,

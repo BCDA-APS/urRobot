@@ -11,9 +11,9 @@ constexpr size_t FLAT_POINT_LENGTH = 19;
 /// a timestamp and arrays: position, velocity, and acceleration.
 struct TrajectoryPoint {
     double time;
-    std::array<double, NUM_JOINTS> position;
-    std::array<double, NUM_JOINTS> velocity;
-    std::array<double, NUM_JOINTS> acceleration;
+    std::vector<double> position;
+    std::vector<double> velocity;
+    std::vector<double> acceleration;
 };
 
 /// @brief A segment bewtween two points in a trajectory with timestamps
@@ -41,7 +41,7 @@ Trajectory build_trajectory(const std::vector<double>& values);
 /// @brief Finds the joint positions alonge the trajectory at a given time
 /// @param trajectory Time-parametrized Trajectory
 /// @param time Seconds from start of trajectory to sample at
-std::array<double, NUM_JOINTS> sample_trajectory(const Trajectory& trajectory, double time);
+std::vector<double> sample_trajectory(const Trajectory& trajectory, double time);
 
 /// @brief Flattens vector to a 2D vector
 template <typename T>
