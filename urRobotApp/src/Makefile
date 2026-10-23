@@ -25,6 +25,7 @@ urRobot_SRCS += rtde_receive_driver.cpp
 urRobot_SRCS += rtde_io_driver.cpp
 urRobot_SRCS += rtde_control_driver.cpp
 urRobot_SRCS += gripper_driver.cpp
+urRobot_SRCS += trajectory.cpp
 
 # Libraries needed for urRobot
 urRobot_LIBS += asyn
