@@ -87,8 +87,7 @@ std::vector<double> sample_trajectory(const Trajectory& trajectory, double time)
     const double u = (time - segment->start_time) / (segment->end_time - segment->start_time);
 
     // std::array<double, NUM_JOINTS> positions{};
-    std::vector<double> positions{};
-    positions.reserve(NUM_JOINTS);
+    std::vector<double> positions(NUM_JOINTS);
     for (size_t joint = 0; joint < NUM_JOINTS; ++joint) {
 
         // Gets the six quintic coefficients for the current joint.

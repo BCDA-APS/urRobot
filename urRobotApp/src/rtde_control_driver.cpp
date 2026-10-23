@@ -394,12 +394,19 @@ void RTDEControl::servo_worker() {
         constexpr double lookahead_time = 0.1;
         constexpr double gain = 300.0;
 
+        const double end_time = trajectory_.points.back().time;
         for (size_t step = 0;; ++step) {
+            if (servo_should_stop_.load(std::memory_order_relaxed)) {
+                break;
+            }
             const double time = step * dt;
             auto joints = sample_trajectory(trajectory_, time);
             auto t_start = rtde_control_->initPeriod();
             rtde_control_->servoJ(joints, 0.0, 0.0, dt, lookahead_time, gain);
             rtde_control_->waitPeriod(t_start);
+            if (time >= end_time) {
+                break;
+            }
         }
 
         // for (const auto& joints : servo_trajectory_) {
